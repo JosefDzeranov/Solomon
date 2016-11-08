@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	float b, p = 3.1415926535, c;
+	int n, R, r, a, d;
+	cin >> b >> n >> R >> r;
+
+
+	a = 2 * R;
+    d = n / a;
+	if (n % a >= r)
+		d=d+1;
+	c=2 * d * p * (r + 2 * R);
+	if(b<c)
+		{cout << "NO" << endl;}
+	else
+	{
+    cout << "YES" << endl<< 2 * d << " " << d<<endl;
+	}
+
+	return 0;
+}

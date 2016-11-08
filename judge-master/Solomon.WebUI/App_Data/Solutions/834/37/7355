@@ -1,0 +1,58 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a : string;
+var b : string;
+i : integer;
+begin
+readln(a);
+readln(b);
+for i := 1 to 3 do
+  if a[i]<>'*' then
+    begin
+      if b[i]<>'*' then
+        begin
+          if a[i]<b[i] then
+            begin
+              writeln(a);
+              break;
+           end
+          else
+          if a[i]>b[i] then
+            begin
+              writeln(b);
+              break;
+            end
+        end
+        else
+      begin
+        if a[i]='a' then
+          begin
+            writeln(a);
+            break;
+          end
+        else
+          begin
+            writeln(b);
+            break;
+          end
+      end
+    end
+      else
+        if b[i]='a' then
+          begin
+            writeln(b);
+            break;
+          end
+        else
+        if b[i]<>'*' then
+        begin
+          writeln(a);
+          break;
+        end;
+readln;
+end.

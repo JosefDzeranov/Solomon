@@ -1,0 +1,21 @@
+var j,x,y,i,n,z:longint;
+    s,a:array[0..20000000]of longint;
+ begin
+ // assign(input,'input1.txt'); reset(input);
+ //  assign(output,'output1.txt'); rewrite(output);
+    readln(n);
+    for i:=1 to n do begin read(a[i]);z:=z+a[i];end;
+    s[0]:=1;
+    for i:=1 to n do
+      for j:=z downto 0 do
+       if s[j]=1 then s[a[i]+j]:=1;
+     x:=maxlongint;
+    for i:=0 to z do
+     if s[i]=1 then begin
+                     y:=z-i;
+                     if abs(i-y)<x then x:=abs(i-y);
+                    end;
+    writeln(x);
+ end.
+
+

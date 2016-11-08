@@ -1,0 +1,11 @@
+var
+i,l,l1:longint;
+s:string;
+begin
+readln(s);
+l:=length(s);
+l1:=l div 2;
+for i:=1 to l1 do 
+write(s[i],s[i+l1]);
+if (l mod 2<>0) then write(s[l]);
+end.

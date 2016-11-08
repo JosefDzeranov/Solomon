@@ -1,0 +1,141 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool f_prov_on_chars(string  s)
+{
+    for (unsigned int i = 0; i < s.size(); i++)
+    {
+        if (s[i] != '+' && s[i] != '-' && s[i] != '=' && s[i] != '*' && s[i] != '/' && (s[i] < '0' || s[i] > '9' ))
+            return false;
+    }
+
+    return true;
+
+}
+
+int per(string s)
+{
+    int ans = 0;
+    for (unsigned int i = 0; i < s.size(); i++)
+        ans = ans * 10 + (int(s[i]) - 48);
+
+    return ans;
+}
+
+
+int main()
+{
+    string s;
+    cin >> s;
+    if (!f_prov_on_chars(s))
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    string ch1 = "";
+    char znak = ' ';
+    string ch2 = "";
+    //char ravno = ' ';
+    string ch3 = "";
+    unsigned int i;
+
+    for (i = 0; i < s.size(); i++)
+    {
+        while(s[i] >= '0' && s[i] <= '9' && i < s.size())
+        {
+            ch1 += s[i];
+            i++;
+        }
+
+        break;
+    }
+
+    if (ch1.size() == 0) //if1
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    if (s[i] != '+' && s[i] != '-' && s[i] != '*' && s[i] != '/')//if2
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    znak = s[i];
+    i++;
+    while (s[i] >= '0' && s[i] <= '9' && i < s.size())
+    {
+        ch2 += s[i];
+        ++i;
+    }
+
+    if  (ch2.size() == 0)//if3
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    if (s[i] != '=')//if4
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    //ravno = '=';
+    i++;
+
+    while (s[i] >= '0' && s[i] <= '9' && i < s.size())
+    {
+        ch3 += s[i];
+        ++i;
+    }
+
+    if (ch3.size() == 0)//if5
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+    if (i != s.size())//if6
+    {
+        cout << "ERROR";
+        return 0;
+    }
+
+
+    int ich1 = per(ch1);
+    int ich2 = per(ch2);
+    int ich3 = per(ch3);
+    int rav1 = 0;
+    if (znak == '+')
+        rav1 = ich1 + ich2;
+
+    if (znak == '-')
+        rav1 = ich1 - ich2;
+
+    if (znak == '*')
+        rav1 = ich1 * ich2;
+
+    if (znak == '/')
+        rav1 = ich1 / ich2;
+
+    if (ich1 % ich2 != 0 && znak == '/')
+    {
+        cout << "NO";
+        return 0;
+    }
+
+    if (rav1 != ich3)
+    {
+        cout << "NO";
+        return 0;
+    }
+
+    cout << "YES";
+    return 0;
+}
+

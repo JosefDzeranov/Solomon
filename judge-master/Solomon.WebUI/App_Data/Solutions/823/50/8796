@@ -1,0 +1,84 @@
+program FibonacciAndMouse;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a, b, c, d : string;
+  n, x, y : integer;
+
+function max (x1, x2 : integer) : integer;
+begin
+  if x1 >= x2 then
+    result := x1
+  else
+    result := x2;
+end;
+
+procedure fill (var s : string; Len : integer);
+var
+  i : integer;
+begin
+  for i := Length(s) + 1 to Len do
+    s := s + '0';
+end;
+
+procedure Loop (var s : string);
+var
+  i, k : integer;
+  x : char;
+begin
+  k := Length (s);
+  for i := 1 to k div 2 do
+    begin
+      x := s[i];
+      s[i] := s[k-i+1];
+      s[k-i+1] := x;
+    end;
+end;
+
+function LongAdd(a1 : string; b1 : string) : string;
+var
+  i : integer;
+  maxLength : integer;
+  p : byte;
+begin
+  maxLength := max (Length(a1), Length(b1));
+  if Length (a1) < Length (b1) then
+    fill (a1, maxLength)
+  else
+    fill (b1, maxLength);
+  p := 0;
+  result := '';
+  for i := 1 to maxLength do
+    begin
+      result := result + chr((ord(a1[i]) - 48 + ord(b1[i]) - 48 + p) mod 10 + 48);
+      p := (((ord(a1[i]) - 48) + (ord(b1[i]) - 48)) + p) div 10 ;
+    end;
+  if p > 0 then
+    result := result + chr(p + 48);
+  Loop (result);
+end;
+begin
+  read (x);
+  a := IntToStr(x);
+  readln (y);
+  b := IntToStr(y);
+  Loop (a);
+  Loop (b);
+  readln (n);
+  c := a + b;
+  while Length (c) < n do
+    begin
+      Loop (a);
+      Loop (b);
+      d := LongAdd(a, b);
+      a := b;
+      b := d;
+      c := c + d;
+    end;
+  writeln (c[n]);
+  readln;
+end.

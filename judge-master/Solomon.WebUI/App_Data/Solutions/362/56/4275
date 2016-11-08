@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstring>
+using namespace std;
+int main()
+{
+    unsigned int n, a = 0;
+    unsigned long fact = 1; char x1[9999];
+    cin >> n;
+    for (int i = n; i > 0; i--)
+    fact *= i;
+    itoa(fact, x1, 2);
+    for (int i = strlen(x1) - 1; i >= 0; i--)
+    {
+        if (x1[i] == '0')
+         a += 1; else break;
+    }     
+    cout << a; 
+    system("pause");
+    return 0;
+}
+  

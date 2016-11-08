@@ -1,0 +1,14 @@
+s = input()
+s1 = input()
+g = ''
+i =0
+r = s.split(' ')
+r1 = s1.split(' ')
+f = abs(int(r[0])*60+int(r[1]))
+f1 = abs(int(r1[0])*60+int(r1[1]))
+if f > f1:
+    f+=24*60
+l = abs(f - f1)
+m = l % 60
+h = l//60
+print(h,m)

@@ -1,0 +1,23 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+ var h1,w1,kol,l1,h,w,l,n,z:integer;
+begin
+readln(n,z);
+readln(w,l,h);
+h:=h+z div 2 +1;
+h1:=h div z;
+w1:=w div z;
+l1:=l div z;
+if (h<z) or (w<z) or(l<z) then
+     writeln(0)
+     else
+     if n<h1*w1*l1  then
+     writeln(1) else
+     writeln                (n div h1*w1*l1);
+readln;
+
+end.

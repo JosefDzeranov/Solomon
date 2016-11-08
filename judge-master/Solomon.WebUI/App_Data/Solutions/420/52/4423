@@ -1,0 +1,10 @@
+Program pr1;
+Var n,i, a:longint;
+Begin
+Readln (n);
+a:=1;
+For i:=n downto n-2 do
+a:=a*i;
+Writeln (a);
+Readln;
+End.

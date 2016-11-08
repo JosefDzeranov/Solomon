@@ -1,0 +1,8 @@
+program Olimpiada_A;
+var a,b:integer;
+begin
+
+  readln (a,b);
+  a:=a+b;
+  writeln (a);
+  end.

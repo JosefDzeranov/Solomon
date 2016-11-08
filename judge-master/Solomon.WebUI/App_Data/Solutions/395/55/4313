@@ -1,0 +1,5 @@
+var n:integer;
+begin
+  read(n);
+  write((2*n-1)*(sqr(2*n-1)+1)+sqr(n*2)+1);
+end.

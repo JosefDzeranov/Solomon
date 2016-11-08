@@ -1,0 +1,9 @@
+var  n,ans,x,i,sum:int64;
+begin
+readln(n);
+n:=n*2-1;
+x:=(n*n*(n*n+1)) div (2*n);
+inc(n);
+sum:=n*n+1;
+writeln(sum+x*2);
+end.

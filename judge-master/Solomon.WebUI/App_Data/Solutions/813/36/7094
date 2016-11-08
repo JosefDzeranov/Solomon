@@ -1,0 +1,23 @@
+program mesi3;
+var a : array [1..294] of integer;
+    i, k : integer;
+    
+  begin
+  a[1] := 1; a[2] := 2; a[3] := 3; a[4] := 2; a[5] := 3; a[6] := 4;
+  i := 6; k := 2;
+  while i <> 294 do
+    begin
+    a[i + 1] := a[1] + k;
+    a[i + 2] := a[2] + k;
+    a[i + 3] := a[3] + k;
+    a[i + 4] := a[4] + k;
+    a[i + 5] := a[5] + k;
+    a[i + 6] := a[6] + k;
+    k := k + 2; i := i + 6;
+    end;
+  k := 0; i := 0;
+  readln(k);
+  for i := 1 to 294 do
+  if a[i] = k then break;
+  for k := 1 to i do write(a[k],' '); 
+  end.

@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main()
+{
+  //freopen("code.in","r",stdin);
+  //freopen("code.out","w",stdout);
+    
+  int n,m;
+  
+  scanf("%d",&n);
+  
+  m=n*(n-1)*(n-2);
+  
+  printf("%d\n",m);    
+}

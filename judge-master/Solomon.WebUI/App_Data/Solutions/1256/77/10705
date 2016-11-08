@@ -1,0 +1,45 @@
+uses math;
+var
+s,ss:String;
+dl,kn:real;
+i,j,k,n:Longint;
+a:array of array of Char;
+begin
+
+read(s);
+dl:=length(s);
+
+kn:=sqrt(dl);
+n:=ceil(kn);
+
+SetLength(a,n);
+for i := 0 to n-1 do SetLength(a[i],n);
+k:=1;
+
+for i:=0 to n-1 do begin
+for j:=0 to n-1 do a[i,j]:=' ';
+end;
+
+i:=0;
+j:=0;
+While i<=n-1 do begin
+j:=0;
+While j<=n-1 do begin
+If k<=dl then a[i,j]:=s[k] else a[i,j]:=' '; 
+If k<=dl then inc(k);  
+inc(j);
+end;
+inc(i);
+end;
+
+{for i:=0 to n-1 do begin
+for j:=0 to n-1 do write(a[i,j]);
+writeln;
+end;
+}
+
+for i:=0 to n-1 do begin
+for j:=0 to n-1 do ss:=ss+a[j,i];
+end;
+writeln(ss);
+end.

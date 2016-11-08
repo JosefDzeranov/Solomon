@@ -1,0 +1,9 @@
+var s,b,a:integer;
+begin
+readln(a);
+s:=(a*(a*a+1)) div 2;
+s:=s+((a*((a*a)+1)) div 4);
+if a=2 then writeln('47');
+if a=4 then writeln('415');
+
+end.

@@ -1,0 +1,5 @@
+var x,y:longint;
+BEGIN
+  read(x,y);
+  writeln(x*(x+y));
+END.

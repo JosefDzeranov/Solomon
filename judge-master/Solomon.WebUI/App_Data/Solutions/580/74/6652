@@ -1,0 +1,56 @@
+using System;
+namespace viking
+{
+	class Program
+	{
+		static void Main()
+		{
+			int result = 1000;
+			string[] s = Console.ReadLine().Split();
+			int x1 = int.Parse(s[0]);
+			int y1 = int.Parse(s[1]);
+			int x2 = int.Parse(s[2]);
+			int y2 = int.Parse(s[3]);
+
+			if((y1 > 100 && y2 < 0)&&((x1 >= 0 && x1 <= 100) &&(x1 >= 0 && x1 <= 100)))
+			{
+				result = 1000 + 10 * Min(y1 - 100, -y2);
+			}
+
+
+
+			if((y2 > 100 && y1 < 0)&&((x1 >= 0 && x1 <= 100) &&(x1 >= 0 && x1 <= 100)))
+			{
+				result = 1000 + 10 * Min(y2 - 100, -y1);
+			}
+
+
+
+			if((x1 > 100 && x2 < 0)&&((y1 >= 0 && y1 <= 100) &&(y1 >= 0 && y1 <= 100)))
+			{
+				result = 1000 + 10 * Min(x1 - 100, -x2);
+			}
+
+
+
+			if((x2 > 100 && x1 < 0)&&((y1 >= 0 && y1 <= 100) &&(y1 >= 0 && y1 <= 100)))
+			{
+				result = 1000 + 10 * Min(x2 - 100, -x1);
+			}
+
+
+
+			Console.Write(result);
+			
+			Console.Read();
+		}
+
+		static int Min(int a , int b){
+			return (a < b) ? a : b;
+			}
+
+		
+	}
+		
+		
+}

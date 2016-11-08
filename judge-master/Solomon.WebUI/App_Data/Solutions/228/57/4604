@@ -1,0 +1,46 @@
+
+program qq;
+var a,b,c:array [1..100]of integer;
+i,j,w,s,n,r,max_covp,k,x,min_c:integer;
+begin
+writeln ('n= '); 
+readln ( n);
+for i:=1 to N do begin
+write ('a[',i,']=');
+readln (a[i]);
+c[i]:=0;
+end;
+for i:=1 to N do begin
+      s:=a[i];
+   while s>9 do begin
+       w:=s;
+       s:=0;
+     while w>0 do begin
+        r:=w mod 10;
+        w:=w div 10;
+        s:=s+r;
+     end;  
+   end;  
+   b[i]:=s;
+end; 
+  x:=1;
+ max_covp:= 1;
+for i:=1 to N-1 do begin 
+  k:=0;
+ for j:=i+1 to N do
+      if b[i]=b[j] then k:=k+1;
+ if max_covp<=k then begin
+     max_covp:=k;
+     c[x]:=b[i];
+     x:=x+1;
+ end;    
+end;
+writeln;
+  min_c:=10;
+for i:=1 to x-1 do  
+   if c[i]<min_c then min_c:=c[i];
+for i:=1 to N do  
+   if b[i]<>min_c then  write (a[i],'  ');
+end. 
+ 
+ 

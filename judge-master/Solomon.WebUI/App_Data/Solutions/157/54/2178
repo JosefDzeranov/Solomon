@@ -1,0 +1,36 @@
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+int main()
+{const int k=10;
+char a[k];
+char d[k];
+int i,j;
+int f=0,h=0;
+int v,g;
+
+cin>>a;
+
+for (i=0; i<10; i++)
+{
+	if (i==0) j=1;
+	else j=0;
+	while (j<10)
+	{
+		if (a[i]==a[j]) {h++; v=0;
+						for(g=0; g<10; g++) 
+							if (d[g]==a[i]) v++;
+						if (v==0) {d[f]=a[i]; d[f+1]=' '; f=f+2;}}
+		if (i!=j+1) j++;
+		else j=j+2;
+	}
+}
+
+d[f]='\0';
+
+if (h==0) cout<<"YES";
+else cout<<"NO"<<endl<<d;
+
+getch();}

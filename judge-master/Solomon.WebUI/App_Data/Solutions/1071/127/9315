@@ -1,0 +1,56 @@
+var
+  X, x1, x2, x3, y1, y2, y3, t1, t2, t11, t22: integer;
+
+begin
+  readln(X1, Y1);
+  readln(X2, Y2);
+  readln(X3, Y3);
+  begin
+    if (X3 > X2) OR (Y3 > Y2) THEN X := 0
+    ELSE X := 1
+  end;begin
+    t1 := x1 DIV 2; t1 := t1 + (x2 DIV 2);
+    t2 := y1 DIV 2; t2 := t2 + (y2 DIV 2);
+    if x3 > t1 then t11 := 1
+    else begin
+      t11 := 0
+    end;
+    if y3 > t2 then t22 := 1
+    else begin
+      t22 := 0
+    end;
+  end;begin
+    if t11 = 1 then t11 := x2 - x3
+    else begin
+      t11 := x3 - x1
+    end;
+    if t22 = 1 then t22 := y2 - y3
+    
+    else begin
+      t22 := y3 - y1
+    end;
+    begin
+      if T11 < 0 THEN
+        T11 := T11 * (-1);
+    end;
+    begin
+      if T22 < 0 THEN
+        T22 := T22 * (-1);
+    end;
+    if X = 1 THEN
+    begin
+      if t11 > t22 then
+        writeln(T22)
+      ELSE begin
+        WRITELN(T11);
+      end;
+    end
+    ELSE begin
+      if t11 < t22 then
+        writeln(T22)
+      ELSE begin
+        WRITELN(T11);
+      end;
+    end;
+  end;
+end.

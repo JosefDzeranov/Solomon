@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double a, b, n, x = 1, num1, num2;
+	bool st;
+	st = true;
+	cin>>a>>b>>n;
+	/*while(true)	
+	{
+		if((int(x)%int(a+b)==a || int(x)%int(a+b)==b || int(x)%int(a+b)==0) && (n/x<=1000.0))
+		{
+			break;
+		}
+		x++;
+	}
+	cout<<n/x;*/
+	num1 = a;
+	num2 = b;
+	while(true)
+	{
+		if(n/num1 <= 1000.0 && n/num2 <= 1000)
+		{
+			if(num1<num2)	cout<<n/num1;
+			else	cout<<n/num2;
+			return 0;
+		}
+		if(n/num1<=1000.0)
+		{
+			cout<<n/num1;
+			return 0;
+		}
+		if(n/num2<=1000.0)
+		{
+			cout<<n/num2;
+			return 0;
+		}
+		if(st)
+		{
+			num1+=b;
+			num2+=a;
+			st = false;
+		}
+		else
+		{
+			num1+=a;
+			num2+=b;
+			st = true;
+		}
+	}
+  	return 0;
+}
+

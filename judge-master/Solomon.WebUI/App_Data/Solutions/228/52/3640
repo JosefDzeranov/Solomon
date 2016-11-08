@@ -1,0 +1,7 @@
+program zad1;
+var n,k:longint;
+begin
+readln (n);
+k:=n*(n-1)*(n-2);
+writeln (k);
+end.

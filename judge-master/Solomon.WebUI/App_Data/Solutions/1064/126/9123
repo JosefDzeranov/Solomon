@@ -1,0 +1,57 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array[1..50] of integer;
+n,sum,ost,num,f,I,H,k:integer;
+begin
+readln(n);
+for I := 1 to n do
+begin
+read(a[I]);
+end;
+for I := 1 to n do
+begin
+sum:=sum+a[I];
+end;
+if sum mod n<>0 then writeln('IMPOSSIBLE')
+else
+
+
+begin
+num:=sum div n;
+for I := 1 to n do
+begin
+while a[I]<>num do
+begin
+for k := 1 to n do
+  if a[k]>num then
+  begin
+    ost:=a[k]-num;
+    for H := 1 to n do
+      begin
+        if a[H]<num then
+        begin
+        a[H]:=a[H]+ost;
+        f:=f+ost;
+        end;
+      end;
+  end;
+  end;
+end;
+  writeln(f);
+  readln;
+  readln;
+  readln;
+  readln;
+  readln;
+  readln;
+end;
+
+
+
+  
+end.

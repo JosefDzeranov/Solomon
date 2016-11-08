@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+long long n;
+double z, c;
+long long a, b;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> n >> z;
+    cin >> a >> b >> c;
+    c += z / 2;
+    a /= z;
+    b /= z;
+    c = (long long)(c / z);
+    a = a * b * c;
+    cout << (n + a - 1) / a;
+
+    return 0;
+}

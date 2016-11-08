@@ -1,0 +1,9 @@
+var j,k,g,i,n,m:integer;
+Begin
+ readln(n,k);
+ m:=1;g:=1;j:=1;
+ for i:=1 to n do m:=m*i;
+ for i:=1 to k do g:=g*i;
+ for i:=1 to n-k do j:=j*i;
+ writeln(m/g/j);
+End.

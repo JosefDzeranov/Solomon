@@ -1,0 +1,22 @@
+VAR
+   n,a,b,c,z: LongInt;
+   m: Array [0..9999] of Byte;
+BEGIN
+   Read(z,n,a,b,c);
+   
+   if (z = 2) then begin
+      if (b < a) then a := b;
+      if (c < a) then a := c;
+      Write(a); End
+   else begin
+      for z := 0 to a-1 do Inc(m[z]);
+      for z := 0 to b-1 do Inc(m[(a+z) mod n]);
+      for z := 0 to c-1 do Inc(m[(a+b+z) mod n]);
+      
+      a := 0;
+      for z := 0 to n-1 do 
+         If (m[z] = 3) then Inc(a);
+      
+      Write(a);
+   end;
+END.

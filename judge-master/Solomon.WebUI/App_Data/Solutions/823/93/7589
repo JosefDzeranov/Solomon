@@ -1,0 +1,18 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x, z, y, q : integer;
+begin
+  readln (x, y);
+  readln (z, q);
+  y := y + x * 60;
+  q := q + z * 60;
+  q := q - y;
+  write (q div 60, ' ', q mod 60);
+  readln;
+end.

@@ -1,0 +1,29 @@
+program pr1;
+var phase:string ;
+var i,j:integer;
+square,counter:real;
+
+function matrix(n:integer): real ;
+var value :real;
+begin
+value := sqrt(n);
+if frac(value) = 0 then matrix:=value
+   else begin value := int(value)+1; matrix:=value; end;
+end;
+
+begin
+readln(phase);
+square := matrix(length(phase));
+
+i := 1 ;
+while i <= square do begin
+counter := i;
+                     while counter  <= (sqr(square) - square + i) do begin
+                                                                    if (counter <= length(phase)) then write(phase[trunc(counter)]) else writeln(' ');
+                                                                    counter := counter + square;
+                                                                    end;
+i := i + 1;
+                     end;
+
+
+end.

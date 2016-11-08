@@ -1,0 +1,45 @@
+//
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cmath>
+#include <algorithm>
+#include <set>
+#include <map>
+#include <iomanip>
+#include <iterator>
+#include <climits>
+//#include <conio.h>
+#include <cstring>
+using namespace std;
+#define c(i,s,f) for(int i=s;i<=f;i++)
+#define cr(i,s,f) for(int i=s;i>=f;i--)
+#define pb push_back
+#define mp make_pair
+#define all(c) c.begin(),c.end()
+#define FILEIN 0
+#define MSVIS 0
+typedef unsigned long long int ull;
+typedef long long int ll;
+typedef long double ld;
+const ld eps=1e-9;
+const int inf=LONG_MAX;
+struct pt {int x,y;};
+#if FILEIN
+ifstream in("input.txt");
+ifstream out("output.txt");
+#endif
+int N,s=0;
+int bin(int t){
+    int u=2,k=0;
+    while (t%2==0) k++,t/=2;
+    return k;
+}
+int main(){
+    cin>>N;
+    c(i,1,N) s+=bin(i);
+    cout<<s;
+#if MSVIS
+    getch();
+#endif
+}

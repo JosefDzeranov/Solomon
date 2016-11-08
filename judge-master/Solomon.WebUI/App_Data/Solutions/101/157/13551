@@ -1,0 +1,22 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int z, n;
+	string o;
+	cin >> n;
+	o="Timur";
+	z = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		z++; 
+		if (z > 2){
+			z = 0;
+			if (o == "Timur") o = "Aslan";
+			else o = "Timur";
+		}
+	}
+	cout << o;
+	return 0;
+}

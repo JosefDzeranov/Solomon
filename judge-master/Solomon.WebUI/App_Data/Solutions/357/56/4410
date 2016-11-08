@@ -1,0 +1,101 @@
+
+ var
+  n, kof, k, zero: integer;
+
+begin
+  readln (n);
+  kof := 5;
+ 
+    if n = 1 then writeln(0) else
+    begin
+      k := 2;
+      zero := 1;
+      while k < n do
+      begin
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 2;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 3;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 2;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 4;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 2;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 3;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 2;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + kof; 
+        if k = n then break;
+        k := k + 1;
+        if k = n then break;
+        k := k + 1;
+        zero := zero + 1;
+        if k = n then break;
+        kof:=kof+1;
+      end;
+    
+  end;
+    writeln(zero);
+end.

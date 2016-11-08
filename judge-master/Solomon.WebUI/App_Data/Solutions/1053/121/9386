@@ -1,0 +1,12 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n,m,s;
+    cin>>n>>m;
+    s=sqrt(n*n-m);
+    if(m*m>n*n) cout<<"Yes";
+    else cout<<"No";
+    return 0;
+}

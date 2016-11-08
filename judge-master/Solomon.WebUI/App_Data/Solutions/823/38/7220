@@ -1,0 +1,117 @@
+program Kvadrat;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x1, x2, x3, x4, x, y1, y2, y3, y4, y : integer;
+begin
+  read (x1);
+  readln (y1);
+  read (x2);
+  readln (y2);
+  read (x3);
+  readln (y3);
+  read (x4);
+  readln (y4);
+  if x1 > x2 then
+  begin
+    x := x2;
+    x2 := x1;
+    x1 := x;
+  end;
+  if x2 > x3 then
+    if x1 > x3 then
+    begin
+      x := x3;
+      x3 := x2;
+      x2 := x1;
+      x1 := x;
+    end
+    else
+    begin
+      x := x2;
+      x2 := x3;
+      x3 := x;
+    end;
+  if x3 > x4 then
+    if x2 > x4 then
+      if x1 > x4 then
+      begin
+        x := x4;
+        x4 := x3;
+        x3 := x2;
+        x2 := x1;
+        x1 := x;
+      end
+      else
+        if x2 > x4 then
+        begin
+          x := x4;
+          x4 := x3;
+          x3 := x2;
+          x2 := x;
+        end
+     else
+     begin
+     x := x4;
+     x4 := x3;
+     x3 := x;
+     end;
+  if y1 > y2 then
+  begin
+    y := y2;
+    y2 := y1;
+    y1 := y;
+  end;
+  if y2 > y3 then
+    if y1 > y3 then
+    begin
+      y := y3;
+      y3 := y2;
+      y2 := y1;
+      y1 := y;
+    end
+    else
+    begin
+      y := y2;
+      y2 := y3;
+      y3 := y;
+    end;
+  if y3 > y4 then
+    if y2 > y4 then
+      if y1 > y4 then
+      begin
+        y := y4;
+        y4 := y3;
+        y3 := y2;
+        y2 := y1;
+        y1 := y;
+      end
+      else
+        if y2 > y4 then
+        begin
+          y := y4;
+          y4 := y3;
+          y3 := y2;
+          y2 := y;
+        end
+     else
+     begin
+     y := y4;
+     y4 := y3;
+     y3 := y;
+     end;
+  if ((x2 - x1) + (x3 - x1) = (x4 - x1)) and
+   ((y2 - y1) + (y3 - y1) = (y4 - y1)) then
+  write ('YES')
+  else
+  write ('NO');
+  {write (x1,' ', x2, ' ', x3, ' ');
+  writeln (x4);
+  write (y1,' ', y2, ' ', y3, ' ');
+  writeln (y4);
+  readln}
+end.

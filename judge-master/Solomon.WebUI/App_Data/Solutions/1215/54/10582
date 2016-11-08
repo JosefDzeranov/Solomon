@@ -1,0 +1,16 @@
+var k:byte;
+a:array [0..9] of longint;
+i,j,b:longint;
+begin
+read(b);
+for i:=0 to 9 do a[i]:=0;
+While (b<>0) do
+begin
+j:=b mod 10;
+for i:=0 to 9 do if  i=j then a[i]:=a[i]+1;
+b:=b div 10;
+end;
+for i:=0 to 9 do if a[i]>=2 then write(i,' ') else k:=k+1;
+if k=10 then write('NO');
+        
+end.

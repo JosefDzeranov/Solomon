@@ -1,0 +1,70 @@
+#include <iostream>
+
+using namespace std;
+
+int *arr, *ans, n;
+char **a;
+
+int f(int i) {
+	arr[i] = 1;
+	int j;
+	for (j = 0; j < n; j++) {
+		if (a[i][j] == '+' && arr[j] == 0) {
+			f(j);
+		}
+	}
+	return 0;
+}
+
+int main() {
+	int p, i, j, sh = 0, l, sh2 = 0, ind;
+	bool pr;
+	cin >> n >> p;
+	a = new char*[n];
+	arr = new int[n];
+	ans = new int[n];
+
+	for (i = 0; i < n; i++) {a[i] = new char[n];for (j = 0; j < n; j++) cin >> a[i][j];}
+
+	for (i = 0; i < n; i++) {arr[i] = 0;ans[i] = 0;}
+	for (i = 0; i < n; i++) {
+		f(i);
+		pr = true;
+		for (j = 0; j < n; j++) {
+			if (arr[j] == 0) pr = false;
+			arr[j] = 0;
+		}
+		if (pr)sh++;
+	}
+
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
+			if (a[i][j] == '+') {
+				a[i][j] = '-';
+				a[j][i] = '+';
+				sh2 = 0;
+				for (l = 0; l < n; l++) {
+					f(l);
+					pr = true;
+					for (ind = 0; ind < n; ind++) {
+						if (arr[ind] == 0) pr = false;
+							arr[ind] = 0;
+					}
+					if (pr)sh2++;
+				}
+				ans[sh2 - 1]++;
+				a[i][j] = '+';
+				a[j][i] = '-';
+			}
+		}
+	}
+	cout << sh << endl;
+	if (p == 1){
+	for (i = 0; i < n; i++) {
+		cout << ans[i] << " ";
+	}}
+	else {
+		for (i = sh; i < n; i++) cout << ans[i] << " ";
+	}
+	return 0;
+}

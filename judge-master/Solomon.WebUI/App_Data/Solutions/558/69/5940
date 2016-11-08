@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+	long double a, b, x;
+	int t, t1;
+	cin >> a >> b >> x;
+
+	int t = b;
+	cout.precision(20);
+	while (true)
+	{
+		if (x / t <= 1000){
+			cout << x / t;
+			return 0;
+		}
+		else
+		{
+			t += a + b;
+		}
+
+
+	}
+	
+
+	
+
+
+ 	return 0;
+}

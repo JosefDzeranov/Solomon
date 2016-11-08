@@ -1,0 +1,17 @@
+import math
+s = input().split()
+N = int(s[0])
+L = int(s[1])
+
+s = input().split()
+R1 = int(s[0])
+R2 = int(s[1])
+
+m1 = 2 * math.ceil(L / (2 * R1))
+m2 = m1 / 2
+
+if (m1 * R1 + m2 * R2) * 2 * math.pi > N:
+    print('NO')
+else:
+    print('YES')
+    print("%d %d" % (m1, m2))

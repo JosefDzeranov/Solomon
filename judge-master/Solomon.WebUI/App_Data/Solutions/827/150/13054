@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <math.h>
+
+using namespace std;
+
+int main(){
+	string s;
+	cin >> s;
+	unsigned long long int num = 0;
+	unsigned long long int t = 0;
+	for (int i = 0; i < s.size(); i++){
+		t = 1;
+		if (s[i] == '*'){
+			for (int j = 0; j < s.size() - i - 1; j++)
+				t *= 2;
+			num += t;
+		}
+	}
+	cout << num;
+	return 0;
+}

@@ -1,0 +1,71 @@
+program p1;
+var
+N, M, k, i, x, y, j, sum, k2:integer;
+a:array[1..100,1..100] of string;
+over:boolean;
+
+procedure main(x1,y1:integer);
+begin
+
+if x1+1<=N then begin
+                if (a[y1,x1+1]<>'x') and(a[y1,x1+1]<>'1') then begin a[y1,x1]:='1'; a[y1,x1+1]:='+'; sum:=sum+1; end;
+                end;
+
+if x1-1>0 then begin
+                if (a[y1,x1-1]<>'x') and(a[y1,x1-1]<>'1') then begin a[y1,x1]:='1'; a[y1,x1-1]:='+'; sum:=sum+1; end;
+                end;
+
+if y1-1>0 then begin
+                if (a[y1-1,x1]<>'x') and(a[y1-1,x1]<>'1') then begin a[y1,x1]:='1'; a[y1-1,x1]:='+'; sum:=sum+1; end;
+                end;
+
+if y1+1<=M then begin
+                if (a[y1+1,x1]<>'x') and(a[y1+1,x1]<>'1') then begin a[y1,x1]:='1'; a[y1+1,x1]:='+'; sum:=sum+1; end;
+                end;
+                
+if ((x1+1>N) or (a[y1,x1+1]='x') or (a[y1,x1+1]='1')) and ((x1-1<=0) or (a[y1,x1-1]='x') or (a[y1,x1-1]='1')) and
+((y1-1<=0) or (a[y1-1,x1]='x') or (a[y1-1,x1]='1')) and ((y1+1>M) or (a[y1+1,x1]<>'x') or (a[y1+1,x1]<>'1')) then a[y1,x1]:='1';
+end;
+
+begin
+readln(N);
+readln(M);
+readln(k);
+for i:=1 to k do begin
+readln(x,y);
+a[y,x]:='x';
+end;
+
+k2:=0;
+repeat
+sum:=0;
+for i:=1 to M do
+for j:=1 to N do
+if (a[i,j]='') or (a[i,j]='+') then sum:=sum+1;
+
+if sum=0 then over:=true
+else begin
+     sum:=1;
+     i:=1 ;
+     while i<=M do begin
+           j:=1;
+           while j<=N do begin
+           if a[i,j]='' then begin a[i,j]:='+'; i:=M; j:=N; end;
+           j:=j+1;
+                         end;
+                   i:=i+1;
+                   end;
+
+     while sum>0 do begin
+     sum:=0;
+     for i:=1 to M do
+     for j:=1 to N do
+     if a[i,j]='+' then main(j,i);
+                    end;
+     k2:=k2+1;
+
+
+     end;
+until over=true;
+writeln(k2);
+end.

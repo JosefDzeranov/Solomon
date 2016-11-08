@@ -1,0 +1,49 @@
+program Square;
+label
+ sPE;
+var
+ sC:array[1..8] of longint;
+ cI,cIi,sS:longint;
+ cF:byte;
+ eA:string;
+function sSP (c1:longint; c2:longint):longint;
+ begin
+  if ((c1<=0) and (c2>=0)) or ((c1>=0) and (c2<=0)) then sSP:=abs(c1)+abs(c2)+1
+   else sSP:=abs(abs(c1)-abs(c2));
+ end;
+begin
+ eA:='YES';
+ for cI:=1 to 8 do readln(sC[cI]);
+
+ for cI:=1 to 8 do
+  begin
+   for cIi:=1 to 8 do
+    begin
+     cF:=0;
+     if ((cI mod 2<>0) and (cIi mod 2<>0)) and (cI div 2<>cIi div 2) and (sC[cI+1]=sC[cIi+1]) then
+      begin
+       if ((cI>1) and (sSP(sC[cI],sC[cIi])=sS)) then cF:=succ(cF)
+       else if cI=1 then begin sS:=sSP(sC[cI],sC[cIi]); cF:=succ(cF); end
+       else begin eA:='NO'; goto sPE; end;
+       if ((cF>1) or (cF<1)) then begin eA:='NO'; goto sPE; end;
+       end;
+    end;
+  end;
+ for cI:=1 to 8 do
+  begin
+   for cIi:=1 to 8 do
+    begin
+     cF:=0;
+     if ((cI mod 2=0) and (cIi mod 2=0)) and (cI div 2<>cIi div 2) and (sC[cI-1]=sC[cIi-1]) then
+      begin
+       if ((cI>1) and (sSP(sC[cI],sC[cIi])=sS)) then cF:=succ(cF)
+       else if cI=1 then begin sS:=sSP(sC[cI],sC[cIi]); cF:=succ(cF); end
+       else begin eA:='NO'; goto sPE; end;
+       if ((cF>1) or (cF<1)) then begin eA:='NO'; goto sPE; end;
+       end;
+    end;
+  end;
+ sPE:
+ write(eA);
+ readln;
+end.

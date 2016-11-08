@@ -1,0 +1,14 @@
+var i1,k,n,l:integer;
+a:string[100];
+begin
+read(a);
+k:=length(a);
+n:=1;l:=0;
+while n<=k do 
+begin
+if a[n]='#' then  if n<>1 then begin for i1:=n-1 to k-l do a[i1]:=a[i1+2]; n:=n-2;l:=l+1;end 
+                          else begin for i1:=n to k-l do a[i1]:=a[i1+1];n:=n-1;l:=l+1;end;
+n:=n+1;
+end;
+write(a);
+end.

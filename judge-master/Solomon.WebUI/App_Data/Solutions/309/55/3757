@@ -1,0 +1,10 @@
+var a,b:longint; s:int64;
+Begin
+        //assign(input,'in.txt'); reset(input);
+        //assign(output,'out.txt'); rewrite(output);
+      readln(a);
+      a:=a*2;
+      b:=a-1;
+      s:=a*a+1+(b*b*(b*b+1)div (2*b))*2;
+      writeln(s);
+end.

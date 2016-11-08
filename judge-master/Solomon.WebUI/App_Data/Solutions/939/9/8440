@@ -1,0 +1,15 @@
+program Actors;
+var
+ rI:byte;
+ n,a,b,c,r:real;
+begin
+ readln(rI);
+ readln(n,a,b,c);
+ if (a<=b) and (a<=c) then r:=a
+  else if (b<=a) and (b<=c) then r:=b
+  else r:=c;
+
+ if rI=1 then write(2)
+  else write(r:0:0);
+ readln;
+end.

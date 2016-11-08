@@ -1,0 +1,17 @@
+var
+  n, x: integer;
+  s: string;
+
+begin
+  readln(n);
+  s:='';
+  x := 1;
+  repeat
+
+    while x*2<= n do begin x:=x*2; s:=s+'*'; if (x+1)*2<=n then begin inc(x); s:=s+'+'; end; end;
+    if x <n then begin inc(x); s:=s+'+'; end;
+    
+    
+  until x=n;
+  write(s);
+end.

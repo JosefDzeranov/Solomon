@@ -1,0 +1,39 @@
+program nuli;
+label 1;
+type
+mas1 = array[1..10000] of integer;
+var n,q,w,e,t:integer;
+r:mas1;
+begin
+readln(n);
+if n<1 then exit;
+if n>10000 then exit;
+w:=n;
+while w>0 do
+begin
+w:=w-1;
+if w>0 then
+n:=n*w;
+end;
+while n>=2 do
+begin
+q:=q+1;
+r[q]:=n mod 2;
+n:=n div 2;
+end;
+q:=q+1;
+r[q]:=1;
+t:=1;
+w:=1;
+while w<=q do
+begin
+if r[w]=0 then e:=e+1;
+if r[w]=1 then 
+begin
+writeln(e); exit;
+end;
+w:=w+1;
+end;
+
+
+end.

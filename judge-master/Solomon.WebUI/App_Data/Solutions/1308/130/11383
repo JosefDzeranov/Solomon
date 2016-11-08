@@ -1,0 +1,15 @@
+#include<iostream>
+
+using namespace std;
+int main(){
+	unsigned long a,b,c,d,r(0);
+	cin >> a >> b >> c >>d;
+	for(int i(1);i<=b;i++)
+		for(int j(b);j>=a;j--)
+		{
+			int p(2*(i+j)),s(i*j);
+			if(p>=c && p<=d && s>=a && s<=b)
+				r++;
+		}
+	cout << r;
+}

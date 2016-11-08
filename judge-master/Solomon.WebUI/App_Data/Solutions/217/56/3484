@@ -1,0 +1,20 @@
+var
+    p,a,c,n: longint;
+begin
+readln(n);
+p:=2;
+c:=0;
+if N=1 then c:=0
+else
+    repeat
+        a:=p;
+        while a mod 2 = 0 do
+        begin
+            a:=a div 2;
+            inc(c);
+        end;
+        p:=p+2;
+    until p > n;
+
+writeln(c);
+end.

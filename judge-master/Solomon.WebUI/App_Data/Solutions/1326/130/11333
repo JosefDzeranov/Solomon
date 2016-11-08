@@ -1,0 +1,19 @@
+def s(ph):
+    global a, b, c, d, ret
+    x = 1
+    y = ph
+    for i in range(ph - 1):
+        if a <= x * y and x * y <= b:
+            ret += 1
+        x += 1
+        ph += -1
+            
+            
+global a, b, c, d, ret
+ret = 0
+a, b, c, d = [int(i) for i in input().split()]
+ms = [0 for i in range(max(a, b, c, d))]
+for i in range(c // 2, d // 2):
+    s(i)
+print(ret)
+    

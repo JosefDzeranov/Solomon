@@ -1,0 +1,20 @@
+program hall;
+//Uses SysUtils;
+var a, b, c, d, s, p, k, i, j: longint;
+
+begin
+    read(a,b,c,d);
+    k:= 0 ;
+    for i:= 1 to b do
+      for j:= i to b do
+      begin
+        s:= i * j ;
+        if (s >= a) and (s <= b) then
+          begin
+              p:= (i + j) * 2;
+              if (p >= c) and (p <= d) then
+              k:= k + 1
+          end;    
+      end;
+    write(k);   
+end.

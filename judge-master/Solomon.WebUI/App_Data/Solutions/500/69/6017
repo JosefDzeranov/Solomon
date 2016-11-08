@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+int a, b, x;
+int v = 0, t = 0;
+
+void add_a()
+{
+    t += a;
+}
+
+void add_b()
+{
+    t += b;
+}
+
+
+int main()
+{
+    int fl = 0, t1 = 0;
+    cin >> a >> b >> x;
+    while (1)
+    {
+        add_a();
+        if (x / t <= 1000)
+        {
+            fl = a;
+        }
+        add_b();
+        if (x / t <= 1000)
+        {
+            fl = b;
+            break;
+        }
+    }
+    cout << x / ((t + (t - fl)) / 2);
+    return 0;
+}

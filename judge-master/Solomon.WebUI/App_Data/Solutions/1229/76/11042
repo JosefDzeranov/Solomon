@@ -1,0 +1,166 @@
+program barany;
+
+label
+1, 2;
+const
+  s = 100000;
+
+var
+  fr1: array [1..22] of string;
+  a: array [1..s] of string;
+  i, j, k, k1, be, ind,  n, value1, value2, value3, err, trebc: integer;
+  f1, f2, fb: boolean;
+  f,t:text;
+begin
+assign(f,'input.txt');
+reset(f);
+assign(t,'output.txt');
+rewrite(t);
+  ind := 1;
+  
+  fr1[1] := 'eshche';
+  fr1[2] := 'a tak zhe';
+  fr1[3] := 'a takzhe';
+  fr1[4] := 'takzhe';
+  fr1[5] := 'tak zhe kak';
+  fr1[6] := 'ravno kak';
+  fr1[7] := 'kak i';
+  fr1[8] := 'tozhe';
+  fr1[9] := 'i';
+  fr1[10] := 'da';
+  fr1[11] := 'vdobavok';  
+  fr1[12] := 'Eshche';
+  fr1[13] := 'A tak zhe';
+  fr1[14] := 'A takzhe';
+  fr1[15] := 'Takzhe';
+  fr1[16] := 'Tak zhe kak';
+  fr1[17] := 'Ravno kak';
+  fr1[18] := 'Kak i';
+  fr1[19] := 'tozhe';
+  fr1[20] := 'i';
+  fr1[21] := 'da';
+  fr1[22] := 'vdobavok';
+  fr1[23]:='ishe';
+  
+  
+  read(f,n);
+  for i := 1 to n do 
+    readln(f,a[i]);
+  
+  while ind <= n do
+  begin
+    k := k + 1;
+    for i := 1 to 11 do
+      if k + i < length(a[ind]) then
+        for trebc := 1 to 23 do
+          if copy(a[ind], k, i) = fr1[trebc] then
+            f1 := true;
+    
+    if k > length(a[ind]) - 3
+    then
+    begin
+      ind := ind + 1;
+      k := 0;
+      continue;
+    end;
+    k := k + 1;
+    if k + 3 < length(a[ind]) then         
+    begin
+      
+      if copy(a[ind], k, 5) = 'baran' then
+      begin
+        f2 := true;
+        if k + 5 <= length(a[ind]) then
+          if copy(a[ind], k + 5, 1) = ' ' then 
+            fb := true; 
+        if k + 4 = length(a[ind]) then 
+        begin
+          fb := true;
+          ind := ind + 1;
+          k := 0;
+        end;
+      end;
+    end;
+    
+    
+    
+    
+    
+    
+    
+    
+    if f1 = true then
+    begin
+      f1 := false;
+      if k + 2 <= length(a[ind])  then
+      begin
+        val(copy(a[ind], k + 2, 1), value1, err);
+        if err = 0 then
+        begin
+          if  k + 3 <= length(a[ind]) then
+          begin
+            val(copy(a[ind], k + 2, 2), value2, err);
+            if err = 0 then
+            begin
+              if k + 4 <= length(a[ind]) then 
+              begin
+                val(copy(a[ind], k + 2, 3), value3, err);
+                if err = 0 then
+                  be := be + value3
+                else
+                  be := be + value2;
+              end
+              else be := be + value2;
+            end
+            else
+              be := be + value1;
+          end
+          else be := be + value1;
+        end
+        else be := be + value1;
+      end;
+      
+      
+      
+      
+      
+      if fb = true then
+      begin
+        if k > 2  then
+        begin
+          val(copy(a[ind], k - 2, 1), value1, err);
+          if err = 0 then
+          begin
+            if k > 3 then
+            begin
+              val(copy(a[ind], k - 3, 2), value2, err);
+              if err = 0 then
+              begin
+                if k > 4 then 
+                begin
+                  val(copy(a[ind], k - 4, 3), value3, err);
+                  if err = 0 then
+                    be := be + value3
+                  else
+                    be := be + value2;
+                end
+                else be := be + value2;
+              end
+              else
+                be := be + value1;
+            end
+            else be := be + value1;
+          end
+          else be := be + value1;
+        end;
+        k := k + 5;
+      end;
+    end;  
+  end;
+  write(t,be);
+  close(f);
+  close(t);
+  
+  
+  
+end.

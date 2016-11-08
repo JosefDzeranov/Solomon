@@ -1,0 +1,24 @@
+var
+
+a,f1,f2,f3,f4:string;
+n,k,sv,pul,i:integer;
+begin
+assign(input,'input.txt');
+assign(output,'output.txt');
+readln(n,k);
+f1:='save';
+f2:='load';
+f3:='shoot';
+f4:='ammo';
+for i:=1 to n do 
+  begin
+  readln(a);
+    if a=f1 then sv:=pul;
+    if a=f2 then pul:=sv;
+    if a=f3 then pul:=pul-1;
+    if a=f4 then pul:=pul+k;
+    writeln(pul);
+  end;
+close(input);
+close(output);
+end.

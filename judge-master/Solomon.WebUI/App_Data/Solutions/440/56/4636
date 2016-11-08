@@ -1,0 +1,11 @@
+var a,count2:integer;
+begin
+ Readln(a);
+ count2:=0;
+ while (a>1) do begin
+   a:=a div 2;
+   inc(count2,a);
+   end; 
+ WriteLn(count2);
+ 
+end.

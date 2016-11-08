@@ -1,0 +1,26 @@
+program r1;
+Var x1, y1, x2, y2, x3, y3, d1, d2, d3, d4, min, min1, min2: integer;
+Begin
+read (x1, y1, x2, y2, x3, y3);
+d1:=abs(x2-x3);
+d2:=abs(y2-y3);
+d3:=abs(x1-x3);
+d4:=abs(y1-y3);
+min1:=0;
+min2:=0;
+min:=0;
+if d1<d2 then
+min1:=d1
+else
+min1:=d2;
+if d3<d4 then
+min2:=d3
+else
+min2:=d4;
+if min1<min2 then
+min:=min1
+else
+min:=min2;
+writeln(min);
+end.
+  

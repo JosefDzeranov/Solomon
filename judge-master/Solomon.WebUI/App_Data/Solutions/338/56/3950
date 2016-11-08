@@ -1,0 +1,11 @@
+var n,i,k:longint;r:int64;
+begin
+       read(n);
+       r:=1;
+       for i:=1 to n do
+       r:=r*i;k:=0;
+       while r mod 2=0 do begin
+       r:=r div 2;
+       k:=k+1;   end; writeln(k);
+end.
+       

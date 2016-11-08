@@ -1,0 +1,22 @@
+#include<stdio.h>
+
+  long long k,i,j,s;
+
+int main()
+{   
+  scanf("%lld",&k);
+  
+  i=1;
+  j=1;
+  s=0;
+  while(s<k)
+  {
+    printf("%lld ",j);        
+    if(j-i==2) {i++;j=i;}
+      else j++;
+    s++;
+  }
+  
+  printf("\n");
+  return 0;  
+}

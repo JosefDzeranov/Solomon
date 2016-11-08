@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main ()
+{
+	string a, ct = "";
+	cin >> a;
+	for (int i = 0; i < a.length(); i++)
+	{
+		for (int j = i + 1; j < a.length(); j++)
+		{
+			if (a[i] == a[j])
+			{
+				ct+=a[i];
+				break;
+			}
+		}
+	}
+	if (ct == "")
+	{
+		cout << "YES" << endl;
+		return 0;
+	}
+	else
+		cout << "NO" << endl;
+	char s;
+	for (int i = 0; i < ct.length() - 1; i++)
+	{
+		if (ct[i] > ct[i + 1])
+		{
+			s = ct[i];
+			ct[i] = ct[i + 1];
+			ct[i + 1] = s;
+		}
+	}
+	for (int i = 0; i < ct.length(); i++)
+	{
+		cout << ct[i] << " ";
+	}
+	return 0;
+}

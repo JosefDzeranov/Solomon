@@ -1,0 +1,52 @@
+length = int(input())
+A = list(map(int, input().split()))
+ROOTS = []
+
+def calc_root(number):
+    root = 0
+    while number != 0:
+        root += number % 10
+        number = number // 10
+    return root
+
+for i in A:
+    root1 = calc_root(i)
+    root2 = calc_root(root1)
+    ROOTS.append(root2)
+# print (ROOTS)
+
+RT_DICT = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
+
+# print (RT_DICT)
+
+for i in RT_DICT:
+    for j in ROOTS:
+        if i == j:
+            RT_DICT[i] += 1
+# print (RT_DICT)
+
+MAX_COUNTS = []
+maximum = 0
+for i in RT_DICT:
+    if RT_DICT[i] > maximum:
+        maximum = RT_DICT[i]
+for i in RT_DICT:
+    if RT_DICT[i] == maximum:
+        MAX_COUNTS.append(i)
+# print (MAX_COUNTS)
+
+min_root = 9
+for i in MAX_COUNTS:
+    if i < min_root:
+        min_root = i
+
+RESULT = []
+
+for i in range (len(A)):
+    if ROOTS[i] != min_root:
+        RESULT.append(A[i])
+
+print(' '.join(map(str, RESULT)))
+    
+    
+    

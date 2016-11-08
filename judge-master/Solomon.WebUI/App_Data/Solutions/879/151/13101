@@ -1,0 +1,26 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int[] nums = new int[3];
+        nums[2] = num / 2;
+        int d = (num - nums[2]) / 2;
+        if (d % 2 == 0) {
+            nums[0] = d-1;
+            nums[1] = d+1;
+        }
+        if (d % 2 == 1) {
+            nums[0] = d-1;
+            nums[1] = d;
+        }
+        for (int i : nums) {
+            System.out.print(i);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+}

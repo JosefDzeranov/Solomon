@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+int f (int n) {
+	unsigned long int t=1;
+	for (int i=1; i<=n; i++)
+		t*=i;
+	return t;
+}
+
+int main() {
+	int a, b, ax;
+	unsigned long int c, c1, c2;
+	cin >> a >> b;
+	ax=a-b;
+	c1=1;
+	for (int i=0; i<ax; i++)
+		c1*=a-i;
+	c2=f(a-b);
+	c=c1/c2;
+	cout << c;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

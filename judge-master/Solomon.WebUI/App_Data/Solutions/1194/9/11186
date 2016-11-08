@@ -1,0 +1,32 @@
+﻿var
+n,i,min,x: integer;
+a:array[1..3] of integer;
+z:byte;
+begin
+
+//--var and begin--
+
+readln(z);
+read(n);
+for i:=1 to 3 do
+read(a[i]);
+
+//--read--
+
+min:=maxint;
+
+for i:=1 to 3 do 
+if a[i]<min then min:=a[i];
+
+//--max and min--
+
+if z=2 then
+x:=min
+else
+x:=a[1]+a[2]+a[3]-2*n ;
+//↑ тоже самое, только с преоброзованием x=min-(n-max)-(n-sr);
+
+//--answer--
+
+write(x);
+end.

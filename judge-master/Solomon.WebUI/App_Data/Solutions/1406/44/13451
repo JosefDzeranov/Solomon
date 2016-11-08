@@ -1,0 +1,27 @@
+#include<stdio.h>
+
+int main()
+{   
+  //freopen("tur2.in","r",stdin);
+  //freopen("tur2.out","w",stdout);
+  
+  int n,l,t,s,p;
+  int r;
+  
+  scanf("%d %d",&n,&l);
+  scanf("%d",&r);
+  
+  r*=2;
+  if(l%r==0) t=l/r;
+    else t=l/r+1;
+  p=3.14;
+  s=p*t*r;
+  if(n>=s)
+  {
+    printf("YES\n");
+    printf("%d\n",t);        
+  }else printf("NO\n");
+  return 0;  
+}
+
+

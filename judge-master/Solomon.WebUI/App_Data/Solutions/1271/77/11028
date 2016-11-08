@@ -1,0 +1,33 @@
+#include <stdio>
+#include <math.h>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	getline(cin, s);
+	int ss = s.size();
+
+	int ssqrt = sqrt(ss);
+	ss = (ssqrt*ssqrt == s.size() ? ssqrt : (ssqrt + 1));
+
+	const char *s_b = s.c_str();
+	const char *s_e = s_b + s.size();
+	for (int i = 0; i < ss; ++i)
+	{
+		const char * p = s_b + i;
+		for (int j = 0; j < ss; ++j)
+		{
+			const char *q = p + j * ss;
+			if (q < s_e)
+				cout << *q;
+			else
+				cout << " ";
+		}
+	}
+	return 0;
+}
+

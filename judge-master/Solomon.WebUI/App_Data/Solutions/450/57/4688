@@ -1,0 +1,48 @@
+program lol;
+var n,q,i,max,imax,k,f:longint;
+a,b,c: array [1..1000] of longint;
+function cor(x:longint):byte;
+var d:longint;
+begin
+d:=0;
+while x<>0 do
+begin
+d:=d+ (x mod 10);
+x:=x div 10;
+end;
+cor:=d;
+end;
+begin
+readln (n);
+for i:=1 to n do
+read (a[i]);
+for i:=1 to n do
+begin
+b[i]:=cor(a[i]);
+while (b[i] div 10)<>0 do
+b[i]:=cor(b[i]);
+c[b[i]]:=c[b[i]]+1;
+end;
+for i:=1 to 9 do
+if c[i]>max then begin
+                 max:=c[i];
+                 imax:=i;
+                 end;
+for i:=1 to 9 do
+if c[i]=max then k:=k+1;
+if k=1 then f:=1 else f:=2;
+if f=1 then for i:=1 to n do
+            if b[i]=imax then a[i]:=0;
+if f=2 then begin
+            for i:=1 to 9 do
+            if c[i]<>0 then begin
+                            imax:=i;
+                            break;
+                            end;
+            for i:=1 to n do
+            if b[i]=imax then a[i]:=0;
+            end;
+for i:=1 to n do
+if a[i]<>0 then write (a[i],' ');
+
+end.

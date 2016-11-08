@@ -1,0 +1,143 @@
+
+var
+  X1, Y1, X2, Y2: LongInt;
+
+procedure ReadData;
+var
+  T: LongInt;
+begin
+
+
+  Read(X1, Y1, X2, Y2);
+  if X1 > X2 then
+  begin
+    T := X1;
+    X1 := X2;
+    X2 := T;
+    T := Y1;
+    Y1 := Y2;
+    Y2 := T;
+  end
+  else
+  if X1 = X2 then
+    if Y1 > Y2 then
+    begin
+      T := Y1;
+      Y1 := Y2;
+      Y2 := T;
+    end;
+
+
+end;
+
+procedure Out(X, Y: LongInt);
+begin
+  WriteLn(X, ' ', Y);
+end;
+
+procedure SolveUp;
+var
+  D: LongInt;
+  X, Y: LongInt;
+  I: LongInt;
+begin
+  X := X1;
+  Y := Y1;
+  D := (Y2-Y1)-(X2-X1);
+
+  Out(X-1, Y-1);
+  Out(X, Y-1);
+  Out(X-1, Y);
+  Out(X, Y);
+
+  for I := 1 to Abs(Y2 - Y1 + X2 - X1) do
+  begin
+    if D = 0 then
+      Out(X, Y+1);
+    if D > 0 then
+    begin
+      Inc(Y);
+      D := D - (X2 - X1);
+    end
+    else
+    begin
+      Inc(X);
+      D := D + (Y2 - Y1);
+    end;
+    Out(X, Y);
+  end;
+end;
+
+procedure SolveDown;
+var
+  D: LongInt;
+  X, Y: LongInt;
+  I: LongInt;
+begin
+  X := X1;
+  Y := Y1;
+  D := (Y1-Y2)-(X2-X1);
+
+  Out(X-1, Y-1);
+  Out(X, Y-1);
+  Out(X-1, Y);
+  Out(X, Y);
+
+  for I := 1 to Abs(Y1 - Y2 + X2 - X1) do
+  begin
+    if D = 0 then
+      Out(X, Y-2);
+    if D > 0 then
+    begin
+      Dec(Y);
+      D := D - (X2 - X1);
+    end
+    else
+    begin
+      Inc(X);
+      D := D + (Y1 - Y2);
+    end;
+    Out(X, Y-1);
+  end;
+end;
+
+procedure SolveVertical;
+var
+  I: LongInt;
+begin
+  for I := Y1-1 to Y2 do
+  begin
+    Out(X1-1, I);
+    Out(X1, I);
+  end;
+end;
+
+procedure SolveHorizontal;
+var
+  I: LongInt;
+begin
+  for I := X1-1 to X2 do
+  begin
+    Out(I, Y1-1);
+    Out(I, Y1);
+  end;
+end;
+
+procedure Solve;
+begin
+  if X1 = X2 then
+    SolveVertical
+  else
+  if Y1 = Y2 then
+    SolveHorizontal
+  else
+    if Y2 > Y1 then
+      SolveUp
+    else
+      SolveDown;
+end;
+
+begin
+  ReadData;
+  Solve;
+end.

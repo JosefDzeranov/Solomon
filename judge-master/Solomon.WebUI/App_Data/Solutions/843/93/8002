@@ -1,0 +1,10 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main ()
+{
+	int x,y,z,q;
+	cin>>x>>y>>z>>q;
+	cout<<abs(z-x)<<":"<<abs(q-y);
+	return 0;
+}

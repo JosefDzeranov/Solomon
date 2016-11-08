@@ -1,0 +1,12 @@
+from collections import Counter
+inp = open('schools.in')
+
+schools = [''.join(filter(str.isdigit, s)) for s in inp.readlines()[1:]]
+d = Counter()
+for s in schools:
+    d[s] += 1
+
+ans = sorted([k for (k, v) in d.items() if v <= 5], key=int)
+out = open('schools.out', 'w')
+print (len(ans), file = out)
+print ('\n'.join(ans), file=out)

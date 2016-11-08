@@ -1,0 +1,6 @@
+var b,i:integer;
+begin
+read(b);
+for i:=1 to b-2 do write(1,' ');
+write(2,' ',b);
+end.                                             

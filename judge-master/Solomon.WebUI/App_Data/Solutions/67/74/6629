@@ -1,0 +1,35 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,x3,x4,r,t,sum:integer;
+begin
+readln (x1,x2,x3,x4);
+if (x1<0)and(x3>100) then
+  begin
+ r:= 2*(abs(x1)*5)+1000;
+
+
+ writeln(r);
+  end;
+
+   if (x2<0)and(x4>100) then
+  begin
+ r:= 2*((x4-100)*5);
+
+
+ writeln(r);
+  end
+
+        else writeln(1000);
+
+
+
+
+         readln;
+
+
+end.

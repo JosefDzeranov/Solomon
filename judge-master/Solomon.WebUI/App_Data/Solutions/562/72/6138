@@ -1,0 +1,67 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+
+Module Module1
+    Dim n As Integer
+    Dim m As Integer
+    Dim k As Integer
+    Dim a() As Integer
+    Dim ab As Boolean
+    Dim bb As Boolean
+    Dim b() As Integer
+    Dim c() As Integer
+    Dim d() As Integer
+    Dim otv As Integer
+    Dim kon() As Integer
+
+    Sub Main()
+        Dim i As Integer
+        Dim j As Integer
+        Dim l As Integer
+        Dim s1() As String = Split(Console.ReadLine)
+        n = s1(0)
+        m = s1(1)
+        k = s1(2)
+        ReDim a(n)
+        ReDim b(n)
+        ReDim c(m - 1)
+        ReDim d(k - 1)
+        ReDim kon(m)
+        kon(m) = 1
+        otv = 1
+        For i = 1 To n
+            Dim s2() As String = Split(Console.ReadLine)
+            a(i) = s2(0)
+            b(i) = s2(1)
+        Next
+        Dim s3() As String = Split(Console.ReadLine)
+        For i = 1 To m - 1
+            c(i) = s3(i - 1)
+        Next
+        Dim s4() As String = Split(Console.ReadLine)
+        For i = 1 To k - 1
+            d(i) = s4(i - 1)
+        Next
+        For i = 1 To m - 1
+            For j = 1 To k - 1
+                For l = 1 To n
+                    If (a(l) = i And b(l) = j) Then
+                        If ab = False Then
+                            ab = True
+                            otv = otv + 1
+                        End If
+                    End If
+                    If (a(l) = j And b(l) = i) Then
+                        If bb = False Then
+                            bb = True
+                            otv = otv + 1
+                        End If
+                    End If
+                Next
+                ab = False
+                bb = False
+            Next
+        Next
+    End Sub
+
+End Module

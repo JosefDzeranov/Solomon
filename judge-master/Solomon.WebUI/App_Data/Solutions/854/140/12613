@@ -1,0 +1,34 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,q,n,max,k:integer; a: array [1..10000] of integer; s:string;
+begin
+readln(k);
+readln(s);
+
+q:=0;
+max:=0;
+n:=0;
+
+for I := 1 to length(s) do
+begin
+  q:=q+1;
+  if s[i]='P' then a[q]:=a[q]+1;
+  if q=k then q:=0;
+end;
+
+for I := 1 to k do
+begin
+  if a[i]>max then
+  begin
+   max:=a[i];
+   n:=i;
+  end;
+end;
+writeln(n);
+
+end.

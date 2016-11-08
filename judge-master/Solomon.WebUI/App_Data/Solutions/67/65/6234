@@ -1,0 +1,33 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var q,w,e,r,s,m,k,u:int64;
+
+begin
+readln(q,w,e,r);
+if q>w then m:=w
+else m:=q;
+
+ if e>r then k:=r
+else k:=e;
+ s:=k+m;
+ u:=trunc( sqrt(s));
+   writeln(u);
+   readln;
+
+
+
+
+
+
+
+
+
+
+
+
+end.

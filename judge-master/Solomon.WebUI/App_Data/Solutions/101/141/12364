@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StreamReader sr = new StreamReader("10.in");
+            string s = sr.ReadLine();
+            string[] ss = s.Split(' ');
+            int n = Convert.ToInt32(ss[0]);
+            int k = Convert.ToInt32(ss[1]);
+            int[] a = new int[n];
+
+            s = sr.ReadLine();
+            sr.Close();
+            ss = s.Split(' ');
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = Convert.ToInt32(ss[i]);
+            }
+            if (k == 2)
+            {
+                Console.WriteLine(a[n - 1] - a[0]);
+                return;
+            }
+            int left = 0, right = a[n - 1], mid;
+            int x; 
+            while (left + 1 < right)
+            {
+                mid = (left + right) / 2;
+                int i = 1;
+                x = a[0];
+                for (int j = 0; j < n; j++)
+                {
+                    if (a[j] >= x + mid)
+                    {
+                        i++;
+                        x = a[j];
+                    }
+                }
+                if (k <= i) left = mid;
+                else right = mid;
+            }
+            Console.WriteLine(left);
+            return;
+
+        }
+    }
+}

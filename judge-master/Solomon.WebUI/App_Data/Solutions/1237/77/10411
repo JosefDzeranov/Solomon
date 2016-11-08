@@ -1,0 +1,31 @@
+var
+  i, k, n, l,j: integer;
+  s, a: string;
+  m: array [1..1000, 1..1000] of char;
+
+begin
+  readln(s);
+  l := length(s);
+  //if sqrt(l)
+  l := round(sqrt(l));
+  a := s;
+  k := 1;
+  for j := 1 to l do
+  begin
+    for i := 1 to l do
+    begin
+      m[i, j] := s[k];
+      inc(k);
+    end;
+    //inc(k);
+  end;
+  
+  for i := 1 to l do
+  begin
+    for j := 1 to l do
+    begin
+     write(m[i,j]);
+    end;
+  end;
+  
+end.

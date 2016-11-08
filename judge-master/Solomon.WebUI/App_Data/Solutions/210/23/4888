@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int n, f, s;
+string t;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> n;
+
+    for (int i = 0; i < n; ++i) {
+        cin >> t;
+        f += (t[0] == '>') + (t[1] == '>');
+        s += (t[2] == '<') + (t[3] == '<');
+    }
+
+    if (f > s)
+        cout << "1 " << f - s;
+    else if (s > f)
+        cout << "2 " << s - f;
+    else
+        cout << 0;
+
+    return 0;
+}

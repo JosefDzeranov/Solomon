@@ -1,0 +1,42 @@
+program rodstvennye_sviyzi_B;
+Const m=500000;
+
+var n,i,j,k,t,q:integer;
+mas:array[1..m] of string;
+ch:char;
+s:string;
+e:boolean;
+label lab;
+Begin
+
+e:=false;
+inc(i);
+read(n);
+
+while i<=n do begin
+
+  read(ch);
+  if ch<>' ' then mas[i]:=mas[i]+ch
+  else inc(i);
+
+end;
+
+//--read--
+
+for i:=1 to n-1 do
+  for j:=i+1 to n do 
+    for k:=1 to length(mas[i]) do begin
+       for t:=1 to length(mas[j]) do
+        if mas[i][k]=mas[j][t] then begin
+        
+        inc(q);
+        e:=true;
+        break;
+        end;
+        if e=true then begin
+        e:=false;
+        break;
+        end;
+    end;
+write(q);
+End.

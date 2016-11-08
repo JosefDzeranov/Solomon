@@ -1,0 +1,8 @@
+program proba_1;
+Uses SysUtils;
+var a, b, c: integer;
+begin
+  read(a, b);
+  c:= a + b;
+  writeln(c);
+end.

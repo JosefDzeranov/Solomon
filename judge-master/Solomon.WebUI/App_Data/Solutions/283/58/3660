@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+#define REP(i,n) for (int i = 0; i < n; i++)
+
+using namespace std;
+
+bool f[20000000];
+int main()
+{
+    int n;
+    long sum = 0;
+    cin >> n;
+    vector<int> v(n);
+    REP(i,n) cin >> v[i], sum += v[i];
+    int m = sum/2;
+
+    int w = 0;
+    f[0] = 1;
+    for (int i = n-1; i >= 0; i--)
+    {
+        for (int j = m; j >= 0; j--)
+        {
+            if (f[j] == 1)
+            {
+                f[j+v[i]] = 1;
+            }
+        }
+    }
+    for (int i=m;i>=0;i--) if (f[i]) {
+        w=i;
+        break;
+    }
+    cout << abs(w-(sum-w)) << endl;
+
+    return 0;
+}

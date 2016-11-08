@@ -1,0 +1,122 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+struct url {
+	vector<string> domens;
+	vector<string> paths;
+	bool as, ae;
+	int c;
+
+public:
+	url(): c(0), as(false), ae(false) {}
+
+	void parse(string str) {
+		int i = 0;
+		string id;
+		if (str[i] == '*') {
+			i+=2;
+			as = true;
+		}
+		while (isalpha(str[i])) {
+			id += str[i];
+			i++;
+		}
+		domens.push_back(id);
+		while (str[i] == '.') {
+			i++;
+			id = "";
+			while (isalpha(str[i])) {
+				id += str[i];
+				i++;
+			}
+			domens.push_back(id);
+		}
+		while (str[i] == '/') {
+			i++;
+			if (str[i] == '*') {
+				ae = true;
+				break;
+			} else {
+				id = "";
+				while (isalpha(str[i])) {
+					id += str[i];
+					i++;
+				}
+				paths.push_back(id);
+			}
+		}
+	}
+
+	void compare(url t) {
+		if (t.as) {
+			if (t.domens.size() > domens.size())
+				return;
+			else
+				for (int i = t.domens.size()-1; i > -1; i--) {
+					if (t.domens[i] != domens[i+(domens.size()-t.domens.size())])
+						return;
+				}
+		} else {
+			if (t.domens.size() == domens.size()) {
+				for (int i = 0; i < domens.size(); i++) {
+					if (domens[i] != t.domens[i]) {
+						return;
+					}
+				}
+			} else {
+				return;
+			}
+		}
+		
+		if (t.ae) {
+			if (t.paths.size() > paths.size())
+				return;
+			else
+				for (int i = 0; i < t.paths.size(); i++) {
+					if (t.paths[i] != paths[i])
+						return;
+				}
+		} else {
+			if (t.paths.size() == paths.size()) {
+				for (int i = 0; i < paths.size(); i++) {
+					if (paths[i] != t.paths[i]) {
+						return;
+					}
+				}
+			} else {
+				return;
+			}
+		}
+		c++;
+	}
+};
+
+int main() {
+	int n, p;
+	cin >> n >> p;
+	char buf[51];
+	cin.getline(buf, 50);
+	url *templates = new url[n]();
+	for (int i = 0; i < n; i++) {
+		cin.getline(buf, 50);
+		templates[i].parse(buf);
+	}
+	int k;
+	cin >> k;
+	cin.getline(buf, 50);
+	url *src = new url[k]();
+	for (int i = 0; i < k; i++) {
+		cin.getline(buf, 50);
+		src[i].parse(buf);
+	}
+	for (int i = 0; i < k; i++) {
+		for (int j = 0; j < n; j++) {
+			src[i].compare(templates[j]);
+		}
+		cout << src[i].c << endl;
+	}
+	return 0;
+}

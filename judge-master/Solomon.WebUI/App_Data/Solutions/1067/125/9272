@@ -1,0 +1,47 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main(){
+	int x1,y1;
+	int x2,y2;
+	int x3,y3;
+	int x5,y5;
+	int x6,y6;
+	int x4,y4;//Пифагор
+	double d,h;int t,e,a,s,z,f;
+	cin>>x1>>y1;
+	cin>>x2>>y2;
+	cin>>x3>>y3;
+	x5 = x1;
+	y5 = y2;
+	x6 = x2;
+	y6 = y1;
+	if(y3>y2 || y3<y1){
+		if(x3>x2 || x3<x1){
+			y4=y3-y2;
+			x4=x3-x2;
+			h=y4*y4+x4*x4;
+			d=sqrtl(h);
+		}
+	}
+	if(y3>y2 && (x3<=x2 || x3>=x1))
+		d = y3-y2;
+	if(y3<y1 && (x3<=x2 || x3>=x1))
+		d = y2-y1;
+	if(x3>x2 && (y3<=y2 || y3>=y1))
+		d = x3-x2;
+	if(x3<x1 && (y3<=y2 || y3>=y1))
+		d = x1-x3;
+	if((x3<x2 && x3>x1) && (y3<y2 && y3>y1)){
+		a=x3-x1;
+		s=x2-x3;
+		z=y2-y3;
+		f=y3-y1;
+		t = min(a,s);
+		e = min(z,f);
+		d = min(t,e);
+	}
+	cout<<d;
+	cin>>d;
+	return 0;
+}

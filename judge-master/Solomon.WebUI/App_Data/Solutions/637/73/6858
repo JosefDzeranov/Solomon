@@ -1,0 +1,12 @@
+var
+i,a:int64;
+begin
+readln(a);
+i:=0;
+while a<>0 do
+begin
+a:=a-i;
+i:=i+1;
+end;
+writeln(i-1);
+end.

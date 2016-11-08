@@ -1,0 +1,12 @@
+program gazonokosilka;
+var
+ x1,y1,x2,y2,x3,y3,m:integer;
+begin
+ readln(x1,y1,x2,y2,x3,y3);
+ m:=x3-x1;
+ if m>(x2-x1)-(x3-x1) then m:=(x2-x1)-(x3-x1);
+ if m>(y2-y1)-(y3-y1) then m:=(y2-y1)-(y3-y1);
+ if m>y3-y1 then m:=y3-y1;
+ write(m);
+ readln;
+end.

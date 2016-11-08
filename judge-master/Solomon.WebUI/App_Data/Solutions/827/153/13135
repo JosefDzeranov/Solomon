@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <math.h>
+#include <vector>
+
+using namespace std;
+
+int main(){
+	vector< vector <int>> mas;
+	int n, m; cin >> n >> m;
+	mas.resize(n + 1);
+	for (int i = 0; i < n + 1; i++)
+		mas[i].resize(m + 1);
+	int k; cin >> k;
+	int a, b;
+	int sum = 0;
+	for (int i = 0; i < k; i++){
+		cin >> a >> b;
+		mas[a][b] = 1;
+		sum++;
+	}
+	int sec = 0;
+	while (sum != n*m){
+		sec++;
+		for (int i = 1; i <=n; i++)
+			for (int j = 1; j <=m; j++)
+				if (mas[i][j] >0 && mas[i][j] <=sec){
+					if (i - 1 != 0)
+						if (mas[i - 1][j] == 0){
+							mas[i - 1][j] = sec+1;
+							sum++;
+						}
+					if (i + 1 != n + 1)
+						if (mas[i + 1][j] == 0){
+							mas[i + 1][j] = sec+1;
+							sum++;
+						}
+					if (j - 1 != 0)
+						if (mas[i][j - 1] == 0){
+							mas[i][j - 1] = sec+1;
+							sum++;
+						}
+					if (j + 1 != m + 1)
+						if (mas[i][j + 1] == 0){
+							mas[i][j + 1] = sec+1;
+							sum++;
+						}
+				}
+	}
+	cout << sec;
+	return 0;
+}

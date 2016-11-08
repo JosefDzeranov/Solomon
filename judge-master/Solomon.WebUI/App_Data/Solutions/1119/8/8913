@@ -1,0 +1,9 @@
+program cymma;
+uses
+SysUtils;
+var s,a,b:real;
+begin 
+readln(a,b);
+S:=a+b;
+write(s);
+end.

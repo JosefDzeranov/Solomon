@@ -1,0 +1,61 @@
+#include <iostream>
+
+using namespace std;
+
+string s1, s2 = "";
+int x = -1;
+
+string left(int x)
+{
+    string s;
+    for (int i = 0; i <= x; i++)
+    {
+        s += s2[i];
+    }
+    return s;
+}
+
+string rig(int x)
+{
+    string s;
+    for (unsigned int i = x + 1; i < s2.size(); i++)
+    {
+        s += s2[i];
+    }
+    return s;
+}
+
+void vstav(char c)
+{
+    s2 = left(x) + c + rig(x);
+    x++;
+}
+
+int main()
+{
+    x = -1;
+    cin >> s1;
+    s2 = "1";
+    for (unsigned int i = 0; i < s1.size(); i++)
+    {
+        if (s1[i] == '#' && x >= 0)
+        {
+            s2.erase(x, 1);
+            x--;
+        }
+        if (s1[i] == '-')
+            x--;
+
+        if (s1[i] == '+')
+            x++;
+
+        if ((s1[i] >= 'a' && s1[i] <= 'z') || (s1[i] >= 'A' && s1[i] <= 'Z'))
+            vstav(s1[i]);
+    }
+    for (unsigned int i = 0; i < s2.size(); i++)
+        if (s2[i] == '1')
+            s2.erase(i, 1);
+
+    cout << s2;
+    return 0;
+}

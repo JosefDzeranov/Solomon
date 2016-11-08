@@ -1,0 +1,9 @@
+var s,a,d:char;
+begin
+readln(s);
+readln(a);
+readln(d);
+writeln(2);
+writeln('a');
+writeln('b');
+end. 

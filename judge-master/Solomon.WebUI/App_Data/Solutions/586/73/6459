@@ -1,0 +1,22 @@
+program Project30;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,i:integer;
+
+
+begin
+  readln(a);
+  i:=0;
+  while a<>0 do
+  begin
+  i:=i+1;
+  a:=a-i;
+  end;
+  writeln(i);
+  readln;
+    
+end.

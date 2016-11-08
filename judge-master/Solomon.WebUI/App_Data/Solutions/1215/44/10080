@@ -1,0 +1,6 @@
+var a,r,n,l:integer;
+begin
+read(n,l,r);
+if n > 2*r*l then begin writeln('YES');write(n div (2*r*l))end
+ELSE write('NO');
+end.

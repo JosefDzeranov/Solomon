@@ -1,0 +1,14 @@
+#include<iostream>
+#include<conio.h>
+using namespace std;
+int main(){
+	int v1,v2,a,b,c,N,M,v;
+	cin>>N>>M>>a>>b>>c;
+	v1=M*M*M;
+	v2=a*b*c;
+	v=v2/v1;
+	if(v>N)cout<<v-N;
+	else cout<<abs(v-N)*N;
+	cin>>N;
+	return 0;
+}

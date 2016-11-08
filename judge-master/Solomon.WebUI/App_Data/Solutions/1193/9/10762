@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int f,a,b,c,n;
+int main()
+{
+cin>>f>>n>>a>>b>>c;
+if(a>b)
+swap(a,b);
+if(a>c)
+swap(a,c);
+if(b>c)
+swap(b,c);
+if(f==2)
+{
+    cout<<a<<endl;
+}
+else
+{
+    int p=n-c;
+    a-=p;
+    b-=p;
+    if(c-a-b>0)
+    {
+        cout<<0;
+    }
+    else
+    {
+        cout<<a+b-c;
+    }
+}
+}

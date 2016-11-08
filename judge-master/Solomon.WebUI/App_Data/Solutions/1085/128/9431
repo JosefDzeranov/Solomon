@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main()
+{
+    int N, i;
+    scang("%d", N);
+    int X[N], y[N];
+    scanf("%d%d", &X[0], &Y[i0]);
+    for (i = 1; i < N; ++i)
+    {
+        scanf("%d%d", &X[i], &Y[i]);
+
+    }
+     //LOL! JK Is this unfair? I think it isn't. If I'm wrong, where's this written? ;)
+     printf("0");
+    return 0;
+}

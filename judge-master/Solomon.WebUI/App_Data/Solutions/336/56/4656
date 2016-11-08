@@ -1,0 +1,19 @@
+program zero;
+var n,i,s:integer; m:longint;
+begin
+  readln(n);
+  if (n<1) or (n>10000)
+  then writeln('input data is not correct')
+  else
+    begin
+     m:=1;
+     for i:=1 to n do m:=m*i;
+     s:=0;
+     while (m mod 2 = 0) do
+       begin
+         s:=s+1;
+         m:=m div 2;
+       end;
+     writeln(s);
+   end;
+end.

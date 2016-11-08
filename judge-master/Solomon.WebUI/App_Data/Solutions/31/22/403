@@ -1,0 +1,21 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,z,w,l,h,corob,gruz:integer;
+begin
+  read(n,z);
+  readln;
+  read(w,l,h);
+  readln;
+  l:=l+(z div 2);
+  corob:=z*z*z*n;
+  gruz:=w*l*h;
+   if corob<=gruz then writeln('1')
+   else
+   writeln((corob div gruz)+1);
+   readln;
+end.

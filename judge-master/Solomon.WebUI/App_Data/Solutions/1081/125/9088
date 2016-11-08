@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+	int x1,x2,y1,y2,x,y,a,b,c,d;
+	cin >> x1 >> y1 >> x2 >>y2>>x>>y;
+	a=min(abs(x-x1),abs(y-y2));
+	b=min(abs(x-x2),abs(y-y2));
+	c=min(abs(x-x1),abs(y-y1));
+	d=min(abs(x-x2),abs(y-y1));
+	cout << min(a,min(b,min(c,d)));
+	return 0;
+}

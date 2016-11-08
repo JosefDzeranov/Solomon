@@ -1,0 +1,6 @@
+n = int(input())
+k = int((n+16)/12)
+if k < 3:
+    print (0)
+else:
+    print (k)

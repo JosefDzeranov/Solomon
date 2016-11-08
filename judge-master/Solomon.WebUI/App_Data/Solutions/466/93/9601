@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s;
+            s = Console.ReadLine();
+            string[] nb = s.Split(' ');
+            int x= Convert.ToInt32(nb[0]);
+            int z = Convert.ToInt32(nb[1]);
+            s = Console.ReadLine();
+            nb = s.Split(' ');
+            int y = Convert.ToInt32(nb[0]);
+            int q = Convert.ToInt32(nb[1]);
+            int f = x * 60 + z;
+            int l = y * 60 + q;
+            int n = l - f;
+            int m = n / 60;
+            Console.WriteLine(m+" "+n%60);
+            
+
+
+
+
+
+        }
+    }
+}

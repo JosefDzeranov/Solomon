@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <cstdio>
+#include <locale>
+#include <vector>
+
+using namespace std;
+
+int sq[9];
+int n, a[100];
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        ++sq[a[i] % 9];
+    }
+
+    int k = 0;
+    for (int i = 1; i < 9; ++i)
+        if (sq[i] > sq[k])
+            k = i;
+
+    for (int i = 0; i < n; ++i)
+        if (a[i] % 9 != k)
+            cout << a[i] << " ";
+    return 0;
+}

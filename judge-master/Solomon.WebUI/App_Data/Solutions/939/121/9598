@@ -1,0 +1,12 @@
+program isRight;
+var
+ n,m,ci:longint;
+begin
+ readln(n,m);
+ if m>n*n then write('No')
+ else
+  for ci:=1 to 1000 do
+   if (n*n-m) div ci=ci then begin write('Yes'); break; end
+    else if ci=1000 then write('No');
+ readln;
+end.

@@ -1,0 +1,36 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+int min(int a, int b)
+{
+    return (a < b) ? a : b;
+}
+
+int max (int a, int b)
+{
+    return (a > b) ? a : b;
+}
+
+int main()
+{
+    ifstream in("casting.in");
+    ofstream out("casting.out");
+
+    int query;
+    int n, a, b, c;
+
+    in >> query;
+    in >> n;
+    in >> a >> b >> c;
+
+    if (query == 1)
+        out << max(0, (a + b + c) - 2 * n);
+    else 
+        out << min(a, min(b, c));
+
+    return 0;
+}
+    

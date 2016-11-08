@@ -1,0 +1,15 @@
+program Project17;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:integer;
+begin
+readln(a);
+writeln('YES');
+readln;
+
+
+end.

@@ -1,0 +1,10 @@
+Var n,ans,i,pr:longint;
+Begin
+     readln (n);
+     pr:=1; ans:=0;
+     while pr<n do begin
+     pr:=pr*2;
+     ans:=ans+(n div pr);
+     end;
+     writeln (ans);
+end.

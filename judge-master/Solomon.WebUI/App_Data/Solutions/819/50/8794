@@ -1,0 +1,31 @@
+a, b = map(int, input().split())
+n = int(input())
+A = []
+B = []
+
+number = a
+while number > 0:
+    B.append(number%10)
+    number //= 10
+B.reverse()
+A.extend (B)
+B = []
+
+number = b
+while number > 0:
+    B.append(number%10)
+    number //= 10   
+B.reverse()
+A.extend (B)
+B = []
+
+while n > len (A):
+    old, a, b = a, b, a+b
+    number = b
+    while number > 0:
+        B.append(number%10)
+        number //=10
+    B.reverse()
+    A.extend(B)
+    B = []
+print (A[n-1])

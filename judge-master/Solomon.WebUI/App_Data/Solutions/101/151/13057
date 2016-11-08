@@ -1,0 +1,43 @@
+﻿using System;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static int Sum(int []s)
+        {
+            return Convert.ToInt32(s[2]) + Convert.ToInt32(s[1])  + Convert.ToInt32(s[0]) ;
+            
+
+        }
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] answer = { 0, 1, 2 };
+            while (true)
+            {
+                if (Sum(answer) == n)
+                {
+                    break;
+                }
+                answer[2]++;
+                if (Sum(answer) == n)
+                {
+                    break;
+                }
+                answer[1]++;
+                if (Sum(answer) == n)
+                {
+                    break;
+                }
+                answer[0]++;
+                if (Sum(answer) == n)
+                {
+                    break;
+                }
+            }
+            Console.WriteLine(answer[0]+" "+answer[1]+" "+answer[2]);
+
+        }
+    }
+}

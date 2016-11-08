@@ -1,0 +1,13 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;
+begin
+  readln(s);
+  writeln('ERROR');
+  readln;
+end.

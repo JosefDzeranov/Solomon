@@ -1,0 +1,48 @@
+﻿
+Module Module1
+
+    Sub Main()
+        Dim taken As String
+        taken = Console.ReadLine '...
+        Dim cont() As String = Split(taken, " ")
+        Dim a As Integer = cont(0)
+        Dim b As Integer = cont(1)
+        Dim x As Integer = cont(2)
+        Dim speed As Integer
+        Dim time As Integer
+        Dim time2 As Integer = a + b
+
+        Dim t As Integer = x / 1000
+
+        For i = 1000 To 1 Step -1
+            If i * b = x Then
+                wr(i)
+                Exit For
+            ElseIf i * time2 = x Then
+                wr(i)
+                Exit For
+            Else
+                For z = 1 To 10
+                    If i * time2 < x > i * (time2 * z + a) Then
+                        wr(i)
+                        Exit For
+                    End If
+                Next
+            End If
+        Next
+
+    End Sub
+
+    Sub wr(ByVal text As String)
+        Console.WriteLine(text)
+    End Sub
+
+    Sub potom()
+        '       For i2 = 1 To a
+        'If i * i2 < x Then
+        '  wr(i)
+        'Exit For
+        '     End If
+        '    Next
+    End Sub
+End Module

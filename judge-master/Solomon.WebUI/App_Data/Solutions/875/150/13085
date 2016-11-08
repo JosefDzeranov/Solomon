@@ -1,0 +1,20 @@
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+
+int main(){
+	char *str = new char[64];
+	unsigned long digit(0);
+	cin >> str;
+	for(unsigned int i(0);i<strlen(str);i++)
+	{
+		if(str[i]=='*')
+			digit++;
+		if(i!=strlen(str)-1)
+			digit = digit << 1;	
+	}
+	cout << digit;
+	_getch();
+	return 0;
+}

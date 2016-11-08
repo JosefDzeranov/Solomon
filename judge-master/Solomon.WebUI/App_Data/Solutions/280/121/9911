@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+int main()
+{
+    int m,n,k,t,i=1;
+    setlocale (LC_CTYPE,"RUSSIAN");
+    printf("\n¬ведите N");
+    scanf("%d",&n);
+    printf("\n¬ведите M");
+    scanf("%d",&m);
+    t=n*n;
+    while(t>m)
+    {
+        k=i*i;
+        t=(n*n)-k;
+        i++;
+        if(t==m)
+        {
+            printf("Yes");
+        }
+    }
+    if(t!=m && t<m)
+    {
+        printf("No");
+    }
+
+    return 0;
+}
+
+/*#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("N=");
+    int k,N,M,i=1,bolka=0;
+    scanf ("%d",&N);
+    printf ("\nM=");
+    scanf ("%d",&M);
+    while (k>M)
+    {
+        k=i*i;
+        i++;
+       if ((N*N)-k==M) {bolka=1;}
+    }
+     if (bolka==1) printf ("\nYes");
+    else printf ("\nNo");
+            return 0;
+} */

@@ -1,0 +1,20 @@
+Program pr1;
+Var n,i, n1,k:longint; c2: array [1..100000] of integer;
+Begin
+Readln (n);
+n1:=1;
+For i:=1 to n do
+n1:=n1*i;
+i:=1;
+While n1>0 do Begin
+c2[i]:=n1 mod 2;
+i:=i+1;
+n1:=n1 div 2;
+end;
+k:=0; i:=1;
+While c2[i]=0 do Begin
+k:=k+1;
+i:=i+1;  End;
+Writeln(k);
+Readln;
+End.

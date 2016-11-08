@@ -1,0 +1,13 @@
+﻿using System;
+
+namespace SumOfTwoNumbers
+{
+    class Program
+    {
+        static void Main()
+        {
+            var input = Console.ReadLine().Split(new[] { ' ' });
+            Console.WriteLine(long.Parse(input[0]) + long.Parse(input[1]));
+        }
+    }
+}

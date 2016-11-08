@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+int main()
+{   
+  //freopen("tur2.in","r",stdin);
+  //freopen("tur2.out","w",stdout);
+
+  int a[60001],i,n,j;
+  
+  scanf("%d",&n);
+
+  i=1;
+  while(n>1)
+  {
+    if(n%2==1) {n-=1;a[i]=1;}
+      else {n/=2;a[i]=2;}
+    i++;   
+  }
+  
+  for(j=i-1;j>=1;j--)
+    if(a[j]==2) printf("*");
+      else printf("+");
+  printf("\n");  
+  return 0;
+}

@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main(){
+int l,x1,y1,x2,y2,len1=0,len2=0,p=0,p1=0;
+cin>>l>>x1>>y1>>x2>>y2;
+if(x1 < 0)
+	x1=-1*x1;
+if(x2 < 0)
+	x2=-1*x2;
+len1=x2-x1;
+len2=y2-y1;
+p = len1*len2;
+p1= 3,14*l^2;
+if(p1>p){
+	cout<<p1;}
+else{
+	p = p - p1;
+	cout<<p *4;}
+
+return 0;
+}

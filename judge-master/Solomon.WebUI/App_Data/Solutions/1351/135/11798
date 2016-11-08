@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long q = e / (a - a / b + c - c / d);
+    if (e * q != (a - a / b + c - c / d))
+        q++;
+
+    cout << q;
+    return 0;
+}

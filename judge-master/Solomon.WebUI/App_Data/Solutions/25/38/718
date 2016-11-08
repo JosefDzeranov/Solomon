@@ -1,0 +1,85 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int x1, y1, x2, y2, x3, y3, x4, y4;
+    float ab, ac, ad, bc, bd, cd;
+    cin>>x1>>y1>>x2>>y2>>x3>>y3>>x4>>y4;
+    ab = abs(x1 - x2) * abs(x1 - x2) + abs(y1 - y2) * abs(y1 - y2);
+    ac = abs(x1 - x3) * abs(x1 - x3) + abs(y1 - y3) * abs(y1 - y3);
+    ad = abs(x1 - x4) * abs(x1 - x4) + abs(y1 - y4) * abs(y1 - y4);
+    bc = abs(x2 - x3) * abs(x2 - x3) + abs(y2 - y3) * abs(y2 - y3);
+    bd = abs(x2 - x4) * abs(x2 - x4) + abs(y2 - y4) * abs(y2 - y4);
+    cd = abs(x3 - x4) * abs(x3 - x4) + abs(y3 - y4) * abs(y3 - y4);
+
+    if(ab == ac && ab == ac && ab == ad && ab == bc)
+    {
+        cout<<"YES";
+    }
+    else if(ab == ad && ac == bc && ac == bd && ac == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ab == bc && ac == ad && ac == bd && ac == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ab == bd && ac == ad && ac == bc && ac == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ab == cd && ac == ad && ac == bc && ac == bd)
+    {
+        cout<<"YES";
+    }
+    else if(ac == ad && ab == bc && ab == bd && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ac == bc && ab == ad && ab == bc && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ac == bd && ab == ad && ab == bc && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ac == cd && ab == ad && ab == bc && ab == bd)
+    {
+        cout<<"YES";
+    }
+    else if(ad == bc && ab == ac && ab == bd && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ad == bd && ab == ac && ab == bc && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(ad == cd && ab == ac && ab == bc && ab == bd)
+    {
+        cout<<"YES";
+    }
+    else if(bd == bc && ab == ac && ab == ad && ab == cd)
+    {
+        cout<<"YES";
+    }
+    else if(bc == cd && ab == ac && ab == ad && ab == bd)
+    {
+        cout<<"YES";
+    }
+    else if(bd == cd && ab == ac && ab == ad && ab == bc)
+    {
+        cout<<"YES";
+    }
+    else
+    {
+        cout<<"NO";
+    }
+
+
+    return 0;
+}

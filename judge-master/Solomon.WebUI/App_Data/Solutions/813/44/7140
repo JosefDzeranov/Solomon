@@ -1,0 +1,16 @@
+program mesi8;
+var n, l, r: integer; k : real;
+
+begin
+read(n, l, r);
+  {  if (l mod (2*r) = 0) then} k := trunc((l/(2*r))+0.5);
+  {    else k := ((l div (2*r)) + 1);}
+if ((pi*2*r*k) > n) then writeln('NO')
+  else 
+    begin
+    writeln('YES');
+      if (l mod (2*r) = 0) then writeln(l/(2*r))
+    else writeln((l div (2*r)) + 1);
+
+    end;
+end.

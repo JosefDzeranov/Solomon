@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+#define eof -1
+int getline(char s[], long lim)
+{
+	long c, i;
+	for(i=0; i<lim-1 && (c=getchar())!=eof && c!='\n';i++)
+	s[i]=c;
+	s[i]='\0';
+	i++;
+	return(i);
+}
+int main()
+{
+	char s[5000000] ;
+	long w[500000];
+	long e,r,t=1,y=0,u=0,a,b,d=-1,f=0;;
+	scanf("%ld",&e); 
+	for(a=0;a<2;a++){
+	getline(s,100);}
+	w[0]=-1;
+	r=0;
+		while(t!=e){
+		if (s[r]==' '){
+		w[t]=r;
+		t++;
+		}
+		r++;} 
+	t=0; f=0;
+	while(t!=e-1){ 
+		for(r=w[t]+1;r<w[e-1];r++){ b=0; f=t+1; y=w[f];
+		while(y<strlen(s)-1)
+		for(y=w[f]+1;y<strlen(s);y++){
+	
+			if(s[r]==s[y])
+		{
+			u++; b=1;
+
+	f++;
+			break;
+		}}
+		if(s[r+1]==' '){
+		t++;
+	break;
+		} 
+		if(b==1){
+		t++;
+	break;
+		} 
+
+}}
+	printf("%ld",u);
+		}

@@ -1,0 +1,59 @@
+﻿using System;
+
+namespace barany
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long n = long.Parse(Console.ReadLine());
+            
+            long result = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                result += Summik(Console.ReadLine());
+            }
+            Console.Write(result);
+            
+        }
+
+        private static long Summik(string p)
+        {
+            long resultat = 0;
+            int k = 1;
+            string s = null;
+            
+            for (int i = 0; i < p.Length; i++)
+            {
+               
+                if (i+2 < p.Length && char.IsDigit(p[i]) && char.IsDigit(p[i + 1]) && char.IsDigit(p[i + 2]))
+                {
+                    s = p[i].ToString() + p[i + 1].ToString() + p[i + 2].ToString();
+                    resultat += int.Parse(s);
+                    i += 2;
+                    s = null;
+                }
+              
+                 
+                else if (i+1 <p.Length && char.IsDigit(p[i]) && char.IsDigit(p[i + 1]))
+                {
+                    s = p[i].ToString() + p[i + 1].ToString();
+                    resultat += int.Parse(s);                    
+                    i++; 
+                    s=null;
+                }
+                else if (char.IsDigit(p[i]))
+                {
+                    s = p[i].ToString();
+                    resultat += int.Parse(s);
+                    i++;
+                    s = null;
+                }
+            }
+            return resultat;
+        }
+
+        
+    }
+}

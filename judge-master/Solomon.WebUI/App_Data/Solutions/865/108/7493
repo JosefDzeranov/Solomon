@@ -1,0 +1,10 @@
+var N,D, S1, S2, S3, M: integer;
+begin
+readln (N);
+read (S1,S2,S3);
+D:=S1-S2+S3;
+M:=-D+1;
+If D<0 then
+writeln (M)
+else writeln('0');
+end.

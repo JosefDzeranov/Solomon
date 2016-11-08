@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+
+namespace A
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string t = "10";
+            StreamReader sr = new StreamReader(t+".in");
+            StreamWriter sw = new StreamWriter(t+".out");
+            string s = sr.ReadLine();
+            UInt64 rez=0, st=1;
+            for (int i = s.Length - 1; i > -1; i--, st *= 2)
+                if (s[i] == '*') rez += st;
+            sw.WriteLine(rez);
+            sw.Close();
+            sr.Close();
+            Console.WriteLine(s);
+            //Console.WriteLine(s.Length);
+            //Console.WriteLine(Int64.MaxValue);
+            //Console.WriteLine(UInt64.MaxValue);
+            Console.WriteLine(rez);
+        }
+    }
+}

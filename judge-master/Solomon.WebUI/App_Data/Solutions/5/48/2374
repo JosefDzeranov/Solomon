@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+namespace b
+{
+    class Program
+    {
+        static double Segment(double l, double h)
+        {
+            double s = 0;
+            if (h <= l)
+            {
+                double a = Math.Acos((double)h / l);
+                s = a * l * l;
+                double c = Math.Sqrt(l * l - h * h );
+                s = s - c * h;
+                return Math.Max(0, s);
+            }
+            else return 0;
+        }
+        static void Main(string[] args)
+        {
+            StreamReader sr = new StreamReader("09.in");
+            StreamWriter sw = new StreamWriter("09.out");
+            double l = Convert.ToDouble(sr.ReadLine());
+            string[] temp = (sr.ReadLine()).Split(' ');
+            double x1 = Convert.ToDouble(temp[0]);
+            double y1 = Convert.ToDouble(temp[1]);
+            temp = (sr.ReadLine()).Split(' ');
+            double x2 = Convert.ToDouble(temp[0]);
+            double y2 = Convert.ToDouble(temp[1]);
+            double h = Math.Abs(x1 - x2), w = Math.Abs(y1 - y2);
+            // прямоугольник целиком в круге
+            if (h * h / 4 + w * w / 4 < l * l)
+                sw.WriteLine(h * w);
+            else
+            {
+                double s = l * l * Math.PI;
+                //горизонталь
+                //Console.WriteLine(Segment(l,h/2));
+                if (l >h / 2) s -= 2*Segment(l, h/2);
+                if (l > w / 2) s -= 2*Segment(l, w/2);
+                sw.WriteLine(s);
+            }
+            sr.Close();
+            sw.Close();
+        }
+    }
+}

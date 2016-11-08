@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            n = Convert.ToInt32(Console.ReadLine());
+            string s;
+            string s1;
+            s1="";
+            bool f = true;
+            int a;
+            a = 0;
+            string[] ms = new string[n];
+            s = Console.ReadLine();
+            ms = s.Split(' ');
+            for (int i = 0; i < ms.Count(); i++)
+            {
+                s = ms[i];
+                if (f == true)
+                {
+                    s1 = ms[i];
+                }
+                if (f == false)
+                {
+                    if (s1[0] == s[s.Length - 3] && s1[1] == s[s.Length - 2] && s1[2] == s[s.Length - 1] || s[0] == s1[s1.Length - 3] && s[1] == s1[s1.Length - 2] && s[2] == s1[s1.Length - 1])
+                    {
+                        s1 += s;
+                        a++;
+                    }
+                }
+                f = false;
+            }
+            Console.Write(a+1);
+            Console.Write(' ');
+            Console.Write(s1.Length);
+        }
+    }
+}

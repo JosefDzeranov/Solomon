@@ -1,0 +1,66 @@
+#include <iostream>
+
+
+
+using namespace std;
+
+long long mas[300000] = { 0 };
+long long cnt = 0;
+int main()
+{
+	int n, k, p;
+	cin >> n >> p;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> mas[i];
+		cnt += mas[i] * mas[i];
+	}
+	cout << cnt << "\n";
+	cin >> k;
+	for (int i = 0; i < k; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		cnt -= mas[b - 1] * mas[b - 1];
+		if (a == 1)
+		{
+			if (b == 1)
+			{
+				cnt -= mas[b] * mas[b];
+				mas[b] += mas[0];
+			}
+			else if (b == n)
+			{
+				cnt -= mas[b - 2] * mas[b - 2];
+				mas[b - 2] += mas[b - 1];
+			}
+			else
+			{
+				cnt -= mas[b] * mas[b];
+				cnt -= mas[b - 2] * mas[b - 2];
+				mas[b - 2] += mas[b - 1] / 2;
+				mas[b] += mas[b - 1] / 2;
+				if (mas[b - 1] % 2 == 1) 
+					mas[b]++;
+			}
+			n--;
+			for (int j = b - 1; j < n; j++)
+				mas[j] = mas[j + 1];
+		}
+		else
+		{
+			for (int j = n - 1; j >= b; j--)
+				mas[j + 1] = mas[j];
+			mas[b] = mas[b - 1] / 2;
+			if (mas[b - 1] % 2 == 1)
+				mas[b]++;
+			mas[b - 1] = mas[b - 1] / 2;
+			n++;
+		}
+		cnt += mas[b - 1] * mas[b - 1];
+		if (a == 2) cnt += mas[b] * mas[b];
+		else if (b != 1) cnt += mas[b - 2] * mas[b - 2];
+		cout << cnt << endl;
+	}
+	return 0;
+}

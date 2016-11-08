@@ -1,0 +1,9 @@
+var
+	r : Int64;
+	n : Integer;
+	
+begin
+	ReadLn(n);
+	r := (n)*(n-1)*(n-2);
+	WriteLn(r)
+end.

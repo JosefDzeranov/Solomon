@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct sob {
+	int e, v;
+};
+
+void calcS(vector<int> &a) {
+	unsigned sum = 0;
+	for (int i = 0; i < a.size(); i++) {
+		sum += a[i]*a[i];
+	}
+	cout << sum << endl;
+}
+
+int main() {
+	vector<int> a;
+	int n, p;
+	cin >> n >> p;
+	a.resize(n);
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	int k;
+	cin >> k;
+	sob *sobs = new sob[k];
+	for (int i = 0; i < k; i++) {
+		cin >> sobs[i].e >> sobs[i].v;
+	}
+
+	calcS(a);
+	for (int i = 0; i < k; i++) {
+		int sub = sobs[i].v-1;
+		int sal = a[sub];
+		if (sobs[i].e == 1) {
+			if (sub == 0) {
+				a[sub+1] += sal;
+			} else
+			if (sub == k-1) {
+				a[sub-1] += sal;
+			} else {
+				a[sub+1] += sal/2;
+				a[sub-1] += sal/2+sal%2;
+			}
+			a.erase(a.begin() += sub);
+		} else {
+			vector<int>::iterator iter = a.begin()+=sub;
+			(*iter) = sal/2+sal%2;
+			a.insert(iter, sal/2);
+		}
+		calcS(a);
+	}
+
+	return 0;
+}

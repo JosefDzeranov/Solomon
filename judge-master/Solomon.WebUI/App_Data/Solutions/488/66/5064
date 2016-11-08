@@ -1,0 +1,79 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int a[1000];
+
+int per(string s)
+{
+	int ans = 1, n = 1;
+	for (int i = 0; i < s.size(); i++)
+	{
+		n *= 10;
+		ans = ans * 10 + int(s[i] - 48);
+	}
+	
+	ans = ans % n;
+	return ans;
+}
+
+int main()
+{
+	string num1;
+	getline (cin, num1);
+	int num = per(num1);
+	string s1[1000], s2[1000];
+	for (int i = 0; i < num; i++)
+		getline(cin, s1[i]);
+	
+	
+	for (int i = 0; i < num; i++) 
+	{
+		string s = "";
+		int j = 0;
+		while (s1[i][j] < '0' || s1[i][j] > '9')
+			j++;
+
+		
+		for (int ii = j; ii < s1[i].size(); ii++)
+		{
+			if (s1[i][ii] >= '0' && s1[i][ii] <= '9')
+				s += s1[i][ii];
+			else 
+				break;
+		}
+		s2[i] = s;
+	}
+	//___ok
+	
+	for (int i = 0; i < num; i++)
+	{
+		if (s2[i] != "-") 
+		{
+			a[i]++;
+			for (int j  = i + 1; j < num; j++)
+				if (s2[j] == s2[i])
+				{
+					s2[j] = "-";
+					a[i]++;
+					a[j] = -1;
+				}
+		}
+	}
+	
+	int ans = 0;
+
+	for (int i = 0; i < num; i++)
+	{
+		if (a[i] <= 5 && a[i] > 0)
+			ans++;
+	}
+	cout << ans << endl;
+	for (int i = 0; i < num; i++)
+		if (a[i] > 0 && a[i] <= 5)
+			cout << s2[i] << endl;
+
+	system("pause");
+	return 0;
+}

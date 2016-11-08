@@ -1,0 +1,18 @@
+import math
+
+
+x1, y1 = [int(i) for i in input().split()]
+x2, y2 = [int(i) for i in input().split()]
+xt, yt = [int(i) for i in input().split()]
+if (x1 <= xt and x2 >= xt) and (y1 <= yt and y2 >= yt):
+    x = min(math.fabs(x1 - xt), math.fabs(x2 - xt))
+    y = min(math.fabs(y1 - yt), math.fabs(y2 - yt))
+    print(min(x, y))
+elif (x1 <= xt and x2 >= xt) and not (y1 <= yt and y2 >= yt):
+    print(min(math.fabs(y1 - yt), math.fabs(y2 - yt)))
+elif not (x1 <= xt and x2 >= xt) and (y1 <= yt and y2 >= yt):
+    print(min(math.fabs(x1 - xt), math.fabs(x2 - xt)))
+else:
+    x = min(math.fabs(x1 - xt), math.fabs(x2 - xt))
+    y = min(math.fabs(y1 - yt), math.fabs(y2 - yt))    
+    print((x ** 2 + y ** 2) ** 0.5)

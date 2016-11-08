@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
+
+//vector <string> mas;
+map <string, int> mas;
+int main()
+{
+	int n;
+	cin >> n;
+	long long ans = n;
+	string s;
+	getline(cin, s);
+	for (int i = 0; i < n; i++)
+	{
+		getline(cin, s);
+		string t = "";
+		for (int j = 0; j < s.size(); j++)
+		{
+			if (s[j] >= 'A' && s[j] <= 'Z')
+			{
+				t += char(int(s[j]) + 32);
+			}
+			else t += s[j];
+		}
+		if (mas[t] == 1)
+		{
+			ans--;
+		}
+		else mas[t] = 1;
+	}
+	cout << ans;
+	return 0;
+}

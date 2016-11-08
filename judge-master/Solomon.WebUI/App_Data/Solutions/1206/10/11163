@@ -1,0 +1,7 @@
+var i,k,n,s:integer;
+begin
+read(n,k);
+s:=1;
+for i := 1 to n - k do s := s * (k + i) div i;
+write(s);
+end.

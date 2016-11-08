@@ -1,0 +1,91 @@
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+char *met;
+
+void dfs(char **matrix, int n, int i) {
+	for (int j = 0; j < n; j++) {
+		if (matrix[i][j] == '+') {
+			if (met[j] != 1) {
+				met[j] = 1;
+				dfs(matrix, n, j);
+			}
+		}
+	}
+}
+
+int findSov(char **matrix, int n) {
+	int c = 0;
+	for (int i = 0; i < n; i++) {
+		met = new char[n];
+		memset(met, 0, sizeof(char)*n);
+		met[i] = 1;
+		dfs(matrix, n, i);
+		bool issov = true;
+		for (int j = 0; j < n; j++) {
+			if (met[j] != 1) {
+				issov = false;
+				break;
+			}
+		}
+		if (issov)
+			c++;
+		delete met;
+	}
+
+	return c;
+}
+
+int getPortalsCount(char **matrix, int n) {
+	int c = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (matrix[i][j] == '+') {
+				c++;
+			}
+		}
+	}
+	return c;
+}
+
+int main() {
+	int n, p;
+	cin >> n >> p;
+	char **matrix = new char*[n];
+	for (int i = 0; i < n; i++) {
+		matrix[i] = new char[n];
+		for (int j = 0; j < n; j++) {
+			cin >> matrix[i][j];
+		}
+	}
+	int k = findSov(matrix, n);
+	cout << k << endl;
+	//int portalc = getPortalsCount(matrix, n);
+	int *counts = new int[n];
+	memset(counts, 0, sizeof(int)*n);
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (matrix[i][j] == '+') {
+				matrix[i][j] = '-';
+				int count = findSov(matrix, n);
+				matrix[i][j] = '+';
+				if (count > 0)
+					counts[count-1]++;
+			}
+		}
+	}
+	if (p == 0) {
+		for (int i = k; i < n; i++) {
+			cout << counts[i] << " ";
+		}
+	} else {
+		for (int i = 0; i < n; i++) {
+			cout << counts[i] << " ";
+		}
+	}
+	cout << endl;
+
+	return 0;
+}

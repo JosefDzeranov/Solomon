@@ -1,0 +1,34 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,k,m,x,o,z:int64; 
+begin
+ readln(a,k,b,m,x);
+ z:=0;
+ o:=0;
+ if k=0 then k:=10000000000000000001;
+ if m=0 then m:=10000000000000000001;
+ while z<x do
+  begin
+   o:=o+1;
+   if o mod k=0 then
+
+    begin
+     if o mod m<>0 then
+     z:=z+b;
+    end
+
+ else
+  if o mod m=0 then z:=z+a
+  else z:=z+a+b;
+ end;
+
+ if (x<k) and (x<m) then o:=1;
+ 
+writeln(o);
+readln; 
+end.

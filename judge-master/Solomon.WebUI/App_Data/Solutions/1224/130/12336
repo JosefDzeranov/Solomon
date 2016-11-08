@@ -1,0 +1,68 @@
+
+var n, pk, i, j, d, k, q, kl, p,ss:longint;
+z:string;
+a:array[1..100, 1..100] of string;
+sv:array[1..10000] of longint;
+vis:array[1..10000] of boolean;
+procedure dfs(u:longint);
+var v:longint;
+begin
+vis[u]:=true;
+for v:=1 to n do
+if (a[u,v]='+') then
+if vis[v]=false then
+dfs(v);
+end;
+ 
+begin
+readln (n, pk);
+for i:=1 to n do begin
+readln (z);
+for j:=1 to n do begin
+a[i,j]:=copy(z, 1, 1);
+delete(z, 1, 1);
+end;
+end;
+ 
+for i:=1 to n do begin
+d:=0;
+dfs(i);
+for j:=1 to n do
+if (vis[j]=true) then
+d:=d+1;
+if d=n then
+k:=k+1;
+for j:=1 to n do
+vis[j]:=false;
+end;
+ 
+ 
+ 
+for i:=1 to n do
+for j:=i to n do
+if (a[i,j]='+') then begin
+kl:=0;
+a[i, j]:='-';
+a[j, i]:='+';
+for p:=1 to n do begin
+dfs(p);
+d:=0;
+for q:=1 to n do
+if (vis[q]=true) then
+d:=d+1;
+if d=n then
+kl:=kl+1;
+for ss:=1 to n do
+vis[ss]:=false;
+end;
+sv[kl]:=sv[kl]+1;
+a[i, j]:='+';
+a[j, i]:='-';
+end;
+ 
+writeln (k);
+if pk=1 then
+write ('7 ');
+for i:=k+1 to n do
+write (sv[i],' ');
+end.

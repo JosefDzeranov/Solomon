@@ -1,0 +1,11 @@
+program pervonap;
+uses crt;
+var summ:int64;
+a:integer;
+begin
+clrscr;
+Readln (a);
+summ:=a*(a-1)*(a-2);
+WriteLn (summ);
+readln;
+End.

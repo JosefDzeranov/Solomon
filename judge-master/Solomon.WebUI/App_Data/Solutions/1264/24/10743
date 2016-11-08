@@ -1,0 +1,26 @@
+var
+s:string;
+p1,p2,i,j,n,c,sum:longint;
+begin
+readln(n);
+readln(s);
+for i:=1 to length(s) do begin
+ for j:=1 to length(s) do begin
+ if s[i]=' ' then inc(p1);
+ if s[j]=' ' then inc(p2);
+if (s[i]<>' ') and (i<>j) and (s[i]=s[j]) and (s[i]<>'x') and (s[j]<>'x') and (p1<>p2) then begin
+inc(c);
+s[j]:='x';
+end;
+
+end;
+p1:=0;
+p2:=0;
+if c>0 then begin 
+inc(sum);
+c:=0;
+s[i]:='x';
+end;
+end;
+writeln(sum);
+end.

@@ -1,0 +1,59 @@
+program mesie;
+uses crt;
+var
+{         a : array[1..1000000] of char;}
+            i, n, k, c, c1, i1,l : integer;
+            ch : char;
+            f_ch, f_1 : file of char;
+        begin
+        assign(f_ch,'kod.f');
+        rewrite(f_ch);
+        i := 1;
+        while ch <> #13 do
+              begin
+              ch := readkey;
+              if ch <> #13 then
+                 begin
+                 write(f_ch,ch);
+                 i := i + 1;
+                 end;
+              end;
+
+        close(f_ch);         assign(f_1,'kod.f');
+
+        reset(f_1);
+        n := round(sqrt(i));
+        for k := 0 to n-1 do
+          for l := 0 to n-1 do
+          begin
+            seek(f_1,l*n+k); read(f_1,ch);
+            write(ch);
+          end;
+          writeln;
+          readln;
+        close(f_1);
+{        for i := 1 to 1000000 do a[i] := ' ';
+        i := 1;
+        while c <> 13 do
+              begin
+              c := readkey;
+              if c <> 13 then
+                 begin
+                 a[i] := chr(c);
+                 i := i + 1;
+                 end;
+              end;
+        for n := 1 to 1000 do
+            if n*n => i then break;
+        c1 := 1; k := c1; i1 := n - 1; i := n*n;
+        for c := 1 to n do
+            begin
+            while k <= (i - i1) do
+                  begin
+                  write(a[k]);
+                  k := k + n;
+                  end;
+            c1 := c1 + 1; k := c1; i1 := i1 - 1;
+            end;}
+
+        end.

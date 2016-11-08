@@ -1,0 +1,5 @@
+Var a,b:real;
+begin
+read(a,b);
+Write(a+b);
+End.

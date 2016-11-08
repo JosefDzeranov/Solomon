@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+int main(){
+	vector<int>h;
+	string num;
+	cin>>num;
+
+	int y[10],r;
+	for(int i =0;i<10;i++)
+		y[i]=0;
+	for(int i = 0; i < num.length(); i++)
+	{
+		r = int(num[i]-'0');
+		y[r]+=1;
+	}
+	int u=1;
+	for(int i = 0; i <10; i++){
+		if(y[i]>1){
+			u=0;
+			h.push_back(i);}
+	}
+	if(u==0){
+	cout<<"NO"<<endl;
+	for(int i=0;i<h.size();i++)
+		cout<<h[i]<<" ";
+	}
+	else
+		cout<<"YES";
+return 0;
+}

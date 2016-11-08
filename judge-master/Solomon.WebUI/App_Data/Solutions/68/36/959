@@ -1,0 +1,14 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,n:integer;
+begin
+readln(n);
+ for i := 1 to n-2 do
+  write(i,' ',i+1,' ',i+2,' ');
+  readln;
+end.

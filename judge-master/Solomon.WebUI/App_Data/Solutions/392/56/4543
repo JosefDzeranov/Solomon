@@ -1,0 +1,27 @@
+var n,i: 0..10000;
+    h: longint;
+    k: integer;
+    
+function bin(n10: 0..10000): longint;
+var n2, k: longint;
+begin
+k:=1; n2:=0;
+repeat
+n2:=n2+(n10 mod 2)*k;   {суммирование развёрнулой формы}
+k:=k*10;  {вычисление базиса: 10, 100, 1000 ...}
+n10:=n10 div 2   {отбрасывание младшей цифры}
+until (n10=0);
+bin:=n2;
+end;
+
+begin
+  readln(n);
+  k:=0;
+  for i:=1 to n do
+  begin
+  h:=i;
+  h:=bin(h);  while (h mod 10 div 1 = 0) do begin k:=k+1; h:=h div 10; end;
+  end;
+  writeln(k);
+end.
+  

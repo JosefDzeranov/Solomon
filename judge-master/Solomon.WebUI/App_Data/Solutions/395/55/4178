@@ -1,0 +1,11 @@
+var N,i:integer; b,c,a,m:longint;
+begin
+  read(N);
+  c:=2;
+  for i:=2 to (N div 2) do
+  c:=c*10;
+  m:=(2*N-1)*(sqr(2*N-1)+1) div 2;
+  a:=(2*N)*(sqr(2*N)+1) div 2;
+  b:=m+a;
+  write(b);
+end.

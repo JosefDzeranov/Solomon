@@ -1,0 +1,27 @@
+n, m = map(int, input().split())
+A = []
+for i in range (m):
+    a, b = map(int, input().split())
+    A.append([a, b])
+B = []
+for i in range (m-1):
+    if A[i][0] != A[i][1]:
+        flag = True
+        for j in range (i+1, m):
+            if A[j][0] == A[i][1] and A[j][1] == A[i][0]:
+                flag = False
+                
+                B.append([A[i][1], A[i][0], A[j][1], A[j][0]])
+                A[j][0], A[i][0] = A[i][0], A[j][0]
+                break
+        if flag:
+            
+            B.append([A[i][1], A[i][0], A[i][0]])
+if A[m-1][0] != A[m-1][1]:
+    
+    B.append([A[m-1][1], A[m-1][0], A[m-1][0]])
+print (len(B))
+for i in range (len(B)):
+    print (' '.join(map(str, B[i])))
+
+    

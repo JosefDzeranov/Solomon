@@ -1,0 +1,89 @@
+#include <iostream>
+
+using namespace std;
+
+inline unsigned long long CountOf2Comb(unsigned long long n)
+{
+	return n-1;
+}
+
+unsigned long long CountOf3Comb(unsigned long long n)
+{
+	unsigned long long result = 0;
+
+	for (unsigned i = 0; i < n-2; i++) {
+		result += CountOf2Comb(n-2-i);
+	}
+
+	return result;
+}
+
+struct Comb {
+	unsigned long long a, b, c;
+	unsigned long long max;
+
+	Comb(): max(0) {}
+
+	void assign(const Comb &var)
+	{
+		a = var.a;
+		b = var.b;
+		c = var.c;
+		max = var.max;
+	}
+
+	//Comb(): a(1), b(1), c(1) {}
+};
+
+
+unsigned long long N, a, b, c;
+Comb cur, last;
+
+void GenNewComb()
+{
+	if (last.c > c) {
+		cur.a = last.a;
+		cur.c = last.c-1;
+		cur.b = last.b+1;
+	} else {
+		cur.a = last.a+1;
+		cur.b = b;
+		if (cur.a + cur.b > N) {
+			cur.max = 0; return;
+		}
+		cur.c = N-cur.a-b;
+	}
+	cur.max = (cur.a/a)*(cur.b/b)*(cur.c/c);
+}
+
+int main()
+{
+	cin >> N >> a >> b >> c;
+
+	if (N < 1000) {
+		unsigned long long combCount = CountOf3Comb(N);
+
+		cur.a = a;
+		cur.b = b;
+		cur.c = N-a-b;
+		cur.max = (last.a/a)*(last.b/b)*(last.c/c);
+
+		Comb best = cur;
+		for (unsigned i = 1; i < combCount; i++) {
+			last.assign(cur);
+			if (N-last.a <= 2) break;
+			if (last.a+last.b+last.c > N)
+				break;
+			GenNewComb();
+			if (cur.a+cur.b+cur.c > N)
+				break;
+			if (cur.max > best.max) {
+				best = cur;
+			}
+		}
+
+		cout << best.a << " " << best.b << " " << best.c << endl;
+	}
+
+	return 0;
+}

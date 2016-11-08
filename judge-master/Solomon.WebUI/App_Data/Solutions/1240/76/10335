@@ -1,0 +1,42 @@
+VAR
+  c: Char;
+  s: String;
+  ans,i,n: LongINt;
+  
+  Function Int(s: String): Byte;
+  Var res: Byte;
+  Begin
+    res := 0;
+    
+    While (s <> '') do begin
+      res := res*10 + Ord(s[1]) - 48;
+      Delete(s,1,1);  
+    End;
+    
+    Int := res;
+  End;
+  
+BEGIN
+  Readln(n);
+  
+  For i := 1 to n do begin
+    While (not eoln) do begin
+      Read(c);
+      
+      If (Ord(c) >= 48)and(Ord(c) < 58) then s := s + c
+      Else if (s <> '') then begin
+        ans := ans + Int(s);
+        s := '';
+      End;
+    End;
+    
+    If (s <> '') then begin
+      ans := ans + Int(s);
+      s := '';
+    End;
+    
+    Readln;
+  End;
+  
+  Write(ans);
+END.

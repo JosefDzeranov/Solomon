@@ -1,0 +1,16 @@
+const k:byte=(3);
+var n,i:word;
+procedure fak(m:word);
+  var j:word;
+      s:longint;
+  begin
+    s:=1;
+    for j:=m-2 to m do
+      s:=s*j;
+   writeln(s:0);
+end;
+BEGIN
+readln(n);
+  n:=n;
+  fak(n);
+END.

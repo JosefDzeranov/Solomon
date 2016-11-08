@@ -1,0 +1,56 @@
+#include <string>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+vector <int> mark;
+
+vector< vector < int > > g;
+vector<string> m;
+unsigned long long int sum = 0;
+unsigned long long int sum_d = 0;
+
+void DFS(int v, unsigned long long int temp_sum, unsigned long long int _d)
+{
+	if (temp_sum > sum){
+		sum = temp_sum;
+		sum_d = _d;
+	}
+	if (mark[v] != 0)  // Если мы здесь уже были, то тут больше делать нечего
+	{
+		return;
+	}
+	mark[v] = 1;   // Помечаем, что мы здесь были
+	for (int i = 0; i < (int)g[v].size(); ++i)  // Для каждого ребра
+	{
+		DFS(g[v][i], temp_sum + m[g[v][i]].size(), _d+1);  // Запускаемся из соседа
+	}
+}
+
+
+int main(){
+	int n; cin >> n;
+	mark.resize(n);
+	m.resize(n);
+	for (int i = 0; i < n; i++)
+		cin >> m[i];
+	g.resize(n);
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++){
+			if (i != j && m[i].size() > 2 && m[j].size() >2)
+				if (m[i][m[i].size() - 3] == m[j][0] && m[i][m[i].size() - 2] == m[j][1] && m[i][m[i].size() - 1] == m[j][2]){
+					g[i].push_back(j);
+				}
+		}
+	for (int i = 0; i < n; i++){
+		DFS(i, m[i].size(),1);
+		for (int i = 0; i < n; i++)
+			mark[i] = 0;
+	}
+	cout << sum_d << " "<<sum;
+
+
+	return 0;
+}

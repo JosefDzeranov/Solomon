@@ -1,0 +1,31 @@
+var
+amount,_size,x,y,z,x1,y1,z1,kam,t,co:integer;
+flag:boolean;
+begin
+flag:=false;
+t:=1;
+co:=1;
+
+readln(amount,_size);
+read(x,y,z);
+x1:=x div _size;
+y1:=y div _size;
+while flag<>true do
+if((z div (_size*co))<>0) then
+inc(co)
+else if abs(z-_size*co)<=_size/2 then begin
+z1:=z div _size*co;
+flag:=true;
+end
+else begin
+dec(co);
+z1:=z div _size*co;
+flag:=true;
+end;
+kam:=x1*y1*z1;
+while amount>0 do begin
+dec(amount,kam);
+inc(t);
+end;
+write(t);
+end.

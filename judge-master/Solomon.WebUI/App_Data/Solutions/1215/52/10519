@@ -1,0 +1,6 @@
+var n,i,k:longint;
+begin
+read(n);k:=1;
+for i:=n-2 to n do k:=k*i;
+write(k);
+end.

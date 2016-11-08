@@ -1,0 +1,21 @@
+#include <cstdio>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+const int maxn = 102;
+
+int main() {
+	//freopen("input.txt", "r", stdin);
+	int N;
+	cin>>N;
+	int ans=0;
+	for (int i=1; i<=N; i++) {
+		int n=i;
+		while (n%2==0 && n>0) {
+			ans++, n/=2;
+		}
+	}
+	cout<<ans;
+	return 0;
+}

@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+int n;
+vector<string>a (n);
+bool Yes(string s)
+{
+	
+for(int i=0; i<n; i++ )
+{
+if (s==a[i]) return true; 
+}
+return false;
+}
+
+int main()
+{
+	string f,s;
+	int k=0;
+	getline(cin,f);
+	 n=stoi(f);
+	bool r;
+	for(int i =0 ; i< n ; i++)
+	{
+	getline(cin,s);
+	r= Yes(s);
+	if (r==false) {k++;a.push_back(s);}
+	}
+	cout<<k;
+
+return 0;
+}

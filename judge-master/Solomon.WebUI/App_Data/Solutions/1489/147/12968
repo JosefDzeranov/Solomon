@@ -1,0 +1,28 @@
+#include "iostream"
+#include <math.h> 
+#include <cmath>
+
+using namespace std;
+
+#define a (Fi*pow(x2,j)-Fj*pow(x2,i))/(pow(x1,i)*pow(x2,j)-pow(x1,j)*pow(x2,i))
+#define b (Fi*pow(x1,j)-Fj*pow(x1,i))/(-pow(x1,i)*pow(x2,j)+pow(x1,j)*pow(x2,i))
+
+int main () 
+{
+	long int i, Fi, j, Fj, n;
+	cin >> i >> Fi >> j >> Fj >> n;
+
+	double five = 2.23606797749979;
+	double Fn;
+	double x1 = ((1 - five)/2);
+	double x2 = ((1 + five)/2);
+	//double a = (Fi*pow(x2,j)-Fj*pow(x2,i))/(pow(x1,i)*pow(x2,j)-pow(x1,j)*pow(x2,i));
+	//double b = (Fi*pow(x1,j)-Fj*pow(x1,i))/(-pow(x1,i)*pow(x2,j)+pow(x1,j)*pow(x2,i));
+
+	//Fn = ((a*pow(x1,n)+b*pow(x2,n))+0.499);
+	//cout << (long int) Fn;
+
+	cout << (long long) ((a*pow(x1,n)+b*pow(x2,n))+0.5);
+
+	return 0;
+}

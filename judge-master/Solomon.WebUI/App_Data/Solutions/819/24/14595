@@ -1,0 +1,40 @@
+n = int(input())
+A = list(input().split())
+
+count = 0
+
+
+#функция нахождения пар чисел
+
+def compare(num1, num2):
+    global count
+    pair = False
+    
+    for i in num1:
+        if not pair:
+            #print ('num1 =', num1)
+            #print ('dig1 =', i)
+            for j in num2:
+                if not pair:
+                    #print ('num2 =', num2)
+                    #print ('dig2 =', j)
+                    #print ()
+                    if i == j:
+                        count += 1
+                        pair = True
+
+
+
+# Продолжаем после нуля
+
+for i in range (n-1):
+    num1 = A[i]
+    for j in range (i+1, n):
+        num2 = A[j]
+        compare (num1, num2)
+        
+    
+
+print (count)
+
+

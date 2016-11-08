@@ -1,0 +1,21 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var t,sum,i,j,z,n:integer;
+
+begin
+//for t:= 3 to 1000 do
+ sum:=0;
+ readln(n);
+  for I:=1 to n-2 do
+   for j:=i+1 to n-1 do
+    for z:=j+1 to n do
+      inc(sum);
+  writeln(sum*6);
+
+ readln;
+end.

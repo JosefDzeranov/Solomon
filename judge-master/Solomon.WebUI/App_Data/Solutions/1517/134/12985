@@ -1,0 +1,16 @@
+var fin,fout:text;
+    n,k:longint;
+
+begin
+ //assign(fin,'circle.in');reset(fin);
+ readln(n);
+ //close(fin);
+ if (n mod 2) = 1 then
+ k:= n - 1
+ else
+  k:=n - 2;
+ n:=n*k;
+// assign(fout,'circle.out');rewrite(fout);
+ writeln(n);
+// close(fout);
+end.

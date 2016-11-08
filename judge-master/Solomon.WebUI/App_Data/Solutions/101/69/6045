@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+
+	//freopen("lights.in", "r", stdin);
+	//freopen("lights.out", "w", stdout);
+
+	long double a, b, x;
+	double t, t1;
+	cin >> a >> b >> x;
+	
+	t = x / 1000;
+	t1 = b;
+	int flag =1;
+	while (t1 < t)
+	{
+		if (flag)
+			t1 += a;
+		else
+			t1 += b;
+		flag = (flag + 1) % 2;
+	}
+
+	cout.precision(10);
+	cout << x / t1 << endl;
+	
+
+
+ 	return 0;
+}

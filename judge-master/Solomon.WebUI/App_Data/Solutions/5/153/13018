@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace D
+{
+    class Program
+    {
+        static int[,] sv;
+        static void Main(string[] args)
+        {
+            string test="06";
+            StreamReader sr = new StreamReader(test+".in");
+            StreamWriter sw = new StreamWriter(test+".out");
+
+            string[] t = sr.ReadLine().Split(' ');
+            int n = Convert.ToInt32(t[0]);
+            int m = Convert.ToInt32(t[1]);
+            int k = Convert.ToInt32(t[2]);
+            sv = new int [k,2];
+            for (int i = 0; i < k; i++)
+            {
+                t = sr.ReadLine().Split(' ');
+                sv[i, 0] = Convert.ToInt32(t[0])-1;
+                sv[i, 1] = Convert.ToInt32(t[1])-1;
+            }
+            int max=0;
+            for (int i=0; i< n; i++)
+                for (int j =0; j<m; j++)
+                {
+                    int tmin =n+m;
+                    for (int q =0; q<k; q++)
+                        tmin = Math.Min(tmin, Math.Abs(i-sv[q,0])+ Math.Abs(j-sv[q,1]));
+                    max = Math.Max(max,tmin);
+                }
+           // Console.WriteLine(max);
+            sw.WriteLine(max);
+            sw.Close();
+            sr.Close();
+
+         }
+    }
+}

@@ -1,0 +1,18 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+int main(){
+	short x1,x2,y1,y2,x3,y3,a,b,c,d,m;
+	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+	a=abs(x3-x1);
+	b=abs(y2-y3);
+	c = abs(x2-x3);
+	d=abs(y3-y1);
+	if (a<b){m=a;}
+	else{m=b;}
+	if(m>c){m=c;};
+	if(m>d){m=d;}
+	cout << m;
+}

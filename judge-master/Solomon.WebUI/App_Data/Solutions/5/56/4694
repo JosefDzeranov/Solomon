@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Количество_слов
+{
+    class Program
+    {
+        static int iu(string a)
+        {
+            int q, o = 1;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == ' ') o++;
+            }
+            return o;
+        }
+
+        static void Main(string[] args)
+        {
+            string a = Console.ReadLine();
+            string b = Console.ReadLine();
+            Console.WriteLine(iu (a));
+        }
+    }
+}

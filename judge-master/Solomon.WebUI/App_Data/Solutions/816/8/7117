@@ -1,0 +1,11 @@
+program ideone;
+
+var a,b,c:extended;
+
+begin
+
+readln(a,b);
+
+writeln(Trunc(a+b));
+
+end.

@@ -1,0 +1,96 @@
+ var fin,fout:text;
+     n,k,i,j,y,q,w,x:integer;
+     arr,arr1:array[1..100000] of longint;
+     sum,max,lastmax,maxsum:longint;
+
+begin
+ //assign(fin, 'prizes.in');reset(fin);
+ readln(n,k);
+
+ sum:=0;
+ y:=0;
+ lastmax := 0;
+ for i:=1 to n do
+  begin
+  read(arr[i]);
+   if i >= k then
+    begin
+     for j:=0 to k-1 do
+      begin
+       sum:=sum+arr[i-j];
+      end;
+     arr1[i-j] := sum;
+   //  write(arr1[i-j], ' ');
+      
+    {  if (sum >= lastmax) and ((i - k + 1) > y) then
+      begin
+       lastmax := sum;
+      // y:=i;
+      end;}
+       
+      if sum > max then
+       begin
+       // y:=i;
+        //lastmax:=max;
+        max:=sum;
+       end;      
+      sum:=0;
+    end;
+    
+  end;
+// close(fin);
+ for i:=1 to (n - k + 1) do
+  begin
+   if arr1[i] = max then
+    begin
+    if y = 0 then    
+     y := i
+    else
+     if (i - y) > (k + 1) then
+      begin
+       lastmax := max;
+      end;
+    end;
+  end;
+ 
+ if lastmax = 0 then
+  begin
+   i := k - 1;
+   while (y - i <= 0) do
+    begin
+     i := i + 1;
+    end;
+   j := k - 1;
+   while (y + j >= (n - k + 1)) do
+    begin
+     j := j - 1;
+    end;
+   for q:= (y - i) to y do
+    begin
+  //  writeln(q);
+     for w:= q to q + 2*(k - 1) do
+     begin  
+    //  write(w);
+      sum:= sum + arr1[w];
+     end;
+     if sum > maxsum then
+      begin
+       maxsum := sum;
+       x := q + i;
+      end;
+     sum := 0;
+    end;
+   // writeln();
+    for i := 1 to n - k + 1 do
+     begin
+    // write(arr1[i], ' ');
+      if ( (i < ( x - (k - 1) ) ) or (i > (x + k - 1) ) ) and (arr1[i] > lastmax) then       
+       begin
+        lastmax := arr1[i];
+       end;
+     end;
+  end;
+// assign(fout,'prizes.out');rewrite(fout);
+ writeln(lastmax);
+// close(fout);
+end.

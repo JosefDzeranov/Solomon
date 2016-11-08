@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+
+	int ans = 0;
+	int one, up, upmax;
+	int n, z;
+	int b, a, h;
+	cin >> n >> z;
+	cin >> b >> a >> h;
+
+	a += h / 2;
+
+	up = h / z;
+
+	if (up == 0)
+		up = 1;
+	one = (b/z) * (a/z) * up;
+
+	ans += n / one;
+	if (n % one != 0)
+		ans++;
+
+	cout << ans << endl;
+
+	return 0;
+}

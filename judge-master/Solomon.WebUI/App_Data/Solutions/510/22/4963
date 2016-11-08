@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	int n, z, a, b, c;
+	cin >> n >> z >> a >> b >> c;
+	int t1, t2, t3;
+	t1 = a / z;
+	t2 = b / z;
+	t3 = c / z;
+	int t4 = c - z * t3;
+	if (z - t4 <= z / 2) t3++;
+	long long res = t1 * t2 * t3;
+	long long ans = n / res;
+	if (n % res > 0) ans++;
+	cout << ans;
+	return 0;
+}

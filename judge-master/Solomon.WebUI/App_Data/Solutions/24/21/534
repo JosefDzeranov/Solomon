@@ -1,0 +1,81 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+vector < vector <int> > ans;
+
+int main() {
+
+	ans.resize(1000);
+	int sum = 0;
+	int mas[10][10];
+	for (int i = 0; i < 10; i++)
+		for (int j = 0; j < 10; j++)
+			mas[i][j] = 0;
+	int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < m; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		mas[a-1][b-1]++;
+	}
+	int k = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			if (i != j)
+			{
+				while (mas[i][j]) {
+					if (mas[j][i])
+					{
+						ans[k].push_back(i + 1);
+						ans[k].push_back(j + 1);
+						ans[k].push_back(j + 1);
+						ans[k].push_back(i + 1);
+						mas[j][i]--;
+					}
+					else
+					{
+						int flag = 1;
+						for (int h = 0; h < n; h++)
+						{
+							if (h!=i && h!=j)
+								if (mas[j][h] && mas[h][i])
+								{
+									ans[k].push_back(i+1);
+									ans[k].push_back(j+1);
+									ans[k].push_back(j+1);
+									ans[k].push_back(h+1);
+									h = n;
+									flag = 0;
+									k++;
+									mas[j][h]--;
+
+								}
+
+						}
+						if (flag){
+							ans[k].push_back(i + 1);
+							ans[k].push_back(j + 1);
+							ans[k].push_back(j + 1);
+							}
+					}
+					mas[i][j]--;
+					sum++;
+					k++;
+				}
+
+				
+			}
+	cout << sum << endl;
+	for (int i = 0; i < k; i++)
+	{
+		for (int j = 0; j < ans[i].size(); j++)
+			cout << ans[i][j] << " ";
+		cout << endl;
+	}
+
+	return 0;
+}

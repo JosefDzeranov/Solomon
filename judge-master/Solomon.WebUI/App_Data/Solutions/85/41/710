@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string s = "";
+    int n;
+    cin >> n;
+    while (n > 1)
+    {
+        if (n % 2 == 0)
+        {
+            n /= 2;
+            s += '*';
+        }
+        else
+        {
+            n--;
+            s += '+';
+        }
+    }
+
+    for (unsigned int i = 0; i < s.size() / 2; i++)
+        swap(s[i], s[s.size() - i - 1]);
+
+    cout << s;
+    return 0;
+}

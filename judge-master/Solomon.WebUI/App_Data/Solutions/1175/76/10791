@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#include <Math.h>
+#include <stdlib.h>
+#define eof -1
+int getline(char s[], long lim)
+{
+	long c, i,a,d,g;
+	char o[1],p[1],f;
+	for(i=0; i<lim-1 && (c=getchar())!=eof && c!='\n';i++)
+	s[i]=c;
+	s[i]='\0';
+	i++;
+	return(i);
+}
+int main()
+{
+	char s[1000000], w[100];
+	long e,r,t,y=0,u=0,o=0;
+	scanf("%d",&e); e++;
+	for(r=0;r<e;r++){
+	getline(s,1000000);
+    for(t=0;t<(strlen(s));t++){
+    
+    if((s[t]>='0') && (s[t]<='9'))
+    {
+    y=char(s[t])-48;
+	u=u+y;
+    }
+	
+	if((s[t+1]>='0') && (s[t+1]<='9')) 
+	u=u*10;
+	else {
+	o=o+u;
+	u=0;
+	y=0;}}}
+	printf("%d",o);
+}

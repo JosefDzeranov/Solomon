@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace shifr
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int k = 1;
+            while (k * k < s.Length)
+            { 
+                k++;
+            }
+           char[,] a = new char[k, k];
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   a[i,j] = ' ';
+               }
+           }
+           int q = 0;
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   if (q < s.Length) { a[j, i] = s[q]; q++; }
+               }
+           }
+           string t = "";
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   t = t + a[i, j];
+               }
+           }
+           Console.WriteLine(t);
+        }
+    }
+}

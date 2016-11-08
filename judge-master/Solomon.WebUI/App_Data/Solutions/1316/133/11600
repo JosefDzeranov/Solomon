@@ -1,0 +1,37 @@
+n, p = list(map(int, input().rstrip().split()))
+na = []
+for i in range(n):
+    na.append(input().rstrip())
+    #if(na[i][0]) == '*':
+    #    na[i] = na[i][1:]
+    #if(na[i][-1] == '*'):
+    #    na[i] = na[i][:len(na[i]) - 2]
+k = int(input())
+ka = []
+nas = []
+for i in range(k):
+    ka.append(input().rstrip())
+for i in range(k):
+    nas.append(0)
+    for j in range(n):
+        obr = na[j]
+        if(obr[0] == '*'):
+            obr = obr[2:]
+        if(obr[-1] == '*'):
+            obr = obr[:len(obr) - 2]
+        if obr in ka[i]:
+            if(ka[i].find(obr) == 0):
+                if(ka[i] == obr):
+                    nas[i] += 1
+                else:
+                    if(na[j][-1] == '*'):
+                        nas[i] += 1
+            else:
+                if(ka[i][ka[i].find(obr):] == obr):
+                    if(na[j][0] == '*'):
+                        nas[i] += 1
+                else:
+                    if(na[j][-1] == '*') and (na[j][0] == '*'):
+                        nas[i] += 1
+for i in range(k):
+    print(nas[i])

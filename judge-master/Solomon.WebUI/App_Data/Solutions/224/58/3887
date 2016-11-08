@@ -1,0 +1,39 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+
+namespace Mesi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Int64 Sum = 0;
+
+            int N = Int32.Parse(Console.ReadLine());
+            string[] s = Console.ReadLine().Split(' ');
+            List<Int64> Combinations = new List<Int64>();
+            Combinations.Add(0);
+            foreach (var i in s)
+            {
+                var temp = Int64.Parse(i);
+                Sum += temp;
+                List<Int64> smth = new List<Int64>();
+                foreach (var j in Combinations)
+                {
+                    if (!Combinations.Contains(temp + j))
+                        smth.Add(temp + j);
+                }
+                Combinations.AddRange(smth);
+            }
+
+            double Average = (double)Sum / 2, Best = Sum;
+            foreach (var i in Combinations)
+                if (Math.Abs(Average - i) < Best)
+                    Best = Math.Abs(Average - i);
+
+            Console.WriteLine(Best * 2);
+            Console.ReadLine();
+        }
+    }
+}

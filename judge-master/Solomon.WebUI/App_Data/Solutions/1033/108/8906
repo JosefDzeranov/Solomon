@@ -1,0 +1,24 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,i,n,m:integer;
+begin
+readln(n);
+m:=0;
+for i:=1 to n do
+ begin
+ read(a);
+ if i mod 2 = 0 then
+  m:=m-a
+  else m:=m+a;
+ end;
+ readln;
+ if m>0 then m:=0
+  else m:=-m+1;
+ writeln(m);
+ readln;
+end.

@@ -1,0 +1,70 @@
+#include "stdafx.h"
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int n, k, maxi = 0;
+	scanf("%d%d", &n, &k);
+	long int *a = (long int*)malloc(n), maxsum=0, tempsum=0;
+	for(int i = 0; i<n; ++i)
+	{
+		scanf("%d", &a[i]);
+	}
+
+	for(int i = 0; i<k; ++i)
+		tempsum+=a[i];
+
+	for(int i = 1; i<=n-k; ++i)
+	{
+		if (tempsum>maxsum)
+		{
+			maxsum = tempsum;
+			maxi = i;
+		}
+		tempsum-=a[i-1];
+		tempsum+=a[i+k];
+	}
+	tempsum = 0;
+	maxsum = 0;
+	if(maxi>=k)
+	{
+			for(int i = 0; i<k; ++i)
+				tempsum+=a[i];
+			maxsum = tempsum;
+		for(int i = 1; i<=maxi-k; ++i)
+		{
+			tempsum-=a[i-1];
+			tempsum+=a[i+k-1];
+			if (tempsum>maxsum)
+			{
+				maxsum = tempsum;
+				maxi = i;
+			}
+		}
+	}
+
+	tempsum=0;
+	if(maxi<n-k)
+	{
+		for(int i = maxi+k; i<maxi+k+k; ++i)
+			tempsum+=a[i];
+		for(int i = maxi+k+1; i<=n-k; ++i)
+		{
+			tempsum-=a[i-1];
+			tempsum+=a[i+k-1];
+			if (tempsum>maxsum)
+			{
+				maxsum = tempsum;
+				maxi = i;
+			}
+		}
+	}
+
+	printf("%ld", maxsum);
+	getch();
+	free(a);
+	return 0;
+}
+

@@ -1,0 +1,80 @@
+#include <iostream>
+
+using namespace std;
+
+int prost[1000];
+
+int f = 1;
+
+void cnt(int k) {
+	prost[0] = 2;
+	if (k > 2){
+		int i = 3;
+		f = 1;
+		while (i <= k) {
+			int p = 1;
+			for (int j = 0; j < f; j++)
+				if (i % prost[j] == 0)
+				{
+					p = 0;
+					break;
+				}
+				if (p)
+					prost[f] = i, f++;
+				i++;
+		}
+	}
+
+}
+
+long long int min(long long int a, long long int b) {
+	if (a < b)
+		return a;
+	else
+		return b;
+
+}
+
+long long int amount(int n, int del) {
+	long long int res = 0;
+	while (n) {
+		n /= del;
+		res += n;
+	}
+	return res;
+}
+
+
+int hm(int n, int k) {
+
+	int res = 0;
+	while (n % k == 0)
+	{
+		n /= k;
+		res++;
+	}
+	return res;
+}
+
+int main() {
+
+	int n, k;
+	cin >> n >> k;
+	cnt(k);
+	
+	long long int ans = 1e+18;
+
+	for (int i = 0; i < f && prost[i] <= k; i++)
+	{
+		if (k % prost[i] == 0){
+			int p = hm(k, prost[i]);
+			ans = min(ans, amount(n, prost[i]) / p);
+		}
+	}
+	if (ans == 1e+18)
+		cout << "0" << endl;
+	else
+		cout << ans << endl;
+
+	return 0;
+}

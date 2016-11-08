@@ -1,0 +1,14 @@
+var a,c:integer;
+begin
+read(a);
+a:=a-20;
+while a>=0 do begin
+  if c=0 then
+    c:=2;
+  a:=a-12;
+  c:=c+1;
+  end;
+write(c);
+end.
+    
+  

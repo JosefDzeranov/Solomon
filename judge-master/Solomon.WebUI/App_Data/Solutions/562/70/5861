@@ -1,0 +1,46 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+
+Module Module1
+    Dim n As Integer
+    Dim a() As Integer
+    Dim m As Integer
+    Dim c() As Integer
+    Dim b() As Integer
+    Dim minc As Integer
+    Dim ind As ULong
+    Dim otv As ULong
+
+    Sub Main()
+        Dim i As Integer
+        Dim j As Integer
+        n = Console.ReadLine
+        ReDim a(n)
+        Dim a1() As String = Split(Console.ReadLine)
+        For i = 1 To n
+            a(i) = Val(a1(i - 1))
+        Next
+        m = Console.ReadLine
+        ReDim b(m)
+        ReDim c(m)
+        For i = 1 To m
+            Dim bc() As String = Split(Console.ReadLine)
+            b(i) = bc(0)
+            c(i) = bc(1)
+        Next
+        For i = 1 To n
+            minc = 1001
+            ind = 0
+            For j = 1 To m
+                If b(j) >= a(i) And c(j) < minc Then
+                    minc = c(j)
+                    ind = j
+                End If
+            Next
+            otv = otv + c(ind)
+        Next
+        Console.WriteLine(otv)
+        Console.ReadLine()
+    End Sub
+
+End Module

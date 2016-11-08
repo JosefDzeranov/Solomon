@@ -1,0 +1,48 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int getMax( int x, int y, int z )
+{
+    int max = x;
+
+    if( max < z )
+        max = z;
+
+    if( max < y )
+        max = y;
+
+    return max;
+}
+
+int getMin( int x, int y, int z )
+{
+    int min = x;
+
+    if( min > z )
+        min = z;
+
+    if( min > y )
+        min = y;
+
+    return min;
+}
+
+int main()
+{
+    int x, y, z, aver, max, res;
+
+    scanf( "%d%d%d", &x, &y, &z );
+
+    max = getMax( x, y, z );
+
+    aver = x + y + z - max - getMin( x, y, z );
+
+    res = aver + max;
+
+    cout << res << endl;
+
+    return 0;
+}
+

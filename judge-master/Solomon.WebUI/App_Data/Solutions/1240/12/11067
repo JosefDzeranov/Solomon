@@ -1,0 +1,27 @@
+VAR
+  ans: Int64;
+  n,k,i,j,len: LongINt;
+  del,kol: Array [1..100] of LongINt;
+BEGIN
+  Read(n,k);
+  
+  j := 2;
+  While (k > 1) do begin
+    If (k mod j = 0) then begin 
+      Inc(len); del[len] := j; end;
+    
+    While (k > 1)and(k mod j = 0)do begin
+      Inc(kol[len]); k := k div j; End;
+      
+    Inc(j);
+  End;
+  
+  k := del[len];
+  While (k <= n) do begin
+    ans := ans + (n div k);
+    k := k * del[len];
+  End;
+  
+  //If (k = n * del[len]) then Dec(ans);
+  Write(ans div kol[len]);
+END.

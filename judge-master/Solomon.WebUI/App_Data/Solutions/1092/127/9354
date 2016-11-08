@@ -1,0 +1,64 @@
+program Womaninthemiddle;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s4 : string;
+  step : byte;
+
+procedure Decode (var s : string; step : byte);
+var
+  i : byte;
+begin
+  for i := 1 to Length (s) do
+    s[i] := chr (ord('Z') - (25 - (ord(s[i]) - 65) + step) mod 26);
+end;
+
+procedure Search (var s1, s2 : string);
+var
+  s3 : string;
+  x1, x2, i, j, k : integer;
+  c : integer;
+begin
+  for i := 1 to Length (s1) - Length (s2) + 1 do
+    begin
+      s3 := copy (s1, i, Length (s2));
+      if ord (s3[1]) - ord (s2[1]) < 0 then
+        x1 := ord (s3[1]) + 26 - ord (s2[1])
+      else
+        x1 := ord (s3[1]) - ord (s2[1]);
+      k := 1;
+      for j := 2 to Length (s3) do
+        Begin
+          c := ord (s3[J]) - ord (s2[J]);
+        if c < 0 then
+          c := c + 26;
+        if c <> x1 then 
+          break
+        else
+          k := k + 1;
+        end;
+      if k = Length (s2) then
+        begin
+          step := x1;
+          s4 := s1;
+          break;
+        end;
+    end;
+end;
+
+var
+  s1, s2, s3 : string;
+begin
+  readln (s1);
+  readln (s2);
+  s4 := 'IMPOSSIBLE';
+  Search (s1, s2);
+  if s4 = s1 then
+    Decode (s4, step);
+  writeln (s4);
+  readln;
+end.

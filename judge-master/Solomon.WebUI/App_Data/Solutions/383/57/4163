@@ -1,0 +1,27 @@
+Var a:array[1..100,1..2] of word;
+    d:array[0..9] of byte;
+    n,i,k,j,s,z:word;
+    b:boolean;
+BEGIN
+  readln(n);
+  for i:= 1 to n do
+    begin
+      read(a[i,1]);
+      k:=a[i,1];
+      s:=0;
+      b:=true;
+      while b do
+        begin
+          s:=k mod 10+s;
+          k:=k div 10;
+          if k=0 then begin k:=s; s:=0; if k<10 then b:=false; end;
+      end;
+      a[i,2]:=k;
+      inc(d[k]);
+  end;
+  k:=d[1];z:=1;
+  for i:= 2 to 9 do
+    if d[i]>k then  begin k:=d[i]; z:=i; end;
+  for i:=1 to n do
+     if a[i,2]<>z then write(a[i,1],' ') ;
+END.

@@ -1,0 +1,26 @@
+var s:string;
+    a:array['a'..'z'] of byte;
+    i,j,k,n:byte;
+    c:char;
+BEGIN
+  read(s);
+  n:=length(S);
+  i:=1;
+  j:=0;
+ { for c:='a' to 'z'do
+    a[c]:=0;}
+  while i<n do begin
+    while s[i]=' ' do inc(i);
+    while s[n]=' ' do dec(n);
+    if n<=i then break;
+    while s[i]<>' ' do begin a[s[i]]:=a[s[i]]+1; inc(i); end;
+    while s[n]<>' ' do begin a[s[n]]:=a[s[n]]+1; dec(n); end;
+    for c:='a' to 'z'do begin
+      if odd(a[c]) then inc(k);
+      a[c]:=0;
+    end;
+    if k<2 then inc(j);
+    k:=0;
+  end;
+  writeln(j);
+END.

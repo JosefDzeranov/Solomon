@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n, y, m, w, d, h, yk: integer;
+begin
+  readln(n);
+  y := n * 360;
+  m := n * 30;
+  w := n * 7;
+  d := n;
+  h := n div 24;
+  yk := (y + m + w + d + h) div 360;
+  writeln(yk);
+  readln;
+end.

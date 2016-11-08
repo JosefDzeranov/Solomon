@@ -1,0 +1,60 @@
+// solomon_b.cpp : Defines the entry point for the console application.
+//
+
+#include "iostream"
+#include <map>
+
+using namespace std;
+
+int get_digit_code(int x)
+{
+	const int k[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+	int w = 0;
+	do
+	{
+		w |= k[x % 10];
+		x /= 10;
+	} while (x != 0);
+
+	return w;
+}
+
+int get_num_pairs(int n)
+{
+	return n * (n - 1) / 2;
+}
+
+int main()
+{
+	int n, x, c = 0;
+
+	cin >> n;
+
+	map<int, int> a;
+
+	for (int j = 0; j < n; ++j)
+	{
+		cin >> x;
+		a[get_digit_code(x)]++;
+	}
+
+	map<int, int>::iterator ia, ja;
+
+	for (ia = a.begin(); ia != a.end(); ++ia)
+	{
+		int s = ia->second;
+		int p = get_num_pairs(s);
+		c += p;
+		for (ja = a.begin(); ja != ia; ++ja)
+		{
+			if ((ia->first & ja->first) != 0)
+			{
+				c += s * ja->second;
+			}
+		}
+	}
+
+	cout << c;
+
+	return 0;
+}

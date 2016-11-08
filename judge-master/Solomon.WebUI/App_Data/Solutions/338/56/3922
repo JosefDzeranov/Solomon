@@ -1,0 +1,8 @@
+var  n,i,k,s,s1:longint;
+begin
+     read(n);k:=2;s1:=1;
+     while n div k>0 do
+     if n div k>0 then begin
+     s:=s+s1;k:=k*2;s1:=s1+1;end;
+     writeln(s);
+end.

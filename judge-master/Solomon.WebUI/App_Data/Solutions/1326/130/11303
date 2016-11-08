@@ -1,0 +1,19 @@
+def s(ph):
+    global ms
+    x = 1
+    y = ph
+    for i in range(ph):
+        ms[x * y] = 1
+        x += 1
+        y += -1
+
+global ms
+a, b, c, d = [int(i) for i in input().split()]
+ms = [0 for i in range(max(a, b, c, d))]
+for i in range(c // 2, d // 2):
+    s(i)
+p = 0
+for i in ms:
+    if i == 1:
+        p += 1
+print(p)

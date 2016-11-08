@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int a, b, n, x, y, tmp;
+	cin >> a >> b >> n;
+	if (n==1) 
+		x=a;
+	if (n==2)
+		x=b;
+	if (n>2) {
+		y=a;
+		x=b;
+		for (int i=3; i<=n; i++) {
+			tmp=y;
+			y=x;
+			x=y+tmp;
+		}
+	}
+	cout << x;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

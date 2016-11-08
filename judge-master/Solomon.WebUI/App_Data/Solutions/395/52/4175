@@ -1,0 +1,9 @@
+var c,N,i:integer; b:longint;
+begin
+  b:=1;
+  read(N);
+  c:=N-2;
+  for i:=c to N do
+  b:=b*i;
+  write(b);
+end.

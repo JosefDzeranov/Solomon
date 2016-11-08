@@ -1,0 +1,65 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,p,w,i,j,q,k,l,e,v:integer;
+    a,b,c,d:array[1..100]of integer;
+begin
+ readln(n,p);
+ for i := 1 to n do
+  begin
+   readln(q);
+   a[i]:=q;
+   d[1]:=d[1]+q*q;
+  end;
+ readln(k);
+ for i := 1 to k do
+   begin
+     readln(e,v);
+     b[i]:=e;
+     c[i]:=v;
+   end;
+ for i := 1 to 1 do
+  begin
+    w:=c[i];
+    
+      if b[i]=1 then
+       begin
+         if w=n then a[n-1]:=a[n-1]+a[n];
+         if w=1 then a[2]:=a[2]+a[1];
+         if (w>1) and (w<n) then 
+                                   if a[w] mod 2 = 0 then
+                                    begin
+                                    a[w+1]:=a[w+1]+a[w]div 2;
+                                    a[w-1]:=a[w-1]+a[w]div 2;
+                                    end
+                                    else begin a[w-1]:=a[w-1]+a[w]div 2;
+                                               a[w+1]:=a[w+1]+a[w]div 2 + 1;  
+                                    end;
+                                 
+         for l := w to n-1 do
+           a[l]:=a[l+1];
+         n:=n-1;
+       end
+       else begin
+             for l := n downto w do
+                a[l+1]:=a[l];
+             a[w]:=a[w+1] div 2;
+             if a[w+1] mod 2 = 1 then
+              a[w+1]:=a[w+1]div 2 + 1
+              else
+               a[w+1]:=a[w+1]div 2;  
+            end;
+    
+    for j := 1 to n do
+      d[i+1]:=d[i+1]+a[j]*a[j];
+  end;
+
+                  
+ for i:=1 to n+1 do
+   writeln(d[i]);
+ readln;
+end.

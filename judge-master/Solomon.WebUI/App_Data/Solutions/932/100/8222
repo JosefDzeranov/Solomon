@@ -1,0 +1,17 @@
+program Project41;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,d,tim:integer;
+begin
+   readln(d,n);
+
+   d:=n-d;
+   writeln(1,' ' ,d);
+
+    readln;
+
+end.

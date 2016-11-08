@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,i :integer;
+begin
+readln(a);
+i:=1;
+while i<a do
+begin
+write(i,' ');
+inc(i);
+write(i,' ');
+inc(i);
+write(i,' ');
+dec(i);
+end;
+readln;
+end.

@@ -1,0 +1,96 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  Math,
+  SysUtils;
+type plitka=record
+a:array [1..1007,1..2]of boolean;
+end;
+var n,k:integer;
+    x:plitka;
+function sp(j:integer):integer;
+var c1,c2,c3,i:integer;
+begin
+c1:=0;
+c2:=0;
+c3:=0;
+
+i:=j;
+     while (x.a[i,1]=false)and(x.a[i,2]=false)and(i<=n) do i:=i+1;
+j:=i;
+     if i<n+1 then
+     begin
+       if x.a[i,1] then
+       begin
+       x.a[i,1]:=false;
+       c1:=sp(j);
+       x.a[i,1]:=true;
+       if x.a[i,2] then
+       begin
+         x.a[i,1]:=false;
+         x.a[i,2]:=false;
+         c2:=sp(j+1);
+         x.a[i,1]:=true;
+         x.a[i,2]:=true;
+       end;
+       if x.a[i+1,1] then
+       begin
+         x.a[i+1,1]:=false;
+         x.a[i,1]:=false;
+         c3:=sp(j);
+         x.a[i+1,1]:=true;
+         x.a[i,1]:=true;
+       end;
+
+     end else
+     if x.a[i,2] then
+     begin
+       x.a[i,2]:=false;
+       c1:=sp(j);
+       x.a[i,2]:=true;
+       if x.a[i+1,2] then
+       begin
+         x.a[i+1,2]:=false;
+         x.a[i,2]:=false;
+         c2:=sp(j);
+         x.a[i+1,2]:=true;
+         x.a[i,2]:=true;
+       end;
+       c3:=0;
+       end;
+     result:=(c1+c2+c3)mod 1000000007;
+     end else
+     begin
+       result:=1;
+     end;
+     
+
+end;
+var  i:integer;  c1,c2:integer;
+begin
+  read(n);
+  readln(k);
+
+
+    for I := 1 to n do
+  begin
+    x.a[i,1]:=true;
+  x.a[i,2]:=true;
+  end;
+  for i:=1 to k do
+  begin
+    read(c1);
+    readln(c2);
+    x.a[c1,c2]:=false;
+  end;
+
+x.a[n+1,1]:=false;
+x.a[n+1,2]:=false;
+writeln(sp(1));
+
+  
+
+readln;
+end.

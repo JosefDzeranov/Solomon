@@ -1,0 +1,204 @@
+package com.company;
+import java.util.ArrayList;
+import java.lang.StringBuilder;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.Iterator;
+
+
+
+
+class Box{
+    private ArrayList<Integer> Balls;
+    public static final Integer err_value=-1;
+    //последовательность шаров\
+    //ArrayList - динамический массив
+    private Integer ColorCode;
+    //приватные поля, доступные только методам класса
+
+    public void AddBall(Integer ball_color)
+    {
+        Balls.add(ball_color);
+        //добавляет шар некоторого цвета в коробку
+    }
+    public Integer MoveBall()
+    {
+        Iterator<Integer> it = Balls.iterator();
+        Integer ball = Box.err_value;
+        while(it.hasNext()) {
+            ball = it.next();
+            if(ball != this.ColorCode) {
+                it.remove();
+                return ball;//возврат значения, которое извекли из коробки
+            }
+        }
+        return ball;//это значит, что все шары в коробке цвета коробки и извлекать нечего
+    }
+    public Integer CheckforExchange(Integer color_code)
+    {
+        return Balls.indexOf(color_code);
+        //метод возвращает индекс первого обнаруженного шара некоторого цвета в коробке или null, если шар некоторого цвета отсутствует
+    }
+    public Integer ExtractBall(Integer color_code){
+        return Balls.remove(Balls.indexOf(color_code));
+        //удаляет первый обнаруженный шар некоторого цвета из коробки
+    }
+    public Integer GetBoxColor(){
+        return ColorCode;
+    }
+
+    Box(Integer color_code)
+    {
+        Balls = new ArrayList<Integer>();
+        ColorCode = color_code;
+    }
+    //конструктор экземпляра класса с параметром цвета коробки
+}
+
+ class Storage{
+    private ArrayList<Box> Boxes;
+    private Integer NumofBoxes;
+    private Integer NumofBalls;
+    //последовательность коробок
+
+    public Integer SortBalls(String output_file_path) {
+        StringBuilder rplc_log = new StringBuilder();
+        //класс для составления строки, которую мы позже выгрузим в файл
+        Integer counter = 0;
+        //счетчик операций
+        Iterator<Box> box_it = Boxes.iterator();
+        while (box_it.hasNext()) {
+            Box current_box = box_it.next();
+            Integer ball_to_move = current_box.MoveBall();
+            if (ball_to_move == Box.err_value)
+                continue;//нет шаров для перемещения из данной коробки
+            Iterator<Box> another_box_it = Boxes.iterator();
+            while (another_box_it.hasNext()) {
+                Box another_box = another_box_it.next();
+                if (another_box.GetBoxColor() == current_box.GetBoxColor()) {
+                    continue;//одна и та же коробка
+                }
+                if (ball_to_move == another_box.GetBoxColor()) { //нашли подходящую коробку
+                    if (-1 != another_box.CheckforExchange(current_box.GetBoxColor())) {
+                        another_box.ExtractBall(current_box.GetBoxColor());
+                        another_box.AddBall(ball_to_move);
+                        current_box.AddBall(current_box.GetBoxColor());
+                        //произвели обмен
+                        ++counter;
+                        rplc_log.append(current_box.GetBoxColor());
+                        rplc_log.append(' ');
+                        rplc_log.append(ball_to_move);
+                        rplc_log.append(' ');
+                        rplc_log.append(another_box.GetBoxColor());
+                        rplc_log.append(' ');
+                        rplc_log.append(current_box.GetBoxColor());
+                        rplc_log.append('\n');
+                        //добавили в лог
+                    } else {
+                        another_box.AddBall(another_box.GetBoxColor());
+                        //просто перемещаем шар в коробку его цвета
+                        ++counter;
+                        rplc_log.append(current_box.GetBoxColor());
+                        rplc_log.append(' ');
+                        rplc_log.append(ball_to_move);
+                        rplc_log.append(' ');
+                        rplc_log.append(another_box.GetBoxColor());
+                        rplc_log.append('\n');
+                    }
+                }
+
+            }
+
+        }
+        rplc_log.insert(0, '\n');
+        rplc_log.insert(0, counter);
+
+        System.out.print(rplc_log.toString());
+
+        /*
+
+
+        try
+        {
+            BufferedWriter out = new BufferedWriter( new FileWriter(output_file_path));
+            out.write(rplc_log.toString());
+            out.close();
+
+        }
+
+        catch(FileNotFoundException e) { //обработка исключения - если файла с путем filename не существует
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+
+
+        return counter;
+    }
+
+
+
+    Storage(String filename)
+    {
+       // try {
+            Boxes = new ArrayList<Box>();
+            //Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)));
+            Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+            NumofBoxes = scanner.nextInt();
+            NumofBalls = scanner.nextInt();
+            while(scanner.hasNextInt())
+            {
+                Integer ball_color = scanner.nextInt(); //приведение к нужным входным данным
+                Integer box_color = scanner.nextInt(); //приведение к нужным входным данным
+                //не очень хорошо, что нет проверки перед чтением второго числа, но предположим, что ввод кооректный
+                Iterator<Box> it = Boxes.iterator();
+                // это итератор - с его помощью мы просматриваем динамический массив
+                boolean isBoxExists = false;
+                while(it.hasNext()) {
+                    Box box = it.next();
+                    if(box.GetBoxColor() == box_color)
+                    {
+                        box.AddBall(ball_color);
+                        isBoxExists = true;
+                        break;
+                    }
+                }
+                //ищем коробку с таким цветом и, если находим, то добавляем шар в нее
+                if(!isBoxExists)
+                {
+                    Box box = new Box(box_color);
+                    box.AddBall(ball_color);
+                    Boxes.add(box);
+                }
+                //а если не существует, то создаем коробку такого цвета и добавляем туда шар
+            }
+            //Все коробки созданы, шары добавлены и раскиданы по коробкам в первоначальном порядке
+
+        //}
+        /*
+        catch(FileNotFoundException e) { //обработка исключения - если файла с путем filename не существует
+            e.printStackTrace();
+        }
+        */
+
+    }
+     //конструктор хранилища коробок, параметр - путь к текстовому файлу с данными в описанном в задачке формате
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Storage storage = new Storage("input.txt");
+        storage.SortBalls("output.txt");
+
+    }
+}
+

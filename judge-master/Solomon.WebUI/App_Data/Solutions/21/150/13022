@@ -1,0 +1,21 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;  i:integer;  sum,st:int64;
+begin
+   readln(s);
+   st:=1;
+   sum:=0;
+   for i:=length(s) downto 1 do
+   begin
+     if s[i]='*' then
+      sum:=sum+st;
+     st:=st*2;
+   end;
+   writeln(sum);
+end.
+ 

@@ -1,0 +1,26 @@
+program svetofori;
+var a, b, x: longint;
+y:real;
+Begin 
+Readln(a, b, x);
+if x/b <= 1000
+then y:=x/b
+else y := x/(b+1*(b+a));
+if x/(2*b+a)>1000
+then y := x/(b+2*(b+a));
+if x/(b+2*(b+a))>1000
+then y := x/(b+3*(b+a));
+if x/(b+3*(b+a))>1000
+then y := x/(b+4*(b+a));
+if x/(b+4*(b+a))>1000
+then y := x/(b+5*(b+a));
+if x/(b+5*(b+a))>1000
+then y := x/(b+6*(b+a));
+if x/(b+6*(b+a))>1000
+then y := x/(b+7*(b+a));
+if x/(b+7*(b+a))>1000
+then y := x/(b+8*(b+a));
+if x/(b+8*(b+a))>1000
+then y := x/(b+9*(b+a));
+writeln(y);
+end.

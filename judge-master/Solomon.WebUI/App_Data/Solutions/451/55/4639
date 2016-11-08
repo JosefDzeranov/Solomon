@@ -1,0 +1,6 @@
+var n,a:longint;
+begin
+readln(n);
+a:=(2*n-1)*( ( (2*n-1) * (2*n-1) )+1) +    ((2*n)*( ( (2*n) * (2*n) )+1) div (2*n)) ;
+writeln(a);
+end.

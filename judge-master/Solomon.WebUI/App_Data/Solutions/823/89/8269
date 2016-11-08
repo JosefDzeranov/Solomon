@@ -1,0 +1,16 @@
+program Grasscut;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x, y, t1, t2 : byte;
+  time : integer;
+begin
+  readln (x, y, t1, t2);
+  time := x * y * t2 + t1 * (y - 1);
+  write (time);
+  readln;
+end.

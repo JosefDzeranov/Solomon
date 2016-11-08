@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,k,b,m,x,i,s:longint;
+begin
+ readln(a,k,b,m,x);
+ s:=0;
+ i:=0;
+ while x>0 do
+  begin
+  i:=i+1;
+   if i mod k>0 then x:=x-a;
+   if i mod m>0 then x:=x-b;
+   s:=s+1;
+  end;
+ writeln(s);
+ readln  
+end.

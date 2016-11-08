@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+int sr;
+int min;
+int n;
+
+void raschet(int a)
+{
+
+	if(a==sr && n%2==0)
+	min=0;
+	if(a==sr && n%2==1)
+	min=a;
+	else if(a<sr)
+	if(sr-a<min)
+	min=sr-a;
+	else a=a;
+	else
+	if(a-sr<min) 
+	min=a-sr;
+}
+
+
+main()
+{
+	float sum=0,h=0,t=0,e=0;
+	int i,j,d;
+	scanf("%d",&n);
+	const int N=n;
+	float a[N];
+	for(i=0;i<n;i++)
+	scanf("%f",&a[i]);
+	for(i=0;i<n;i++)
+	{
+		min=a[i];
+	for(j=i;j<n;j++)
+		{
+			if(a[j]<min)
+			{
+			min=a[j];
+            a[j]=a[i];
+            a[i]=min;
+			}
+		}
+    }
+    min = a[n-1];
+    for(i=0;i<n;i++)
+    sum+=a[i];
+	sr=sum/n;
+	
+	for(i=0;i<n;i++)
+	raschet(a[i]);
+	for(e=0;e<n;e++)
+	{
+	i=0;
+	for(d=0;d<n;d++)
+	{
+    for(;i<n;i++)
+	for(j=i+1;j<n;j++)
+	{
+		t= h+a[i]+a[j];
+	raschet(t);
+}
+	i=d+1;
+	h+=a[d];
+}
+h=0;
+n--;
+for(i=0;i<n;i++)
+a[i]=a[i+1];
+e++;
+}
+	printf("%d",min);
+	
+}

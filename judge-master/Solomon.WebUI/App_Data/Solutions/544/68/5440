@@ -1,0 +1,123 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+int mas[1005][1005];
+int x, y;
+
+int flag;
+int ff;
+
+int hor[] = {0, 1, 0, -1};
+int ver[] = {1, 0, -1, 0};
+vector <int> ans;
+
+void count(int i, int j, int nap, int sum) {
+	if (flag)
+		return;
+	if (i > 400 || j > 400 || i < 0 || j < 0)
+		return;
+
+	if (i == y && j == x)
+	{
+		cout << "YES" << endl;
+		cout << sum << endl;
+		flag = 1+sum;
+		ff = sum;
+		return;
+	}
+	else
+	{
+		if (mas[i+ver[nap]][j+hor[nap]] != -1 || (mas[i][j] != -1 && mas[i+ver[nap]][j+hor[nap]] == -1 ))
+		{
+			count(i+ver[nap], j+hor[nap], nap, sum);
+			if (flag)
+				return;
+		}
+		if (sum < 2)
+		{
+			int b;
+			b = (nap + 1) % 4;
+			if (mas[i+ver[b]][j+hor[b]] != -1 || (mas[i][j] != -1 && mas[i+ver[b]][j+hor[b]] == -1 )){
+				count(i+ver[b], j+hor[b], b, sum + 1);
+				if (flag)
+				{	if (flag > 1) {
+						ans.push_back(i+ver[b]- 200);
+						ans.push_back(j+hor[b]-200);
+						ans.push_back(1);
+					}
+					return;
+				}
+
+			}
+
+			b = (nap - 1 + nap) % 4;
+			if (mas[i+ver[b]][j+hor[b]] != -1 || (mas[i][j] != -1 && mas[i+ver[b]][j+hor[b]] == -1 ))
+			{
+				count(i+ver[b], j+hor[b], b, sum + 1);
+				if (flag)
+				{	if (flag > 1) {
+						ans.push_back(i+ver[b] - 200);
+						ans.push_back(j+hor[b] - 200);
+						ans.push_back(-1);
+					}
+					return;
+				}
+			}
+		}
+
+
+	}
+
+}
+
+
+
+int main() {
+
+	int n, k;
+
+	for (int i = 0; i < 1005; i++)
+		for (int j = 0; j < 1005; j++)
+			mas[i][j] = 0;
+
+	cin >> n >> k;
+	for (int i = 0; i < n; i++)
+	{
+		int a, b, c, d;
+		cin >> a >> b >> c >> d;
+		for (int i = min(b, d); i <= max(b, d); i++)
+			for (int j = min(a, c); j <= max(a, c); j++)
+				mas[i+200][j+200] = -1;
+
+	}
+	for (int i = 0; i < k; i++)
+	{
+		cin >> x >> y;
+		x += 200;
+		y += 200;
+		flag = 0;
+		count(200, 200, 0, 0);
+		if (!flag)
+			cout << "NO" << endl;
+		else
+		{
+			if (ff == 2)
+				{
+				cout << ans[3] << " " << ans[4] << " "<< ans[5] << endl;
+				cout << ans[0] << " " << ans[1] << " "<< ans[2] << endl;
+			}
+			else
+			{
+				cout << ans[0] << " " << ans[1] << " "<< ans[2] << endl;
+			}
+
+		}
+	}
+
+
+	return 0;
+}

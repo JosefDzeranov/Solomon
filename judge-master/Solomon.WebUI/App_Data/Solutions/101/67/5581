@@ -1,0 +1,82 @@
+type
+  tproblem = record
+    s, t, c, prev : longint;
+    ans : int64;
+  end;
+  tevent = record
+    t, n, typ : longint;
+  end;
+
+var
+  n, i : longint;
+  st : array[1..100000] of longint;
+  t : array[1..100000] of tproblem;
+  e : array[1..200000] of tevent;
+  besti, top : longint;
+  best : int64;
+
+procedure qsort(l, r : longint);
+var
+  i, j, tt, xt, xtype : longint;
+  t : tevent;
+begin
+  if (l >= r) then exit;
+  i := l;
+  j := r;
+  tt := random(r - l + 1) + l;
+  xt := e[tt].t;
+  xtype := e[tt].typ;
+  while (i <= j) do begin
+    while (e[i].t < xt) or ((e[i].t = xt) and (e[i].typ < xtype)) do i := i + 1;
+    while (e[j].t > xt) or ((e[j].t = xt) and (e[j].typ > xtype)) do j := j - 1;
+    if (i <= j) then begin
+      t := e[i]; e[i] := e[j]; e[j] := t;
+      i := i + 1;
+      j := j - 1;
+    end;
+  end;
+  qsort(l, j);
+  qsort(i, r);
+end;
+
+begin
+  assign(input, 'olympiad.in');
+  reset(input);
+  assign(output, 'olympiad.out');
+  rewrite(output);
+  read(n);
+  for i := 1 to n do begin
+    read(t[i].s, t[i].t, t[i].c);
+    e[2 * i - 1].t := t[i].s;
+    e[2 * i - 1].n := i;
+    e[2 * i - 1].typ := 1;
+    e[2 * i].t := t[i].s + t[i].t;
+    e[2 * i].n := i;
+    e[2 * i].typ := -1;
+  end;
+  qsort(1, 2 * n);
+  best := 0;
+  besti := 0;
+  for i := 1 to 2 * n do begin
+    if (e[i].typ = 1) then begin
+      t[e[i].n].ans := best + t[e[i].n].c;
+      t[e[i].n].prev := besti;
+    end else begin
+      if (best < t[e[i].n].ans) then begin
+        best := t[e[i].n].ans;
+        besti := e[i].n;
+      end;
+    end;
+  end;
+  writeln(best);
+  top := 0;
+  while (besti <> 0) do begin
+    top := top + 1;
+    st[top] := besti;
+    besti := t[besti].prev;
+  end;
+  writeln(top);
+  for i := top downto 1 do begin
+    write(st[i], ' ');
+  end
+end.

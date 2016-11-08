@@ -1,0 +1,15 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+     d,n:integer;
+begin
+  readln(d);
+  readln(n);
+  writeln(1,' ',n-d);
+  readln;
+end.

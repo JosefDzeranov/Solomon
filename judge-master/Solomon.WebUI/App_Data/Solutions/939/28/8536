@@ -1,0 +1,10 @@
+program costO;
+var
+ o1,o2,o3:integer;
+begin
+ readln(o1,o2,o3);
+ if (o1<=o2) and (o1<=o3) then write((o2+o3))
+  else if (o2<=o1) and (o2<=o3) then write(o1+o3)
+   else write((o1+o2));
+ readln;
+end.

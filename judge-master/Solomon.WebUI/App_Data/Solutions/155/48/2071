@@ -1,0 +1,58 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+const double pi = 3.1415926535;
+
+long double hyp(long double a, long double b) {
+	return sqrt((a * a + b * b) / 4.0);
+}
+
+
+long double trap(long double x, long double y, long double r) {
+
+	return (x / sqrt(r * r - x * x) - y);
+}
+
+
+int main() {
+
+	long double l;
+	long double x1, y1, x2, y2;
+
+	cin >> l;
+	cin >> x1 >> y1;
+	cin >> x2 >> y2;
+
+	long double a, b;
+
+	a = x2 - x1;
+	b = y2 - y1;
+	if (a < 0)
+		a *= -1;
+	if (b < 0)
+		b *= -1;
+
+	long double square;
+
+	if (l >= hyp(a, b))
+		square = a * b;
+	else
+		if (l <= min(a / 2.0, b / 2.0))
+			square = pi * l * l;
+		else
+		{
+			square = a * b - 4 * trap(a / 2.0, y1, l);
+
+
+		}
+
+
+		cout << square << endl;
+
+
+
+	return 0;
+}

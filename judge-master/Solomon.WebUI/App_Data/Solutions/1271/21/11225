@@ -1,0 +1,82 @@
+#include <iostream>
+#include <algorithm>
+#include <stdio.h>
+#include <math.h>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	int n, m, t1, t2, c, delta;
+	c = 0;
+
+	//vector<int> box[10];
+	
+	cin >> n >> m;
+
+	vector<int> *box = new vector<int>[n];
+	vector<int> inbox;
+	inbox.resize(n);
+
+	for (vector<int>::iterator it = inbox.begin(), it_end = inbox.end(); it != it_end; ++it)
+	{
+		*it = 0;
+	}
+	for (int i = 0; i < n; ++i)
+	{
+		box[i] = inbox;
+	}
+
+	for (int i = 0; i < m; ++i)
+	{
+		cin >> t1 >> t2;
+		inbox = box[t2 - 1];
+		inbox[t1 - 1]++;
+		box[t2 - 1] = inbox;
+	}
+
+	for (int i = 0; i < n - 1; ++i)
+		for (int j = i + 1; j < n; ++j)
+			c += max(box[i][j], box[j][i]);
+	cout << c << "\n";
+	for (int i = 0; i < n-1; ++i)
+	{
+		for (int j = i+1; j < n; ++j)
+		{
+			if (max(box[i][j], box[j][i]) != 0)
+			{
+				delta = max(box[i][j], box[j][i]) - min(box[i][j], box[j][i]);
+				for (int k = 0; k < max(box[i][j], box[j][i])-delta; ++k)
+				{
+					cout << i + 1 << " " << j + 1 << " " << j + 1 << " " << i + 1;
+					cout << "\n";
+				}
+				for (int k = 0; k < delta; ++k)
+				{
+					if (box[i][j] > box[j][i])
+					{
+						cout << i + 1 << " " << j + 1 << " " << j + 1;
+					}
+					else
+					{
+						cout << j + 1 << " " << i + 1 << " " << i + 1;
+					}
+					cout << "\n";
+				}
+			}
+		}
+	}
+
+	/* for (int i = 0; i < n; ++i)
+	{
+		cout << "box: " << i + 1 << "\n";
+		for (int j = 0; j < n; ++j)
+		{
+			cout << "color: " << j + 1 << "; count: " << box[i][j] << "\n";
+		}
+		cout << "-----\n";
+	} */
+
+	return 0;
+}

@@ -1,0 +1,49 @@
+var
+  i, j, k, t, a, b, n, m, l, h: byte;
+  mas: array[1..101, 1..2]of byte;
+  otvet: array[1..100]of string;
+  q, w, q1, q2: string;
+
+begin
+  k := 0;
+  
+  readln(n, m);
+  
+  for i := 1 to m do 
+  begin
+    readln(a, b);
+    mas[i, 1] := a;
+    mas[i, 2] := b;
+  end;
+  
+  for i := 1 to m do 
+    if mas[i, 1] <> mas[i, 2] then begin
+      for j := i + 1 to m + 1 do
+        if (mas[i, 1] = mas[j, 2]) and (mas[i, 2] = mas[j, 1]) then begin
+          str(mas[i, 1], q);
+          str(mas[i, 2], w);
+          inc(k);
+          otvet[k] := q + ' ' + w + ' ' + w + ' ' + q;
+          mas[i, 1] := mas[i, 2];
+          mas[j, 1] := mas[j, 2];
+        end
+        else begin
+          for l := i + 1 to m + 1 do
+            if mas[i, 2] = mas[l, 1] then
+              for h := i + 1 to m + 1 do
+                if (mas[i, 1] = mas[h, 2]) and (mas[l, 2] = mas[h, 1]) then begin
+                  str(mas[i, 1], q);
+                  str(mas[i, 2], w);
+                  str(mas[l, 1], q1);
+                  str(mas[l, 2], w1);
+                  inc(k);
+                  otvet[k] := q + ' ' + w + ' ' + q1 + ' ' + w2;
+                  
+                end;
+        end;
+    end;
+  writeln(k);
+  for i := 1 to k do
+    writeln(otvet[i]);
+  
+end.

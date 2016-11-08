@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace FibMouse
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> fibnumbers = new List<int>();
+            string[] s = Console.ReadLine().Split();
+            int n = int.Parse(Console.ReadLine());
+            int a = int.Parse(s[0]);
+            int b = int.Parse(s[1]);
+            int c = 0;
+            string result = a.ToString() + b.ToString();
+            
+            while (result.Length < n)
+            {
+                c = a + b;
+                a = b;
+                b = c;
+                result += c.ToString();
+            }
+            Console.WriteLine(result[result.Length-1]);          
+            
+        }
+    }
+}

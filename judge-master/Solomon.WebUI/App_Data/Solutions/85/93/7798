@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int ch1, min1, ch2, min2;
+    cin >> ch1 >> min1;
+    cin >> ch2 >> min2;
+    int ans = ch2 * 60 + min2 - ch1 * 60 - min1;
+    cout << ans / 60 << " " << ans % 60;
+    return 0;
+}

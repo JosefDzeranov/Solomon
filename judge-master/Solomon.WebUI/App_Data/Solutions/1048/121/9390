@@ -1,0 +1,18 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,m:integer;
+begin
+read(n);
+read(m);
+readln;
+if (n <=m) and (m-n>0) and (n*n>m) then
+   writeln('Yes')
+   else
+    writeln('No');
+   readln;
+end.

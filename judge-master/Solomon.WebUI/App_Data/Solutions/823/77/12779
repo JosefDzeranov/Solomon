@@ -1,0 +1,27 @@
+program SquareEncoding;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s : string;
+  i, j, t : integer;
+  temp : extended;
+
+begin
+  readln (s);
+  temp := sqrt (length (s));
+  if frac (temp) <> 0 then
+  begin
+    t := (trunc (temp) + 1) * (trunc (temp) + 1) - length (s);
+    for i := 1 to t do
+      s := s + ' ';
+  end;
+  t := trunc (sqrt (length (s)));
+  for i := 1 to t do
+    for j := 1 to t do
+      write (s[i + t * (j - 1)]);
+  readln;
+end.

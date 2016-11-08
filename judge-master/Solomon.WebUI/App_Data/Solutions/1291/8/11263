@@ -1,0 +1,17 @@
+// ConsoleApplication1.cpp: определяет точку входа для консольного приложения.
+//
+
+//#include "stdafx.h"
+#include <stdio.h>
+#include <iostream>
+
+int main()
+{
+	long long int a, b;
+	using namespace std;
+	cin>>a>>b;
+	cout<<a+b;
+	printf("%d", a+b);
+	return 0;
+}
+

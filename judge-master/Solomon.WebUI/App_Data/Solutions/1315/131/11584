@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n, k;
+	cin >> n >> k;
+	int *a = new int[n];
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	int *sums = new int[n-k+1];
+	int maxi = 0;
+	for (int i = 0; i < (n-k+1); i++) {
+		sums[i] = 0;
+		for (int j = i; j < i+k; j++) {
+			sums[i] += a[j];
+		}
+		//cout << sums[i] << endl;
+		if (sums[i] > sums[maxi]) {
+			maxi = i;
+		}
+	}
+	for (int i = maxi; i < maxi+k; i++) {
+		a[i] = -1000;
+	}
+	int maxf = 0;
+	for (int i = 0; i < n; i++) {
+		int ss = 0;
+		for (int j = i; j < i+k; j++) {
+			ss += a[j];
+		}
+		if (ss > maxf)
+			maxf = ss;
+	}
+	cout << maxf << endl;
+
+	return 0;
+}

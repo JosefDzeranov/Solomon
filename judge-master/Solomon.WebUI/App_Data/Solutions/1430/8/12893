@@ -1,0 +1,5 @@
+Var a,b:longint;
+Begin
+Read(a,b);
+Writeln(a+b);
+End.

@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+void main()
+{
+	int L, x1, x2, y1, y2, S;
+	cin>>L;
+	cin>>x1, y1;
+	cin>>x2, y2;
+	{
+		int S=L*L*3.14
+	}
+	cout<<S;
+}

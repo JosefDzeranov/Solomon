@@ -1,0 +1,13 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,x : longint;
+begin
+readln(n);
+writeln(n div 2 * 2);
+readln;
+end.

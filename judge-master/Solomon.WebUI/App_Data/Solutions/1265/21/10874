@@ -1,0 +1,54 @@
+type
+  p = record
+    nom, c: integer;
+  end;
+
+var
+  n, m, j, i, kol, k, kol2,z,b: integer;a: array [1..100] of p;l: array[1..400] of integer;t2, t: boolean;
+
+begin
+  readln(n, m);
+  kol := 0;
+  for i := 1 to m do begin read(z,b);if  (z<>b) then begin inc(j);a[j].c:= z;a[j].nom:=b;end;end;
+  if (m = 1) and (a[1].nom <> a[1].c) then begin writeln(1);write(a[1].nom, ' ', a[1].c, ' ', a[1].c);exit; end;
+  m:=j;
+  for i := 1 to m do 
+    if a[i].nom <> a[i].c then begin
+      t := false;
+      for j := 1 to m do
+        if (j <> i) then
+          if (a[j].nom = a[i].c) and (a[j].c = a[i].nom) then
+          begin
+            t := true;
+            inc(kol2);
+            kol := kol + 5;
+            l[kol - 4] := a[i].nom;
+            l[kol - 3] := a[i].c;
+            l[kol - 2] := a[j].nom;
+            l[kol - 1] := a[j].c;
+            l[kol] := -1;
+            k := a[i].nom; 
+            a[i].nom := a[j].nom;
+            a[j].nom := k; 
+            break;
+          end; 
+      if not t then begin
+        t2 := false;
+        for j := 1 to m do
+          if (j <> i) then
+          begin
+            t2 := true;
+            inc(kol2);
+            kol := kol + 4;
+            l[kol - 3] := a[i].nom;
+            l[kol - 2] := a[i].c;
+            l[kol - 1] := a[i].c;
+            l[kol] := -1;
+            a[i].nom := a[j].nom; 
+            break; 
+          end; end; end;
+  writeln(kol2);
+  for i := 1 to kol do 
+    if (l[i] <> -1) and (l[i + 1] <> -1) then write(l[i], ' ') else 
+    if (l[i] <> -1) and (l[i + 1] = -1) then begin write(l[i]); writeln(); end;
+end.

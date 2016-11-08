@@ -1,0 +1,39 @@
+//#include "stdafx.h"
+//#include <conio.h>
+//#include <stdlib.h>
+#include <stdio.h>
+
+
+
+int main()
+{
+	unsigned long long int a, k, b, m, result;
+	long long int x;
+	scanf("%lld%lld%lld%lld%lld", &a, &k, &b, &m, &x);
+	result = 0;
+	if (x<k && x<m)
+		result = x/(a+b);
+	else if(k==m)
+		 {
+		 	 for(int i=1; x>0; ++i)
+		 		{
+		 			if(!(i%k==0))
+			 			x-=a+b;
+			 		++result;
+			 	}
+		 }
+
+	else for(int i=1; x>0; ++i)
+		 {
+			if(!(i%k==0))
+				x-=a;
+			if(!(i%m==0))
+				x-=b;
+			++result;
+		 }
+	printf("%lld", result-1);
+
+	//getch();
+	return 0;
+}
+

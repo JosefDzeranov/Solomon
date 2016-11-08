@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            long a = Convert.ToInt64(ss[0]);
+            long b = Convert.ToInt64(ss[1]);
+            long c = Convert.ToInt64(ss[2]);
+            long d = Convert.ToInt64(ss[3]);
+            long k = Math.Min(a, b) + Math.Min(c, d);
+            Console.WriteLine(Convert.ToInt32(Math.Pow( k, 0.5)));
+        }
+    }
+}

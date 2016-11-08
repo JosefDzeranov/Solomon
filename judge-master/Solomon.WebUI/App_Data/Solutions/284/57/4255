@@ -1,0 +1,54 @@
+var nnew,n,i,s,k,x1,x2,x3,x4,x5,x6,x7,x8,x9,m,y1,y2,y3,y4,y5,y6,y7,y8,y9:longint;
+    a,c:array[1..999999] of longint;
+begin
+ readln(n);
+ for i:=1 to n do begin
+     read(a[i]);
+     if a[i]<0 then a[i]:=a[i]*(-1);
+     c[i]:=a[i];
+     end;
+
+     for i:=1 to n do
+ while a[i]>9 do
+  begin
+   nnew:=0;
+   while a[i]>0 do
+    begin
+     nnew:=nnew+a[i] mod 10;
+     a[i]:=a[i] div 10;
+    end;
+   a[i]:=nnew;
+end;                  // в а и в цифровой корень
+
+ for i:=1 to n do begin
+     if a[i]=1 then begin inc(x1);     y1:=a[i];  end;
+     if a[i]=2 then begin inc(x2);     y2:=a[i];  end;
+     if a[i]=3 then begin inc(x3);     y3:=a[i];  end;
+     if a[i]=4 then begin inc(x4);     y4:=a[i];  end;
+     if a[i]=5 then begin inc(x5);     y5:=a[i];  end;
+     if a[i]=6 then begin inc(x6);     y6:=a[i];  end;
+     if a[i]=7 then begin inc(x7);     y7:=a[i];  end;
+     if a[i]=8 then begin inc(x8);     y8:=a[i];  end;
+     if a[i]=9 then begin inc(x9);     y9:=a[i];  end;
+     end;
+
+
+   if (x1>x2)and(x1>x3)and(x1>x4)and(x1>x5)and(x1>x6)and(x1>x7)and(x1>x8)and(x1>x9)  then m:=y1 else
+   if (x2>x1)and(x2>x3)and(x2>x4)and(x2>x5)and(x2>x6)and(x2>x7)and(x2>x8)and(x2>x9)  then m:=y2 else
+   if (x3>x2)and(x3>x1)and(x3>x4)and(x3>x5)and(x3>x6)and(x3>x7)and(x3>x8)and(x3>x9)  then m:=y3 else
+   if (x4>x2)and(x4>x3)and(x4>x1)and(x4>x5)and(x4>x6)and(x4>x7)and(x4>x8)and(x4>x9)  then m:=y4 else
+   if (x5>x2)and(x5>x3)and(x5>x4)and(x5>x1)and(x5>x6)and(x5>x7)and(x5>x8)and(x5>x9)  then m:=y5 else
+   if (x6>x2)and(x6>x3)and(x6>x4)and(x6>x5)and(x6>x1)and(x6>x7)and(x6>x8)and(x6>x9)  then m:=y6 else
+   if (x7>x2)and(x7>x3)and(x7>x4)and(x7>x5)and(x7>x6)and(x7>x1)and(x7>x8)and(x7>x9)  then m:=y7 else
+   if (x8>x2)and(x8>x3)and(x8>x4)and(x8>x5)and(x8>x6)and(x8>x7)and(x8>x1)and(x8>x9)  then m:=y8 else m:=y9;
+
+
+
+ for i:=1 to n do begin
+     if a[i]<>m then
+     write(c[i],' ');
+ end;
+
+
+
+end.

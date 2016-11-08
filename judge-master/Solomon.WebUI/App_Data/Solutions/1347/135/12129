@@ -1,0 +1,26 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,k,m,x,o:integer;
+begin
+readln(a,k,b,m,x);
+o:=0;
+
+while x>0 do
+begin
+ o:=o+1;
+ if o mod k=0 then
+  begin
+   if o mod m<>0 then
+    x:=x-b;
+   end
+ else
+  if o mod m=0 then x:=x-a
+  else x:=x-a-b;
+ end;
+writeln(o);
+end.

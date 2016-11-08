@@ -1,0 +1,12 @@
+var
+  sum,k,n1,n:int64;
+begin
+  readln(n);
+  n1:=2*n;
+  sum:=n1*n1+1;
+  n1:=n1-1;
+  k:=n1*n1*(n1*n1+1) div 2 ;
+  k:=k div n1;
+  sum:=sum+k*2;
+  writeln(sum);
+end.

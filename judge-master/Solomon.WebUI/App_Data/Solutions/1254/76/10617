@@ -1,0 +1,30 @@
+{$H+}
+var
+s,ch:string;
+n,i,k,l,j,m,c:longint;
+
+
+
+begin
+readln(n);
+for i:=1 to n do
+begin
+readln(s); j:=1; 
+       while j<= length(s) do  begin
+       m:=0; c:=1;
+          while (j<=length(s)) and (ord(s[j])>=ord('0')) and (ord(s[j])<=ord('9')) do begin
+          case c of
+          1: m:=m+(ord(s[j])-48);
+          2: m:=m*10+(ord(s[j])-48);
+          3: m:=m*10+(ord(s[j])-48);
+          end;
+           inc(j);
+           inc(c);
+           end;
+          if m<>0 then k:=k+m;
+           inc(j);
+       end;
+       
+end;
+writeln(k);
+end.

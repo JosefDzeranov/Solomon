@@ -1,0 +1,30 @@
+var x,y,i,n,z:longint;
+    a,b,p:array[1..100]of longint;
+procedure pr(x:longint);
+ var y:longint;
+  begin
+   y:=0;
+   while x>0 do
+    begin
+     y:=y+x mod 10;x:=x div 10;
+    end;
+   if y<9 then z:=y else pr(y);
+  end;
+ begin
+ // assign(input,'input1.txt'); reset(input);
+ //  assign(output,'output1.txt'); rewrite(output);
+    readln(n);
+    for i:=1 to n do
+     begin
+      read(a[i]);z:=0;
+      pr(a[i]);p[i]:=z;
+      inc(b[z]);
+     end;
+    x:=1;
+    for i:=2 to 9 do
+     if b[i]>b[x] then x:=i;
+    for i:=1 to n do
+     if p[i]<>x then write(a[i],' ');
+  end.
+
+

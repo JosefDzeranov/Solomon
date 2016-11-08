@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int m, n, sp = 0, ep = 0;
+    cin >> n >> m;
+    int a[m];
+    cin >> a[0];
+    sp = a[0];
+    ep = sp;
+    for (int i = 1; i < m; i++)
+    {
+        cin >> a[i];
+        if(a[i] == ep + 1)
+            ep = a[i];
+        else
+        {
+            if (sp < ep)
+                cout << sp << '-' << ep << ' ';
+            else
+            {
+                cout << sp << ' ';
+            }
+            sp = a[i];
+            ep = sp;
+        }
+    }
+    if (sp < ep)
+        cout << sp << '-' << ep << endl;
+    else
+    {
+        cout << sp << endl;
+    }
+    return 0;
+}

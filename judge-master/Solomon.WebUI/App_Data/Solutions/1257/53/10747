@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class field {
+	vector<vector<int> > f;
+	int width, height;
+
+public:
+	field(int n, int m);
+	void del(int x, int y);
+	int count_parts();
+	void dfs(int i, int j);
+};
+
+field::field(int n, int m) {
+	f.resize(n+2);
+	for (vector<vector<int> >::iterator it = f.begin(); it != f.end(); it++) {
+		it->resize(m+2);
+		fill(it->begin()+1, it->end()-1, 0);
+		*it->begin() = 1;
+		*it->end() = 1;
+	}
+	for (int i = 0; i <= m+1; i++)
+		f[0][i] = f[n+1][i] = 1;
+	width = m;
+	height = n;
+}
+
+void field::del(int x, int y) {
+	f[y][x] = 1;
+}
+
+int field::count_parts() {
+	int count = 0;
+	
+	for (int i = 1; i <= height; i++)
+		for (int j = 1; j <= width; j++)
+			if (!f[i][j]) {
+				count++;
+				dfs(i, j);
+			}
+	return count;
+}
+
+void field::dfs(int i, int j) {
+	f[i][j] = 1;
+	if (!f[i-1][j]) dfs(i-1, j);
+	if (!f[i+1][j]) dfs(i+1, j);
+	if (!f[i][j-1]) dfs(i, j-1);
+	if (!f[i][j+1]) dfs(i, j+1);
+}
+
+int main() {
+	int n, m, k, x, y;
+	
+	cin >> n >> m >> k;
+	field f(n, m);
+	for (; k; k--) {
+		cin >> x >> y;
+		f.del(x, y);
+	}
+	cout << f.count_parts();
+	
+	return 0;
+}

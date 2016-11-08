@@ -1,0 +1,22 @@
+// Gaev_Alexandr.cpp
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <conio.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	__int64 a;
+	cin >> a;
+	int i,count=0;
+	for(i=0;count<=a;i++)
+		count+=i;
+	cout << i-2;
+	return 0;
+}
+

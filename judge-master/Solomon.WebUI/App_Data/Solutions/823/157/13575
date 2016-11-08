@@ -1,0 +1,18 @@
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class SimpleGame {
+    public static void main(String[] args) {
+        try (
+            Scanner reader = new Scanner(System.in);
+            PrintWriter writer = new PrintWriter(System.out, true)
+        ) {
+            int n = reader.nextInt();
+            
+            if (n % 4 % 3 == 0)
+                writer.println("Aslan");
+            else
+                writer.println("Timur");
+        }
+    }
+}

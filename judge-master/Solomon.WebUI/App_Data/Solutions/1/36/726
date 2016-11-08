@@ -1,0 +1,40 @@
+#include <iostream>
+
+#include <string>
+
+#include <locale>
+
+using namespace std;
+
+int main()
+{
+    //setlocale(LC_ALL,"");
+    //wstring S;
+    //wstring s;
+    //int i=0;
+    //wcin>>S>>s;
+    /*if (S=s) cout<<S;
+    else if (int(S[i])<int(s[i])) cout<<s;
+    else if (int(S[i])>int(s[i])) cout<<S;
+    else {i++;if (int(S[i])<int(s[i]))} cout <<s;
+    else {i++;if (int(S[i])>int(s[i]))} cout <<S;
+    */
+    /*if  (S=s) cout<<S;
+    else
+    while (i<=2)
+    {
+        if (int(S[i])<int(s[i])) cout<<s;
+        else if (int(S[i])>int(s[i])) cout<<S;
+        i++;
+    }*/
+    int c=0,f=-1,k;
+    cin >>k;
+    while (c!=k)
+    {
+        f++;
+        if (f==3) {f=0;c=c-1;}
+        else c++;
+        cout <<c<<" ";
+    }
+    return 0;
+}

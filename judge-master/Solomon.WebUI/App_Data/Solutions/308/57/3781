@@ -1,0 +1,26 @@
+var n,i,m : longint; a,c : array [1..1000] of longint;
+    k : array [0..10] of longint;
+function ci (x : longint) : longint;
+var s,d : longint;
+begin
+  d:=x;
+  s:=0;
+  while d>0 do
+  begin
+    s:=s + (d mod 10);
+    d:=d div 10;
+  end;
+  if s>9 then ci:=ci(s) else ci:=s;
+end;
+begin
+  readln(n);
+  m:=0;
+  for i:=1 to n do
+  begin
+    read(a[i]);
+    c[i]:=ci(a[i]);
+    inc(k[c[i]]);
+    if (k[c[i]]>k[m])or((k[c[i]]=k[m])and(c[i]<m)) then m:=c[i];
+  end;
+  for i:=1 to n do if c[i]<>m then write(a[i],' ');
+end.

@@ -1,0 +1,21 @@
+program fact;
+var
+ n,k,r:comp;
+function factorial (f:comp):real;
+ var
+  cI,fr:comp;
+ begin
+  fr:=1.0; cI:=1.0;
+  while trunc(cI)<=trunc(f) do
+   begin
+    fr:=fr*cI;
+    cI:=cI+1.0;
+   end;
+  factorial:=fr;
+ end;
+begin
+ readln(n,k);
+ r:=factorial(n) / (factorial(k)*factorial((n-k)));
+ write(r:0:0);
+ readln;
+end.

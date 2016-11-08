@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y,z,q,h,min:integer;
+begin
+ readln(x,y);
+ readln(z,q);
+ min:=(z*60+q)-(x*60+y);
+ h:=min div 60;
+ min:=min mod 60;
+ writeln(h,' ', min);
+ readln;
+end.

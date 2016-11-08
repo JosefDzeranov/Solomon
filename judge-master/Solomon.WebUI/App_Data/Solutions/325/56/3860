@@ -1,0 +1,32 @@
+program z3;
+var a,b,c,d,e,i:longint; s,s1,s2:string;
+begin
+s:='';
+s1:='';
+s2:='';
+a:=0;
+b:=1;
+c:=0;
+d:=0;
+e:=0;
+i:=0;
+readln(a);
+for i:=1 to a do
+b:=b*i;
+repeat
+c:=b mod 2;
+s:=inttostr(c);
+s2:=s+s2;
+b:=b div 2;
+until b<2;
+s:=inttostr(b);
+s2:=s+s2;
+repeat
+d:=length(s2);
+s1:=copy(s2,d,1);
+if s1='0' then
+e:=e+1;
+delete(s2,d,1);
+until s1<>'0';
+writeln(e);
+end.

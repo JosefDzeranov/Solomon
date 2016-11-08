@@ -1,0 +1,48 @@
+using System;
+namespace viking {
+	class Program {
+		static void Main() {
+			int N = int.Parse(Console.ReadLine());
+			string[] Sherengi = new string[N];
+			Robot[] zapad = new Robot[N];
+			Robot[] vostok = new Robot[N];
+
+			int result = 0;
+
+			for(int i = 0; i < N; i++) {
+				Sherengi[i] = Console.ReadLine();
+				zapad[i] = new Robot(Sherengi[i].Substring(0, 2));
+				vostok[i] = new Robot(Sherengi[i].Substring(2, 2));
+				result += (zapad[i].Power + vostok[i].Power);
+			}
+
+			if(result == 0) Console.Write(result);
+			else if(result > 0)Console.WriteLine("1 " + Math.Abs(result).ToString());
+			else Console.WriteLine("2 " + Math.Abs(result).ToString());
+			
+		}
+	}
+
+	class Robot {
+		public int Power;
+
+		public Robot(string s) {
+			switch(s) {
+				case ">>": this.Power = 2; break;
+				case "> ": this.Power = 1; break;
+				case " >": this.Power = 1; break;
+				case ">< ": this.Power = 0; break;
+				case "<> ": this.Power = 0; break;
+				case "<<": this.Power = -2; break;
+				case "  ": this.Power = 0; break;
+				case "< ": this.Power = -1; break;
+				case " <": this.Power = -1; break;
+			}
+		}
+		
+	}
+
+	
+	
+	
+}

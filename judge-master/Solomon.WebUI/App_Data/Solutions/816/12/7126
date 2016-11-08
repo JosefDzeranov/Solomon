@@ -1,0 +1,30 @@
+var n,k,i,sum,b,c,ch,min,z,k1,h: longint;
+begin
+  readln(n,k);
+  i:=2; min:=-1; k1:=k;
+  while k > 1 do begin
+    if k mod I = 0 then begin 
+      sum:=0; c:=1; b:=k; ch:=n;
+      while c>0 do begin
+        c:= ch div i;
+        sum:=sum+c;
+        b:=b*k;
+        ch:=ch div i;
+      end;
+      if (sum<min) or (min=-1) then begin min:=sum; z:=i; end;
+      k:=k div I; 
+    end 
+    else inc (i);
+  end; 
+  
+    i:=2; k:=k1;
+    while k > 1 do begin
+    if k mod I = 0 then begin 
+      if (i=z) then inc(h);
+      k:=k div I; 
+    end 
+    else inc (i);
+  end;
+  
+ writeln(min div h);
+end.

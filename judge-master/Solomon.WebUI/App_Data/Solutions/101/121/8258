@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int n = Convert.ToInt32(ss[0]);
+            int m = Convert.ToInt32(ss[1]);
+            if ((n - 1) * (n - 1) > m) Console.WriteLine("No");
+            else Console.WriteLine("Yes");
+
+
+        }
+    }
+}

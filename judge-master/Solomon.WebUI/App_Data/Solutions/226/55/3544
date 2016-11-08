@@ -1,0 +1,6 @@
+Program B;
+var n:integer;
+Begin
+readln(n);
+writeln((2*n-1)*((2*n-1)*(2*n-1)+1)+ 2*n*2*n+1);
+End.

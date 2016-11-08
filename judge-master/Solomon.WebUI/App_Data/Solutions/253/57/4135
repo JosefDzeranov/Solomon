@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cmath>
+#include<stdlib.h>
+#include<cstring>
+#include<map>
+
+using namespace std;
+
+int A[102],B[102], n, C[10];
+
+int main()
+{
+    int a = 1, ans = 0, c, m = -10, i, j;
+    cin >> n;
+    for(i = 0; i < n; i++)
+    {
+        cin >> A[i];
+        c = A[i];
+        while(c > 9)
+        {
+            a = 0;
+            while(c > 0)
+            {
+                a += c % 10;
+                c /= 10;
+            }
+            c = a;
+        }
+        B[i] = c;
+        C[c] += 1;
+    }
+
+    for(j = 1; j < 10; j++)
+    {
+        if (C[j] > m)
+        {
+            m = C[j];
+            ans = j;
+        }
+    }
+    for(i = 0; i < n; i++)
+    {
+        if (B[i] != ans)
+        {
+            cout << A[i] << " ";
+        }
+    }
+    return 0;
+}

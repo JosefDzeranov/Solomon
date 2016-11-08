@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int a[111],i,n,s,o;
+
+int main()
+{
+cin>>n;
+for(i=1;i<=n;i++)
+cin>>a[i],s+=a[i];
+if(s%n!=0)
+cout<<"IMPOSSIBLE";
+else{
+for(i=1;i<=n;i++){
+	if(a[i]>s/n)
+	o+=a[i]-s/n;
+}	
+cout<<o;
+}
+}

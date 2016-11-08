@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+long long mas[100005];
+
+int main()
+{
+	long long n, k;
+	cin >> n >> k;
+	mas[1] = 2;
+	long long st = 2;
+	for (int i = 2; i <= n; i++)
+	{
+		st *= 2;
+		st %= 1000000007;
+		mas[i] = 2 * mas[i - 1];
+		mas[i] %= 1000000007;
+		mas[i] += st;
+		if (i % 2 == 0)
+			mas[i]--;
+	}
+	cout << mas[n];
+	return 0;
+}

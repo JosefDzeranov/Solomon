@@ -1,0 +1,33 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  Math;
+
+var
+  L, R1, R2,
+  bigcount, smallcount: Integer;
+  N: Double;
+begin
+  readln(N, L);
+  readln(R1, R2);
+  if L mod (R1 * 2) > 0 then
+    bigcount := ((L div (R1 * 2)) + 1) * 2
+  else
+    bigcount := (L div (R1 * 2)) * 2;
+  if (PI * 2 * R1) * bigcount <= N then
+  begin
+    smallcount := bigcount div 2;
+    if (PI * 2 * R1) * bigcount + (PI * 2 * R2) * smallcount <= N then
+    begin
+      writeln('YES');
+      writeln(bigcount, ' ', smallcount);
+    end else
+      writeln('NO');
+  end else
+    writeln('NO');
+  readln;
+end.
+ 

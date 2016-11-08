@@ -1,0 +1,27 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,m,k,i,j,rast,max:integer;  a:array[1..2,1..1000] of integer;
+begin
+readln(n,m,k);
+for I := 1 to k do
+  begin
+    readln(a[1,i],a[2,i]);
+  end;
+  max:=0;
+  for I := 1 to n do
+   for j := 1 to m do
+   begin
+    rast:=n+m;
+     for k := 1 to k do
+     if abs(a[1,k]-i)+abs(a[2,k]-j)<rast then  rast:= abs(a[1,k]-i)+abs(a[2,k]-j);
+     if rast>max then max:=rast;
+     
+   end;
+  writeln(max);
+readln;
+end.

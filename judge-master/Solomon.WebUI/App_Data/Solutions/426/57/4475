@@ -1,0 +1,69 @@
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <string>
+
+#define endl '\n'
+
+using namespace std;
+
+
+int n;
+int s[11], m = 0;
+pair<string, int> a[100];
+
+int sum_c(int n){
+	int k = 0;
+	while (n != 0){
+		k += n % 10;
+		n /= 10;
+	}
+	return k;
+}
+
+
+int s_sum(string n){
+	int k = 0;
+	for (int i = 0; i < n.size(); i++){
+		k += (n[i] -'0');
+	}
+	return k;
+}
+
+
+int sq(string n){
+	int k = s_sum(n);
+	while (k >= 10){
+		k = sum_c(k);
+	}
+	return k;
+}
+
+
+int main(){ 
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a[i].first;
+		a[i].second = sq(a[i].first);
+		s[a[i].second]++;
+
+	}
+
+	for (int i = 0; i < 11; i++){
+		if (s[i] != 0 && s[i] > m){
+			m = i;
+		}
+	}
+
+	for (int i = 0; i < n; i++){
+		if (a[i].second != m){
+			cout << a[i].first << ' ';
+		}
+	}
+	return 0;
+}

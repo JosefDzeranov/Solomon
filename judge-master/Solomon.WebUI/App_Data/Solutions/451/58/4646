@@ -1,0 +1,35 @@
+program z_array;
+var a:array[1..100] of longint;
+    i,j,n,raz:longint;
+  temp:longint;
+begin
+
+ {Ввод количества камней}
+ readln(n);
+ {/Ввод количества камней}
+ {Цикл считывания весов камней}
+ for i:=1 to n do
+  read(a[i]);
+ {/Цикл считывания весов камней}
+ {Упарядочивание массива по убыванию}
+ for i:=1 to n-1 do
+  for j:=i+1 to n do
+   if a[i]<a[j] then
+   begin
+    temp:=a[i];
+  a[i]:=a[j];
+  a[j]:=temp;
+   end;
+  {/Упарядочивание массива по убыванию}
+  raz:=0;
+  {Поиск минимальной разности двух куч}
+  for i:=1 to n do
+  if raz>0 then
+   raz:=raz - a[i]
+  else
+   raz:=raz+a[i];
+  {/Поиск минимальной разности двух куч}
+
+  writeln(abs(raz));
+
+end.

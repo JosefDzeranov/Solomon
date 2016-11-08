@@ -1,0 +1,15 @@
+k = int(input())
+A = list(map(int, input().split()))
+
+heads = 3
+
+for i in range (k):
+    heads -= A[i*2]
+    if heads <= 0:
+        break
+    heads += A[i*2+1]
+if heads > 0:
+    result = 'NO'
+else:
+    result = 'YES'
+print (result)

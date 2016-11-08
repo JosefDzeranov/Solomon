@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+#include <cmath>
+
+int f (int n) {
+	int t=1;
+	for (int i=1; i<=n; i++)
+		t*=i;
+	return t;
+}
+
+int main() {
+	int a, b, c;
+	cin >> a >> b;
+	c=f(a)/(f(b)*f(a-b));
+	cout << c;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

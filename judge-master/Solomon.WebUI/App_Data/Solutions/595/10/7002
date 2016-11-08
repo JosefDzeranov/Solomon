@@ -1,0 +1,13 @@
+ function fact(n : integer) : int64;
+  begin
+    if n <= 1 then
+      fact := 1
+    else
+      fact := n * fact(n - 1);
+  end;
+var
+  a,b: integer;
+begin
+  read(a,b);
+  writeln(fact(a)/(fact(b)*fact(a-b)));
+end.

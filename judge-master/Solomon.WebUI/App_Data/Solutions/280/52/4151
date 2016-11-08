@@ -1,0 +1,8 @@
+program pervonap;
+var summ:int64;
+a:integer;
+begin
+Readln (a);
+summ:=a*(a-1)*(a-2);
+WriteLn (summ);
+End.

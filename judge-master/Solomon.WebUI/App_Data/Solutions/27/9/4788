@@ -1,0 +1,31 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int a,b,c,d,s=0,n;
+cin>>a>>n>>b>>c>>d;
+if(a==2)
+{
+if(b<=n)
+s=b;
+if(c<=b)
+s=c;
+if(d<=c)
+s=d;
+
+}
+if(a==1)
+{
+if(b<=n)
+s+=n-b;
+if(c<=n)
+s+=n-c;
+if(d<=n)
+s+=n-d;
+s=n-s;
+}
+cout<<s;
+
+}

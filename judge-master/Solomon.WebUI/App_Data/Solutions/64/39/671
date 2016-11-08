@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector <int> mas;
+int main()
+{
+	//freopen("TextFile1.txt", "r", stdin);
+
+	int m, n;
+	cin >> m >> n;
+	int x, y;
+	cin >> x;
+	mas.push_back(x);
+	int fl = 0;
+	for (int i = 1; i < n; i++)
+	{
+		cin >> y;
+		int yyy;
+		
+		if (y - x > 1)
+		{
+			if ( fl == 0) mas.push_back(y);
+			else 
+			{
+				mas.push_back(-1);
+				mas.push_back(x);
+				mas.push_back(y);
+				fl = 0;
+			}
+		}
+		else
+		{
+			fl++;
+		}
+		x = y;
+	}
+	if (fl > 0)
+	{
+		mas.push_back(-1);
+		mas.push_back(y);
+	}
+	for (int i = 0; i < mas.size(); i++)
+	{
+		if (mas[i] == -1) cout <<'-';
+		else
+		{
+			if (i < mas.size() - 1 && mas[i + 1] == -1) cout << mas[i];
+			else cout << mas[i] << ' ';
+		}
+	}
+	return 0;
+}

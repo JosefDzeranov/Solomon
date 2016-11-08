@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	long long n;
+	cin >> n;
+	long long ans;
+	if (n % 2 == 0) ans = 2 * (n / 2) * (n / 2 + n % 2);
+	else ans = n * (n - 1);
+	cout << ans;
+	return 0;
+}

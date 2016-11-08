@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <set>
+
+#define endl '\n'
+
+using namespace std;
+
+
+int n, cnt = 0;
+
+int main(){ 
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin >> n;
+	while (n != 0){
+		cnt += n / 2;
+		n /= 2;
+	}
+	cout << cnt;
+	return 0;
+}

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace speedArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long a, b;
+            b = 0;
+            long N = Convert.ToInt64(Console.ReadLine());
+            int[] temp = (Console.ReadLine().Split(' ')).Select(x =>  Convert.ToInt32(x)).ToArray();
+                
+
+            for (int i = 0; i <= N - 1; i++)
+            {
+                a = temp[i];
+                if (i % 2 == 0)
+                    b = b + a;
+                else
+                    b = b - a;
+            }
+            long xx = (0 - b) + 1;
+            Console.WriteLine(xx);
+         }
+    }
+}

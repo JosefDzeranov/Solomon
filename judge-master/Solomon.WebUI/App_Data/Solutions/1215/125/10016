@@ -1,0 +1,17 @@
+var x1,x2,x3,y1,y2,y3:integer;
+d,d1:integer;
+function B1(a,b:integer):integer;
+begin
+if a<b then B1:=a else B1:=b
+end;
+begin
+read(x1,y1,x2,y2,x3,y3);
+if (y1<y3)and(y2>y3) then d:=abs(x1-x3) else d:=maxint;
+d1:=d;
+if (y2>y3) and(y3>y1) then d1:=abs(x2-x3);
+d:=B1(d,d1);
+if (x3>x1) and(x3<x2) then d:=B1(d,abs(y3-y1));
+if (x3<x2) and(x3>x1) then d:=B1(d,abs(y2-y3));
+write(d);
+end.
+

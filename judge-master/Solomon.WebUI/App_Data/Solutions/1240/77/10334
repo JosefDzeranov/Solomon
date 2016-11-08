@@ -1,0 +1,24 @@
+VAR
+  c: Char;
+  i,j,n,len: LongINt;
+  a: Array [1..1000000] of Char;
+BEGIN
+  While (not eoln) do begin
+    Inc(len);
+    Read(a[len]);
+  End;
+  
+  n := Trunc(Sqrt(len));
+  if (Frac(Sqrt(len)) > 0) then Inc(n);
+  
+  i := 1;
+  j := 1;
+  While (j <= n) do begin
+    if (n*(i-1)+j <= len) then Write(a[n*(i-1)+j])
+    else Write(' ');
+    
+    Inc(i);
+    if (i = n+1) then begin
+      Inc(j); i := 1; end;
+  End;
+END.

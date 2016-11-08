@@ -1,0 +1,25 @@
+﻿Module Module1
+
+    Sub Main()
+        Dim N, K, I, S, L, M As Integer, B, A(N) As String
+        K = val(Text1.Text)
+        S = 0
+        B = text2.Text
+        N = Len(B)
+        For I = 1 To N
+            M = O
+            Do
+                A(I) = Mid(B, I, 1)
+                If A(I) = "P" Then S = S + 1 : L = I
+                M = M + 1
+
+
+            Loop While M <= K
+
+        Next
+        Label1.Caption = L
+
+
+    End Sub
+
+End Module

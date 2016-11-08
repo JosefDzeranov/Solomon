@@ -1,0 +1,36 @@
+﻿﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static string per(Int64 fact)
+        { 
+            string s="";
+            while (fact > 0)
+            {
+                s = fact % 2+s;
+                fact /= 2;
+            }
+            return (s);
+        
+        }
+
+        static void Main(string[] args)
+        {
+            string s = "";
+            int n = Convert.ToInt32(Console.ReadLine()),u=0;
+            Int64 fact = 1;
+            for (int i = 1; i <= n; i++)
+                fact *= i;
+            s=per(fact);
+            for (int i = s.Length-1; i >= 0; i--)
+                if (s[i] == '1') break; else u++;
+
+            Console.WriteLine(u);
+        }
+
+    }
+}

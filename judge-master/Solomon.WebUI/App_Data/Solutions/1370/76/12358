@@ -1,0 +1,60 @@
+Program D;
+Var i,j,p,l,r:integer;
+    n,w:longint;
+    e,a:string;
+    
+Begin
+     w:=0;
+     r:=0;
+     Read(n);
+     For i:=1 to n+1 do
+     Begin
+          Readln(a);
+          l:=length(a);
+          For j:=1 to l do
+          Begin
+              If ord(a[j]) in [48..57] then
+              Begin
+                   If j<l then
+                   Begin
+                        If ord(a[j+1]) in [48..57] then
+                        Begin
+                             If j+1<l then
+                             Begin
+                                  If a[j+2]='0' then
+                                  Begin
+                                       w:=w+100;
+                                       a[j]:=' ';
+                                       a[j+2]:=' ';
+                                  End Else
+                                  Begin
+                                       e:=a[j]+a[j+1];
+                                       Val(e,r,p);
+                                       w:=w+r;
+                                       a[j+1]:=' ';
+                                  End;
+                             End Else
+                             Begin
+                                   e:=a[j]+a[j+1];
+                                   Val(e,r,p);
+                                   w:=w+r;
+                                   a[j+1]:=' ';
+                             End;
+                        End Else
+                        Begin
+                             e:=a[j];
+                             val(e,r,p);
+                             w:=w+r;
+                        End;
+                    End Else
+                    Begin
+                         e:=a[j];
+                         val(e,r,p);
+                         w:=w+r;
+                    End;
+              End;
+          End;
+      End;
+      Writeln;
+      Write(w);
+End.

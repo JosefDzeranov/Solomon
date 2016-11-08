@@ -1,0 +1,49 @@
+Program E;
+var n,i,j,k,b,min,m,c,d:integer;
+a:array[1..100]of integer;
+Begin
+readln(n);
+m:=0;
+for i:=1 to n do
+ read(a[i]);
+for i:=1 to n do begin
+ m:=m+a[i];
+ end;
+ min:=m;
+ for i:=1 to n do begin
+ k:=m-a[i];
+if (abs(m-2*k))<=min then min:=abs(m-2*k);
+end;
+
+for i:=1 to n do
+for j:=1 to n do begin
+ k:=m-(a[i]+a[i+j]);
+if (abs(m-2*k))<=min then min:=abs(m-2*k);
+end;
+
+for i:=1 to n do
+for j:=1 to n do
+for b:=1 to n do begin
+ k:=m-(a[i]+a[i+j]+a[i+j+b]);
+if (abs(m-2*k))<=min then min:=abs(m-2*k);
+end;
+
+for i:=1 to n do
+for j:=1 to n do
+for b:=1 to n do
+for c:=1 to n do begin
+ k:=m-(a[i]+a[i+j]+a[i+j+b]+a[i+j+b+c]);
+if (abs(m-2*k))<=min then min:=abs(m-2*k);
+end;
+
+for i:=1 to n do
+for j:=1 to n do
+for b:=1 to n do
+for c:=1 to n do
+for d:=1 to n do begin
+ k:=m-(a[i]+a[i+j]+a[i+j+b]+a[i+j+b+c]+a[i+j+b+c+d]);
+if (abs(m-2*k))<=min then min:=abs(m-2*k);
+end;
+
+writeln(min);
+End.

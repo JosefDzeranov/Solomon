@@ -1,0 +1,26 @@
+program lampa2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,d,e:integer; S:string;
+begin
+  readln(a);
+  b:=a div 2;
+  c:=((a-b)div 2)+1;
+  d:=a-b-c;
+  writeln(b,' ',c,' ',d);
+
+
+     readln;
+
+
+
+
+
+
+
+
+end.

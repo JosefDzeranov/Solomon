@@ -1,0 +1,40 @@
+program Task6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var A, K, B, M, X, I, SD, SF, Der, D, F, SV, Day, Days:integer;
+begin
+  SD := 0;
+  SF := 0;
+  read(A, K, B, M, X);
+  for Days := 1 to X do
+    begin
+
+      for D := 1 to K do
+        begin
+          SD := SD + A;
+          writeln(SD,'-dmitry');
+          Day:=Day + 1;
+        end;
+
+      for F := 1 to M do
+        begin
+          SF := SF + B;
+          SV := SF + SD;
+          if X <= SV then
+          break;
+          writeln(SF,'-fedor');
+        end;
+
+
+      if X <= SV then
+      break;
+
+    end;
+  writeln(Day - 1);
+  readln;
+  readln;
+end.

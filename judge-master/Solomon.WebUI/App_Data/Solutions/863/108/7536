@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+        string [] array= s.Split(' ');
+        int[] A = new int[array.Length];
+       for(int x = 0; x < array.Length; x++)
+
+{
+
+   A[x] = Convert.ToInt32(array[x].ToString());
+
+}
+        int dust =0;
+        int runner = 0;
+        while (runner < n){
+            dust=dust+ A[runner];
+            runner+=2;
+        }
+        runner = 1;
+        while (runner < n){
+            dust=dust-A[runner];
+            runner+=2;
+        }
+        if(dust>0){
+            dust=0;
+            Console.WriteLine(dust);
+        }
+        else{
+            dust=(dust*(-1))+1;
+            Console.WriteLine(dust);
+        }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace MarsFactorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] NK = Console.ReadLine().Split();
+
+            long N = long.Parse(NK[0]);
+            long K = long.Parse(NK[1]);
+
+            List<long> mnK = Mnozhiteli(K);
+            List<long> mnN = new List<long>();
+
+            for (int i = 1; i <= N; i++)
+            {
+                mnN.AddRange(Mnozhiteli(i));
+            }
+
+            Console.WriteLine(Kolichestvo(mnN, mnK[mnK.Count - 1]) / Kolichestvo(mnK, mnK[mnK.Count - 1]));
+                        
+        }
+
+
+        /// <summary>
+        /// Раскладываем на множители
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns>Возвращает список множителей</returns>
+        static List<long> Mnozhiteli(long n)
+        {
+            List<long> list = new List<long>();
+            if (n == 1) list.Add(1);            
+            long i = 2;
+            do
+            {
+                if (n % i == 0)
+                {
+                    list.Add(i);
+                    n /= i;
+                }
+                else
+                {
+                    i++;
+                    if (i > n) break;
+                }
+            } while (true); 
+            
+            return list;
+        }
+
+        /// <summary>
+        /// Возвращает количество одинаковых множителей
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        static long Kolichestvo(List<long> list, long m)
+        {
+            long result = 0;
+            foreach (var item in list)
+            {
+                if (item == m) result++;
+            }
+            return result;
+        }
+    }
+}

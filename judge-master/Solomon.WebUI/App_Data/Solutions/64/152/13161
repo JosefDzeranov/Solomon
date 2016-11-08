@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector <string> v;
+	vector <int> v2;
+	for (int i = 0; i < n; i++)
+	{
+		string s;
+		cin >> s;
+		v.push_back(s);
+		v2.push_back(1);
+	}
+	bool t = 1;
+	while (t == 1)
+	{
+		t = 0;
+		for (int i = 0; i < v.size(); i++)
+		{
+			bool t2 = 0;
+			int max_p = 0;
+			int max_s = 0;
+			int p = -1;
+			string s1 = "";
+			if (v[i].size() < 3)
+				s1 = v[i];
+			else
+				s1 = v[i].substr(v[i].size() - 3, 3);
+			for (int j = 0; j < v.size(); j++)
+			{
+				if (j == i) continue;
+				string s2 = "";
+				if (v[j].size() < 3)
+					s2 = v[j];
+				else
+					s2 = v[j].substr(0, 3);
+				if (s1 == s2)
+				{
+					t2 = 1;
+					t = 1;
+					if (v2[j] > max_p || (v2[j] == max_p && v[j].size() > max_s))
+					{
+						max_s = v[j].size();
+						max_p = v2[j];
+						p = j;
+					}
+				}
+			}
+			if (t2 == 1)
+			{
+				v[i] += v[p];
+				v2[i] += v2[p];
+				swap(v[p], v[v.size() - 1]);
+				v.pop_back();
+				swap(v2[p], v2[v2.size() - 1]);
+				v2.pop_back();
+			}
+		}
+	}
+	int max_p = 0;
+	int max_s = 0;
+	int p = -1;
+	for (int i = 0; i < v.size(); i++)
+	{
+		if (v2[i] > max_p || (v2[i] == max_p && v[i].size() > max_s))
+		{
+			max_s = v[i].size();
+			max_p = v2[i];
+			p = i;
+		}
+	}
+	cout << max_p << ' ' << max_s;
+	return 0;
+}

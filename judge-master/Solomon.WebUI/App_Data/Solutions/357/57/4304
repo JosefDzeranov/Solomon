@@ -1,0 +1,59 @@
+var
+  a, b: array [1..100]of integer; 
+  q, n, i, buff, j, k, ind: integer;
+
+begin
+  readln(n);
+  for i := 1 to n do  
+    read(a[i]);
+  
+  for i := 1 to n do 
+  begin
+    q := a[i];
+    while q > 0 do 
+    begin
+      b[i] := b[i] + (q mod 10);
+      q := q div 10;
+    end;
+    
+    q := b[i];
+    b[i] := 0;
+    while q > 0 do 
+    begin
+      b[i] := b[i] + (q mod 10);
+      q := q div 10;
+    end;
+  end;                                  // ÂÑÅ ÏĞÀÂÅËÜÍÎ!
+  
+  
+  ind := 0;
+  k := 0;
+  buff := 0;
+  
+  for i := 1 to 9 do 
+  begin
+    
+    for j := 1 to 100 do 
+      if b[j] = i then k := k + 1; 
+    
+    if k > buff then
+    begin
+      buff := k;
+      ind := i;
+    end;
+    
+    k := 0;
+    
+  end;
+  
+                           //ÂÑÅ ïğàâåëüíî !!!
+  i := 1;
+
+  for i:=1 to n do
+   if b[i]=ind then a[i]:=0;
+  
+  
+  for i:=1 to n do
+     if a[i]<>0 then
+        write (a[i],' ');
+end.

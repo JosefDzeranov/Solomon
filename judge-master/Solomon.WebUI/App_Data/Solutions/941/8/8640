@@ -1,0 +1,6 @@
+var a,b,c:integer;
+Begin
+ readln(a,b);
+ c:=a+b;
+ writeln(c);
+End.

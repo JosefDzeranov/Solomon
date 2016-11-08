@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace E
+{
+    class Program
+    {
+        struct impuls { public int t; public int u; public bool beg;}
+        static impuls[] p;
+        private static int comparer(impuls x, impuls y)
+        {
+            if (x.t < y.t)
+                return -1;
+            else
+                if (x.t == y.t)
+                    if (x.beg)
+                        return -1;
+            return 1;
+
+        }
+        static void Main(string[] args)
+        {
+            
+            string test = "10";
+            //StreamReader sr = new StreamReader(test+".in");
+            //StreamWriter sw = new StreamWriter(test + ".out");
+            int n = Convert.ToInt32(Console.ReadLine());
+            //int n = Convert.ToInt32(sr.ReadLine());
+			
+            p = new impuls[2*n];
+            for (int i = 0; i < n; i++)
+            {
+                string[] t = Console.ReadLine().Split(' ');
+            //    string[] tt = sr.ReadLine().Split(' ');
+                p[i].t = Convert.ToInt32(tt[0]);
+                p[i].u = Convert.ToInt32(tt[1]);
+                p[i].beg = true;
+                p[i+n].t =p[i].t+ Convert.ToInt32(tt[2]);
+                p[i+n].u = p[i].u;
+                p[i+n].beg = false;
+            }
+            Array.Sort(p, comparer);
+            List <int> maxu= new List<int>();
+            Console.Write(p[0].t+ " "+ p[0].u+" ");
+            maxu.Add(p[0].u);
+          //  maxu.Sort();
+            for (int i = 1; i < 2 * n-1; i++)
+            {
+                if (p[i].beg)
+                {
+
+                    if (maxu.Count==0 || p[i].u > maxu[0])
+                    {
+                        Console.WriteLine(p[i].t);
+                        Console.Write(p[i].t + " " + p[i].u+" ");
+                        maxu.Insert(0, p[i].u);
+                    }
+                    else
+                    {
+                        maxu.Add(p[i].u);
+                        maxu.Sort();
+                        maxu.Reverse();
+                    }
+
+                }
+                else
+                {
+                    if (p[i].u == maxu[0])
+                    {
+                        maxu.RemoveAt(0);
+                    }
+                    if (maxu.Count > 0)
+                    {
+                        if (p[i].u > maxu[0])
+                        {
+                            Console.WriteLine(p[i].t);
+                            Console.Write(p[i].t + " " + maxu[0] + " ");
+                        }
+                        else
+                            if (p[i].u < maxu.Count)
+                                maxu.Remove(p[i].u);
+                    }
+                    else
+                    {
+                        Console.WriteLine(p[i].t);
+                        Console.Write(p[i].t + " " + 0 + " ");
+                    }
+                 }
+
+                }
+             Console.WriteLine(p[2*n-1].t);
+             //sw.Close();
+             //sr.Close();
+            }
+        
+
+        }
+}
+      
+ 

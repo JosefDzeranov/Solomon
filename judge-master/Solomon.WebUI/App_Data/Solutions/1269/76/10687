@@ -1,0 +1,27 @@
+const
+   cif = '0123456789';
+
+var
+   n, i, j, kol, k: longint;  
+   s: string;
+
+begin
+   readln(n);
+   for i := 1 to n do
+   begin
+      readln(s);
+      k := 0;
+      for j := 1 to length(s) do
+      begin
+         if pos(s[j], cif) > 0 then
+            k := k * 10 + pos(s[j], cif) - 1
+         else
+         begin
+            kol := kol + k;
+            k := 0;
+         end;
+      end;
+      kol := kol + k;
+   end;
+   write(kol);
+end.

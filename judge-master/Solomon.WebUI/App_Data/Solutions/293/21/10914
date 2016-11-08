@@ -1,0 +1,98 @@
+#include <iostream>
+
+using namespace std;
+
+int potv = 0;
+
+class box
+{
+public:
+	int colors[100];
+	box()
+	{
+		for (int i = 0; i < 100; i++)
+			colors[i] = 0;
+	}
+};
+
+struct otv
+{
+	int color1 = -1, color2 = -1, box1 = -1, box2 = -1;
+};
+
+void setotv(otv *otvet, box *n, int box1, int color1, int box2, int color2 = -1)
+{
+	otvet[potv].box1 = box1;
+	otvet[potv].box2 = box2;
+	otvet[potv].color1 = color1;
+	otvet[potv].color2 = color2;
+	potv++;
+	n[box1].colors[color1]--;
+	n[box2].colors[color1]++;
+	if (color2 != -1)
+	{
+		n[box2].colors[color2]--;
+		n[box1].colors[color2]++;
+	}
+}
+
+int main()
+{
+	int N, M;
+	cin >> N >> M;
+	box *n = new box[N];
+	for (int i = 0; i < M; i++)
+	{
+		int color, boxi;
+		cin >> color >> boxi;
+		n[boxi - 1].colors[color - 1]++;
+	}
+	otv *otvet = new otv[1000];
+	bool help = false;
+	while (help)
+	{
+		help = false;
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				if (i != j && n[i].colors[j] != 0)
+				{
+					if (n[j].colors[i]>0)
+					{
+						setotv(otvet, n, i, j, j, i);
+						help = true;
+					}
+					//else
+					//{
+					//	setotv(otvet, n, i, j, j);
+					//}
+				}
+			}
+		}
+	}
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (i != j && n[i].colors[j] != 0)
+			{
+				if (n[j].colors[i]>0)
+				{
+					setotv(otvet, n, i, j, j, i);
+					help = true;
+				}
+				else
+				{
+					setotv(otvet, n, i, j, j);
+				}
+			}
+		}
+	}
+	for (int i = 0; i < potv; i++)
+	{
+		cout << otvet[i].box1 + 1 << " " << otvet[i].color1 + 1 << " " << otvet[i].box2 + 1;
+		if (otvet[i].color2 != -1) cout << " " << otvet[i].color2 + 1;
+		cout << endl;
+	}
+}

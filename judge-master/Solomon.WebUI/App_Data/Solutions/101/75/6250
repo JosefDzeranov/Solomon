@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Turmets
+{  
+    class Program
+    {
+        static List<string> a;
+        static bool YesNo(string s)
+        {
+           
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (s == a[i]) return true;
+            }
+            return false;
+        
+        }
+
+        static void Main(string[] args)
+        {
+            Int64 n = Convert.ToInt64(Console.ReadLine());
+            a = new List<string>();
+            Int64 k = 0;
+            for (Int64 i = 0; i < n; i++)
+            {
+                string s = Console.ReadLine();
+                if (YesNo(s) == false) { k++; a.Add(s); }
+            }
+            Console.WriteLine(k);
+        }
+    }
+}

@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("N=");
+    int k,N,M,i=1,bolka=0;
+    scanf ("%d",&N);
+    printf ("\nM=");
+    scanf ("%d",&M);
+    while (k>M)
+    {
+        k=i*i;
+        i++;
+       if ((N*N)-k==M) {bolka=1;}
+    }
+     if (bolka==1) printf ("\nYes");
+    else printf ("\nNo");
+            return 0;
+}

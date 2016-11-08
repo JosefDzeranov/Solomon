@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Voprosi
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			long n = long.Parse(Console.ReadLine());
+
+			string[] voprosi = new string[n];
+			for(int i = 0; i < n; i++)
+			{
+				voprosi[i] = Console.ReadLine();
+			}
+
+			int otvet = 0;
+
+			for(int i = 0; i < n-1; i++)
+			{
+				for(int j = i+1; j < n; j++ )
+				if(voprosi[i] != voprosi[j]) otvet++; 
+			}
+             
+			Console.Write(otvet);
+
+        }
+    }
+}

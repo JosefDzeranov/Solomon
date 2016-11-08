@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+//long long step()
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long ans = e / (a - a / b + c - c / d);
+    ans -= 4;
+    if (ans > 100000000000)
+    {
+        while (ans * a - ans / b * a + c * ans  - ans / d * c < e)
+            ans++;
+
+        cout << ans;
+        return 0;
+    }
+
+    while (a * (ans - ans / b) + c * (ans - ans / d) < e)
+        ans++;
+
+    cout << ans;
+    return 0;
+}
+//2 1000000000000 3 1000000000000 25;
+
+//a * (ans - ans / b) + c * (ans - ans / d) < e

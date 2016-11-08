@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <conio.h>
+ 
+ 
+ 
+int main()
+{
+    int n,i,j,h=0,h2=0,min;
+    int sr,sum=0;
+    scanf("%d",&n);
+    const int N = n;
+    int a[N];
+    for(i=0; i<n; i++)
+    scanf("%d",&a[i]);
+    int b;
+    for(i=0;i<n;i++)
+    sum+=a[i];
+    sr=sum/2;
+    for(i=0; i<n; i++)
+    for(j=i+1; j<n; j++)
+    if(a[j]<a[i])
+    {
+    	b=a[j];
+    	a[j]=a[i];
+    	a[i]=b;
+    }
+    min=a[n];
+    for(i=1;i<n;i++)
+    h2+=a[i];
+ if(n%2==0)
+ for(i=0;i<n;i++)
+ {
+ 	h+=a[i];
+ 	if(h<h2 && h2-h<min)
+ 	min=sr-h;
+ 	else if(h-h2<min)
+ 	{
+ 		min=h-sr;
+ 		i=n;
+ 	}
+ }
+ else
+  for(i=0;i<n;i++)
+ {
+ 	h+=a[i];
+ 	if(h<h2 && h2-h<min)
+ 	min=sr-h;
+ 	else if(h-h2<min)
+ 	{
+ 		min=h-h2;
+ 		i=n;
+ 	}
+ }
+ 
+ 
+printf("%d",min);
+}

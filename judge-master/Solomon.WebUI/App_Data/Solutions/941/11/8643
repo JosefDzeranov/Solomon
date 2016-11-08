@@ -1,0 +1,7 @@
+var n,i,x,y:integer;
+begin
+ readln(n);
+ if (n-2)+2+n=2*n then begin
+  for i:=1 to n-2 do write(1,' ');write(2,' ',n);end
+ else write('-1');
+End.

@@ -1,0 +1,14 @@
+def df(n, t, d):
+    if n % t == 0 and ret != 0:
+        return 0
+    else:
+        return d 
+    
+a, k, b, m, x = [int(i) for i in input().split()]
+ret = 0
+while x > 0:
+    d1 = df(ret, k, a)
+    d2 = df(ret, m, b)
+    x += -(d1 + d2)
+    ret += 1
+print(ret)

@@ -1,0 +1,10 @@
+{$h+}
+var
+n,m,i:longint;
+a:string;
+begin
+readln(n,m);
+for i:=1 to m do 
+ readln(a);
+ writeln(0);
+end.

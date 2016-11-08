@@ -1,0 +1,47 @@
+﻿using System;
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] str = Console.ReadLine().Split(' ');
+            int n = int.Parse(str[0]);
+            int m = int.Parse(str[1]);
+            int k = int.Parse(str[2]);
+            string[,] mat = new string[n+2,m+2];
+            for (int i = 0; i < k; i++)
+            {
+                string[] s = Console.ReadLine().Split(' ');
+                mat[int.Parse(s[0]), int.Parse(s[1])] = "*";
+            }
+            int sek = 0;
+            bool y = true;
+              for (int i = 1; i < n; i++)
+              {
+                  for (k = 1; k < n; k++)
+                  {
+                      for (int p = 1; p < m; p++)                      
+                          if (mat[k, p] != "*")  y = false;                     
+                      if (y)
+                          break;
+                  }
+                 if (y)
+                     break;
+                 for (int j = 1; j < m; j++)
+                 {
+                     if (mat[i, j] == "*")
+                     {
+                         mat[i + 1, j] = "*";
+                         mat[i - 1, j] = "*";
+                         mat[i, j + 1] = "*";
+                         mat[i, j - 1] = "*";
+                     }
+                 }
+                 sek++;
+              }
+              Console.WriteLine(sek);
+        }
+    }
+}

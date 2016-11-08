@@ -1,0 +1,36 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+long fact(int num);
+
+int main(int argc, char *argv[])
+{
+    int N;
+    bool check=0;
+    int res=0;
+    cin >> N;
+    
+    N = fact(N);
+    
+    while (!check){
+        if (N%2==0){
+            N=N/2;
+            res++;}
+        else {check=1;}
+    }
+    cout << res;
+    //system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+long fact(int num)
+{
+    long res=1;
+    for (int i=1; i<num+1; i++)
+    {
+        res=res*i;
+    }
+    return res;   
+}

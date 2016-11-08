@@ -1,0 +1,13 @@
+def vkontakteapi(s,i):
+    k=0
+    if ((len(s)-i>7) and (s[i:i+9]=="vkontakte")):
+        for j in range(i_9,len(s)):
+            if ((len(s)-j>1) and (s[j:j+3]=="api")):
+                k+=1
+    return k
+
+n=0
+st=input().rstrip()
+for x in range(len(st)):
+    n+=vkontakteapi(st,x)
+print(n)

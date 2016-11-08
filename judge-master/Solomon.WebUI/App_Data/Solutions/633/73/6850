@@ -1,0 +1,15 @@
+var a,b,v,d,n,i,j:longint;
+begin
+readln(a);
+b:=0;
+v:=1;
+d:=0;
+while d<>a do
+begin
+d:=d+v;
+inc(v);
+inc(b);
+end;
+writeln(b);
+end.
+

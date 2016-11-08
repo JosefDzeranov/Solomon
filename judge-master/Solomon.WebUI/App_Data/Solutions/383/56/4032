@@ -1,0 +1,11 @@
+var n,i,j,k:word;
+BEGIN
+  readln(n);
+  for i:=2 to n do
+    begin
+      k:=i;
+      while not(odd(k))do
+        begin inc(j); k:=k div 2; end;
+  end;
+  writeln(j);
+END.

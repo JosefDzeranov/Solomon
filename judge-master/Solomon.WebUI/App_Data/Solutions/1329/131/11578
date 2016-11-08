@@ -1,0 +1,55 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+      n, k, x, i, j, max, z, p, t: integer;
+      a: array [1..100000] of integer;
+      b: array [1..100000] of integer;
+begin
+  readln(n, k);
+  max := 0;
+
+  for i := 1 to n do
+   read(a[i]);
+  for i := 1 to n - k + 1 do
+    begin
+      for j := i to i + k - 1 do
+        begin
+          b[i] := b[i] + a[j];
+        end;
+    end;
+     p:=a[1];
+
+   for i := 1 to n - k + 1 do
+    if max < b[i] then
+    max := b[i];
+
+   for i := 1 to n - k + 1 do
+    begin
+    if b[i] = max then
+     begin
+       b[i] := 0;
+        for j := i to i + k - 1 do
+          b[j] := 0;
+        for z := i downto i - k + 1 do
+          b[z] := 0;
+       t :=1;
+     end;
+     if t =1 then
+      break;
+    end;
+     max := 0;
+    for i := 1 to n - k + 1 do
+    if max < b[i] then
+    max := b[i];
+    if max = 0 then
+     max := k * p;
+writeln(max);
+readln;
+readln;    
+
+end.

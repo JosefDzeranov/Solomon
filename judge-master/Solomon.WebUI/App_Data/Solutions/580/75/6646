@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace Voprosi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long n = long.Parse(Console.ReadLine());
+
+            List<string> voprosi = new List<string>();
+
+            for (int i = 0; i < n; i++)
+            {
+                string v = Console.ReadLine();
+                if (!voprosi.Contains(v))
+                {
+                    voprosi.Add(v);
+                }
+            }
+            Console.WriteLine(voprosi.Count);           
+
+        }
+    }
+}

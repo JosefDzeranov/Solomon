@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
+#define mp make_pair
+#define pb push_back
+#define F first
+#define S second
+
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+
+const int INF = int(1e9);
+const bool LOCAL = 0;
+
+int a[1000], u[1000];
+
+int f(int x) {
+    if (x < 10)
+        return x;
+    int s = 0;
+    while (x) {
+        s += x % 10;
+        x /= 10;
+    }
+    return f(s);
+}
+
+int main() {
+    cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    if (LOCAL) {
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+    }
+    int n;
+    cin >> n;
+    int m = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        int x = f(a[i]);
+        u[x]++;
+        if (u[x] > u[m] || (u[x] == u[m] && x < m))
+            m = x;
+    }
+    for (int i = 0; i < n; ++i)
+        if (f(a[i]) != m)
+            cout << a[i] << " ";
+    cout << endl;
+    return 0;
+}

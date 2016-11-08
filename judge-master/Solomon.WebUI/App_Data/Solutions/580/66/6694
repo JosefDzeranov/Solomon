@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+
+namespace viking
+{
+	class Program
+	{
+		static void Main()
+		{
+			int n = int.Parse(Console.ReadLine());
+			School[] schools = new School[n];
+
+			for(int i = 0; i < n; i++)
+			{
+				schools[i] = new School(Console.ReadLine());
+			}
+
+			List<int> lst = Otbor(schools);
+
+			Console.WriteLine(lst.Count);
+
+			foreach(int item in lst)
+			{
+				Console.WriteLine(item);
+			}
+
+		}
+
+		static List<int> Otbor(School[] schools)
+		{
+			List<int> list = new List<int>();
+			int k;	
+			for(int i = 0; i < schools.Length; i++)
+			{
+				k = 0;
+				for(int j = 0; j < schools.Length; j++)
+				{
+					if(schools[i].Number == schools[j].Number) k++;
+				}
+
+				if(k <= 5) list.Add(schools[i].Number);				
+			}
+			
+			return list;
+		}
+		
+		
+		
+	}
+
+	class School
+	{
+		private char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+		private string name;
+		public 	string Name
+		{
+			get { return this.name; }
+			set { this.name = value; }
+		}
+
+		public int Number
+		{
+			get { return int.Parse(name.Substring(name.IndexOfAny(digits),
+			name.LastIndexOfAny(digits)-name.IndexOfAny(digits)+1)); }			
+		}
+
+		public School(string name)
+		{
+			this.name = name;			
+		}
+		
+	}
+	
+}

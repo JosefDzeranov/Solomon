@@ -1,0 +1,20 @@
+var n,k,i,sum,b,c,ch,min: Integer;
+begin
+  readln(n,k);
+  i:=2; min:=-1;
+  while k > 1 do begin
+    if k mod I = 0 then begin 
+      sum:=0; c:=1; b:=k; ch:=n;
+      while c>0 do begin
+        c:= ch div i;
+        sum:=sum+c;
+        b:=b*k;
+        ch:=ch div i;
+      end;
+      if (sum<min) or (min=-1) then min:=sum;
+      k:=k div I; 
+    end 
+    else inc (i);
+  end; 
+  writeln(min);
+end.

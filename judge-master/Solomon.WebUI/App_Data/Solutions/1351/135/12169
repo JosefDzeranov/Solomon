@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+long long step(long long n)
+{
+    int r = 1;
+    while (n > 10)
+    {
+        r *= 10;
+        n /= 10;
+    }
+
+    return r;
+}
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long ans = e / (a - a / b + c - c / d);
+    ans -= 4;
+    if (ans > 10000000)
+    {
+        while (ans / step(min(a, c)) * a - ans / min(a, c) / b * a + c * ans / step(min(a, c))  - ans / step(min(a, c)) / d * c < e / step(min(a, c)))
+            ans++;
+
+        //cout << ans << " " << ans / step(min(a, c)) * a - ans / min(a, c) / b * a + c * ans / step(min(a, c))  - ans / step(min(a, c)) / d * c << " " << e / step(min(a, c));
+        cout << ans;
+        return 0;
+    }
+
+    while (a * (ans - ans / b) + c * (ans - ans / d) < e)
+        ans++;
+
+    cout << ans;
+    return 0;
+}
+
+//2 1000000000000 3 1000000000000 25;
+
+//a * (ans - ans / b) + c * (ans - ans / d) < e

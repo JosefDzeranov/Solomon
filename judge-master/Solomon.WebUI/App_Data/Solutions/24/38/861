@@ -1,0 +1,71 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+
+struct point{
+	double x,y;
+	friend istream& operator >> (istream& is, point& p) {
+		is >> p.x >> p.y;
+		return is;
+	}
+};
+
+long double dist(point a, point b) {
+	return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+}
+
+long double scal(point a, point b, point c) {
+	return (a.x - b.x) * (c.x - b.x) + (a.y - b.y) * (c.y - b.y);
+}
+
+int main() {
+
+	/*int cnt = 0;
+	point mas[4];
+	for (int i = 0; i < 4; i++)
+		cin >> mas[i];
+
+	
+
+
+	long double d = dist(mas[0], mas[3]) ;
+	for (int i = 0; i < 3; i++)
+	{
+		long double f = dist(mas[i], mas[i + 1]);
+		if (d == f)
+			cnt++;
+	}
+	if (cnt == 3 && scal(mas[0], mas[1], mas[2])== 0)
+		cout << "YES" << endl;
+	else
+		cout << "NO" << endl;
+	*/
+
+	point a, b, c, d;
+	cin >> a >> b >> c >> d;
+	long double space[6];
+	long double AB, BC, CD, DA, AC, BD;
+
+	space[0] = dist(a, b);
+	space[1] = dist(b, c);
+	space[2] = dist(c, d);
+	space[3] = dist(d, a);
+	space[4] = dist(a, c);
+	space[5] = dist(b, d);
+
+	int cnt = 0;
+	for (int i = 0; i < 6; i++)
+		for (int j = 0; j < 6; j++)
+			if (space[i] == space[j])
+				cnt++;
+	int g;
+
+	if(cnt == 20)
+		cout << "YES" << endl;
+	else
+		cout << "NO" << endl; 
+
+	return 0;
+}

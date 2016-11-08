@@ -1,0 +1,28 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+Module Module1
+
+    Sub Main()
+        Dim taken As String
+        taken = Console.ReadLine
+        Dim cont() As String = Split(taken, " ")
+        Dim a As Integer = cont(0)
+        Dim b As Integer = cont(1)
+        Dim x As Integer = cont(2)
+        Dim speed As Integer
+        Dim time As Integer
+        Dim time2 As Integer = a + b
+
+
+
+        speed = x / b
+
+        wr(speed)
+
+
+    End Sub
+
+    Sub wr(ByVal text As String)
+        Console.WriteLine(text)
+    End Sub
+End Module

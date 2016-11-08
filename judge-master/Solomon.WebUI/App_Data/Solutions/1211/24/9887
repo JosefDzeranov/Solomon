@@ -1,0 +1,85 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int s, res;
+    vector< vector<int> > numbers;
+
+    cin >> s;
+
+    int z[s];
+
+    res = 0;
+
+    for( unsigned j = 0; j < 10; j++ )
+    {
+        numbers.push_back( vector<int>() );
+    }
+
+    for( int i = 0; i < s; i++ )
+    {
+        scanf( "%d", &z[i] );
+
+        int e = z[i];
+
+        int a[10];
+
+        for( unsigned j = 0; j < 10; j++ )
+            a[ j ] = -1;
+
+        vector<int> exclude;
+
+        //cout << endl << "Проверка " << z[i] << ":" << endl;
+
+        while( e != 0 )
+        {
+            vector<int> ex;
+
+            int t = e % 10;
+
+            for( unsigned j = 0; j < numbers[ t ].size(); j++ )
+            {
+                if( exclude.size() >= numbers[ t ][ j ] && exclude[ numbers[ t ][ j ] ] == 1 )
+                {
+                    //cout << "ПРОПУСКАЕМ " << numbers[ t ][ j ] << endl;
+                    continue;
+                }
+
+                //cout << t << " есть в " << numbers[ t ][ j ] << endl;
+
+                res++;
+
+                ex.push_back( numbers[ t ][ j ] );
+            }
+
+            for( unsigned j = 0; j < ex.size(); j++ )
+            {
+                if( exclude.size() <= ex[ j ] )
+                    exclude.resize( ex[ j ] + 1 );
+
+                exclude[ ex[ j ] ] = 1;
+            }
+
+            a[ e % 10 ] = z[ i ];
+
+            e = e / 10;
+        }
+
+        for( signed j = 0; j < 10; j++ )
+        {
+            if( a[ j ] > -1 )
+            {
+                numbers[ j ].push_back( a[ j ] );
+            }
+        }
+    }
+
+    cout << res << endl;
+
+    return 0;
+}
+

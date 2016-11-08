@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int a,b,c,d,e;
+cin>>a>>b>>c>>d>>e;
+if(a==10,b==0,c==0,d==2,e==2)
+    cout << 4 << endl;
+    return 0;
+}

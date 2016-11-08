@@ -1,0 +1,26 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  Math;
+
+var l,i:Integer; a,v:NativeInt; s:string;
+begin
+  Readln(s);
+  a:=0;
+  l:=Length(s);
+  v:=1;
+  for i:=l downto 1 do
+  begin
+    if s[i]='*' then
+    begin
+      a:=a+v;
+    end;
+    v:=2*v;
+  end;
+  Writeln(a);
+  Readln;
+end.
+ 

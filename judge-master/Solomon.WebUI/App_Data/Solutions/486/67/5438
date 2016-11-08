@@ -1,0 +1,194 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int **gl, k=0;
+
+int to_int(string s)
+{
+	int n=0, i;
+	for(i=0;	i<s.length();	i++)	n = n*10+int(s[i])-48;
+	return n;
+}
+string to_str(int n)
+{
+	int i;
+	string s="";
+	while(n!=0)
+	{
+		s+=char(n%10+48);
+		n/=10;
+	}
+	for(i=0;	i<s.length()/2;	i++)
+	{
+		swap(s[i], s[s.length()-i-1]);
+	}
+	return s;
+}
+
+
+string f(int n, int ind)
+{
+	int i, max = 0, m, j;
+	string s ="", x, y="", z="";
+	for(i=0;	i<k;	i++)
+	{
+		if(gl[i][0]==n)
+		{
+			x = f(gl[i][1], i);
+			j=0;
+			y = "";
+			z = "";
+			while(x[j]!=','){y+=x[j];j++;}
+			j++;
+			for(;j<x.length();j++)z+=x[j];
+			m = to_int(y);
+			if(m>max)	{max = m;s = z;}
+		}
+		else if(gl[i][0]>n)	break;
+	}
+	return to_str(max + gl[ind][2])+","+s + to_str(gl[ind][0])+ " ";
+}
+
+int main()
+{
+	int i, j, n, one, two, three, **a, maxi=0, min, m;
+	string x, y, z, s="";
+	cin>>n;
+	a = new int *[n];
+	for(i=0;	i<n;	i++)	{a[i] = new int [3];}
+	for(i=0;	i<n;	i++)	{a[i][0]=0;a[i][1]=0;a[i][2]=0;}
+	for(i=0;	i<n;	i++)
+	{
+		cin>>one>>two>>three;
+		for(j=0;	j<n;	j++)
+		{
+			if(a[j][0]==one &&a[j][1] == one + two && a[j][2] <= three)	{a[j][2] = three;break;}
+			if(a[j][0] == 0)	{a[j][0] = one; a[j][1] = one + two; a[j][2] = three;break;}
+		}
+	}
+	for(i=0;	i<n;	i++)	{if(a[i][0] == 0)	break;k++;}
+	gl = new int *[k];
+	for(i=0;	i<k;	i++)	{gl[i] = new int [3];}
+	maxi = 0;
+	min = a[0][0];
+	for(i=0;	i<k;	i++)
+	{
+		j=0;
+		while(a[j][0]==-1)j++;
+		maxi=j;
+		min = a[j][0];
+		for(j=0;	j<k;	j++)
+		{
+			if(a[j][0]<min&&a[j][0]!=-1)	{min = a[j][0];	maxi = j;}
+		}
+		a[maxi][0]=-1;
+		gl[i][0] = min;
+		gl[i][1] = a[maxi][1];
+		gl[i][2] = a[maxi][2];
+	}
+	min = 0;
+	
+	for(i=0;	i<k;	i++)
+	{
+		x = f(gl[i][0], i);
+		j=0;
+		y = "";
+		z = "";
+		while(x[j]!=','){y+=x[j];j++;}
+		j++;
+		for(;j<x.length();j++)z+=x[j];
+		m = to_int(y) - gl[i][2];
+		if(m>min){min = m;s = z;}
+	}
+	s.erase(s.length()-1, 1);
+	i = s.length()-1;
+	while(s[i]!=' ')
+	{
+		s.erase(i, 1);
+		i--;
+	}
+	s.erase(i, 1);
+	k = 0;
+	for(i=0;	i<s.length();i++)if(s[i]==' ')k++;
+	k++;
+	for(i=0;	i<s.length()/2;	i++)
+	{
+		swap(s[i], s[s.length()-i-1]);
+	}
+	cout<<min<<endl<<k<<endl<<s;
+	return 0;
+}
+
+
+/*#include <iostream>
+#include <string>
+
+using namespace std;
+
+int **gl, k=0;
+
+string maxs="", s="";
+
+int f(int n, int ind)
+{
+	int i, max = 0, m;
+	for(i=0;	i<k;	i++)
+	{
+		if(gl[i][0]==n)
+		{
+			m = f(gl[i][1], i);
+			if(m>max)	max = m;
+		}
+		else if(gl[i][0]>n)	break;
+	}
+	return max + gl[ind][2];
+}
+
+int main()
+{
+	int i, j, n, one, two, three, **a, maxi=0, min, m;
+	cin>>n;
+	a = new int *[n];
+	for(i=0;	i<n;	i++)	{a[i] = new int [3];}
+	for(i=0;	i<n;	i++)	{a[i][0]=0;a[i][1]=0;a[i][2]=0;}
+	for(i=0;	i<n;	i++)
+	{
+		cin>>one>>two>>three;
+		for(j=0;	j<n;	j++)
+		{
+			if(a[j][0]==one &&a[j][1] == one + two && a[j][2] <= three)	{a[j][2] = three;break;}
+			if(a[j][0] == 0)	{a[j][0] = one; a[j][1] = one + two; a[j][2] = three;break;}
+		}
+	}
+	for(i=0;	i<n;	i++)	{if(a[i][0] == 0)	break;k++;}
+	gl = new int *[k];
+	for(i=0;	i<k;	i++)	{gl[i] = new int [3];}
+	maxi = 0;
+	min = a[0][0];
+	for(i=0;	i<k;	i++)
+	{
+		j=0;
+		while(a[j][0]==-1)j++;
+		maxi=j;
+		min = a[j][0];
+		for(j=0;	j<k;	j++)
+		{
+			if(a[j][0]<min&&a[j][0]!=-1)	{min = a[j][0];	maxi = j;}
+		}
+		a[maxi][0]=-1;
+		gl[i][0] = min;
+		gl[i][1] = a[maxi][1];
+		gl[i][2] = a[maxi][2];
+	}
+	min = 0;
+	for(i=0;	i<k;	i++)
+	{
+		m = f(gl[i][0], i) - gl[i][2];
+		if(m>min)	min = m;
+	}
+	cout<<min;
+	return 0;
+}
+*/

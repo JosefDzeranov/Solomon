@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+s1,s2:string;
+
+begin
+readln(s1);
+readln(s2);
+writeln('IMPOSSIBLE');
+
+end.

@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] ss = Console.ReadLine().Trim().Split(' ');
+            Int64[] a = new Int64[n];
+            Int64 sum = 0;
+            int u = 1;
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = Convert.ToInt32(ss[i]);
+                sum += u * a[i];
+                u = -u;
+            }
+            if (sum > 0) Console.WriteLine(0);
+            else Console.WriteLine(Math.Abs(sum) + 1);
+
+        }
+    }
+}

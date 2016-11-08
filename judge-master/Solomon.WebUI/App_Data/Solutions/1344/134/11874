@@ -1,0 +1,18 @@
+program circle;
+//Uses SysUtils;
+var n, z, i: longint;
+    z1, k: real;
+    
+
+
+begin
+    read(n);
+    z:= 1;
+    for i:= 1 to n do
+    begin
+        z:= z * 2 ;
+    end;
+    z1:= z / 8 ;
+    k:= n * z1;
+    write (k);
+end.

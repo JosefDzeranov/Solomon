@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string priz = Console.ReadLine();
+            int number=0;
+            int[] mas = new int[n+1];
+
+            for (int i = 0; i < priz.Length; i++)
+            {
+                if (priz[i] == 'P')
+                {
+                    number = i + 1;
+                    int v  = number - (number / n * n);
+                    if (v == 0) v = number / (number / n); 
+                    mas[v] = mas[v] + 1;
+                }
+            }
+           int max = 0;
+           int j = 0;
+            for (int i = 0; i < mas.Length; i++)
+			{
+                if (mas[i] > max)
+                {
+                    max = mas[i]; j = i;
+                }
+			}
+            int f = j - (j / n * n);
+            if (f == 0) f = j / (j / n);
+            Console.Write(f);
+            
+        }
+    }
+}

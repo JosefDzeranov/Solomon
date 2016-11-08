@@ -1,0 +1,36 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  Math,
+  SysUtils;
+
+var A,B,C,D:INTEGER;
+function delit(m:integer):integer;
+var i,q:integer;
+begin
+result:=0;
+q:=floor(sqrt(m));
+  for i:=1 to q+1  do
+  begin
+    if (m mod i =0)  then
+    if (2*(i+(m/i))<=d)and(2*(i+(m/i))>=c) then
+    result:=result+1;
+  end;
+
+end;
+var i,s,j:integer;
+begin
+  read(a);
+  read(b);
+  read(c);
+  readln(d);
+  s:=0;
+  for i := a to b do
+  begin
+     s:=s+delit(i);
+  end;
+  writeln(s);
+  readln;
+end.

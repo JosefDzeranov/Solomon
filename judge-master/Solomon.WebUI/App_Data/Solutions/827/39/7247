@@ -1,0 +1,39 @@
+
+#include <stdio.h>
+
+
+
+int main()
+{
+	int n, m; scanf_s("%d%d", &n, &m);
+
+	int k1, k2, pp = 0;
+	scanf_s("%d", &k1);
+	bool p = false;
+	for (int i = 0; i < m - 1; i++)
+	{
+		scanf_s("%d", &k2);
+		if (p == false)
+		{
+			if (k2 - k1 != 1)
+				printf("%d ", k1);
+			else
+			{
+				p = true;
+				printf("%d-", k1);
+			}
+			k1 = k2;
+		}
+		else
+		{
+			if (k2 - k1 != 1)
+			{
+				printf("%d ", k1);
+				p = false;
+			}
+			k1 = k2;
+		}
+	}
+	printf("%d", k2);
+	return 0;
+}

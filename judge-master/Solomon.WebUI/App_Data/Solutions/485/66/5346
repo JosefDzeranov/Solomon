@@ -1,0 +1,27 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s,s2,s3 : string;
+var n,i,sym : integer;
+begin
+readln(n);
+for i:= 1 to n do
+begin
+readln(s2);
+s:= s + s2;
+s2:= '';
+end;
+for  i:=1 to 1000 do
+s3:= IntToStr(i);
+if(Pos(s3,s)<= 5) and (Pos(s3,s) >= 1)  Then
+begin
+sym:= sym + 1;
+writeln(i);
+end;
+writeln(sym);
+readln;
+end.

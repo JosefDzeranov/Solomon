@@ -1,0 +1,43 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+
+Module Module1
+    Dim a1 As ULong
+    Dim a2 As ULong
+    Dim a3 As ULong
+    Dim a4 As ULong
+    Dim max As Integer
+    Dim n As ULong
+
+    Sub Main()
+        'FileOpen(1, "pobeda.in", OpenMode.Input)
+        'Input(1, a1)
+        'Input(1, a2)
+        'Input(1, a3)
+        'Input(1, a4)
+        'FileClose(1)
+        a1 = Console.In.ReadLine()
+        a2 = Console.In.ReadLine()
+        a3 = Console.In.ReadLine()
+        a4 = Console.In.ReadLine()
+        If a1 > a2 Then
+            n = a2
+        Else
+            n = a1
+        End If
+        If a3 > a4 Then
+            n = n + a4
+        Else
+            n = n + a3
+        End If
+        max = Math.Sqrt(n)
+        If max > Math.Sqrt(n) Then
+            max = max - 1
+        End If
+        'FileOpen(2, "pobeda.out", OpenMode.Output)
+        'Print(2, Mid(Str(max), 2))
+        'FileClose(2)
+        Console.WriteLine(max)
+    End Sub
+
+End Module

@@ -1,0 +1,36 @@
+program E_at_last;
+var a: array[1..100] of int64;
+	b: array[1..100] of byte;
+	i, n: byte;
+	s1, s0, min: int64;
+	owerflow: boolean;
+procedure incb(i: byte);
+begin
+	if b[i]=0 then begin
+		b[i]:=1;
+		inc(s1,a[i]);
+		dec(s0,a[i]);
+	end else begin
+		b[i]:=0;
+		dec(s1,a[i]);
+		inc(s0,a[i]);
+		if i>1 then incb(i-1) else owerflow:=true;
+	end;
+end;
+begin
+	s0:=0;
+	s1:=0;
+	readln(n);
+	for i:=1 to n do begin
+		read(a[i]);
+		b[i]:=0;
+		inc(s0,a[i]);
+	end;
+	owerflow:=false;
+	min:=s0;
+	while not owerflow do begin
+		if min>abs(s1-s0) then min:=abs(s1-s0);
+		incb(n);
+	end;
+	writeln(min);
+end.

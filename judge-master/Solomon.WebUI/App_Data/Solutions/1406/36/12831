@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+int main()
+{   
+  //freopen("tur2.in","r",stdin);
+  //freopen("tur2.out","w",stdout);
+  
+  int k,i,j,s;
+  
+  scanf("%d",&k);
+  
+  i=1;
+  j=1;
+  s=0;
+  while(s<k)
+  {
+    printf("%d ",j);        
+    if(j-i==2) {i++;j=i;}
+      else j++;
+    s++;
+  }
+  
+  printf("\n");
+  return 0;  
+}

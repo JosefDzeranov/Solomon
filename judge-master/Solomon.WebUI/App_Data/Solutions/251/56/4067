@@ -1,0 +1,35 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+long fact(int num);
+
+int main(int argc, char *argv[])
+{
+    long N;
+    bool check=0;
+    int res=0;
+    cin >> N;
+    if (N>=1&&N<=10000){
+    N = fact(N);
+        while (!check){
+            if (N%2==0){
+                N=N/2;
+                res++;}
+            else {check=1;}
+        }
+    cout << res;}
+    else{
+    return EXIT_SUCCESS;}
+}
+
+long fact(int num)
+{
+    long res=1;
+    for (int i=1; i<num+1; i++)
+    {
+        res=res*i;
+    }
+    return res;   
+}

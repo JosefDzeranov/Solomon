@@ -1,0 +1,20 @@
+var a,i,j:longint;
+a1:real;
+k:array[1..1000000] of char;
+begin
+read(a1);
+if (a1<2) or (frac(a1)<>0)  then write('NO')
+else begin                  
+i:=1;
+a:= Trunc(a1);
+while a<>2 do if (a mod 2)=0 then begin a:=a div 2; k[i]:='*';i:=i+1;end
+               else begin 
+               a:=a-1;
+               k[i]:='+';
+               i:=i+1;end;
+if a<>2 then write('NO') else begin               
+write('*');
+for j:=i-1 downto 1 do write(k[j]);
+end;
+end;
+end.          

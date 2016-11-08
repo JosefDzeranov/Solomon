@@ -1,0 +1,49 @@
+#include<iostream>
+
+#include<string>
+
+using namespace std;
+
+int comandcount,comandprize[11000],j,maxx;
+
+string prizelist;
+
+int main(){
+	cin>>comandcount;
+
+	cin>>prizelist;
+
+
+	for(int i  = 0 ; i < prizelist.length(); i++){
+		j++;
+		if(prizelist[i] == 'P'){
+
+			comandprize[j]++;
+
+		}
+		if(j == comandcount)
+			j = 0;
+
+	}
+
+
+	maxx = comandprize[0];
+
+	for(int  i = 0; i<  comandcount; i++){
+		if(comandprize[i] > maxx){
+			maxx = comandprize[i];
+		}
+	}
+
+	for(int i = 0; i < comandcount;i++){
+
+
+		if(comandprize[i] == maxx){
+			cout<<i ;
+			break;
+		}
+
+	}
+
+
+}

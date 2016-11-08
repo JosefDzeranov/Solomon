@@ -1,0 +1,145 @@
+#include<iostream>
+
+using namespace std;
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+    int n=0;
+      int nj=0;
+        int ni=0;
+         int fi=0;
+          int snj=0;
+            cin>>ni>>fi>>nj>>snj>>n;
+
+
+          int x=3;
+          int resx=2;
+          int sum;
+
+           int resy =1;
+            int y=1;
+            int sumy=0;
+
+
+              int pointer=0;
+              int result=0;
+
+
+
+   if (nj>ni)
+    {
+      int counter=nj-ni;
+     for(int i=0;i<counter+1;i++)
+     {
+       if(i>=2)
+       {
+           sum=x+resx;
+           resx=x;
+            x=sum;
+
+
+       sumy=y+resy;
+         resy=y;
+         y=sumy;
+
+       }
+
+
+
+     }
+
+ pointer=(fi*sum-snj)/sumy;
+
+counter=n-ni;
+ sum=0;
+ sumy=0;
+ resx=2;
+ x=3;
+ resy=1;
+ y=1;
+ for(int i=0;i<counter+1;i++)
+     {
+          if(i>=2)
+       {
+            sum=x+resx;
+           resx=x;
+            x=sum;
+
+
+       sumy=y+resy;
+         resy=y;
+         y=sumy;
+
+       }
+
+
+     }
+result=(fi*sum -(pointer * sumy));
+
+cout<<result;
+    }
+  if (nj<ni)
+  {
+      int counter=ni-nj;
+
+    for(int i=0;i<counter+1;i++)
+     {
+          if(i>=2)
+       {
+            sum=x+resx;
+           resx=x;
+            x=sum;
+
+
+       sumy=y+resy;
+         resy=y;
+         y=sumy;
+
+       }
+
+
+     }
+
+pointer=(snj*sum-fi)/sumy;
+
+
+counter=n-nj;
+ sum=0;
+ sumy=0;
+ resx=2;
+ x=3;
+ resy=1;
+ y=1;
+ for(int i=0;i<counter;i++)
+     {
+          if(i>=2)
+       {
+            sum=x+resx;
+           resx=x;
+            x=sum;
+
+
+       sumy=y+resy;
+         resy=y;
+         y=sumy;
+
+       }
+
+
+     }
+result=snj*sum -pointer * sumy;
+
+cout<<result;
+}
+
+    return 0;
+}

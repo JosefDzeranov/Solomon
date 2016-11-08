@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b:integer;
+begin
+readln(a,b);
+if a <=b then
+   writeln('YES')
+   else
+    writeln('NO');
+   readln;
+end.

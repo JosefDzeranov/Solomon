@@ -1,0 +1,60 @@
+#include "iostream"
+#include <string>
+#include <map>
+
+using namespace std;
+
+int get_digit_code(const string &x)
+{
+	const int k[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+	int w = 0;
+	
+	for (int i = 0, s = x.size(); i < s; ++i)
+	{
+		char d = x[i] - '0'; //asd
+		if ((d >= 0) && (d <= 9))
+			w |= k[x[i] - '0'];
+	}
+	return w;
+}
+
+int get_num_pairs(int n)
+{
+	return n * (n - 1) / 2;
+}
+
+int main()
+{
+	int n, c = 0;
+	string s1;
+
+	cin >> n;
+
+	map<int, int> a;
+
+	for (int j = 0; j < n; ++j)
+	{
+		cin >> s1;
+		a[get_digit_code(s1)]++;
+	}
+
+	map<int, int>::iterator ia, ja;
+
+	for (ia = a.begin(); ia != a.end(); ++ia)
+	{
+		int s = ia->second;
+		int p = get_num_pairs(s);
+		c += p;
+		for (ja = a.begin(); ja != ia; ++ja)
+		{
+			if ((ia->first & ja->first) != 0)
+			{
+				c += s * ja->second;
+			}
+		}
+	}
+
+	cout << c;
+
+	return 0;
+}

@@ -1,0 +1,18 @@
+program olymp1;
+var
+ ci:byte;
+ output:real;
+ line:string;
+ function step(st:byte;num:real):real;
+  var
+   ci:byte;
+  begin
+   for ci:=1 to st do num:=num*2;
+   step:=num;
+  end;
+begin
+ readln(line); output:=0.0;
+ for ci:=length(line) downto 1 do
+  if line[ci]='*' then output:=output+step(length(line)-ci,1);
+ write(output:0:0); readln;
+end.

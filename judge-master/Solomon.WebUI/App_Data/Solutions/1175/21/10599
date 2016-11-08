@@ -1,0 +1,28 @@
+var
+q:int64;
+a,b,n,w,e:integer;
+i:longint;
+c:char;
+t:string;
+s:array[1..1000] of string;
+begin
+b:=0; e:=0; q:=0; w:=0;
+read(n);
+for i:=1 to n do read(s[i]);
+for i:=1 to n do begin
+t:=s[i];
+a:=0;
+while(t[a]<>'.') do
+begin
+if(t[a]>='1' and t[a]<='100') then begin
+val(t[a],w,b);
+e:=e+w; end;
+if(t[a+1]>='1' and t[a+1]<='100') then
+e:=e*10
+else begin
+q:=q+e;
+e:=0;
+w:=0;end;
+a:=a+1;end; end;
+write(q);
+end;

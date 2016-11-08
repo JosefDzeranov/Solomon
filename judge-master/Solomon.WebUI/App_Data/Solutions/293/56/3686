@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+main()
+{
+int a,b=1,c=0,i;
+scanf("%d",&a);
+for(i=1;i<=a;i++)
+b*=i;
+for(i=2;i<18446744;i*=2)
+if(b%i==0)
+c++;
+printf("%d",c);
+return 0;
+}

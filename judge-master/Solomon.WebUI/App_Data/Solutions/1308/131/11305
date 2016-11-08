@@ -1,0 +1,10 @@
+#include<iostream>
+
+using namespace std;
+int main(){
+	unsigned int a,b,c,d,r(0);
+	cin >> a >> b >> c >>d;
+	cout << 4;
+	cout << r;
+	system("pause >> null");
+}

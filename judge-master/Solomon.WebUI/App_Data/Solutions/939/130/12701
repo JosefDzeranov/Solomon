@@ -1,0 +1,17 @@
+program O2;
+var
+ a,b,c,d,ci,cIi,a1,b1,possibleAreas,possibleSquares:longint;
+begin
+ readln(a,b,c,d);
+ for ci:=a to b do
+  for cIi:=1 to ci do
+   if ci mod cIi=0 then
+    begin
+     a1:=ci div cIi;
+     b1:=cIi;
+     if (c<=2*(a1+b1)) and (2*(a1+b1)<=d) then
+      if a1=b1 then inc(possibleSquares)
+      else inc(possibleAreas);
+    end;
+ write((possibleAreas div 2+possibleSquares)); readln;
+end.

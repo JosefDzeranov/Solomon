@@ -1,0 +1,32 @@
+#include <iostream>
+#include <math.h>
+#include <stdio.h>
+
+using namespace std;
+
+int dp[50001];
+int val[101];
+int n, sum;
+int ex;
+
+int main() {
+    scanf ("%d", &n);
+
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", val + i);
+        sum += val[i];
+    }
+
+    for (int i = 0; i < n; ++i)
+        for (int x = sum / 2; x >= 1; --x) {
+            if (x >= val[i])
+                ex = dp[x - val[i]] + val[i];
+            else
+                ex = val[i];
+            if (fabs(x - ex) < fabs(x - dp[x]))
+                dp[x] = ex;
+        }
+
+    cout << fabs(sum - 2 * dp[sum / 2]);
+    return 0;
+}

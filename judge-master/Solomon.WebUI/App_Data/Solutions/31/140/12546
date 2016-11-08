@@ -1,0 +1,51 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+    k, i, j, max, maxi: integer;
+    s: string;
+    a: array [1..10000] of integer;
+begin
+ readln(k);
+ readln(s);
+  j := 0;
+  max := 0;
+
+ for i := 1 to length(s) do
+   begin
+     j := j + 1;
+     if j > k then
+     j := 1;
+     if s[i] = 'P' then
+      a[j] := a[j] + 1;
+   end;
+for i := 1 to k do
+ begin
+   if max <= a[i] then
+   begin
+     max := a[i];
+     maxi := i;
+   end;
+ end;
+for i := 1 to k do
+ begin
+   if a[maxi]=a[i] then
+   if i<maxi then
+   begin
+     writeln(i);
+     break;
+   end
+     else
+     begin
+     writeln(maxi);
+     break;
+     end;
+ end;
+
+ readln;
+ 
+end.

@@ -1,0 +1,9 @@
+var i,k,n,s:integer;
+begin
+read(n,k);
+if (n>0) and (k>0) and (n>k) then begin
+s:=1;
+for i := 1 to n - k do s := s * (k + i) div i;
+end;
+write(s);
+end.

@@ -1,0 +1,78 @@
+uses crt;
+var a:array[0..201,0..201] of string;
+    s:string;
+    i,j,i1,j1,n,x,y:integer;
+    c:char;
+begin
+  read(i1,j1);
+  read(a[1,1]);
+  for i:=1 to i1 do
+  for j:=1 to j1 do
+  begin
+  repeat
+  c:=readkey;
+  write(c);
+  s:=s+c;
+  until (c=' ') or (c=#13);
+  delete(s,length(s),1);
+  a[i,j]:=s;
+  s:='';
+  end;
+  
+  read(x);
+  readln(y);
+  if (a[y,x]='whirlpool') then n:=1;
+  while (x>0) and (y>0) and (x<=j1) and (y<=i1) and (a[y,x]<>'whirlpool') and (a[y,x]<>'1')do
+  begin
+  inc(n);
+    case a[y,x] of 
+      'east' :
+      begin
+        a[y,x]:='1';
+        x:=x+1;
+      end;
+      'west' :
+      begin
+        a[y,x]:='1';
+        x:=x-1;
+      end;
+      'south' :
+      begin  
+        a[y,x]:='1';
+        y:=y+1;
+      end;
+      'north' :
+      begin
+        a[y,x]:='1';
+        y:=y-1;
+      end;
+      'north-east' :
+      begin
+        a[y,x]:='1';
+        y:=y-1;
+        x:=x+1;
+      end;
+      'north-west':
+      begin
+        a[y,x]:='1';
+        y:=y-1;
+        x:=x-1;
+      end;
+      'south-west':
+      begin
+        a[y,x]:='1';
+        y:=y+1;
+        x:=x-1;
+      end;
+      'south-east':
+      begin
+        a[y,x]:='1';
+        y:=y+1;
+        x:=x+1;
+      end;
+    end;
+  end;
+  if (x>0) or (y>0) or (x<=j1) or (y<=i1) then writeln('Boat has been carried out in ',n,' move(s).');
+  if (a[y,x]='whirlpool') then writeln('Whirlpool in ',n,' move(s)!');
+  if (a[y,x]='1') then writeln('The Bermuda Triangle…');
+end.

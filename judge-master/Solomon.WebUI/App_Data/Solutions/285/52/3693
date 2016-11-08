@@ -1,0 +1,15 @@
+program olimp1; 
+var N, y, z: integer;
+    x: longint;
+begin
+    repeat 
+    
+    read(N)
+    until (3<=N)and(N<=1000);
+      y:=N-1;
+      z:=N-2;
+      x:= n*y*z;
+      write(x);
+   
+    
+    end.

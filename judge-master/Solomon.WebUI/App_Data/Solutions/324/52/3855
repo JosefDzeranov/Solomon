@@ -1,0 +1,9 @@
+Var a:string;i,j:longint;x:int64;
+Begin
+   readln(a);x:=0;
+   for i:=1 to length(a) do
+   if Copy(a,i,1)=' ' then Delete(a,i,1)
+   else for j:=length(a) downto i+2 do
+   if Copy(a,i,1)=Copy(a,j,1) then x:=x+(j-i-1);
+   writeln(x);
+End.{146}

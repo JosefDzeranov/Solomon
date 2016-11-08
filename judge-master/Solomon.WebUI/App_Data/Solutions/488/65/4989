@@ -1,0 +1,20 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	long long int a1, a2, a3, a4;
+	cin >> a1;
+	cin >> a2;
+	cin >> a3;
+	cin >> a4;
+	long long int num1, num2;
+	num1 = min(a1, a2);
+	num2 = min(a3, a4);
+	num1 = sqrt(num1 + num2);
+	cout << num1;
+	//system("pause");
+	return 0;
+}

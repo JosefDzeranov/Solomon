@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	long long int a, k, b, m, x, n, one, two;
+	cin >> a >> k >> b >> m >> x;
+if (x < k && x < m)
+    cout << ((x + a + b - 1) / (a + b));
+else{
+    one = (k - 1) * m;
+    two = (m - 1) * k;
+    cout << (k * m * x) / (one * a + two * b);
+}
+	return 0;
+}

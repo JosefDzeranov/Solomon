@@ -1,0 +1,29 @@
+# include<iostream>
+# include<string>
+using namespace std;
+int main()
+{
+	int b;
+	b=0;
+	int a;
+	cin>>a;
+	string s;
+	string d;
+	bool f= false;
+	for (int i =0; i<a;i++)
+	{
+	 cin>>s;
+	 if (f== true)
+	 {
+		 if ((s[s.length-3]== d[0]) && (s[s.length-2] == d[1]) &&(s[s.length-1]== d[2]))
+        s=s+d;
+		 b++;
+	 }
+	 d=s;
+	 f= true;
+	}
+	cout<<b;
+	int z=d.length;
+	cout<<d;
+	return 0;
+}

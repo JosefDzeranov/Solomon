@@ -1,0 +1,17 @@
+program olymp1;
+var
+ output,ci:longint;
+ line:string;
+ function step(st,num:longint):longint;
+  var
+   ci:longint;
+  begin
+   for ci:=2 to st do num:=num*2;
+   step:=num;
+  end;
+begin
+ readln(line); output:=0;
+ for ci:=length(line) downto 1 do
+  if line[ci]='*' then output:=output+step(length(line)-ci+1,1);
+ write(output);
+end.

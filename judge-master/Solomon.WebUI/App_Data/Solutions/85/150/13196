@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string ff(string num1, string num2)
+{
+    string ans = "";
+
+    if (num1.size() < num2.size())
+        swap(num1, num2);
+
+    for (int i = 0; i < num1.size() - num2.size(); i++)
+        num2 = '0' + num2;
+
+
+    for (int i = 0; i <= num1.size(); i++)
+        ans += "0";
+
+
+    for (int i = 0; i < num1.size() / 2; i++)
+    {
+        swap(num2[i], num2[num1.size() - i - 1]);
+        swap(num1[i], num1[num1.size() - i - 1]);
+    }
+
+
+    for (int i = 0; i < num1.size(); i++)
+    {
+        int sum = int(num1[i]) - 48 + int(num2[i]) - 48 + int(ans[i]) - 48;
+        ans[i] = char(sum % 10 + 48);
+        if (sum >= 10)
+        ans[i + 1] = '1';
+    }
+
+    for (int i = 0; i < ans.size() / 2; i++)
+    {
+        swap(ans[i], ans[ans.size() - i - 1]);
+    }
+    if (ans[0] == '0')
+        ans.erase(0, 1);
+
+    return ans;
+}
+
+string um_2(string s)
+{
+    return ff(s, s);
+}
+
+string f(int i)
+{
+    string s = "1";
+    for (int ii = 0; ii < i; ii++)
+        s = um_2(s);
+
+	return s;
+}
+
+
+int main()
+{
+    string ans = "0";
+	string ss;
+	cin >> ss;
+	for (int i = 0; i < ss.size(); i++)
+	{
+		if (ss[i] == '*')
+			ans = ff(ans, f(ss.size() - 1 - i));
+	}
+	cout << ans;
+
+	system("pause");
+	return 0;
+}

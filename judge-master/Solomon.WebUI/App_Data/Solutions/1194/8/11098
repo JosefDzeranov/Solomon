@@ -1,0 +1,79 @@
+var
+  a, b, sum: array[1..11] of integer;
+  i, n, m, max, x,x1, k: integer;
+  stA, stB, z: string;
+  chA, chB: char;
+  flag: boolean;
+
+begin
+  flag := false;
+  
+  {__Считывание__}
+  read(z);
+  for i := 1 to length(z) do 
+  begin
+    if z[i] = ' ' then begin
+      flag := true;
+      continue;
+    end;
+    if flag <> true then
+      stA := stA + z[i]
+    else
+      stB := stB + z[i]
+  end;
+  
+  
+  if stA[1] = '-' then begin stA := copy(stA, 2, length(stA) - 1);chA := '-'; end;
+  if stB[1] = '-' then begin stB := copy(stB, 2, length(stB) - 1);chB := '-'; end;
+  n := length(stA);
+  m := length(stB);
+  
+  {__Разбиение__}
+  if n > m then
+    max := n
+  else
+    max := m;
+  
+  for i := 1 to n do 
+  begin
+    val(copy(stA, i, 1), x, k);
+    a[i + (max - n)] := x;
+  end;
+  
+  for i := 1 to m do 
+  begin
+    val(copy(stB, i, 1), x, k);
+    b[i + (max - m)] := x;
+  end;
+  
+  val(stA,x,k);
+  val(stB,x1,k);
+  
+        {__Суммирование__}
+  if ((chB = '-') and (chA <> '-')) or ((chB <> '-') and (chA='-')) then 
+    for i := max downto 1 do 
+    begin
+      if (x < x1)and(chA='-')then
+      if b[i]<a[i] then begin
+        dec(b[i-1]);
+        inc(b[i],10);
+      end;
+      sum[i]:= b[i] - a[i];
+    end 
+  else begin
+    for i := 1 to max do
+      sum[i] := a[i] + b[i];
+    for i := max downto 2 do 
+    begin
+      sum[i - 1] := sum[i - 1] + sum[i] div 10;
+      sum[i] := sum[i] mod 10;
+    end;
+  end;
+  
+  {__Вывод_результата__}
+  if ((chA = '-') and (x>x1))or((chA='-')and(chB='-')) then
+    write('-');
+  for i := 1 to max do
+    write(sum[i]);
+  
+end.

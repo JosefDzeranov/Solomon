@@ -1,0 +1,18 @@
+var n,i,k,j,r:integer;
+    a:array[1..3] of integer;
+BEGIN
+  readln(k);
+  read(n);
+  for i:= 1 to 3 do
+    read(A[i]);
+  for i:=1 to 2 do
+    for j:=i+1 to 3 do
+      if a[i]>a[j] then begin
+         r:=a[i];
+         a[i]:=a[j];
+         a[j]:=r;
+      end;
+
+  if k=1 then if a[1]+a[2]>n then writeln(a[1]+a[2]-n) else writeln('0')
+         else writeln(a[1]);
+END.

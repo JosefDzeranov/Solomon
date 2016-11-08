@@ -1,0 +1,55 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+long long mas[100000];
+	long long cnt[100000] = {0};
+
+int main()
+{
+	int n;
+	cin >> n;
+	int k;
+	cin >> k;
+	
+	for (int i = 0; i < n; i++)
+		cin >> mas[i];
+	for (int i = 0; i < k; i++)
+		cnt[0] += mas[i];
+	for (int i = 1; i < n - k + 1; i++)
+		cnt[i] = cnt[i - 1] - mas[i - 1] + mas[i + k - 1];
+	int x = -1;
+	long long maxx = -1;
+	for (int i = 0; i < n - 1; i++)
+		if (cnt[i] > maxx || i == 0)
+		{
+			maxx = cnt[i];
+			x = i;
+		}
+	long long ans = -1;
+	for (int j = 0; j < n - 1; j++)
+		if (cnt[j] == maxx)
+		{
+			long long cnt2[100000] = {0};
+			for (int i = 0; i < n - 1; i++)
+				cnt2[i] = cnt[i];
+			for (int i = max(0, j - k + 1); i <= min(n - 2, j + k - 1); i++)
+				cnt2[i] = 0;
+			long long t = -1;
+			for (int i = 0; i < n - 1; i++)
+				if (cnt2[i] > t)
+					t = cnt2[i];
+			if (t < ans || ans == -1)
+				ans = t;
+		}
+	/*maxx = -1;
+	for (int i = 0; i < n - 1; i++)
+		if (cnt[i] > maxx)
+		{
+			maxx = cnt[i];
+		}*/
+	cout << ans;
+	return 0;
+}

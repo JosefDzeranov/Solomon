@@ -1,0 +1,41 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+    s: string;
+    mas: array [0..63] of integer;
+    x, z : uint64;
+     i, j: integer;
+begin
+readln(s);
+x := 0;
+z := 1;
+for i := 0 to length(s) - 1 do
+  begin
+    if s[i+1] = '.' then
+     mas[length(s)  - i - 1] := 0 else
+     mas[length(s)  - i - 1] := 1;
+  end;
+ for i := 0 to length(s) - 1 do
+   begin
+     if mas[i] = 1 then
+     begin
+       if i = 0 then x := x + 1 else
+     begin
+       for j := 1 to i do
+        begin
+        z := z * 2;
+        end;
+         x := x + z;
+        z := 1;
+     end;
+
+     end;
+   end;
+   writeln(x);
+   readln;
+end.

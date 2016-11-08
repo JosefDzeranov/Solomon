@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace _1
+{
+    class Program
+    {
+        static string s;
+        static string t;
+        static int  ara(int k)
+        {
+            int l = s[k] - t[0];
+            if (l < 0) l = 26 + l;
+            int j = 1;
+            for (int i = k + 1; i < s.Length; i++)
+            {
+                if (j < t.Length)
+                {
+                    int w = s[i] - t[j];
+                    if (w < 0) w = 26 + w;
+                    if ((w != l)) return -1 ;
+                    else j++;
+                }
+            }
+
+            return l;
+        }
+        static void Main(string[] args)
+        {
+
+            s = Console.ReadLine();
+            t = Console.ReadLine();
+            int k = 0; bool f = false;
+            int min = int.MaxValue;
+            if (t.Length > s.Length) Console.WriteLine("IMPOSSIBLE");
+            else
+            {
+                for (int i = 0; i < s.Length - 1; i++)
+                {
+                    if (ara(i) != -1 && ara(i) < min) { min = ara(i); f = true; k = i; }
+                }
+                if (f == false) Console.WriteLine("IMPOSSIBLE");
+                else
+                {
+                    s = s.Trim();
+                    int l = s[k] - t[0];
+                    if (l < 0) l = 26 + l;
+
+                    t = "";
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        t += Convert.ToChar('A' + (26 + (s[i] - 'A') - l) % 26);
+                    }
+                    Console.WriteLine(t);
+
+                }
+            }
+        }
+    }
+}

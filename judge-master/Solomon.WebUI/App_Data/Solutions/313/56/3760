@@ -1,0 +1,7 @@
+Var n:longint;
+Begin
+     readln (n);
+     if n=1
+     then writeln (0)
+     else writeln (n-2);
+end.

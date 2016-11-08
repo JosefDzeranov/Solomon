@@ -1,0 +1,15 @@
+program Project17;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var N,L,r1,r2:integer;
+begin
+ readln(N,L);
+ readln(r1,r2);
+ writeln('NO');
+ readln;
+
+end.

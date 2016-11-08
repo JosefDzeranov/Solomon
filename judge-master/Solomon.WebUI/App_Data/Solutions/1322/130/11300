@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main(){
+	long long int a,b,n,k,c,d,t=0, i, j,f=0;
+	cin>>a>>b>>c>>d;
+	for(i = 1; i < 100000; i++){
+		for(j = 1; j < 10000; j++){
+			n = i*j;
+			k = i*2+j*2;
+			if( n >= a){
+				if( n <= b){
+					if(k>=c){
+						if(k <= d){
+							t++;
+						}
+					}
+				}
+				else{
+				f = 1;
+				break;
+				}
+			}
+		}
+		if(f ==1)
+			break;
+	}
+	cout<<t+1;
+	return 0;
+}

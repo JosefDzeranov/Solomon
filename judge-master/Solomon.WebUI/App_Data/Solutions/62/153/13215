@@ -1,0 +1,15 @@
+program Project2;
+
+var
+n,m,k,i:integer;
+x,y:array[1..1000] of integer;
+begin
+readln(n,m,k);
+for I := 1 to k do
+ readln(x[i],y[i]);
+if k<2 then
+ writeln('3')
+ else
+ writeln('2');
+
+end.

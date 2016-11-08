@@ -1,0 +1,5 @@
+var a:longint;
+begin
+      read(a);
+      writeln(a-2*a-2*6);
+end.

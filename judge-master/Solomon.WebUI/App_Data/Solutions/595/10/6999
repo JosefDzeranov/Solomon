@@ -1,0 +1,25 @@
+var
+  a,b,c1,c2,c3,i: integer;
+begin
+  read(a,b);
+  c1:=1; c2:=1; c3:=1;
+  if a>b then begin
+    for i:=b+1 to a do
+      c1:=c1*i;
+    writeln(c1);
+    c2:=1;
+  end;
+  if b>a then begin
+    for i:=a+1 to b do
+      c2:=c2*i;
+    writeln(c2);
+    c1:=1;
+  end;
+  if b=a then begin
+    c2:=1;
+    c1:=1;
+  end;
+  for i:=a-b downto 1 do
+    c3:=c3*i;
+  writeln(c1/(c2*c3));
+end.

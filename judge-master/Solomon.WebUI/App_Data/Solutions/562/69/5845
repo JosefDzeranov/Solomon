@@ -1,0 +1,36 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+
+Module Module1
+    Dim a As Integer
+    Dim b As Integer
+    Dim x As Integer
+    Dim v As Decimal
+    Dim k As ULong
+
+    Sub Main()
+        Dim d() As String = Split(Console.ReadLine)
+        a = d(0)
+        b = d(1)
+        x = d(2)
+        If x / a <= 1000 Then
+            v = 1000
+        Else
+            If x / b <= 1000 Then
+                v = x / b
+            Else
+                Do
+                    k = k + 1
+                    v = x / (b + k * (a + b))
+                Loop Until v <= 1000
+                If x / (b + k * a + b * (k - 1)) <= 1000 Then
+                    v = 1000
+                End If
+            End If
+        End If
+
+            Console.WriteLine(v)
+            Console.ReadLine()
+    End Sub
+
+End Module

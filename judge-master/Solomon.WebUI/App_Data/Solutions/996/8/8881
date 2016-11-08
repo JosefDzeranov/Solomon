@@ -1,0 +1,7 @@
+Program s;
+var a,b,z: integer;
+begin
+read(a,b);
+z:=a+b;
+write(z);
+end.

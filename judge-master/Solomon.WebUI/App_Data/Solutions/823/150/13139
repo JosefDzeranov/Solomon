@@ -1,0 +1,16 @@
+import java.io.*;
+import java.math.BigInteger;
+
+public class MusicLamp {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        String binary = reader.readLine();
+        BigInteger number = BigInteger.ZERO;
+        for(int i = binary.length() - 1; i >= 0; i--)
+            if(binary.charAt(i) == '*')
+                number = number.add(BigInteger.valueOf(2).pow(binary.length() - (i + 1)));        
+        System.out.println(number);
+    }
+}

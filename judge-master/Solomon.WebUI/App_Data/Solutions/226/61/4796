@@ -1,0 +1,18 @@
+program a;
+var n,k,i,x,y:integer;
+c:array[1..100] of string;
+Begin
+x:=0;
+read(n,k);
+y:=k;
+For i:=1to n do
+readln(c[i]);
+writeln(k);
+For i:=1to n do begin
+if (c[i]='save') then x:=y else
+if (c[i]='load') then y:=x else
+if (c[i]='ammo') then y:=y+k else
+if (c[i]='shot') then y:=y-1;
+writeln(y);
+end;
+end.

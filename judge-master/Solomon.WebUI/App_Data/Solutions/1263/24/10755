@@ -1,0 +1,31 @@
+{$h+}
+var
+    a: array [0..200000000] of string;
+    s: string;
+    n, i, j, k, kk, l, h,pred: longint;
+   
+
+begin
+    readln(n);
+    readln(s);
+    n := length(s);
+    for i := 1 to n do 
+    begin
+        k := 0;
+        a[i] := s[i];
+        if s[i] = ' ' then continue;
+        while (s[i + k] <> ' ') and (i + k < n) do
+            inc(k);
+        h := k + i;
+        while h < n do 
+        begin
+            if (s[h] = s[i]) then begin
+                for j := 1 to i do if s[i + h] = a[j] then begin inc(pred); break; end;
+                if pred <2 then 
+                    kk := kk + 2;
+            end;
+            inc(h);
+        end;
+    end;
+    writeln(kk);
+end.

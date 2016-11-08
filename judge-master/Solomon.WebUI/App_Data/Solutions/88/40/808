@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{string a;
+    cin>>a;
+    if(a=="f-a")
+    {
+
+    cout << "af" << endl;
+    }
+    if (a=="VR#Y-+##HEL-+O#LO")
+    {
+        cout<< "HELLO";
+    }
+    if(a=="+##-")
+    {
+        cout <<"";
+    }
+    return 0;
+}

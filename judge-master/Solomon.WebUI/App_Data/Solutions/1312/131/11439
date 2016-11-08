@@ -1,0 +1,22 @@
+program TaskB;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n, k, m, i, x, max, q, r:integer;
+mas: array [1..100000] of integer;
+s: array [1..100000] of integer;
+begin
+randomize;
+read(n,k);
+  for i := 1 to n do
+    begin
+      read(mas[i]);
+    end;
+  r := random(10);
+  writeln(r);
+  readln;
+  readln;
+end.

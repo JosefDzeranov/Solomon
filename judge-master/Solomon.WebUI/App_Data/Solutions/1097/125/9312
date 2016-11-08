@@ -1,0 +1,31 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,x3,y1,y2,y3,x,y,m:integer;
+begin
+x:=1000;
+y:=1000;
+ readln(x1,y1);
+ readln(x2,y2);
+ readln(x3,y3);
+ if y3>y2 then y:=y3-y2;
+ if y3<y1 then y:=y1-y3;
+ if x3>x2 then x:=x3-x2;
+ if x3<x1 then x:=x1-x3;
+ if (x3>x1) and (x3<x2)and(y3>y1)and(y3<y2)then
+  begin
+   if (x2-x3)>(x3-x1) then x:=x3-x1
+   else x:=x2-x3;
+   if (y2-y3)>(y3-y1) then y:=y3-y1
+   else y:=y2-y3;
+  end;
+ if x>y then writeln(y)
+  else writeln(x);
+  if (x3=x2) or (x3=x1) or (y3=y1) or (y3=y2) then
+   writeln (0);
+  readln
+end.

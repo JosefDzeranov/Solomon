@@ -1,0 +1,34 @@
+program mesi5;
+type point = record
+      x : integer;
+      y : integer;
+     end;
+var a, b, c, d : point;
+    i, k : integer;
+    t : real;
+    r : array [1..6] of real;
+    
+FUNCTION l( a, b : point): REAL;
+  begin
+  l := round(sqrt(sqr(b.x - a.x) + sqr(b.y - a.y)));
+  end;
+    
+begin
+read(a.x, a.y, b.x, b.y, c.x, c.y, d.x, d.y);
+r[1] := l(a, b);
+r[2] := l(a, c);
+r[3] := l(a, d);
+r[4] := l(b, c);
+r[5] := l(b, d);
+r[6] := l(d, c);
+for i := 1 to 6 do 
+  for k := 1 to 5 do 
+    if r[k] > r[k + 1] then 
+      begin
+      t := r[k];
+      r[k] := r[k + 1];
+      r[k + 1] := t;
+      end;
+if (r[1] = r[2]) and (r[2] = r[3]) and (r[3] = r[4]) and (r[5] = round(sqrt(sqr(r[1]) + sqr(r[2])))) and (r[5] = r[6])
+ then writeln('YES') else writeln('NO');
+end.

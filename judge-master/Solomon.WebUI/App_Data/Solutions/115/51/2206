@@ -1,0 +1,16 @@
+program bank;
+uses crt;
+var x,z:real;
+begin;
+writeln;
+writeln(' Введите кол-во шариков');
+writeln;
+readln(x);
+writeln;
+writeln;
+z:=x/9;
+writeln;
+writeln(' В одном ребре куба ',z,' шариков');
+writeln;
+writeln;
+end.

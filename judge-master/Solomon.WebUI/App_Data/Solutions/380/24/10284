@@ -1,0 +1,28 @@
+type
+  mn = set of 0..9;
+
+var
+  m: array [1..500000] of mn;
+  t: mn;
+  n, i, te, j: longint;
+
+begin
+  readln(n);
+  for i := 1 to n do
+  begin
+    read(te);
+    t := [];
+    while(te > 0) do
+    begin
+      t := t + [te mod 10];
+      te := te div 10;
+    end;
+    m[i] := t
+  end;
+  te := 0;
+  for i := 1 to n - 1 do
+    for j := i + 1 to n do
+      if not ((m[i] * m[j]) = []) then inc(te);
+  
+  writeln(te); 
+end.

@@ -1,0 +1,8 @@
+#include <iostream>
+#include <math.h>
+int main()
+{
+int n;
+std::cin >> n >> n >> n >> n;
+std::cout << 1000;
+}

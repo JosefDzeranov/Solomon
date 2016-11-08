@@ -1,0 +1,41 @@
+# include <iostream>
+using namespace std;
+int main()
+{
+	int U;
+	cin>>U;
+	int a,b,c;
+	if (U%3==0)
+	{
+		a=U/3-1;
+		b=U/3;
+		c=U/3+1;
+	}
+	if (U%3!=0)
+	{
+	
+		if (U%2==0)
+		{
+          c=U/2;
+		  a=(U-c)-1;
+		  b=(U-c)+1;
+		}
+		if (U%2!=0)
+		{
+			c=U/2;
+			if ((U-c)%2==0)
+			{
+				a=(U-c)/2-1;
+				b=(U-c)/2+1;
+			}
+			if ((U-c)%2!=0)
+			{
+				a=(U-c)/2;
+				b=(U-c)/2+1;
+			}
+		}
+	}
+	
+	cout<<a<<' '<<b<<' '<<c;
+	return 0;
+}

@@ -1,0 +1,19 @@
+var x1,y1,x2,y2,x3,y3,x4,y4:longint;
+a,b,c,d,e,f:extended;
+t:boolean;
+Function DL ( x,y,xa,ya:longint):extended;
+begin
+DL:=sqrt(sqr(x-xa)+sqr(y-ya));
+end;
+begin
+read(x1,y1,x2,y2,x3,y3,x4,y4);
+a:=Dl(x1,y1,x2,y2);
+b:=Dl(x1,y1,x3,y3);
+c:=Dl(x1,y1,x4,y4);
+d:=Dl(x2,y2,x3,y3);
+e:=Dl(x2,y2,x4,y4);
+f:=Dl(x3,y3,x4,y4);
+if (a=f) and (b=e) and (d=c)then t:=true;
+if (a=0) or (b=0) or (c=0) or (d=0) or (e=0) or (f=0) then t:=false;
+if t then write('YES') else write('NO');
+end.

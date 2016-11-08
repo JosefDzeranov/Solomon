@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+long double act(long double first, long double second, char action) {
+    long double res;
+
+    switch (action) {
+    case '+':
+        res = first+second;
+        return res;
+    case '-':
+        res = first-second;
+        return res;
+    case '*':
+        res = first*second;
+        return res;
+    case '/':
+        if (second==0) {
+            printf("ERROR");
+            exit(0);
+        }
+        res = first/second;
+        return res;
+    }
+}
+
+int main()
+{
+    char exp[201];
+    fgets(exp, 200, stdin);
+
+    /*if (!isdigit(exp[0])) {
+        printf("ERROR");
+        return 0;
+    }*/
+    int i = 0;
+    long double first = 0;
+    while (isdigit(exp[i])) {
+        first = first*10 + (exp[i]-'0');
+        i++;
+    }
+    unsigned char action;
+    if ((exp[i] != '+') && (exp[i] != '-') && (exp[i] != '*') && (exp[i] != '/')) {
+        printf("ERROR");
+        return 0;
+    }
+    action = exp[i];
+    i++;
+
+    long double second = 0;
+    if (!isdigit(exp[i])) {
+        printf("ERROR");
+        return 0;
+    }
+    while (isdigit(exp[i])) {
+        second = second*10 + (exp[i]-'0');
+        i++;
+    }
+
+    long double result = 0;
+
+    if (exp[i] != '=') {
+        printf("ERROR");
+        return 0;
+    }
+    i++;
+    if (!isdigit(exp[i])) {
+        printf("ERROR");
+        return 0;
+    }
+    while (isdigit(exp[i])) {
+        result = result*10 + (exp[i]-'0');
+        i++;
+    }
+    if ((unsigned char)exp[i] > 31) {
+        printf("ERROR");
+        return 0;
+    }
+
+    long double r1 = act(first, second, action);
+
+    if (result == r1) {
+        printf("YES");
+    } else {
+        printf("NO");
+    }
+
+    return 0;
+}

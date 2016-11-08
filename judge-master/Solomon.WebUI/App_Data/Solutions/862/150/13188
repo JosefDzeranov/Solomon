@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
+//using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static StringBuilder pow(int k)
+        {
+            int j = 1;
+            
+            StringBuilder s = new StringBuilder("1",500);
+            int ost = 0;
+            for (int i = 0; i<k; i++)
+            {
+                ost = 0;
+                for (int u = s.Length - 1; u >= 0; u--)
+                {
+                    int o = Convert.ToInt32(Convert.ToString( s[u])) * 2;
+                    j=(ost + o) % 10;
+                    s[u] =Convert.ToChar(Convert.ToString( j));
+                    ost = o / 10;
+                }
+                if (ost > 0) s.Insert(0, ost);
+                
+            }
+           
+            return s;
+        }
+
+        static StringBuilder add(StringBuilder s, StringBuilder t)
+        {
+            int i = s.Length - 1, j = t.Length - 1;
+            int ost = 0;
+            if (s.Length > t.Length)
+            {
+                while (i >= 0 && j >= 0)
+                {
+                    int o = (ost + Convert.ToInt32(Convert.ToString(s[i])) + Convert.ToInt32(Convert.ToString(t[j]))) % 10;
+                    ost = (ost + Convert.ToInt32(Convert.ToString(s[i])) + Convert.ToInt32(Convert.ToString(t[j]))) / 10;
+                    s[i] = Convert.ToChar(Convert.ToString(o));
+                    
+                    i--; j--;
+                }
+                if (i < 0) s.Insert(0, ost);
+                else
+                    s[i]=Convert.ToChar( Convert.ToString(ost+(Convert.ToInt32(Convert.ToString(s[i])))));
+                return s;
+
+            }
+            else
+
+            {
+
+                while (i >= 0 && j >= 0)
+                {
+                    int o=(ost+Convert.ToInt32(Convert.ToString(s[i])) + Convert.ToInt32(Convert.ToString(t[j]))) % 10;
+                    ost = (ost + Convert.ToInt32(Convert.ToString(s[i])) + Convert.ToInt32(Convert.ToString(t[j]))) / 10;
+                    t[j] = Convert.ToChar(Convert.ToString(o));
+                    
+                    i--; j--;
+                }
+                if (j < 0) t.Insert(0, ost);
+                else
+                    t[j] = Convert.ToChar(Convert.ToString(ost + (Convert.ToInt32(Convert.ToString(t[j])))));
+            }
+            return t;
+        }
+
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            StringBuilder t=new StringBuilder();
+
+            for (int i = s.Length - 1; i >= 0; i--)
+                if (s[i] == '*') t=add(t, pow(s.Length-i-1));
+
+            for (int i = 0; i <t.Length; i++)
+                if (t[i] == '0') t.Remove(i, 1); else break;
+                Console.WriteLine(t);
+
+        }
+    }
+}

@@ -1,0 +1,14 @@
+using System;
+namespace Viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] s = Console.ReadLine().Split('#');
+			foreach(var item in s)
+				Console.Write(item);
+			
+		}		
+	}
+}

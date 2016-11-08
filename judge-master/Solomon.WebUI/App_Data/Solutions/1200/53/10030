@@ -1,0 +1,157 @@
+const
+        SIZE = 101;
+        BUSY = -1;
+        EMPTY = 0;
+        NCR = 4;
+
+        Carr : array[1..4, 1..2] of ShortInt = ((1, 0), (0, 1), (0, -1), (-1, 0));
+
+
+
+type
+        TBoard = array[0..SIZE, 0..SIZE] of Integer;
+
+        TCord = array[1..SIZE*SIZE, 1..2] of Integer;
+
+procedure Init (var n, m, cnt : Integer; var a : TBoard);
+var
+        i, j, x, y, k : Integer;
+begin
+        ReadLn (n, m, k);
+
+        FillChar (a, SizeOf (a), Byte (EMPTY));
+
+        for i := 0 to n+1 do
+        begin
+                a[i, 0] := BUSY;
+                a[i, m+1] := BUSY;
+        end;
+
+        for j := 0 to m+1 do
+        begin
+                a[0, j] := BUSY;
+                a[n+1, j] := BUSY
+        end;
+
+        for i := 1 to k do
+        begin
+                ReadLn (x, y);
+
+                a[x, y] := BUSY
+        end;
+
+        cnt := 0;
+end;
+
+function isFree (n, m : Integer; a : TBoard; var x, y : Integer) : Boolean;
+var
+        i, j : Integer;
+begin
+        isFree := FALSE;
+
+        for i := 1 to n do
+                for j := 1 to m do
+                        if a[i, j] = EMPTY then
+                        begin
+                                isFree := TRUE;
+
+                                x := i;
+                                y := j
+                        end;
+end;
+
+function Around (var p1, p2 : Integer; var steps1, steps2 : TCord; var a : TBoard) : Boolean;
+var
+        i, x, y : Integer;
+begin
+        Around := FALSE;
+
+        while p1 > 0 do
+        begin
+                x := steps1[p1, 1];
+                y := steps1[p1, 2];
+
+                for i := 1 to NCR do
+                begin
+                        if a[x + Carr[i, 1], y + Carr[i, 2]] = EMPTY then
+                        begin
+                                Around := TRUE;
+
+                                a[x + Carr[i, 1], y + Carr[i, 2]] := BUSY;
+
+                                Inc (p2);
+
+                                steps2[p2, 1] := x + Carr[i, 1];
+                                steps2[p2, 2] := y + Carr[i, 2]
+                        end
+                end;
+
+                Dec (p1);
+        end;
+
+end;
+
+
+procedure MakeWave (var n, m, cnt : Integer; var a : TBoard);
+var
+        p2, p1, x, y, st : Integer;
+
+        steps1, steps2 : TCord;
+
+        nostop : Boolean;
+
+begin
+        while isFree (n, m, a, x, y) do
+        begin
+                a[x, y] := BUSY;
+
+                steps1[1, 1] := x;
+                steps1[1, 2] := y;
+
+                p1 := 1;
+                p2 := 0;
+
+                st := 2;
+
+                nostop := TRUE;
+
+                while nostop do
+                begin
+                        if  st mod 2 = 0 then
+                                nostop := Around (p1, p2, steps1, steps2, a)
+                        else
+                                nostop := Around (p2, p1, steps2, steps1, a);
+
+                        Inc (st)
+                end;
+
+                Inc (cnt);
+        end;
+end;
+
+var
+        a : TBoard;
+        n, m, k, cnt, i, j : Integer;
+
+
+begin
+        //assign(input, 'input.txt'); reset(input);
+        //assign(output, 'output.txt'); rewrite(output);
+
+        Init (n, m, cnt, a);
+
+        {for i := 0 to n+1 do
+        begin
+                for j := 0 to m+1 do
+                        if a[i, j] = EMPTY then
+                                Write (a[i, j], ' ')
+                        else
+                                Write ('. ');
+
+                WriteLn
+        end;
+         }
+        MakeWave (n, m, cnt, a);
+
+        WriteLn (cnt)
+end.

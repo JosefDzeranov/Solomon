@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+#include<algorithm>
+#include<stdio.h>
+
+int main() {
+	string s;
+	int n;
+	cin >> n;
+	for (;n!=1;) {
+		if (n%2==0) {
+			n/=2;
+			s+='*';
+		}
+		else {
+			n-=1;
+			s+='+';
+		}
+	}
+	reverse(s.begin(),s.end());
+	printf ("%s",s.c_str());
+	cin.ignore();
+	cin.get();
+	return 0;
+}

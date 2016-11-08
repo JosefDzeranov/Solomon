@@ -1,0 +1,22 @@
+uses SysUtils;
+var s,num:String;
+sum:int64;
+i,k,n:LongInt;
+begin
+Readln(n);
+sum:=0;
+for k:=1 to n do
+ begin
+  Readln(s);
+  num:='';
+  s:=s+' ';
+  for i:=1 to Length(s) do
+  if s[i] in ['0'..'9'] then num:=num+s[i] else
+  if Length(num)<>0 then
+   begin
+    sum:=sum+StrToInt(num);
+    num:='';
+   end;
+ end;
+Writeln(sum);
+end.

@@ -1,0 +1,19 @@
+var s: string;c: char;i:integer;
+Begin
+  s := '';
+  i := 1;
+  repeat
+    read(c);
+    if c = '#' then begin delete(s, i - 1, 1);dec(i); end
+    else
+    if c = '-' then dec(i)
+    else
+    if c = '+' then inc(i)
+    else
+    begin
+      insert(c, s, i);
+      inc(i);
+    end;
+  until c = #13 + #10;
+  write(s);
+end.

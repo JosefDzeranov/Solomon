@@ -1,0 +1,45 @@
+var
+  i, k, n, l,j: integer;
+  s: string;
+  m: array [1..1000, 1..1000] of char;
+
+begin
+  {for i := 1 to l do
+  begin
+    for j := 1 to l do
+    begin
+     m[i,j]:='0';
+    end;
+  end;}
+
+  readln(s);
+  l := length(s);
+  if (frac(sqrt(l)) <0.5) and (frac(sqrt(l)) <>0) then
+  l := round(sqrt(l))+1
+  else
+  l := round(sqrt(l));
+  //writeln(l);
+  k := 1;
+  
+  for j := 1 to l do
+  begin
+    for i := 1 to l do
+    begin
+      m[i, j] := s[k];
+      inc(k);
+      if k>length(s) then break;
+    end;
+    if k>length(s) then break;
+    //inc(k);
+  end;
+  
+  for i := 1 to l do
+  begin
+    for j := 1 to l do
+    begin
+     write(m[i,j]);
+    end;
+    //writeln;
+  end;
+  
+end.

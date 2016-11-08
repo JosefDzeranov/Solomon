@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    /*Для проведения демонстрационных боев роботв, их необходимо транспортироватьна место дислокации*/
+    int z,n,a,b,c;
+    cin>>n>>z>>a>>b>>c;
+    if (a%z*2>=z)
+    {
+        a=a/z+1;
+    }
+    else
+        a=a/z;
+    if (b%z*2>=z)
+    {
+        b=b/z+1;
+    }
+    else b=b/z;
+    if (c%z*2>=z)
+    {
+        c=c/z+1;
+    }
+    else c=c/z;
+    if((a+b+c)%n==0) z=0;
+
+    cout<<((a+b+c)/n+z)/2;
+            return 0;
+}

@@ -1,0 +1,22 @@
+program CircleLine;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : word;
+  //i : word;
+  sum : int64;
+
+begin
+  readln (n);
+  sum := n * n;
+  if n > 1 then
+    sum := sum - n;
+  if n > 2 then
+    sum := sum + n div 2 * 2 * (n mod 2 - 1);
+  writeln (sum);
+  readln;
+end.

@@ -1,0 +1,95 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,y1,x2,y2,x3,y3,a,b,c,d:integer;
+begin 
+readln(x1,y1);
+readln(x2,y2);
+readln(x3,y3);
+if (x3=x1) and (y3<=y2) and (y3=>y1) or
+ (x3=x2) and (y3<=y2) and (y3=>y1) or
+ (y3=y2) and (x3<=x2) and (x3=>x1) or
+ (y3=y1) and (x3<=x2) and (x3=>x1) then
+ writeln(0)
+else
+begin
+if (x3>x2) and (y3>y2) then
+ begin
+ a:=(x3-x2)+(y3-y2);
+ writeln(a);
+ end
+else
+ begin  
+ if (x3>x2) then
+  begin
+  a:=x3-x2;
+  writeln(a);
+  end
+ else
+  begin  
+  if y3>y2 then
+   begin
+    a:=y3-y2;
+    writeln(a);
+   end
+  else
+   begin  
+   if (x3<x1) and (y3<y1) then
+    begin
+     a:=(x1-x3)+(y1-y3);
+     writeln(a);
+    end
+   else
+    begin   
+    if x3<x1 then
+     begin
+     a:=x1-x3;
+     writeln(a);
+     end
+    else     
+     begin   
+     if y3<y1 then
+     begin
+       a:=y1-y3;
+       writeln(a);
+     end
+     else
+      begin 
+     if (x3<x2) and (x3>x1) and (y3<y2) and (y3>y1) then
+      begin   
+        if (x2-x3<=x3-x1) and (x2-x3<=y2-y3) and (x2-x3<=y3-y1) then
+         writeln(x2-x3)
+         else
+          begin  
+           if (x3-x1<=x2-x3) and (x3-x1<=y2-y3) and (x3-x1<=y3-y1) then
+            writeln(x2-x3)
+           else
+            begin   
+             if (y2-y3<=x3-x1) and (y2-y3<=x2-x3) and (y2-y3<=y3-y1) then
+              writeln(y2-y3)
+             else   
+          writeln(y3-y1);
+
+
+         end;
+        end;  
+       end;
+      end;
+     end;
+    end;
+   end;
+  end;
+ end;
+end;
+
+ 
+
+
+readln;
+readln;
+
+end.

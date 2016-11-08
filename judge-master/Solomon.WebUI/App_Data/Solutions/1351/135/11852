@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long q = e / (a - a / b + c - c / d);
+    long long ans = q - 1000000;
+    while (a * (ans - ans / b) + c * (ans - ans / d) < e)
+        ans++;
+
+    cout << ans;
+    return 0;
+}

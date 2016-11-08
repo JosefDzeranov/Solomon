@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,k,x:integer;
+      s: array [1..100000000] of string;
+begin
+   readln(n);
+   x:=0;
+   for k := 1 to n do
+     readln(s[n]);
+   for k := 1 to n do
+     begin
+       if s[k]<>s[k+1] then
+        x:=x+1;
+     end;
+writeln(x);
+readln;
+end.

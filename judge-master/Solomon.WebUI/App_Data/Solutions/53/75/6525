@@ -1,0 +1,31 @@
+program Project4;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var s:array [1..1000] of string; t:string; n,k,i,j,unic:integr;
+begin
+readln(k);
+n:=0;
+for I := 1 to k do
+begin
+ readln(t);
+ unic:=0;
+
+ for j := 1 to n do
+   if t=s[j] then
+    begin
+      unic:=1;
+      break;
+    end;
+
+   if unic=0 then
+   begin
+    n:=n+1;
+    s[n]:=t;
+   end;
+end;
+writeln(n);
+readln;
+end.

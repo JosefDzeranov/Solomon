@@ -1,0 +1,15 @@
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+    int a1,a2,a3,a4,b;
+    cin>>a1>>a2>>a3>>a4;
+
+    b=sqrt(min(a1,a2)+min(a3,a4));
+    cout <<b;
+
+    return 0;
+}

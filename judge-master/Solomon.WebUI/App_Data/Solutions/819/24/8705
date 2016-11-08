@@ -1,0 +1,58 @@
+n = int(input())
+A = list(map(int, input().split()))
+zero_count = 0
+count = 0
+A.sort()
+for i in range (n):
+    if A[i] == 0:
+        zero_count +=1
+count = int(zero_count*(zero_count-1)/2)
+
+print ('zero_count =', zero_count)
+print ('count =', count)
+
+for i in range (zero_count, n):
+    num1 = A[i]
+    while num1 != 0:
+        dig1 = num1 % 10
+        if dig1 == 0:
+            count = count + zero_count
+            
+            print ('count =', count)
+            
+        num1 = num1 // 10
+
+for i in range (zero_count, n):
+    
+    for j in range (i+1, n):
+        num1 = A[i]
+            
+        print ('num1 =', num1)
+                
+        while num1 != 0:
+            dig1 = num1 % 10
+            
+            print ('dig1 =', dig1)
+            
+            num1 = num1 // 10
+            num2 = A[j]
+            
+            print ('num2 =', num2)
+           
+            while num2 != 0:
+                dig2 = num2 % 10
+                
+                print ('dig2 =', dig2)
+                
+                num2 = num2 // 10
+                if dig1 == dig2:
+                    count +=1
+                    
+                    print ('count =', count)
+                    
+                    break
+                
+                break
+            
+        
+print (count)

@@ -1,0 +1,92 @@
+var
+n,i,k,b1:integer;
+d:array [1..100] of integer;
+c:array [1..100] of integer;
+a:array [1..100] of integer;
+e:array [1..100] of integer;
+begin
+read (n);
+if (n>0) and (n<=100) then
+begin
+for i:=1 to n do
+begin
+read (a[i]);
+if (a[i]<=0) or (a[i]>100000) then exit
+end;
+
+
+for i:=1 to n do
+begin
+e[i]:=a[i];
+while (a[i] div 10>0) do
+begin
+a[i]:=a[i] div 10;
+c[i]:=c[i]+1
+end;
+end;
+
+for i:=1 to n do
+begin
+c[i]:=c[i]+1;
+end;
+
+
+for i:=1 to n do
+begin
+for k:=1 to n do
+begin
+if (c[i]=c[k]) then d[i]:=d[i]+1;
+end;
+end;
+
+
+for i:=1 to n do
+begin
+for k:=1 to n do
+begin
+if (d[i]>d[k]) then d[k]:=0;
+end;
+end;
+
+
+for i:=1 to n do
+begin
+
+for k:=1 to n do
+begin
+if (d[i]=d[k]) and (d[k]<>0) and (c[i]<>c[k]) then exit;
+end;
+end;
+
+
+
+
+for i:=1 to n do
+
+begin
+b1:=0;
+    if (d[i]>0) then
+        begin 
+        while (b1<>2) do
+              begin
+
+                  for k:=1 to e[i] do
+                  
+                    if (e[i] mod k=0) then b1:=b1+1;
+
+
+//write (b1);
+               if (b1>2) then 
+                       begin
+                       b1:=0;   
+                       e[i]:=e[i]+1;
+                       end; 
+          
+               end; 
+               
+              end;
+write (e[i]:6);
+
+end; 
+end;
+end.

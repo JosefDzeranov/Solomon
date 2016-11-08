@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n, tr, tr1, tr2;
+	char c1, c2, c3, c4;
+	cin >> n;
+	int res1=0;
+	int res2=0;
+	for (int i=0; i<n; i++)
+	{
+		cin >> c1 >> c2 >> c3 >> c4;
+		tr1 = 0;
+		tr2 = 0;
+			if (c1=='>')
+				tr1++;
+			if (c2=='>')
+				tr1++;
+			if (c3=='<')
+				tr2++;
+			if (c4=='<')
+				tr2++;
+			if (tr1>tr2)
+				res2=res2+(tr2-tr1);
+			if (tr2>tr1)
+				res1=res1+(tr1-tr2);
+	}
+	if (res1==res2)
+		cout << 0;
+	if (res1>res2)
+		cout << "1 " << res1-res2;
+	if (res2>res1)
+		cout << "2 " << res2-res1;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

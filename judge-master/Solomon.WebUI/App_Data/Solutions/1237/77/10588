@@ -1,0 +1,37 @@
+{$H+}
+var
+  i, k, n, l, j: longint;
+  s: string;
+  m: array [1..1000, 1..1000] of char;
+
+begin
+  readln(s);
+  l := round(sqrt(length(s)));
+  
+  if l * l < length(s) then 
+  inc(l);
+  //writeln(l);
+  k := 1;
+  
+  for j := 1 to l do
+  begin
+    for i := 1 to l do
+    begin
+      m[i, j] := ' ';    
+      if k <= length(s) then 
+        m[i, j] := s[k];
+      inc(k);
+    end;
+  end;
+  
+  for i := 1 to l do
+  begin
+    for j := 1 to l do
+    begin
+    if m[i,j]<>' ' then
+      write(m[i, j]);
+    end;
+    //writeln;
+  end;
+  
+end.

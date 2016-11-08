@@ -1,0 +1,43 @@
+var s,a,b:string;
+i,n:integer;
+q,w,e,r:char;
+begin
+readln(s);
+if length(s) mod 2=0 then begin
+for i:=1 to length(s) div 2 do
+a:=a+s[i];
+for i:=length(s) downto (length(s) div 2)+1 do
+b:=b+s[i];
+end
+else begin
+for i:=1 to (length(s) div 2) do
+a:=a+s[i];
+for i:=length(s) downto (length(s) div 2)+2 do
+b:=b+s[i];
+end;
+for i:=1 to length(a) do
+if a[i]<>b[i] then
+n:=n+1;
+i:=1;
+if n=0 then
+writeln('Yes')
+else if n=2 then begin
+while i<length(a) do begin
+if a[i]=b[i] then
+i:=i+1;
+q:=a[i];
+w:=b[i];
+i:=i+1;
+if a[i]=b[i] then
+i:=i+1;
+e:=a[i];
+r:=b[i];
+if (e<>'') and (r<>'') then break;
+end;
+if (q=r) and (w=e) then
+writeln('Yes')
+else
+writeln('No')
+end
+else writeln('No');
+end.

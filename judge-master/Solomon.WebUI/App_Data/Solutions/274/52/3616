@@ -1,0 +1,11 @@
+program fuck;
+uses crt;
+var n:integer;
+begin
+  clrscr;
+  readln(n);
+  x:=1;
+  for i:=n downto n-2 do
+    x := x*i;
+  writeln(x);
+End.

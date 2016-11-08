@@ -1,0 +1,8 @@
+var a,r,n,l,r2:integer;
+begin
+read(n,l,r,r2);
+a:=l div(2*r);
+if (l mod (2*r))<>0 then a:=a+1;
+if n >= (a*4*r*pi+2*pi*r2*a) then begin writeln('YES');write(a*2,' ',a)end
+ELSE write('NO');
+end.

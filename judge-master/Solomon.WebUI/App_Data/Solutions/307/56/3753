@@ -1,0 +1,15 @@
+var x,y,i,n:longint;
+ begin
+ // assign(input,'input1.txt'); reset(input);
+  // assign(output,'output1.txt'); rewrite(output);
+    readln(n);  x:=0;
+    for i:=1 to n do
+     begin
+      y:=i;
+      while y mod 2=0 do begin inc(x);y:=y div 2;end;
+     end;
+    writeln(x);
+
+  end.
+
+

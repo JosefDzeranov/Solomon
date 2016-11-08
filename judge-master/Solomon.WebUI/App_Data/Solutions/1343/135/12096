@@ -1,0 +1,14 @@
+a, k, b, m, x = list(map(int, input().rstrip().split()))
+#s = 0
+#i = 0
+#while(s < x):
+#    i += 1
+#    if not((i >= k) and (i % k == 0)):
+#        s += a
+#    if not((i >= m) and (i % m == 0)):
+#        s += b
+#pra = (a * (k - 1)) / k
+#prb = (b * (m - 1)) / m
+#pr = pra + prb
+print(int(x / (a * (k - 1) / k + b * (m - 1) / m)))
+#print(i)

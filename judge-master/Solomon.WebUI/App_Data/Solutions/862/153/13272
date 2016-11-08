@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
+//using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        
+
+        static void Main(string[] args)
+        {
+            
+            string[] s = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(s[0]);
+            int m = Convert.ToInt32(s[1]);
+            int k = Convert.ToInt32(s[2]);
+            int r = n * m - k;
+            int sec=0;
+            List<int> x = new List<int>();
+            List<int> y = new List<int>();
+            int[,] a = new int[n, m];
+
+            for (int i = 0; i < k; i++)
+            {
+                s = Console.ReadLine().Split(' ');
+                a[Convert.ToInt32(s[0])-1, Convert.ToInt32(s[1])-1] = 1;
+                x.Add(Convert.ToInt32(s[0])-1); y.Add(Convert.ToInt32(s[1])-1);
+            }
+
+
+            while (r > 0)
+            {
+                int q=x.Count;
+                for (int i = 0; i < q; i++)
+                {
+                    if (y[i] > 0) { a[x[i], y[i] - 1] = 1; r--; x.Add(x[i]); y.Add(y[i] - 1); }
+                    if (y[i] < m-1) { a[x[i], y[i] + 1] = 1; r--; x.Add(x[i]); y.Add(y[i] + 1); }
+                    if (x[i] > 0) { a[x[i]-1, y[i]] = 1; r--; x.Add(x[i]-1); y.Add(y[i]); }
+                    if (x[i] <n-1) { a[x[i] + 1, y[i]] = 1; r--; x.Add(x[i] + 1); y.Add(y[i]); }
+
+                }
+                for (int j = 0; j < q; j++)
+                { x.RemoveAt(j); y.RemoveAt(j); }
+                sec++;
+            }
+
+            Console.WriteLine(sec);
+
+        }
+    }
+}

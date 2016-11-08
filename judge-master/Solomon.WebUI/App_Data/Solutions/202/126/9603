@@ -1,0 +1,31 @@
+#include<iostream>
+
+using namespace std;
+
+int n,a[60],sred,sum;
+
+int main(){
+	cin>>n;
+
+	for(int i = 0;i<n;i++){
+		cin>>a[i];
+	}
+
+	for(int i = 0;i< n;i++){
+		sred += a[i];
+	}
+
+	if(sred%n != 0){
+		cout<<"IMPOSSIBLE";
+	}else{
+		sred = sred/n;
+		for(int i = 0;i < n;i++){
+			if(a[i] > sred){
+			   sum += a[i] - sred;
+			}
+		}
+					cout << sum;
+	}
+
+	return 0;
+}

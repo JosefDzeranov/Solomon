@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+int up(int a, int b) {
+	if (a % b == 0) return a / b;
+	return a / b + 1;
+}
+
+int main() {
+	int a, b, c, d, i, j, sh = 0, one, two, three, four;
+	cin >> a >> b >> c >> d;
+	vector<int> arr(4);
+	for (i = 1; i <= b; i++) {
+		arr[0] = up(a, i);
+		arr[1] = b / i;
+		arr[2] = up(c, 2) - i;
+		arr[3] = up(d, 2) - i;
+		if (max(arr[0], arr[1]) < min(arr[2], arr[3]) || min(arr[0], arr[1]) > max(arr[2], arr[3]))break;
+		sort(arr.begin(), arr.end());
+		sh += (1 + arr[2] - arr[1]);
+	}
+	cout << up(sh, 2);
+	return 0;
+}

@@ -1,0 +1,19 @@
+   Program C;
+   var N,M,i,k:integer;
+   Begin
+   readln(N);
+   M:=1;
+   for i:=1 to N do begin
+   M:=M*i;
+   end;
+   i:=0;
+   if (M mod 2)<>1 then begin
+   while k<>1 do begin
+   k:=M mod 2;
+   M:=M div 2;
+   i:=i+1;
+   end;
+   Writeln(i-1);
+   end
+   else Writeln(0);
+   End.

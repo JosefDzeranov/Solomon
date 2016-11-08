@@ -1,0 +1,20 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+main()
+{
+      int x1,y1,x2,y2,x3,y3,minx,miny;
+      cin>>x1>>y1>>x2>>y2>>x3>>y3;
+      if(y3>y2 && x3<x2 && x3>x1) cout<<abs(y3-y2);
+      else if(x3>x2 && y3<y2 && y3>y1) cout<<abs(x3-x2);
+      else 
+      {
+         if(abs(x3-x2)<=abs(x3-x1)) minx=abs(x3-x2);
+         else minx=abs(x3-x1);
+         if(abs(y3-y2)<=abs(y3-y1)) miny=abs(y3-y2);
+         else miny=abs(y3-y1);
+         if(minx<=miny) cout<<minx;
+         else cout<<miny;        
+      }
+      cin.get(); cin.get();
+}

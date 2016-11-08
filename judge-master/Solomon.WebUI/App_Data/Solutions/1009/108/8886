@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N;
+    int i, c;
+    int sum = 0;
+
+    scanf("%d", &N);
+    for (i = 0; i < N; i++) {
+        scanf("%d", &c);
+        sum = (i%2==0)?sum+c:sum-c;
+    }
+
+    if (sum >= 0) printf("0");
+    else printf("%d", 0-sum+1);
+
+
+    return 0;
+}

@@ -1,0 +1,41 @@
+program SafariPark;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x1, x2, x3, y1, y2, y3, a, b, c, d, x : smallint;
+begin
+  readln (x1, y1);
+  readln (x2, y2);
+  readln (x3, y3);
+  a := abs (x3 - x1);
+  b := abs (x3 - x2);
+  c := abs (y3 - y1);
+  d := abs (y3 - y2);
+  while (a > b) or (b > c) or (c > d) do
+  begin
+    if a > b then
+      begin
+        x := a;
+        a := b;
+        b := x;
+      end;
+    if b > c then
+      begin
+        x := b;
+        b := c;
+        c := x;
+      end;
+    if c > d then
+      begin
+        x := c;
+        c := d;
+        d := x;
+      end;
+  end;
+  write (a);
+  readln;
+end.

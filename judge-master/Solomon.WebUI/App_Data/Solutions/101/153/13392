@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace taganrog_student_fin_1
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(s[0]);
+            int m = Convert.ToInt32(s[1]);
+            int k = Convert.ToInt32(s[2]);
+            int[,] mas = new int[n + 1, m + 1];
+            int min = (n + 1)*(m + 1);
+            int max = 0;
+            int[,] ans = new int[k, 2];
+            for (int l = 0; l < k; l++)
+            {
+                s = Console.ReadLine().Split(' ');
+
+                int x = int.Parse(s[0]);
+                int y = int.Parse(s[1]);
+                ans[l, 0] = x;
+                ans[l, 1] = y;
+            }
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    min = (n + 1)*(m + 1);
+                    for (int l = 0; l < k; l++)
+                    {
+
+                        int ras = Math.Abs(i - ans[l, 0]) + Math.Abs(j - ans[l, 1]);
+                        if (ras < min)
+                        {
+                            min = ras;
+                        }
+                    }
+                }
+            
+        
+
+    if (min > max) max = min;
+            }
+            Console.WriteLine(max);
+        }
+    }
+}

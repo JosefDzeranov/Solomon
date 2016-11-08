@@ -1,0 +1,59 @@
+var
+n:0..100;
+a:array[1..100] of integer;
+i,x,k,e,l,j,h, max: integer;
+c:array[1..100,1..100] of integer;
+begin
+readln(n);
+for i:=1 to n do readln(a[i]);
+
+i:=1;
+while i<=n do
+begin
+x:=0;
+e:=0;
+k:=a[i];
+   while (e>10) or (k<>0) do
+   begin
+   e := e + (k mod 10);
+   begin
+   k := k div 10;
+   if (k=0) and (e>=10) then
+   begin
+   k:=e;
+   e:=0;
+   end;
+   end;
+   end;
+j:=0;
+   while x=0 do
+   begin
+   j:=j+1;
+   if c[e,j]=0 then
+   begin
+   c[e,j]:=a[i];
+   if (max=j) and (e<h) then h:=e;
+   if max<j then
+     begin
+     max:=j;
+     h:=e;
+     end;
+   j:=0;
+   x:=1;
+   e:=0;
+   i:=i+1;
+   end;
+   end;
+end;
+writeln;
+for i:=1 to n do
+begin
+for j:=1 to max do
+begin
+if c[h,j]<>a[i] then l:=l+1;
+if l=max then writeln(a[i], ' ');
+end;
+l:=0;
+end;
+readln
+end.

@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a,c=0,s=0;
+    cin>>a;
+    int x[a];
+    for (int i=0; i<a; i++)
+    {
+        cin>>x[i];
+        c=c+x[i];
+    }
+    if (c%a!=0)
+    {
+        cout<<"IMPOSSIBLE";
+        return 0;
+    }
+    else
+    c=c/a;
+    for (int i=0; i<a; i++)
+    {
+        if (x[i]>c)s=s+x[i]-c;
+    }
+    cout<<s;
+    return 0;
+}

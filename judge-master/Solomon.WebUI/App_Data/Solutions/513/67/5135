@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n,maximumi=0;
+    cin >> n;
+    int s[n],t[n],c[n];
+    for (int i=1;i<=n;i++)
+    {
+        cin >> s[i] >> t[i] >> c[i];
+    }
+    cout << n;
+    for (int i=1;i<=n;i++)
+    {
+        maximumi=maximumi+c[i];
+    }
+    cout << maximumi;
+    for (int i=1;i<=n;i++)
+    {
+        cout << i;
+    }
+    return 0;
+}

@@ -1,0 +1,27 @@
+#include <iostream>
+
+
+using namespace std;
+
+int main()
+{
+	long long a, k, b, m, x;
+	cin >> a >> k >> b >> m >> x;
+	long long l = 1, r = 7000000002;
+	while (l < r - 1)
+	{
+		long long mid = (l + r) / 2;
+		long long t1 = a * (mid - mid / k);
+		long long t2 = b * (mid - mid / m);
+		if (t1 + t2 > x)
+			r = mid;
+		else
+			l = mid;
+	}
+	long long t1 = a * (l - l / k);
+	long long t2 = b * (l - l / m);
+	if (t1 + t2 >= x)
+		cout << l;
+	else cout << r;
+	return 0;
+}

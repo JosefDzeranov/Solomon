@@ -1,0 +1,39 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+float x1,y1,x2,y2,x3,y3,x4,y4,a,s,d,f,g,h;
+int l;
+l=0;
+cin>>x1>>y1>>x2>>y2>>x3>>y3>>x4>>y4;
+a=sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+s=sqrt((x1-x3)*(x1-x3)+(y1-y3)*(y1-y3));
+d=sqrt((x1-x4)*(x1-x4)+(y1-y4)*(y1-y4));
+if(a==s)
+{
+f=sqrt((x4-x2)*(x4-x2)+(y4-y2)*(y4-y2));
+g=sqrt((x4-x3)*(x4-x3)+(y4-y3)*(y4-y3));
+h=sqrt((x2-x3)*(x2-x3)+(y2-y3)*(y2-y3));
+if(f==g || g==a || h==d){l=l+1;}
+}
+if(a==d)
+{
+f=sqrt((x3-x2)*(x3-x2)+(y3-y2)*(y3-y2));
+g=sqrt((x4-x3)*(x4-x3)+(y4-y3)*(y4-y3));
+h=sqrt((x2-x4)*(x2-x4)+(y2-y4)*(y2-y4));
+if(f==g || g==a || h==d){l=l+1;}
+}
+if(s==d)
+{
+f=sqrt(x2-x4)*(x2-x4)+(y2-y4)*(y2-y4);
+g=sqrt(x2-x3)*(x2-x3)+(y2-y3)*(y2-y3);
+h=(x4-x3)*(x4-x3)+(y4-y3)*(y4-y3);
+if(f==g || g==a || h==d){l=l+1;}
+}
+if(l>0){cout<<"YES";}
+else {cout<<"NO";}
+return 0;
+
+}

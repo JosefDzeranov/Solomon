@@ -1,0 +1,27 @@
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class SimpleGame {
+    public static void main(String[] args) {
+        try (
+            Scanner reader = new Scanner(System.in);
+            PrintWriter writer = new PrintWriter(System.out, true)
+        ) {
+            int n = reader.nextInt();
+            
+            if (n == 1)
+                writer.println("Timur");
+            else {
+                n--;
+                switch (n % 2) {
+                    case 0:
+                        writer.println("Aslan");
+                        break;
+                    case 1:
+                        writer.println("Timur");
+                        break;
+                }
+            }
+        }
+    }
+}

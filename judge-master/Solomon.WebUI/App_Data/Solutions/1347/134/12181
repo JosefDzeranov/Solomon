@@ -1,0 +1,21 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,o,da,db:integer;
+begin
+  readln(n);
+  o:=0;
+  if n mod 2=0  then
+  begin
+   for da := 1 to n do
+    for db := 1 to n do
+    if (da+db) mod 2=1 then
+     o:=o+1
+  end
+   else o:=n*(n-1);
+ writeln(o);
+end.

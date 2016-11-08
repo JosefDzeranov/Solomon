@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	int l, x1, y1, x2, y2;
+	cin >> l >> x1 >> y1 >> x2 >> y2;
+	double sk, pi=3.14, s, r1, d, sp, x, y;
+	x=x2-x1; y=y2-y1;
+	sp=sqrt(pow(x,2))*sqrt(pow(y,2));
+	sk=pi*l*l;
+	d=sqrt(pow(x,2)+pow(y,2))/2;
+	if (l>=d) {
+		cout << sp;
+		cin.ignore();
+		cin.get();
+		return 0;
+	}
+	r1=sqrt(pow(y,2))/2;
+	if (l<=r1){
+		cout << sk;
+		cin.ignore();
+		cin.get();
+		return 0;
+	}
+	s=sk/2;
+	if (l>r1&&l<d){
+		cout << s+l*l;
+		cin.ignore();
+		cin.get();
+		return 0;
+	}
+	return 0;
+}

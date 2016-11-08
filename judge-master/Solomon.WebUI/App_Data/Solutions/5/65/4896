@@ -1,0 +1,221 @@
+import java.io.*;
+import java.util.*;
+
+public class majorhouse_sp implements Runnable 
+{
+
+	public static void main(String[] args) 
+	{
+		new Thread(new majorhouse_sp()).run();
+	}
+
+	public void run() 
+	{
+		try 
+		{
+			Locale.setDefault(Locale.US);
+			
+			br = new BufferedReader(new Reader(System.in));
+			out = new PrintWriter(new Writer(System.out));
+			solve();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	BufferedReader br;
+
+	PrintWriter out;
+
+	StringTokenizer st;
+
+	String nextToken() {
+		while (st == null || !st.hasMoreTokens()) {
+			try {
+				st = new StringTokenizer(br.readLine());
+			} catch (IOException e) {
+				return "0";
+			}
+		}
+		return st.nextToken();
+	}
+
+	int nextInt() {
+		return Integer.parseInt(nextToken());
+	}
+
+	void myAssert(boolean e, String s) {
+		if (!e) {
+			throw new Error("Assertion failure " + s);
+		}
+	}
+
+	private static final String FILENAME = "majorhouse";
+	
+	class Block {
+		long x1, y1, x2, y2;
+		
+		Block() {
+			x1 = nextInt();
+			y1 = nextInt();
+			x2 = nextInt();
+			y2 = nextInt();
+		}
+	}
+	
+	boolean inside(long x1, long x2, long y) {
+		return (y > x1 && y < x2) || (y > x2 && y < x1);
+	}
+	
+	Block[] blocks;
+	
+	boolean isFreeX(long x, long fromY, long toY) {
+		for (Block b : blocks) {
+			if (inside(b.x1, b.x2, x) && (inside(fromY, toY, b.y1) || inside(fromY, toY, b.y2) || inside(b.y1, b.y2, fromY))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	boolean isFreeY(long y, long fromX, long toX) {
+		for (Block b : blocks) {
+			if (inside(b.y1, b.y2, y) && 
+				(inside(fromX, toX, b.x1) || inside(fromX, toX, b.x2) || inside(b.x1, b.x2, fromX))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	long findUp(long x, long y) {
+		long ret = Long.MAX_VALUE;
+		for (Block b : blocks) {
+			if (inside(b.x1, b.x2, x) && b.y1 >= y) {
+				ret = Math.min(ret, b.y1);
+			}
+		}
+		return ret;
+	}
+	
+	long findDown(long x, long y) {
+		long ret = Long.MIN_VALUE;
+		for (Block b : blocks) {
+			if (inside(b.x1, b.x2, x) && b.y2 <= y) {
+				ret = Math.max(ret, b.y2);
+			}
+		}
+		return ret;
+	}
+	
+	class Event implements Comparable<Event> {
+		int type;
+		long y;
+
+		@Override
+		public int compareTo(Event o) {
+			if (y < o.y) return -1;
+			if (y > o.y) return 1;
+			return type - o.type;
+		}
+		
+		Event(long a, int b) {
+			y = a;
+			type = b;
+		}
+	}
+	
+	long findSegment(long x1, long x2, long y1, long y2) {
+		if (y1 == y2) {
+			if (isFreeY(y1, x1, x2)) {
+				return y1;
+			} else {
+				return -1;
+			}
+		}
+		ArrayList<Event> al = new ArrayList<>();
+		for (Block b : blocks) {
+			if (inside(x1, x2, b.x1) || inside(x1, x2, b.x2) || inside(b.x1, b.x2, x1)) {
+				al.add(new Event(b.y1, 1));
+				al.add(new Event(b.y2, -1));
+			}
+		}
+		al.add(new Event(y1, 0));
+		al.add(new Event(y2, 0));
+		Collections.sort(al);
+		int h = 0;
+		for (Event e : al) {
+			h += e.type;
+			if (h == 0 && e.y >= y1 && e.y <= y2) {
+				return e.y;
+			}
+		}
+		return -1;
+	}
+	
+	public void solve() throws IOException {
+		int n = nextInt();
+		int k = nextInt();
+		blocks = new Block[n];
+		for (int i = 0; i < n; i++) {
+			blocks[i] = new Block();
+		}
+		test: for (int test = 0; test < k; test++) {
+			long x = nextInt();
+			long y = nextInt();
+			
+			if (x == 0) {
+				if (y > 0) {
+					if (isFreeX(0, 0, y)) {
+						out.println("YES");
+						out.println(0);
+						continue test;
+					}
+				}
+				out.println("NO");
+				continue test;
+			}
+			{
+				if (y >= 0 && isFreeX(0, 0, y) && isFreeY(y, Math.min(0, x), Math.max(0, x))) {
+					out.println("YES");
+					out.println(1);
+					out.println("0 " + y + " " + ((x < 0) ? -1 : 1));
+					continue test;
+				}
+			}
+			
+			if (y >= 0) {
+				long y1 = findUp(0, 0);
+				long y2 = findDown(x, y);
+				y1 = Math.min(y1, y);
+				y2 = Math.max(y2, 0);
+				if (y2 <= y1) {
+					long yy = findSegment(Math.min(x, 0), Math.max(x, 0), y2, y1);
+					if (yy != -1) {
+						out.println("YES");
+						out.println(2);
+						out.println("0 " + yy + " " + ((x < 0) ? -1 : 1));
+						out.println(x + " " + yy + " " + ((x < 0) ? 1 : -1));
+						continue test;
+					}
+				}
+			}
+			{
+				long y1 = findUp(0, 0);
+				long y2 = findUp(x, y);
+				if (y1 >= y && y2 >= 0) {
+					long yy = findSegment(Math.min(x, 0), Math.max(x, 0), Math.max(0, y), Math.min(y1, y2));
+					if (yy != -1) {
+						out.println("YES");
+						out.println(2);
+						out.println("0 " + yy + " " + ((x < 0) ? -1 : 1));
+						out.println(x + " " + yy + " " + ((x < 0) ? -1 : 1));
+						continue test;
+					}
+				}
+			}
+			out.println("NO");
+		}
+	}
+}

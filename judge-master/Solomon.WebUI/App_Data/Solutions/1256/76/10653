@@ -1,0 +1,38 @@
+const
+p='1234567890';
+
+var
+s,sr,ss:String;
+f:Boolean;
+n,dl,i,j,sum,ch,err,k,k1,ci:Longint;
+a:array [1..100001] of String;
+t:text;
+
+begin
+f:=false;
+readln(n);
+sum:=0;
+
+For i:=1 to n do Readln(a[i]);
+
+For i:=1 to n do begin
+sr:=a[i]+'.';
+dl:=length(sr);
+j:=1;
+For j:=1 to dl do begin
+For k:=1 to 10 do If sr[j]=p[k] then begin 
+f:=true;
+ss:=ss+sr[j];
+break;
+end;
+If not(f) and (ss<>'') then begin
+val(ss,ch,err);
+ss:='';
+sum:=sum+ch;
+end;
+f:=false;
+end;
+end;
+Writeln(sum);
+End.
+

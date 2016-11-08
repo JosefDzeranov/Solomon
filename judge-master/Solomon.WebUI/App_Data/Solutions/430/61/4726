@@ -1,0 +1,20 @@
+program CaseWithPlaing;
+var a:string;b,c,d,i,x:integer;
+
+begin
+
+
+  readln(b,c);
+  for i:=1 to b do
+  begin
+    readln(a);
+    if a='save' then d:=x;
+    if a='load' then 
+      if d=0 then x:=0 else x:=d;
+    if a='shoot' then x:=x-1;
+    if a='ammo' then x:=x+c;
+    writeln(x);
+  end;
+
+
+end.

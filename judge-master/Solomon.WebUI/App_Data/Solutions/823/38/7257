@@ -1,0 +1,45 @@
+program Kvadrat;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x1, x2, x3, x4, y1, y2, y3, y4, a, b, c : integer;
+begin
+  read (x1);
+  readln (y1);
+  read (x2);
+  readln (y2);
+  read (x3);
+  readln (y3);
+  read (x4);
+  readln (y4);
+  a := sqr (x2 - x1) + sqr (y2 - y1);
+  b := sqr (x3 - x1) + sqr (y3 - y1);
+  c := sqr (x4 - x1) + sqr (y4 - y1);
+  if a > b then
+  begin
+    a := a - b;
+    b := a + b;
+    a := b - a;
+  end;
+  if b > c then
+  begin
+    c := c - b;
+    b := c + b;
+    c := b - c;
+  end;
+  if a > b then
+  begin
+    a := a - b;
+    b := a + b;
+    a := b - a;
+  end;
+  if (c = a + b) and (a = b) then
+    write ('YES')
+  else
+    write ('NO');
+  readln;
+end.

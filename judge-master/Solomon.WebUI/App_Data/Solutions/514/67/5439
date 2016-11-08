@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+using namespace std;
+struct tt
+{
+	int s, t, c, i, e;
+};
+tt mas[100000];
+int cnt[100000];
+int used[100000];
+bool cmp(tt a, tt b)
+{
+	if (a.s < b.s) return true;
+	return false;
+}
+int n;
+vector <int> mas2[100000];
+void rec(int i, int j)
+{
+	if (mas2[j].size() > 1 && i != j)
+	mas2[i].push_back(mas2[j][1]);
+	if(mas2[j].size() > 1)
+	rec(i, mas2[j][1]);
+}
+int main()
+{
+
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> mas[i].s >> mas[i].t >> mas[i].c;
+		mas[i].e = mas[i].s + mas[i].t;
+		mas[i].i = i + 1;
+	}
+	sort(mas, mas + n, cmp);
+	for (int i = n - 1; i >= 0; i--)
+	{
+		mas2[i].push_back(mas[i].i);
+		used[i] = 1;
+		cnt[i] = mas[i].c;
+		int minn = -1;
+		int pok = -1;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (mas[j].s >= mas[i].e && used[i] != 2)
+			{
+			//	used[j]++;
+				if (cnt[j] > minn)
+				{
+					minn = cnt[j];
+					pok = j;
+				}
+			}
+		}
+		if (pok != -1) cnt[i] += cnt[pok];
+		if (pok != -1) 
+		
+			mas2[i].push_back(mas[pok].i);
+	}
+	long long pok = -1;
+	long long pok2 = -1;
+	for (int i = 0; i < n; i++)
+	{
+		if (cnt[i] > pok)
+		{
+			pok = cnt[i];
+			pok2 = i;
+		}
+	}
+	cout << cnt[pok2] << "\n";
+	rec(pok2, pok2);
+	cout << mas2[pok2].size() << "\n";
+	for (int i = 0; i < mas2[pok2].size(); i++)
+		cout << mas2[pok2][i] << ' ';
+	return 0;
+}

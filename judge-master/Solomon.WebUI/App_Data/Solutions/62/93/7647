@@ -1,0 +1,23 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var h1,h2,m1,m2,a,b:byte;
+begin
+readln(h1,m1);
+readln(h2,m2);
+if m2<m1 then
+ begin
+   h2:=h2-1;
+   m2:=m2+60;
+ end;
+a:=h2-h1;
+b:=m2-m1;
+
+writeln(a,' ',b);
+readln;
+
+end.

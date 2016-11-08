@@ -1,0 +1,12 @@
+var
+    N,S,A: longint;
+begin
+readln(N);
+if (N mod 2 <> 0) then exit
+else
+begin
+A:= N;
+S:= A*A+1+(A-1)*((A-1)*(A-1)+1);
+writeln(S*2);
+end;
+end.

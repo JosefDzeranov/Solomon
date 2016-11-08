@@ -1,0 +1,58 @@
+#include<iostream>
+
+using namespace std;
+
+int table,team;
+
+int tableCoord[10000];
+
+int l,r,s;
+
+
+int main(){
+
+	l = 0;
+
+	cin>>table>>team;
+
+	for(int i = 0; i < table; i++){
+
+		cin>>tableCoord[i];
+
+	}
+
+	r = tableCoord[table - 1];
+
+	while(l + 1 < r){
+		int k;
+		int x;
+		k = 1;
+
+		s = (l + r) / 2;
+
+		x = tableCoord[0];
+
+		for(int i =0; i < table; i++){
+
+			if(tableCoord[i] >= x + s){
+				k++;
+				x = tableCoord[i];
+			}
+
+		}
+
+		if(k >= team){
+			l = s;
+		}else
+		{
+			
+				r = s;
+		}
+
+	}
+
+	cout<<l;
+
+	cin>>r;
+
+}

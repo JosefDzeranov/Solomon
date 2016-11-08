@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	unsigned A, B, K, M, X;
+
+	scanf("%d %d %d %d %d", &A, &K, &B, &M, &X);
+
+	unsigned count = 0;
+	unsigned day = 0;
+
+	do {
+		day++;
+		count += (day % K == 0 ? 0 : A);
+		count += (day % M == 0 ? 0 : B);
+	} while (count < X);
+
+	printf("%d\n", day);
+
+	return 0;
+}

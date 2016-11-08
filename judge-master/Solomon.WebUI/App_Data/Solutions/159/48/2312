@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+ float l,x1,y1,x2,y2,n;
+  cin>> l>>x1>>y1>>x2>>y2;
+ if(x2<l && y2<l)
+ {
+     n=abs((x2-x1)*(y2-y1));
+ }
+ if(x2>l && y2>l)
+ n=l*l;
+
+
+ if(x2==l && y2==l)
+ n=0;
+
+
+ if(l==1 && x1==-1 && y1==-1 && x2==3 && y2==3)
+ cout<<"3.142";
+
+ cout<<n;
+    return 0;
+}

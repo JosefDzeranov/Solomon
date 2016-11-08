@@ -1,0 +1,16 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,n,d:int64;
+begin
+readln(n);
+d:=1+8*n;
+a:=(-1+trunc(sqrt(d))) div 2;
+
+writeln(a);
+readln;
+end.

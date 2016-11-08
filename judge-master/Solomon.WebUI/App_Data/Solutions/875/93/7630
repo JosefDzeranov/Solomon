@@ -1,0 +1,22 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	short x,y,z,q,s1,s2,rh,rs;
+	cin >> x >> y >> z >> q;
+	s1 = x*60+y;
+	s2 = z*60+q;
+	rs = s2-s1;
+	if (rs>=0)
+	{
+		rh=(short)floor(rs/60);
+		rs=rs-rh*60;
+		cout << rh << ' ' << rs;
+	}
+	else
+	{
+		cout << 0 << ' ' << 0;
+	}
+	return 0;
+}

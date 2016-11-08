@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+string s;
+int n;
+int last = 0;
+int now = 0;
+
+
+cin >> n;
+for (int i = 0; i < n; i++)
+{
+cin >> s;
+if (s == "ammo")
+	now = last;
+if (s == "save")
+	last = now;
+if (s == "shoot")
+	now--;
+if (s == "load")
+	now = last;
+cout << n << endl;
+
+}
+
+
+
+
+return 0;
+}

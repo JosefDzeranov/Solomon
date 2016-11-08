@@ -1,0 +1,50 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{int a,b,k=0;
+double x,q,w,max1,max2;
+cin>>a>>b>>x;
+if((a+b)*1000>=x){cout<<(a+b)/1000;}
+if(a*1000>=x){cout<<1000;}
+if(b*1000>=x){cout<<x/b;}
+if((a+b)*1000<x)
+    {
+        q=x;w=a+b;
+        while(k==0)
+        {
+            q=q/w;
+            if(q<1000&&k==0){max1=q;k=1;}
+            w=w+a;
+            q=x;
+            q=q/w;
+            if(q<1000&&k==0){max1=q;k=1;}
+            w=w+b;
+            q=x;
+            q=q/w;
+            if(q<1000&&k==0){max1=q;k=1;}
+            q=x;
+        }
+        q=x;w=a+b;k=0;
+        while(k==0)
+        {
+            q=q/w;
+            if(q<1000&&k==0){max2=q;k=1;}
+            w=w+b;
+            q=x;
+            q=q/w;
+            if(q<1000&&k==0){max2=q;k=1;}
+            w=w+a;
+            q=x;
+            q=q/w;
+            if(q<1000&&k==0){max2=q;k=1;}
+            q=x;
+        }
+        if(max1>max2){cout<<max1;}
+        if(max2>max1){cout<<max2;}
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Zadacha1Olimpiada
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 0;
+            int Fragments = Convert.ToInt32(Console.ReadLine());
+            string fragmentsNots;
+            for (int i = 0; i < Fragments; i++)
+            {
+               fragmentsNots =  Console.ReadLine();
+                a = a + fragmentsNots.Length;
+            }
+            Console.WriteLine(Fragments + "," + a);
+  
+        }
+    }
+}

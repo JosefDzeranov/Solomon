@@ -1,0 +1,34 @@
+var a,b:string;
+c,d,e,f:char;
+i,n:integer;
+begin
+readln(a);
+for i:=length(a) downto 1 do
+b:=b+a[i];
+for i:=1 to length(a) do
+if b[i]<>a[i] then
+n:=n+1;
+i:=1;
+if n=0 then
+writeln('Yes')
+else
+if n=4 then begin
+while i<>length(a) do begin
+while a[i]=b[i] do
+i:=i+1;
+c:=a[i];
+d:=b[i];
+i:=i+1;
+while a[i]=b[i] do
+i:=i+1;
+e:=a[i];
+f:=b[i];
+end;
+if (c=f) and (d=e) then
+writeln('Yes')
+else
+writeln('No')
+end
+else
+writeln('No');
+end.

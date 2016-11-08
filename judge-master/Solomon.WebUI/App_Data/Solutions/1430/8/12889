@@ -1,0 +1,5 @@
+Var a,b:integer;
+Begin
+Read(a,b);
+Writeln(a+b);
+End.

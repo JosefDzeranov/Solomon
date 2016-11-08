@@ -1,0 +1,5 @@
+var m,n,l:longint;
+begin
+readln(n,m);
+if (frac(sqrt(n*n-m))=0) and((n*n)<>m) then writeln('Yes') else writeln('No');
+end.

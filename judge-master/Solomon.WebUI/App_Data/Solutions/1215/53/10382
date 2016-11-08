@@ -1,0 +1,83 @@
+sport.cpp
+ 
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <utility>
+#include <algorithm>
+#include <queue>
+#include <vector>
+ 
+ 
+ 
+using namespace std;
+ 
+bool arr[101][101];
+long long m,n,k,temp_i,temp_j,i,ans=0,j;
+queue<pair<long long,long long> > q;
+ 
+void input()
+{
+    scanf("%I64d%I64d%I64d",&m,&n,&k);
+    for(i=0;i<k;++i)
+    {
+        scanf("%I64d%I64d",&temp_i,&temp_j);
+        arr[temp_i][temp_j]=true;
+    }
+}
+ 
+void process()
+{
+    do
+    {
+        long long i1=q.front().first,j1=q.front().second;
+        arr[i1][j1]=true;
+        if(i1+1<=m && arr[i1+1][j1]==false)
+        {
+            q.push(make_pair(i1+1,j1));
+            arr[i1+1][j1]=true;
+        }
+        if(i1-1>=1 && arr[i1-1][j1]==false)
+        {
+            q.push(make_pair(i1-1,j1));
+            arr[i1-1][j1]=true;
+        }
+        if(j1+1<=n && arr[i1][j1+1]==false)
+        {
+            q.push(make_pair(i1,j1+1));
+            arr[i1][j1+1]=true;
+        }
+        if(j1-1>=1 && arr[i1][j1-1]==false)
+        {
+            q.push(make_pair(i1,j1-1));
+            arr[i1][j1-1]=true;
+        }
+        q.pop();
+    }
+    while(!q.empty());
+}
+ 
+void answer()
+{
+    for(i=1;i<=m;++i)
+        for(j=1;j<=n;++j)
+        {
+            if(!arr[i][j])
+            {
+                q.push(make_pair(i,j));
+                process();
+                ++ans;
+            }
+        }
+}
+ 
+ 
+int main()
+{
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    input();
+    answer();
+    printf("%I64d",ans);
+}

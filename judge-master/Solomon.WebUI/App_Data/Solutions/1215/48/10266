@@ -1,0 +1,11 @@
+var l,x1,y1,x2,y2,a,b:longint;
+begin
+read(l,x1,y1,x2,y2);
+a:=abs(x1-x2);b:=abs(y1-y2);
+if (a=0) or (b=0) or(l=0) then write(0) 
+else if (2*l> sqrt(a*a+b*b))then write(a*b)
+else if (2*l>a) and (2*l>b) then write(l*l*(pi-arctan(sqrt(4*a*a*l*l-a*a*a*a) / (a*a-2*l*l))-arctan(sqrt(4*b*b*l*l-b*b*b*b) / (b*b-2*l*l))+sqrt(4*a*a*l*l-a*a*a*a)/2/l/l+sqrt(4*b*b*l*l-b*b*b*b)/2/l/l )) 
+else if 2*l>a then write(pi*l*l+l*l*(arctan((sqrt(4*a*a*l*l-a*a*a*a))/(a*a-2*l*l))+(sqrt(4*a*a*l*l-a*a*a*a))/2/l/l)) 
+else if 2*l>b then write(pi*l*l+l*l*(arctan((sqrt(4*b*b*l*l-b*b*b*b))/(b*b-2*l*l))+(sqrt(4*b*b*l*l-b*b*b*b))/2/l/l))
+else write(l*l*pi);
+end.

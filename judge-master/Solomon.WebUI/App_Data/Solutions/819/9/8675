@@ -1,0 +1,23 @@
+minmax = int(input())
+n, a, b, c = map(int, input().split())
+if (n == 0):
+    result = 0
+else:
+    min1 = min (a, b, c)
+    if (min1 == a):
+        min2 = min (b, c)
+    elif (min1 == b):
+        min2 = min (a, c)
+    else:
+        min2 = min (a, b)
+    if (minmax ==1):
+        if (min1+min2 < n):
+            result = 0
+        else:
+            result = (min1+min2-n)
+
+    elif (minmax == 2):
+        result = min1
+    else:
+        result = -1
+print (result)

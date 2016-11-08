@@ -1,0 +1,20 @@
+var s,s1:string;
+a,b,n,x:longint;
+begin
+read(a,b,n);
+str(a,s1);
+s:=s+s1;s1:='';
+str(b,s1);
+s:=s+s1;s1:='';
+While n>length(s) do begin
+if (length(s)>240) and (n>240) then begin n:=n-length(s);s[0]:='';end else begin
+str(a+b,s1);
+Insert(s1,s,length(s)+1);s1:='';
+x:=b;
+b:=a+b;
+a:=x;
+end;
+end;
+
+write (s[n]);
+end.

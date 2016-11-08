@@ -1,0 +1,30 @@
+{$h+}
+uses math;
+Var s : string;
+    n, i, q, j, len: longint;
+    arr : array [0 .. 1001] of array [0 .. 1001]of char;
+    
+begin
+  readln(s);
+  
+  len := length(s);
+  n := ceil(sqrt(len));
+  for i := 1 to n do
+    for j := 1 to n do
+      arr[i][j] := ' ';
+  i := 1; j := 1;
+  
+  for q := 1 to len do begin
+    arr[i][j] := s[q];
+    inc(j);
+    if j > n then begin j := 1; inc(i); end;
+  end;
+  i := 1; j := 1;
+  for q := 1 to n*n do 
+    begin
+     write(arr[i][j]);
+     inc(i);
+     if i > n then begin i := 1; inc(j);
+    end;
+    end;
+end.    

@@ -1,0 +1,73 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+
+struct cond {
+	int power, price;
+};
+
+
+vector <cond> mas;
+vector <int> a;
+
+
+bool cmp1(cond a, cond b) {
+	if (a.power < b.power || (a.power == b.power && a.price < b.price))
+		return true;
+	else
+		return false;
+}
+
+
+bool cmp(int a, int b) {
+	if (a < b)
+		return true;
+	else
+		return false;
+
+}
+
+
+int main() {
+
+	//freopen("input.txt", "r", stdin);
+
+	int n, m;
+	cin >> n;
+	a.resize(n);
+	for (int i = 0; i < n; i++)
+		cin >> a[i];
+	sort(a.begin(), a.end(), cmp);
+
+	cin >> m;
+	mas.resize(m);
+	for (int i = 0; i < m; i++)
+		cin >> mas[i].power >> mas[i].price;
+	sort(mas.begin(), mas.end(), cmp1);
+	long long int ans = 0;
+	int k = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int minn = 10005;
+		k = m - 1;
+		while (mas[k].power >= a[i]) {
+			if (mas[k].price < minn)
+			{
+				minn = mas[k].price;
+			}
+			k--;
+			if (k < 0)
+				break;
+		}
+
+		ans += minn;
+	}
+
+		cout << ans << endl;
+
+
+	return 0;
+}

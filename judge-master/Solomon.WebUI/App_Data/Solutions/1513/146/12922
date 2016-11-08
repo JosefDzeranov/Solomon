@@ -1,0 +1,8 @@
+uses crt;
+var n:integer;
+    r,s:real;
+begin
+  readln(n);
+  s:=sqr(n+((n/2)-(1/2))*n);
+  writeln(s);
+end.

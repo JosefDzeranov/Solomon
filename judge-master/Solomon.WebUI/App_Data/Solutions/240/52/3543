@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int N,x;
+    cin>>N;
+    x=N*(N-1)*(N-2);
+    cout <<x<< endl;
+    return 0;
+}

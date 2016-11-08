@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+//int A[1000];
+
+int main()
+{
+
+    int a, b, c;
+    cin >> a >> b;
+    //cin >> b;
+    c = a + b;
+    //A[0] = c;
+    //cout << A[0];
+    cout << a + b;
+    return 0;
+}

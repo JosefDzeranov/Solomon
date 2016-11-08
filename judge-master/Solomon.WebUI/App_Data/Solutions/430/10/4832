@@ -1,0 +1,13 @@
+program asdf;
+var n,k,i:integer;s:int64;
+
+begin
+
+
+  readln(n,k);s:=1;
+  if n<(n-k) then for i:=1 to k do s:=s*(n-k+i) div i
+  else for i:=1 to n-k do s:=s*(k+i) div i;
+  writeln(s);
+
+
+end.

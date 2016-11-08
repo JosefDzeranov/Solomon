@@ -1,0 +1,43 @@
+program Project2;
+
+uses
+  System.SysUtils;
+
+var
+max,n,m,k,kl,p,i,j,l:integer;
+pole:array[1..1000,1..1000] of integer;
+x,y:array[1..1000] of integer;
+begin
+max:=0;
+
+readln(n,m,k);
+for I := 1 to k do
+  begin
+    readln(x[i],y[i]);
+  end;
+for I := 1 to n do
+ for j := 1 to m do
+ begin
+  p:=100000000;
+   for l := 1 to k do
+    begin
+    kl:=abs(i-x[l])+abs(j-y[l]);
+    if kl<p then
+     begin
+       p:=kl;
+     end;
+    end;
+  pole[i,j]:=p;
+  p:=0;
+ end;
+
+for I := 1 to n do
+  for j := 1 to m do
+   begin
+     if pole[i,j]>max then
+      max:=pole[i,j];
+   end;
+writeln(max);
+readln;
+readln;
+end.

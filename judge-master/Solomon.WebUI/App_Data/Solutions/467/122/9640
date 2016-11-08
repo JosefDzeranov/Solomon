@@ -1,0 +1,12 @@
+ms = [0 for i in range(1001)]
+n = int(input())
+n = [int(i) for i in input().split()]
+res = 0
+for i in n:
+    if ms[i] == 0:
+        res += i
+        ms[i] = 1
+    else:
+        ms[i + 1] = 1
+        res += i + 1
+print(res)

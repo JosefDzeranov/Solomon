@@ -1,0 +1,26 @@
+program abc;
+var n,k,a,b,c,d,e: byte;
+begin 
+readln (n,k);
+a:=n;
+b:=k;
+d:=n-k;
+e:=d;
+  if a <> 1 then 
+  repeat
+  a:=a*(n-1);
+  n:=n-1;
+  until n=1;
+    if b <> 1 then 
+    repeat
+    b:=b*(k-1);
+    k:=k-1;
+    until k=1;
+      if e <> 1 then 
+      repeat
+      e:=e*(d-1);
+      d:=d-1;
+      until d=1;
+c:=(a div(b*e));
+writeln (c);     
+end.

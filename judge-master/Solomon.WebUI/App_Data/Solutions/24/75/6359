@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <map>
+
+using namespace std;
+
+const int maxn = 1e+9 - 1;
+
+int main() {
+
+	long long int ans = 0;
+
+	map <string, int> mas;
+	string s;
+	//cout << mas.max_size()<< endl;
+	int n;
+	cin >> n;
+	getline(cin, s);
+	for (int i = 0; i < n; i++)
+	{
+		getline(cin, s);
+		if (mas[s] == 0)
+		{
+			ans++;
+			mas[s] = 1;
+		}
+
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}

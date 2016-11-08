@@ -1,0 +1,12 @@
+var n,k,a,b,c,d,i:integer;
+
+Begin
+ read(n,k);
+ c:=1;d:=1;
+ b:=1;
+ a:=n-k;
+ for i:=1 to a do d:=d*i;
+ for i:=1 to n do b:=b*i;
+ for i:=1 to k do c:=c*i;
+ write(b/(c*d));
+End.

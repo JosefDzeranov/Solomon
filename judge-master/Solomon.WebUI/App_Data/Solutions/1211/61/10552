@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int ammo = 0;
+int ammo_save = 0;
+
+int main()
+{
+    int ammo_plus, n;
+    string action;
+
+    scanf( "%d%d", &n, &ammo_plus );
+
+    for( int i = 0; i < n; i++ )
+    {
+        cin >> action;
+
+        if( action == "shoot" )
+            ammo--;
+
+        if( action == "ammo" )
+            ammo += ammo_plus;
+
+        if( action == "save" )
+            ammo_save = ammo;
+
+        if( action == "load" )
+            ammo = ammo_save;
+
+        cout << ammo << endl;
+    }
+
+    return 0;
+}
+

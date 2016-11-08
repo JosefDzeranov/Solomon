@@ -1,0 +1,9 @@
+program A_chess_competition;
+
+var
+n: integer;
+
+begin
+readln (n);
+writeln (n*(n-1)*(n-2));
+end.

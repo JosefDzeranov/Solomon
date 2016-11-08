@@ -1,0 +1,20 @@
+s = input()
+s1 = ""
+res = -1
+smb = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '+', '-', '*', '/', '=']
+for i in range(len(s) - 1):
+    if s[i] in smb:
+        s1 += s[i]
+s1 = s1.split('=')
+try:
+    res = eval(s1[0])
+except SyntaxError:
+    print("ERROR")
+    exit()
+try:
+    if res == int(s1[1]):
+        print("YES")
+    elif res != -1:
+        print("NO")
+except ValueError:
+    print("ERROR")

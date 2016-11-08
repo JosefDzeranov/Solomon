@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main(){
+	unsigned long long a,k,b,m,x,s=0,i=1;
+	cin>>a>>k>>b>>m>>x;
+	while(1){
+		if(i%k!=0){
+			s+=a;
+		}
+		if(i%m!=0){
+			s+=b;
+		}
+		if(s>=x)break;
+		i++;
+	}
+	cout << i;
+	
+	return 0;
+}

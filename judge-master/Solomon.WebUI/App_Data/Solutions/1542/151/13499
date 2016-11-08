@@ -1,0 +1,39 @@
+﻿using System;
+
+namespace ConsoleApplication9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int q = 0; 
+            int w = 0; 
+            int e = 0;
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            if (n % 3 == 0)
+            {
+                q = n / 3 - 1;
+                w = n /3;
+                e = n / 3 + 1;
+
+            }
+            if (n % 3 == 1)
+            {
+                q = n / 3 - 1;
+                w = n / 3;
+                e = n / 3 + 2;
+
+            }
+            if (n % 3 == 2)
+            {
+                q = n / 3 - 1;
+                w = n / 3+1;
+                e = n / 3 + 2;
+
+            }
+            Console.WriteLine(q + " " + w + "  " + e);
+
+        }
+    }
+}

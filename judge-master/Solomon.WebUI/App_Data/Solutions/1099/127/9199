@@ -1,0 +1,10 @@
+Program qq;
+var A,B:string;
+begin
+readln(A);
+readln(B);
+if A<B then
+writeln('IMPOSSIBLE')
+else
+writeln('IHATEYOU')
+end.

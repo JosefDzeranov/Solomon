@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+int m, n, k;
+bool mas[100][100];
+bool used[100][100];
+void dfs(int i, int j)
+{
+	used[i][j] = 1;
+	if (i != m && used[i + 1][j] == 0 && mas[i + 1][j] == 1)
+		dfs(i + 1, j);
+	if (i > 1 && used[i - 1][j] == 0 && mas[i - 1][j] == 1)
+		dfs(i - 1, j);
+	if (j != n && used[i][j + 1] == 0 && mas[i][j + 1] == 1)
+		dfs(i, j + 1);
+	if (j > 1 && used[i][j - 1] == 0 && mas[i][j - 1] == 1)
+		dfs(i, j - 1);
+}
+int main()
+{
+	//srand(time(NULL));
+	//int n = rand() % 100;
+	cin >> m >> n >> k;
+	for (int i = 1; i <= m; i++)
+	for (int j = 1; j <= n; j++)
+	{
+		mas[i][j] = 1;
+		used[i][j] = 0;
+	}
+	for (int i = 0; i < k; i++)
+	{
+		int x, y;
+		cin >> x >> y;
+		mas[x][y] = 0;
+	}
+	int ans = 0;
+	for (int i = 1; i <= m; i++)
+	for (int j = 1; j <= n; j++)
+	{
+		if (used[i][j] != 1 && mas[i][j] == 1)
+		{
+			dfs(i, j);
+			ans++;
+		}
+	}
+	cout << ans;
+	return 0;
+}

@@ -1,0 +1,77 @@
+program zadacha_A;
+
+var 
+a,b,i,e,g,h,j,k:integer;
+c,d:array[1..100] of integer;
+f1,f2,f3,f4:string;
+f:array[1..10000] of string;
+Begin
+k:=0;
+e:=0;
+
+read(a,b);
+  for i:=1 to b do
+  read(c[i],d[i]);
+
+//--считывание--
+
+For i:=1 to b do
+ if c[i]<>d[i] then
+ inc(e);
+ 
+//--Сколько не соответсвует шаров своей коробки--
+
+while e>0 do begin
+  
+  for i:=1 to b do
+    if c[i]<>d[i] then
+      for g:=1 to b do
+        if (d[g]=c[i]) and (c[g]=d[i]) then begin
+        
+        str(d[g],f1);
+        str(c[g],f2);
+        str(d[i],f3);
+        str(c[i],f4);
+        
+        inc(k);
+        dec(e,2);
+        
+        f[k]:=f1+' '+f2+' '+f3+' '+f4;
+        
+        h:=c[i];
+        j:=c[g];
+        c[i]:=j;
+        c[g]:=h;
+        
+        end;
+
+//--обмен-- 
+  
+  if e>0 then
+  for i:=1 to b do
+    if (c[i]<>d[i]) and (c[i]>0) then
+      for g:=1 to b do
+        if d[g]=c[i] then begin
+        
+        str(d[i],f1);
+        str(c[i],f2);
+        str(d[g],f3);
+
+        inc(k);
+        dec(e,1);
+        
+        f[k]:=f1+' '+f2+' '+f3;
+        
+        c[i]:=0;
+        
+        end;
+        
+//--перекладывание--      
+
+end;
+
+
+writeln(k);
+for i:=1 to k do
+writeln(f[i])
+End.

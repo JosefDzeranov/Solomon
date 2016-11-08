@@ -1,0 +1,19 @@
+var a,b,c:string;
+i,j,n:integer;
+begin
+readln(a);
+for i:=1 to length(a) do
+b:=b+a[i];
+while (a<>b) or (n<>999999) do begin
+for i:=1 to length(a) do begin
+c:=a;
+for j:=1 to length(a) do
+c[i]:=a[j];
+end;
+n:=n+1;
+end;
+if a=b then
+writeln('Yes')
+else
+writeln('No');
+end.

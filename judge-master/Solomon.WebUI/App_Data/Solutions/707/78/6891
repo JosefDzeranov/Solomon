@@ -1,0 +1,8 @@
+var
+x,y,z:integer;
+begin
+read(x,y);
+z:=x+y;
+z:=z*x;
+writeln(z);
+end.

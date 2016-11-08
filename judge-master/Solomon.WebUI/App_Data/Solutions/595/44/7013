@@ -1,0 +1,13 @@
+var
+  N,L,R:integer;
+  c:real;
+  i,kursor:integer;
+begin
+  readln(N,L);
+  readln(R);
+  c:=L/(2*R);
+  if c>=1 then begin
+    if N-(c*2*Pi*R)>= 0 then begin
+      writeln('YES'); writeln(c); end else writeln('NO');
+  end else writeln('NO');
+end.

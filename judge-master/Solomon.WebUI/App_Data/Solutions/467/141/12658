@@ -1,0 +1,23 @@
+import math
+
+
+tb, tm = [int(i) for i in input().split()]
+ms = [int(i) for i in input().split()]
+n = ms
+d_ms = []
+for i in range(tb - tm):
+    mx = max(n)
+    mn = min(n)
+    d = 0
+    p = 0
+    for j in range(len(n)):
+        if min(math.fabs(mx - n[j]), math.fabs(mn - n[j])) > d:
+            d = min(math.fabs(mx - n[j]), math.fabs(mn - n[j]))
+            p = j
+    d_ms.append(d)
+    n = n[0:i] + n[i + 1:]
+print(int(max(d_ms)))
+            
+    
+        
+    

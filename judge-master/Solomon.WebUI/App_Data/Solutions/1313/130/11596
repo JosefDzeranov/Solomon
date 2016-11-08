@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+using namespace std;
+
+int up(int a, int b) {
+	return (a + b - 1) / b;
+}
+
+struct Point {
+	int n, type;
+};
+
+bool comparator(Point a, Point b) {
+	return a.n < b.n || (a.n == b.n && a.type < b.type);
+}
+
+int main() {
+	int a, b, c, d, i, k, n, sh = 0, j;
+	vector<Point> arr(5);
+	cin >> a >> b >> c >> d;
+	for (i = 1; i <= min(b, up(d, 2)-1); i++) {
+		arr[0].n = up(a, i);
+		arr[1].n = b/ i;
+		arr[2].n = up(c - 2 * i, 2);
+		arr[3].n = (d - 2 * i) / 2;
+		arr[0].type = 0;
+		arr[1].type = 1;
+		arr[2].type = 0;
+		arr[3].type = 1;
+		arr[4].n = i;
+		arr[4].type = 0;
+		sort(arr.begin(), arr.end(), comparator);
+		n = -1;
+		k = 0;
+		for(j = 0; j < 4; j++) {
+			if (arr[j].type == 0) k++;
+			else k--;
+			if (k == 3){
+				n = arr[j + 1].n - arr[j].n + 1;break;}
+		}
+		if (n == -1) break;
+		sh += n;
+	}
+	cout << sh;
+	return 0;
+}

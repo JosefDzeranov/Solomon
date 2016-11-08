@@ -1,0 +1,23 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var sum : array[1..100] of integer;
+x,i,i2: integer;
+s,n: string;
+begin
+readln(x);
+for i:=1 to x do
+begin
+readln(s);
+for i2 := 1 to Length(s) do
+if s[i2] in ['0'..'9'] then n := n + s[ i ];
+sum[i]:= StrToInt(n);
+end;
+for i:=1 to x do
+writeln(sum[i]);
+readln;  
+end.

@@ -1,0 +1,81 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+
+Module Module1
+    Dim n As Integer
+    Dim a As Integer
+    Dim b As Integer
+    Dim c As Integer
+    Dim ak As Integer
+    Dim bk As Integer
+    Dim ck As Integer
+    Dim bol As Boolean
+    Dim aol As Boolean
+    Dim col As Boolean
+
+    Sub Main()
+        Dim d() As String = Split(Console.ReadLine)
+        n = d(0)
+        a = d(1)
+        b = d(2)
+        c = d(3)
+        ak = a
+        bk = b
+        ck = c
+        Do
+            If ak * bk / (a * b) > ak * ck / (a * c) And (col = False Or aol = False) Then
+                If ak * ck / (a * c) > bk * ck / (b * c) And col = False Then
+                    If ak + bk + ck + c <= n Then
+                        ck = ck + c
+                    Else
+                        col = True
+                    End If
+                Else
+                    If ak * bk / (a * b) > bk * ck / (b * c) And col = False Then
+                        If ak + bk + ck + c <= n Then
+                            ck = ck + c
+                        Else
+                            col = True
+                        End If
+                    Else
+                        If ak + bk + ck + a <= n Then
+                            ak = ak + a
+                        Else
+                            aol = True
+                        End If
+                    End If
+                End If
+            Else
+                If ak * bk / (a * b) > bk * ck / (b * c) And bol = False Then
+                    If ak + bk + ck + b <= n Then
+                        bk = bk + b
+                    Else
+                        bol = True
+                    End If
+                Else
+                    If ak * ck / (a * c) > bk * ck / (b * c) And bol = False Then
+                        If ak + bk + ck + b <= n Then
+                            bk = bk + b
+                        Else
+                            bol = True
+                        End If
+                    Else
+                        If ak + bk + ck + a <= n Then
+                            ak = ak + a
+                        Else
+                            If aol = True Then
+                                Exit Do
+                            Else
+                                aol = True
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        Loop Until aol And bol And col
+        
+        Console.WriteLine(Mid(Str(ak), 2) + Str(bk) + Str(ck))
+        Console.ReadLine()
+    End Sub
+
+End Module

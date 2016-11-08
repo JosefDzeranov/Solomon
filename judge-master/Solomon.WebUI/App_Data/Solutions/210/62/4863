@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdio>
+#include <vector>
+
+using namespace std;
+
+string s;
+vector <int> a;
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    cin >> s;
+
+    int n = s.length();
+
+    for (int i = 0; i < n / 2; ++i)
+        if (s[i] != s[n - 1 - i])
+            a.push_back(i);
+
+    if (a.size() > 2)
+        cout << "No";
+    else if (a.size() == 1) {
+        if (n % 2 == 0)
+            cout << "No";
+        else if (s[n / 2 + 1] == s[a[0]] || s[n / 2 + 1] == s[n - 1 - a[0]])
+            cout << "Yes";
+        else
+            cout << "No";
+    } else if (a.size() == 0)
+        cout << "Yes";
+    else if (a.size() == 2) {
+        int x = a[0], y = a[1];
+        if (s[x] == s[y] && s[n - 1 - x] == s[n - 1 - y])
+            cout << "Yes";
+        else if (s[x] == s[n - 1 - y] && s[y] == s[n - 1 - x])
+            cout << "Yes";
+        else
+            cout << "No";
+    }
+
+    return 0;
+}
+

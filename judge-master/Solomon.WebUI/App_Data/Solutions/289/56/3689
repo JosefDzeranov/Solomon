@@ -1,0 +1,20 @@
+program task;
+var n, t, k, i: longint;
+begin
+assign(input, 'input.txt');
+reset(input);
+assign(output, 'output.txt');
+rewrite(output);
+  read(n);
+  t:=1;
+  for i:=1 to n do
+    t:=t*i;
+  for i:=1 to t do
+    begin
+      if (t mod 2 = 0) then k:=k+1 else break;
+      t:=(t div 2);
+    end;
+  writeln(k);
+close(input);
+close(output);
+end.

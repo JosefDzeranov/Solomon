@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace Console1
+{
+    class Program
+    {
+        static string Decode(string source)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var ch in source)
+            {
+                sb.Append((char)(ch == 'Z' ? 'A' : ch + 1));
+            }
+
+            return sb.ToString();
+        }
+
+        static void Main(string[] args)
+        {
+            string source = Console.ReadLine();
+            string word = Console.ReadLine();
+
+            int i = 0;
+            do
+            {
+                if (source.Contains(word))
+                {
+                    Console.WriteLine(source);
+                    return;
+                }
+                source = Decode(source);
+                i++;
+            } while (i < 26);
+
+            Console.WriteLine("IMPOSSIBLE");
+        }
+    }
+}

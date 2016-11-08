@@ -1,0 +1,13 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{int n;
+cin>>n>>m;
+if(n==1$$m==2){cout<<"YES"<<endl<<1<<endl<<0<<' '<<0<<' '<<1<<endl<<"NO";}
+if(n==2$$m==1){cout<<"YES"<<endl<<2<<endl<<0<<' '<<2<<' '<<1<<endl<<3<<' '<<2<<' '<<-1;}
+if(n==0&&m==2){cout<<"NO"<<endl<<"YES"<<endl<<0;}
+return 0;
+}

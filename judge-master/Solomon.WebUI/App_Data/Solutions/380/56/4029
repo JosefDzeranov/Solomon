@@ -1,0 +1,32 @@
+program nom2;
+type matr=array [1..1000] of byte;
+var k,i:integer; N,a:longint; c:matr;
+begin
+readln (N);
+a:=1;
+while N>0 do begin
+a:=a*N;
+N:=N-1;
+end;
+
+k:=0;
+if a=0 then
+begin
+k:=1;
+c[k]:=0;
+end
+else
+while a<>0 do
+begin
+inc (k);
+c[k]:=a mod 2;
+a:=a div 2;
+end;
+i:=1;
+
+while c[i]=0  do
+i:=i+1;
+i:=i-1;
+write (i);
+
+end.

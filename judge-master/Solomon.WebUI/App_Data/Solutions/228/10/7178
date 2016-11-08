@@ -1,0 +1,17 @@
+program zad3;
+var n,k,i:integer;
+a,b,d:longint;
+c:real;
+begin
+readln(n,k);
+a:=1; b:=1; d:=1;
+for i:=n downto 1 do
+ a:=a*i;
+for i:=k downto 1 do
+ b:=b*i;
+for i:=n-k downto 1 do
+ d:=d*i;
+b:=b*d;
+c:=a/b;
+writeln(c:10:0);
+end.

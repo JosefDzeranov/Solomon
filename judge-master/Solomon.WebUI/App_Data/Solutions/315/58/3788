@@ -1,0 +1,21 @@
+var
+     a,b,k:array[0..10000000] of longint;
+        max,nm,i,d,x,n,f,min,j,z,sum,s:longint;
+begin
+//assign(input,'input1.txt'); reset(input);
+//assign(output,'output1.txt'); rewrite(output);
+readln(n);
+for i:=1 to n do begin read(a[i]); s:=s+a[i]; end;
+b[0]:=1;
+for j:=1 to n do
+ for i:=s downto 0 do if b[i]=1 then b[i+a[j]]:=1;
+min:=maxlongint;
+for i:=0 to s do
+ begin
+ if b[i]=0 then continue;
+ f:=s-i;
+ f:=abs(f-i);
+ if f<min then min:=f;
+ end;
+writeln(min);
+end.

@@ -1,0 +1,36 @@
+var n,i,j,max,s,z:longint;
+a,b,c:array[1..100]of longint;
+begin
+  readln(n);
+  for i:=1 to n do
+  read(a[i]);
+  s:=0;
+  for i:=1 to n do
+  begin
+   //  p:=s;
+     s:=0;
+     z:=a[i];
+     if (s<10)and(s<>0) then
+     repeat
+     while z<>0 do
+     begin
+        s:=s+(z mod 10);
+        z:=z div 10;
+     end;
+     until s>9;
+   //  if s=p then k[i]:=k[i-1];
+    b[i]:=s;
+  end;
+ //max:=1;
+   for i:=1 to n do
+   c[i]:=0;
+  for i:=1 to n do
+   for j:=1 to n do
+    if b[i]=b[j] then c[i]:=c[i]+1;
+  //   else c[i]:=0;
+  max:=c[1];
+  for i:=1 to n do
+  if c[i]>max then max:=c[i];
+  for i:=1 to n do
+   if c[i]<>max then write(a[i]);
+end.

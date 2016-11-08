@@ -1,0 +1,5 @@
+var a,b:int64;
+BEGIN
+  read(a,b);
+  write(a+b:0);
+END.

@@ -1,0 +1,8 @@
+var n,k:longint;
+    s:real;
+begin
+  readln(n);
+  s:=sqr(n+((n/2)-(1/2))*n);
+  k:=round(s);
+  writeln(k);
+end.

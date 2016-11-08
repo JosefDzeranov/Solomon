@@ -1,0 +1,19 @@
+{$h+}
+var
+s:string;
+n,i,k,j:longint;
+begin
+readln(n);
+for i:=1 to n do begin
+ readln(s);
+ for j:=1 to length(s)do begin
+  if (ord(s[j])>=48) and (ord(s[j])<=57) and(ord(s[j+1])>=48) and (ord(s[j+1])<=57) and (ord(s[j+2])>=48) and (ord(s[j+2])<=57) then 
+  k:=k+(ord(s[j])-ord('0'))*100+(ord(s[j+1])-ord('0'))*10+(ord(s[j])-ord('0')) else
+   if (ord(s[j])>=48) and (ord(s[j])<=57) and (ord(s[j+1])>=48) and (ord(s[j+1])<=57) and ((ord(s[j+2])<48) or (ord(s[j+2])>57)) then
+   k:=k+(ord(s[j])-ord('0'))*10+(ord(s[j+1])-ord('0')) else
+     if (ord(s[j])>=48) and (ord(s[j])<=57) and ((ord(s[j+1])<48) or (ord(s[j+1])>57)) and ((ord(s[j+2])<48) or (ord(s[j+2])>57)) then
+     k:=k+(ord(s[j])-ord('0'));
+        end;
+ end;
+ writeln(k);
+ end.

@@ -1,0 +1,20 @@
+#include "iostream"
+
+int main() {
+	long long int s, a, b, c;
+	bool f = false;
+	std::cin >> s;
+	c = 0;
+	for (a = 0; a <= s/2+1; ++a) {
+		for (b = 0; b <= s/2+1; ++b) {
+			if ((1+a)*a/2 + (1+b)*b/2 == s) {
+				c = a+b;
+				f = true;
+				break;
+			}
+			if (f) { break; }
+		}
+	}
+	std::cout << c;
+	return 0;
+}

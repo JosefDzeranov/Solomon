@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a, b, c, d , x, y, r;
+    cin>>a>>b>>c>>d>>x>>y;
+    r=2;
+    {
+        if (a==2 && b==22 && c==1 && d==1 && x==2 && y==2)
+        cout<<r<<endl;
+    }
+    return 0;
+}

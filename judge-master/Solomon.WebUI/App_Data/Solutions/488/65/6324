@@ -1,0 +1,19 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    long long int a, a1, b, b1;
+    cin >> a;
+    cin >> a1;
+    cin >> b;
+    cin >> b1;
+    a = min(a, a1);
+    b = min(b, b1);
+    long double aa;
+    aa = a + b;
+    cout << int(sqrt(aa));
+    return 0;
+}

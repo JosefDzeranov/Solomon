@@ -1,0 +1,25 @@
+program A;
+
+const
+     SIZE = 1000000;
+
+var
+   b : array [1..SIZE] of Boolean;
+   n : LongInt;
+   
+begin
+     ReadLn (n);
+     
+     for i := 1 to 1000000 do
+         b [i] := TRUE;
+         
+     for i := 1 to n do
+     begin
+          if b[i] then
+          begin
+                b[i*2] := FALSE;
+                if i mod 2 = 0 then
+                   b[i div 2] := FALSE
+          end;
+     end;
+end.

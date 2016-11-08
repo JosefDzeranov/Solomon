@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <set>
+#include <cstring>
+#include <vector>
+#include <queue>
+
+
+#define endl '\n'
+#define mp make_pair
+#define pb push_back
+
+using namespace std;
+
+
+long long a, b;
+
+int main(){
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios::sync_with_stdio(0);
+
+	cin >> a >> b;
+	cout << a + b;
+	return 0;
+}

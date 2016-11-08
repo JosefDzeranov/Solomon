@@ -1,0 +1,5 @@
+var a,b,c:int64;
+begin
+readln(a,b);
+writeln(a*(a+b)) ;
+end.

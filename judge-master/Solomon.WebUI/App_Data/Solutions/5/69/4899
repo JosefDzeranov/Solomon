@@ -1,0 +1,17 @@
+uses
+  Math;
+var
+  a, b, x : longint;
+  mint, t, tt : double;
+begin
+ 
+  read(a, b, x);
+  mint := x / 1000;
+  t := mint - floor(mint / (a + b)) * (a + b);
+  if (t <= a) or (t >= b) then begin
+    writeln(1000);
+  end else begin
+    tt := mint + b - t;
+    writeln((x / tt):0:9);
+  end;
+end.

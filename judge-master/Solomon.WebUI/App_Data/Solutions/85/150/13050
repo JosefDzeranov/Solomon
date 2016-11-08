@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+long long f(long long i)
+{
+    long long r = 1;
+    for (long long j = 0; j < i; j++)
+        r *= 2;
+
+
+    return r;
+
+}
+
+int main()
+{
+    long long ans = 0;
+    string s;
+    cin >> s;
+    for (unsigned int i = 0; i < s.size(); i++)
+        if (s[i] == '*')
+            ans += f(s.size() - 1 - i);
+
+    cout << ans;
+    return 0;
+}

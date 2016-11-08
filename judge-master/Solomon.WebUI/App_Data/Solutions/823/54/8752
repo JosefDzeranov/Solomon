@@ -1,0 +1,37 @@
+program BrightNumbers;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+
+var
+  m : array [0..9] of byte;
+  a, s : string;
+  i : byte;
+  x : byte;
+
+begin
+  readln (a);
+  for i := 0 to 9 do
+    m[i] := 0;
+  for i := 1 to Length (a) do
+    begin
+      x := StrToInt (a[i]);
+      m[x] := m[x] + 1;
+    end;
+  s := 'YES';
+  for i := 0 to 9 do
+    if m[i] > 1 then
+      begin
+        s := 'NO';
+        break;
+      end;
+  writeln (s);
+  if s = 'NO' then
+    for i := 0 to 9 do
+      if m[i] > 1 then
+        write (i, ' ');
+  readln;
+end.

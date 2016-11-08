@@ -1,0 +1,31 @@
+{$H+}
+var
+a:array[1..1000,1..1000] of char;
+s:string;
+r:real;
+n:int64;
+i,j,k:longint;
+
+begin
+read(s);
+k:=1;
+n:=length(s);
+r:=n;
+n:=round(sqrt(r));
+if n*n<r then n:=n+1;
+for i:=1 to n do
+ for j:=1 to n do begin
+ 
+   if k<=length(s) then begin 
+   
+   a[i,j]:=s[k];
+   inc(k);end
+   else
+   a[i,j]:=' ';
+   end;
+  for i:=1 to n do begin
+  for j:=1 to n do
+  write(a[j,i]);
+  end;   
+
+end.

@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace Стенография
+{
+    class Program
+    {
+        static string s;
+
+        static void Main(string[] args)
+        {
+            s = Console.ReadLine();
+            string t = "";
+            int j = -1;
+            for (int i = 0; i < s.Length; i++)
+            {
+                
+                if (s[i] == '#')
+                {
+                    if (j != -1) { t = t.Remove(j, 1); j--; }
+                }
+                else
+                    if (s[i] == '+' && j < t.Length - 1) j++;
+
+                    else
+                        if (s[i] == '-' && j >= 0) j--;
+                        else
+                            if (s[i]!='#'&& s[i]!='+'&& s[i]!='-')
+                              if (j == -1 || j == t.Length - 1)
+                               { t += s[i]; j++; }
+                              else
+                              {
+                                string c = t.Substring(0, j+1);
+                                string c1 = t.Substring(j + 1, t.Length - j - 1);
+                                t = c + s[i] + c1; j++;
+                              }
+            } 
+            Console.WriteLine(t);
+
+        }
+    }
+}

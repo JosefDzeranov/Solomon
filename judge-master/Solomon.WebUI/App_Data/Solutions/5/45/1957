@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace a
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = (Console.ReadLine()).Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int l = Convert.ToInt32(temp[1]);
+            temp = (Console.ReadLine()).Split(' ');
+            int rb = Convert.ToInt32(temp[0]);
+            int rm = Convert.ToInt32(temp[1]);
+
+            int k= l / (2*rb);
+            if (l%(2*rb)!=0) k++;
+            if (n >= k * rb * 2 * 3.14) Console.WriteLine("YES\n{0} {1}", k * 2, k);
+            else Console.WriteLine("NO");
+        }
+    }
+}

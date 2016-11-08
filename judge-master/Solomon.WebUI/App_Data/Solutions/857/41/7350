@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+int main()
+{
+    int n, i;
+    char A[50];
+    scanf ("%d", &n);
+    i=0;
+    while (n>1)
+    {
+          if ((n%2)==0)
+          {
+              n=n/2;
+              A[i]='*';
+          }
+          else
+          {
+              n--;
+              A[i]='+';
+          }
+          i++;
+    }
+    i--;
+    while (i>=0)
+    {
+          printf ("%c", A[i]);
+          i--;
+    }
+}

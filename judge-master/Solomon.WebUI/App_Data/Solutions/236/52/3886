@@ -1,0 +1,13 @@
+var N:longint;
+
+begin
+     N:=1005;
+     while (N<3) or (N>1000) do
+        begin
+        readln(N);
+        end;
+     N:=(n-2)*(N-1)*N;
+     writeln(N);
+     readln;
+end.
+

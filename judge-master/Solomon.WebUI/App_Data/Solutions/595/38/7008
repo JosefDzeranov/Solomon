@@ -1,0 +1,30 @@
+function dlina(x1,x2,y1,y2 : integer) : real;
+  begin
+    dlina:= sqrt(sqr(x1-x2) + sqr(y1-y2));
+  end;
+  
+
+var
+  x,y:array[1..4] of integer;
+  a1,a2,a3,a4: real;
+begin
+  readln(x[1],y[1]);
+  readln(x[2],y[2]);
+  readln(x[3],y[3]);
+  readln(x[4],y[4]);
+  a1:=dlina(x[1],x[2],y[1],y[2]);
+  a2:=dlina(x[3],x[4],y[3],y[4]);
+  a3:=dlina(x[1],x[4],y[1],y[4]);
+  a4:=dlina(x[2],x[3],y[2],y[3]);
+  if (a1=a2) and (a1=a3) and (a1=a4) then 
+    writeln('YES')
+  else begin
+    a1:=dlina(x[1],x[2],y[1],y[2]);
+    a2:=dlina(x[3],x[4],y[3],y[4]);
+    a3:=dlina(x[1],x[3],y[1],y[3]);
+    a4:=dlina(x[2],x[4],y[2],y[4]);
+    if (a1=a2) and (a1=a3) and (a1=a4) then 
+      writeln('YES')
+    else writeln('NO');
+  end;
+end.

@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, l, R, r;
+	int res=0;
+	double xn;
+	double x=0;
+	double pi=3.14;
+	cin >> n >> l >> R >> r;
+	double n1=2*pi*(2*R+r);
+	xn=n/n1;
+	for (;res!=1;) {
+		if (x<l)
+			x+=2*R;
+		else
+			res=1;
+	}
+	if (xn<x)
+		cout << "NO";
+	else
+		cout << "YES\n" << x*2 << " " << x;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

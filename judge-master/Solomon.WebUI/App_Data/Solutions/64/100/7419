@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+
+using namespace std;
+
+int main()
+{
+	int n, d;
+	cin >> n >> d;
+	cout << 1 << ' ' << (d - n);
+	return 0;
+}

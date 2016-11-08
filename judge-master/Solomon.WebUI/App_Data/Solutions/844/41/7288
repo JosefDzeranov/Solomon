@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double a, b, c;
+            a = Convert.ToDouble(Console.ReadLine());
+            b = Convert.ToDouble(Console.ReadLine());
+            c = Convert.ToDouble(Console.ReadLine());
+            double d = b * b - 4 * a * c;
+            if (d < 0)
+            {
+                
+            }
+            else
+                if (d == 0)
+                {
+                    Console.WriteLine(b / 2 * a);
+                }
+                else
+                {
+                    Console.WriteLine((-b + Math.Sqrt(d)) / 2 * a);
+                    Console.WriteLine((-b - Math.Sqrt(d)) / 2 * a);
+                }
+
+        }
+    }
+}

@@ -1,0 +1,25 @@
+var a:array[1..100] of longint;
+a1:array[1..100] of longint;
+n,k,i,j,tmp,num:longint;
+Function Sum(b:longint):longint;
+var t:longint;
+begin
+While b>0 do begin t:=t+b mod 10;b:=b div 10;end;
+if t div 10 = 0 then Sum:=t else Sum:=Sum(t);
+end;
+
+begin
+readln(n);
+for i:=1 to n do begin  read(a1[i]);a[i]:=Sum(a1[i]);end;
+For i:=1 to n do
+  Begin
+   For j:=i to n do
+   if a[j]=a[i] then inc(tmp);
+   if tmp > k then Begin
+                    k:=tmp;
+                    num:=a[i];
+                   End;
+   tmp:=0;
+  End;
+for i:=1 to n do if a[i]<>num then write(a1[i],' ');
+end.

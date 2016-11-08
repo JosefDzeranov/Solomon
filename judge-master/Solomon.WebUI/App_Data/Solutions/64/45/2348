@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int n, l, r1, r2;
+	cin >> n >> l >> r1 >> r2;
+	int kol = l / (2 * r1);
+	if (l % (2 * r1) > 0)
+		kol++;
+	long double ndl, dlb, dlm;
+	dlb = 2 * kol;
+	dlm = kol;
+	//глючит интернет
+//	if (dlb <= 2) {dlb = 4; dlm = 2;}
+	ndl = (dlb * (2 * 3.14159 * r1)) + (dlm * (2 * 3.14159 * r2));
+	if (abs(ndl - n) > 1e-6 && ndl > n) cout << "NO";
+	else 
+	{
+		cout << "YES" << "\n";
+		cout << dlb << ' ' << dlm;
+	}
+	//cout << kol;
+	return 0;
+}

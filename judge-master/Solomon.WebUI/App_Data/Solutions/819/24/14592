@@ -1,0 +1,62 @@
+n = int(input())
+A = list(map(int, input().split()))
+
+count = 0
+A.sort()
+
+#функция нахождения пар чисел
+
+def compare(num1, num2):
+    global count
+    pair = False
+    num1 = str(num1)
+    num2 = str(num2)
+    for i in num1:
+        #print ('num1 =', num1)
+        #print ('dig1 =', i)
+        for j in num2:
+            #print ('num2 =', num2)
+            #print ('dig2 =', j)
+            #print ()
+            if i == j:
+                count += 1
+                pair = True
+                #print ('count =', count)
+                break
+            if pair:
+                break
+        if pair:
+            break
+                
+        
+    
+    
+    
+    
+
+            
+            
+        
+        
+
+# функция обновления zero_count
+
+def link_to_zero(digit):
+    global count, zero_count
+    if digit == 0:
+        count += zero_count
+        zero_count += 1
+
+# Продолжаем после нуля
+
+for i in range (n-1):
+    num1 = A[i]
+    for j in range (i+1, n):
+        num2 = A[j]
+        compare (num1, num2)
+        
+    
+
+print (count)
+
+

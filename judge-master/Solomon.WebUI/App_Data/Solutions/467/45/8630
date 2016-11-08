@@ -1,0 +1,12 @@
+n, l = [int(i) for i in input().split()]
+r2, r1 = [int(i) for i in input().split()]
+b = l // (r2 * 2)
+if l % (r2 * 2) != 0:
+    b += 1
+a = b
+b *= 2
+if a * 2 * 3.14 * r1 + b * 2 * 3.14 * r2 <= n:
+    print("YES")
+    print(str(b) + " " + str(a))
+else:
+    print("NO")

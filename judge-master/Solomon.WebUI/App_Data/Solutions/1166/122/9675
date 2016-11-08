@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+ int N,i,j,s=0;
+ cin>>N;
+ int a[N];
+for(i=0;i<N;i++)
+
+                cin>>a[i];
+                for(i=0;i<N;i++)
+                                for(j=0;j<N;j++)
+                                {
+                                                if(i!=j)
+                                                if(a[i]==a[j]) a[j]=a[j]+1;
+                                }
+for(i=0;i<N;i++) s=s+a[i];
+cout<<s;
+}

@@ -1,0 +1,8 @@
+program zad1;
+var a,b,sum:longint;
+begin
+read(a,b);
+writeln;
+sum:=a+b;
+writeln(sum);
+end.

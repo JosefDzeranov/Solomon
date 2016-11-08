@@ -1,0 +1,14 @@
+k = int(input())
+n = input()
+ms = [0 for i in range(k)]
+mx = 0
+p = 0
+for i in range(len(n)):
+    if n[i] == 'P':
+        ms[i % k] += 1
+        if mx < ms[i % k]:
+            mx = ms[i % k]
+            p = i % k
+print(p + 1)
+            
+        

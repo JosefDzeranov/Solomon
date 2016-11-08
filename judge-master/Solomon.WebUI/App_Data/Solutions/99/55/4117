@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,k1,k2,c1=0,c2=0,k;
+	cin>>N;
+
+	k1=2*N*2*N;
+	for(int i=1;i<=k1;i++)
+		c1+=i;
+	k1=c1/(2*N);
+
+	k2=(2*N-1)*(2*N-1);
+	for(int i=1;i<=k2;i++)
+		c2+=i;
+	k2=c2/(2*N-1);
+
+	k=k1-k2+k1;;
+
+	cout<<k;
+	cin>>N;
+	return 0;
+}

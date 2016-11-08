@@ -1,0 +1,19 @@
+var
+  res, t, n, s, x, y, z: int64;
+
+function min3(a, b, c: int64): int64;
+begin
+  if(a <= c) and (a <= b) then min3 := a else
+  if (b <= c) and (b <= a) then min3 := b else
+    min3 := c;
+end;
+
+begin
+  read(n, s, x, y, z);
+    z := z + n div 2;
+    if(n mod 2=1)then inc(z);
+  t := (x div s) * (y div s) * (z div s);
+  if(n mod t = 0) then res := n div t else
+    res := n div t + 1;
+  writeln(res);
+end.

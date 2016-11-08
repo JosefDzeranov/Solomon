@@ -1,0 +1,22 @@
+program FAKTORIAL;
+ var N,k,S,a:longint;
+     C:string;
+begin
+ readln(N); S:=1;
+ for k:=1 to N do S:=S*k;
+ repeat
+  a:=S mod 2;
+  writeln(a);
+  S:=S div 2;
+  C:=chr(a+48)+C;
+  writeln(C);
+ until S=1;
+ writeln(C); k:=0;
+ repeat
+  a:=length(C);
+  if (C[a]='0') then k:=k+1;
+  delete(C,a,1);
+ until C[a]='1';
+ writeln(k);
+ readln;
+end.

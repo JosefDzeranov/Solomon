@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            int a =Convert.ToInt32( Console.ReadLine());
+            if (a % 3 == 0)
+            {
+                int a1 = a / 3 - 1;
+                int a2 = a / 3;
+                int a3 = a / 3 + 1;
+                Console.Write(a1);
+                Console.Write(' ');
+                Console.Write(a2);
+                Console.Write(' ');
+                Console.Write(a3);
+                Console.Write(' ');
+            }
+            if (a % 3 == 1)
+            {
+                int a1 = a / 3 - 1;
+                int a2 = a / 3;
+                int a3 = a / 3 + 2;
+                Console.Write(a1);
+                Console.Write(' ');
+                Console.Write(a2);
+                Console.Write(' ');
+                Console.Write(a3);
+                Console.Write(' ');
+            }
+            if (a % 3 == 2)
+            {
+                int a1 = a / 3 - 1;
+                int a2 = a / 3 + 1;
+                int a3 = a / 3 + 2;
+                Console.Write(a1);
+                Console.Write(' ');
+                Console.Write(a2);
+                Console.Write(' ');
+                Console.Write(a3);
+                Console.Write(' ');
+            }
+            Console.ReadKey();
+        }
+    }
+}

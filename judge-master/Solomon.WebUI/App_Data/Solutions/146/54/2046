@@ -1,0 +1,45 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,j,c,n,f:integer;
+    b,k:string;
+    x,y:array[1..100] of integer;
+begin
+readln(k);
+n:=length(k);
+
+repeat
+  c:=0;
+  for i:=1 to (n-1) do
+    if strtoint(k[i])>strtoint(k[i+1]) then
+      begin
+        b:=''+k[i];
+        k[i]:=k[i+1];
+        k[i+1]:=b[1];
+        c:=1;
+      end;
+until c=0;
+b:='YES';
+f:=0;
+i:=1;
+while i<n do
+  if strtoint(k[i])=strtoint(k[i+1]) then
+    begin
+      b:='NO';
+      inc(f);
+      while strtoint(k[i])=strtoint(k[i+1]) do
+        inc(i);
+      x[f]:=strtoint(k[i]);
+      inc(i);
+    end else inc(i);
+
+writeln(b);
+for i:=1 to f do
+  write(x[i],' ');
+readln;
+end.
+

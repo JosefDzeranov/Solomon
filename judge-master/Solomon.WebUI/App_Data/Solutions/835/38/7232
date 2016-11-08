@@ -1,0 +1,46 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,y1,x2,y2,x3,y3,x4,y4,x,y,z,b,d : real;
+begin
+readln(x1,y1);
+readln(x2,y2);
+readln(x3,y3);
+readln(x4,y4);
+x:=sqrt(sqr(x2-x1)+sqr(y2-y1));
+y:=sqrt(sqr(x3-x1)+sqr(y3-y1));
+z:=sqrt(sqr(x4-x1)+sqr(y4-y1));
+if x=y then
+begin
+b:=sqrt(sqr(x4-x2)+sqr(y4-y2));
+d:=sqrt(sqr(x4-x3)+sqr(y4-y3));
+if (b=d)and (b=x) then    writeln('YES')
+else
+writeln('NO');
+end
+ELSE
+if x=z then
+begin
+b:=sqrt(sqr(x3-x2)+sqr(y3-y2));
+d:=sqrt(sqr(x3-x4)+sqr(y3-y4));
+if (b=d)and (b=z) then    writeln('YES')
+else
+writeln('NO');
+end
+ELSE
+if y=z then
+begin
+b:=sqrt(sqr(x2-x3)+sqr(y2-y3));
+d:=sqrt(sqr(x2-x4)+sqr(y2-y4));
+if (b=d)and (b=y) then    writeln('YES')
+else
+writeln('NO');
+end
+else
+writeln('NO');
+readln;
+end.

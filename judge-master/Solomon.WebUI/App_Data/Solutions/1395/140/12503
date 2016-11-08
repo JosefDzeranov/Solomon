@@ -1,0 +1,55 @@
+﻿Module Module1
+    Dim A(N) As String
+    Dim B As String
+    Dim text1 As Object
+
+    Private Property K As Integer
+
+    Private Property S As Integer
+
+    Private Property N As Integer
+    Private Property l As Integer
+
+    Private Property I As Integer
+    Private Property M As Integer
+
+    Sub Main()
+
+        K = Val(text1.text)
+        S = 0
+        B = text2.text
+        N = Len(B)
+        For I = 1 To N
+            M = 0
+            Do
+                A(I) = Mid(B, I, 1)
+                If A(I) = "p" Then S = S + 1 : l = I
+                K = K + 1
+            Loop While M <= K
+        Next
+        Label1.caption = l
+        K = 0
+    End Sub
+
+   
+   
+
+    Private Function Label1() As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function text2() As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function Mid(ByVal A As String(), ByVal p2 As Integer, ByVal p3 As Integer) As String
+        Throw New NotImplementedException
+    End Function
+
+    Private Function Mid(ByVal B As String, ByVal p2 As Integer, ByVal p3 As Integer) As String
+        Throw New NotImplementedException
+    End Function
+
+    
+
+End Module

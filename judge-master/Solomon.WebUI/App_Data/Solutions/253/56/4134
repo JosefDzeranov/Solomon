@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cmath>
+#include<stdlib.h>
+#include<cstring>
+#include<map>
+
+using namespace std;
+
+
+int main()
+{
+    int n, a = 1, ans = 0, c, m, i;
+    cin >> n;
+    for(i = 1; i <= n; i++)
+    {
+        a = i;
+        while ((a & 1) == 0)
+        {
+            ans += 1;
+            a >>= 1;
+        }
+    }
+
+
+    cout << ans;
+    return 0;
+}

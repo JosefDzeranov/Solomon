@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+#include<math.h>
+using namespace std;
+string s,ss[1111];
+int main()
+{
+getline(cin,s);
+int i,j,k=0;
+int q = sqrt(s.size());
+int n = q*q==s.size()?q:q+1;
+for(i=1;i<=n;i++){
+	for(j=1;j<=n;j++){
+		ss[i][j]=' ';
+	}
+}
+for(i=1;i<=n;i++){
+	for(j=1;j<=n;j++){
+		ss[i][j]=s[k];
+		k++;
+	}
+}
+for(i=1;i<=n;i++){
+	for(j=1;j<=n;j++){
+		if(ss[j][i]!=' ')
+		cout<<ss[j][i];
+	}
+	//cout<<endl;
+}
+}

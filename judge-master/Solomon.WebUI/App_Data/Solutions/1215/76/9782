@@ -1,0 +1,30 @@
+var s:string[255];
+i,j:byte;
+sch,n:longint;
+c,c1:char;
+begin
+readln(n);
+sch:=0;
+for j:=1 to n do
+begin
+readln(s);
+i:=1;
+s:=s+'df';
+While i<=length(s) do
+begin
+c:=s[i];
+if (c>='0') and(c<='9') and (i<length(s)) then 
+      begin c1:=s[i+1]; if (c1>='0') and (c1<='9')
+                        then begin if (s[i+2]='0') and (c='1') and (c1='0')and (s[i+3]>='0') and (s[i+3]<='9')
+                                   then  begin sch:=sch+100;i:=i+1;end
+                                   else sch:=sch+(ord(c)-48)*10+ord(c1)-48
+                             end      
+                        else sch:=sch+ord(c)-48; 
+                        i:=i+2
+                        
+      end
+                                          else i:=i+1;   
+end;
+end;
+writeln(sch);                                            
+end.

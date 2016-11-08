@@ -1,0 +1,7 @@
+var a:longint;
+begin
+    assign(input,'input.txt');reset(input);
+    assign(output,'output.txt');rewrite(output);
+    readln(a);
+    writeln(a*(a-1)*(a-2));
+end.

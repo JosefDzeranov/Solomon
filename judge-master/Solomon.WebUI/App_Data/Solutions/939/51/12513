@@ -1,0 +1,8 @@
+program cube;
+var
+ containCube:longint;
+begin
+ readln(containCube);
+ write((containCube-8) div 12+2);
+ readln;
+end.

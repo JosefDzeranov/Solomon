@@ -1,0 +1,13 @@
+var a,x,ans:int64;
+Begin
+        //assign(input,'in.txt'); reset(input);
+        //assign(output,'out.txt'); rewrite(output);
+      readln(a);
+      x:=2;
+      while x<a do
+      begin
+           ans:=ans+a div x;
+           x:=x*2;
+      end;
+      writeln(ans);
+end.

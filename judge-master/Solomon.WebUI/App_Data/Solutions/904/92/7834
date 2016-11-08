@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int men(int u,int i)
+{
+
+    if (u<i) return u;
+    else return i;
+}
+
+struct Point
+{
+    int x, y;
+    int a, b;
+};
+
+int main()
+{
+    Point a,b,c;
+    cin>>a.x>>a.y;
+    cin>>b.x>>b.y;
+    cin>>c.x>>c.y;
+    a.a=abs(a.x-c.x);
+    a.b=abs(b.x-c.x);
+    b.a=abs(a.y-c.y);
+    b.b=abs(b.y-c.y);
+    cout<<men(men(a.a,a.b),men(b.a,b.b));
+    return 0;
+}

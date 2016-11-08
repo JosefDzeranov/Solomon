@@ -1,0 +1,19 @@
+#include <iostream>
+#include <bitset>
+#include <limits.h>
+
+int fac(int n)
+{
+	if (n==1) return 1; else return n*(fac(n-1));
+}
+ 
+int main()
+{
+	int i,c;
+	std::cin >> i;
+	std::bitset < sizeof(int)*CHAR_BIT> bits(fac(i));
+	c = 0;
+	for(i = 0; !bits[i]; i++) c++;
+    std::cout << c;
+    return 0;
+}

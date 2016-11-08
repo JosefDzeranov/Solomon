@@ -1,0 +1,39 @@
+uses Math;
+
+var
+	a : array [1..30] of Integer;
+
+procedure P(n, value : Integer);
+var
+	i : Integer;
+begin
+	i := 2;
+	while n <> 1 do begin
+		while n mod i = 0 do begin
+			n := n div i;
+			Inc(a[i], value)
+		end;
+		Inc(i)
+	end
+end;
+
+var
+	n, k, i, j : LongInt;
+	r : Int64;
+begin
+	ReadLn(n, k);
+
+	k := Max(k, n-k);
+	r := 1;
+	for i := k+1 to n do
+		P(i, 1);
+
+	for i := 1 to n-k do
+		P(i, -1);
+
+	for i := 1 to 30 do
+		for j := 1 to a[i] do
+			r := r*i;
+
+	WriteLn(r)
+end.

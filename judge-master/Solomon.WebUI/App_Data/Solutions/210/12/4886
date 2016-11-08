@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+long long n, k;
+long long p, v;
+long long ans;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> n >> k;
+
+    for (int t = 2; t <= k; ++t)
+        if (k % t == 0) {
+            v = t;
+            k /= t;
+            while(k % t == 0)
+                v *= t;
+            p = max(p, v);
+        }
+
+    for (v = p; v <= n; v *= p)
+        ans += n / v;
+
+    cout << ans;
+
+    return 0;
+}

@@ -1,0 +1,225 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <iterator>
+#include <string>
+#include <fstream>
+#include <algorithm>
+#include <set>
+
+#define mp make_pair
+
+using namespace std;
+
+const int maxCord = (int)1e9;
+const int FAIL = (int)2e9 + 13; 
+
+struct Segment
+{
+	int x1, x2, y;
+	int type;
+	Segment(int x1 = 0, int x2 = 0, int y = 0, int type = 0): x1(x1), x2(x2), y(y), type(type) {};
+	bool operator<(const Segment & s) const
+	{
+		if (y == s.y) return type <= s.type;
+		return y < s.y;	
+	}
+};
+
+multiset<Segment> segment;
+
+multiset<Segment> split(int x1, int x2)
+{
+	multiset<Segment> res;
+	for (multiset<Segment>::const_iterator it = segment.begin(); it != segment.end(); ++it)
+		if (it->x2 <= x1 || it->x1 >= x2) continue;
+		else res.insert(*it);
+	return res;
+}
+
+multiset<Segment> invert()
+{
+	multiset<Segment> res;
+	for (multiset<Segment>::const_iterator it = segment.begin(); it != segment.end(); ++it)
+		res.insert(Segment(-it->x2, -it->x1, it->y, it->type));
+	return res;
+}
+
+
+inline bool in(int l, int r, int x)
+{
+	return l <= x && x <= r;
+}
+
+inline bool in2(int l, int r, int x)
+{
+	return l < x && x < r;
+}
+
+int scanlineDown(int X, int Y)
+{
+	int bal = 0;
+	for (multiset<Segment>::const_iterator it = segment.begin(); it != segment.end(); it++)
+	{
+		Segment cur = *it;
+		if (cur.type == -1) bal -= 1;
+		if (in(max(0, Y), maxCord, cur.y))
+		{
+			if (bal == 0)
+				if (cur.type < 0 && (in2(cur.x1, cur.x2, 0) || in2(cur.x1, cur.x2, X))) return FAIL;
+				else return cur.y;
+		}
+		if (in(0, maxCord, cur.y)) 
+		{
+			if (in2(cur.x1, cur.x2, 0)) return FAIL;
+		}
+		if (in(Y, maxCord, cur.y)) 
+		{
+			if (in2(cur.x1, cur.x2, X)) return FAIL;
+		}
+		if (cur.type == 1) bal += 1;
+	}
+	return FAIL;
+}
+
+int scanlineUp(int X, int Y)
+{
+	multiset<int> cand;
+	int bal = 0;
+	for (multiset<Segment>::const_iterator it = segment.begin(); it != segment.end(); it++)
+	{
+		Segment cur = *it;
+		if (cur.type == -1) bal -= 1;
+		if (cur.y > Y) break;
+		if (in(0, Y, cur.y))
+		{
+			if (bal == 0)
+				if (cur.type < 0 && in2(cur.x1, cur.x2, 0)) break;
+				else cand.insert(cur.y);
+		}
+		if (in2(0, Y, cur.y)) 
+		{
+			if (in2(cur.x1, cur.x2, 0)) break;
+		}
+		if (cur.type == 1) bal += 1;
+	}
+	if (cand.size() == 0) return FAIL;
+	bal = 0;
+	for (multiset<Segment>::reverse_iterator it = segment.rbegin(); it != segment.rend(); it++)
+	{
+		Segment cur = *it;
+		if (cur.type == 1) bal += 1;
+		it++;
+		Segment next = *(it);
+		it--;
+		if (cur.y < 0) break;
+		if (in(0, Y, cur.y))
+		{
+			if (bal == 0)
+				if (cur.type > 0 && in2(cur.x1, cur.x2, X)) break;
+				else 
+				{
+					if (cand.count(cur.y)) return cur.y;
+					if (cand.count(next.y)) return next.y;
+				}
+		}
+		if (in2(0, Y, cur.y)) 
+		{
+			if (in2(cur.x1, cur.x2, X)) break;
+		}
+		if (cur.type == -1) bal -= 1;
+	}
+	return FAIL;
+}
+
+int main()
+{
+	int n, k;
+	cin >> n >> k;
+	segment.insert(Segment(-maxCord, maxCord, maxCord + 1, -1));
+	segment.insert(Segment(-maxCord, maxCord, maxCord, 1));
+	segment.insert(Segment(-maxCord, maxCord, -maxCord - 1, 1));
+	segment.insert(Segment(-maxCord, maxCord, -maxCord, -1));
+
+	for (int i = 0; i < n; i++)
+	{
+		int x1, x2, y1, y2;
+		cin >> x1 >> y1 >> x2 >> y2;
+		segment.insert(Segment(x1, x2, y1, 1));
+		segment.insert(Segment(x1, x2, y2, -1));
+	}
+	multiset<Segment> old = segment;
+	for (int i = 0; i < k; i++)
+	{
+		int X, Y;
+		cin >> X >> Y;
+
+		bool inv = X < 0;
+		segment = old;
+		segment = split(min(X, 0), max(X, 0));
+		if (inv) segment = invert(), X *= -1;
+		segment.insert(Segment(0, X, 1, -1));
+		segment.insert(Segment(0, X, 0, 1));
+		segment.insert(Segment(0, X, 0, -1));
+		segment.insert(Segment(0, X, -1, 1));
+		vector<pair<int, pair<int, int> > > ans;
+		if (X == 0)
+		{
+			if (Y > 0)
+			{
+				if (scanlineDown(X, Y) == FAIL) cout << "NO\n";
+				else cout << "YES\n0\n";
+			}
+			else
+				cout << "NO\n";	
+			continue;
+		}
+		if (Y > 0)
+		{
+			int an1 = scanlineDown(X, Y);
+			int an2 = scanlineUp(X, Y);
+			if (an1 != FAIL || an2 != FAIL) 
+			{
+				if (an2 != FAIL)
+				{
+					ans.push_back(mp(0, mp(an2, 1)));
+					if (an2 != Y) ans.push_back(mp(X, mp(an2, -1)));
+				
+				}
+				else
+				{
+					ans.push_back(mp(0, mp(an1, 1)));
+					ans.push_back(mp(X, mp(an1, 1)));
+				}
+			}
+		}
+		else
+		{
+			int an1 = scanlineDown(X, Y);
+			if (an1 != FAIL)
+			{
+				ans.push_back(mp(0, mp(an1, 1)));
+				ans.push_back(mp(X, mp(an1, 1)));
+			}
+		}
+		if (ans.size() == 0)
+		{
+			cout << "NO\n";
+			continue;
+		}
+		cout << "YES\n";
+		cout << ans.size() << "\n";
+		if (inv)
+		{
+			ans[0].second.second *= -1;
+			ans[0].first *= -1;
+			if (ans.size() == 2)
+			{
+				ans[1].first *= -1;
+				ans[1].second.second *= -1;
+			}
+		}
+		for (size_t i = 0; i < ans.size(); i++)
+			cout << ans[i].first << " " << ans[i].second.first << " " << ans[i].second.second << "\n";
+	}
+}

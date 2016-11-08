@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		int a, b, c, d;
+		cin >> a >> b >> c >> d;
+	}
+	if (n <= 2) cout << 0;
+	else
+	{
+		int k = 1 + (n - 3) * 2;
+		int ans = rand() % (k + 1);
+		cout << ans;
+	}
+}

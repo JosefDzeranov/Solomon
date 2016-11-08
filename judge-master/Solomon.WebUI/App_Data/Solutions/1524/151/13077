@@ -1,0 +1,26 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var U,r:Integer; s:Byte;
+begin
+  Readln(u);
+  r:=u div 3;
+  if u mod 3 = 0  then
+  begin
+    write( r -1,r,r+1)
+  end else
+  if u mod 3 = 1 then
+  begin
+    write(r-1,r,r+2);
+  end else
+  if u mod 3=2 then
+  begin
+    write(r-1,r+1,r+2)
+  end;
+  Readln;
+end.
+ 

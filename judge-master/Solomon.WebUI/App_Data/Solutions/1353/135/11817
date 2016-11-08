@@ -1,0 +1,23 @@
+a, k, b, m, x = [int(i) for i in input().split()]
+r1 = 0
+r2 = 0
+d1 = k
+d2 = b
+ret = 0
+while x > 0:
+    if r1 == k:
+        d1 = 0
+        r1 = 0
+    else:
+        d1 = a
+    if r2 == m:
+        d2 = 0
+        r2 = 0
+    else:
+        d2 = b
+    x += -(d1 + d2)
+    r1 += 1
+    r2 += 1
+    ret += 1
+print(ret)
+    

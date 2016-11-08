@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	long double A, B, K, M, X;
+
+	cin >> A >> K >>B>> M>> X;
+
+	long double count = 0;
+	long double day = 0;
+
+	do {
+		day++;
+		count += ((unsigned long long)day % (unsigned long long)K == 0 ? 0 : A);
+		count += ((unsigned long long)day % (unsigned long long)M == 0 ? 0 : B);
+	} while (count < X);
+
+	cout << day << endl;;
+
+	return 0;
+}

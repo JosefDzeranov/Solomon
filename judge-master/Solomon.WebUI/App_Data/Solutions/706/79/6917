@@ -1,0 +1,12 @@
+var x,y,n,i:longint;
+    s:longint;
+BEGIN
+  read(n);
+  i:=3;
+  s:=15;
+  while i<n do begin
+    inc(i,2);
+    s:=(i*i+1)+s;
+  end;
+  writeln(s:0);
+END.

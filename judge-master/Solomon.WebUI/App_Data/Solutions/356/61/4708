@@ -1,0 +1,35 @@
+const 
+f1='save';
+f2='load';
+f3='shoot';
+f4='ammo';
+var
+mas:array [1..100] of string ;
+
+n,k,sv,pul,i:integer;
+begin
+assign(input,'input.txt');
+assign(output,'output.txt');
+reset(input);
+rewrite(output);
+readln(n,k);
+sv:=0;
+pul:=0;
+
+for i:=1 to n do
+begin
+readln(mas[i]);
+delete(mas[i],pos(' ',mas[i]),1);
+end;
+
+for i:=1 to n do 
+  begin
+    if mas[i]=f1 then sv:=pul;
+    if mas[i]=f2 then pul:=sv;
+    if mas[i]=f3 then pul:=pul-1;
+    if mas[i]=f4 then pul:=pul+k;
+    writeln(pul);
+  end;
+close(input);
+close(output);
+end.

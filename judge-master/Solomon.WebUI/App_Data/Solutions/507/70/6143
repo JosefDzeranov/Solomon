@@ -1,0 +1,42 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+Module Module1
+
+    Sub Main()
+        Dim numc As Integer = Console.ReadLine
+        Dim inscrr As String = Console.ReadLine
+        Dim i As Integer
+        Dim u As Integer
+        Dim numm As Integer = Console.ReadLine
+        Dim ouscr(numm - 1) As String
+        For i = 0 To numm - 1
+            ouscr(i) = Console.ReadLine
+        Next
+
+        Dim inscr() As String = Split(inscrr, " ")
+
+        Dim all As Integer = 0
+
+        For i = 0 To numc - 1
+            Dim z As Integer = 0
+            For u = 0 To numm - 1
+                Dim s() As String = Split(ouscr(u), " ")
+                Dim b(1) As Integer
+                b(0) = s(0)
+                b(1) = s(1)
+                If inscr(i) <= b(0) Then
+                    If z = 0 Then
+                        z = b(1)
+                    Else
+                        If z > b(1) Then
+                            z = b(1)
+                        End If
+                    End If
+                End If
+            Next
+            all = all + z
+        Next
+        Console.WriteLine(all)
+    End Sub
+
+End Module

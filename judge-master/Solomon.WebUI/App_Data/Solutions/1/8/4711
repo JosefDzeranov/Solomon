@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a, b;
+	int *n = new int[1024 * 1024];//123
+	/*
+	
+	//12
+	
+	*///123
+	cin >> a >> b;
+	if (a == 1000000000) a--;
+	cout << a+b;
+}

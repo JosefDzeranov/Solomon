@@ -1,0 +1,65 @@
+program E;
+
+const
+        SIZE = 1000;
+
+type
+        Tac = array [1..SIZE*SIZE] of Char;
+
+procedure ReadData (var arC : Tac; var m : LongInt);
+
+var
+        i : LongInt;
+        ch : Char;
+
+begin
+        i := 1;
+        while not (Eof (input)) do
+        begin
+                Read (ch);
+
+                arC[i] := ch;
+                Inc (i)
+        end;
+
+        m := i - 1;
+end;
+
+procedure Init (var arC : Tac; var m, n : LongInt);
+
+var
+        i : LongInt;
+        ch : Char;
+begin
+        i := 0;
+        while i*i < m do
+                Inc (i);
+        n := i;
+
+        for i := m to (n*n) - 1 do
+                arC[i + 1] := ' ';
+end;
+
+var
+        arC : Tac;
+        ar : array [1..SIZE, 1..SIZE] of Char;
+        i, j, c, m, n : LongInt;
+
+begin
+        ReadData (arC, m);
+
+        Init (arC, m, n);
+
+        c := 1;
+        for i := 1 to n do
+                for j := 1 to n do
+                begin
+                        ar[i, j] := arC[c];
+
+                        Inc (c)
+                end;
+
+        for i := 1 to n do
+                for j := 1 to n do
+                        Write (ar[j, i]);
+end.

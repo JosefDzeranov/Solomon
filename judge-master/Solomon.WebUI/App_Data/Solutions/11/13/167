@@ -1,0 +1,46 @@
+#include <iostream>
+
+using namespace std;
+
+
+struct man{
+	int t, z, y;
+};
+
+int main() {
+
+	int m, n;
+	man mas[1000];
+	int ans[1000];
+
+	cin >> m >> n;
+
+	for (int i = 0; i < n; i++) {
+		man a;
+		cin >> a.t >> a.z >> a.y;
+		mas[i] = a;
+	}
+
+	int l = 0, r = 1e+7, mid, cnt = 0;
+	while (l < r - 1) {
+		mid = (l + r) / 2;
+		cnt = 0;
+		for (int i = 0; i < n; i++)
+		{
+			ans[i] = mid / (mas[i].t * mas[i].z + mas[i].y)
+				+ (mid % (mas[i].t * mas[i].z + mas[i].y)) / mas[i].t; 
+			cnt +=  ans[i];
+		}
+
+		if (cnt > m)
+			r = mid;
+		else
+			l = mid;
+	}
+	cout << l << endl;
+	for (int i = 0; i < n; i++)
+		cout << ans[i] << " ";
+
+
+	return 0;
+}

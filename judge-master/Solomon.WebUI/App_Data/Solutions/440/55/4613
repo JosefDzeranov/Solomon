@@ -1,0 +1,13 @@
+var 
+a,n,b,c,s,k:longint;
+begin
+readln(n);
+k:=(n*2)*(n*2);
+n:=n*2;
+a:=n*(n*n+1) div 2; 
+n:=n-1; 
+b:=n*(n*n+1) div 2; 
+
+s:=b*2+(k+1); 
+writeln(s);
+end.

@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <list>
+int main(){
+
+	int n,s,aver;
+	scanf("%d",&n);
+	int* v=new int[n];
+	
+	for(int i=0;i<n;i++){
+
+		scanf("d",&v[i]);
+		s+=v[i];
+	}
+
+	if(aver%n!=0){
+		printf("IMPOSSIBLE");
+		return 0;
+	}
+
+	aver=s/n;
+	s=0;
+
+	for(int i=0;i<n;i++){
+
+		if(v[i]<aver){
+			s+=(aver-v[i]);
+		}
+	}
+	printf("%d",s);
+
+	delete v;
+return 0;}

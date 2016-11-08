@@ -1,0 +1,43 @@
+uses SysUtils;
+
+type
+	TElem = record
+		a, b : Integer
+	end;
+	TArr = array [1..100] of TElem;
+
+var
+	a : TArr;
+	k, n, m, i, j, cnt : Integer;
+	res : array [1..130] of string;
+begin
+	ReadLn(n, m);
+	cnt := 0;
+
+	for i := 1 to m do
+		Read(a[i].a, a[i].b);
+
+	for i := 1 to m do
+		for j := i+1 to m do begin
+			if (a[i].a = a[j].b) and (a[i].b = a[j].a) then begin
+				Inc(cnt);
+				res[cnt] := IntToStr(a[i].a)+' '+IntToStr(a[i].b)+' '+IntToStr(a[j].a)+' '+IntToStr(a[j].b);
+				a[i].a := 0; a[i].b := 0;
+				a[j].a := 0; a[j].b := 0
+			end;
+		end;
+
+	k := 0;
+	for i := 1 to m do
+		if a[i].a=0 then Inc(k)
+		else if (a[i].a=a[i].b) then begin a[i].a := 0; Inc(k) end;
+
+	WriteLn(m-k+cnt);
+	for i := 1 to cnt do
+		WriteLn(res[i]);
+
+	for i := 1 to m do
+		if a[i].a <> 0 then begin
+			WriteLn(a[i].b, ' ', a[i].a, ' ', a[i].a)
+		end;
+end.

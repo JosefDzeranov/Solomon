@@ -1,0 +1,15 @@
+s = input().split();
+n = int(input());
+x = s[0];
+y = s[1];
+r = str(x)+str(y);
+if(n > 2):
+    while len(r)<n:
+        c = int(x) + int(y);
+        x = y;
+        y = c;
+        r = r + str(c);
+    print(r[len(r)-1]);
+else:
+    print(r[n-1]);
+

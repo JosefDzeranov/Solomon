@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+    int misPos[2], mis = 0;
+    for (unsigned i = 0; i < s.length() / 2; ++i) {
+        if (s[i] != s[s.length()-i-1]) {
+            mis++;
+            if (mis > 2) break;
+            misPos[mis-1] = i;
+        }
+    }
+
+    if (mis == 0) {
+        cout << "Yes";
+    }
+    else if (mis == 1 && (s.length() % 2 == 1)) {
+        if (s[misPos[0]] == s[s.length()/2] || s[s.length()/2] == s[s.length()-misPos[0]-1]) {
+            cout << "Yes";
+        }
+        else {
+            cout << "No";
+        }
+    }
+    else if (mis == 2) {
+        if((s[misPos[0]]                == s[s.length()-misPos[1]-1] &&
+            s[s.length()-misPos[0]-1]   == s[misPos[1]]) ||
+           (s[misPos[0]]                == s[misPos[1]] &&
+            s[s.length()-misPos[0]-1]   == s[s.length()-misPos[1]-1])){
+            cout << "Yes";
+        }
+        else {
+            cout << "No";
+        }
+    }
+    else {
+        cout << "No";
+    }
+    return 0;
+}

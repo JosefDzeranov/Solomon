@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <conio.h>
+int main()
+{
+    long a,b=0,c=0;
+    scanf("%d",&a);
+  
+    b=a*a+2*a+1;
+    printf("%d",b);
+  
+    return 0;
+    
+}
+    

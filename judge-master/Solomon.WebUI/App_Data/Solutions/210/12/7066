@@ -1,0 +1,321 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+long long n, k;
+long long p, v;
+long long ans;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    scanf("%d%d", &n, &k);
+
+    for (int t = 2; t <= k; ++t)
+        if (k % t == 0) {
+            v = t;
+            k /= t;
+            while(k % t == 0)
+                v *= t;
+            p = max(p, v);
+        }
+
+    for (v = p; v <= n; v *= p)
+        ans += n / v;
+
+    printf("%d", ans);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#include <algorithm>
+#include <iostream>
+#include <cstdio>
+#define N 120000
+
+using namespace std;
+const int close = -1;
+const int open = 1;
+
+struct now {
+    enum type {close, open};
+    int id;
+    int time;
+    bool operator < (now a) const {
+        return time < a.time;
+    }
+};
+
+int n, m;
+bool vkl[N];
+bool was[N];
+now a[3 * N];
+int can, q;
+int last[N];
+int len[N];
+int tp[N], tm[N];
+int oao = -1, obo = -1;
+
+void init() {
+    scanf("%d %d\n", &n, &m);
+    char ch;
+    int t = 0;
+    for (int i = 0; i < m; ++i) {
+        scanf("%c %d\n", &ch, &a[i].id);
+        --a[i].id;
+        was[a[i].id] = true;
+        a[i].time = i;
+        if (ch == '-') {
+            a[i].type = close;
+        } else {
+            a[i].type = open;
+        }
+        tp[a[i].id] = a[i].type;
+        tm[a[i].id] = i;
+        if (ch == '-' && !vkl[a[i].id]) {
+            a[m + t].type = 1;
+            a[m + t].time = -10000000;
+            a[m + t].id = a[i].id;
+            ++t;
+            obo = a[i].id;
+        }
+        if (ch == '+') {
+            vkl[a[i].id] = true;
+        }
+    }
+    int mint = 100000000;
+    for (int i = 0; i < n; ++i) {
+        if (tp[i] == 1) {
+            a[m + t].type = -1;
+            a[m + t].time = m + 10000000;
+            a[m + t].id = i;
+            ++t;
+            if (mint > tm[i]) {
+                mint = tm[i];
+                oao = i;
+            }
+        }
+    }
+    m += t;
+    sort(a, a + m);
+}
+
+void out() {
+    int ans = 0;
+    for (int i = 0; i < n; ++i) {
+        ans += (!was[i]);
+    }
+    printf("%d\n", ans);
+    for (int i = 0; i < n; ++i) {
+        if (!was[i]) {
+            printf("%d ", i + 1);
+        }
+    }
+    exit(0);
+}
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    init();
+    for (int i = 0; i < m; ++i) {
+        if (a[i].type == 1) {
+            last[a[i].id] = a[i].time;
+        } else {
+            len[a[i].id] += a[i].time - last[a[i].id] + 1;
+        }
+    }
+    int mx = 0;
+    for (int i = 0; i < n; ++i) {
+        if (len[i] > mx) {
+            mx = len[i];
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        if (len[i] == mx) {
+            can = i;
+            ++q;
+        }
+    }
+    if (q > 1) out();
+    if (oao != -1 && oao != can) out();
+    if (obo != -1 && obo != can) out();
+    bool ok = true;
+    int cnt = 0;
+    for (int i = 0; i < m; ++i) {
+        cnt += a[i].type;
+        if (a[i].time < 0) continue;
+        if (a[i].time > m) break;
+        if (a[i].id == can) {
+            if (a[i].type == -1 && cnt > 0) ok = false;
+            if (a[i].type == 1 && cnt > 1) ok = false;
+        }
+    }
+    if (ok) was[can] = false;
+    out();
+    return 0;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///2013-2014 Тренировка СПбГУ B #8 Игры: A - Шоколадка
+/*#include <iostream>
+#include <cstring>
+#include <cstdio>
+#define N 310
+
+using namespace std;
+
+int n, m, s;
+int dp[N][N];
+int i, j, d;
+bool used[N];
+
+void init() {
+    cin >> n >> m >> s;
+    memset(dp, -1, sizeof(dp));
+    for (i = 0; i <= 2 * s + 1; ++i) {
+        dp[1][i] = dp[i][1] = 0;
+    }
+    for (i = 0; i <= n || i <= m; ++i) {
+        dp[0][i] = dp[i][0] = 0;
+    }
+}
+
+int main() {
+    freopen("choco.in", "r", stdin);
+    freopen("input.txt", "r", stdin);
+    //freopen("choco.out", "w", stdout);
+    init();
+    for (i = 1; i <= n; ++i) {
+        for (j = 1; j <= m; ++j) {
+            if (dp[i][j] == -1) {
+                memset(used, 0, sizeof(used));
+                for (d = 1; d < i; ++d) {
+                    used[dp[d][j] ^ dp[i - d][j]] = true;
+                }
+                for (d = 1; d < j; ++d) {
+                    used[dp[i][d] ^ dp[i][j - d]] = true;
+                }
+                for (d = 0; used[d]; ++d);
+                dp[i][j] = d;
+            }
+        }
+    }
+    cout << 2 - !!dp[n][m] << "\n";
+    for (i = 0; i <= n; ++i) {
+        for (j = 0; j <= m; ++j) {
+            cout << dp[i][j] << " ";
+        }
+        cout << "\n";
+    }
+    return 0;
+}*/
+
+
+
+
+
+
+
+///Coder-Strike 2014 - Раунд 1: E - Е-mail адреса
+/*#include <iostream>
+#include <cstdio>
+#include <vector>
+#define N 100100
+
+using namespace std;
+typedef long long ll;
+
+string s;
+ll old, now;
+ll buk;
+ll ans;
+ll buknum, oldnum;
+int dot;
+bool have_at, can = 1;
+
+int main() {
+    freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+    cin >> s;
+    s += '@';
+    int i = -1, j = 0;
+    int have_at = 0;
+
+    cerr << s << "\n\n";
+
+    for (int k = 0; k < s.length(); ++k) {
+        if (s[k] == '@') {
+            if (dot == 1 && have_at && can) ans += buk * old;
+            old = now;
+            buk = now = 0;
+            dot = 0;
+            have_at = can = true;
+        }
+        if (s[k] == '.' || s[k] == '_' || (s[k] >= '0' && s[k] <= '9')) {
+            buk = 0;
+            if (s[k] == '.') ++dot;
+        }
+        if (s[k] >= 'a' && s[k] <= 'z') ++buk, ++now;
+        if (dot == 0) can &= ((s[k] >= 'a' && s[k] <= 'z') || (s[k] >= '0' && s[k] <= '9'));
+        cerr << buk << " " << old << " " << dot << "    " << ans << "\n";
+    }
+    cout << ans;
+    return 0;
+}*/

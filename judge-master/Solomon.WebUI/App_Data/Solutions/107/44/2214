@@ -1,0 +1,15 @@
+program A;
+uses CRT;
+var n,l,r,x,y,b:integer;
+begin
+writeln('Введите длину проволоки, длину браслета и радиус колечек');
+read(n,l);
+writeln('Введите радиус колечек');
+read(r);
+y:=r*2;
+b:=n div 1;
+if n<1 then writeln('NO')
+else writeln('yes');
+if n>1 then x:=b div y;
+if n>1 then writeln(x);
+end.

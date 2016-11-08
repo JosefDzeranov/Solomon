@@ -1,0 +1,19 @@
+﻿using System;
+
+
+namespace FootballMat
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            int N = int.Parse(Console.ReadLine());
+
+            int D = 1+8*N;
+            double n = (-1 + Math.Sqrt(D)) / 2;
+            Console.WriteLine( n);
+            
+        }
+    }
+}

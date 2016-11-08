@@ -1,0 +1,159 @@
+program StaB;
+
+const
+  MaxN = 10;
+  MaxM = 100;
+
+type
+  TAction = record
+    N1, C1, N2, C2: ShortInt;
+  end;
+
+var
+  C: array [1..MaxN, 1..MaxN] of LongInt;
+  N, M: LongInt;
+  SwapNum, MoveNum: LongInt;
+  Swaps, Moves: array [1..MaxM] of TAction;
+
+  A: array [0..MaxN] of Integer;
+  U: array [1..MaxN] of Boolean;
+  Len, Start: Integer;
+
+procedure ReadData;    //
+var
+  I, J, K: LongInt;
+begin
+
+
+  Read(N, M);
+
+  FillChar(C, Sizeof(C), 0);
+  for I := 1 to M do
+  begin
+    Read(J, K);
+    Inc(C[K, J]);
+  end;
+
+  SwapNum := 0;
+  MoveNum := 0;
+
+
+end;
+
+procedure AddSwap(N1, C1, N2, C2: ShortInt);
+begin
+  Inc(SwapNum);
+  Swaps[SwapNum].N1 := N1;
+  Swaps[SwapNum].C1 := C1;
+  Swaps[SwapNum].N2 := N2;
+  Swaps[SwapNum].C2 := C2;
+  Dec(C[N1, C1]); Inc(C[N1, C2]);
+  Dec(C[N2, C2]); Inc(C[N2, C1]);
+end;
+
+procedure AddMove(N1, C1, N2: ShortInt);
+begin
+  Inc(MoveNum);
+  Moves[MoveNum].N1 := N1;
+  Moves[MoveNum].C1 := C1;
+  Moves[MoveNum].N2 := N2;
+  Dec(C[N1, C1]);
+  Inc(C[N2, C1]);
+end;
+
+function FindCycle(Num, Pos: Integer): Boolean;
+var
+  I: LongInt;
+  R: Boolean;
+begin
+  FindCycle := False;
+  A[Pos] := Num;
+  U[Num] := True;
+
+  if Num <> Start then
+    if C[Num, Start] > 0 then
+    begin
+      FindCycle := True;
+      Len := Pos;
+      Exit;
+    end;
+
+  for I := 1 to N do
+    if (I <> Num) and not U[I] then
+      if (C[Num, I] > 0) and (C[I, Start] > 0) then
+      begin
+        R := FindCycle(I, Pos+1);
+        if R then
+        begin
+          FindCycle := True;
+          Exit;
+        end;
+      end;
+
+  for I := 1 to N do
+    if (I <> Num) and not U[I] then
+      if C[Num, I] > 0 then
+      begin
+        R := FindCycle(I, Pos+1);
+        if R then
+        begin
+          FindCycle := True;
+          Exit;
+        end;
+      end;
+
+  U[Num] := False;
+end;
+
+procedure ProcessCycle;
+var
+  I: LongInt;
+begin
+  for I := Len-1 downto 1 do
+    AddSwap(A[I], A[I+1], A[I+1], Start);
+end;
+
+procedure DoCycles;
+begin
+  for Start := 1 to N do
+  begin
+    FillChar(U, Sizeof(U), False);
+    while FindCycle(Start, 1) do
+      ProcessCycle;
+  end;
+end;
+
+procedure DoMoves;
+var
+  I, J, K: Integer;
+begin
+  for I := 1 to N do
+    for J := 1 to N do
+      if (I <> J) then
+        if C[I, J] > 0 then
+          for K := 1 to C[I, J] do
+            AddMove(I, J, J);
+end;
+
+procedure WriteAnswer;
+var
+  I: Integer;
+begin
+
+
+  WriteLn(SwapNum + MoveNum);
+  for I := 1 to SwapNum do
+    WriteLn(Swaps[I].N1, ' ', Swaps[I].C1, ' ',
+            Swaps[I].N2, ' ', Swaps[I].C2);
+  for I := 1 to MoveNum do
+    WriteLn(Moves[I].N1, ' ', Moves[I].C1, ' ', Moves[I].N2);
+
+
+end;
+
+begin
+  ReadData;
+  DoCycles;
+  DoMoves;
+  WriteAnswer;
+end.

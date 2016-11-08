@@ -1,0 +1,51 @@
+n,p = map(int,input().split())
+mas = []
+ans = 0
+lst = map(int,input().split())
+for i in lst:
+    ans = ans +i*i
+    mas.append(i)
+print(str(ans)+"\n")
+k = int(input())
+for i in range(k):
+    a,b = map(int,input().split())
+    if(a==1):
+        if(b==1):
+            ans = ans - mas[0]*mas[0]
+            ans = ans - mas[1]*mas[1]
+            hlp = (mas[0]+mas[1])
+            ans = ans + hlp*hlp
+            mas.pop(0)
+            mas[0]=hlp
+        elif(b==len(mas)):
+            ans = ans - mas[-1]*mas[-1]
+            ans = ans - mas[-2]*mas[-2]
+            hlp = (mas[-1]+mas[-2])
+            ans = ans + hlp*hlp
+            mas.pop(len(mas)-1)
+            mas[-1]=hlp
+        else:
+            b = b - 1
+            hlp1 = mas[b-1]
+            hlp2 = mas[b+1]
+            ans = ans - hlp1*hlp1
+            ans = ans - mas[b]*mas[b]
+            ans = ans - hlp2*hlp2
+            hlp1 = hlp1 + mas[b]//2
+            hlp2 = hlp2 + mas[b] - mas[b]//2
+            ans = ans + hlp1*hlp1
+            ans = ans + hlp2*hlp2
+            mas[b-1] = hlp1
+            mas[b+1] = hlp2
+            mas.pop(b)
+    else:
+        b = b - 1
+        hlp = mas[b]
+        ans = ans - hlp*hlp
+        ans = ans + (hlp//2)*(hlp//2)
+        ans = ans + (hlp-hlp//2)*(hlp-hlp//2)
+        mas.pop(b)
+        mas.insert(b,hlp//2)
+        mas.insert(b,hlp-hlp//2)
+    print(str(ans)+"\n")
+

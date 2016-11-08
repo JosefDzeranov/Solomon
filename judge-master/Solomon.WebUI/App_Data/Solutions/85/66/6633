@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int i_sc[50000], kol_sc[50000];
+
+int f(string s)
+{
+    int ans = 0;
+    for (int i = 0; i < s.size(); i++)
+        ans = ans * 10 + (s[i] - 48);
+
+    return ans;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    string s, ss[n];
+    getline(cin, s);
+    for (int i = 0; i < n; i++)
+    {
+        getline (cin, ss[i]);
+        for (int j = 0; j < ss[i].size(); j++)
+            if (ss[i][j] < '0' || ss[i][j] > '9')
+            {
+                ss[i].erase(j, 1);
+                j--;
+            }
+    }
+
+    for (int i = 0; i < 5000; i++)
+        i_sc[i] = i;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (ss[i] != "@")
+        {
+            i_sc[i] = f(ss[i]);
+            int num = 1;
+            for (int j = i + 1; j < n; j++)
+                if (ss[j] == ss[i])
+                {
+                    ss[j] = "@";
+                    num++;
+                }
+
+            kol_sc[i] = num;
+        }
+    }
+
+    int aa = 0;
+    for (int i = 0; i < 50000; i++)
+        if (kol_sc[i] != 0 && kol_sc[i] < 6)
+            aa++;
+
+    cout << aa << endl;
+
+    for (int i = 0; i < 50000; i++)
+        if (kol_sc[i] != 0 && kol_sc[i] < 6)
+            cout << i_sc[i] << endl;
+
+    return 0;
+}

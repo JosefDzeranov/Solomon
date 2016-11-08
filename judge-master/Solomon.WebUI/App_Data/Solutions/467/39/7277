@@ -1,0 +1,20 @@
+n, m = [int(i) for i in input().split()]
+pages = [int(i) for i in input().split()]
+pages.append(0.1)
+s = 0
+f = 0
+tp = ""
+for i in range(len(pages) - 1):
+    if pages[i] + 1 == pages[i + 1]:
+        f = i + 1
+    else:
+        if s == f:
+            tp += str(pages[s]) + " "
+        else:
+            tp += str(pages[s]) + "-" + str(pages[f]) + " "
+        s = i + 1
+        f = i + 1
+print(tp)
+        
+        
+        

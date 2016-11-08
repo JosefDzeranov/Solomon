@@ -1,0 +1,19 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+
+int main() {
+
+	int a;
+	cin >> a;
+	int k = 1;
+	while (k*k < 1 + 8 * a)
+		k++;
+	cout << (-1 + k) / 2 << endl;
+
+
+	return 0;
+}

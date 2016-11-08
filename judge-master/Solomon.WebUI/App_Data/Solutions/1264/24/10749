@@ -1,0 +1,47 @@
+var
+s:string;
+p1,p2,i,j,n,c,sum,k,k1:longint;
+f:boolean;
+begin
+f:=false;
+readln(n);
+readln(s);
+s:=s+' ';
+for i:=1 to length(s) do begin
+ for j:=1 to length(s) do begin
+if (s[i]<>' ') and (i<>j) and (s[i]=s[j]) and (s[i]<>'x') and (s[j]<>'x') then begin
+for k:=1 to i do if s[k]=' ' then inc(p1);
+for k:=1 to j do if s[k]=' ' then inc(p2);
+if p1<>p2 then begin
+if p1>0 then begin
+k:=i;
+while s[k-1]<>' ' do dec(k);
+end;
+if p2>0 then begin
+k1:=j;
+while s[k1-1]<>' ' do dec(k1);
+end;
+while s[k1+1]<>' ' do begin
+while s[k+1]<>' ' do begin
+if (s[k1]=s[k]) and (s[k1]<>'x') then f:=true;
+inc(k);
+end;
+inc(k1);
+end;
+if not(f) then 
+inc(c);
+s[j]:='x';
+end;
+end;
+f:=false;
+end;
+p1:=0;
+p2:=0;
+if c>0 then begin 
+inc(sum);
+c:=0;
+s[i]:='x';
+end;
+end;
+writeln(sum);
+end.

@@ -1,0 +1,40 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,y1,y2,d,a,b:integer;
+begin
+ readln(x1,y1,x2,y2);
+ d:=0;
+ if (x2>x1) or (y2>y1) then
+ begin
+ d:=x1;
+ x1:=x2;
+ x2:=d;
+ d:=y1;
+ y1:=y2;
+ y2:=d;
+ end;
+ d:=1000;
+ if (x1<0) and (x2>100) then
+ begin
+  a:=0-x1;
+  b:=x2-100;
+  if a>=b then d:=d+10*b
+  else d:=d+2*a;
+ end;
+
+ if (y1<0) and (y2>100) then
+ begin
+  a:=0-y1;
+  b:=y2-100;
+  if a>=b then d:=d+10*b
+  else d:=d+2*a;
+ end;
+
+writeln(d);
+readln;
+end.

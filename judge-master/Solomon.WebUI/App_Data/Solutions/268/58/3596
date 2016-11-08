@@ -1,0 +1,60 @@
+#include <cstdlib>
+#include <iostream>
+#include <math.h>
+#include <vector>
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    long long  N,pro=0,c,m,minr,pk=0,vk=0;
+   long long  stepen=2; 
+    cin>>N;
+    minr = 922336499;
+    for(int i = 1; i< N;i++)stepen=stepen*2;
+    
+    vector<int> zakupki;
+    zakupki.reserve(N);
+     for(int i=0; i < N; i++)
+     {
+            cin >> zakupki[i]; 
+     }                                     
+     bool **varianti = new bool *[stepen];
+          for(int i = 0; i < stepen; i++)
+          {
+                  varianti[i] = new bool [N];
+          }
+          for(int i =0; i<stepen; i++ )
+          {for(int b=0; b<N; b++)varianti[i][b] = false;  }
+    for(int i = 0; i< N; i++)
+    {
+            c = (int)pow(2,pro);
+     //cout<<c<<" ";
+            m=0;
+            for(int b=0; b < stepen; b++)
+            {
+               
+//              cout<<m<<" ";    
+              if(m>=c){varianti[b][i] = true; }
+              m++;
+              if(m==2*c)m=0;              
+            }  
+            pro++;
+    }
+   for(int i=0; i<stepen;i++)
+   {
+           pk=0;
+           vk=0;
+    for(int b=0; b < N; b++)
+    {
+      if(varianti[i][b]==false) pk=pk+zakupki[b];
+      if(varianti[i][b]==true) vk=vk+zakupki[b];  
+    //  cout<<pk<<" "<<vk<<"\n";   
+    }
+    if(pk>vk) c = pk-vk;
+    if(vk>=pk) c= vk-pk;
+    if(c<minr)minr=c;        
+   }
+    cout<<minr;
+//    system("PAUSE");
+    return 0;
+}

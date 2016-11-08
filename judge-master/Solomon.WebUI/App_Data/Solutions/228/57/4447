@@ -1,0 +1,34 @@
+program qq;
+var a,b:array [1..100]of integer;
+i,j,w,s,n,r,max,k :integer;
+begin
+readln ( n);
+for i:=1 to N do begin
+write ('a[',i,']=');
+readln (a[i]);
+end;
+for i:=1 to N do begin
+      s:=a[i];
+   while s>9 do begin
+       w:=s;
+       s:=0;
+     while w>0 do begin
+        r:=w mod 10;
+        w:=w div 10;
+        s:=s+r;
+     end;
+     b[i]:=s;
+   end;
+end;
+ max:= 1;
+for i:=1 to N-1 do begin
+  k:=1;
+ for j:=i+1 to N do
+   if b[i]=b[j] then k:=k+1;
+ if max<k then max:=b[i];
+end;
+for i:=1 to N do
+   if b[i]<>max then  write (a[i],'  ');
+end.
+
+

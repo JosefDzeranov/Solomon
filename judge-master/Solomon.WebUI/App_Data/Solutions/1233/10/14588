@@ -1,0 +1,9 @@
+import math
+n=int(input())
+k=int(input())
+nl=math.factorial(n)
+kl=math.factorial(k)
+nkl=math.factorial(n-k)
+d=kl*nkl
+p=nl/d
+print(int(p))

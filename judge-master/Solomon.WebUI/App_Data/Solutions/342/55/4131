@@ -1,0 +1,25 @@
+var m1,m2,c:longint;
+n,i,k,a,s: integer;
+begin
+c:=1;
+readln (n);
+if (n mod 2<>0) or (n<2) or (n>1000) then exit;
+a:=n;
+while a mod 2=0 do
+begin
+a:=a div 2;
+k:=k+1;
+end;
+k:=k-1;
+n:= n*2;
+m1:= (n*(n*n+1)) div 2;
+n:=n-1;
+m2:=(n*(n*n+1)) div 2;
+while k>0 do
+begin
+c:=c*10;
+k:=k-1;
+end;
+s:=(m1+m2)-2*c;
+writeln (s)
+end.

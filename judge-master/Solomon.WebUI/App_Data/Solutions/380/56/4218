@@ -1,0 +1,19 @@
+ program nom2;
+var k,N,a:extended;
+begin
+readln (N);
+if N=1 then write (0)
+else begin;
+a:=1;
+while N>0 do begin
+a:=a*N;
+N:=N-1;
+end;
+k:=0;
+while a/2=round(a/2) do begin
+K:=k+1;
+a:=a/2;
+end;
+write (k:1:0);
+end;
+end.

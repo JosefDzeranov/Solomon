@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,k1,k2,c=0,k;
+	cin>>N;
+
+	k1=N*2*N*2+1;
+	k2=(2*N-1)*(2*N-1);
+	k=(k2+1)*(k2/2);
+	if(k2%2!=0)k+=k2/2+1;
+		k=k/(2*N-1);
+		k=k*2+k1;
+
+	cout<<k;
+	cin>>N;
+	return 0;
+}

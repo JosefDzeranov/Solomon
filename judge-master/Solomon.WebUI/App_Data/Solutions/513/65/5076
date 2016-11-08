@@ -1,0 +1,34 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,n:longint;
+begin
+readln(a1,a2,a3,a4);
+if (a1<=a2)
+then
+begin
+n:=n+a1;
+end
+else
+begin
+n:=n+a2;
+end;
+
+if (a3<=a4)
+then
+begin
+n:=n+a3;
+end
+else
+begin
+n:=n+a4;
+end;
+if round(sqrt(n))<=sqrt(n) then
+writeln(round(sqrt(n)))
+else
+writeln(round(sqrt(n))-1)
+end.

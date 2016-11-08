@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cstdlib>
+ using namespace std;
+ int main()
+ {
+
+  int  nFirst=0;
+   int  nSecond=0;
+       int  nRes=0;
+      cout<<"First var=?";
+      cin >>nFirst;
+      cout<<"Second var=?";
+      cin >>nSecond;
+      nRes=nFirst+nSecond;
+      cout<<"Result="<<nRes;
+
+     system("PAUSE");
+     return 0;
+ }

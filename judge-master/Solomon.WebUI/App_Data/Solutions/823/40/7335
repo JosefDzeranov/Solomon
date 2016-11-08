@@ -1,0 +1,36 @@
+program Stenography2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s1, s2, s3 : string;
+  i : integer;
+begin
+  readln (s1);
+  s2 := '';
+  s3 := '';
+  for i := 1 to Length (s1) do
+  begin
+    if s1[i] = '#' then
+      s2 := copy (s2, 1, length (s2) - 1)
+    else
+      if s1[i] = '-' then
+      begin
+        s3 := copy (s2, length (s2), 1);
+        s2 := copy (s2, 1, length (s2) - 1)
+      end
+    else
+      if s1[i] = '+' then
+      begin
+        s2 := s2 + s3[1];
+        s3 := copy (s3, 2, length (s3) - 1);
+      end
+    else
+      s2 := s2 + s1[i]
+  end;
+  write (s2);
+  readln;
+end.

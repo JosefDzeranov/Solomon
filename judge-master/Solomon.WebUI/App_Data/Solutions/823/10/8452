@@ -1,0 +1,22 @@
+program NumberOfUnites;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  m : array [0..30, 0..30] of integer;
+  n, k, i, j : byte;
+begin
+  readln (n, k);
+  for i := 0 to n do
+    m[i,0] := 1;
+  for i := 1 to k + 1 do
+    m[0,i] := 0;
+  for j := 1 to n do
+    for i := 1 to k do
+      m[j,i] := m[j-1,i] + m[j-1,i-1];
+  write (m[n,k]);
+  readln;
+end.

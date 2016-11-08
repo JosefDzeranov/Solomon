@@ -1,0 +1,19 @@
+program Actors;
+var
+ rI:byte;
+ n,a,b,c,s,bi:real;
+begin
+ readln(rI);
+ readln(n,a,b,c);
+ if (a<=b) and (a<=c) then s:=a
+  else if (b<=a) and (b<=c) then s:=b
+  else s:=c;
+
+ if (a>=b) and (a>=c) then bi:=a
+  else if (b>=a) and (b>=c) then bi:=b
+  else bi:=c;
+
+ if rI=1 then write((s-(bi-((a+b+c)-(bi+s)))):0:0)
+  else write(s);
+ readln;
+end.

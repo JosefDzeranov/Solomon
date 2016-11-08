@@ -1,0 +1,20 @@
+#include "stdio.h"
+
+int main(){
+	long a,b,c,d,x=0,y=0,s=0;
+	long long k,l;
+	scanf("%d %d %d %d",&a,&b,&c,&d);
+
+	for(x=1;x<10000;x=x+1){
+		for(y=x;y<10000;y=y+1){
+			k=x*y;
+			l=2*(x+y);
+			if((l>=c)&&(l<=d)&&(k>=a)&&(k<=b)){
+				//printf("%d %d %d %d; ",x,y,k,l);
+				s++;
+			}
+		}
+	}
+	printf("%d",s);
+	//scanf("%d",x);
+return 0;}

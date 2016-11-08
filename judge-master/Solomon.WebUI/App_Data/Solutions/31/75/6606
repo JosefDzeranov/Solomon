@@ -1,0 +1,22 @@
+program Project31;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array[0..100] of integer;
+i,n,f:integer;
+begin
+readln(n);
+for i :=0 to n-1 do
+begin
+read(a[i]);
+end;
+for i :=0 to n-1 do
+begin
+if a[i] mod 2=0 then write(a[i],' ');
+end;
+readln;
+readln;
+end.

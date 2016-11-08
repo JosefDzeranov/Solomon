@@ -1,0 +1,75 @@
+program BrightNumbers;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+procedure CutArray (m : array of byte; i, k : byte);
+var
+  j : byte;
+begin
+  for j := k to i - 1 do
+    m[j] := m[j+1];
+  m[i] := 10;
+end;
+
+procedure InsertNextArray (m1 : array of byte; x, l : byte);
+var
+  ix, k : byte;
+begin
+  for ix := 1 to l do
+    if x <= m1[ix] then
+      begin
+        for k := l downto ix do
+          m1[k+1] := m1[k];
+        m1[ix] := x;
+        break;
+      end;
+end;
+
+var
+  m : array [1..10] of byte;
+  m1 : array[1..6] of byte;
+  a : integer;
+  i, j, k, l, x : byte;
+begin
+  readln (a);
+  i := 0;
+  while a > 0 do
+    begin
+      i := i + 1;
+      m[i] := a mod 10;
+      a := a div 10;
+    end;
+  {for j := 1 to i do
+    write (m[j], ' ');
+  writeln;}
+  l := 1;
+  m1[l] := 10;
+  for j := 1 to i - 1 do
+    begin
+      x := m[j];
+      for k := j + 1 to i do
+        if m[k] = x then
+          begin
+            CutArray (m, i, k);
+            InsertNextArray (m1, x, l);
+            l := l + 1;
+            break;
+          end;
+    end;  
+  if m1[1] = 10 then
+    begin
+      writeln ('YES');
+      {for i := 1 to l do
+        write (m1[i], ' ');}
+    end
+  else
+    begin
+      writeln ('NO');
+        for I := 1 to l do
+          write (m1[i], ' ');
+    end;
+  readln;
+end.

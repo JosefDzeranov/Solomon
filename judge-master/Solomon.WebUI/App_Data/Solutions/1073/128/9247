@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int N, topX;
+    cin >> N;
+    int *vX = new int[N], *vY = new int[N];
+    for (int i = 0; i < N; i++) {
+        cin >> vX[i] >> vY[i];
+    }
+
+    if (N == 4) {
+        cout << (abs((float)(vX[2]-vX[1]))-1)*(abs((float)(vY[3]-vY[2]))-1) << endl;
+    }
+
+    return 0;
+}

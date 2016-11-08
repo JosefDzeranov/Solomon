@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Mesi
+{
+    class Program
+    {
+        class Number
+        {
+            public int Score { get; set; }
+            public int Value { get; set; }
+            public Number(int Score, int Value)
+            {
+                this.Score = Score;
+                this.Value = Value;
+            }
+        }
+        static void Main(string[] args)
+        {
+            int N = Int32.Parse(Console.ReadLine());
+            List<Number> nums = new List<Number>();
+            int[] sqrt = new int[10];
+            int freq = 0;
+
+            for (var i = 0; i < N; i++)
+            {
+                int num = Console.Read();
+                int score = 0, number = 0;
+                while (num != 32 && num != 13)
+                {
+                    number = number * 10 + (num - 48);
+                    score += num - 48;
+                    if (score > 9) score = score / 10 + score % 10;
+                    num = Console.Read();
+                }
+                nums.Add(new Number(score, number));
+                sqrt[score]++;
+                if (sqrt[score] > freq) freq = sqrt[score];
+            }
+
+            foreach (var i in nums)
+                if (sqrt[i.Score] < freq)
+                    Console.Write("{0} ", i.Value);
+                else freq = 10;
+
+            Console.ReadLine();
+        }
+    }
+}

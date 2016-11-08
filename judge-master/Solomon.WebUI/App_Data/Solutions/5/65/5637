@@ -1,0 +1,10 @@
+import math
+from decimal import Decimal
+a,b,c,d = map(int,input().split())
+a= min(a,b)
+c= min(c,d)
+c=a+c
+#print (c)
+s=math.sqrt(Decimal(c))
+#print (s)
+print(int(s))

@@ -1,0 +1,15 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<map>
+#include<cstdio>
+#include<cstdlib>
+using namespace std;
+long long a,b;
+
+int main()
+{
+//freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+cin>>a>>b;
+cout<<a+b;
+}

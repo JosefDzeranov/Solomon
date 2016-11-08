@@ -1,0 +1,5 @@
+var n:longint;
+begin
+read(n);
+if n>=8 then write((n-8) div 12 + 2) else write(0);
+end.

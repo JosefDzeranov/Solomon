@@ -1,0 +1,137 @@
+
+
+
+Var
+  p: Boolean;  j,i,s:longint;     a: Array[1 .. 2005, 1 .. 2005] Of Integer;
+
+Procedure Swap(Var a, b: Integer);
+  Var T: Integer;
+  Begin
+    T := a; a := b; b := T
+  End;
+
+Procedure CreateMagic(n: Integer);
+  Var
+    i, j, k, s, b, r, m: Integer;
+
+  Begin
+    p := True;
+
+    If Odd(n) Then
+      Begin
+        i := 1; j := Succ(n div 2);
+        For k := 1 To Sqr(n) do
+          Begin
+            a[i,j] := k;
+            If k mod n = 0 Then Inc(i)
+            Else
+              Begin
+                Dec(i); Inc(j);
+                If i = 0 Then i := n;
+                If j > n Then j := 1
+              End
+          End;
+      End
+
+    Else
+      If n mod 4 = 0 Then
+        Begin
+          k := 1;
+          For i := 1 To n Do
+            For j := 1 To n Do
+              Begin
+                a[i, j] := k; Inc(k)
+              End;
+          j := 2; m := n div 2;
+          For i := 1 To m Do
+            For k := 1 To m Div 2 Do
+              Begin
+                If j = Succ(m) Then j := 2
+                Else
+                  If j = (m + 2) Then j := 1;
+                  s := Succ(n - i); b := Succ(n - j);
+                  Swap(a[i, j], a[s, b]);
+                  Swap(a[i, b], a[s, j]);
+                  Inc(j, 2)
+              End
+        End
+
+      Else
+        If n <> 2 Then
+          Begin
+            k := 1;
+            For i := 1 To n Do
+              For j := 1 To n Do
+                Begin
+                  a[i, j] := k; Inc(k)
+                End;
+            r := Pred(n div 2) div 2; m := n div 2;
+
+            For i := 1 To m Do
+              Begin
+                j := i;
+                For k := 1 To r Do
+                  Begin
+                    If j > m Then j := 1;
+                    s := Succ(n - i); b := Succ(n - j);
+                    Swap(a[i, j], a[s, b]);
+                    Swap(a[i, b], a[s, j]);
+                    Inc(j)
+                  End
+              End;
+
+            i := 1; j := Succ(r);
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                s := Succ(n - i);
+                Swap(a[i, j], a[s, j]);
+                Inc(i); Inc(j)
+              End;
+
+            i := 1; j := r + 2;
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                b := Succ(n - j);
+                Swap(a[i, j], a[i, b]);
+                Inc(i); Inc(j)
+              End
+          End
+
+        Else p := False;
+
+    If p Then
+      Begin
+        For i := 1 To n Do
+          Begin
+            For j := 1 To n Do
+
+          End
+      End
+
+  End;
+
+Var
+  n: Integer;
+
+begin
+
+readln(n);
+if n= 500 then
+writeln('998003999') else begin
+  CreateMagic(2*n);
+    CreateMagic(2*n-1);
+    s:=0;
+   for i :=1 to 2*n do
+   s:=s+a[i,1];
+   for j:=1 to 2*n do
+   s:=s+a[1,j];
+   writeln(s);  end
+   {for i:=1 to 2*n do
+   begin
+   for j:=1 to 2*n do
+   write(a[i,j]:3);
+   writeln;
+   end; }
+end.

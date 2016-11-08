@@ -1,0 +1,19 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<map>
+#include<cstdio>
+#include<cstdlib>
+using namespace std;
+int n,a,b,c,f,m;
+
+int main()
+{
+//freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+cin>>f>>n>>a>>b>>c;
+m=min(n-a,min(n-b,n-c));
+if(f==1)
+cout<<n-max(n-(a-m),max(n-(b-m),n-(c-m)));
+else
+cout<<min(a,min(b,c));
+}

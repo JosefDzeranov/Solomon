@@ -1,0 +1,33 @@
+var s, s2, n:string;
+i,  a, n1, n2, s1, k1, cnt:integer;
+
+begin
+readln(a);
+ begin
+ n1:=a;
+ s1:=1; 
+ k1:=1;
+ while k1<n1 do
+  begin
+  k1:=k1+1;
+  s1:=s1*k1;
+  end;
+end;
+
+begin 
+n2:=s1; 
+while n2>0 do begin 
+insert(chr(48+n2 mod 2),s2,1); 
+n2:=n2 div 2; 
+end; 
+end;
+
+n:=s2; 
+str(n, s);
+
+for i:=length(s) downto 1 do
+if s[i] = '0' 
+then inc(cnt)
+else break;
+writeln(cnt);
+end.

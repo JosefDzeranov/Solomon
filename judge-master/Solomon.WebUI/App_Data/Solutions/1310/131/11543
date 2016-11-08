@@ -1,0 +1,31 @@
+program prizes;
+Uses SysUtils;
+var n, i, k, x, m1: integer;  
+begin
+    readln(n, k);
+    m1:= 0;
+    x:= 0;
+    var a: array [1..10] of integer;
+    for i:= 1 to n do
+      begin
+      read(a[i]);
+      end;
+    for i:= 1 to n - 1 do
+      begin
+        if (a[i] = a[i + 1] - 1) or (a[i] < a[i + 1]) then
+          begin
+            if (a[i] + a[i + 1] > m1) then
+              begin
+                m1:= a[i] + a[i + 1];
+              end
+              else
+              begin
+                if (a[i] + a[i + 1] > x) then
+                  begin
+                    x:= a[i] + a[i + 1];
+                  end;
+              end;
+          end;
+      end;
+    writeln(x);
+end.

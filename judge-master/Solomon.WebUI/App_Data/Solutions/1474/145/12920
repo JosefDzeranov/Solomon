@@ -1,0 +1,38 @@
+Var i,t,k,N,x:integer;
+d,c:byte;
+a:array[1..1000000] of integer;
+b:array[1..1000000] of integer;
+Begin
+Read(N);
+
+For i:=1 to N do begin
+ a[i]:=i;
+ b[i]:=1;
+end;
+
+For i:=1 to N do
+    if b[i]<>0 then begin
+    d:=1;
+    c:=1;
+    
+      For t:=1 to N do
+        if (a[i]*2=a[t]) and (b[t]<>0) then d:=0;
+      For k:=1 to N do
+        if (a[i]/2=a[k]) and (b[k]<>0) then c:=0;
+        
+      if (d=0) and (c=0) then
+      b[i]:=0;
+    end;
+    
+For i:=1 to N do
+    if b[i]<>0 then
+       for t:=1 to N do
+           if (a[i]*2=a[t]) and (b[t]<>0) then
+           b[i]:=0;
+           
+For i:=1 to N do
+    if b[i]=1 then inc(x);
+    
+    
+writeln(x);
+End.

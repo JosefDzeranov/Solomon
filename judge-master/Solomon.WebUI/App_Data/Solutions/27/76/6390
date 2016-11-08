@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+   string a;
+   int n,m=0;
+   cin>>n;
+   for(int i=0;i<n;++i){
+    getline(cin,a);
+ //  cout<<a.size()<<endl;
+   for(int j=0;j<a.size();++j)
+   {
+     //  cout<<a[j]<<endl;
+       if(a[j]=='1')
+        m++;
+        if(a[j]=='2')
+        m=m+2;
+         if(a[j]=='3')
+        m=m+3;
+         if(a[j]=='4')
+       m= m+4;
+         if(a[j]=='5')
+       m= m+5;
+         if(a[j]=='6')
+       m= m+6;
+         if(a[j]=='7')
+       m= m+7;
+         if(a[j]=='8')
+      m=  m+8;
+         if(a[j]=='9')
+      m=  m+9;
+
+
+   }
+
+    }
+    cout<<m;
+    return 0;
+
+}

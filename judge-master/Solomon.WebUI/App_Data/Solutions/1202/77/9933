@@ -1,0 +1,48 @@
+program E;
+
+var
+        arC : array [1..1000000] of Char;
+        ch : Char;
+        n : Integer;
+        i, j, c, m : LongInt;
+        a : array [0..1000] of LongInt;
+        ar : array [1..1000, 1..1000] of Char;
+
+begin
+
+
+        i := 1;
+        while not (Eof (input)) do
+        begin
+                Read (input, ch);
+
+                arC[i] := ch;
+                Inc (i)
+        end;
+
+        m := i - 1;
+
+        for i := 1 to 2000 do
+                a[i] := i*i;
+
+        i := 0;
+        while a[i] < m do
+                Inc (i);
+        n := i;
+
+        for i := m to (n*n) - 1 do
+                arC[m + 1] := ' ';
+
+        c := 1;
+        for i := 1 to n do
+                for j := 1 to n do
+                begin
+                        ar[i, j] := arC[c];
+
+                        Inc (c)
+                end;
+
+        for i := 1 to n do
+                for j := 1 to n do
+                        Write (ar[j, i]);
+end.

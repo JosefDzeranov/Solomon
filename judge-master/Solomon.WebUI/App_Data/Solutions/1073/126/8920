@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N, i, sum, one, result;
+    int *A;
+    sum = 0;
+
+    scanf("%d", &N);
+    A = malloc(sizeof(int)*N);
+    for (i = 0; i < N; i++) {
+        scanf("%d", &A[i]);
+        sum += A[i];
+    }
+
+    if ((sum % N) != 0) {
+        printf("IMPOSSIBLE");
+    }
+
+    result = 0;
+    one = sum / N;
+    for (i = 0; i < N; i++) {
+        if (A[i] > one)
+            result += A[i]-one;
+    }
+
+    printf("%d", result);
+
+    return 0;
+}

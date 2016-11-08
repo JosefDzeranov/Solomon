@@ -1,0 +1,43 @@
+import math
+
+
+def s_count(x, y, ms):
+    sx = 0
+    sy = 0
+    for i in ms:
+        sx += math.fabs(i[0] - x)
+        sy += math.fabs(i[1] - y)
+    return [sx, sy]
+
+n = int(input())
+ms = []
+x1 = 1000001
+x2 = -1000001
+y1 = 1000001
+y2 = -1000001
+for i in range(n):
+    p = [int(i) for i in input().split()]
+    ms.append([p[0], p[1]])
+    if x1 > p[0]:
+        x1 = p[0]
+    if x2 < p[0]:
+        x2 = p[0]
+    if y1 > p[1]:
+        y1 = p[1]
+    if y2 < p[1]:
+        y2 = p[1]
+x = 0
+y = 0
+for i in range(n):
+    x += ms[i][0]
+    y += ms[i][1]
+x = x / n
+y = y / n
+s = s_count(x, y, ms)
+res = 0
+for i in range(x1, x2):
+    for j in range(y1, y2):
+        w = s_count(i, j, ms)
+        if w[0] == s[0] and w[1] == s[1]:
+            res += 1
+print(res + 3)

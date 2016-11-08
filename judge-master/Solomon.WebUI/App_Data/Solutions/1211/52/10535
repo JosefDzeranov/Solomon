@@ -1,0 +1,117 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
+
+using namespace std;
+
+int x, y, sq = 0;
+vector< vector<int> > field;
+
+void createField( int n, int m )
+{
+    field.resize( m + 2 );
+
+    for( int i = 0; i <= m + 1; i++ )
+    {
+        field[i].resize( n + 2 );
+    }
+
+    for( int i = 0; i <= m + 1; i++ )
+        for( int j = 0; j <= n + 1; j++ )
+            field[i][j] = 0;
+
+    for( int i = 0; i <= n + 1; i++ )
+    {
+        field[0][i] = -2;
+        field[m+1][i] = -2;
+    }
+
+    for( int i = 0; i <= m + 1; i++ )
+    {
+        field[i][0] = -2;
+        field[i][n+1] = -2;
+    }
+}
+
+void deleteCells( int k )
+{
+    for( int i = 0; i < k; i++ )
+    {
+        unsigned j, h;
+
+        scanf("%d%d", &j, &h);
+
+        field[h][j] = -1;
+    }
+}
+
+void showField()
+{
+    for( int i = 1; i <= y; i++ )
+    {
+        for( int j = 1; j <= x; j++ )
+        {
+            cout.width( 2 );
+            cout << field[i][j] << " ";
+        }
+
+        cout << endl;
+    }
+}
+
+void checkSquares( int from, int x, int y )
+{
+    field[y][x] = sq;
+
+    if( from != 1 && field[y - 1][x] == 0 )
+    {
+        checkSquares( 3, x, y - 1 );
+    }
+
+    if( from != 2 && field[y][x + 1] == 0 )
+    {
+        checkSquares( 4, x + 1, y );
+    }
+
+    if( from != 3 && field[y + 1][x] == 0 )
+    {
+        checkSquares( 1, x, y + 1 );
+    }
+
+    if( from != 4 && field[y][x - 1] == 0 )
+    {
+        checkSquares( 2, x - 1, y );
+    }
+}
+
+int main()
+{
+    int k;
+
+    scanf("%d%d%d", &x, &y, &k);
+
+    createField( x, y );
+
+    deleteCells( k );
+
+    sq = 0;
+
+    for( int i = 1; i <= y; i++ )
+    {
+        for( int j = 1; j <= x; j++ )
+        {
+            if( field[i][j] == 0 )
+            {
+                sq++;
+
+                checkSquares( 4, j, i );
+            }
+        }
+    }
+
+    cout << sq << endl;
+
+    return 0;
+}
+

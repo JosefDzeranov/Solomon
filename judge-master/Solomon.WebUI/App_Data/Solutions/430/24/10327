@@ -1,0 +1,31 @@
+program asdfg;
+  type myarray=array[0..32000]of integer;
+  var a:myarray;i,t,j,k,n:integer;s:array[0..32000]of string;
+  
+  begin
+  
+  
+    read(n);
+    for i:=1 to n do read(a[i]);
+    for i:=1 to n do str(a[i],s[i]);
+    
+    for i:=1 to n-1 do
+    begin
+      for k:=i+1 to n do
+      begin
+        j:=1;
+        while (j<=length(s[i])) do 
+          if (pos(s[i][j],s[k])<>0) then 
+          begin 
+            inc(t);
+            j:=length(s[i])+1
+          end 
+          else inc(j);
+      end;
+    end;
+    //  for j:=1 to length(s[i]) do
+    //    for k:=n-i+1 to n do if pos(s[k],s[i][j])<>0 then inc(t);
+    write(t);
+  
+  
+  end.

@@ -1,0 +1,8 @@
+Var n,ans,sum:longint;
+Begin
+     readln (n);
+     ans:=ans+sqr(2*n)+1;
+     n:=2*n-1;
+     sum:=((1+n*n) div 2)*n;
+     writeln (ans+sum+sum);
+end.

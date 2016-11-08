@@ -1,0 +1,6 @@
+var n,s:longint;
+begin
+     readln(n);
+     s:=(n)*(n-1)*(n-2);
+     writeln(s);
+     end.

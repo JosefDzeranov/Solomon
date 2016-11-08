@@ -1,0 +1,4 @@
+var n,s,i,k:integer;
+Begin
+ readln(n);for i:=1 to n do begin read(s);if i mod 2=0 then k:=k-s else k:=k+s;end;if k<0 then write(1-k) else write('0');
+End.

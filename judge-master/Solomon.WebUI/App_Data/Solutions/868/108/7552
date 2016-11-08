@@ -1,0 +1,29 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils ;
+
+var
+  n,a, s,i,q: integer;
+
+begin
+  { TODO -oUser -cConsole Main : Insert code here }
+   read(n);
+   q:=0;
+   for i:=0 to n-1 do
+   begin
+   read(a);
+  if ((a<100) and (a>1000000)) then exit;
+   if i mod 2<> 0 then a:=a*(-1);
+   s:=s+a;
+   end;
+  if s<0 then q:=1-s;
+  write(q);
+
+   Readln;
+   Readln;
+
+end.
+ 

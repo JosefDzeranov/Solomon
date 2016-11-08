@@ -1,0 +1,13 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+a:string;
+begin
+readln(A);
+writeln('YES');
+end.

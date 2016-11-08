@@ -1,0 +1,61 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+
+var u,a,b,c,p:integer;
+begin
+readln(u);
+a:=u div 2;
+b:=u-a;
+if b mod 2 = 1 then
+ b:=a div 2
+else
+ begin
+ b:= b div 2 +1;
+ end;
+ c:=u-a-b;
+ while (a=b) or (b=c) or (c=a) do
+  begin
+    if a=b then
+     begin
+       a:=a+1;
+       b:=b-1;
+     end;
+    if b=c then
+     begin
+       b:=b+1;
+       c:=c-1;
+     end;
+     if c=a then
+      begin
+        a:=a+1;
+        c:=c-1;
+
+      end;
+  end;
+ while (a<b) or (b<c) do
+ begin
+  if a<b then
+   begin
+     p:=b;
+     b:=a;
+     a:=p;
+   end;
+  if b<c then
+   begin
+     p:=c;
+     c:=b;
+     b:=p;
+   end;
+
+ end;
+
+ writeln(c,' ',b,' ',a);
+ readln;
+ readln;
+end.

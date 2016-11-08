@@ -1,0 +1,31 @@
+program lampa;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,e:uint64; I:integer; S:string;
+begin
+  read(S);
+  b:=1;
+  e:=0;
+  for I := length(S) downto 1 do
+    begin
+     if S[I]='*' then
+     begin
+     e:=e+b;
+     end;
+     b:=b*2;
+    end;
+     writeln(e);
+     readln;
+
+
+
+
+
+
+
+
+end.

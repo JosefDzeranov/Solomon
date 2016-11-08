@@ -1,0 +1,24 @@
+program Project11;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,m,i:integer;
+s,c:int64;
+    str:string;
+begin
+readln(n,m);
+c:=n*n;
+s:=c-m;
+i:=1;
+str:='No';
+while i*i<=s do
+ begin
+ if i*i=s then str:='Yes';
+ i:=i+1
+ end;
+ writeln(str);
+readln;
+end.

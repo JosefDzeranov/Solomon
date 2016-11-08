@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace kvadrat
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int k = 0; int p = 0;
+            for (int i = 2; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    p = i;
+                    while (p % 2 == 0)
+                    {
+                        k++; p = p / 2;
+                    }
+
+                }
+
+
+            }
+            Console.WriteLine(k);
+        }
+    }
+}

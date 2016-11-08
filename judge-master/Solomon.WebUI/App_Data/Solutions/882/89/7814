@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int y,x,t,v,b,a,z,d,w;
+    cin>>x>>y>>t>>v;
+    b=y*x;
+    a=v*b;
+    z=y-1;
+    d=t*z;
+    w=d+a;
+    cout<<w;
+
+
+
+
+
+
+
+
+
+    return 0;
+}

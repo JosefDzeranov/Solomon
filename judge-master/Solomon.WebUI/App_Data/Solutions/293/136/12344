@@ -1,0 +1,63 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	//ifstream fin("tiling.in");
+	//ofstream fout("tiling.out");
+
+	int n, k;
+	cin >> n >> k;
+	bool **mas = new bool*[n + 1];
+	for (int i = 0; i<n + 1; i++)
+	{
+		mas[i] = new bool[2];
+		for (int j = 0; j<2; j++)
+			mas[i][j] = false;
+	}
+	int temp1, temp2;
+	for (int i = 0; i<k; i++)
+	{
+		cin >> temp1 >> temp2;
+		mas[temp1][temp2 - 1] = true;
+	}
+	int ***otv = new int**[n + 1];
+	for (int i = 0; i<n + 1; i++)
+	{
+		otv[i] = new int*[2];
+		for (int j = 0; j<2; j++)
+		{
+			otv[i][j] = new int[2];
+			for (int k = 0; k<2; k++)
+				otv[i][j][k] = 0;
+		}
+	}
+	otv[1][0][0] = 1;
+	otv[1][0][1] = 1;
+	otv[1][1][0] = 1;
+	otv[1][1][1] = 2;
+	int a1, a2, b1, b2;
+	for (int i = 2; i<=n; i++)
+	{
+		if (mas[i][0] == false && mas[i][1] == false)
+			otv[i][1][1] = otv[i - 1][1][1];
+		for (int j = 0; j<3; j++)
+		{
+			if (j != 1 && mas[i][0] == true)continue;
+			for (int k = 0; k<3; k++)
+			{
+				if (k != 1 && mas[i][1] == true)continue;
+				if (j == 0) a1 = 0; else a1 = 1;
+				if (k == 0) b1 = 0; else b1 = 1;
+				if (j == 2) a2 = 0; else a2 = 1;
+				if (k == 2) b2 = 0; else b2 = 1;
+				otv[i][a1][b1] += otv[i - 1][a2][b2];
+				otv[i][a1][b1] %= 1000000007;
+			}
+		}
+	}
+	cout << otv[n][1][1];
+	//system("pause");
+}

@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<math.h>
+
+int zere(int t)
+{
+  while(t%2==0) 
+    t/=2;
+  
+  if(t==1) return 1;
+    else return 0;      
+}
+
+int main()
+{
+  //freopen("code.in","r",stdin);
+  //freopen("code.out","w",stdout);
+    
+  int a[10001],i,n,k,m,s=0;
+  
+  scanf("%d",&n);
+  
+  a[1]=0;
+  k=1;
+  for(i=2;i<=n;i++)
+  {
+    if(zere(i)) 
+    {
+      a[i]=k;
+      k++;
+    }else
+    {
+      m=pow(2,k-1);
+      a[i]=a[i-m];     
+    }
+  }
+  
+  for(i=1;i<=n;i++)
+    s+=a[i];
+  printf("%d\n",s);
+  
+  return 0;      
+}

@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ol1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        
+       {
+            int j = 0, k = 0;
+            double ch = 0, c=0;
+            string s = Console.ReadLine();
+           double[] des = new double[s.Length];
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (j = i; j < s.Length; j++)
+                {
+                    if (s[i] == '*')
+                        des[j] = 1;
+                    else
+                        des[j] = 0;
+                }
+            }
+
+            for (k = des.Length - 1; k >=0; k--)
+            {
+                for (j = k; j < s.Length; j++)
+                {
+                    ch = des[j] * Math.Pow(2, k);
+                    c = c + ch;
+                }
+            }              
+            Console.WriteLine(c);
+            Console.ReadKey();
+        }
+    }
+}

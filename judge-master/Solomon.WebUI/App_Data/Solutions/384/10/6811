@@ -1,0 +1,31 @@
+program z1;
+var a,b,c,d,s:int64;      i:longint;
+
+function fac(n,k:longint):int64;
+begin
+s:=1;
+c:=1;
+if k>(n-k) then
+begin
+for i:=1 to (n-k) do
+c:=c*i;
+for i:=1+k to n do
+s:=s*i;
+fac:=s div c;
+end
+        else
+        begin
+        for i:=1 to k do
+        c:=c*i;
+        for i:=n-k+1 to n do
+        s:=s*i;
+        fac:=s div c;
+        end;
+end;
+begin
+readln(a,b);
+writeln(fac(a,b));
+end.
+
+
+

@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+//#include <math.h>
+
+int main()
+{
+    int i, j, num;
+    char string[40];
+    char inString [40];
+    char transformedString[40];
+    scanf("%s", string);
+    scanf("%s", inString);
+    num = 0;
+    for (j = 0; j<=25; ++j)
+    {
+        for (i = 0; string[i]!=NULL; ++i)
+        {
+            transformedString[i] = string[i]-j;
+            if (transformedString[i]<'A')
+            {
+                transformedString[i]+='Z'-'A'+1;
+            }
+        }
+        if(strstr(transformedString, inString))
+        {
+            printf(transformedString);
+            return 1;
+        }
+    }
+    printf("IMPOSSIBLE");
+}

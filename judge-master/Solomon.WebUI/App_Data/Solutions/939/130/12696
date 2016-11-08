@@ -1,0 +1,24 @@
+program O2;
+var
+ a,b,c,d,ci,cIi,a1,b1:longint;
+ possibleAreas:integer;
+begin
+ readln(a,b,c,d);
+ {Checking for squares}
+ for ci:=a to b do
+  if frac(sqrt(ci))=0 then
+   begin
+    if (sqrt(ci)*4>=c) and (sqrt(ci)*4<=d) then inc(possibleAreas);
+   end
+  else
+   for cIi:=1 to 10000 do
+    if sqr(cIi)>ci then
+     begin
+      a1:=cIi-1;
+      if (ci-a1*a1) mod a1<>0 then break; b1:=(ci-a1*a1) div a1+a1;
+      if (c<=2*(a1+b1)) and (2*(a1+b1)<=d) then inc(possibleAreas);
+      break;
+     end;
+ {Checking for rectangles}
+ write(possibleAreas); readln;
+end.

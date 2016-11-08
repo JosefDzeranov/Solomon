@@ -1,0 +1,21 @@
+#include "iostream"
+#include <math.h> 
+#include <cmath>
+
+using namespace std;
+
+int main () 
+{
+	long long int i, Fi, j, Fj, n, Fn;
+	cin >> i >> Fi >> j >> Fj >> n;
+
+	long double x1 = ((1 + sqrt(5))/2);
+	long double x2 = ((1 - sqrt(5))/2);
+	long double a = (Fi*pow(x2,j)-Fj*pow(x2,i))/(pow(x1,i)*pow(x2,j)-pow(x1,j)*pow(x2,i));
+	long double b = (Fi*pow(x1,j)-Fj*pow(x1,i))/(pow(x1,j)*pow(x2,i)-pow(x1,i)*pow(x2,j));
+
+	Fn = (int) (a*pow(x1,n)+b*pow(x2,n));
+	cout << Fn;
+
+	return 0;
+}

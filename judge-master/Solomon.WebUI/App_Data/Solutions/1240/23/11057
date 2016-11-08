@@ -1,0 +1,19 @@
+VAR
+  s: String;
+  n,i,k1,k2: LongINt;
+BEGIN
+  Readln(n);
+  For i := 1 to n do begin
+    Readln(s);
+    
+    if (s[1] = '>') then Inc(k1);
+    if (s[2] = '>') then Inc(k1);
+    
+    if (s[3] = '<') then Inc(k2);
+    if (s[4] = '<') then Inc(k2);
+  End;
+  
+  if (k1 > k2) then Write(1,' ',k1 - k2)
+  else if (k2 > k1) then Write(2,' ',k2 - k1)
+  else Write(0);
+END.

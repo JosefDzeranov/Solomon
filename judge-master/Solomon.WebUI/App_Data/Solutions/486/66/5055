@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	long long int n, *nsc, *ksc, i, j, num, sh=0, *ans, k=0;
+	cin>>n;
+	getline(cin, s);
+	nsc = new long long int[n];
+	ksc = new long long int[n];
+	for(i=0;	i<n;	i++)	{nsc[i] = 0;	ksc[i] = 0;}
+	for(i=0;	i<n;	i++)
+	{
+		getline(cin, s);
+		for(j=0;	j<s.length();	j++)
+		{
+			if(int(s[j])-48>0 && int(s[j])-48<10)
+			{
+				num = 0;
+				while(int(s[j])-48>=0 && int(s[j])-48<10)
+				{
+					num = num*10 + int(s[j])-48;
+					j++;
+				}
+				break;
+			}
+		}
+		for(j=0;	j<n;	j++)
+		{
+			if(nsc[j] == num)	{ksc[j]++;break;}
+			if(nsc[j] == 0)	{ksc[j]++;nsc[j]=num;k++;break;}
+		}
+	}
+	ans = new long long int [k];
+	for(i=0;	i<k;	i++)	ans[i]=0;
+	for(i=0;	i<k;	i++)
+	{
+		if(ksc[i]>0 && ksc[i] <=5)	{ans[sh] = nsc[i];sh++;}
+	}
+	cout<<sh<<endl;
+	for(i=0;	i<k;	i++)
+	{
+		if(ans[i] == 0)	break;
+		cout<<ans[i]<<endl;
+	}
+	
+	return 0;
+}

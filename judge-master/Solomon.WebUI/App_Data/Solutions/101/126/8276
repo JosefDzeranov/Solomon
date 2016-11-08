@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace _1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int[] a = new int[n];
+            int sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = Convert.ToInt32(ss[i]);
+                sum += a[i];
+            }
+            if (sum % n != 0) Console.WriteLine("IMPOSSIBLE");
+            else
+            {
+                int q = sum / n;
+                sum = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    if (a[i] < q) sum += q - a[i];
+                }
+                Console.WriteLine(sum);
+            }
+        }
+    }
+}

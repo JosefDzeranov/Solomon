@@ -1,0 +1,15 @@
+program olimp1; 
+var N: byte;
+    x, y, z: integer;
+begin
+    repeat 
+    
+    read(N)
+    until (3<=N)and(N<=100);
+      y:=N-1;
+      z:=N-2;
+      x:= n*y*z;
+      write(x);
+   
+    
+    end.

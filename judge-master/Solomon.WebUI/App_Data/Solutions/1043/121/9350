@@ -1,0 +1,18 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a, b: integer;
+begin
+read(a);
+read(b);
+readln;
+if(a<=b)and then
+wtite ('Yes')
+else
+write ('No')
+readline
+end.

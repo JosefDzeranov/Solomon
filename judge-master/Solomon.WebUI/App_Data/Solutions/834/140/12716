@@ -1,0 +1,27 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a : array[1..10000]of integer;
+i,n,max:integer;
+s:string;
+begin
+max:=1;
+readln(n);
+readln(s);
+for i := 1 to length(s) do
+begin
+if s[i]='P' then
+ if i mod n = 0 then inc(a[n])
+  else inc(a[i mod n])
+end;
+for i := 1 to n do
+begin
+if a[max]<a[i] then max:=i;
+end;
+writeln(max);
+readln;
+end.

@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int a,b;
+	scanf_s("%d%d", &a, &b);
+	printf("%d", a+b);
+	//_getch();
+	return 0;
+}

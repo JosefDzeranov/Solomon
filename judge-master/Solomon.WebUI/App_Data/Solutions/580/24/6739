@@ -1,0 +1,19 @@
+def Factorial(n):
+    return 1 if n == 0 else n*Factorial(n-1);
+def Rodnja(x, y):    
+    for i in x:
+        for j in y:
+            if i == j:
+                return True;
+    return False;
+N = int(input());
+s = str(input()).split();
+result = 0;
+for i in range(0, len(s) - 1):
+    for j in range(i + 1, len(s)):
+        if Rodnja(s[i], s[j]):
+            result += 1;
+
+result *= int(N - len(s) + 1);
+print(result);
+    

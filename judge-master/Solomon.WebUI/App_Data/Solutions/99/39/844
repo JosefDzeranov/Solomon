@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	string s="",x="0";
+	int m,n,mas[123],i,k;
+	cin>>n>>m;
+	for(i=1;i<=m;i++)
+	{
+		cin>>mas[i];
+	}
+
+	for(i=1;i<=m;i++)
+	{
+		if(mas[i]+1==mas[i+1])
+		{
+		cout<<mas[i]<<"-";
+			for(i=i;i<=m;i++)	
+			{
+				if(mas[i]+1!=mas[i+1])break;
+				else k=mas[i+1];
+			}
+			cout<<k<<" ";
+		}
+		else cout<<mas[i]<<" ";
+	}
+
+
+	cin>>n;
+	return 0;
+}

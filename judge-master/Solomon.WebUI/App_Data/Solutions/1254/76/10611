@@ -1,0 +1,21 @@
+var
+s,ch:string;
+n,i,k,l,j:longint;
+begin
+readln(n);
+for i:=1 to n do
+begin
+readln(s); j:=1;
+       while j<= length(s) do  begin
+       ch:='';
+          while (j<=length(s)) and (ord(s[j])>=ord('0')) and (ord(s[j])<=ord('9')) do begin
+           ch:=ch+s[j];
+           inc(j);
+           end;
+           if ch<>'' then k:=k+ord(s[j-1])-48;
+           inc(j);
+       end;
+       
+end;
+writeln(k);
+end.

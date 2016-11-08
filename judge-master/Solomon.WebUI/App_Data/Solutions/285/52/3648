@@ -1,0 +1,9 @@
+program olimp1; 
+var N, x: integer;
+begin
+    repeat
+    readln(N)
+    until (N<=100)and (N>=3);
+    x:= (n-2)*n*(n-1);
+    writeln(x);
+    end.

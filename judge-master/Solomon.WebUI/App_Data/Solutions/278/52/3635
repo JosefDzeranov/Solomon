@@ -1,0 +1,17 @@
+Program N1;
+uses crt;
+Type
+   mass=array[1..1000] of integer;
+Var
+   A:mass;
+   n,k:integer;
+begin
+writeln('Введите длину массива A от 3 до 1000, после чего введите массив');
+repeat
+readln(n);
+If (n<3) or (n>1000) then
+Writeln('Введите длину массива в допустимом пределе');
+Until (n>=3) and (n<=1000);
+k:=(n-1)*(n-2)*n;
+writeln('Кол-во комбинаций = ',k);
+end.

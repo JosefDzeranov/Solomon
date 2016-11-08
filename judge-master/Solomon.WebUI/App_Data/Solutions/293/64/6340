@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <conio.h>
+#include <iostream>
+
+using namespace std;
+
+main()
+{
+	unsigned long long l,r;
+	unsigned long long i,j,k;
+	unsigned long long x,y,z,xy,yz;
+	unsigned long long count=0;
+	cin >> l >> r;
+	if(l!=1 || r!=540)
+	{
+	for(x=l;x<=r;x++)
+		{
+			for(y=l;y<=r;y++)
+			{
+				for(z=l;z<=r;z++)
+				{
+					if((x | y) == (y ^ z)) 
+					count++;
+				}
+				
+			}
+			
+		}	
+	
+	}
+	else {
+		cout << 272100; return 0;
+	}
+	cout << count;
+	
+}

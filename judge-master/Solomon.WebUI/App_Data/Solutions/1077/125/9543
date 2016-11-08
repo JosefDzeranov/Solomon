@@ -1,0 +1,50 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    double x1,x2,x3,y1,y2,y3,f,g,a,c=0,xi=0;
+    cin>>x1>>y1>>x2>>y2>>x3>>y3;
+    if (x3>x2 && y3>y2)
+    {
+    c=(x3-x2)*(x3-x2)+(y3-y2)*(y3-y2);
+    c=sqrt(c);
+    cout<<c;
+    return 0;
+    }
+    if (x3>=x2 && y3>=y1 && y3<=y2)
+    {
+        a=(x3-x2)*(x3-x2);
+        a=sqrt(a);
+        cout<<a;
+        return 0;
+    }
+    if (y3>=y2 && x3>=x1 && x3<=x2)
+ {
+     a=(y3-y2)*(y3-y2);
+        a=sqrt(a);
+        cout<<a;
+     return 0;
+}
+    if (x3<=x1 && y3<=x2)
+ {
+     a=(x3-x2)*(x3-x2);
+        a=sqrt(a);
+        cout<<a;
+     return 0;
+}
+    f=(x3-x1)*(x3-x1);
+    f=sqrt(f);
+        g=(x3-x2)*(x3-x2);
+    g=sqrt(g);
+    xi=min(f,g);
+        f=(y3-y1)*(y3-y1);
+    f=sqrt(f);
+    xi=min(xi,f);
+        f=(y3-y2)*(y3-y2);
+        f=sqrt(f);
+        xi=min(xi,f);
+    cout<<xi;
+    return 0;
+}

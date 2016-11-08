@@ -1,0 +1,36 @@
+var n,i,j,k,m,max:longint;
+a,b:array[1..100] of int64;
+procedure cifr(i,x:int64);
+var y:longint;
+begin
+y:=0;
+while x>0 do
+        begin
+        y:=y+x mod 10;
+        x:=x div 10;
+        end;
+if y<10 then b[i]:=y
+        else cifr(i,y);
+end;
+begin
+read(n);
+for i:=1 to n do read(a[i]);
+for i:=1 to n do cifr(i,a[i]);
+max:=0;
+m:=n;
+for i:=1 to n do
+        begin
+        k:=0;
+        for j:=1 to n do
+        if b[i]=b[j] then k:=k+1;
+        if k>max then
+                begin
+                max:=k;
+                m:=i;
+                end;
+        if k=max then if i<m then m:=i;
+        end;
+for i:=1 to n do
+if b[i]<>b[m] then write(a[i],' ');
+end.
+

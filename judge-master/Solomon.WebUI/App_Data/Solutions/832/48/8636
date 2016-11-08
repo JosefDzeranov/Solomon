@@ -1,0 +1,20 @@
+program Project17;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var L,x1,y1,x2,y2,a,b,c:integer;
+begin
+readln(L);
+readln(x1,y1);
+readln(x2,y2);
+a:=x2-x1;
+b:=y2-y1;
+c:=a+b;
+writeln(c);
+readln;
+
+
+end.

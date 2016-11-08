@@ -1,0 +1,70 @@
+var j,f,i,s,n,k,p, k1,k2:longint ;
+a:array[1..101] of longint;
+procedure  summ(q,i:integer);
+var e,j:integer;
+begin if q>=0 then begin if q=0 then begin if f<>2 then f:=1
+ end;
+ if q>0 then
+begin
+j:=i;
+while (j<>0) and (q<>0) do
+begin
+e:=q;
+e:=e-a[j];
+summ(e,j-1);
+j:=j-1;
+end;
+end;
+
+ end;
+end;
+procedure qsort(l,r: longint);
+ var
+  i,j,x,y:longint;
+ begin
+  i:=l;
+  j:=r;
+  x:=a[(l + r) div 2];
+  repeat
+   while a[i]<x do i:=i+1;
+   while x<a[j] do j:=j-1;
+   if i<=j then begin
+    y:=a[i];
+    a[i]:=a[j];
+    a[j]:=y;
+    i:=i+1;
+    j:=j-1;
+   end;
+  until i>j;
+  if l<j then qsort(l,j);
+  if i<r then qsort(i,r);
+ end;
+begin
+k:=10000;
+readln(n);
+for i:=1 to n do
+begin
+read (a[i]);
+s:=s+a[i];
+
+end;
+{writeln(s);}
+qsort(1,n);
+{for i:=1 to n do
+write(a[i],' ');
+writeln; }
+p:=s div 2;
+j:=p;
+while (j<>0) AND (f<>1) do
+begin
+summ(j,n);
+if f=1 then
+begin
+writeln(abs(s-2*j));
+f:=2;
+end;
+j:=j-1;
+end;
+
+
+end.

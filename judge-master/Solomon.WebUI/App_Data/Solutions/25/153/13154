@@ -1,0 +1,72 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct Edge {
+	int a, b;
+};
+
+int main() {
+	vector<Edge> ans;
+	Edge num;
+	int **a, n, m, i, j, k, c, len;
+	cin >> n >> m >> k;
+	a = new int*[n];
+	for (i = 0; i < n; i++) {
+		a[i] = new int[m];
+		for (j = 0; j < m; j++) a[i][j] = 0;
+	}
+	for (i = 0; i < k; i++) {
+		cin >> num.a >> num.b;
+		num.a--;
+		num.b--;
+		ans.push_back(num);
+		a[num.a][num.b] = 1;
+	}
+	c = k;
+	for (i = 0; i < n * m; i++) {
+		if (c == n * m) break;
+		len = ans.size();
+		for (j = 0; j < len; j++) {
+			if (ans[j].a - 1 > -1) {
+				if (a[ans[j].a - 1][ans[j].b] == 0) {
+					c++;
+					num.a = ans[j].a - 1;
+					num.b = ans[j].b;
+					ans.push_back(num);
+				}
+				a[ans[j].a - 1][ans[j].b] = 1;
+			}
+			if (ans[j].a + 1 < n) {
+				if (a[ans[j].a + 1][ans[j].b] == 0) {
+					c++;
+					num.a = ans[j].a + 1;
+					num.b = ans[j].b;
+					ans.push_back(num);
+				}
+				a[ans[j].a + 1][ans[j].b] = 1;
+			}
+			if (ans[j].b - 1 > -1) {
+				if (a[ans[j].a][ans[j].b - 1] == 0) {
+					c++;
+					num.a = ans[j].a;
+					num.b = ans[j].b - 1;
+					ans.push_back(num);
+				}
+				a[ans[j].a][ans[j].b - 1] = 1;
+			}
+			if (ans[j].b + 1 < m) {
+				if (a[ans[j].a][ans[j].b + 1] == 0) {
+					c++;
+					num.a = ans[j].a;
+					num.b = ans[j].b + 1;
+					ans.push_back(num);
+				}
+				a[ans[j].a][ans[j].b + 1] = 1;
+			}
+		}
+	}
+	cout << i;
+	return 0;
+}

@@ -1,0 +1,24 @@
+program ChainForMetallist;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  l, n, r, k : smallint;
+begin
+  readln (n, l);
+  readln (r);
+  r := r * 2;
+  if l mod r > 0 then
+    k := l div r + 1
+  else
+    k := l div r;
+  if r * k * Pi <= n then
+    writeln ('YES')
+  else
+    writeln ('NO');
+  write (k);
+  readln;
+end.

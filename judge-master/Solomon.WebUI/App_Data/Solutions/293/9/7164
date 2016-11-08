@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+main()
+{
+	int sr,type,n,a,b,c;
+	cin >> type >> n >> a >> b >> c;
+	if(type==2) cout << min(min(a,b),c);
+	else{
+	type=n-min(min(a,b),c);
+	if(a>=b && a<=c) sr=a;
+	else if(b>=a && b<=c) sr=b;
+	else if(c>=a && c<=b) sr=c;
+	else if(a<=b && a>=c) sr=a;
+	else if(b<=a && b>=c) sr=b;
+	else if(c<=a && c>=b) sr=c; 
+	sr-=type;
+	if(sr<0) cout << "0";
+	else cout << sr;
+	}
+}

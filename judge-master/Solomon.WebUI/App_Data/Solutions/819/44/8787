@@ -1,0 +1,13 @@
+import math
+n, l = map(int, input().split())
+r = int(input())
+if l//(2*r) < l/(2*r):
+    rings = l//(2*r)+1
+else:
+    rings = l//(2*r)
+wire = 2*math.pi*r*rings
+if wire <= n:
+    print ('YES')
+    print (rings)
+else:
+    print ('NO')

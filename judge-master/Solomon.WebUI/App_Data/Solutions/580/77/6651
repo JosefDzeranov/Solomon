@@ -1,0 +1,41 @@
+﻿using System;
+
+namespace Shifrovka
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string stroka = Console.ReadLine();
+            double d = Math.Sqrt(stroka.Length);
+            int n = Convert.ToInt32(d);
+            if (n * n < stroka.Length) n++;
+
+            char[,] bukvi = new char[n, n];
+            int k = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (k < stroka.Length)
+                        bukvi[i, j] = stroka[k++];
+                    else
+                        bukvi[i, j] = ' ';
+                }
+            }
+
+            string shifrovka = null;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    shifrovka += bukvi[j, i];
+                }
+            }
+
+            Console.WriteLine(shifrovka);
+        }     
+
+        
+    }
+}

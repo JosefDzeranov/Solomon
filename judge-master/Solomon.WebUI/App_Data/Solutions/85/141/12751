@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int a[10000], n, k;
+
+bool mogem(int r)
+{
+	int l = 0;
+	int num = 1;
+	for (int i = 1; i < n; i++)
+		if (a[i] - a[l] >= r)
+			l = i,
+			num++;
+	
+	if (num >= k)
+		return true;
+
+	else 
+		return false;
+}
+
+int main()
+{
+	cin >> n >> k;
+	for (int i = 0; i < n; i++)
+		cin >> a[i];
+	
+	int l = 0, r = a[n - 1], m;
+	while (l + 1 < r)
+	{
+		m = (l + r) / 2;
+		
+		if (mogem(m)) l = m;
+
+		else r = m;
+		
+	}
+	cout << l;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <conio.h>
+#include <iostream>
+
+typedef long long ULL;
+using namespace std;
+
+const ULL N=1002,M=1002;
+
+ULL a[N][M], visited[N][M];
+ULL maximum=0;
+
+void search(ULL x, ULL y, ULL count)
+{
+     count++;
+     if(count>visited[x][y])
+     {
+     visited[x][y]=count;
+     if(a[x+1][y]==a[x][y]+1)
+     search(x+1,y,count);
+     if(a[x-1][y]==a[x][y]+1)
+     search(x-1,y,count);
+     if(a[x][y+1]==a[x][y]+1)
+     search(x,y+1,count);
+     if(a[x][y-1]==a[x][y]+1)
+     search(x,y-1,count);
+     if(maximum<count)	 
+	 maximum=count;
+}
+}
+
+
+main()
+{
+      ULL n,m;
+      ULL i,j;
+      cin >> n >> m;
+      
+      for(i=1;i<n+1;i++)
+      for(j=1;j<m+1;j++)
+      {
+      cin >> a[i][j];
+	  visited[i][j]=0;  
+  }
+      for(i=0;i<n+2;i++)
+      {
+      a[0][i]=0;
+      a[i][0]=0;
+      a[n+1][i]=0;
+      a[i][m+1]=0;
+      }
+      
+      for(i=1;i<n+1;i++)
+      for(j=1;j<m+1;j++)
+      if(visited[i][j]==0)
+      search(i,j,0);
+      
+      cout << maximum;
+      
+      /*
+      
+      4 8
+      1 2 3 4 5 6 7 8
+      16 15 14 13 12 11 10 9
+      16 15 14 13 12 11 11 10
+      18 17 16 15 14 13 12 13
+      
+      */
+}

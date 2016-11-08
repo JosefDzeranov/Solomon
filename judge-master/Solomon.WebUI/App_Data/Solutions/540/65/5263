@@ -1,0 +1,20 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{int n=0;
+long long long double a[4];
+for(i=1;i<=4;i++)
+    cin>>a[i];
+if(a[1]>=a[2])
+    n=n+a[2];
+else n=n+a[1];
+if(a[3]>=a[4])
+    n=n+a[4];
+else n=n+a[3];
+n=sqrt(n);
+cout<<n;
+return 0;
+}

@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int main(){
+long long int a,k,b,m,x,j=0;
+cin>>a>>k>>b>>m>>x;
+if(x<k && x<m){
+while(x>0){
+	j++;
+	x=x-a-b;}
+}
+else{
+while(x>0){
+	j++;
+	if(j%k!=0)
+		x-=a;
+	if(j%m!=0)
+		x-=b;
+}
+}
+cout<<j;
+return 0;
+}

@@ -1,0 +1,24 @@
+var
+
+begin
+read(n);
+for i:=1 to 3 do read(mas[i]);
+
+min:=1;
+max:=1;
+
+for i:=1 to 3 do begin
+if min>mas[i] then min:=mas[i];
+if max<mas[i] then max:=mas[i];
+end;
+
+case n of
+1:begin
+a:=max-min;
+end;
+2:begin 
+a:=min;
+end;
+end;
+write(a);
+end.

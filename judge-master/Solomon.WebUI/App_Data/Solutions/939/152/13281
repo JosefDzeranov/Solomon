@@ -1,0 +1,56 @@
+program third;
+var
+ maxFrag,maxLength,curFrag,curLength:longint;
+ inputA,maxcomb,comb,ci,cIi:longint;
+ buf1,buf2,curEl,nexEl:string;
+ input:array[1..99] of string;
+ contain:array[1..99] of longint;
+ function step(st,el,num:longint):longint;
+  var
+   ci:byte;
+  begin
+   for ci:=2 to el do num:=num*st;
+   step:=num;
+  end;
+ function find(st,el:byte;num:longint):longint;
+  var
+   ci:byte;
+  begin
+   for ci:=2 to el do num:=num div st;
+   num:=num mod st+1; find:=num;
+  end;
+begin
+ readln(inputA); comb:=-1;
+ for ci:=1 to inputA do readln(input[ci]); 
+ 
+ for ci:=inputA downto 1 do
+  maxcomb:=maxcomb+step(inputA,ci,inputA);
+ 
+ while comb<=maxcomb do
+  begin
+   inc(comb); curFrag:=1;
+   curLength:=length(input[find(inputA,1,comb)]);
+   for ci:=1 to inputA do
+    begin
+     contain[ci]:=find(inputA,ci,comb);
+    end;
+   for ci:=1 to inputA-1 do
+    begin
+     buf1:=input[contain[ci]]; buf2:=input[contain[ci+1]];
+     if (buf1<>'') and (buf2<>'') then
+      for cIi:=0 to 2 do
+       begin
+        if buf1[length(buf1)-2+cIi]<>buf2[1+cIi] then break;
+        if cIi=2 then
+          begin
+           inc(curFrag);
+           curLength:=curLength+length(buf2);
+          end;
+       end;
+    end;
+   if (maxLength<curLength) or (maxFrag<curFrag) then
+    begin
+     maxLength:=curLength; maxFrag:=curFrag;
+    end;
+  end; write(maxFrag,' ',maxLength);
+end.

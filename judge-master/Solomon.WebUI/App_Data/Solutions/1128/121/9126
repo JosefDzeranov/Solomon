@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,m,i:integer;
+begin
+readln(n,m);
+for i := 2 to m-1 do
+begin
+if n mod i=0 then writeln('Yes');
+end;
+if (m-1=1) or (m-1=0) then writeln('No');
+readln;
+end.

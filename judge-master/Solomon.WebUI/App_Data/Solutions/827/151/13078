@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <math.h>
+
+using namespace std;
+
+int main(){
+	int n; cin >> n;
+	int k1 = n / 3, k2 = n / 3, k3 = n / 3;
+	if (n % 3 == 2){
+		int g1 = n / 3 + 1 ;
+		int g2 = g1 + 1;
+		int g3 = g1 - 2;
+		k1 = g3;
+		k2 = g1;
+		k3 = g2;
+	}
+	if (n % 3 == 1){
+		k3++;
+	}
+	cout << k1 << " " << k2 << " " << k3;
+	return 0;
+}

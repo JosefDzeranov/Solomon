@@ -1,0 +1,17 @@
+#include <iostream>
+#include <bitset>
+
+int fac(int n)
+{
+	if (n==1) return 1; else return n*(fac(n-1));
+}
+ 
+int main()
+{
+	int i;
+	std::cin >> i;
+	std::bitset<8> bits(fac(i));
+	for(i = 0; !bits[i]; i++);
+    std::cout << i;
+    return 0;
+}

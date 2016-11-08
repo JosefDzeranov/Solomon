@@ -1,0 +1,20 @@
+program baran;
+var a,y:string;
+s,i,q,x:longint;
+begin
+Readln(i);
+q:=0;
+for s:=1 to i do
+begin
+Readln(a);
+for x:=1 to 100 do
+begin
+str(x,y);
+if a=y then q:=q+x;
+if copy(a,1,length(y)+1)=y+' ' then q:=q+x;
+if copy(a,length(a)-length(y),length(y)+1)=' '+y then q:=q+x;
+if (pos(' '+y+' ',a)<>0) then q:=q+x;
+end;
+end;
+Writeln(q);
+end.

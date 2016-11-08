@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	unsigned a, b, time, x;
+	long double speed;
+	cin >> a >> b >> x;
+	time = b;
+
+	unsigned i = 0;
+	do {
+		speed = (long double)x / time;
+
+		if (i == 0) {
+			time += b;
+			i=1;
+		} else {
+			time += a;
+			i=0;
+		}
+	} while (speed > 1000);
+
+	cout << speed << endl;
+	system("pause");
+
+	return 0;
+}

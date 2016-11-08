@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace _1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int d = Convert.ToInt32(Console.ReadLine());
+            int n = Convert.ToInt32(Console.ReadLine());
+            if (d >= n) Console.WriteLine(0+" "+ n);
+            else
+                Console.WriteLine(1+" "+ (n-d));
+        
+        
+        }
+    }
+}

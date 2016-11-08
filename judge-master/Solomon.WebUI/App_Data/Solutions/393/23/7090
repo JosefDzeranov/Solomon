@@ -1,0 +1,18 @@
+var
+	n, i, cnt, p, q : Integer;
+	a, b, c, d : Char;
+
+begin
+	ReadLn(n);
+	for i := 1 to n do begin
+		ReadLn(a, b, c, d);
+		p := Ord(a = '>')+Ord(b = '>');
+		q := Ord(c = '<')+Ord(d = '<');
+
+		cnt := cnt + p-q;
+	end;
+
+	if cnt = 0 then WriteLn(0)
+	else if cnt > 0 then WriteLn(1, ' ', cnt)
+	else WriteLn(2, ' ', abs(cnt))
+end.

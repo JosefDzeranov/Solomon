@@ -1,0 +1,34 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a: array [1..50] of integer; n,i,s,izl,ned:integer;
+begin
+  readln(n);
+  for i := 1 to n do
+    read(a[i]);
+   readln;
+  s:=0;
+  izl:=0;
+  ned:=0;
+
+  for I := 1 to n do
+  s:=s+a[i];
+
+if s mod n=0 then
+  begin
+  s:=s div n;
+   for I := 1 to n do
+     if a[i]>=s then izl:=izl+(a[i]-s)
+     else ned:=ned+s-a[i];
+
+   if izl=ned then writeln(izl)
+   else writeln('IMPOSSIBLE');
+  end
+else writeln('IMPOSSIBLE');
+
+readln;
+end.

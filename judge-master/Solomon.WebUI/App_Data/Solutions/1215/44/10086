@@ -1,0 +1,8 @@
+var a,r,n,l:integer;
+begin
+read(n,l,r);
+a:=l div(2*r);
+if (l mod (2*r))<>0 then a:=a+1;
+if n >= a*2*r then begin writeln('YES');write(a)end
+ELSE write('NO');
+end.

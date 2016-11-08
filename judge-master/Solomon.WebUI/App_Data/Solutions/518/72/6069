@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+vector <int> sci[100000];
+vector <int> tech[100000];
+int main()
+{
+	int n, m, k;
+	cin >> n >> m >> k;
+	for (int i = 0; i < n; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		sci[a].push_back(i + 1);
+		tech[b].push_back(i + 1);
+	}
+	for (int i = 1; i <= (m - 1); i++)
+	{
+		int x;
+		cin >> x;
+		for (int j = 0; j < sci[i].size(); j++)
+		{
+			sci[x].push_back(sci[i][j]);
+		}
+	}
+	for (int i = 1; i <= (k - 1); i++)
+	{
+		int x;
+		cin >> x;
+		for (int j = 0; j < tech[i].size(); j++)
+		{
+			tech[x].push_back(tech[i][j]);
+		}
+	}
+	long long ans = 0;
+	for (int i = 1; i <= m; i++)
+		for (int j = 1; j <= k; j++)
+		{
+			int fl = 0;
+			for (int k = 0; k < sci[i].size(); k++)
+			{
+				for (int l = 0; l < tech[j].size(); l++)
+				{
+					if (sci[i][k] == tech[j][l])
+					{
+						ans++;
+						fl = 1;
+						break;
+					}
+				}
+				if (fl == 1) break;
+			}
+			if (fl == 1) continue;
+		}
+	cout << ans;
+	return 0;
+}

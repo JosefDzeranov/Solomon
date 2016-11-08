@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int x1, y1, x2, y2, x3, y3, a, b, c, d;
+   cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+   a = x3 - x1;
+   b = x2 - x3;
+   c = y3 - y1;
+   d = y2 - y3;
+   if (a < b && a < c && a < d) cout << a;
+   if (b < a && b < c && b < d) cout << b;
+   if (c < a && c < b && c < d) cout << c;
+   if (d < a && d < b && d < c) cout << d;
+
+
+
+
+
+
+}

@@ -1,0 +1,41 @@
+program mesib;
+  var a : array[0..109] of integer;
+      n, i, c, k, i1 : integer;
+      
+  function rod(a,b : integer) : boolean;
+    var a1, b1 : array[0..9] of boolean;
+        i : integer;
+    begin
+      while a > 0 do 
+        begin
+          a1[a mod 10] := true;
+          a := a div 10;
+        end;
+      while b > 0 do 
+        begin
+          b1[b mod 10] := true;
+          b := b div 10;
+        end;
+      for i := 0 to 9 do 
+        if ((a1[i] = b1[i]) and (a1[i] = true)) then
+          rod := true;
+    end;
+    
+  begin
+    readln(n);
+    for i := 1 to n do
+      begin
+        read(c);
+        a[c] := a[c] + 1;
+      end;
+    for i := 0 to 109 do 
+      if a[i] <> 0 then 
+        begin
+           if a[i] > 1 then
+           for i1 := 1 to (a[i] - 1) do 
+            k := k + i1;
+           for i1 := i + 1 to 109 do 
+            if rod(i, i1) then k := k + (a[i]*a[i1]);
+        end;
+    writeln(k);
+  end.

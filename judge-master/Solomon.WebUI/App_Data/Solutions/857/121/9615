@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+int main()
+{
+	double n, m, x;
+	scanf ("%lf%lf", &n, &m);
+	n=n*n-m;
+	x=floor(sqrt(n));
+	if (x*x==n) printf ("Yes");
+	else printf ("No");
+}

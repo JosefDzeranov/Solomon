@@ -1,0 +1,37 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{int a,b,k=0;
+float x,q;
+cin>>a>>b>>x;
+if((a+b)*1000>=x){cout<<(a+b)/1000;}
+if(a*1000>=x){cout<<1000;}
+if(b*1000>=x){cout<<x/b;}
+if((a+b)*1000<x)
+{
+    q=x;
+    while(k=\1 || k=\2)
+    {
+        q=q-a*1000;
+        if(q<=0){k=1;}
+        q=q-b*1000;
+        if(q<=0){k=2;}
+    }
+    if(k==2)
+    {
+        k=0;
+        while(k/=1||k/=2)
+    {
+        q=q-b*1000;
+        if(q<=0){k=2;}
+        q=q-a*1000;
+        if(q<=0){k=1;}
+    }
+    if(k==1)(cout<<1000;)
+}
+
+
+    return 0;
+}

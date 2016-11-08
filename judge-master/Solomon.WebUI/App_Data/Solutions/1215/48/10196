@@ -1,0 +1,11 @@
+var l,x1,y1,x2,y2,a,b:longint;
+c,d:real;
+begin
+read(l,x1,y1,x2,y2);
+a:=abs(x1-x2);b:=abs(y1-y2);c:=180*ArcTan(sqrt(1-sqr(-1+a*a/2/l/l))/(-1+a*a/2/l/l))/pi;d:=ArcTan(sqrt(1-sqr(-1+b*b/2/l/l))/(-1+b*b/2/l/l))/pi*180;
+if (2*l>=sqrt(a*a+b*b))then write(a*b)
+else if (2*l>a) and (2*l>b) then write(pi*l*l-l*l*(c-sin(c))-l*l*(d-sin(d))) 
+else if 2*l>a then write (pi*l*l-l*l*(c-sin(c)))
+else if 2*l>b then write(pi*l*l-l*l*(d-sin(d)))
+else write(l*l*pi);
+end.

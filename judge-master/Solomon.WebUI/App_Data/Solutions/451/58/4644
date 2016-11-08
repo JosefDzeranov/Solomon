@@ -1,0 +1,65 @@
+const maxn = 100;
+
+var a: array [1..maxn] of integer;
+    n,i: integer;
+
+{-----------------------------------------------------------------}
+procedure fill;
+begin
+ readln(n);
+
+for i:=1 to n do
+ begin
+
+ read(a[i]);
+ end;
+end;
+{-----------------------------------------------------------------}
+procedure reorder;
+var j,tmp: integer;
+begin
+for i:=n-1 downto 1 do
+ for j:=1 to i do
+  if a[j] > a[j+1] then
+   begin
+   tmp:=a[j];
+   a[j]:=a[j+1];
+   a[j+1]:=tmp;
+   end;
+end;
+{-----------------------------------------------------------------}
+procedure divide;
+var sum1,sum2,sum1_,sum2_: longint;
+    cur: integer;
+begin
+sum1:=0;
+for i:=1 to n-1 do inc(sum1,a[i]);
+cur:=n;
+sum2:=a[n];
+
+while (cur > 1) and (not( (sum1/sum2 <= 2) and (sum1/sum2 >= 0.5) ) ) do
+ begin
+ dec(cur);
+ sum1_:=sum1-a[cur];
+ sum2_:=sum2+a[cur];
+ if (sum1_/sum2_ <= 2) and (sum1_/sum2_ >= 0.5) or (sum2_ < sum1_) then
+  begin
+  dec(sum1,a[cur]);
+  inc(sum2,a[cur]);
+  end;
+ end;
+
+if (sum2/sum1 >= 0.5) and (sum2/sum1 <= 2) then
+ begin
+writeln(abs(sum1-sum2))
+ end ;
+
+end;
+{-----------------------------------------------------------------}
+
+
+begin
+fill;
+reorder;
+divide;
+ end.

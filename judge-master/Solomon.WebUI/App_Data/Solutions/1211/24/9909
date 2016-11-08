@@ -1,0 +1,56 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+bool check( int f, int s )
+{
+    int n[10];
+
+    for( int i = 0; i < 10; i++ )
+        n[ i ] = 0;
+
+    while( f != 0 )
+    {
+        n[ f % 10 ] = 2;
+
+        f = f / 10;
+    }
+
+    while( s != 0 )
+    {
+        if( n[ s % 10 ] == 2 )
+            return true;
+
+        s = s / 10;
+    }
+
+    return false;
+}
+
+int main()
+{
+    int s, res;
+
+    cin >> s;
+
+    int z[s];
+
+    res = 0;
+
+    for( int i = 0; i < s; i++ )
+    {
+        scanf( "%d", &z[i] );
+
+        for( int j = 0; j < i; j++ )
+        {
+            if( check( z[i], z[j] ) )
+                res++;
+        }
+    }
+
+    cout << res << endl;
+
+    return 0;
+}
+

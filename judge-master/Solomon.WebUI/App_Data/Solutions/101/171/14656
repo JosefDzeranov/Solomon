@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace zad4_of_5_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int k = Convert.ToInt32(Console.ReadLine());
+            int ans = (n * 2 - 1) % k;
+            if (ans == 0) ans = k;
+
+            Console.WriteLine(ans);
+
+        }
+    }
+}

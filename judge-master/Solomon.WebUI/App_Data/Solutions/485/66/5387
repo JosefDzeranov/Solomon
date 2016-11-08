@@ -1,0 +1,33 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s,s2,s3 : String;
+var n,i,sym,x : integer;
+var school : array [1..1000] of longint;
+begin
+readln(n);
+for i:= 1 to n do
+begin
+readln(s2);
+s:= s + s2;
+s2:= '';
+end;
+for  i:=1 to 1000 do
+begin
+s3:= IntToStr(i);
+if(Pos(s3,s)<= 5) and (Pos(s3,s) >= 1)  Then
+begin
+sym:= sym + 1;
+school[x]:= i;
+x:= x + 1;
+end;
+end;
+writeln(sym);
+for i:= 1 to x do
+writeln(school[i]);
+readln;
+end.

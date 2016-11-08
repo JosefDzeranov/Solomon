@@ -1,0 +1,18 @@
+program Bear;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  i, n : byte;
+  a : array [1..50] of int64;
+begin
+  readln (n);
+  for i := 1 to n do
+    read (a[i]);
+  readln;
+  writeln ('IMPOSSIBLE');
+  
+end.

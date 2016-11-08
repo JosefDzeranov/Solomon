@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	int a, b, c, n, v;
+	cin >> v;
+	cin >> n >> a >> b >> c;
+	int g = a + b + c;
+	g = g - 2 * n;
+	if (v == 1)
+	{
+		if (g <= 0)
+		{
+			cout << 0 << endl;
+		}
+		else
+		{
+			cout << g << endl;
+		}
+	}
+	else
+	{
+		cout << min(min(a, b), c)<< endl;
+	}
+	return 0;
+}

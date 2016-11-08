@@ -1,0 +1,10 @@
+minmax = int(input())
+n, a, b, c = map(int, input().split())
+if minmax == 2:
+    result = min(a, b, c)
+elif minmax == 1:
+    if a + b + c < 2*n:
+        result = 0
+    else:
+        result = a + b + c - 2*n
+print (result)

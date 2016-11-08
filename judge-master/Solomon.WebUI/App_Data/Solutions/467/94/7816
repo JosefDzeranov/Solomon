@@ -1,0 +1,10 @@
+s = input().split("=")
+res = -1
+try:
+    res = eval(s[0])
+except SyntaxError:
+    print("ERROR")
+if res == int(s[1]):
+    print("YES")
+elif res != -1:
+    print("NO")

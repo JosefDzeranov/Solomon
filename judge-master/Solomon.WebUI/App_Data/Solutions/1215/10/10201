@@ -1,0 +1,18 @@
+var k,n,d:longint;
+c:real;
+function fact(n1:longint):longint;
+  begin
+    if n1=1 then
+      fact:=1
+               else
+      fact:=n1*fact(n1 - 1);
+  end;
+ begin
+ read(n,k);d:=n-k;
+  if (d<=0) or(n<=0) or (k<=0) then write(0) else  begin 
+ c:=fact(n)/fact(k)/fact(d);
+ if c<=0 then write(0) else write(c);
+end;
+ end.
+ 
+              

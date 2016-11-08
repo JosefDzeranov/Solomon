@@ -1,0 +1,25 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a, b,n,i,c:integer ;
+s: string;
+begin
+readln(a,b);
+readln(n);
+s:=s+inttostr(a)+inttostr(b);
+for i := 1 to n do
+begin
+  s:=s+inttostr(a+b);
+  c:=a+b;
+  a:=b;
+  b:=c;
+end;
+writeln(s[n]);
+readln;
+         
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

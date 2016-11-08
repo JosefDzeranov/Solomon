@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int main ()
+{
+	int l, x1, x2, y1, y2;
+	cin >> l >> x1 >> y1 >> x2 >> y2;
+	int a = x2 - x1;
+	int b = y2 - y1;
+	
+		if (l * l * 3.14 > a * b && a > l && b > l)
+			cout << a * b << endl;
+		else
+		{
+			if (a > l && b > l)
+			{
+				cout << int(l * l * 3.14) << endl;
+			}
+			else
+			{
+				if (a < l)
+				{
+					cout << l * a * 2 << endl;
+				}
+				if (b < l)
+				{
+					cout << l * b * 2 << endl;
+				}
+			}
+		}
+	
+	return 0;
+}

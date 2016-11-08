@@ -1,0 +1,65 @@
+// Gaev_Alexandr.cpp
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <conio.h>
+#include <vector>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	int max=0,maxi=0;
+	int a[100],b[7]={0,0,0,0,0,0,0};
+	int i,j,end;
+	cin >> end;
+	for(i=0;i<end;i++)
+	cin >> a[i];
+	for(i=0;i<end;i++)
+	{
+		int buf=a[i],help=0;
+		while(buf!=0)
+		{
+			buf/=10;
+			help++;
+		}
+		b[help-1]++;
+	}
+	for(i=0;i<7;i++)
+		if(b[i]>max)
+		{
+			max=b[i];
+			maxi=i+1;
+		}
+	for(i=0;i<end;i++)
+	{
+		int buf=a[i],help=0;
+		while(buf!=0)
+		{
+			buf/=10;
+			help++;
+		}
+		if(help==maxi)
+		{
+			while(true)
+			{
+			if(a[i]%2!=0)
+				if(a[i]%3!=0)
+					if(a[i]%5!=0)
+						if(a[i]%7!=0)
+							if(a[i]%11!=0)
+								if(a[i]%13!=0)
+									
+										break;
+			a[i]++;
+			}
+			
+		}
+	}
+	for(i=0;i<end;i++)
+	cout << a[i] << " ";
+	_getch();
+}

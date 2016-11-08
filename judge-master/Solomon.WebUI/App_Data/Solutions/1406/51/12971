@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main()
+{
+  //freopen("code.in","r",stdin);
+  //freopen("code.out","w",stdout);
+    
+  int n,m;
+  
+  scanf("%d",&n);
+  
+  m=(n+16)/12;
+  
+  printf("%d\n",m);    
+}

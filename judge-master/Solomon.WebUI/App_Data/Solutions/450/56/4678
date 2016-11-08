@@ -1,0 +1,25 @@
+program lol;
+var i,j,n,k:longint;
+q:string;
+function per(x:longint):string;
+var s:string;
+begin
+s:='';
+while x>0 do
+begin
+if (x mod 2 = 1) then s:='1'+s else s:='0'+s;
+x:=x div 2;
+end;
+per:=s;
+end;
+begin
+readln (n);
+for i:=1 to n do
+begin
+q:=per(i);
+   for j:=length(q) downto 1 do
+   if q[j]='0' then k:=k+1 else break;
+end;
+writeln (k);
+
+end.

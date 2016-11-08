@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+main()
+{
+int n,m,i=1;
+cin >> n >>m;
+n=(n*n)-m;
+while (i<n)
+{
+ i=i+i+2;
+}
+if (i==n)
+cout <<"Yes";
+else cout <<"No";
+}

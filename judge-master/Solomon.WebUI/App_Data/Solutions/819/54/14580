@@ -1,0 +1,23 @@
+a = int(input())
+A = []
+B = []
+answer = 'YES'
+number = a
+while number != 0:
+    b = number % 10
+    
+    if b in A:
+        answer = 'NO'
+        if b not in B:
+            B.append(b)
+    else:
+        A.append(b)
+    number //= 10
+B.sort()
+
+if answer == 'YES':
+    print (answer)
+else:
+    print (answer)
+    print (' '.join(map(str,B)))
+

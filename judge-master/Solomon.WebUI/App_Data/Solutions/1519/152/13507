@@ -1,0 +1,55 @@
+﻿using System;
+
+namespace _4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            n = Convert.ToInt32(Console.ReadLine());
+            string s;
+            string s1;
+            s1="";
+            int a;
+            a = 1;
+            int max;
+            max = 0;
+            string[] ms = new string[n];
+            string[] mst = new string[n];
+            int[] mi = new int[n];
+            s = Console.ReadLine();
+            ms = s.Split(' ');
+            for (int i = 0; i < ms.Length; i++)
+            {
+                s = ms[i];
+                for (int j = 0; j < ms.Length; j++)
+                {
+                    if(i!=j)
+                    {
+                        s1 = ms[j];
+                        if (s1[0] == s[s.Length - 3] && s1[1] == s[s.Length - 2] && s1[2] == s[s.Length - 1] || s[0] == s1[s1.Length - 3] && s[1] == s1[s1.Length - 2] && s[2] == s1[s1.Length - 1])
+                        {
+                            s += s1;
+                            a++;
+                        }
+                    }
+                }
+                mi[i] = a;
+                mst[i] = s;
+                a = 0;
+            
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                if(mi[i]> max)
+                { max = mi[i];
+                  s1 = mst[i];
+                }
+            }
+            Console.Write(max);
+            Console.Write(' ');
+            Console.Write(s1.Length);
+        }
+    }
+}

@@ -1,0 +1,33 @@
+program Project14;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,g,h,a,b,c:integer;
+begin
+readln(n);
+g:=n mod 3;
+h:=n div 3;
+if g=0 then
+begin
+a:=h-1;
+b:=h;
+c:=h+1;
+end;
+if g=1 then
+begin
+  a:=h-1;
+  b:=h;
+  c:=h+2;
+end;
+if g=2 then
+begin
+ a:=h-1;
+ b:=h+1;
+ c:=h+2;
+end;
+writeln(a,' ',b,' ',c);
+readln
+end.

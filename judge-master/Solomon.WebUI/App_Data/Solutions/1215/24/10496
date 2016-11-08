@@ -1,0 +1,26 @@
+var i,j,n,k1,k2,k,c1,c2,t:longint;
+b:boolean;
+s:array[1..24] of byte;
+l:array[1..500]of longint;
+procedure OK(i1:longint;var p:longint);
+begin
+While i1>0 do  begin
+s[p]:=i1 mod 10; i1:= i1 div 10;p:=p+1; end;
+p:=p-1;
+end;
+
+begin
+read(n);t:=0;b:=false;
+for i:=1 to n do read(l[i]);
+
+for i:=1 to n-1 do begin k1:=1;OK(l[i],k1);
+for j:=i+1 to n do
+begin k2:=13;
+OK(l[j],k2);
+
+for c1:=1 to k1 do for c2:=13 to k2 do if s[c1]=s[c2] then b:=true;
+if b then t:=t+1;b:=false;end;
+for k:=1 to 24 do s[k]:=0;
+end;
+write(t);
+end.                                                       

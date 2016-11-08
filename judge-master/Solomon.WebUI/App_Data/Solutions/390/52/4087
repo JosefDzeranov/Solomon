@@ -1,0 +1,19 @@
+var n:integer;
+function kombine(n:integer):real;
+  var i,s,b:integer;
+begin
+  s:=1; 
+  b:=1;
+  for i:=1 to n do 
+  s:=s*i;
+  for i:=1 to (n-3) do
+  b:=b*i;
+  kombine:=s/b;
+end;
+begin
+  repeat
+  writeln('Введите N, 3<= N <= 1000');
+  readln(n);
+  until (n>=3) and (n<=1000);
+  writeln('Количество заготовленных организаторами отчетов равно ', kombine(n));
+end.

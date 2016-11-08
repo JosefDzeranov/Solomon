@@ -1,0 +1,127 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+int actions_c, balls_ex, balls_c, boxes_c;
+vector< vector<int> > boxes;
+vector<string> actions;
+
+void show()
+{
+    for( int i = 1; i <= boxes_c; i++ )
+    {
+        cout << "Коробка #" << i << ": " << endl;
+
+        for( unsigned j = 0; j < boxes[i].size(); j++ )
+            cout << "Шар #" << boxes[i][j] << endl;
+
+        cout << endl;
+    }
+
+    cout << endl;
+}
+
+void doSwap( int box, int ball )
+{
+    int toSwap;
+    bool swap = false;
+
+    balls_ex = -1;
+
+    for( unsigned j = 0; j < boxes[ boxes[ box ][ ball ] ].size(); j++ ) // Перебираем все шарики в коробке с номером ШАРИКА
+    {
+        if( boxes[ boxes[ box ][ ball ] ][j] == box ) // Если в этой коробке есть шарик с номером КОРОБКИ, в которой лежит шарик
+        {
+            std::ostringstream act;
+            act << boxes[ boxes[ box ][ ball ] ][j] << " " <<  boxes[ box ][ ball ]  << " " <<  boxes[ box ][ ball ]  << " " << boxes[ boxes[ box ][ ball ] ][j];
+
+            actions.push_back( act.str() );
+
+            boxes[ boxes[ box ][ ball ] ].erase( boxes[ boxes[box][ball] ].begin() + j );
+
+            boxes[ box ].erase( boxes[box].begin() + ball );
+
+            swap = true;
+            actions_c++;
+
+            break;
+        }
+        else
+             balls_ex = j;
+    }
+
+//    if( !swap ) // Если не произошла замено
+//    {
+//        if( balls_ex != -1 )
+//        {
+//            std::ostringstream act;
+//            act << box << " " << boxes[box][ball] << " " << boxes[box][ball] << " " << boxes[ boxes[box][ball] ][balls_ex];
+
+//            actions.push_back( act.str() );
+
+//            boxes[box].push_back( boxes[ boxes[box][ball] ][balls_ex] );
+
+//            if( box != boxes[ boxes[box][ball] ][balls_ex] )
+//            {
+//                swap = true;
+//                toSwap = boxes[box].size() - 2;
+//            }
+
+//            boxes[ boxes[box][ball] ].erase( boxes[ boxes[box][ball] ].begin() + balls_ex );
+
+//            boxes[ box ].erase( boxes[box].begin() + ball );
+
+//            actions_c++;
+//        }
+
+//        if( swap && !boxes[ boxes[box][toSwap] ].empty() )
+//            doSwap( box, toSwap );
+//    }
+}
+
+int main()
+{
+    int box, ball;
+
+    scanf( "%d%d", &boxes_c, &balls_c );
+
+    boxes.reserve( boxes_c + 1 );
+
+    actions_c = 0;
+
+    for( int i = 1; i <= balls_c; i++ )
+    {
+        scanf( "%d%d", &ball, &box ); // Номер шарика и коробка, в которой он находится
+
+        if( box == ball )
+            continue;
+
+        boxes[box].push_back( ball ); // Добавляем в коробку шарик
+
+        doSwap( box, boxes[box].size() - 1 );
+    }
+
+    for( int i = 1; i <= boxes_c; i++ )
+    {
+        for( unsigned j = 0; j < boxes[i].size(); j++ )
+        {
+            actions_c++;
+
+            std::ostringstream act;
+            act << i << " " << boxes[i][j] << " " << boxes[i][j];
+
+            actions.push_back( act.str() );
+        }
+    }
+
+    cout << actions_c << endl;
+
+    for( unsigned i = 0; i < actions.size(); i++ )
+        cout << actions[i] << endl;
+
+    return 0;
+}
+

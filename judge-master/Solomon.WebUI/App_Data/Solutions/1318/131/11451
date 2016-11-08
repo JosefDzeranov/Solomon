@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+void rec(long i,long* a,long* b,long n,long j){
+	if(i<=0)return;
+	long s=0;
+	for(long k=1;k<n;k++){
+		if((a[k]>a[s])){
+			for(long l=0;l<k;l++){
+				if(k==b[l])break;
+				s=k;
+			}
+		}
+	}
+	b[j-i]=s;
+	rec(i-1,a,b,n,j);
+	return;
+}
+int main()
+{
+	long n,k;
+	std::cin>>n>>k;
+	long* a=(long*)malloc(sizeof(long)*n);
+	long* b=(long*)malloc(sizeof(long)*k);
+	for(long i=0;i<n;i++){
+		std::cin>>a[i];
+	}
+	for(long i=0;i<k;i++){
+		b[i]=n;
+	}
+	rec(k,a,b,n,k);
+	for(long i=0;i<k;i++){
+		a[b[i]]=0;
+	}
+	rec(k,a,b,n,k);
+	long s=0;
+	for(long i=0;i<k;i++){
+		s+=a[b[i]];
+	}
+	std::cout<<s;
+	free(a);
+	free(b);
+	std::cin>>n;
+return 0;}

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{float a1,b1,a2,b2,a3,b3,a4,b4,x1,x2,x3,x4,d1,d2;
+cin>>a1>>b1>>a2>>b2>>a3>>b3>>a4>>b4;
+x1=sqrt((a1-a2)*(a1-a2)+(b1-b2)*(b1-b2));
+x2=sqrt((a3-a2)*(a3-a2)+(b3-b2)*(b3-b2));
+x3=sqrt((a3-a4)*(a3-a4)+(b3-b4)*(b3-b4));
+x4=sqrt((a1-a4)*(a1-a4)+(b1-b4)*(b1-b4));
+d1=sqrt((a1-a3)*(a1-a3)+(b1-b3)*(b1-b3));
+d2=sqrt((a4-a2)*(a4-a2)+(b4-b2)*(b4-b2));
+if(x1==x4)
+ {if(x1==x2||x1==x3)
+  {if(d1==d2)
+  cout<<"YES";}}
+if(x1==d1)
+ {if(d2==x1||x1==x3)
+  {if(x2==x4)
+  cout<<"YES";}}
+if(x4==d1)
+ {if(x2==d1||d1==d2)
+  {if(x3==x1)
+  cout<<"YES";}}
+else {cout<<"NO";}
+    return 0;
+}

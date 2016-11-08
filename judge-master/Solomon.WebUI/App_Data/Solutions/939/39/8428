@@ -1,0 +1,25 @@
+program Print;
+var
+ n,m,cI:longint;
+ nM:array[1..300] of longint;
+ rM:array[1..150] of string; nR:integer;
+ sN,nN,eN:longint;
+begin
+ nN:=-1;
+ readln(n,m);
+ for cI:=1 to m do read(nM[cI]);
+
+ for cI:=1 to m do
+  begin
+   if sN=0 then sN:=nM[cI]; nN:=succ(nN);
+   if ((sN+nN)=nM[cI+1]-1) then eN:=nM[cI+1]
+   else
+    begin
+     if (eN=0) then write(sN,' ')
+     else write(sN,'-',eN,' ');
+     sN:=0; eN:=0; nN:=-1;
+    end;
+  end;
+
+ readln;
+end.

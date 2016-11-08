@@ -1,0 +1,26 @@
+minmax = int(input())
+n, a, b, c = map(int, input().split())
+
+a, b, c = min(a, b, c,), a+b+c - min(a, b, c) - max(a, b, c), max(a, b, c)
+
+if n == 0 or a == 0:
+    result = 0
+
+else:
+    
+    if a >= n:
+        result = n
+
+    else:
+        
+        if (minmax == 1):
+            if a + b <= n:
+                result = 0
+            else:
+                result = a + b - n
+
+        elif minmax == 2:
+            result = a
+        else:
+            result = -1
+print (result)

@@ -1,0 +1,16 @@
+var a,b,k,d,n,i:integer;
+begin
+read(a,b);
+if (a>=0) and (a<=30) and (b>=0) and (b<=30) then begin
+k:=1;
+n:=1;
+d:=1;
+for i:=1 to a do
+  k:=k*i;
+ for i:=1 to b do
+  d:=d*i;
+ for i:=1 to (a-b) do
+  n:=n*i;
+ write(k div (d*n));
+ end;
+ end.

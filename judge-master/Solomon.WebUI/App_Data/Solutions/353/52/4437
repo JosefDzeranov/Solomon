@@ -1,0 +1,8 @@
+var n:3..100;
+x: longint;
+begin
+readln(n);
+x:=n*(n-1)*(n-2);
+writeln(x);
+readln;
+end.

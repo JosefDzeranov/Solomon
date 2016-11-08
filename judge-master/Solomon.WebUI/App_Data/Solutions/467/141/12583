@@ -1,0 +1,15 @@
+import math
+
+
+n, m = [int(i) for i in input().split()]
+ms = [int(i) for i in input().split()]
+mx = max(ms)
+mn = min(ms)
+d = min(ms)
+for i in ms:
+    pd = min(math.fabs(mx - i), math.fabs(mn - i))
+    if d < pd:
+        d = pd
+print(int(d))
+        
+    

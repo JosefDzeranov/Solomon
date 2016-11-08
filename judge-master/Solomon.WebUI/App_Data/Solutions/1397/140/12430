@@ -1,0 +1,14 @@
+k = int(input())
+s = input()
+mx = 0
+ms = [0 for i in range(len(s))]
+for i in range(len(s)):
+    if s[i] == 'P':
+        ms[i % k] += 1
+        if mx < ms[i % k]:
+            mx = ms[i % k]
+for i in range(len(ms)):
+    if ms[i] == mx:
+        print(i + 1)
+        exit()
+    

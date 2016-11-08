@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int ans = -1;
+int n;
+int mas[105];
+bool used[105];
+
+void dfs(int sum, int cnt, int step) {
+
+	if (cnt == n)
+		if (ans == -1)
+			ans = abs(sum);
+		else
+		{
+			sum = abs(sum);
+			ans = min(ans, sum);
+		}
+	else
+	{
+		for (int i = 0; i < n; i++)
+			if (!used[i])
+				if (step)
+				{	
+					used[i] = true;
+					dfs(sum + mas[i], cnt + 1, (step + 1) % 2);
+					used[i] = false;
+				}
+				else
+				{
+					used[i] = true;
+					dfs(sum - mas[i], cnt + 1, (step + 1) % 2);
+					used[i] = false;
+				}
+	}
+
+
+
+}
+
+
+
+int main() {
+
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> mas[i];
+		used[i] = false;
+	}
+	dfs(0, 0, 1);
+
+	cout << ans << endl;
+
+	return 0;
+}

@@ -1,0 +1,5 @@
+var a,b,c:real;
+begin
+read(a,b,c);
+write(ArcTan(a));
+end.

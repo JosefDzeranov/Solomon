@@ -1,0 +1,96 @@
+{$H+}
+var
+s,s1,ss:string;
+p1,p2,i,j,n,c,sum,k,k1,len,h,m,c1,c2:longint;
+f,flag:boolean;
+begin
+f:=false;
+readln(n);
+readln(s);
+p1:=-1;
+p2:=-1;
+s:=s+' ';
+h:=1;
+ss:=s;
+s:='';
+len:=length(ss);
+for i:=1 to len do 
+if (ss[i]=' ') then begin
+s1:=copy(ss,h,i-h);
+//writeln(s1,'+',h,'->',i-h+1);
+//writeln(s1,'=');
+flag:=false;
+for j:=1 to length(s1) do
+ for m:=j+1 to length(s1) do
+  if (s1[j]<>s1[m]) then begin flag:=true; break; end;
+  h:=i+length(s1)-1;
+  if flag then 
+   s:=s+s1+' '
+   else s:=s+s1[1]+' ';
+end;
+//writeln(s);
+len:=length(s);
+for i:=1 to len do begin
+ for j:=i+1 to len do begin
+ if (s[i]<>' ') and (s[j]<>' ') and (i<>j) and (s[i]=s[j]) then begin
+ for k:=1 to i do if s[k]=' ' then inc(p1);
+ for k:=1 to j do if s[k]=' ' then inc(p2);
+ if p1<>p2 then begin
+ {if p1>0 then begin
+ k:=i;
+ while s[k-1]<>' ' do dec(k)
+ end;
+ 
+ end;}
+ 
+ {writeln(c1,' ',c2);
+ writeln(p1,' ',p2);
+ writeln;}
+ if (c1<>p1)and(c2<>p2) then
+ inc(c);
+ 
+ end;
+ end;
+ c1:=p1;
+ c2:=p2;
+ p1:=-1;
+ p2:=-1;
+ {
+if (s[i]<>' ') and (i<>j) and (s[i]=s[j]) and (s[i]<>'x') and (s[j]<>'x') then begin
+for k:=1 to i do if s[k]=' ' then inc(p1);
+for k:=1 to j do if s[k]=' ' then inc(p2);
+if p1<>p2 then begin
+if p1>0 then begin
+k:=i;
+while s[k-1]<>' ' do dec(k);
+end;
+if p2>0 then begin
+k1:=j;
+while s[k1-1]<>' ' do dec(k1);
+end;
+while s[k1+1]<>' ' do begin
+while s[k+1]<>' ' do begin
+if (s[k1]=s[k]) and (s[k1]<>'x') and (s[k]<>'x') then f:=true;
+inc(k);
+end;
+inc(k1);
+end;
+if not(f) then 
+inc(c);
+s[j]:='x';
+end;
+end;
+f:=false;
+end;
+p1:=0;
+p2:=0;
+if c>0 then begin 
+inc(sum);
+c:=0;
+s[i]:='x';}
+end;
+sum:=sum+c;
+c:=0;
+end;
+writeln(sum);
+end.

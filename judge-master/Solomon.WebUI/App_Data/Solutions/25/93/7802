@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x, y, z, q, start, end, ans;
+    cin >> x >> z >> y >> q;
+    start = x * 60 + y;
+    end = y * 60 + q;
+    if (end > start) {
+        cout << (end - start) / 60 << " " << (end - start) % 60;
+        return 0;
+    }
+    if (end == start) {
+        cout << 24 << " " << 0;
+        return 0;
+    }
+    cout << (((24 * 60) - start) + end) / 60 << " " << (((24 * 60) - start) + end) % 60;
+    return 0;
+}

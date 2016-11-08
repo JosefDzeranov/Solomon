@@ -1,0 +1,19 @@
+program mesi2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,s:longint;
+
+begin
+read(n);
+s:=4*n*n+1+(2*n-1)*((2*n-1)*(2*n-1)+1);
+write(s);
+
+
+
+readln;readln;
+end.
+ 

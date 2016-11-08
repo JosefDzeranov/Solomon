@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, m, k, i, x, y:Integer;
+begin
+readln(n,m,k);
+ for I := 1 to k do
+   readln(x,y);
+ writeln(2);
+ readln;  
+end.

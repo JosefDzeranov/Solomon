@@ -1,0 +1,35 @@
+program Project8;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  ss: array[1..1000] of string;
+  m, i, j, kk: integer;
+  s: string;
+  b, a: array[1..9999] of integer;
+
+begin
+  kk := 0;
+  readln(m);
+  for i := 1 to m do
+  begin
+    readln(s);
+    for j := 1 to length(s) do
+      if((s[j]='0')or(s[j]='1')or(s[j]='2')or(s[j]='3')or(s[j]='4')or(s[j]='5')or(s[j]='6')or(s[j]='7')or(s[j]='8')or(s[j]='9')) then
+        ss[i] := ss[i] + s[j];
+    Inc(b[StrToInt(ss[i])]);
+  end;
+  for i := 1 to 9999 do
+    if(b[i]>0)and(b[i]<5) then
+    begin
+      Inc(kk);
+      a[kk] := i;
+    end;
+  writeln(kk);
+  for i := 1 to kk do
+    writeln(a[i]);
+  readln;
+end.

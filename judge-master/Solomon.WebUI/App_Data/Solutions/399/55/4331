@@ -1,0 +1,8 @@
+var n,i,p,z:longint;
+begin
+readln(n);
+n:=n*2;
+p:=((n-1)*((n-1)*(n-1)+1)) div 2;
+z:=n*n+1;
+writeln(2*p+z);
+end.

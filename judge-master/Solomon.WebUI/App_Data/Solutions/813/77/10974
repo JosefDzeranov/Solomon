@@ -1,0 +1,31 @@
+program mesie;
+  var a : array[1..4000] of string[250];
+      i, i1, i2, i3, i4, n, k, n1 : longint;
+      b : array[1..1000, 1..1000] of char;
+      
+  begin
+  for i := 1 to 4000 do 
+    begin
+    read(a[i]);
+    k := k + length(a[i]);
+    //if (length(a[i]) = 250) then i1 := i1 + 1;
+    //if ((length(a[i]) < 250) and (length(a[i]) > 0)) then i2 := i2 + 1;
+    end;
+  for i := 1 to 1000 do if i*i >= k then break;
+  k := i*i;
+  i3 := 1; i4 := 1;
+  for n1 := 1 to i do 
+    for n := 1 to i do
+      begin
+        b[n, n1] := a[i3][i4];
+        i4 := i4 + 1;
+        if (i4 = 250) then 
+          begin
+          i3 := i3 + 1;
+          i4 := 1;
+          end;
+      end;
+  for n := 1 to i do 
+    for n1 := 1 to i do
+     write(b[n, n1]); 
+  end.

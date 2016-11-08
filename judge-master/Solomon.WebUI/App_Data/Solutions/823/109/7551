@@ -1,0 +1,15 @@
+program TrianglesOfLines;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  N, i, x1, y1, x2, y2 : integer;
+begin
+  readln (N);
+  for i := 1 to N do
+    readln (x1, y1, x2, y2);
+  write (n - 1);
+end.

@@ -1,0 +1,27 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var
+  k, n, z, a, b, c: Integer;
+begin
+  readln(n, z);
+  readln(a, b, c);
+  if (a < z) or (b < z) then
+    writeln(0)
+  else
+  begin
+    if c - z * (c div z) < z / 2 then
+      k := c div z
+      else
+        k := c div z + 1;
+      k := k * (a div z) * (b div z);
+    if n mod k = 0 then
+      writeln(n div k)
+    else
+      writeln(n div k + 1);
+  end;
+  readln;end.
+

@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace _1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int x1 = Convert.ToInt32(ss[0]);
+            int y1 = Convert.ToInt32(ss[1]);
+             s = Console.ReadLine();
+            ss = s.Split(' ');
+            int x2 = Convert.ToInt32(ss[0]);
+            int y2 = Convert.ToInt32(ss[1]);
+            s = Console.ReadLine();
+             ss = s.Split(' ');
+            int x3 = Convert.ToInt32(ss[0]);
+            int y3 = Convert.ToInt32(ss[1]);
+            if (x3>x2 )
+                if (y3 < y1) Console.WriteLine(Math.Abs(x2-x3)+Math.Abs(y3-y1));
+                else
+                    if (y3 > y2) Console.WriteLine(Math.Abs(x2 - x3) + Math.Abs(y3 - y2));
+                    else Console.WriteLine(Math.Abs(x3-x2));
+            else 
+                if(x3<x1)
+                    if (y3 < y1) Console.WriteLine(Math.Abs(x1 - x3) + Math.Abs(y3 - y1));
+                    else
+                        if (y3 > y2) Console.WriteLine(Math.Abs(x1 - x3) + Math.Abs(y3 - y2));
+                        else Console.WriteLine(Math.Abs(x3 - x1));
+                else
+                    if (y3 > y2) Console.WriteLine(Math.Abs(y3-y2));
+                    else
+                        if (y3 < y1) Console.WriteLine(Math.Abs(y3 - y1));
+                        else Console.WriteLine(Math.Min( Math.Min(Math.Abs(y3 - y1), Math.Abs(y3 - y2)), Math.Min(Math.Abs(x3 - x1), Math.Abs(x3 - x2))));   
+
+
+        }
+    }
+}

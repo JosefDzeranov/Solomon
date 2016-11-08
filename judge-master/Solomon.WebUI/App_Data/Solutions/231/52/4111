@@ -1,0 +1,33 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <stdio.h>
+#include <tchar.h>
+
+double factorial (int n);
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int n;
+	double c;
+
+	scanf("%d",&n);
+	c = factorial(n) / factorial(n-3);
+	printf("%g",c);
+
+
+	return 0;
+}
+//---------------------------------------------------------------------------
+double factorial (int n)
+{
+	int i ;
+	double a = 1;
+
+	for (i = 1; i <= n; i++)
+	{
+		a *= (double)i;
+	}
+
+	return a;
+}

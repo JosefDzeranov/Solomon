@@ -1,0 +1,23 @@
+{$H+}
+uses math;
+var
+  k, j, i, l, l1: longint;
+  s: string;
+
+begin
+  readln(s);
+  l := length(s);
+  l1 := ceil(sqrt(l));
+  for i := l to l1 * l1 do s := s + ' ';
+  
+  for i := 1 to l1 do 
+  begin
+    k := i;
+    for j := 1 to l1 do 
+    begin
+      write(s[k]);
+      k := k + l1;
+    end;
+    //k := i + 1;
+  end;
+end.

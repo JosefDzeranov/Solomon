@@ -1,0 +1,51 @@
+program zad7;
+uses crt;
+var
+a,b,n,j: integer;
+v1,mm,x,m4,m3,m1,min,min1,del: integer;
+M,V: array [1..9999] of integer;
+Z: array [1..9999] of real;
+z1: real;
+val: real;
+begin
+readln(m4,m1);
+readln(n);
+for b:= 1 to n do
+readln(V[b],M[b]);
+
+for b:= 1 to n do
+Z[b]:= V[b] / M[b];
+
+for b:= 1 to n-1 do
+for a:= 2to n do
+if (Z[b] > Z[a]) then begin
+z1:=Z[b];
+mm:=M[b];
+v1:=V[b];
+Z[b]:=Z[a];
+M[b]:=M[a];
+V[b]:=V[a];
+Z[a]:=z1;
+M[a]:=mm;
+V[a]:=v1;
+end;
+
+
+val:=0;
+j:=1;
+m3:=m1-m4;
+while m3>0 do begin
+del:=m3 div M[j];
+val:=val+V[j]*del;
+m3:=m3-M[j]*del;
+if (m3<M[n]) and (m3<>0) then begin
+val:=0;
+break;
+end;
+j:=j+1;
+end;
+if val = 0 then writeln('нет решений')
+           else writeln(val);
+end.
+
+

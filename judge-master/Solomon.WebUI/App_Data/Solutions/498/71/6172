@@ -1,0 +1,87 @@
+#include <iostream>
+
+using namespace std;
+
+long long int a, b, c, n;
+
+long long int to_int(string s)
+{
+	long long int n=0, i;
+	for(i=0;	i<s.length();	i++)	n = n*10+int(s[i])-48;
+	return n;
+}
+string to_str(int n)
+{
+	long long int i;
+	string s="";
+	while(n!=0)
+	{
+		s+=char(n%10+48);
+		n/=10;
+	}
+	for(i=0;	i<s.length()/2;	i++)
+	{
+		swap(s[i], s[s.length()-i-1]);
+	}
+	return s;
+}
+
+string f(int x, int y, int z)
+{
+	string s, s1, smax=to_str(x)+" "+to_str(y)+" "+to_str(z);
+	long long int m, max=x*y*z, i;
+	if(x+a+y+z <= n)
+	{
+		s = f(x+a, y, z);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		m = to_int(s1);
+		s1 = "";
+		for(i++;	i<s.length();	i++)
+		{
+			s1+=s[i];
+		}
+		if(m>max){max=m;smax=s1;}
+	}
+	if(x+y+b+z <= n)
+	{
+		s = f(x, y+b, z);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		m = to_int(s1);
+		s1 = "";
+		for(i++;	i<s.length();	i++)
+		{
+			s1+=s[i];
+		}
+		if(m>max){max=m;smax=s1;}
+	}
+	if(x+y+z+c <= n)
+	{
+		s = f(x, y, z+c);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		m = to_int(s1);
+		s1 = "";
+		for(i++;	i<s.length();	i++)
+		{
+			s1+=s[i];
+		}
+		if(m>max){max=m;smax=s1;}
+	}
+	return to_str(max)+" "+ smax;
+}
+
+int main()
+{
+	long long int i=0;
+	string s;
+	cin>>n>>a>>b>>c;
+	s = f(a, b, c);
+	while(s[i]!=' ')i++;
+	for(i++;	i<s.length();	i++)	cout<<s[i];
+ 	return 0;
+}

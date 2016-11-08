@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	int n;
+	string s="";
+	cin>>n;
+	while (n!=1)
+	{
+	if(n%2==0)
+	{
+    n/=2;
+	s="*"+s;
+	}
+	else{ n-=1;
+	s="+"+s;
+	}
+	
+	}
+cout<<s;
+return 0;
+} 

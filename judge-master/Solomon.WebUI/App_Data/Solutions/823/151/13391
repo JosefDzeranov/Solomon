@@ -1,0 +1,18 @@
+import java.io.*;
+
+public class U_Divisor {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        int number = Integer.parseInt(reader.readLine());
+        
+        int ost = number % 3;
+        number /= 3;
+        
+        if(ost == 0)        
+            System.out.println((number - 1) + " " + number + " " + (number + 1));        
+        else
+            System.out.println((number - 1) + " " + (number + (ost - 1) / 1) + " " + (number + 2));        
+    }
+}

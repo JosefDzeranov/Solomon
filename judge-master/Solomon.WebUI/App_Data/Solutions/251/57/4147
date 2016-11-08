@@ -1,0 +1,74 @@
+#include <cstdlib>
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int koren(int num);
+int perebor(int m[],int N);
+
+int main(int argc, char *argv[])
+{
+    int N;
+    cin>>N;
+    int m[N];
+    for (int i=0; i<N; i++){
+        cin>>m[i];
+    }
+    int m2[N];
+    
+    for (int i=0; i<N; i++){
+        m2[i]=koren(m[i]);
+    }
+    
+    int min = perebor(m2,N);
+    
+    for (int i=0; i<N; i++){
+        if (m2[i]==min){
+            m[i]=0;
+        }
+        else{
+            cout<<m[i]<<" ";
+        }
+    }
+    cout<<endl;
+    
+    //system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+int perebor(int m[],int N)
+{
+    int res,max=0;
+    int count = 0;
+    for (int i=0; i<N; i++){
+        count =0;
+        for(int j=0; j<N; j++){
+            if (m[i]==m[j]&&i!=j){
+                count++;
+            }    
+        }
+        if (count>max){
+            max=count;
+            res=m[i];
+        }
+        if (count==max&&m[i]<res){res=m[i];}
+    }
+    return res;
+}
+
+
+int koren(int num)
+{
+    int res=0;
+    while (num!=0)
+    {
+        res = res + num%10;
+        num = num / 10;
+        if (num==0&&res>9){
+            num=res;
+            res=0;
+        }
+    }
+    return res;
+}

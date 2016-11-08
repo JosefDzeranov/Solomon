@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque>
+#include <map>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+int main()
+{
+	//srand(time(NULL)); // 2 10 4 8
+	//int n = rand() % 100;
+	long long a, b, c, d;
+	cin >> a >> b >> c >> d;
+	c /= 2;
+	d /= 2;
+	long long ans = 0;
+	for (long long i = 1; i <= sqrt(b); i++)
+	{
+		if (i >= d)
+			continue;
+		long long t = a / i;
+		if (i > sqrt(a))
+			t = i;
+		long long min_y = max(t, c - i);
+		long long max_y = min(b / i, d - i);
+		if (max_y < min_y)
+			continue;
+		ans += max_y - min_y + 1;
+		if (ans < 0)
+			ans += 0;
+	}
+	cout << ans;
+	return 0;
+}

@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int n, otv = 0;
+	cin >> n;
+	string string2;
+	int k = 0;
+	cin.ignore();
+	for (k = 0; k < n; k++)
+	{
+		getline(cin,string2);
+		unsigned int help = string2.length();
+		for (int i = help-2; i >= 0; i--)
+		{
+			if (string2[i]>47 && string2[i] < 58)
+			{
+				for (int count = 1; i >= 0 && string2[i]>47 && string2[i] < 58; i--)
+				{
+					otv += (string2[i] - 48)*count;
+					count *= 10;
+				}
+			}
+		}
+
+
+	}
+	cout << otv;
+}

@@ -1,0 +1,8 @@
+var
+a:int64;
+s:string;
+begin
+read(a);
+str(8*a*a*a-8*a*a+8*a-1,s);
+write(s);
+end.

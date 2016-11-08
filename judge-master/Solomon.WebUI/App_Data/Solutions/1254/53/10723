@@ -1,0 +1,51 @@
+var
+visited: array [1..1000] of boolean;
+a: array [0..1000,0..1000] of integer;
+l,n,i,j,m,k,x,y,kol,ii,jj:integer;
+
+function rec(ii,jj:integer):integer;
+begin
+ if a[ii,jj]=0 then begin
+ a[ii,jj]:=1;
+ rec(ii+1,jj);
+ rec(ii,jj+1);
+ rec(ii-1,jj);
+ rec(ii,jj-1);
+ 
+ end;
+    
+end;
+
+begin
+
+read(n,l);
+read(k);
+  
+  for i:=0 to l do
+  a[i,0]:=-2;
+  
+  for i:=0 to l do
+  a[i,l+1]:=-2;
+  
+  for i:=0 to n do
+  a[0,i]:=-21;
+  
+  for i:=0 to n+1 do
+  a[n+1,i]:=-2;
+  
+for i:=1 to k do begin
+read(x,y);
+a[x,y]:=-1;
+end;
+
+
+     for i:=1 to n do
+        for j:=1 to l do 
+         if a[i,j]=0 then begin
+         inc(kol);
+         rec(i,j);
+            end;
+    
+   
+   writeln(kol);
+end.

@@ -1,0 +1,37 @@
+﻿Module Module1
+
+    Dim B As Boolean
+
+    Private Property K As Double
+
+    Private Property S As Integer
+
+    Private Property N As Integer
+
+    Sub Main()
+        Dim N, K, I, S, A, B, L As Integer
+        K = Val(text1.text)
+        S = 0
+        B = text1.text
+        N = Len(B)
+        For I = 1 To N
+
+        Next
+        K = 0
+    End Sub
+
+    Private Function text1() As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function A(ByVal p1 As Integer) As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function A(ByVal p1 As Integer, ByVal N As Integer) As Object
+        Throw New NotImplementedException
+    End Function
+
+    
+
+End Module

@@ -1,0 +1,9 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int x,y,t1,t2;
+cin>>x>>y>>t1>>t2;
+cout<<(y-1)*t1+x*y*t2;
+return 0;
+}

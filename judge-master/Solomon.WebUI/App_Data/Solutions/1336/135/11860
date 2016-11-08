@@ -1,0 +1,60 @@
+//#include "stdafx.h"
+//#include <conio.h>
+//#include <stdlib.h>
+#include <stdio.h>
+
+
+
+int main()
+{
+	long double a, k, b, m, x;
+	unsigned long int result;
+	scanf("%lf%lf%lf%lf%lf", &a, &k, &b, &m, &x);
+	result = 0;
+
+	result = x/((a*(k-1)/k)+(b*(m-1)/m));
+	
+
+	/*if (x<k && x<m)
+		result = x/(a+b);
+	else if(k==m)
+		 {
+		 	 for(int i=1; x>0; ++i)
+		 		{
+		 			if(!(i%k==0))
+						if(x>a+b)
+			 				x-=a+b;
+						else
+						{
+							++result;
+						}
+			 		++result;
+			 	}
+		 }
+
+	else for(int i=1; x>0; ++i)
+		 {
+			if(!(i%k==0))
+				if(x>a)
+					x-=a;
+				else 
+				{
+					++result;
+					break;
+				}
+			if(!(i%m==0))
+				if(x>b)
+					x-=b;
+				else 
+				{
+					++result;
+					break;
+				}
+			++result;
+		 }*/
+	printf("%ld", result);
+
+	//getch();
+	return 0;
+}
+

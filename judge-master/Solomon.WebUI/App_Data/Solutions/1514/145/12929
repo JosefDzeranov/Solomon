@@ -1,0 +1,38 @@
+#include<stdio.h>
+
+long long sort(long long x)
+{
+  int y;
+     
+  y=4;
+  while(x>y)
+    y+=6;
+  
+  if(x==y) return 1;
+    else return 0;
+}
+
+  long long a,b,c,n,i;
+
+int main()
+{
+  scanf("%lld",&n);
+  
+  if(n==1 || n==2) printf("1\n");
+    else 
+    {
+      a=1;
+      b=1;
+      i=3;
+      while(n+1>i)
+      {
+        if(i%2==1) {c=b+1;a=b;b=c;}
+          else if(sort(i)) {c=b+1;a=b;b=c;}
+            else if(i==4) {c=b+1;a=b;b=c;}
+              else {c=b;a=b;b=c;}
+        i++;      
+      }
+      printf("%lld\n",c);
+    }
+  return 0;
+}

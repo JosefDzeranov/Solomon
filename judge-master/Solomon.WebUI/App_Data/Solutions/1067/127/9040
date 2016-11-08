@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+	string h,g,u;
+	cin>>h>>g;
+	if(h.length() == g.length())
+		cout<<"IMPOSSIBLE";
+	else{
+		if(g.length()>=4){
+			if(g[0]=='I'){
+				u =g[g.length()-1]+g[g.length()-2]+g[g.length()-3]; 
+				if(u=="YOU")
+					cout<<g;
+			}
+			else
+				cout<<"I"+g+"YOU";
+	}
+	}
+	return 0;
+}

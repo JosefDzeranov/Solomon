@@ -1,0 +1,15 @@
+Program konfeti;
+var N, a, b, c, d, f: longint;
+Begin
+readln(N, a, b, c);
+ d:=round(N/3);
+ if d>N/3 then  d:=d-1 else d:=d;
+ f:= N-3*d;
+ if f=1 then writeln(d+1, ' ', d, ' ', d) else
+ if f=2 then writeln(d+2, ' ', d, ' ', d) else
+ if f=0 then writeln(d, ' ', d, ' ', d) else
+if a=1 then if b=1 then if c=1 then writeln(N*N*N) else
+if a+b+c <= 10*N
+then 
+writeln (a,' ', b, ' ',  N-a-b)
+end.

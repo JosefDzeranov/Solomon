@@ -1,0 +1,48 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+int main() {
+
+	long long int ans = 0;
+
+	vector <string> mas;
+	
+	string s;
+	//cout << mas.max_size()<< endl;
+	long long int n;
+	cin >> n;
+	getline(cin, s);
+	long long int number = 0;
+	for (int i = 0; i < n; i++)
+	{
+		getline(cin, s);
+		
+		//int flag = 1;
+
+		for (int j = 0; j < s.size(); j++)
+			if (s[j] >= 48 && s[j] <= 57)
+			{
+				number *= 10;
+				number += s[j]-48;
+			}
+			else
+			{
+				ans += number;
+				number = 0;
+			}
+
+			ans += number;
+			number = 0;
+	}
+
+	ans += number;
+	cout << ans << endl;
+
+	return 0;
+}

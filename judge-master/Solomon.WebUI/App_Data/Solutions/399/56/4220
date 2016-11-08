@@ -1,0 +1,13 @@
+var a,n,b,i:longint;
+begin
+read(n);
+a:=1;
+for i:=1 to n do
+a:=a*i;
+while a mod 2=0 do
+begin
+b:=b+1;
+a:=a div 2;
+end;
+writeln(b);
+end.

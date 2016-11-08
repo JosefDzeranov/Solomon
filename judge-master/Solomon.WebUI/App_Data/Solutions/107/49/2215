@@ -1,0 +1,15 @@
+program B;
+uses CRT;
+var k,n,t,x,y,a:integer;
+begin
+writeln('Всего у Змея Горыныча 3 головы');
+x:=3;
+writeln('Введите количество ударов которые может нанести Иван');
+read(t);
+writeln('Введите кол-во голов которые Иван сносит за 1 удар')
+read(n);
+writeln('Введите число голов, которые востанавливает Горыныч поле ударов Ильи');
+read(k);
+if n<=k then writeln('No');
+else writeln('Yes');
+end.

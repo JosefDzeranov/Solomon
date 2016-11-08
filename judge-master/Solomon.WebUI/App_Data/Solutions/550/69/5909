@@ -1,0 +1,40 @@
+#include <iostream>
+#include<math.h>
+#include<algorithm>
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+    float a,b,x,t,v;
+
+    cin>>a>>b>>x;
+    v=x/min(a,b);
+   t=a+b;
+   if (v>1000)
+   {
+       v=x/max(a,b);
+   }
+
+ if (v>1000)
+
+{
+    while(v>1000)
+    {
+
+
+    v=x/t;
+    t=t+min(a,b);
+if(v>1000)
+{
+while(v>1000)
+{
+
+t=t+max(a,b);
+}
+}
+}
+}
+    cout <<v;
+    return 0;
+}

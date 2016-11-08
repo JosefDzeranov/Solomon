@@ -1,0 +1,48 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+int n;
+cin>>n;
+long long int f[50000];
+for(int i = 0; i<n; i++)
+{
+	cin>>f[i];
+}
+int m;
+cin>>m;
+int s[100000];
+for(int i =0; i< m*2; i++){
+	cin>>s[i];
+}
+int maxi = 0,g;
+for(int i =0; i < m*2;i+=2){
+	if(s[i] > maxi){
+	maxi = s[i];
+	g = s[i+1];
+	}
+}
+int maxi2=0,l=0,o=0;
+for(int j =0; j<n; j++){
+for(int i =0; i< m*2;i+=2){
+	if(s[i]>maxi2 && s[i]<maxi){
+		if(s[i]>=f[j]){
+		maxi2 = s[i];
+		l = s[i+1];}
+	}}
+}
+if(l != 0){
+for(int i = 0; i<n-1; i++){
+g+=l;
+}
+cout<<g;
+}
+else{
+	for(int i = 0; i<n; i++)
+	{
+		o+=g;
+	}
+	cout<<o;}
+
+}

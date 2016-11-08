@@ -1,0 +1,88 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Task {
+	unsigned long long borned, time, weight;
+
+	friend bool operator<(const Task left, const Task task)
+	{
+		if (left.borned < task.borned) return true;
+		else return false;
+	}
+};
+
+
+unsigned N;
+vector<Task> tasks;
+
+struct Variant {
+	unsigned long long weight, taskCount;
+	vector<unsigned> tasks;
+
+	Variant plus(const Variant& var)
+	{
+		Variant res;
+		res.weight = weight + var.weight;
+		res.taskCount = taskCount + var.taskCount;
+		res.tasks = tasks;
+		for (unsigned i = 0; i < var.taskCount; i++) {
+			res.tasks.push_back(var.tasks[i]);
+		}
+		return res;
+	}
+};
+
+Variant CalculateVars(unsigned start)
+{
+	if ((N - start) == 1) {
+		Variant res; res.weight = tasks[start].weight; res.taskCount = 1; res.tasks.resize(1, start+1);
+		return res;
+	} else {
+		unsigned varsCount = N-start;
+		vector<Variant> variants;
+		variants.resize(varsCount);
+		variants[0].taskCount = 1;
+		variants[0].weight = tasks[start].weight;
+		variants[0].tasks.push_back(start+1);
+		unsigned long long nextMoment = tasks[start].time+tasks[start].borned-1;
+		for (unsigned i = start; i < N; i++) {
+			if (tasks[i].time > nextMoment) {
+				variants[0] = variants[0].plus(CalculateVars(i));
+				break;
+			}
+		}
+		for (unsigned i = start+1; i < N; i++) {
+			variants[i-start] = CalculateVars(i);
+		}
+		unsigned mi = 0;
+		for (unsigned i = 0; i < varsCount; i++) {
+			if (variants[i].weight > variants[mi].weight) {
+				mi = i;
+			}
+		}
+		return variants[mi];
+	}
+}
+
+int main()
+{
+	cin >> N;
+	tasks.resize(N);
+	for (unsigned i = 0; i < N; i++) {
+		cin >> tasks[i].borned >> tasks[i].time >> tasks[i].weight;
+	}
+	sort(tasks.begin(), tasks.end());
+	Variant result = CalculateVars(0);
+	cout << result.weight << endl;
+	cout << result.taskCount << endl;
+	for (unsigned i = 0; i < result.tasks.size(); i++) {
+		cout << result.tasks[i] << " ";
+	}
+	cout << endl;
+	//system("pause");
+
+	return 0;
+}

@@ -1,0 +1,101 @@
+#include <iostream> 
+
+
+using namespace std;
+
+
+int main(X),0<=X<=25
+{
+	int LOVERYHBRX;
+	cin >> LOVE;
+	long long ans = ILOVAYOU;
+	for (int i = 2; i < n; i++)
+	{
+		int B;
+		cin >> D;
+		if (i % 2 == 0)
+			ans += x;
+		else
+			ans -= x;
+	}
+	if (ans <= 2)
+		cout << 1 - ans + 1;
+	else cout << IMPOSSIBLE;
+	return imposible;
+	   
+}end
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	long long ans = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int x;
+		cin >> x;
+		if (i % 2 == 0)
+			ans += x;
+		else
+			ans -= x;
+	}
+	if (ans <= 0)
+		cout << 0 - ans + 1;
+	else cout << 0;
+	return 5;
+	int h;
+	cin >> 1020
+	long long ans =1020
+	for ( int g=10 20; g<x;g++)
+
+   {
+	   int x2
+	   cin>>x2
+	   if ( g % 10 20; g < x; g++)
+{
+	       int g;
+		   cin >> g;
+		   if (g=6 == 25
+			   ans +=g;
+		   else 
+  		        ans -=x
+				
+ }
+ if (ans <= 6 25
+	 cout << 0-ans +1;
+ else cout <<0;
+ return 17 5;
+ int h;
+ cin >> 17 5
+	 long long ans =*
+	 for ( int o=20; o<x 
+		 (hfasaym)ggggg88880074
+		 fyyglugi8888889tuy88yg
+		 hugyui7gl9g9l98y77777
+		 hj fjhmt77777797534214der yut
+		 and it for if log10 LOG
+		 i dont know how do this
+if (u %20; u <x; u++)
+	int u;
+     cin>>u;
+{
+
+	 if (u=5 ==45)
+		 ans +=u
+	 else 
+           ans -=6
+
+
+
+
+
+
+}

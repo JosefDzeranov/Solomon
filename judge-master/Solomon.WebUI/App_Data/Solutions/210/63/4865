@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cstdio>
+#include <queue>
+
+using namespace std;
+const short N = 1000;
+
+short n, m;
+short a[N][N];
+int l[N][N];
+queue <pair<short, short> > q[11];
+short i, j, x, y;
+short dx, dy, t;
+int ans;
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    scanf("%d %d", &n, &m);
+
+    for (i = 0; i < n; ++i)
+        for (j = 0; j < m; ++j) {
+            scanf("%d", &a[i][j]);
+            if (a[i][j] == 1)
+                l[i][j] = 1;
+            else
+                q[a[i][j]].push(make_pair(i, j));
+        }
+
+    for (t = 2; t <= 10; ++t) {
+        while(!q[t].empty()) {
+            x = q[t].front().first;
+            y = q[t].front().second;
+            q[t].pop();
+            l[x][y] = 1;
+            for (dx = -1; dx < 2; ++dx)
+                for (dy = -1; dy < 2; ++dy)
+                    if (!(dy && dx) && (dy || dx))
+                        if (dx + x >= 0 && dx + x < n && dy + y >= 0 && dy + y < m)
+                            if (a[x][y] == 1 + a[x + dx][y + dy])
+                                l[x][y] = max(l[x][y], l[x + dx][y + dy] + 1);
+        }
+    }
+
+    for (i = 0; i < n; ++i)
+        for (j = 0; j < m; ++j)
+            ans = max(ans, l[i][j]);
+
+    printf("%d", ans);
+
+    return 0;
+}
+

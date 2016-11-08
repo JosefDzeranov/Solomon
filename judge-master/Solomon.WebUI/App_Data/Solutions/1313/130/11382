@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int up(int a, int b) {
+	if (a % b == 0) return a / b;
+	return a / b + 1;
+}
+
+int main() {
+	int a, b, c, d, i, j, sh = 0;
+	cin >> a >> b >> c >> d;
+	for (i = 1; i <= up(b, 2); i++) {
+		for (j = up(a, i); j < b / i; j++) {
+			if (j < i) j = i;
+			if (2 * (j + i) >= c && 2 * (j + i) <= d) sh++;
+		}
+	}
+	cout << sh;
+	return 0;
+}

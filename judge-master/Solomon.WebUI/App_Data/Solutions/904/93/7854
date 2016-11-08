@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int x,y,z,q,a,b,o;
+    cin>>x>>y>>z>>q;
+    a=x*60+y;
+    b=z*60+q;
+    o=b-a;
+    cout<<o/60<<" "<<o%60;
+    return 0;
+}

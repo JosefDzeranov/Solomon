@@ -1,0 +1,6 @@
+var x,y:integer;
+begin 
+writeln('¬ведите число (32)-число шариков(1<N=<1000000)');
+readln();
+writeln('4');
+end.

@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class sDecision{
+ static Scanner inputer = new Scanner(System.in);
+ static long cC[][] = new long[4][2];
+ static long sS,tS,sD,tD;
+ static int cISA = 0;
+ static long cIS[] = new long[3]; 
+ static String rA = "YES";
+ public static void main(String args[]){
+  cC[0][0]=inputer.nextLong(); cC[0][1]=inputer.nextLong();
+  cC[1][0]=inputer.nextLong(); cC[1][1]=inputer.nextLong();
+  cC[2][0]=inputer.nextLong(); cC[2][1]=inputer.nextLong();
+  cC[3][0]=inputer.nextLong(); cC[3][1]=inputer.nextLong();
+  
+  for(short cI=0;cI<=3;cI++){
+   for(short cO=0;cO<=3;cO++){
+    if(cI==cO)continue;
+	cIS[cISA]=gDistance(cC[cI][0],cC[cI][1],cC[cO][0],cC[cO][1]); cISA++;
+   }
+   if(cI==0){
+    if((cIS[0]>=cIS[1])&&(cIS[0]>=cIS[2]))sD=cIS[0];
+	 else if((cIS[1]>=cIS[0])&&(cIS[1]>=cIS[2]))sD=cIS[1];
+	 else sD=cIS[2];
+	sS=(cIS[0]+cIS[1]+cIS[2]-sD) / 2;
+	if((cIS[0]!=cIS[1])&&(cIS[1]!=cIS[2])&&(cIS[0]!=cIS[2]))rA="NO";
+   }
+   else{
+    if((cIS[0]>=cIS[1])&&(cIS[0]>=cIS[2]))tD=cIS[0];
+	 else if((cIS[1]>=cIS[0])&&(cIS[1]>=cIS[2]))tD=cIS[1];
+	 else tD=cIS[2];
+	tS=(cIS[0]+cIS[1]+cIS[2]-tD) / 2;
+	if((cIS[0]!=cIS[1])&&(cIS[1]!=cIS[2])&&(cIS[0]!=cIS[2]))rA="NO";
+	if((tD!=sD)||(tS!=sS))rA="NO";
+   }
+   cISA=0;
+  }
+  
+  System.out.print(rA);
+  
+ }
+ public static long gDistance(long x1, long y1, long x2, long y2){
+  long kx,ky = 0;
+  kx=Math.abs(x1-x2);
+  ky=Math.abs(y1-y2);
+  return(Math.round(Math.sqrt(ky*ky+kx*kx)));
+ }
+}

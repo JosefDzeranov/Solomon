@@ -1,0 +1,59 @@
+program Prices;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n  : integer;
+  k : integer;
+  i, j : integer;
+  a : array [1 .. 100000] of integer;
+  sums : array [1 .. 100000] of int64;
+  min : integer;
+  index : integer;
+
+function sumsInput : integer;
+var
+  i : integer;
+  acc : int64;
+  index : integer;
+
+begin
+  acc := 0;
+  for i := 1 to k do
+    acc := acc + a[i];
+  sums[1] := acc;
+  index := 2;
+  min := 0;
+  for i := k + 1 to n do
+    begin
+      acc := acc - a[i-k] + a[i];
+      sums[index] := acc;
+      inc(index);
+      if sums[index-1] > min then
+        min := sums[index-1];
+    end;
+  result := index - 1;
+end;
+
+begin
+  readln (n, k);
+  for i := 1 to n do
+    read (a[i]);
+  readln;
+  index := sumsInput;
+  for i := 1 to index do
+    begin
+    for j := 1 to index do
+      if abs(i - j) > 1 then
+        if sums[i] < sums[j] then
+          break;
+    if j = n then
+      if sums[i] < min then
+        min := sums[i];
+    end;
+  writeln (min);
+  readln;
+end.

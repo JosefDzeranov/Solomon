@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, one = 0, two = 0, k1, k2;
+    string battle;
+    cin>>n;
+    for(int i = 0;  i<n;    i++)
+    {
+        cin>>battle;
+        k1 = 0;
+        k2 = 0;
+        if(battle[0]=='>')  k1++;
+        if(battle[1]=='>')  k1++;
+        if(battle[2]=='<')  k2++;
+        if(battle[3]=='<')  k2++;
+        if(k1 < k2) two ++;
+        if(k2 < k1) one ++;
+    }
+    if(one > two)   cout<<1<<" "<<one - two;
+    if(two > one)   cout<<2<<" "<<two - one;
+    if(one == two)   cout<<0;
+    return 0;
+}

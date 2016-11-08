@@ -1,0 +1,27 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <inttypes.h>
+
+using namespace std;
+
+int main() {
+	string s;
+	unsigned long long sum, m;
+	
+	cin >> sum;
+	
+	sum = 0;
+	while (!cin.eof()) {
+		cin >> s;
+		if (s[0] >= '0' && s[0] <= '9') {
+			stringstream ss;
+			ss << s;
+			ss >> m;
+			sum += m;
+		}
+	}
+	cout << sum;
+	
+	return 0;
+}

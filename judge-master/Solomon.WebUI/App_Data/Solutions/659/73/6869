@@ -1,0 +1,16 @@
+var i,j,a,b,c:longint;
+begin
+readln(a);
+i:=0;
+j:=0;
+b:=0;
+c:=0;
+while b+c<a do begin
+i:=i+1;
+b:=b+i;
+if b+c<>a then
+j:=j+1;
+c:=c+j;
+end;
+writeln(i);
+end.

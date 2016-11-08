@@ -1,0 +1,36 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int kol(int num);
+
+int main(int argc, char *argv[])
+{
+    int N;
+    int res=0;
+    cin >> N;
+    
+    for (int i=1; i<=N; i++){
+        if (i%2==0){
+            res=res+kol(i);}
+    }
+    
+    cout << res << endl;
+    
+    //system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+int kol(int num)
+{
+    bool check =0;
+    int res = 0;
+    while(!check){
+        if (num%2==0){
+            res++;
+            num=num/2;}
+        else {check=1;}
+    }
+    return res;
+}

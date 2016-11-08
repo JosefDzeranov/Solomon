@@ -1,0 +1,14 @@
+#include "iostream"
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	long double a,b,c,d;
+	cin>>a>>b>>c>>d;
+	long long s;
+	s=sqrt((min(a,b)+min(c,d)));
+	cout<<s;
+	return 0;
+}

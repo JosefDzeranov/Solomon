@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace inna
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(s[0]);
+            int k = Convert.ToInt32(s[1]);
+            s = Console.ReadLine().Split(' ');
+            long[] a=new long[s.Length];
+            for (int i = 0; i < a.Length; i++)
+                a[i] = Convert.ToInt64(s[i]);
+            long sum = 0;
+            for (int i = 0; i < k; i++)
+                sum += a[i];
+            long maxsum2 = 0;
+            long maxsum = sum;
+            for (int i = k; i < a.Length; i++)
+            {
+                sum = sum - a[i - k];
+                sum = sum + a[i];
+                if (sum > maxsum)
+                {
+                    maxsum2 = maxsum;
+                    maxsum = sum;
+                }
+                else if (sum > maxsum2) maxsum2 = sum;
+            }
+            Console.WriteLine(maxsum2);
+        }
+    }
+}

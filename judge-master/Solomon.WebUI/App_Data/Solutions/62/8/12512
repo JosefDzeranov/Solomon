@@ -1,0 +1,17 @@
+
+ 
+package javaapplication;
+
+import java.util.Scanner;
+public class JavaApplication {
+
+  
+     public static void main(String[] args) 
+    {
+    Scanner cs = new Scanner (System.in);
+    int a = cs.nextInt(),b = cs.nextInt();
+    System.out.println();
+    System.out.print(a+b);
+    }
+    
+}

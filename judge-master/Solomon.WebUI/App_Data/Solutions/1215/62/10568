@@ -1,0 +1,8 @@
+var s:string;
+i,f:longint;
+begin
+readln(s);
+for i:=1 to (length(s) div 2) do begin if s[i]<>s[length(s)-i+1] then f:=f+1 end;
+if f <=1 then write('Yes');
+if f>2 then write('No');
+end.

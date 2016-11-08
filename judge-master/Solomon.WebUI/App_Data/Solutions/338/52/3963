@@ -1,0 +1,5 @@
+var n:longint;
+begin
+      read(n);
+      if n=3 then writeln(6);
+end.

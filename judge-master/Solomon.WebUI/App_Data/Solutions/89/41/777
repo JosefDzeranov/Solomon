@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{int x,n,i;
+string b,c;
+cin>>n;
+while(n>=2)
+{
+    x=n%2;
+    if(x==0){n=n/2;b=b+"*";}
+    else{n=n-1;b=b+"+";}
+}
+x=b.length();
+for(i=0;i<=x;i++)
+{
+    c=c+b[x-i];
+}
+cout<<c;
+    return 0;
+}

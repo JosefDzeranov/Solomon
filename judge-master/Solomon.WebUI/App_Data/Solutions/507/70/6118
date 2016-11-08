@@ -1,0 +1,93 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+Module Module1
+
+    Sub Main()
+        Dim taken As String
+        taken = Console.ReadLine '...
+        Dim cont() As String = Split(taken, " ")
+        Dim a As Double = cont(0)
+        Dim b As Double = cont(1)
+        Dim x As Double = cont(2)
+		Dim i As Integer
+		Dim U As Integer
+        Dim time2 As Double = a + b
+        Dim g As Boolean = False
+
+        Dim t As Integer = x / 1000
+
+        For i = 10000 To 1 Step -1
+            If x / i = b Then
+                wr(i)
+                g = True
+                Exit For
+            End If
+        Next
+
+        If g = False Then
+            For i = 10000 To 1 Step -1
+                If x / (i / 10) = time2 Then
+                    wr(i / 10)
+                    g = True
+                    Exit For
+                End If
+            Next
+        End If
+
+        If g = False Then
+            For i = 10000 To 1 Step -1
+                For u = 1 To 10
+                    If x / (i / 10) = time2 * u + b Then
+                        wr(i / 10)
+                        g = True
+                        Exit For
+                    End If
+                Next
+            Next
+        End If
+
+        If g = False Then
+            For i = 10000 To 1 Step -1
+                For u = 1 To 10
+                    If x / (i / 10) = time2 * u Then
+                        wr(i / 10)
+                        g = True
+                        Exit For
+                    End If
+                Next
+            Next
+        End If
+
+        If g = False Then
+            For i = 10000 To 1 Step -1
+                If b < x / (i / 10) Then
+                    If x / (i / 10) < time2 Then
+                        wr(i / 10)
+                        g = True
+                        Exit For
+                    End If
+                End If
+            Next
+        End If
+
+        If g = False Then
+            For i = 10000 To 1 Step -1
+                For u = 1 To 10
+                    If time2 * u < x / (i / 10) Then
+                        If x / (i / 10) < (time2 * u) + b Then
+                            wr(i / 10)
+                            g = True
+                            Exit For
+                        End If
+                    End If
+                Next
+            Next
+        End If
+
+    End Sub
+
+    Sub wr(ByVal text As String)
+        Console.WriteLine(text)
+    End Sub
+
+End Module

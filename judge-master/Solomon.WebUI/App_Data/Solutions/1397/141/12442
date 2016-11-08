@@ -1,0 +1,14 @@
+import math
+
+
+n, k = [int(i) for i in input().split()]
+ms = [int(i) for i in input().split()]
+mx = max(ms)
+mn = min(ms)
+d = 0
+for i in ms:
+    if math.fabs(mx - i) > d and math.fabs(mn - i) > d:
+        d = min(math.fabs(mx - i), math.fabs(mn - i))
+print(int(d))
+    
+    

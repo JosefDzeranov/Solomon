@@ -1,0 +1,13 @@
+program gazonokosilka;
+var
+ x,y,z,q:byte;
+ sec:longint;
+ rh,rm:byte;
+begin
+ readln(x,y,z,q);
+ sec:=(z*60*60+q*60)-(x*60*60+y*60);
+ rh:=sec div 60 div 60;
+ rm:=sec div 60 mod 60;
+ write(rh,' ',rm);
+ readln;
+end.

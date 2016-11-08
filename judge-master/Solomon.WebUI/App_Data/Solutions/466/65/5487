@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace a
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            Int64 a1 = Convert.ToInt64(ss[0]);
+            Int64 a2 = Convert.ToInt64(ss[1]);
+            Int64 a3 = Convert.ToInt64(ss[2]);
+            Int64 a4 = Convert.ToInt64(ss[3]);
+            double b = 0;
+            a1 = Math.Min(a1, a2);
+            a3 = Math.Min(a3, a4);
+            b = Math.Sqrt(a1 + a3);
+            a1 = Convert.ToInt64(b);
+            Console.WriteLine(a1);
+        }
+    }
+}

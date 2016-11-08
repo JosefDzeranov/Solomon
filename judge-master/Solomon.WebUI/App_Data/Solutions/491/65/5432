@@ -1,0 +1,23 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,c,d:int64;  i:integer;
+begin
+readln(a1,a2,a3,a4);
+if a1>a2 then
+if c mod 2 =1 then a1:=a2;
+if a3>a4 then a3:=a4;
+c:=a1+a3;c:=c-1;
+d:=c div 2;
+a4:=0;
+while c>d do
+begin
+a4:=a4+1;
+c:=c-a4;
+end;
+writeln(a4);
+end.

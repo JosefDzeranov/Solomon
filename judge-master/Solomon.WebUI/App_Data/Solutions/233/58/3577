@@ -1,0 +1,26 @@
+program E1;
+type byteset = set of byte;
+var a: array[1..100]of int64;
+	n, i: byte;
+	t: int64;
+function f(s, target: int64; used: byteset): int64;
+var min, k: int64;
+	i: byte;
+begin
+	min:=s;
+	for i:=1 to n do if not (i in used) then
+	begin
+		k:=f(s+a[i],target,used+[i]);
+		if abs(k-target)<abs(min-target) then min:=k;
+	end;
+	f:=min;
+end;
+begin
+	readln(n);
+	t:=0;
+	for i:=1 to n do begin
+		read(a[i]);
+		t:=t+a[i];
+	end;
+	writeln(abs(2*f(0,t div 2,[])-t));
+end.

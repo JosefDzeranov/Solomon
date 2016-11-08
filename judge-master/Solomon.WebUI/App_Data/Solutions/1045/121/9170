@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, m, o, n_past, m_del;
+            string nn = Console.ReadLine(), mm = Console.ReadLine();
+            
+            n=Convert.ToInt32(nn);
+            n_past = n;
+            n=n*n;
+            m=Convert.ToInt32(mm);
+            m_del = m;
+
+            //
+            if (n < 1)                                              //если юзер вводит число n<1, то присваиваем n значение 1
+                n = 1;
+            if (m < 0)                                              //если юзер вводит число m<0, то присваиваем m значение 0
+                m = 0;
+            if (m > 1000000)                                        //если юзер вводит число m>1000000, то присваиваем m значение 1000000
+                m = 1000000;
+            
+            o = n - m;
+            
+            if (o < 0)                                              //если n<m, то присваиваем переменной m значиение n
+                m = n;
+
+            o = n - m;
+            //
+
+            if (o == 0)                                             //если вырезали 0 клеток, то
+                Console.WriteLine("No");                              //нет, т.к. квадрат не вырезали, он не тронут, квадрата-2 нет, все дела...
+            else if (o == 1)                                        //если вырезали клетку, то
+                Console.WriteLine("Yes");                             //всё-таки квадратик 1х1
+            else if (m < ((n_past * 2) - 1))                        //если не вырезана последняя "линия" квадратиков в квадрате-1, то
+                Console.WriteLine("No");                              //Nein!
+            else
+                for (int i = n_past; i > 0; i--)                    //в цикле проделываем: см. 2 коммента выше
+                {
+                    if (m_del < (i * 2 - 1))
+                    {
+                        i = -1;                                     //выход изцикла
+                        Console.WriteLine("No");
+                    }
+                    else
+                        m_del = m_del - ((i * 2) - 1);              //если всё-таки линия сбита
+
+                    if (m_del==0)                                   //ты ноль?
+                    {
+                        if (i > 0)                                  //цикл не закончен?
+                        {
+                            i = -1;
+                            Console.WriteLine("Yes");
+                        }
+                    }
+                }
+        }
+    }
+}

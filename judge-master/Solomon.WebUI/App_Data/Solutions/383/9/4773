@@ -1,0 +1,22 @@
+var a,b,c,n,i,k,j:integer;
+BEGIN
+  readln(k);
+  read(n,a,b,c);
+  if b>A then begin
+    i:=a;
+    a:=b;
+    b:=i;
+  end;
+  if c>b then begin
+    i:=c;
+    c:=b;
+    b:=i;
+  end;
+  if b>A then begin
+    i:=a;
+    a:=b;
+    b:=i;
+  end;
+  if k=1 then if a+b>n then writeln(a+b-n) else writeln('0')
+         else writeln(a);
+END.

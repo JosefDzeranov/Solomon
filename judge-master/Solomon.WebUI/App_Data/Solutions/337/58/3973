@@ -1,0 +1,20 @@
+var a:array[0..200000]of longint;
+        b:array[0..2000000]of byte;
+        i,j,min,n:longint;
+begin
+        readln(n);
+        for i:=1 to n do
+        read(a[i]);
+        b[0]:=1;
+        for i:=1 to n do
+        for j:=20000 downto 0 do
+        if b[j]=1 then b[j+a[i]]:=1;
+      {  for i:=0 to 100 do
+        write(b[i],' ');
+        writeln; }
+        min:=maxlongint;
+        for i:=1 to 20000 do
+                for j:=1 to i-1 do
+                if (b[i]=1)and(b[j]=1)and(abs(i-j)<min) then min:=abs(i-j);
+        writeln(min);
+end.

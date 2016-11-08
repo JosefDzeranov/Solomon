@@ -1,0 +1,74 @@
+program mars_factorials;
+
+var
+  p: array [0..1000] of longint;
+  a: array [0..1000] of longint;
+  pn: longint;
+
+  min, i, j, k, l, m, n: longint;
+  f: boolean;
+
+function find(n, m: longint): longint;
+var
+  r: longint;
+begin
+  r := 0;
+  while n > 0 do
+  begin
+    r := r + n div m;
+    n := n div m;
+  end;
+  find := r;
+end;
+
+begin
+
+
+  read(n, k);
+
+  p[1] := 2;
+  pn := 1;
+  i := 3;
+  while i <= k do
+  begin
+    j := 1;
+    f := true;
+    while (p[j] * p[j] <= i) do
+    begin
+      if i mod p[j] = 0 then
+      begin
+        f := false;
+        break;
+      end;
+      inc(j);
+    end;
+    if f then
+    begin
+      inc(pn);
+      p[pn] := i;
+    end;
+    inc(i, 2);
+  end;
+
+  for i := 1 to pn do
+    a[i] := find(n, p[i]);
+
+  min := maxlongint;
+  for j := 1 to pn do
+  begin
+    l := 0;
+    while k mod p[j] = 0 do
+    begin
+      k := k div p[j];
+      inc(l);
+    end;
+    if l > 0 then
+    begin
+      if a[j] div l < min then
+        min := a[j] div l;
+    end;
+  end;
+  if min = maxlongint then min := 0;
+
+  writeln(min);
+end.

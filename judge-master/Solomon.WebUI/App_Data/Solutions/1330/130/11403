@@ -1,0 +1,47 @@
+/*#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int n,p,k,dd=0;
+    cin>>n>>p;
+    int a[100001];
+    for (int i=0; i<n; i++)
+    {
+        cin>>a[i];
+
+    }
+    cin>>k;
+    int y[k],x[k];
+    for (int i=0; i<k;i++)
+    {
+        cin>>y[i]>>x[i];
+    }
+
+    return 0;
+}
+*/
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a,b,c,d,z=0;
+    cin>>a>>b>>c>>d;
+    for (int i=0; i<=d; i++)
+    {
+        for (int j=0;  j<=d ; j++)
+        {
+           if (i*j<=b && i*j>=a && 2*(i+j)>=c && 2*(i+j)<=d)
+            z++;
+        }
+
+    }
+    if (z%2==0)
+    cout<<z/2;
+    else
+        cout<<z/2+1;
+    return 0;
+}

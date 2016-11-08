@@ -1,0 +1,63 @@
+import java.util.Scanner;
+import java.lang.StringBuilder;
+import java.lang.System;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+	    Scanner sc = new Scanner(System.in);
+        int box_num, balls_num, box_par, color_par;
+        box_num=balls_num=box_par=color_par=0;
+        if (sc.hasNextInt()) {
+            box_num = sc.nextInt();
+        }
+        else
+        System.exit(-1);
+
+        if(box_num < 2 || box_num > 10) {
+            System.exit(-1);
+        }
+
+
+        if (sc.hasNextInt()) {
+            balls_num = sc.nextInt();
+        }
+        else
+        System.exit(-1);
+
+
+        int[][] Boxes = new int[box_num][balls_num];
+        for(int i=0;i<box_num;i++) {
+            for (int j = 0; j < balls_num; j++) {
+                Boxes[i][j] = -1;
+            }
+        }
+        for(int i=0;i<balls_num;i++)
+        {
+            if(sc.hasNextInt()) {
+                color_par = sc.nextInt() - 1;
+            }
+            else
+            System.exit(-1);
+
+            if (sc.hasNextInt()) {
+                box_par = sc.nextInt() - 1;
+            }
+            else
+            System.exit(-1);
+
+            if(color_par < 0 || box_par < 0 || color_par >= box_num || box_par >=box_num) {
+                System.exit(-1);
+            }
+
+            Boxes[box_par][i]=color_par;
+
+        }
+
+        int counter=0;
+        StringBuilder sb = new StringBuilder();
+        boolean hasChanged = false;
+}
+}

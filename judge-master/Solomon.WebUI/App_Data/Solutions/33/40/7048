@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+int main() {
+	string s, x, t;
+	getline(cin, s);
+	int q=0;
+	for (int i=0; i<s.size(); i++) {
+		if (s[i]!='+'&&s[i]!='-'&&s[i]!='#') {
+			t=s[i];
+			x.insert(q,t);
+			q++;
+		}
+		if (s[i]=='+'&&q<x.size()) {
+			q++;
+		}
+		if (s[i]=='-'&&q>0) {
+			q--;
+		}
+		if (s[i]=='#'&&q>0) {
+			x.erase(x.begin()+q-1);
+			q--;
+		}
+	}
+	cout << x;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

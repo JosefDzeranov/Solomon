@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,l,k1,k2 : longint;
+begin
+readln(a1,a2,a3,a4);
+k1:= (a1+a2) div 2;
+k2:= (a3 + a4) div 2;
+l:= ((k1 +k2)-(k1+k2)mod 4)div 4 ;
+writeln(l+1);
+readln;
+end.

@@ -1,0 +1,16 @@
+var b,c:integer; N,a,i:longint;
+begin
+  c:=0;
+  read(N);
+  for i:=1 to N do begin
+    a:=i;
+    b:=0;
+    while b=0 do
+    begin
+      b:=a mod 2;
+      a:=a div 2;
+      if b=0 then c:=c+1;
+    end;
+  end;
+  write(c);
+end.

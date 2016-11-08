@@ -1,0 +1,14 @@
+program olimp1; 
+var N: integer;
+    x, y, z: integer;
+begin
+    read(N);
+    if(N>=3)and(N<=1000)then begin
+      y:=N-1;
+      z:=N-2;
+      x:= n*y*z;
+      write(x);
+      end
+    else write('Неверно');
+   
+    end.

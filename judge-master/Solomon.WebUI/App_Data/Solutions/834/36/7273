@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b : string;
+i : integer;
+begin
+readln(a);
+for i := 1 to length(a) do
+begin
+if a[i]<>'#' then b:=b+a[i]
+else delete(b,length(b),1);
+end;
+writeln(b);
+readln;
+end.

@@ -1,0 +1,37 @@
+def divr(ii):
+    if(a[ii] % 2 == 0):
+        return a[:ii] + [int(a[ii] / 2), int(a[ii] / 2)] + a[ii + 1:]
+    else:
+        return a[:ii] + [int(a[ii] / 2), int(a[ii] / 2) + 1] + a[ii + 1:]
+    
+def kv():
+    su = 0
+    for i in range(len(a)):
+        su += a[i] ** 2;
+    return su
+    
+
+n, p = list(map(int, input().rstrip().split()))
+a = list(map(int, input().rstrip().split()))
+k = int(input())
+sua = []
+for i in range(k):
+    sua.append(kv())
+    e, v = list(map(int, input().rstrip().split()))
+    v -= 1
+    if(e == 2):        
+        a = divr(v)
+    else:
+        if(v == 0):
+            a = [a[0] + a[1]] + a[2:]
+        elif(v == len(a) - 1):
+            a = a[:len(a) - 2] + [a[-1] + a[-2]]
+        else:
+            if(a[v] % 2 == 0):
+                a = a[:v - 1] + [int(a[v] / 2) + a[v - 1], int(a[v] / 2) + a[v + 1]] + a[v + 2:]
+            else:
+                a = a[:v - 1] + [int(a[v] / 2) + a[v - 1], int(a[v] / 2) + 1 + a[v + 1]] + a[v + 2:]
+    
+for i in sua:
+    print(i)
+print(kv())

@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int N, sum, average, replaces, temp;
+    sum = 0;
+    replaces = 0;
+    scanf("%d", &N);
+    int arr[N];
+    for(int i = 0; i<N; ++i)
+    {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+    if(sum%N != 0)
+    {
+        printf("IMPOSSIBLE");
+        return 1;
+    }
+    average = sum/N;
+    for(int i = 0; i<N; ++i)
+    {
+        temp = (average-arr[i]<0)?arr[i]-average:average-arr[i];
+        replaces += temp;
+    }
+    printf("%d", replaces/2);
+    return 1;
+
+}

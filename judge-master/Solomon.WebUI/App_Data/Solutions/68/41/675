@@ -1,0 +1,36 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var N:integer;
+  s:string;
+  l,i:integer;
+  c:char;
+begin
+readln(N);
+s := '';
+  while N>1 do
+    if n mod 2 = 0 then
+    begin
+    s := s + '*';
+    n:=n div 2;
+    end
+    else
+    begin
+    s := s + '+';
+    n:=n - 1;
+    end;
+l := length(s);
+for i := 1 to (l div 2) do
+ begin
+ c:=s[i];
+ s[i]:=s[l - i + 1];
+ s[l-i+1]:=c;
+ end;
+ writeln(s);
+readln;
+end.
+

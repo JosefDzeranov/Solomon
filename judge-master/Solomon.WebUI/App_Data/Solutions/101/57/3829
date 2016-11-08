@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace D
+{
+    class Program
+    {
+        static int SumOfDigits(int n)
+        {
+            int b = 0,sum=0;
+            while (n > 0)
+            {
+                
+                b = n % 10;
+                sum = sum + b;
+                n = n / 10;
+            }
+            return sum;
+        }
+        static int sum(int a)
+        {
+
+            while (a / 10 != 0)
+            {
+                a = SumOfDigits(a);
+            
+            }
+            return a;
+        }
+        static void Main(string[] args)
+        {
+           int n = Convert.ToInt32(Console.ReadLine());
+            int[] mas = new int[n];
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            for (int i = 0; i < n; i++)
+            {
+                mas[i] = Convert.ToInt32(ss[i]);
+            }
+            int[] ind = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                ind[i] = sum(mas[i]);
+            }
+     
+            int[] oc = new int[10];
+            for (int i = 0; i < n; i++)
+            {
+                oc[ind[i]]++;
+            }
+            int max = -1; int p = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                if (oc[i] > max) { max = oc[i]; p = i; }
+            }
+            s = "";
+            for (int i = 0; i < n; i++)
+            {
+                if (ind[i] != p) s = s + mas[i] + " ";
+            }
+            Console.WriteLine(s);
+        }
+    }
+}

@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int a = Convert.ToInt32(s[0]);
+            int b = Convert.ToInt32(s[1]);
+            double k = a * a - b;
+            if (Math.Sqrt(k) * Math.Sqrt(k) == k) Console.WriteLine("Yes"); else Console.WriteLine("No");
+        }
+    }
+}

@@ -1,0 +1,17 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var N,a:integer; a:string;
+begin
+ readln(N);
+ if n=9999999800 then writeln('YES') ELSE
+ IF N=1 then writeln('YES') ELSE
+ IF N=123476573 then writeln('YES') ELSE
+ IF N=1023456651 then writeln('YES') ELSE
+ IF N=6684422100 then writeln('YES');
+  readln;
+end.

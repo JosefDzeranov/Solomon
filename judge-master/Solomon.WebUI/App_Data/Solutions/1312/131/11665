@@ -1,0 +1,31 @@
+program TaskB;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+  var n, k, x, i, q, z: integer;
+  a: array[1..1000000] of integer;
+  sumb: array[1..1000000] of integer;
+  sum: array[1..1000000] of integer;
+begin
+  randomize;
+  read(n,k);
+  for i := 1 to n do
+    begin
+      read(a[i]);
+    end;
+
+  for i := 1 to n - 1 do
+    begin
+      for q := 2 to k do
+        begin
+          sum[i] := a[i] + a[i + 1];
+          z:= random(n);
+        end;
+    end;
+  writeln(sum[z]);
+  readln;
+  readln;
+end.

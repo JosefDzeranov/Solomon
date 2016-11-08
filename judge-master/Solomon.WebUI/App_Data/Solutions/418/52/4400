@@ -1,0 +1,43 @@
+//
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cmath>
+#include <algorithm>
+#include <set>
+#include <map>
+#include <iomanip>
+#include <iterator>
+#include <climits>
+//#include <conio.h>
+#include <cstring>
+using namespace std;
+#define c(i,s,f) for(int i=s;i<=f;i++)
+#define cr(i,s,f) for(int i=s;i>=f;i--)
+#define pb push_back
+#define mp make_pair
+#define all(c) c.begin(),c.end()
+#define FILEIN 0
+#define MSVIS 0
+typedef unsigned long long int ull;
+typedef long long int ll;
+typedef long double ld;
+const ld eps=1e-9;
+const int inf=LONG_MAX;
+struct pt {int x,y;};
+#if FILEIN
+ifstream in("input.txt");
+ifstream out("output.txt");
+#endif
+int main(){
+    int N;
+    cin>>N;
+    vector<vector<int> > C(N+1,vector<int>(4,0));
+    c(i,0,N) C[i][0]=1;
+    c(i,0,3) C[i][i]=1;
+    c(i,1,N) c(j,1,3) C[i][j]=C[i-1][j]+C[i-1][j-1];
+    cout<<C[N][3]*6;
+#if MSVIS
+    getch();
+#endif
+}

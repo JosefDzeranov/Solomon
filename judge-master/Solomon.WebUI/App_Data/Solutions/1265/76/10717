@@ -1,0 +1,20 @@
+{$h+}
+var n,c,c1,c2,kol,i,j,k:integer;s:string;
+begin
+readln(n);
+for i:=1 to n do begin
+readln(s);
+j:=1;
+while j<= length(s) do begin 
+c:=0;
+if (ord(s[j])>=ord('0')) and (ord(s[j])<=ord('9'))  then 
+begin 
+val(copy(s,j,1),c,k);
+if (length(s)>=j+1)and (ord(s[j+1])>=ord('0')) and (ord(s[j+1])<=ord('9')) then val(copy(s,j+1,1),c1,k);
+if (length(s)>=j+2)and (ord(s[j+2])>=ord('0')) and (ord(s[j+2])<=ord('9')) then  val(copy(s,j+2,1),c2,k);
+end;
+kol:=kol+c2*100+c1*10+c;
+if c=0 then j:=j+1 else j:=j+3;end;end;
+write(kol);
+end.
+

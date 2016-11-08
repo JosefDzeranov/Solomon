@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+b,n,k,j,i:integer;
+a,l:array[1..10000] of integer;
+begin
+readln(k,n);
+for i := 1 to k do
+ read(a[i]);
+b:=1;
+for i := k downto 1 do
+ begin
+ l[b] := a[i] - a[1];
+ b:=b+1;
+ end;
+writeln(1);
+readln;
+readln;
+end.

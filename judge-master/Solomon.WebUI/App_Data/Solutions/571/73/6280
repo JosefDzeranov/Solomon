@@ -1,0 +1,15 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,s,x,y : longint;
+i : integer;
+begin
+y:= 1;
+readln(n);
+writeln(trunc(sqrt(n*2)));
+readln;
+end.

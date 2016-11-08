@@ -1,0 +1,46 @@
+var
+        a : array[0..1 shl 10] of Int64;
+        n, i, j, y : LongInt;
+        x, cnt : Int64;
+begin
+        ReadLn (n);
+
+        a[1] := 1;
+
+        for i := 1 to n do
+        begin
+                Read (x);
+
+                y := 0;
+
+                if x = 0 then
+                begin
+                        Inc (a[1]);
+
+                        Continue;
+                end;
+
+                while x > 0 do
+                begin
+                        y := y or (1 shl (x mod 10));
+
+                        x := x div 10;
+                end;
+
+                Inc (a[y]);
+        end;
+
+        for i := 0 to 1023 do
+        begin
+                for j := i to 1023 do
+                        if i and j <> 0 then
+                        begin
+                                if i <> j then
+                                        cnt := cnt + a[i]*a[j]
+                                else
+                                        cnt := cnt + (a[i]*(a[i]-1)) div 2;
+                        end;
+        end;
+
+        WriteLn (cnt);
+end.

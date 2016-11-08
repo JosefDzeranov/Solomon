@@ -1,0 +1,16 @@
+program olymp3;
+var a,k: array [1..10000] of integer;
+f, i,j, n: integer;
+begin
+read(n);
+f:=1;
+for i:=1 to 10 do begin
+f:=f*2;
+for j:=1 to n do
+if j mod f =0 then a[j]:=a[j]+1;
+end;
+k[1]:=0;
+for i:=2 to n do 
+if i mod 2=0 then k[i]:=k[i-1]+a[i] else k[i]:=k[i-1];
+writeln(k[n]);
+end.

@@ -1,0 +1,25 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var x:array[1..4] of longword;
+z:longword;
+i:integer;
+begin
+for i:=1 to 4 do
+read(x[i]);
+z:=0;
+if x[1]<x[2] then
+z:=x[1] else
+z:=x[2];
+if x[3]<x[4] then
+z:=z+x[3]
+else
+z:=z+x[4];
+z:=trunc(sqrt(z));
+writeln(z);
+readln;
+readln;
+end.

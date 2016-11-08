@@ -1,0 +1,15 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,x3,x4 : int64;
+begin
+readln(x1,x2,x3,x4);
+if(x1 < x2) Then x1:= x1 Else x1:= x2;
+if(x3 < x4) Then x3:= x3 Else x3:= x4;
+writeln(trunc(sqrt(x1 + x3)));
+readln;
+end.

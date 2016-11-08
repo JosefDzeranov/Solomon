@@ -1,0 +1,27 @@
+﻿using System;
+
+
+namespace Balaev
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите натуральное число не > 1000000: ");
+				int I=1;
+                int N = int.Parse(Console.ReadLine());
+                int n = 1;
+                while (n<N)
+                {
+					I++; 
+                    n+=I; 
+					                   
+                }
+				if(n == N)
+					Console.Write(I);  
+            
+           Console.ReadKey();
+
+        }
+    }
+}

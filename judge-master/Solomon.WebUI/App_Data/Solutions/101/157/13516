@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace _3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int kol=0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 != 0) kol++;
+            }
+            if (n == 1) { Console.WriteLine("Timur"); }
+            else
+                if (kol % 2 == 0) Console.WriteLine("Aslan");
+                else Console.WriteLine("Timur");
+        }
+    }
+}

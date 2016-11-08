@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int x,z,y,q;
+	cin>>x>>y;
+	cin>>z>>q;
+	int a,b,c;
+	a=x*60;
+	b=z*60;
+    c=(a+y)-(b+q);
+	cout<<c/60<<" "<<c%60;
+	return 0;
+}

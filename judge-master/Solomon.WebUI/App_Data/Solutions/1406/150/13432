@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+
+int sum(int n)
+{
+  int k,r,s;
+    
+  k=n;
+  while(k>9)
+  {
+    r=0;
+    while(n>0)
+    {
+      s=n%10;
+      r+=s;
+      n/=10;          
+    }
+    k=r;
+    n=k;
+  }
+  
+  return k;
+}
+
+int main()
+{
+  //freopen("dit.in","r",stdin);
+  //freopen("dit.out","w",stdout);
+  
+  char str[101];
+  int r,i,s;
+  
+  scanf("%s",&str);
+  
+  r=strlen(str);
+  s=0;
+  for(i=0;i<r;i++)
+    if(str[i]=='*') s+=i;
+  
+  if(s>9) 
+  {
+    s=sum(s);
+    printf("%d\n",s);
+  }else printf("%d\n",s);
+  return 0;
+}

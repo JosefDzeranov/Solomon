@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	long long a,k,b,m,x,ans=0;
+	cin>>a>>k>>b>>m>>x;
+	
+	long long left = 1, right = x;
+	long long med = 0, j = 0;
+	while (left + 1 < right )
+	{
+		med = (left + right) / 2;
+		//j= (med / k) * h + (med % k) * a + (med / m) * h1 + (med % m) * b; 
+		j = (med - med / k) * a + (med - med / m) * b; 
+		if (j <= x) left = med;
+		else 
+			right = med;
+	}
+	cout<< left;
+return 0;
+}

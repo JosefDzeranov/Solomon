@@ -1,0 +1,37 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+{var n,m,k,i:integer;  a:array[1..1000,1..1000] of integer;  c:uint64;
+begin
+readln(n,m,k);
+for I := 1 to n do
+  for j := 1 to m do
+
+    
+sr:=(n+2) div 3;
+a:=sr-1;
+b:=sr;
+c:=sr+1;
+if a+b+c>n then a:=a-1;
+if (a+b+c>n) then b:=b-1;
+writeln(a,' ',b,' ',c); }
+
+
+var s:string;  i:integer;  sum,st:uint64;
+begin
+   readln(s);
+   st:=1;
+   sum:=0;
+   for i:=length(s) downto 1 do
+   begin
+     if s[i]='*' then
+      sum:=sum+st;
+     st:=st*2;
+   end;
+   writeln(sum);
+end.
+

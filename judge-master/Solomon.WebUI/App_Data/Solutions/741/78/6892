@@ -1,0 +1,10 @@
+var
+x,y,z:integer;
+begin
+read (x);read(y);
+if (x>=1) and (x<=1000) and (y<=1000) and (y>=1) then
+begin
+z:=(x+y)*x;
+write (z);
+end;
+end.

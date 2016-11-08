@@ -1,0 +1,18 @@
+program Decision;
+var
+ n,i,k,s,m:integer;
+ a:array[1..50]of integer;
+begin
+ readln(n);
+ for i:=1 to n do read (a[i]);
+ for i:=1 to n do s:=s+a[i];
+ if s mod n<> 0 then writeln('IMPOSSIBLE')
+ else
+  begin
+   m:=s div n;
+   k:=0;
+   for i:=1 to n do
+   k:=k+abs(a[i]-m);
+   writeln(k div 2);
+  end;
+end.

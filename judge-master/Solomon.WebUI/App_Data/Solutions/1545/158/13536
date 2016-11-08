@@ -1,0 +1,14 @@
+program qq;
+var s:string;
+      i,k,c:integer;
+begin
+  readln(s);
+  c:=0;
+  while length(s)>=12 do begin
+    k:=pos('vkontakte', s);
+    for i:=k+9 to length(s)-2 do
+      if s[i]+s[i+1]+s[i+2]='api' then c:=c+1;
+    delete(s,1,k+8);
+  end;
+  write (c);
+end.

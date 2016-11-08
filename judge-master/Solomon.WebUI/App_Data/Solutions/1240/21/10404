@@ -1,0 +1,139 @@
+TYPE
+  TAns = Record
+    a,b,c,d,kol: LongInt;
+  End;
+VAR  
+  f: Boolean;
+  n,k,i,j,ind,jnd,mn_kol: LongInt;
+  res: Array [0..16] of LongInt;
+  sh,zn,pr: Array [1..10] of Array [1..10] of LongInt;
+  d: Array of TAns;
+
+  Function Min(a,b: LongINt): LongInt;
+  Begin
+    if (a < b) then Min := a
+    Else Min := b;
+  End;
+  
+  Function Min_sh(ind,jnd: LongInt): LongInt;
+  Var 
+    mn,i,j: LongINt;
+    res: Array [0..12] of LongInt;
+  Begin
+    i := jnd;
+    j := zn[ind][jnd]+1;
+    res[0] := zn[ind][jnd]+1;
+    While (j > 0)and(i > 0) do begin
+      res[j] := i;
+      i := pr[ind][i];
+      Dec(j);
+    End;
+  
+    mn := 150;
+    For i := 1 to res[0]-1 do
+      mn := Min(mn, sh[res[i]][res[i+1]]);
+      
+    If (sh[jnd][ind] > 0) then mn := Min(mn, sh[jnd][ind]);
+    
+    Min_sh := mn;
+  End;
+  
+  Procedure Add_res(a0,b0,c0,d0,k0: LongINt);
+  Begin
+    SetLength(d, Length(d)+1);
+    d[Length(d)-1].a := a0;
+    d[Length(d)-1].b := b0;
+    d[Length(d)-1].c := c0;
+    d[Length(d)-1].d := d0;
+    d[Length(d)-1].kol := k0;
+  End;
+
+BEGIN
+  //Assign(input,'input.txt'); ReSet(input);
+// Input
+  Read(n,k);
+  For i := 1 to k do begin
+    Read(ind,jnd);
+    if (ind <> jnd) then Inc(sh[ind][jnd]);
+  End;
+
+// Algorithm
+  While true do begin
+    // Поиск миним. цикла
+    For i := 1 to n do
+      For j := 1 to n do
+        if (i = j) then begin             zn[i][i] := 0; pr[i][i] := 0; end
+        else if (sh[i][j] > 0) then begin zn[i][j] := 1; pr[i][j] := i; end
+        else zn[i][j] := 15;
+
+    For i := 1 to n do
+      For j := 1 to n do
+        For k := 1 to n do
+          if (zn[i][j] > zn[i][k] + zn[k][j]) then begin
+            zn[i][j] := zn[i][k] + zn[k][j];
+            pr[i][j] := pr[k][j];
+         end;    
+    
+    ind := 1;
+    jnd := 1;
+    mn_kol := 0;
+    For i := 1 to n do
+      For j := 1 to n do
+        if (zn[i][j] = 15)or(zn[i][j] = 0) then Continue
+        else if (sh[j][i] > 0)and(sh[jnd][ind] = 0) then begin 
+          ind := i; jnd := j; mn_kol := Min_sh(i,j); end
+        else if (sh[j][i] * sh[jnd][ind] > 0)and(zn[i][j] < zn[ind][jnd]) then begin 
+          ind := i; jnd := j; mn_kol := Min_sh(i,j); end
+        else if (sh[j][i] + sh[jnd][ind] = 0)and(zn[i][j] < zn[ind][jnd]) then begin 
+          ind := i; jnd := j; mn_kol := Min_sh(i,j); end
+        else if (zn[i][j] = zn[ind][jnd])and(mn_kol < Min_sh(i,j))and
+        ((sh[j][i] * sh[jnd][ind] > 0)or(sh[j][i] + sh[jnd][ind] = 0)) then begin 
+          ind := i; jnd := j; mn_kol := Min_sh(i,j); end
+        else if (zn[ind][jnd] = 0)and(zn[i][j] > 0) then begin
+          ind := i; jnd := j; mn_kol := Min_sh(i,j); end;
+        
+    // Удаление миним. цикла
+    i := jnd;
+    j := zn[ind][jnd]+1;
+    res[0] := zn[ind][jnd]+1;
+    While (j > 0)and(i > 0) do begin
+      res[j] := i;
+      i := pr[ind][i];
+      Dec(j);
+    End;
+    
+    // Выбор способа обмена
+      For i := 2 to res[0]-1 do begin
+        Add_res(res[1], res[i], res[i], res[i+1], mn_kol);
+        sh[res[1]][res[i]] := sh[res[1]][res[i]] - mn_kol;
+        sh[res[i]][res[i+1]] := sh[res[i]][res[i+1]] - mn_kol;
+        sh[res[1]][res[i+1]] := sh[res[1]][res[i+1]] + mn_kol;
+      end;
+      
+      if (sh[jnd][ind] > 0) then begin
+        Add_res(ind, jnd, jnd, ind, mn_kol);
+        sh[jnd][ind] := sh[jnd][ind] - mn_kol;
+        sh[ind][jnd] := sh[ind][jnd] - mn_kol; end
+      else begin
+        Add_res(ind, jnd, jnd, -1, mn_kol);
+        sh[ind][jnd] := sh[ind][jnd] - mn_kol;
+      end;
+  
+  // Проверка
+    f := false;
+    For i := 1 to n do
+      For j := 1 to n do
+        If (sh[i][j] > 0) then f := true;
+    if (not f) then Break;
+  End;
+
+  j := 0;
+  For i := 0 to Length(d)-1 do
+    j := j + d[i].kol;
+  
+  Writeln(j);
+  For i := 0 to Length(d)-1 do
+    For j := 1 to d[i].kol do
+      if (d[i].d > -1) then Writeln(d[i].a,' ',d[i].b,' ',d[i].c,' ',d[i].d)
+      else Writeln(d[i].a,' ',d[i].b,' ',d[i].c);
+END.

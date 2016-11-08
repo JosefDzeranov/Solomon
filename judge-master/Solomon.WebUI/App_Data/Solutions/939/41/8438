@@ -1,0 +1,28 @@
+program getMin;
+var
+ gN,gM:longint;
+ cS:array[1..64000] of char;
+ cI:longint;
+ cSA:word;
+begin
+ readln(gM);
+ gN:=gM;
+ while gN<>1 do
+  begin
+   if gN mod 2=0 then
+    begin
+     gN:=gN div 2;
+     cSA:=succ(cSA);
+     cS[cSA]:='*';
+    end
+   else
+    begin
+     gN:=gN-1;
+     cSA:=succ(cSA);
+     cS[cSA]:='+';
+    end;
+  end;
+
+ for cI:=cSA downto 1 do write(cS[cI]);
+ readln;
+end.

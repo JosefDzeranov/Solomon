@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int a[1000][1000];
+string s[1000];
+int n;
+int color[1000];
+const int white = 0, black = 2,  grey = 1;
+int ans1 = 0, ans2 = 0;
+
+string str_beg(string ss)
+{
+    ss = ss[0] + ss[1] + ss[2];
+    return ss;
+}
+
+string str_end(string ss)
+{
+    ss = ss[ss.size() - 3] + ss[ss.size() - 2] + ss[ss.size() - 1];
+    return ss;
+}
+
+void zapol_ar()
+{
+    for (int i = 0; i < n; i++)
+    {
+        string s_b = str_beg(s[i]);
+        string s_e = str_end(s[i]);
+        for (int j = 0; j < n; j++)
+            if (i != j)
+            {
+                if (s[j].size() >= 3 && s_b == str_end(s[j]))
+                    a[i][j] = 1;
+
+                if (s[j].size() >= 3 && s_e == str_beg(s[j]))
+                    a[j][i] = 1;
+            }
+    }
+
+}
+
+void out()
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+            cout << a[i][j] << " ";
+
+        cout << endl;
+    }
+}
+
+void dfs (int v, int gl, int si)
+{
+    bool f = 0;
+    si += s[v].size();
+
+    if (ans1 < gl)
+    {
+        ans1 = gl;
+        if (ans2 < si)
+            ans2 = si;
+    }
+
+    for (int i = 0; i < n; i++)
+        if (a[v][i] == 1 && color[i] == white)
+            color[i] = grey, dfs(i, gl + 1, si), color[v] = white, f = 1;
+
+    if (f == 0)
+        if (ans1 < gl)
+        {
+            ans1 = gl;
+            if (ans2 < si)
+                ans2 = si;
+        }
+}
+
+
+void ob()
+{
+    for (int i = 0; i < n; i++)
+        color[i] = white;
+}
+
+int main()
+{
+    cin >> n;
+    for (int i = 0; i < n; i++)
+        cin >> s[i];
+
+    zapol_ar();
+    for (int i = 0; i < n; i++)
+    {
+        color[i] = grey;
+        if (s[i].size() > 2)
+        {
+            dfs(i, 1, 0);
+            ob();
+        }
+    }
+    cout << ans1 << " " << ans2;
+    return 0;
+}

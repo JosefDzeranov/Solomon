@@ -1,0 +1,7 @@
+program A0;
+var a: cardinal;
+begin
+	readln(a);
+	if a>2 then a:=a*(a-1)*(a-2);
+	writeln(a);
+end.

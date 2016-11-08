@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	long long a,k,b,m,x,ans=0;
+	cin>>a>>k>>b>>m>>x;
+	long long h =  (k - 1) * a;
+	long long h1 = (m - 1) * b;
+	long long q = (x / h) * k + x % h;
+	long long w = (x / h1) * m + x % h1;
+	long long left=0, right = max(q, w);
+	long long med=0, j=0;
+	while (left+1<right )
+	{
+		med = (left + right) / 2;
+		j= (med / k) * h + (med % k) * a + (med / m) * h1 + (med % m) * b; 
+		if (j>x) right= med;
+		else 
+			left = med;
+	}
+	cout<< right;
+return 0;
+}

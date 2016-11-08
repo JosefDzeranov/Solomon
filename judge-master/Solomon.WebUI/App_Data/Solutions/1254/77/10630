@@ -1,0 +1,26 @@
+var
+s: string;
+a: array [1..1001,1..1001] of string;
+n,i,j,k: longint;
+begin
+readln(s);
+n:=round(sqrt(length(s)));
+k:=1;
+for i:= 1 to n do
+  for j:=1 to n do begin
+  a[i,j]:=s[k];
+  inc(k);
+  end;
+  
+  for i:=1 to n do
+    for j:=1 to n do
+    write(a[j,i]);
+  
+  
+  {for i:= 1 to n do begin
+  for j:=1 to n do 
+  write(a[i,j],' ');
+  writeln;
+  end;}
+  
+end.

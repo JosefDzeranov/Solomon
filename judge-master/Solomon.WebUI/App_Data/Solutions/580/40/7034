@@ -1,0 +1,9 @@
+s = input()
+r = ''
+for i in s:
+    if i == '#':
+        if len(r) > 0:
+            r = r[0: -1]
+    else:
+        r += i
+print(r)

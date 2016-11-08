@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, z, a, b, c, t, num;
+    float one, two;
+    cin>>n>>z>>a>>b>>c;
+    t = (a / z) * (b / z);
+    num = c / z;
+    one = c - (c / z);
+    two = c / 2.0;
+    if(one >= two)
+    {
+        num += 1;
+    }
+    t *= num;
+    if(n % t != 0)  cout<<n / t + 1;
+    else    cout<<n / t;
+    return 0;
+}

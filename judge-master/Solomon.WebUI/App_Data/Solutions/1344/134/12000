@@ -1,0 +1,13 @@
+program circle;
+Uses SysUtils;
+var n,k: integer;
+
+begin
+    read (n);
+    if n mod 2 = 0 then
+   
+      k:= n*(n-2)
+    else
+      k:= n*(n-1);
+    write(k);
+end.

@@ -1,0 +1,90 @@
+var
+n,kof,k,zero:integer;
+
+begin
+read(n);
+kof:=4;
+
+if n=1 then writeln (0) else
+begin 
+k:=2;
+zero:=1;
+while k<>n do
+begin
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+2;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+3;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+2;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+4;                    // 2324
+
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+2;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+3;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+2;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+1;
+if k=n then break ;
+k:=k+1;
+if k=n then break ;
+k:=k+1;
+zero:=zero+kof; 
+kof:=kof+1;
+end;
+
+
+end;
+writeln (zero );
+end.

@@ -1,0 +1,8 @@
+program Olimpiada_A;
+var a,b:integer;
+begin
+  writeln ('¬ведите 2 числа через пробел');
+  readln (a,b);
+  a:=a+b;
+  writeln ('—умма чисел = ',a);
+  end.

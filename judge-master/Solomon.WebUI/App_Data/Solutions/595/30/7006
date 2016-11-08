@@ -1,0 +1,15 @@
+var
+  s1,s2:string;
+  i:integer;
+begin
+  readln(s1);
+  for i:=1 to length(s1) do begin
+    if s1[i] = '#' then begin
+      Delete(s2,length(s2),1);
+    end 
+    else begin
+      s2:=s2+s1[i];
+    end;
+  end;
+  write(s2);
+end.

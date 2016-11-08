@@ -1,0 +1,23 @@
+program z1;
+var a:array[1..100] of integer;
+        q,w,e,r,n,i,j:longint;
+
+procedure y(k:integer;s,s1:longint);
+begin
+if n+1<>k then
+        begin
+        y(k+1,s+a[k],s1);
+        y(k+1,s,s1+a[k]);
+        end
+        else
+        if abs(s-s1)<q then q:=abs(s-s1);
+end;
+
+begin
+readln(n);
+q:=32767;
+for i:=1 to n do
+read(a[i]);
+y(1,0,0);
+writeln(q);
+end.

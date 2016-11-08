@@ -1,0 +1,104 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s: String;
+  i: integer;
+  r: Boolean;
+  z: String;
+  c1, c2, c3: String;
+  f: Boolean;
+
+begin
+  readln(s);
+  c1 := '';
+  c2 := '';
+  c3 := '';
+  z := '';
+  r := False;
+  f := False;
+  for i := 1 to length(s) do
+  begin
+    if (s[i] >= '0') and (s[i] <= '9') then
+    begin
+      if z = '' then
+        c1 := c1 + s[i]
+      else
+        if not r then
+          c2 := c2 + s[i]
+        else
+          c3 := c3 + s[i];
+      end
+      else
+        if (s[i] = '+') or (s[i] = '-') or (s[i] = '*') or (s[i] = '/') then
+        begin
+          if z = '' then
+            z := s[i]
+          else
+          begin
+            writeln('ERROR');
+            f := True;
+            break;
+          end;
+        end
+        else
+          if s[i] = '=' then
+          begin
+            if not r then
+              r := True
+            else
+            begin
+              writeln('ERROR');
+              f := True;
+              break;
+            end;
+          end
+          else
+          begin
+            writeln('ERROR');
+            f := True;
+            break;
+          end;
+  end;
+  if not f then
+  begin
+    if (length(c1) > 0) and (length(c2) > 0) and (length(c3) > 0) and (length(z) > 0) and (r) then
+    begin
+      if (z = '+') then
+      begin
+        if (StrToInt(c1) + StrToInt(c2) = StrToInt(c3)) then
+          writeln('YES')
+        else
+          writeln('NO');
+      end;
+      if (z = '-') then
+      begin
+        if (StrToInt(c1) - StrToInt(c2) = StrToInt(c3)) then
+          writeln('YES')
+        else
+          writeln('NO');
+      end;
+      if (z = '*') then
+      begin
+        if (StrToInt(c1) * StrToInt(c2) = StrToInt(c3)) then
+          writeln('YES')
+        else
+          writeln('NO');
+      end;
+      if (z = '/') then
+      begin
+        if (StrToInt(c1) = StrToInt(c3) * StrToInt(c2)) then
+          writeln('YES')
+        else
+          writeln('NO');
+      end;
+    end
+    else
+      writeln('ERROR');
+  end;
+  readln;
+end.

@@ -1,0 +1,19 @@
+{$h+}
+var
+    s, s2: string;
+    n, n2, i, j: longint;
+
+begin
+    read(s); 
+    n := length(s);
+    n2 := n;
+    i := trunc(sqrt(n));
+    if i * i < n then inc(i);
+    while length(s) < (i * i) do s := s + '&';
+    n := i;
+    for i := 1 to n do
+        for j := 1 to n do
+            if s[i + (j - 1) * n] <> '&'  then 
+                s2 := s2 + s[i + (j - 1) * n];
+    write(s2);
+end.

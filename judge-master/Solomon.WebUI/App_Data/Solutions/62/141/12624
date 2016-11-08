@@ -1,0 +1,17 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,k,a,i:integer;
+kor:array[1..10000] of integer;
+begin
+readln(n,k);
+for i:= 1 to n do
+ read(kor[i]);
+a:=kor[k+1]-1;
+writeln(1);
+readln;
+end.

@@ -1,0 +1,15 @@
+VAR
+  kol,ans: LongINt;
+  n,z,a,b,c,i,j: LongINt;
+BEGIN
+  Read(n,z);
+  Read(a,b,c);
+  
+  kol := (a div z)*(b div z);
+  j := c div z;
+  if (c - j >= z / 2) then Inc(j);
+  kol := kol * j;
+  
+  if (n mod kol = 0) then Write(n div kol)
+  else Write((n div kol) + 1);
+END.

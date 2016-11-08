@@ -1,0 +1,31 @@
+program baran;
+var i, j, k, l, n, x, y:longint; s, s1, s3:string;
+begin
+readln(n);
+s:='1234567890';
+y:=0;
+for i:=1 to n do
+   begin
+   readln(s1);
+   for j:=1 to length(s1) do
+      begin
+      k:=0;
+      for l:=1 to 10 do
+         if s1[j]=s[l] then k:=1;
+      if k=0 then s1[j]:=' ';
+      end;
+   insert(' ', s1, 1);
+   for j:=2 to length(s1) do
+      if (s1[j-1]=' ') and (s1[j]<>' ') then
+         begin
+         l:=j;
+         while (s1[l]<>' ') do
+            l:=l+1;
+         s3:=copy(s1, j, l-j);
+         val(s3, x);
+         y:=y+x;
+         end;
+   end;
+writeln(y);
+readln;
+end.

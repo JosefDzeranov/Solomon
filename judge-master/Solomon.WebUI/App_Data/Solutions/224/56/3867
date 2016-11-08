@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Mesi_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = Int32.Parse(Console.ReadLine());
+            int score = 0;
+            int[] q2 = new int[10001];
+            q2[2] = 1;
+            for (int i = 2; i <= N; i += 2)
+            {
+                q2[i] = q2[i / 2] + 1;
+                score += q2[i];
+            }
+            Console.WriteLine(score);
+            Console.ReadLine();
+        }
+    }
+}

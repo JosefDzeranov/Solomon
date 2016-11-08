@@ -1,0 +1,26 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+     n,z,i,m,k:integer;
+begin
+  readln(n);
+  m:=0;
+  for i := 1 to n do
+    begin
+      read(z);
+      if i mod 2=0 then
+        m:=m-z else
+        m:=m+z;
+    end;
+ if m<0 then k:=abs(m)+1;
+ if m=0 then k:=1;
+ if m>0 then k:=0;
+ writeln(k);
+ readln;
+ readln;
+end.

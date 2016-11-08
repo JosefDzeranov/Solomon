@@ -1,0 +1,7 @@
+var
+b,a:int64;
+begin
+readln(a,b);
+a:=(a+b)*a;
+writeln(a);
+end.

@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    string s;
+    cin >> n;
+    while(n > 1)
+    {
+        if (n % 2 == 0)
+        {
+            s += '*';
+            n /= 2;
+        }
+        else
+        {
+            s += '+';
+            n -= 1;
+        }
+    }
+    for(int i = s.size() - 1; i >= 0; i--)
+        cout << s[i];
+    return 0;
+}

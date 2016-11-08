@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a: array[0..1000000] of integer;
+i,sum,n:integer;
+begin
+sum:=0;
+readln(n);
+for i := 0 to n-1 do read(a[i]);
+for i := 0 to n-1 do
+begin
+if i mod 2=0 then sum:=sum+a[i]
+else sum:=sum-a[i];
+end;
+if sum<=0 then sum:=1-sum
+else sum:=0;
+writeln(sum);
+readln;
+readln;
+end.

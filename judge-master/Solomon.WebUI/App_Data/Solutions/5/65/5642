@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	long long a, b, c, d;
+	cin >> a >> b >> c >> d;
+	long long t1 = min(a, b);
+	long long t2 = min(c, d);
+	t1 += t2;
+	long double tt = t1; 
+	long long ans = sqrt(tt);
+	cout << ans;
+	return 0;
+}

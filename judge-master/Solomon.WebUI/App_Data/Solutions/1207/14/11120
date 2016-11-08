@@ -1,0 +1,13 @@
+var s,a,d:string;
+begin
+readln(s);
+readln(a);
+writeln(10);
+writeln('lonelyword');
+readln(a);
+readln(s);
+readln(d);
+writeln(2);
+writeln('a');
+writeln('b');
+end. 

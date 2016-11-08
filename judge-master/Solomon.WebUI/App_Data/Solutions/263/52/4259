@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+	int n,res;
+int fact(int n){
+	if (n == 0){
+		res = 1;
+		return res;
+	}
+	res = fact(n - 1)*n;
+	return res;
+}
+int main(){
+	int itog, a;
+	cin >> a;
+	itog = fact(a)/fact(a - 3)/6;
+	cout << itog*6;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,11 @@
+s = str(input()).split();
+n = int(s[0]);
+k = int(s[1]);
+N = 1;
+K = 1;
+
+for i in range(k+1, n + 1):
+    N*=i;
+for j in range(2,n-k +1):
+    K*=j;
+print(int(N/K));

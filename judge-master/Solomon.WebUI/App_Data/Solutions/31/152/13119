@@ -1,0 +1,36 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, i, no, po: integer;
+  s1, s2 : string;
+begin
+ readln(n);
+ po := 1;
+ readln(s1);
+ no := length(s1);
+ for I := 1 to n - 1 do
+   begin
+     readln(s2);
+     if s1[1] = s2[length(s2) - 2] then
+      if s1[2] = s2[length(s2) - 1] then
+        if s1[3] = s2[length(s2)] then
+        begin
+         no := no + length(s2);
+         po := po + 1;
+        end;
+     if s2[1] = s1[length(s1) - 2] then
+      if s2[2] = s1[length(s1) - 1] then
+        if s2[3] = s1[length(s1)] then
+        begin
+         no := no + length(s2);
+         po := po + 1;
+        end;
+   end;
+ writeln(po,' ',no);
+ readln;
+end.

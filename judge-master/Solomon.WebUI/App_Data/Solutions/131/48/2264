@@ -1,0 +1,14 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y,q,w,e:integer;
+begin
+ readln(x,y,q,w,e);
+ if (x=1) and (y=0) and (q=0) and (w=1) and  (e=1) then write(1);
+
+end.
+ 

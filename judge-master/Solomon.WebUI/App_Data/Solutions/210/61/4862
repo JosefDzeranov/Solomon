@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+string t;
+int save, now;
+int n, k;
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    cin >> n >> k;
+    while(n--) {
+        cin >> t;
+        if (t == "ammo")
+            now += k;
+        if (t == "save")
+            save = now;
+        if (t == "load")
+            now = save;
+        if (t == "shoot")
+            --now;
+        cout << now << "\n";
+    }
+    return 0;
+}
+

@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Arrays;
+ 
+public class sChuj {
+    static Scanner inputer = new Scanner(System.in);
+    public static void main(String[] args) {
+        Point[] square = new Point[4];
+        square[1] = new Point(inputer.nextInt(), inputer.nextInt());
+        square[0] = new Point(inputer.nextInt(), inputer.nextInt());
+        square[3] = new Point(inputer.nextInt(), inputer.nextInt());
+        square[2] = new Point(inputer.nextInt(), inputer.nextInt());
+        System.out.println(isSquare(square));
+    }
+ 
+    static String isSquare(Point... points) {
+        Arrays.sort(points);
+		if(points[0].x == points[1].x &&
+                points[2].x == points[3].x &&
+                points[0].y == points[2].y &&
+                points[1].y == points[3].y &&
+                points[2].x - points[0].x == points[1].y - points[0].y)return "YES";
+		else return "NO";
+    }
+ 
+    static class Point implements Comparable<Point> {
+        int x, y;
+ 
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+ 
+        @Override
+        public int compareTo(Point b) {
+            if (x != b.x) {
+                return Integer.compare(x, b.x);
+            }
+ 
+            if (y != b.y) {
+                return Integer.compare(y, b.y);
+            }
+ 
+            return 0;
+        }
+    }
+}

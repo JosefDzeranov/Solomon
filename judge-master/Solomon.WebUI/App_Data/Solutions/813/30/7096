@@ -1,0 +1,14 @@
+program mesi2;
+var s : string[100]; k, i : integer;
+begin
+readln(s);
+for i := 1 to length(s) do 
+if (s[i] = '#') then 
+  begin
+  s[i] := ' ';
+  for k := (i - 1) downto 1 do 
+    if (s[k] <> '#') and (s[k] <> ' ') then begin s[k] := ' '; break; end;
+end;
+for i := 1 to length(s) do 
+  if s[i] <> ' ' then write(s[i]);
+end.

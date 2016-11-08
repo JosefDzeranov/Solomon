@@ -1,0 +1,12 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n;
+	cin >> n;
+	int q=n*(n-1)*(n-2);
+	cout << q;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

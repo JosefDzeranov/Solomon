@@ -1,0 +1,29 @@
+var i,n,min: longint;
+
+mas:array[1..100] of longint;
+
+//function poisk(num,sum1,sum2:longint):longint; 
+procedure poisk(num,sum1,sum2:longint); 
+var res:longint;
+ begin
+  if num<=n then begin poisk(num+1,sum1+mas[num],sum2);
+                       poisk(num+1,sum1,sum2+mas[num]);
+                 end      
+   else begin
+          res:=abs(sum1-sum2);
+         if res<min then min:=res; 
+        end;
+ end; 
+  
+begin
+  min:=2147483647;
+  readln(n); 
+ if n>0 then 
+  begin
+   for i:=1 to n do
+    read(mas[i]); 
+   poisk(1,0,0);
+   writeln(min);
+  end
+ else writeln('0'); 
+end.

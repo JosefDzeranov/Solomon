@@ -1,0 +1,37 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TForm1 = class(TForm)
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormCreate(Sender: TObject);
+Dim strA(1To4) As String,byt I As Byte
+Private Sub Command.Click
+for byt := 4 to List.Count - 1 do
+  Next byt I
+
+  for I := 1 to List.Count - 4 do
+    Form.Print strA (bytI),
+    Next bytI
+    n=0
+    for byt := 2 to List.Count - 4 do
+
+end.

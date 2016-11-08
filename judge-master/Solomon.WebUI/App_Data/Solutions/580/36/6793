@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace Siquencium
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = null;
+            for (int i = 2; i < 100; i++)
+            {
+                s += string.Format("{0} {1} {2} ", i - 1, i, i + 1);
+            }
+            string k = Console.ReadLine();
+            s = s.Remove(s.IndexOf(k)+1);
+            Console.WriteLine(s);
+        }
+    }
+}

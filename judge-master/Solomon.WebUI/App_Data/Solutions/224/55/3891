@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Mesi_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var N = UInt64.Parse(Console.ReadLine());
+            N = 2 * N - 1;
+            UInt64 Answer = N * (N * N + 1) + (N + 1)*(N + 1) + 1;
+            
+            Console.WriteLine(Answer);
+            Console.ReadLine();
+        }
+    }
+}

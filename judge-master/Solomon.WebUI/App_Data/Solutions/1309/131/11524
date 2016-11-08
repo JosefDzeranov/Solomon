@@ -1,0 +1,64 @@
+#include "stdafx.h" 
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int n, k, maxi, maxiCount = 0;
+	scanf("%d%d", &n, &k);
+	long int maxsum=0, tempsum=0, minsum;
+	long int *a = (long int*)malloc(n), *arrMaxi = (long int*)malloc(n);
+	//long int a[n], arrMaxi[n];
+	for(int i = 0; i<n; ++i)
+	{
+		scanf("%d", &a[i]);
+	}
+	
+	for(int i = 0; i <= n-k; ++i)
+	{
+		tempsum = 0;
+		for(int j = 0; j < k; ++j)
+			tempsum += a[i+j];
+		if (tempsum>maxsum)
+			maxsum=tempsum;
+	}
+
+	for(int l = 0; l <= n-k; ++l)
+	{
+		int tempmaxsum=0;
+		if(l>=k)
+		{
+			for(int i = 0; i<=l-k; ++i)
+			{
+				tempsum = 0;
+				for(int j = 0; j < k; ++j)
+					tempsum += a[i+j];
+				if (tempsum > tempmaxsum)
+					tempmaxsum = tempsum;
+			}
+		}
+
+		if(l<=n-k-k)
+		{
+			for(int i = l+k; i<=l+k+k-1; ++i)
+			{
+				tempsum = 0;
+				for(int j = 0; j < k; ++j)
+					tempsum += a[i+j];
+				if (tempsum > tempmaxsum)
+					tempmaxsum = tempsum;
+			}
+		}
+		if (tempmaxsum<maxsum)
+		{
+			maxsum=tempmaxsum;
+		}
+			
+	}
+
+	printf("%ld", maxsum);
+	getch(); free(a); free(arrMaxi);
+	return 0;
+}
+

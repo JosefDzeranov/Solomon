@@ -1,0 +1,20 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main() {
+    int n, c=0;
+    cin >> n;
+    for(int i=1; i<=n; i++) {
+        int count=0, tmp=i;
+        while(tmp%2==0) {
+            count++;
+            tmp/=2;
+        }
+        c+=count;
+    }
+    cout << c;
+    _getch();
+    return 0;
+}

@@ -1,0 +1,18 @@
+Program project1;
+var X, Y, Q, Z: integer;
+begin
+Readln(X, Y);
+Readln(Q, Z);
+if (Y>Z)
+then
+begin
+Z:=60+Z-Y;
+Q:=Q-X-1;
+end
+else
+begin
+Q:=Q-X;
+Z:=Z-Y;
+end;
+Writeln(Q,' ',Z)
+end.

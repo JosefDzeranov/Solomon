@@ -1,0 +1,53 @@
+var
+   pos: array[0..101, 0..101] of longint;
+   m, n, k, kol, i, j, kol2, x, y: longint;
+
+procedure dfs(x, y: longint);
+begin
+   inc(kol);
+   pos[x, y] := 1;
+   if pos[x - 1, y] = 0 then dfs(x - 1, y);
+   if pos[x, y - 1] = 0 then dfs(x, y - 1);
+   if pos[x + 1, y] = 0 then dfs(x + 1, y);
+   if pos[x, y + 1] = 0 then dfs(x, y + 1);
+end;
+
+procedure find;
+var
+   i, j: longint;
+begin
+   i := 1; j := 0;
+   while pos[i, j] = 1 do
+   begin
+      inc(i);
+      j := j + i div n;
+      i := ((i - 1) mod n) + 1;
+   end;
+   x := i; y := j;
+end;
+
+begin
+   read(n, m, k);
+   for i := 1 to k do
+   begin
+      read(x, y);
+      pos[x, y] := 1;
+   end;
+   for i := 1 to n do
+   begin
+      pos[0, i] := 1;
+      pos[m + 1, i] := 1;
+   end;
+   for i := 1 to m do
+   begin
+      pos[i, 0] := 1;
+      pos[i, n + 1] := 1;
+   end;
+   while kol + k < n * m do
+   begin
+      find;
+      dfs(x, y);
+      inc(kol2);
+   end;
+   write(kol2);
+end.

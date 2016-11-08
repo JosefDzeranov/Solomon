@@ -1,0 +1,63 @@
+program SafariPark2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function find (x1, x2, x3 : word) : real;
+  begin
+    if abs (x3 - x2) <= abs (x3 - x1) then
+      result := abs (x3 - x2)
+    else
+      result := abs (x3 - x1);
+  end;
+
+function FindDiag (x1, x2, x3, y1, y2, y3 : word) : real;
+  var
+    t : array [1..4] of real;
+    i, imin : byte;
+  begin
+    t[1] := sqrt (sqr (x3 - x2) + sqr (y3 - y2));
+    t[2] := sqrt (sqr (x3 - x1) + sqr (y3 - y1));
+    t[3] := sqrt (sqr (x3 - x2) + sqr (y3 - y1));
+    t[4] := sqrt (sqr (x3 - x1) + sqr (y3 - y2));
+    imin := 1;
+    for i := 2 to 4 do
+      if t[i] < t[imin] then
+        imin := i;
+    result := t[imin];
+  end;
+
+var
+  x1, x2, x3, y1, y2, y3 : word;
+  c : array [1..4] of real;
+  i : byte;
+  imin : byte;
+begin
+  readln (x1, y1);
+  readln (x2, y2);
+  readln (x3, y3);
+  if (x3 >= x1) and (x3 <= x2) and (y3 >= y1) and (y3 <= y2) then
+    begin
+      c[1] := abs (x3 - x2);
+      c[2] := abs (x3 - x1);
+      c[3] := abs (y3 - y2);
+      c[4] := abs (y3 - y2);
+      imin := 1;
+      for i := 2 to 4 do
+        if c[i] < c[imin] then
+          imin := i;
+      writeln (c[imin]);
+    end
+    else
+      if (x3 <= x2) and (x3 >= x1) then
+        writeln (find (y1, y2, y3))
+      else
+        if (y3 <= y2) and (y3 >= y1) then
+          writeln (find (x1, x2, x3))
+        else
+          writeln (FindDiag (x1, x2, x3, y1, y2, y3));
+  readln;
+end.
+

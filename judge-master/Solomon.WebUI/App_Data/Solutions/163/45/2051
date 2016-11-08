@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int n,l,r1,r2,x,y;
+cin>>n>>l;
+cin>>r1>>r2;
+x=l/(2*r1);
+y=n/(2*(2*3.14*r1)+(r2*3.14*2));
+if(x*(2*(2*3.14*r1)+(2*3.14*r2))>n){cout<<"NO";}
+else{cout<<"YES"<<endl<<y*2<<' '<<y;}
+    return 0;
+}

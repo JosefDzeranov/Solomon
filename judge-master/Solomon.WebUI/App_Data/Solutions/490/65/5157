@@ -1,0 +1,21 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main(){
+int a,b,c,d;
+cin>>a>>b>>c>>d;
+if(a > b)
+	a = a-(a-b);
+else
+	b = a-(b-a);
+if(c > d)
+	c = c-(c-d);
+else
+	d = d-(d-c);
+int g=0,f=0;
+g = (a+b+c+d)/2;
+if(g != 2){
+cout << int(sqrt(g));
+}
+return 0;
+}

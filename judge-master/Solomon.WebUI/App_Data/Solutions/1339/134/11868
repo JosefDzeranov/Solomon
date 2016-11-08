@@ -1,0 +1,26 @@
+program Task7;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var A, B, k, n:integer;
+begin
+  k := 0;
+  read(n);
+  for A := 1 to n do
+    begin
+      for B := 1 to n do
+        begin
+          if (A <> B) then
+            begin
+              k := k + 1;
+              writeln('A',- A,'B',-B)
+            end;
+        end;
+    end;
+  writeln(k);
+  readln;
+  readln;
+end.

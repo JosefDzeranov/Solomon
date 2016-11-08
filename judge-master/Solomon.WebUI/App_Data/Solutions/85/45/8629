@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, l;
+    int r1, r2;
+    cin >> n >> l;
+    cin >> r1 >> r2;
+    int d1 = r1 * 2;
+    int num_of_kol = l % d1 == 0 ? l / d1 : l / d1 + 1;
+    int kol_mal = num_of_kol * (6.28 * r2);
+    int kol_bol = num_of_kol * (12.56 * r1);
+    if ( n - kol_mal - kol_bol < 0)
+        cout << "NO";
+
+    else
+        cout << "YES" << endl << num_of_kol * 2 << " " << num_of_kol;
+
+    return 0;
+}

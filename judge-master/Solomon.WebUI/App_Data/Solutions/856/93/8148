@@ -1,0 +1,10 @@
+Program B;
+Var  
+x, z, y, q, k, m: integer;
+Begin
+read(x, y);
+read(z, q);
+k:=z-x;
+m:=abs(q-y);
+write(k,m);
+end.

@@ -1,0 +1,39 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a: array[0..9] of integer;
+i: integer;
+flag:boolean;
+s,s1:string;
+begin
+readln(s);
+for I := 1 to length(s) do
+  begin
+    a[strtoint(s[i])] :=    a[strtoint(s[i])]+1;
+  end;
+  for i := 0 to 9 do
+    begin
+      if (a[i]>1) then
+      begin
+        writeln('NO');
+              flag:=true  ;
+              break;
+          end;
+    end;
+         for i:=0 to 9 do
+           begin
+             if a[i]>1  then
+             begin
+               writeln(i, ' ', a[i]);
+             end;
+
+           end;
+           if flag=false then
+           writeln('YES');
+           readln;
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

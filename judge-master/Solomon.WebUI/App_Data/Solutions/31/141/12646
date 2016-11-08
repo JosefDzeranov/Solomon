@@ -1,0 +1,33 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+    n, k, i, j, min: integer;
+    stol: array [1..10000] of integer;
+    rast: array [1..10000] of integer;
+begin
+ readln(n, k);
+ for I := 1 to n do
+ read(stol[i]);
+ readln;
+ min := 1;
+
+ for I := 1 to n-1 do
+  begin
+    rast[i] := stol[i+1] - stol[i];
+  end;
+
+  if n = k then
+   begin
+    min := rast[1];
+     for i := 2 to n-1 do
+       if min > rast[i] then
+       min := rast[i];
+   end;
+   writeln(min);
+   readln;
+end.

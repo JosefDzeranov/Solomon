@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,k,x:integer;
+begin
+  readln(n);
+  x:=0;
+  for k := 1 to n do
+    begin
+      x:=x+k;
+      if x=n then
+        writeln(k);
+    end;
+readln;
+end.

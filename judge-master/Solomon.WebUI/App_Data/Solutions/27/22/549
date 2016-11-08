@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int a,b,c,d,e,g,K;
+cin>>a>>b>>c>>d>>e;
+
+
+if(b>e)
+    {
+    g=a;
+
+}
+else
+
+{
+    g=c+d+e-a;
+}
+cout<<g;
+
+    return 0;
+}

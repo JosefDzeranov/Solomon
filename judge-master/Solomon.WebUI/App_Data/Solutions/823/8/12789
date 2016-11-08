@@ -1,0 +1,18 @@
+﻿Module Module1
+
+    Sub Main()
+        Dim a, b, sum As Int64
+        Dim numbers As System.Array
+
+        numbers = System.Console.ReadLine().Split((" "))
+        a = Convert.ToInt64(numbers(0))
+        b = Convert.ToInt64(numbers(1))
+
+        sum = a + b
+
+        System.Console.WriteLine(sum)
+
+        System.Console.Read()
+    End Sub
+
+End Module

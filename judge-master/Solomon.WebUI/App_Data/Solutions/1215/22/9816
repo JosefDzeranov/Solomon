@@ -1,0 +1,8 @@
+var dl,sh,v,n,i,z:integer;
+pl,z1:real;
+begin
+read(n,z,sh,dl,v);
+z1:=z/2+v;
+pl:=(dl div z)*(sh div z)*int(z1/z);
+if (int(n/pl))<1 then write(1) else write(int (n/pl));
+end.

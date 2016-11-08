@@ -1,0 +1,8 @@
+n = int(input())
+if n % 2 == 1:
+    print(n ** n - n)
+else:
+    ret = n * n - n
+    ret = ret // 2
+    print(ret)
+    

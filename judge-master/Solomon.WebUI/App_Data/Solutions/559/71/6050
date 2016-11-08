@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int main(){
+	__int64 N,n,a,b,c,l,w,h,k=0;
+	cin>>N>>a>>b>>c;
+
+	l=a;w=b;h=c;
+	while(k==0)
+	{
+		if(l+a+w+h<=N)
+		{
+			k=0;
+			if(l<N/3)l+=a;
+			else k=1;
+		}
+		else k=1;
+		/*if(l+w+b+h<=N){if(w<N/3)w+=b;k=0;}
+		else k=1;
+		if(l+w+h+c<=N){if(h<N/3)h+=c;k=0;}*/
+	}
+
+	N=N-l;
+	n=N;
+	if(n%2!=0)n++;
+	w=n/2/b;
+	w=w*b;
+	h=N-w;
+
+	cout<<l<<" "<<w<<" "<<h;
+	cin>>a;
+	return 0;
+}

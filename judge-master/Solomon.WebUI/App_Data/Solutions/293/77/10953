@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	char *s = new char[1000000];
+	int N;
+	gets(s);
+	int len = strlen(s);
+	double sqlen = sqrt(len);
+	if (sqlen == (int)sqlen)
+		N = (int)sqlen;
+	else N = (int)sqlen + 1;
+	char **a = new char*[N];
+	for (int i = 0; i < N; i++)
+		a[i] = new char[N];
+	for (int i = 0; i < len; i++)
+		a[i / N][i%N] = s[i];
+
+	for (int i = len; i < N*N; i++)
+		a[i / N][i%N] = ' ';
+
+	for (int i = 0; i < N;i++)
+	for (int j = 0; j < N; j++)
+		cout << a[j][i];
+}

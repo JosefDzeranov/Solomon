@@ -1,0 +1,22 @@
+var n,m,s,i,j,os,min : longint; a : array [1..300] of integer;
+    b : array [0..2000000] of boolean;
+begin
+  readln(n);
+  for i:=1 to n do
+  begin
+    read(a[i]);
+    s:=s+a[i];
+  end;
+  os:=s;
+  b[0]:=true;
+      for j:=1 to n do
+      begin
+        for i:=os downto 0 do if b[i] then if a[j]+i<=os then b[i+a[j]]:=true;
+      end;
+  min:=os;
+  for i:=0 to os do if b[i] then
+  begin
+    if abs(os-i-i)<min then min:=abs(os-i-i);
+  end;
+  writeln(min);
+end.

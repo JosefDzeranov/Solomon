@@ -1,0 +1,17 @@
+var n,i:integer;
+k:longint;
+begin
+k:=1;
+writeln ('¢¢¥¤¨ ª®«¨ç¥áâ¢® ª®¬ ­¤');readln (n);
+if (n>=3) and (n<=1000) then
+for i:=n-2 to n do
+begin
+k:=k*i
+end;
+if (k=1) then
+begin
+ writeln ('­¥¢¥à­® ¢¢¥¤¥­® ç¨á«® ª®¬ ­¤');
+ exit;
+ end;
+writeln (k)
+end.

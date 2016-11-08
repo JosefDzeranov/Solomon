@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	string A="";
+	int i,j,k=1,s[123],l=0,min=10,m,n;
+	cin>>A;
+		
+	for(i=0;i<A.length();i++)
+		for(j=i+1;j<A.length();j++)
+			if(A[i]==A[j]){
+				k=0;
+				s[l]=A[i]-48;
+				l++;
+			}
+
+		if(k==0)
+		{	
+			cout<<"NO"<<endl;
+		for(j=0;j<l;j++){
+			for(i=j;i<l;i++)
+				if(min>s[i]){min=s[i];n=i;}
+
+				m=s[k];
+				s[k]=s[n];
+				s[n]=m;	
+				cout<<s[k]<<" ";
+				k++;
+				min=10;
+		}
+		}
+		else cout<<"YES";
+
+
+	cin>>A;
+	return 0;
+}

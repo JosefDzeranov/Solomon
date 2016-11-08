@@ -1,0 +1,5 @@
+__author__ = 'kotvb_000'
+x, y, t1, t2 = (int(i) for i in input().split())
+result = 0
+result = y*x*t2 + (y-1)*t1
+print(result)

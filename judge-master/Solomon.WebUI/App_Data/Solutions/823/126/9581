@@ -1,0 +1,56 @@
+program MashaAndABear;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : byte;
+  a : array [1..50] of int64;
+  i : byte;
+  temp : int64;
+  j : byte;
+  flag : boolean;
+  k : int64;
+  mid : int64;
+  sum : int64;
+begin
+  sum := 0;
+  readln (n);
+  for I := 1 to n do
+    begin
+      read (a[i]);
+      sum := sum + a[i];
+    end;
+  readln;
+  if sum mod n <> 0 then
+    writeln ('IMPOSSIBLE')
+  else
+    begin
+      flag := true;
+      i := 1;
+      while flag do
+        begin
+          flag := false;
+          for j := 1 to n - i do
+            if a[j] > a[j+1] then
+              begin
+                temp := a[j+1];
+                a[j+1] := a[j];
+                a[j] := temp;
+                flag := true;
+              end;
+          inc (i);
+        end;
+      k := 0;
+      mid := sum div n;
+      for i := 1 to n do
+        if a[i] < mid then
+          k := k + (mid - a[i])
+        else
+          break;
+      writeln (k);
+    end;
+  readln;
+end.

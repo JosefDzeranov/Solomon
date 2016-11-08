@@ -1,0 +1,7 @@
+program qq;
+var n, a: integer;
+begin
+readln (n);
+a:=n*(n-1)*(n-2);
+writeln (a);
+end.

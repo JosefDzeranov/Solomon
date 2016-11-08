@@ -1,0 +1,25 @@
+﻿Module Module1
+
+    Sub Main()
+        Dim N, K, I, S, L As Integer, B, A(N) As String
+        K = val(Text1.Text)
+        S = 0
+        B = text2.Text
+        N = Len(B)
+        For I = 1 To N
+            K = O
+            Do
+                A(I) = Mid(A, I, 1)
+                If A(I) = "P" Then S = S + 1 : L = I
+                K = K + 1
+
+
+            Loop While K <= 3
+
+        Next
+
+
+
+    End Sub
+
+End Module

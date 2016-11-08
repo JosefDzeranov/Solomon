@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <iterator>
+#include <string>
+#include <fstream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cin >> n;
+	
+	vector<int> a(n);
+	for (int i = 0; i < n; i++)
+		cin >> a[i];
+	cin >> m;
+	
+	vector<pair<int, int> > b(m);
+	for (int i = 0; i < m; i++)
+		cin >> b[i].first >> b[i].second;
+	sort(b.begin(), b.end());
+
+	vector<int> best(m);
+	best[m - 1] = b[m - 1].second;
+	for (int i = m - 2; i >= 0; i--)
+		best[i] = min(best[i + 1], b[i].second);
+	
+	long long ans = 0;
+	for (int i = 0; i < n; i++)
+		ans += best[upper_bound(b.begin(), b.end(), make_pair(a[i] - 1, (int)2e9)) - b.begin()];
+	cout << ans;
+}

@@ -1,0 +1,8 @@
+ var i,n:integer;
+ r:longint;
+ begin
+ r:=1;
+ readln(n);
+ for i:=1 to 3 do r:=r*(n-i+1);
+ writeln(r);
+ end.

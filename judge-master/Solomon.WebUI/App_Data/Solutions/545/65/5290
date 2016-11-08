@@ -1,0 +1,21 @@
+#include<iostream>
+#include<conio.h>
+#include<stdio.h>
+using namespace std;
+int main(){
+	__int64 a1,a2,a3,a4,a,b,k,i,l=0;
+		cin>>a1>>a2>>a3>>a4;
+	if(a1<a2)a=a1;
+	else a=a2;
+
+	if(a3<a4)b=a3;
+	else b=a4;
+	k=a+b;
+	if(k!=0)l++;
+	for(i=1;i<=k/2;i++)
+	{
+		if(k/i==i){l=i;break;}
+	}
+	cout<<l;
+	return 0;
+}

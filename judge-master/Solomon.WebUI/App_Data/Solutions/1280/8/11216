@@ -1,0 +1,7 @@
+var
+a,b:integer;
+inp,out:text;
+begin
+assign(inp,'input.txt');reset(inp);read(inp,a);read(inp,b);close(inp);
+assign(out,'output.txt');rewrite(out);write(out,a+b);close(out);
+end.

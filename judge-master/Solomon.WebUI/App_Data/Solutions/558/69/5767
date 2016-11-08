@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	long double a, b, x;
+	int t;
+	cin >> a >> b >> x;
+	t = x / 1000.0;
+	int c = int(t) % int(a + b);
+
+	if (c < b)
+		t += b - c;
+
+	long double ans;
+
+	ans = x / t;
+
+	cout.precision(10);
+	cout << ans << endl;
+
+
+ 	return 0;
+}

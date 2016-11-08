@@ -1,0 +1,38 @@
+program Shifr;
+var
+ iS:string;
+ oC:array[0..100] of char;
+ cP,mP,cI:shortint;
+begin
+ readln(iS);
+
+ for cI:=1 to length(iS) do
+  begin
+   case iS[cI] of
+    '#':
+     begin
+      oC[cP]:=#0;
+      cP:=pred(cP);
+     end;
+    '-': cP:=pred(cP);
+    '+': cP:=succ(cP);
+   else
+    begin
+     cP:=succ(cP);
+     if cP<0 then cP:=0
+     else if cP>100 then cP:=100;
+     oC[cP]:=iS[cI];
+    end;
+   end;
+   if cP<0 then cP:=0
+   else if cP>100 then cP:=100;
+   if cP>mP then mP:=cP;
+  end;
+
+ for cI:=1 to mP do
+  begin
+   write(oC[cI]);
+  end;
+
+ readln;
+end.

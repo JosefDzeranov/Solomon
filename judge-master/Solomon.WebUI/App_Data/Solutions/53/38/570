@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y:array [1..4] of integer;
+ i,a,b,c,d:integer;
+begin
+for i := 1 to 4 do
+ begin
+ read(x[i]);
+ readln(y[i]);
+ end;
+a:=abs(x[1]-x[2]);
+b:=abs(x[3]-x[4]);
+c:=abs(y[1]-y[4]);
+d:=abs(y[2]-y[3]);
+if (a=b) and (c=d) and (a=c)
+then writeln('YES')
+else writeln('NO');
+readln;
+end.

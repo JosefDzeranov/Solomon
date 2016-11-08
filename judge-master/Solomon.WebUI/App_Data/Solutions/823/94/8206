@@ -1,0 +1,68 @@
+program Mathematics;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s, s1, s2, s3, ss : string;
+  sym1 : char;
+  c1, c2, c3, c : smallint;
+  i : byte;
+begin
+  readln (s);
+  s1 := '';
+  s2 := '';
+  s3 := '';
+  sym1 := #0;
+  ss:= '';
+  for i := 1 to Length (s) do
+    if (s[i] >= '0') and (s[i] <= '9') then
+      s3 := s3 + s[i]
+    else
+      begin
+      if s[i] = '=' then
+        begin
+          s2 := s3;
+          if (s1 = '') or (s2 = '') then
+            break;
+        end
+      else
+        if (s[i] = '+') or (s[i] = '-') or (s[i] = '*') or (s[i] = '/') then
+          begin
+            s1 := s3;
+            sym1 := s[i];
+          end
+        else
+          begin
+            ss := 'ERROR';
+            break;
+          end;
+        s3 := '';
+      end;
+  if not (ss = 'ERROR') then
+     if not (s1 = '') and (s2 <> '') and (s3 <> '') then
+  begin
+    c1 := StrToInt (s1);
+    c2 := StrToInt (s2);
+    c3 := StrToInt (s3);
+    case sym1 of
+      '+' : c := c1 + c2;
+      '-' : c := c1 - c2;
+      '*' : c := c1 * c2;
+      '/' : if c1 mod c2 = 0 then
+              c := c1 div c2
+            else
+              c := -1;
+    end;
+    if c = c3 then
+      ss := 'YES'
+    else
+      ss := 'NO';
+  end
+  else
+    ss := 'ERROR';
+  write (ss);
+  readln
+end.

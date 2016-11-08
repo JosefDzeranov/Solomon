@@ -1,0 +1,7 @@
+var  n,i,s:longint;
+begin
+     read(n);
+      for i:=1 to n do
+      if i mod 2=0 then s:=s+(i div 2);
+      writeln(s);
+ end.

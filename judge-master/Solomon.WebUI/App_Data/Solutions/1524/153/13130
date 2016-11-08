@@ -1,0 +1,34 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function d(x1,y1,x2,y2:Integer):Integer ;
+begin
+Result:=Abs(x2-x1)+abs(y2-y1);
+end;
+
+var n,m,i,t,min,l,j,q:Integer; k:Integer; mas:array[1..1001,1..2] of Integer;
+begin
+  readln(n,m,k);
+  for i:=1 to k do
+  begin
+    Readln(mas[i,1],mas[i,2]);
+  end;
+  for i:=1 to n do
+  for j:=1 to m do
+  begin
+    min:=9999999;
+    for q:=1 to k do
+    begin
+      l:=d(i,j,mas[q,1],mas[q,2]);
+      if min>l then min:=l;
+    end;
+    if t< min then t:=min;
+  end;
+  Writeln(t);
+  Readln;
+end.
+ 

@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int a,b;
+float x;
+if((a+b)*1000==x){cout<<1000;}
+if(a*1000=>x){cout<<1000;}
+if((a+b)*1000<x){cout<<x?(a+b);}
+
+
+    return 0;
+}

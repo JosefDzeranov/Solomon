@@ -1,0 +1,106 @@
+#include<fstream>
+#include<algorithm>
+#include<cmath>
+#include<ctime>
+#include<cstdio>
+#include<vector>
+#include<map>
+#include<set>
+#include<string>
+#include<iostream>
+
+#define VI vector<int>
+#define PR pair<int,int>
+#define PS pair<PR,PR>
+#define INPUT
+
+using namespace std;
+int n, m, k;
+vector<PS> ans;
+vector<VI> boxes(11);
+int main()
+{
+#ifdef INPUT
+	//ifstream cin("input.txt");
+	//ofstream cout("output.txt");
+#endif
+
+	int color, boxcolor;
+	ios_base::sync_with_stdio(0);
+	cin >> n >> m;
+	int cnt = 0;
+	for (int i = 0; i < m; i++)
+	{
+		cin >> color >> boxcolor;
+		if (color != boxcolor)
+		{
+			boxes[boxcolor].push_back(color);
+			cnt++;
+		}
+	}
+	for (int i = 1; i <= 10; i++)
+	{
+		int k = boxes[i].size();
+		boxcolor = i;
+		for (int j = 0; j < k; j++)
+		{
+			color = boxes[i][j];
+			if (boxcolor != color)
+			{
+				int l = boxes[color].size();
+				for (int q = 0; q < l; q++)
+				{
+					if (boxes[color][q] == boxcolor)
+					{
+						swap(boxes[color][q], boxes[boxcolor][j]);
+						ans.push_back(PS(PR(color, boxcolor), PR(boxcolor, color)));
+						cnt -= 2;
+					}
+				}
+			}
+		}
+	}
+	while (cnt > 0)
+	{
+		for (int i = 1; i <= 10; i++)
+		{
+			int k = boxes[i].size();
+			boxcolor = i;
+			for (int j = 0; j < k; j++)
+			{
+				color = boxes[i][j];
+				if (boxcolor != color)
+				{
+					int l = boxes[color].size();
+					bool changed = 0;
+					for (int q = 0; q < l; q++)
+					{
+						if (boxes[color][q] != color)
+						{
+							swap(boxes[color][q], boxes[boxcolor][j]);
+							ans.push_back(PS(PR(color, boxes[color][q]), PR(boxcolor, color)));
+							cnt--;
+							changed = 1;
+						}
+					}
+					if (!changed)
+					{
+						boxes[boxcolor][j] = boxcolor;
+						cnt--;
+						ans.push_back(PS(PR(boxcolor, color), PR(color, -1)));
+					}
+				}
+			}
+		}
+	}
+	cnt = ans.size();
+	cout << cnt << "\n";
+	for (size_t i = 0; i < cnt; i++)
+	{
+		cout << ans[i].first.first << ' ' << ans[i].first.second << ' ' << ans[i].second.first << ' ';
+		if (ans[i].second.second != -1)
+			cout << ans[i].second.second << "\n";
+	}
+	//cout << "time = " << 1. * clock() / CLOCKS_PER_SEC;
+	return 0;
+}

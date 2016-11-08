@@ -1,0 +1,12 @@
+Var a,i,k:integer;
+Begin
+Read(a);
+k:=0;
+
+While k<>a do begin
+   inc(i);
+   k:=k+i;
+end;
+
+writeln(i);
+End.

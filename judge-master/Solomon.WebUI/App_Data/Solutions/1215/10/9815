@@ -1,0 +1,16 @@
+var k,n:longint;
+c:real;
+function fact(n1:integer):longint;
+  begin
+    if n1 <= 1 then
+      fact := 1
+               else
+      fact := n1 * fact(n1 - 1);
+  end;
+ begin
+ read(n,k);
+ c:=fact(n)/(fact(k)*fact(n-k));
+ write(c:1:2)
+ end.
+ 
+              

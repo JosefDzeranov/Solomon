@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a;
+    cin>>a;
+    int x=((a/3)-1),y=((a/3)+1),z=a-(x+y);
+    int u,k;
+    if (x<y)
+        if (y<z) cout<<x<<" "<<y<<" "<<z;
+        else
+            if (x<z) cout<<x<<" "<<z<<" "<<y;
+            else cout<<z<<" "<<x<<" "<<y;
+    else
+        if (x<z) cout<<y<<" "<<x<<" "<<z;
+        else
+            if (y<z) cout<<y<<" "<<z<<" "<<x;
+            else cout<<z<<" "<<y<<" "<<x;
+    return 0;
+}

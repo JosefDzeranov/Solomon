@@ -1,0 +1,12 @@
+#include<iostream>
+using namespace std;
+main()
+{
+      int x1,y1,x2,y2,x3,y3;
+      cin>>x1>>y1>>x2>>y2>>x3>>y3;
+      if(y3<y1 && x3<x2 && x3>x1) cout<<y1-y3;
+      if(y3>y2 && x3<x2 && x3>x1) cout<<y3-y2;
+      if(x3>x2 && y3<y2 && y3>y1) cout<<x3-x2;
+      if(x3<x1 && y3<y2 && y3>y1) cout<<x1-x3;
+      cin.get(); cin.get();
+}

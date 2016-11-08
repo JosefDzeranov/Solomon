@@ -1,0 +1,32 @@
+var
+n,i,x,c,a,b: longint;
+s:string;
+begin
+
+readln(n);
+x:=0;
+c:=n;
+n:=1;
+for i:=1 to c do
+  n:=n*i;
+                if n>2147483647 then n:=n mod 1000000000;
+
+while n > 0 do begin
+if n mod 2 = 0 then               begin
+x:=x+1;
+s:= s + '0' ; end
+else begin
+s:= s + '1';
+n:= n - 1;
+x:=0;
+end;
+n:= n div 2;
+
+end;
+
+for i:=length(s) downto 1 do
+    if s[i]='1' then x:=0 else
+       x:=x+1;
+
+ writeln(x);
+end.

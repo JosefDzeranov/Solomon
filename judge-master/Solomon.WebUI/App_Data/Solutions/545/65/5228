@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main(){
+	float k;
+	int l=0,a1,a2,a3,a4,a,b;
+		cin>>a1>>a2>>a3>>a4;
+	if(a1<a2)a=a1;
+	else a=a2;
+
+	if(a3<a4)b=a3;
+	else b=a4;
+	k=float(a+b);
+	l=int(sqrt(k));
+	cout<<l;
+	return 0;
+}

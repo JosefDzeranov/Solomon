@@ -1,0 +1,34 @@
+//Acidkata fairu
+#include <stdio.h>
+#include <stdlib.h>
+int findsum(int a)
+{
+	int sum = 0;
+	while(a%10 != 0)
+	{
+		sum += a%10;
+		a = a/10;
+	}
+	if(sum/10%10 != 0) sum = findsum(sum);
+	return sum;
+}
+int main()
+{
+	int n, sum, maxsums = 0, i;
+	scanf("%d", &n);
+	int a[n], sums[10];
+	for(i = 0; i < 10; i++)
+		sums[i]=0;
+	for(i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+		sum = findsum(a[i]);
+		sums[sum] += 1;
+		if(sums[sum] > sums[maxsums])
+			maxsums = sum;
+	}
+	for(i = 0; i < n; i++)
+		if(findsum(a[i]) != sums[maxsums])
+			printf("%d", a[i]);
+	return 0;
+}

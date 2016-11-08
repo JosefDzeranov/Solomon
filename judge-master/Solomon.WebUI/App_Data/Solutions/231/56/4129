@@ -1,0 +1,44 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <stdio.h>
+#include <tchar.h>
+unsigned long Factorial (int n);
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int n, k=0, i;
+unsigned long m;
+
+	scanf("%d",&n);
+	m = Factorial(n);
+
+	for (i = 0; m != 0; i++)
+	{
+		if (m%2 == 0 )
+		{
+		   m = m/2;
+		   k += 1;
+		}
+		else
+		{
+			printf("%i", k); break;
+			m=m/2;
+		}
+	}
+
+	getch();
+	return 0;
+}
+//----------------------------------------------------------------------------
+unsigned long Factorial (int n)
+{
+   int i;
+   unsigned long  a = 1;
+   for ( i = 1; i <= n; i++)
+   {
+		a *= i;
+   }
+
+   return a;
+}

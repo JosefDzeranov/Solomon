@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+int main() {
+	string t, q;
+	getline(cin,t);
+	for (int i=0; i<t.size(); i++) {
+		if (t[i]=='#') {
+			if (q.size()!=0)
+			q.erase(q.size()-1,1);
+		}
+		else
+			q+=t[i];
+	}
+	cout << q;
+	return 0;
+}

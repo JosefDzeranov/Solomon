@@ -1,0 +1,17 @@
+program zero;
+var n,s:integer;
+begin
+  readln(n);
+  if (n<1) or (n>10000)
+  then writeln('input data is not correct')
+  else
+    begin
+     s:=0;
+     while (n>1) do
+       begin
+         n:=n div 2;
+         s:=s+n;
+       end;
+     writeln(s);
+   end;
+end.

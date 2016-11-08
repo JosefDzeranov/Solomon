@@ -1,0 +1,19 @@
+var a:array [-100..100] of char;
+i,k,n:integer;
+s:string[100];
+Procedure Del (var n:integer);
+var i1,j1:integer;
+begin
+if a[n]='#' then   begin for i1:=n-1 to k do a[i1]:=a[i1+2]; n:=n-1;end;
+end;
+begin
+read(s);k:=length(s);
+for i:=1 to k do a[i]:=s[i];
+n:=1;
+while n<>k do 
+begin
+Del(n);
+n:=n+1;
+end;
+for i:=1 to k do write(a[i]);
+end.

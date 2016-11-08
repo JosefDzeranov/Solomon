@@ -1,0 +1,9 @@
+#include <iostream>
+#include <math.h>
+
+int main()
+{
+int n;
+std::cin >> n;
+std::cout << (-1 + sqrt(1 + 8*n)) / 2;
+}

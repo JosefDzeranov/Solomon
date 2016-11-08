@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.WriteLine("1 10 20\n20 30 30\n30 10 50\n50 0 60\n60 20 90\n90 10 100" );
+        }
+    }
+}

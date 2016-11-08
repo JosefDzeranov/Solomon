@@ -1,0 +1,16 @@
+var a,n,i,s:integer;
+begin
+s:=0;
+readln(a);
+for i:=1 to a do
+begin
+n:=i;
+while n mod 2=0 do
+begin
+n:=n div 2;
+s:=s+1;
+end;
+
+end;
+writeln(s);
+end.

@@ -1,0 +1,17 @@
+var a:array[1..50] of integer;
+i,j,k,t:integer;
+sr:real;
+begin
+read(k);
+for i:=1 to k do read(a[i]);
+for i:=1 to k do sr:=sr+a[i];
+sr:=sr/k;
+if frac(sr)=0 then  begin
+                    for i:=1 to k do if a[i]<>sr then  t:=t+1;
+                    write(t);
+                    end
+              else write('IMPOSSIBLE');      
+                    
+
+
+end.

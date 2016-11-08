@@ -1,0 +1,59 @@
+var n,m,s,d1,d2,i,j,l,a1,a2,nap : longint; a,b : array [1..1000] of longint;
+procedure qsort(l,r : longint);
+var i,j,x,d : longint;
+begin
+  i:=l;
+  j:=r;
+  x:=a[(l+r) div 2];
+  repeat
+    while (a[i] < x) do i:=i+1;
+    while a[j] > x do j:=j-1;
+    if i<=j then
+    begin
+      d:=a[i];
+      a[i]:=a[j];
+      a[j]:=d;
+      i:=i+1;
+      j:=j-1;
+    end;
+  until i>j;
+  if i<r then qsort(i,r);
+  if l<j then qsort(l,j);
+end;
+begin
+  readln(n);
+  randomize;
+  for i:=1 to n do
+  begin
+    read(a[i]);
+    b[i]:=1;
+    d1:=d1+a[i];
+  end;
+  l:=1;
+  nap:=1;
+  for i:=1 to 10000 do
+    for j:=1 to 100000 do
+    begin
+      if (l=n)and(nap=1) then nap:=-1 else
+      if (l=1)and(nap=-1) then nap:=1;
+      l:=l+nap;
+      a1:=d1;
+      a2:=d2;
+      if b[l]=1 then
+      begin
+        a1:=a1-a[l];
+        a2:=a2+a[l];
+      end else
+      begin
+        a1:=a1+a[l];
+        a2:=a2-a[l];
+      end;
+      if abs(a1-a2)<abs(d1-d2) then
+      begin
+        b[l]:=3-b[l];
+        d1:=a1;
+        d2:=a2;
+      end;
+    end;
+  writeln(abs(d1-d2));
+end.

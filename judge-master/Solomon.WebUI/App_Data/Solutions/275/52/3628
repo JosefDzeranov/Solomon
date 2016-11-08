@@ -1,0 +1,13 @@
+program shah1;
+var m,k,n,i:integer;
+begin
+   readln(n);
+   k:=1;
+   for i:=1 to 3 do
+   begin
+   k:=k*n;
+   n:=n-1;
+   end;
+   writeln(k);
+
+end.

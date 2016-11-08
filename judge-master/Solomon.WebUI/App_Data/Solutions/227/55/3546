@@ -1,0 +1,16 @@
+program olymp5;
+var i,j,m,n,g: integer;
+s,s1,k:real;
+
+begin
+read(n);
+for i:=1 to (2*n-1)*(2*n-1) do s:=s+i;
+for i:=1 to 4*n*n do s1:=s1+i;
+s:=trunc(s/(2*n-1));
+s1:=trunc(s1/(2*n));
+k:=s+s+s1/n;
+writeln(k,s,s1);
+
+end.
+
+ 

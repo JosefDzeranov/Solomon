@@ -1,0 +1,14 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+x:integer;
+
+begin
+ N>1;M<1000000 ;
+ write(N);read(M);
+
+end.

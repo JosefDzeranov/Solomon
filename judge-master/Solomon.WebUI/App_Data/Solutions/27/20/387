@@ -1,0 +1,65 @@
+Imports System
+
+Public Class Test
+	Public Shared Sub Main()
+	procedure Swap(var s1, s2: Integer);
+
+var buf: Integer;
+
+begin  buf:=s1; s1:=s2; s2:=buf end;
+
+
+
+var
+
+  x1, y1, x2, y2: Integer;
+
+  minX, minY, maxX, maxY: Integer;
+
+  d, dx, dy: Integer;
+
+  count: Integer;
+
+BEGIN
+
+
+
+ x1:= 6; y1:= 0; x2:= 0; y2:= 2;
+
+ dx:=abs(x2 - x1);  dy:= abs(y2 - y1);
+
+ if dx = 0 then Count:=(dy+2)*2 else
+
+  if dy = 0 then Count:=(dx+2)*2 else
+
+  begin
+
+    Count:=4;
+
+    x1:=0; y1:=0; x2:=x1+dx; y2:=x2+dy;
+
+    if dx < dy then begin swap(dx, dy); swap(x2, y2) end;
+
+    d:=0;
+
+    while x1 < x2 do begin
+
+      d:=d + dy;
+
+      if d < dx then inc(count)
+
+        else if d > dx then begin d:=d - dx; inc(count, 2) end
+
+          else begin inc(count, 3); d:=0 end;
+
+      inc(x1)
+
+    end;
+
+  end;
+
+ WriteLn(Count)
+
+
+	End Sub
+End Class

@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int r1, r2, n, dl;
+    cin >> n >> dl;
+    cin >> r1 >> r2;
+    double per1 = 3.1416 * 2 * r1;
+    double per2 = 3.1416 * 2 * r2;
+    int sum = 0;
+    int num_big = 0, num_smal = 0;
+    while (sum < dl)
+    {
+        num_big += 2;
+        num_smal++;
+        sum += num_big;
+    }
+    sum += num_smal * per2;
+    if (sum > n)
+        cout << "NO";
+    else
+    {
+        cout << "YES" << endl;
+        cout << num_big << " " << num_smal;
+    }
+    return 0;
+}

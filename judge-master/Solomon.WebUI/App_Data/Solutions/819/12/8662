@@ -1,0 +1,27 @@
+n, k = map(int, input().split())
+dividers = []
+for i in range (2, k):
+    ostatok = k%i
+    if (ostatok == 0):
+        dividers.append(i)
+if (len(dividers)>1):
+    divider = dividers[-1]
+else:
+    divider = k
+# определили максимальный делитель основания системы счисления.
+
+maxdiv = divider
+count = 1
+while maxdiv <= n/divider:
+    maxdiv *= divider
+    count +=1
+
+# определили максимальную степень делителя в числе
+summa = n/divider
+temp2 = divider
+for i in range (2, count+1):
+    temp2 = temp2*divider
+    summa = summa + n/temp2
+print (int (summa))
+    
+

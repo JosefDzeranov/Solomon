@@ -1,0 +1,32 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cstdlib>
+#include <cctype>
+
+using namespace std;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int n;
+	long long int num, s = 0;
+	char c;
+
+	cin >> n;
+	while ((c = cin.get()) != '\n')
+		;
+
+	for (int i = 0; i < n; ++i)
+	{
+		while ((c = cin.get()) != '\n')
+		{
+			if (isdigit(c))
+			{
+				cin.putback((unsigned char)c);
+				cin >> num;
+				s += num;
+			}
+		}
+	}
+	cout << s;
+	return 0;
+}

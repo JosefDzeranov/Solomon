@@ -1,0 +1,7 @@
+program lol;
+var s,n: longint;
+begin
+readln (n);
+s:=(2*n-1)*((2*n-1)*(2*n-1)+1)+(2*n*(4*n*n+1) div (2*n)) ;
+writeln (s);
+end.

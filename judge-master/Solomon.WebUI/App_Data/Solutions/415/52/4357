@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, count, x = 6, chislo = 3, mn = 6, c = 0;
+    cin >> n;
+    count = n - 3; 
+    while(c != count)
+    {
+     x += chislo * mn;
+     chislo ++;
+     mn += 3;
+     c++;      
+    }
+    cout << x;
+}
+

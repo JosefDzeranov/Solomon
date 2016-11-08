@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,m,a,b=n*n;
+    cin>>n>>m;
+    a=b-m;
+    if ((n>m)||(a!=b-m)) cout<<"NO";
+    else cout<<"YES";
+    return 0;
+}

@@ -1,0 +1,12 @@
+__author__ = 'kotvb_000'
+x, z = (int(i) for i in input().split())
+y, q = (int(i) for i in input().split())
+if y >= x:
+    hours = y - x
+else:
+    hours = (24-x) + y
+if q >= z:
+    minutes = q - z
+else:
+    minutes = (60-z) + q
+print(str(hours) + " " + str(minutes))

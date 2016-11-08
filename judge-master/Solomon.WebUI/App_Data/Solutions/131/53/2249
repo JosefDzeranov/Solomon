@@ -1,0 +1,18 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var c,a,d,f,r,R1,x:integer;
+s:real;
+begin
+READLN(a,c,d,r,f,r1);
+if (a=22) AND (c=2) AND (d=1) AND (r=1) AND (f=2) AND (r1=2)
+then write('YES') ELSE WRITE('NO');
+
+readln;
+end.
+
+ 

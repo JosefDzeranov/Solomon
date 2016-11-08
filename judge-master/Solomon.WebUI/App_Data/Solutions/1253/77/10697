@@ -1,0 +1,23 @@
+uses math;
+
+var
+   s, rez: string;
+   i, j, k: longint;
+   a: array [1..1100, 1..1100] of char;
+
+begin
+   readln(s);
+   k:=ceil(sqrt(length(s)));
+   
+   for i := 1 to k do
+     for j := 1 to k do
+         if length(s) <> 0 then begin a[i, j] := s[1]; delete(s, 1, 1) end else a[i, j] := 'õ';
+
+   
+   for i := 1 to k do
+      for j := 1 to k do
+         if a[j, i] = 'õ' then write(' ') else write(a[j, i]);
+
+
+   
+end.

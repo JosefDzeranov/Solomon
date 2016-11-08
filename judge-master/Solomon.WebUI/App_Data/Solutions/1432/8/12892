@@ -1,0 +1,9 @@
+program Sum;
+var
+   a, b : Integer;
+
+begin
+     ReadLn (a, b);
+     
+     WriteLn (a + b)
+end.

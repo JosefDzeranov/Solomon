@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int a,b,c,d,e;
+    cin>>a>>b>>c>>d;
+    a=a*60;
+    b=b+a;
+    c=c*60;
+    d=d+c;
+    e=b-d;
+    e=abs(e);
+    cout<<e/60<<" "<<e%60<<endl;
+
+    return 0;
+}

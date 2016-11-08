@@ -1,0 +1,177 @@
+program D;
+
+const
+     SIZE = 200;
+
+     EAST = 1;
+     NORTHEAST = 2;
+     NORTH = 3;
+     NORTHWEST = 4;
+     WEST = 5;
+     SOUTHWEST = 6;
+     SOUTH = 7;
+     SOUTHEAST = 8;
+     
+     WHIRLPOOl = -1;
+     CARRIED = -2;
+     BERM = -3;
+     
+     WALL = -5;
+     
+type
+    TTabl = array [0..SIZE + 2, 0..SIZE + 2] of Integer;
+
+function Trans (s : string) : Integer;
+
+begin
+  {  WriteLn ('@@@');
+     WriteLn (s);
+     WriteLn (Length (s), '@@@');}
+
+      if (Length (s) = 4) or (Length (s) = 5) then
+          if Length (s) = 5 then
+              if s = 'north' then
+                Trans := NORTH
+             else
+                Trans := SOUTH
+          else
+              if s = 'west' then
+                 Trans := WEST
+              else
+                 Trans := EAST
+      else
+          if s = 'whirlpool' then
+             Trans := WHIRLPOOL
+          else
+          if s[1] = 'n' then
+             if s = 'north-west' then
+                Trans := NORTHWEST
+             else
+                Trans := NORTHEAST
+          else
+             if s = 'south-west' then
+                Trans := SOUTHWEST
+             else
+                Trans := SOUTHEAST
+end;
+
+procedure ReadData (var ar : TTabl; var n, m, x, y : Integer);
+var
+   s, s1 : string;
+   i, j, k : Integer;
+   
+begin
+      ReadLn (n, m);
+
+      for i := 1 to n do
+      begin
+          ReadLn (s);
+          
+          k := 1;
+          
+          for j := 1 to m do
+          begin
+              s1 := '';
+
+              if (n = 1) and (m = 1)then
+                     ar[i, j] := Trans (s)
+              else
+              begin
+                    while (s[k] <> ' ') and (k <= Length (s)) do
+                    begin
+                         s1 := s1 + s[k];
+                         Inc (k)
+                    end;
+                    
+                    ar[i, j] := Trans (s1);
+
+                    Inc (k)
+              end
+          end;
+      end;
+
+      ReadLn (x, y);
+end;
+
+function BTrangl (const ar : TTabl; var n, m, x, y, counter : Integer) : Integer;
+var
+   i, j : Integer;
+begin
+      i := x;
+      j := y;
+      
+      while (ar[i, j] <> WHIRLPOOL) and (counter < 1000) and (ar[i, j] <> WALL) do
+      begin
+           if ar[i, j] = NORTH then
+              Dec (i)
+           else
+           if ar[i, j] = SOUTH then
+              Inc (i)
+           else
+           if ar[i, j] = WEST then
+              Dec (j)
+           else
+           if ar[i, j] = EAST then
+              Inc (j)
+
+           else
+           
+           if ar[i, j] = NORTHWEST then
+           begin
+              Dec (i);
+              Dec (j)
+           end
+           else
+           if ar[i, j] = NORTHEAST then
+           begin
+              Dec (i);
+              Inc (j)
+           end
+           else
+           if ar[i, j] = SOUTHWEST then
+           begin
+              Inc (i);
+              Dec (j)
+           end
+           else
+           if ar[i, j] = SOUTHEAST then
+           begin
+              Inc (i);
+              Inc (j)
+           end;
+           
+           Inc (counter)
+      end;
+      
+      if counter = 1000 then
+          BTrangl := BERM
+      else
+          if ar[i, j] = WHIRLPOOL then
+             BTrangl := WHIRLPOOL
+          else
+              BTrangl := CARRIED
+end;
+
+var
+   ar : TTabl;
+   n, m, i, j, x, y, counter, res : Integer;
+   
+begin
+     for i := 0 to SIZE + 1 do
+         for j := 0 to SIZE + 1 do
+             ar[i, j] := WALL;
+
+      ReadData (ar, n, m, x, y);
+      
+      counter := 0;
+      
+      res := BTrangl (ar, n, m, x, y, counter);
+      
+      if res  = WHIRLPOOL then
+         WriteLn ('Whirlpool in ', counter, ' move(s)!')
+      else
+          if res = CARRIED then
+             WriteLn ('Boat has been carried out in ', counter, ' move(s).')
+          else
+             WriteLn ('The Bermuda Triangle')
+end.

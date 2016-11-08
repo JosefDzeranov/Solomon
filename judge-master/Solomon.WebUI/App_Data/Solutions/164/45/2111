@@ -1,0 +1,19 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int n,l,x;
+    float r1,r2;
+    cin>>n>>l>>r1>>r2;
+    x=(l/(2*r1)+1);
+    {
+        if((2*r1*x>=l)&&(2*pi*r1*x*2+2*pi*r2*x<=n))
+
+    cout<<"YES"<< endl<<float(2*x)<<" "<<x;
+    else
+    cout<<"NO"<<;
+    }
+    return 0;
+}

@@ -1,0 +1,15 @@
+	
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,x:integer;
+begin
+ readln(n);
+ x:=round(sqrt(n));
+ writeln(x);
+ readln;
+end.

@@ -1,0 +1,18 @@
+#include<stdio.h>
+
+  long long i,n,x,y;
+int main()
+{
+  scanf("%lld",&n);
+  
+  x=1;
+  i=2;
+  while(n+1>i)
+  {
+    y=x+i*i*i;
+    i++;
+    x=y;       
+  }
+  
+  printf("%lld\n",x);
+}

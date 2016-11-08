@@ -1,0 +1,30 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int ce(int one, int two)
+{
+    if(one%two!=0)  return one/two + 1;
+    return one/two;
+}
+
+int main()
+{
+    int n, l, r1, r2, num1, num2, num;
+    float p = 3.1416, k;
+    cin>>n>>l>>r1>>r2;
+    num1 = ce(l, (r1*2));
+    num2 = num1;
+    num1 *= 2;
+    k = float(num1) * (2.0 * p * float(r1)) + float(num2) * (2.0 * p * float(r2));
+    if(float(n) - k >= 0)
+    {
+        cout<<"YES"<<endl<<num1<<" "<<num2;
+    }
+    else
+    {
+        cout<<"NO";
+    }
+    return 0;
+}

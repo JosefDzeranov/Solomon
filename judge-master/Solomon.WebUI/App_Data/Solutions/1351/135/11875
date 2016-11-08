@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long l = 0;
+    long long r = 1000000000000000000;
+    while (l + 1 < r)
+    {
+        long long mid = (l + r) / 2;
+        if (a * (mid - mid / b) + c * (mid - mid / d) < e)
+            l = mid;
+
+        else r = mid;
+    }
+    cout << r;
+
+    return 0;
+}

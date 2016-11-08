@@ -1,0 +1,202 @@
+var fin,fout: text;
+    str2,str1,strN,strcop1,strcop2: string;
+    md,dv:longint;
+    a,kv, e, v:longint;
+    n,p,k,int1,int2,err:longint;
+    i,j,ln:longint;
+
+
+
+
+
+
+begin
+ assign(fin,'river.in');reset(fin);
+ readln(n,p);
+    for i:=1 to n do
+       begin
+           read(a);
+           kv:= kv + (a * a);
+         //  str:= IntToStr(a);
+           Str(a,str2);
+            ln:= length(str2);
+            for j:=1 to (6 - ln) do
+              begin
+                 str2 := '0' + str2;              
+              end;
+            
+           strN := strN + str2;
+       end;
+ 
+  assign(fout,'river.out'); rewrite(fout);
+  writeln(kv);
+  
+  
+  
+//  writeln(strN);
+ // writeln(kv);
+  
+  
+  
+  
+  
+  readln(k);
+     for i:=1 to k do
+        begin
+           readln(e,v);
+           
+           
+           if e = 1 then
+              begin
+                 if (v = 1) then
+                    begin
+                   //    str:=IntToStr( StrToInt(copy(strN,1,6)) + StrToInt(copy(strN,7,6)) );
+                       Val(copy(strN,1,6),int1,err);
+                       Val(copy(strN,7,6),int2,err);
+                       int1:= int1 + int2;
+                       Str(int1,str2);
+                       
+                       ln:=length(str2);
+                       for j:=1 to (6 - ln) do
+                          str2:= '0' + str2;                          
+                          
+                       delete(strN,1,12);
+                       strN := str2 + strN; 
+                       
+                    end
+                 
+                 else if (v = (length(strN) / 6)) then
+                    begin
+                    //   str:=IntToStr( StrToInt(copy(strN, ((v-2)*6) + 1,6)) + StrToInt(copy(strN,( (v-1)*6 ) + 1,6)) );
+                       Val(copy(strN, ((v-2)*6) + 1,6),int1,err);
+                       Val(copy(strN,( (v-1)*6 ) + 1,6),int2,err);
+                       int1:= int1 + int2;
+                       Str(int1,str2);
+                       
+                       
+                       
+                       ln:=length(str2);
+                       for j:=1 to (6 - ln) do
+                          str2:= '0' + str2;                          
+                          
+                       delete(strN,( (v - 2) * 6 ) + 1,12);
+                       strN := strN + str2;                       
+                    
+                    end
+                    
+                    
+                 else
+                    begin
+                                             
+                     //  dv:= StrToInt(copy(strN,((v-1)*6) + 1,6))  div 2;
+                       
+                       Val(copy(strN,((v-1)*6) + 1,6),int1,err);
+                       dv:= int1 div 2;
+                       
+                       
+                      // str:= IntToStr( StrToInt(copy(strN, ((v-2)*6) + 1,6)) + dv );
+                       Val(copy(strN, ((v-2)*6) + 1,6),int1,err);                       
+                       int1:= int1 + dv;
+                       Str(int1,str2);
+                       
+                       
+                       
+                       ln:=length(str2);
+                       for j:=1 to (6 - ln) do
+                          str2:= '0' + str2;
+                          
+                     //  str1:= IntToStr( StrToInt(copy(strN,(v*6) + 1,6)) + ( ( StrToInt(copy(strN,( (v-1)*6 ) + 1,6)) div 2 ) + ( StrToInt(copy(strN,( (v-1)*6 ) + 1,6)) mod 2 ) ));  
+                       Val(copy(strN,( (v-1)*6 ) + 1,6),int1,err);
+                       Val(copy(strN,( (v-1)*6 ) + 1,6),int2,err);
+                       int1:= (int1 div 2) + (int2 mod 2);
+                       Val(copy(strN,(v*6) + 1,6),int2,err);
+                       int1 := int1 + int2;
+                       Str(int1,str1);
+                       
+                       
+                       ln:=length(str1);
+                       for j:=1 to (6 - ln) do
+                          str1:= '0' + str1;
+                          
+                          
+                       str2:= str2 + str1;
+                       
+                       
+                       delete(strN,((v-2)*6) + 1, 18);
+                       
+                       
+                       insert(str2, strN, ((v-2)*6) + 1);
+                       
+                       
+                       
+                    
+                    end;                
+              
+              end
+              
+              
+           else
+              begin
+                     //  dv:= StrToInt(copy(strN,((v-1)*6) + 1,6))  div 2;
+                       
+                       Val(copy(strN,((v-1)*6) + 1,6),int1,err);                       
+                       int1:= int1 div 2;                       
+                       dv := int1;
+                       
+                     //  str:= IntToStr( dv );
+                       Str(dv,str2);
+                       
+                       ln:=length(str2);
+                       for j:=1 to (6 - ln) do
+                          str2:= '0' + str2;
+                          
+                    //   str1:= IntToStr(  ( StrToInt(copy(strN,( (v-1)*6 ) + 1,6)) div 2 ) + ( StrToInt(copy(strN,( (v-1)*6 ) + 1,6)) mod 2 ) ); 
+                       
+                       Val(copy(strN,( (v-1)*6 ) + 1,6),int1,err);
+                       Val(copy(strN,( (v-1)*6 ) + 1,6),int2,err);
+                       int1:= (int1 div 2) + (int2 mod 2);                       
+                       Str(int1,str1);
+                       
+                       
+                       ln:=length(str1);
+                       for j:=1 to (6 - ln) do
+                          str1:= '0' + str1;
+                          
+                          
+                       str2:= str2 + str1;
+                       
+                       
+                       delete(strN,((v-1)*6) + 1, 6);
+                       
+                       
+                       insert(str2, strN, ((v-1)*6) + 1);
+                       
+                       
+                       
+              
+              end;
+           
+           
+          kv:=0;
+          for j:= 0 to round( (length(strN) / 6 - 1) ) do
+             begin
+              //  a:= StrToInt(copy(strN,(j*6) + 1,6));
+                Val(copy(strN,(j*6) + 1,6),a,err);
+                a:=a*a;
+                kv:= a+kv;             
+             end; 
+           writeln(kv);
+          
+        
+        end;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  close(fout);
+end.

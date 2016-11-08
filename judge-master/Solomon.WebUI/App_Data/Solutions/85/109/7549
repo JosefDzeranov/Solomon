@@ -1,0 +1,94 @@
+#include <iostream>
+
+using namespace std;
+
+int a[100000][4];
+
+int main()
+{
+	
+	int x1 = 0, y1 = 1, x2 = 2, y2 = 3;
+	int n, ans = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> a[i][x1] >> a[i][y1] >> a[i][x2] >> a[i][y2];
+
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[i][x1] == a[j][x1] && a[i][y1] == a[j][y1])
+			{
+				int x1_3 = a[i][x2];
+				int y1_3 = a[i][y2];
+				int x2_3 = a[j][x2];
+				int y2_3 = a[j][y2];
+				for (int z = 0; z < n; z++)
+				{
+					if ((a[z][x1] == x1_3 && a[z][y1] == y1_3 && a[z][x2] == x2_3 && a[z][y2] == y2_3) ||
+					(a[z][x1] == x2_3 && a[z][y1] == y2_3 && a[z][x2] == x1_3 && a[z][y2] == y1_3))
+					{
+						ans++;
+						break;
+					}
+				}
+
+			}
+
+			else if (a[i][x1] == a[j][x2] && a[i][y1] == a[j][y2])
+			{
+				int x1_3 = a[i][x2];
+				int y1_3 = a[i][y2];
+				int x2_3 = a[j][x1];
+				int y2_3 = a[j][y1];
+				for (int z = 0; z < n; z++)
+				{
+					if ((a[z][x1] == x1_3 && a[z][y1] == y1_3 && a[z][x2] == x2_3 && a[z][y2] == y2_3) ||
+					(a[z][x1] == x2_3 && a[z][y1] == y2_3 && a[z][x2] == x1_3 && a[z][y2] == y1_3))
+					{
+						ans++;
+						break;
+					}
+				}
+			}
+			
+			else if (a[i][x2] == a[j][x1] && a[i][y2] == a[j][y1])
+			{
+				int x1_3 = a[i][x1];
+				int y1_3 = a[i][y1];
+				int x2_3 = a[j][x2];
+				int y2_3 = a[j][y2];
+				for (int z = 0; z < n; z++)
+				{
+					if ((a[z][x1] == x1_3 && a[z][y1] == y1_3 && a[z][x2] == x2_3 && a[z][y2] == y2_3) ||
+					(a[z][x1] == x2_3 && a[z][y1] == y2_3 && a[z][x2] == x1_3 && a[z][y2] == y1_3))
+					{
+						ans++;
+						break;
+					}
+				}
+			}
+
+			else if (a[i][x2] == a[j][x2] && a[i][y2] == a[j][y2])
+			{
+				int x1_3 = a[i][x1];
+				int y1_3 = a[i][y1];
+				int x2_3 = a[j][x1];
+				int y2_3 = a[j][y1];
+				for (int z = 0; z < n; z++)
+				{
+					if ((a[z][x1] == x1_3 && a[z][y1] == y1_3 && a[z][x2] == x2_3 && a[z][y2] == y2_3) ||
+					(a[z][x1] == x2_3 && a[z][y1] == y2_3 && a[z][x2] == x1_3 && a[z][y2] == y1_3))
+					{
+						ans++;
+						break;
+					}
+				}
+			}
+			
+		}
+	}
+
+	cout << ans / 3;
+	return 0;
+}

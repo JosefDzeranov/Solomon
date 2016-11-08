@@ -1,0 +1,20 @@
+program Stenography;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s1, s2 : string;
+  i : byte;
+begin
+  readln (s1);
+  for i := 1 to Length (s1) do
+    if s1[i] <> '#' then
+      s2 := s2 + s1[i]
+    else
+      s2 := copy (s2, 1, Length (s2) - 1);
+  write (s2);
+  readln;
+end.

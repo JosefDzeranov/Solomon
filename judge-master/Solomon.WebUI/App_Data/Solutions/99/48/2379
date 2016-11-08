@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int L,x1,y1,x2,y2,x,y;
+	cin>>L>>x1>>y1>>x2>>y2;
+		
+	x=(x2-x1)/2;
+	y=(y2-y1)/2;
+
+	if(L<=x2-x1 || L<=y2-y1)cout<<(x2-x1)*(y2-y1);
+	else cout<<3.14*L*L;
+
+
+	cin>>L;
+	return 0;
+}

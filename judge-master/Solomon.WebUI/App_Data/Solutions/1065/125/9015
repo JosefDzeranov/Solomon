@@ -1,0 +1,28 @@
+program safariPark;
+var
+ x1,y1,x2,y2,x3,y3,r:integer;
+begin
+ readln(x1,y1);
+ readln(x2,y2);
+ readln(x3,y3);
+ r:=-5;
+ 
+ 
+ if (y3<=(y2-y1)) and (y3>=y1) then
+  begin
+   if (r>abs(x3-(x2-x1))) or (r=-5) then r:=abs(x3-(x2-x1));
+   if r>abs(x1-x3) then r:=abs(x1-x3);
+  end;
+ if (x3<=(x2-x1)) and (x3>=x1) then
+  begin
+   if (r>abs(y3-(y2-y1))) or (r=-5) then r:=abs(y3-(y2-y1));
+   if r>abs(y1-y3) then r:=abs(y1-y3);
+  end;
+ 
+ {if r>abs((x2-x1)-x3) then r:=abs((x2-x1)-x3);
+ if r>abs(y3-y1)then r:=abs(y3-y1);
+ if r>abs((y2-y1)-y3) then r:=abs((y2-y1)-y3);}
+ 
+ write(r);
+ readln;
+end.

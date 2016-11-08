@@ -1,0 +1,6 @@
+VAR
+   a,b: Int64;
+BEGIN
+   Read(a,b);
+   Write(a+b);
+END.

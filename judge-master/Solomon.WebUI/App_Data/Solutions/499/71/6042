@@ -1,0 +1,17 @@
+n, a, b, c = list(map(int, input().rstrip().split()))
+a1, b1, c1 = a, b, c;
+while((a1 + b1 + c1) < n):
+    if(min(a1, b1, c1) == a1):
+        a1 += a
+    elif(min(a1, b1, c1) == b1):
+        b1 += b
+    else:
+        c1 += c
+if((a1 + b1 + c1) > n):
+    if(max(a, b, c) == a):
+        a1 -= (a1 + b1 + c1) - n
+    elif(max(a, b, c) == b):
+        b1 -= (a1 + b1 + c1) - n
+    else:
+        c1 -= (a1 + b1 + c1) - n    
+print(a1, b1, c1)

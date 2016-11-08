@@ -1,0 +1,26 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+a:string;
+i:integer;
+b:set of byte;
+k:integer;
+begin
+readln(A);
+k:=0;
+b:=[42..71];
+for I := 1 to length(a) do
+case a[i] of
+'0'..'9','*'..'-','<'..'>': k:=k+1;
+end;
+
+if k=0 then
+ writeln('YES')
+ else writeln('ERROR');
+
+end.

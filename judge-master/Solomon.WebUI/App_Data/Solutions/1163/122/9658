@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+main()
+{
+int i,d,j,s=0;
+cin >>d;
+int k[d];
+for (i=0;i<d;i++)
+cin >>k[i];
+for (i=0;i<d;i++)
+  for (j=0;j<d;j++)
+  {
+   if (i!=j)
+   if (k[i]==k[j]) k[j]=k[j]+1;   
+  }
+for (i=0;i<d;i++) s=s+k[i];
+cout <<s; 
+}

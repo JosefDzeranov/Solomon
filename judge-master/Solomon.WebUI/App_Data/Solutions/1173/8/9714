@@ -1,0 +1,10 @@
+Var
+  A,B: Integer;
+Begin
+  Assign(INPUT,'INPUT.TXT');
+  Reset(INPUT);
+  Assign(OUTPUT,'OUTPUT.TXT');
+  ReWrite(OUTPUT);
+  Read(A,B);
+  Write(A+B);
+ End.

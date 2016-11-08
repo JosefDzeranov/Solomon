@@ -1,0 +1,7 @@
+program kond;
+var a, b, c, d1, d2: longint;
+begin
+readln(a, b, c, d1, d2);
+if b<= d1 then
+writeln(d2);
+end.

@@ -1,0 +1,37 @@
+var j,f,i,s,n,k,p, k1,k2:longint ;
+a:array[1..101] of longint;
+procedure  summ(q,i:integer);
+begin if q>=0 then begin if q=0 then begin if f<>2 then f:=1
+ end else
+begin
+q:=q-a[i];
+
+summ(q,i+1);
+
+end;
+
+
+end;
+end;
+begin
+k:=10000;
+readln(n);
+for i:=1 to n do
+begin
+read (a[i]);
+s:=s+a[i];
+end;
+p:=s div 2;
+
+for j:=p downto 1 do
+begin
+summ(j,1);
+if f=1 then
+begin
+writeln(s-2*j);
+f:=2;
+end;
+end;
+
+
+end.

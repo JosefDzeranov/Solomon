@@ -1,0 +1,38 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+	long double a, b, x;
+	int t, t1;
+	cin >> a >> b >> x;
+	int x1 = x;
+	t = x / 1000.0;
+	if (x1 % 1000)
+		t++;
+	t1 = t;
+	int c = int(t) % int(a + b);
+
+	if (c < b)
+		t += b - c;
+
+	if (c > a)
+		t1 += a + b - c;
+	long double ans, ans1;
+
+	ans1 = x / t1;
+	if (ans1 > 1000)
+		ans1= 0;
+	ans = x / t;
+	if (ans > 1000)
+		ans = 0;
+
+	cout.precision(10);
+	cout << max(ans, ans1) << endl;
+
+
+ 	return 0;
+}

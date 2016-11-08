@@ -1,0 +1,42 @@
+program Deforestation;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a, b : integer;
+  k, m, x : int64;
+  numOfA, numOfB, sumOfA, sumOfB : int64;
+  ans, temp, temp1 : int64;
+
+begin
+  readln (a, k, b, m, x);
+  ans := 0;
+  numOfA := 0;
+  numOfB := 0;
+  sumOfA := 0;
+  sumOfB := 0;
+  temp := x div (a + b);
+  if a + b >= x then
+    ans := 1
+  else
+  begin
+  ans := temp + 1 - (temp * (a + b) - x mod (a + b)) div (temp * (a + b));
+  numOfA := ans div k;
+  numOfB := ans div m;
+  while (numOfB + numOfA) <> (sumOfB + sumOfA) do
+  begin
+    sumOfA := numOfA;
+    sumOfB := numOfB;
+    temp1 := x + a * sumOfA + b * sumOfB;
+    temp := temp1 div (a + b);
+    ans := temp + 1 - (temp * (a + b) - temp1 mod (a + b)) div (temp * (a + b));
+    numOfA := ans div k;
+    numOfB := ans div m;
+  end;
+  end;
+  writeln (ans);
+  readln;
+end.

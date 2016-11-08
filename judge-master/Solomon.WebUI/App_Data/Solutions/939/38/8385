@@ -1,0 +1,30 @@
+program Square;
+label
+ sPE;
+var
+ sC:array[1..8] of longint;
+ cI,cIi,sS:longint;
+ cF:byte;
+ eA:string;
+begin
+ eA:='YES';
+ for cI:=1 to 8 do readln(sC[cI]);
+
+ for cI:=1 to 4 do
+  begin
+   for cIi:=1 to 4 do
+    begin
+     cF:=0;
+     if (cI<>cIi) and (sC[cI*2]=sC[cIi*2]) then
+      begin
+       if ((cI>1) and (abs(sC[cI]-sC[cIi])+1=sS)) then cF:=succ(cF)
+       else if cI=1 then begin sS:=abs(sC[cI]-sC[cIi])+1; cF:=succ(cF); end
+       else begin eA:='NO'; goto sPE; end;
+       if ((cF>1) or (cF<1)) then begin eA:='NO'; goto sPE; end;
+       end;
+    end;
+  end;
+ sPE:
+ write(eA);
+ readln;
+end.

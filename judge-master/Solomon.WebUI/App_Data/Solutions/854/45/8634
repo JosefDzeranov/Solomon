@@ -1,0 +1,26 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,l,r1,r2,a:integer; l1,l2:real;
+begin
+  readln(n,l);
+  readln(r1,r2);
+  a:=l div (r1*2);
+  if l mod (r1*2)<>0 then
+   a:=a+1;
+  l2:=Pi*2*r2*a;
+  a:=a*2;
+  l1:=Pi*2*r1*a;
+  if l1+l2<=n then
+  begin
+    writeln('YES');
+    writeln(a,' ',a div 2)
+  end
+  else writeln('NO');
+  
+  readln;
+end.

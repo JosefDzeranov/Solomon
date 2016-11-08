@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <iterator>
+#include <string>
+#include <fstream>
+#include <algorithm>
+
+using namespace std;
+
+int cmp(const string & s, const string & t) 
+{
+	return (s.length() < t.length()) || (s.length() == t.length() && s < t);
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	string s;
+	getline(cin, s);
+	map<string, int> schools;
+	for (int i = 0; i < n; i++)
+	{
+		string s;
+		getline(cin, s);
+		string school;
+		for (size_t j = 0; j < s.length(); j++)
+			if (isdigit(s[j])) school += s[j];
+		schools[school]++;	
+	}
+	
+	vector<string> ans;
+	for (map<string, int>::iterator it = schools.begin(); it != schools.end(); it++)
+		if (it->second < 6) ans.push_back(it->first);
+
+	sort(ans.begin(), ans.end());
+	cout << ans.size() << endl;
+	for (size_t i = 0; i < ans.size(); i++)
+		cout << ans[i] << endl;
+}

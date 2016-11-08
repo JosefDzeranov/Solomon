@@ -1,0 +1,107 @@
+#include <stdio.h>
+int main()
+{
+	long a[15][110],b[15][110],c[100000][5],d[15],m,n,k=0,i,j,t=0,q,w,e,r=0,y=0,u,x=0;
+	scanf("%d%d", &n, &m);
+	for (i = 0; i < n; i++)
+	for (j = 0; j < m; j++)
+	scanf("%d", &a[i][j]);
+	if (m>n)
+	u=m;
+	else
+	u=n;
+	for (i = 1; i <=u; i++)
+	for (j = 1; j <=u; j++)
+		b[i][j]=0;
+	for (i = 1; i <= n; i++)
+	for (j = 0; j < m; j++)
+	b[i][a[i-1][j]]++;
+	for (i = 1; i <= u; i++)
+	for (j = 1; j <=u; j++)
+	{
+		if (i==j || b[i][j]<=0)
+		continue;
+		else
+		{
+			b[j][i]=b[j][i]-b[i][j];
+			if(b[j][i]>=0)
+			{
+				for(q=k;q<k+b[i][j];q++)
+				for(e=0;e<4;e++)
+				{
+					if(e==0 || e==3)
+					c[q][e]=i;
+					else
+					c[q][e]=j;
+				}
+				k=k+b[i][j];
+			}
+			if(b[j][i]<0)
+			{
+				if (b[i][j]==b[j][i]*(-1))
+				{
+					for(q=k;q<k+b[j][i]*(-1);q++)
+					{
+						for(e=0;e<3;e++)
+						{
+							if(e==0)
+							c[q][e]=i;
+							else
+							c[q][e]=j;
+						}
+						d[t]=q;
+						t++;
+						y=1;
+			    	}
+					k=k+b[j][i]*(-1);
+				}
+				else
+				{
+					for(q=k;q<k+b[i][j]+b[j][i];q++)
+					for(e=0;e<4;e++)
+					{
+						if(e==0 || e==3)
+						c[q][e]=i;
+						else
+						c[q][e]=j;
+					}
+					k=k+b[i][j]+b[j][i];
+					for(q=k;q<k+b[j][i]*(-1);q++)
+					{
+						for(e=0;e<3;e++)
+						{
+							if(e==0)
+							c[q][e]=i;
+							else
+							c[q][e]=j;
+						}
+						d[t]=q;
+						t++;
+						y=1;
+			    	}
+					k=k+b[j][i]*(-1);
+				}
+				
+			}
+			b[i][j]=0;
+		}
+			
+		
+	}
+	printf("%d",k);
+	printf("\n");
+	for (i = 0; i <k; i++)
+    {
+		if(d[r]==i && y==1)
+		{
+			m=3;
+			r++;
+		}
+		else 
+		m=4;
+		for (j = 0; j < m; j++)
+		printf("%d ",c[i][j]);
+		printf("\n");
+	}
+	return(0);
+}

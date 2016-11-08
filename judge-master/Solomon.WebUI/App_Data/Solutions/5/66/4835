@@ -1,0 +1,62 @@
+type
+  school = record
+    name: string;
+    count: integer;
+  end;
+
+var
+  schools: array[1..1000] of school;
+  i, n, k, j, answer: integer;
+  ans: array[1..1000] of string;
+  s, t: string;
+  f: boolean;
+
+function less(s, t: string): boolean;
+begin
+  if (length(s) < length(t)) then less := true
+  else if (length(s) = length(t)) and (s < t) then less := true
+  else less := false;
+end;
+
+begin
+  readln(n);
+  k := 0;
+  for i := 1 to n do 
+  begin
+    readln(s);
+    t := '';
+    for j := 1 to length(s) do
+      if (s[j] in ['0'..'9']) then t := t + s[j];
+    f := true;
+    for j := 1 to k do
+      if (schools[j].name = t) then begin
+        inc(schools[j].count);
+        f := false;
+        break;
+      end; 
+    if (f) then begin
+      inc(k);
+      schools[k].name := t;
+      schools[k].count := 1;
+    end;
+  end;
+  
+  answer := 0;
+  for i := 1 to k do
+    if (schools[i].count < 6) then begin
+      inc(answer);
+      ans[answer] := schools[i].name;
+    end;
+  
+  for i := 1 to answer do
+    for j := 1 to answer - 1 do
+      if (not less(ans[j], ans[j + 1])) then begin
+        s := ans[j];
+        ans[j] := ans[j + 1];
+        ans[j + 1] := s;
+      end;
+  
+  writeln(answer);
+  for i := 1 to answer do
+    writeln(ans[i]);
+end.

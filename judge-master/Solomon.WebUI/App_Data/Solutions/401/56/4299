@@ -1,0 +1,29 @@
+//Acidkata fairu
+#include <stdio.h>
+#include <stdlib.h>
+int factorial(int a){
+	if(a>1) return factorial(a-1)*a;
+	return a;
+}
+int countzero(int n, int zero){
+    int nzero = n;
+    while((nzero%2 != 1) && (nzero > 0)){
+        zero += 1;
+        nzero = nzero/2;
+        //printf("-=1=-");
+    }
+    //printf("-=2=-");
+    if (n > 0) return countzero(n-1, zero);
+    return zero;
+    }
+int main(){
+	int n, zero = 0;
+	scanf("%d", &n);
+	if(n >= 1)
+	{
+		//n = factorial(n);
+        zero = countzero(n, zero);
+	}
+	printf("%d", zero);
+	return 0;
+}

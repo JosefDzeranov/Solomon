@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int factorial(int n) {
+	int result = 1;
+	for ( int i = 2; i <= n; i++ ) {
+		result *= i;
+	}
+	return result;
+}
+
+int main() {
+	int n;
+	// Ввод числа
+	cin >> n;
+	// Расчет факториала
+	int f = factorial(n);
+	// Перевод в бинарный вид
+	vector<int> bin;
+
+	do
+	{
+		bin.push_back(f % 2);
+		f /= 2;
+	} while (f != 0);
+
+	// Счетчик нулей
+	n = 0;
+
+	// Подсчет нулей
+	for (int i = 0; i < bin.size(); ++i)
+	{
+		if (bin[i] == 1) break;
+		++n;
+	}
+
+	// Вывод нулей
+	cout << n << endl;
+
+	return 0;
+}

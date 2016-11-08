@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    long long int a1,a2,a3,a4,n;
+    cin >> a1 >> a2 >> a3 >> a4;
+    n=0;
+    if (a1<=a2)
+    {
+       n=n+a1;
+    }
+    else
+    {
+        n=n+a2;
+    }
+    if (a3<=a4)
+    {
+       n=n+a3;
+    }
+    else
+    {
+        n=n+a4;
+    }
+
+    cout << floor(sqrt(n));
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

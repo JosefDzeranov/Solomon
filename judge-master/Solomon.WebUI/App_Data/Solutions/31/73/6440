@@ -1,0 +1,17 @@
+program Project30;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,x1,x2,d:integer;
+
+begin
+ readln(n);
+ d:=1+8*n;
+ x1:=(-1+trunc(sqrt(d))) div 2;
+writeln(x1);
+readln;
+ 
+end.

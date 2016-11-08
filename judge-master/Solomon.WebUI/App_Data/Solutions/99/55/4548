@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,k1,k2,k;
+	cin>>N;
+	k2=2*N*2*N+1;
+     N=2*N-1;
+     k1=N*(N*N+1)/2;
+	 k=2*k1+k2;
+	 cout<<k;
+
+	return 0;
+}

@@ -1,0 +1,26 @@
+program mashaAndBear;
+var
+ amountS:byte;
+ massiveS:array[1..50] of longint;
+ achieveA,ci,standardForS:longint;
+begin
+ readln(amountS);
+
+ for ci:=1 to amountS do
+  begin
+   read(massiveS[ci]);
+   achieveA:=achieveA+massiveS[ci];
+  end;
+
+ if achieveA mod amountS<>0 then write('IMPOSSIBLE')
+ else
+  begin
+   standardForS:=achieveA div amountS;
+   achieveA:=0;
+   for ci:=1 to amountS do
+    begin
+     achieveA:=achieveA+abs(massiveS[ci]-standardForS);
+    end;
+   write(achieveA div 2);
+  end;
+end.

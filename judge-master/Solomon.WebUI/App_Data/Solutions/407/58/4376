@@ -1,0 +1,50 @@
+program primer1;
+
+var a: array [1..100] of integer;
+n,i,n1,n2,x,max,min,y,k1,k2,n3,c :integer;
+begin
+k1:=0;
+c:=0;
+readln(n);
+for i:= 1 to n do begin
+readln(a[i]); end;
+ n1:=0;    n2:=0;
+           k2:=n;
+
+
+while (k2>0) do begin
+if n2>n1 then begin
+    for i:=1 to n do begin
+if (a[i]> max)and (a[i]<>0) then
+              begin
+              max:=a[i]; y:=i;
+              end;
+           end;
+
+ n1:=n1+max;       a[y]:=0; k2:=k2-1;
+
+ end
+    else              begin
+
+       for i:= 1 to n do
+           begin
+if (a[i]> max)and (a[i]<>0)then
+              begin
+              max:=a[i]; y:=i;
+              end;
+           end;
+
+           n2:=n2+max;      a[y]:=0;   k2:=k2-1;
+        end;
+
+    end;
+
+
+
+
+
+
+n3:= abs(n1-n2);
+       writeln(n3);
+end.
+

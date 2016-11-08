@@ -1,0 +1,62 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+Module Module1
+
+    Sub Main()
+        Dim a As Integer = Console.ReadLine
+        Dim c As Integer = 0
+        Dim b(a) As String
+        Dim d(a) As String
+        Dim g As String = "Q;W;E;R;T;Y;U;I;O;P;A;S;D;F;G;H;J;K;L;Z;X;C;V;B;N;M; ;q;w;e;r;t;y;u;i;o;p;a;s;d;f;g;h;j;k;l;z;x;c;v;b;n;m"
+        Dim g2() As String = Split(g, ";")
+        Dim sh(101) As Integer
+        Dim s As String
+        Dim s1() As String
+        For I = 1 To a
+            b(I) = Console.ReadLine
+        Next
+        For u = 1 To a
+            For i = 0 To 52
+                b(u) = Replace(b(u), g2(i), "")
+            Next
+        Next
+
+        Dim op As String
+        For i = 1 To a
+            If InStr(s, b(a)) = 0 Then
+                op = b(i)
+                s = s & b(i) & " "
+            End If
+        Next
+
+        s1 = Split(s, " ")
+        For i = 1 To a
+            For i2 = 0 To s1.Rank
+                If b(i) = s1(i2) Then
+                    sh(b(i)) = sh(b(i)) + 1
+                End If
+            Next
+        Next
+        Dim shet As Integer = 0
+        Dim result2 As String
+        Dim result() As String
+        For i = 0 To 101
+            Dim i1 As Integer = i
+            If 0 < sh(i) Then
+                If sh(i) < 6 Then
+                    shet = shet + 1
+                    result2 = result2 & i1 & " "
+                End If
+            End If
+        Next
+        result = Split(result2, " ")
+        Console.WriteLine(shet)
+        For i = 0 To result.Length - 2
+            Console.WriteLine(result(i))
+        Next
+
+
+        Main() ' УБЕРИ!!!
+    End Sub
+
+End Module

@@ -1,0 +1,22 @@
+using System;
+namespace Istu
+{
+	class BC
+	{
+		static void Main(string[] aaa)
+		{
+			int a;
+			int b;
+
+			string[] s = Console.ReadLine().Split();
+
+			a 	= 	int.Parse(s[0]);
+			b	=	int.Parse(s[1]);
+			
+			Console.Write(a+b);
+			
+		}
+	}
+	
+	
+}

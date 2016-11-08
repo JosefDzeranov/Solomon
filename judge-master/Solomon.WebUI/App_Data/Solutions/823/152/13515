@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.Arrays;
+
+public class Popurry {
+    private static int maxCount = 0;
+    private static long maxLength = 0;
+    private static int[] fragmentLengths;
+    
+    private static void dfs(int edge, byte[][] matrix, byte[] marks,
+            int popCount, long popLength) {
+        marks[edge] = 1;
+        popCount++;
+        popLength += fragmentLengths[edge];
+        
+        if(popCount > maxCount) {
+            maxCount = popCount;
+            maxLength = popLength;
+        }
+        else
+            if(popCount == maxCount && popLength > maxLength)
+                maxLength = popLength;
+        
+        for(int i = 0; i < marks.length; i++)
+            if(matrix[edge][i] == 1 && marks[i] == 0)
+                dfs(i, matrix, marks, popCount, popLength);
+        
+        marks[edge] = 0;        
+    }
+            
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(System.in));
+                
+        int fragmentsNumber = Integer.parseInt(reader.readLine());
+        
+        byte filler = 0;
+        String[] fragments = new String[fragmentsNumber];
+        byte[][] matrix = new byte[fragmentsNumber][fragmentsNumber];
+        for(byte[] line : matrix)
+            Arrays.fill(line, filler);
+        
+        fragments[0] = reader.readLine();
+        for(int i = 1; i < fragmentsNumber; i++) {
+            fragments[i] = reader.readLine();
+            for(int j = 0; j < i; j++) {
+                if(fragments[j].length() < 3)
+                    break;
+                if(fragments[i].length() > 2) {
+                    if(fragments[j].endsWith(fragments[i].substring(0, 3)))
+                        matrix[j][i] = 1;
+                    if(fragments[i].endsWith(fragments[j].substring(0, 3)))
+                        matrix[i][j] = 1;
+                }
+            }
+        }
+        
+        byte[] markers = new byte[fragmentsNumber];
+        Arrays.fill(markers, filler);
+        fragmentLengths = new int[fragmentsNumber];
+        for(int i = 0; i < fragmentsNumber; i++)
+            fragmentLengths[i] = fragments[i].length();
+                        
+        for(int i = 0; i < fragmentsNumber; i++)
+            dfs(i, matrix, markers, 0, 0);                        
+                
+        System.out.println(maxCount + " " + maxLength);
+    }
+}

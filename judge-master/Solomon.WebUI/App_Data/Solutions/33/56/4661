@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n, r=0, x=1;
+	cin >> n;
+	for (int i=1; i<=n; i++)
+		x*=i;
+	for (;x>0;) {
+		if(x%2==0)
+			r++;
+		else
+			break;
+		x/=2;
+	}
+	cout << r;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

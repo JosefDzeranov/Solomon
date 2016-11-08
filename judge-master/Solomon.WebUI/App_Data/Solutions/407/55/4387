@@ -1,0 +1,219 @@
+Const
+  mn = 1000;
+
+Var
+  p: Boolean;  fa, n: integer;
+  
+Procedure Swap(Var a, b: Integer);
+  Var T: Integer;
+  Begin
+    T := a; a := b; b := T
+  End;
+
+Procedure CreateMagic(n: Integer);
+  Var
+    i, j, k, s, b, r, m, c1, c2, s1, s2, sum: Integer;
+    a: Array[1 .. mn, 1 .. mn] Of Integer;
+  Begin
+    p := True;
+
+    If Odd(n) Then
+      Begin
+        i := 1; j := Succ(n div 2);
+        For k := 1 To Sqr(n) do
+          Begin
+            a[i,j] := k;
+            If k mod n = 0 Then Inc(i)
+            Else
+              Begin
+                Dec(i); Inc(j);
+                If i = 0 Then i := n;
+                If j > n Then j := 1
+              End
+          End;
+      End
+
+    Else
+      If n mod 4 = 0 Then
+        Begin
+          k := 1;
+          For i := 1 To n Do
+            For j := 1 To n Do
+              Begin
+                a[i, j] := k; Inc(k)
+              End;
+          j := 2; m := n div 2;
+          For i := 1 To m Do
+            For k := 1 To m Div 2 Do
+              Begin
+                If j = Succ(m) Then j := 2
+                Else
+                  If j = (m + 2) Then j := 1;
+                  s := Succ(n - i); b := Succ(n - j);
+                  Swap(a[i, j], a[s, b]);
+                  Swap(a[i, b], a[s, j]);
+                  Inc(j, 2)
+              End
+        End
+
+      Else
+        If n <> 2 Then
+          Begin
+            k := 1;
+            For i := 1 To n Do
+              For j := 1 To n Do
+                Begin
+                  a[i, j] := k; Inc(k)
+                End;
+            r := Pred(n div 2) div 2; m := n div 2;
+
+            For i := 1 To m Do
+              Begin
+                j := i;
+                For k := 1 To r Do
+                  Begin
+                    If j > m Then j := 1;
+                    s := Succ(n - i); b := Succ(n - j);
+                    Swap(a[i, j], a[s, b]);
+                    Swap(a[i, b], a[s, j]);
+                    Inc(j)
+                  End
+              End;
+
+            i := 1; j := Succ(r);
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                s := Succ(n - i);
+                Swap(a[i, j], a[s, j]);
+                Inc(i); Inc(j)
+              End;
+
+            i := 1; j := r + 2;
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                b := Succ(n - j);
+                Swap(a[i, j], a[i, b]);
+                Inc(i); Inc(j)
+              End
+          End
+
+        Else p := False;
+
+
+
+          c1:=a[1, n];
+          c2:=a[n, 1];
+          s1:=0;
+          s2:=0;
+          s:=0;
+
+              p := True;
+
+    If Odd(n-1) Then
+      Begin
+        i := 1; j := Succ((n-1) div 2);
+        For k := 1 To Sqr(n-1) do
+          Begin
+            a[i,j] := k;
+            If k mod (n-1) = 0 Then Inc(i)
+            Else
+              Begin
+                Dec(i); Inc(j);
+                If i = 0 Then i := n-1;
+                If j > n-1 Then j := 1
+              End
+          End;
+      End
+
+    Else
+      If (n-1) mod 4 = 0 Then
+        Begin
+          k := 1;
+          For i := 1 To n-1 Do
+            For j := 1 To n-1 Do
+              Begin
+                a[i, j] := k; Inc(k)
+              End;
+          j := 2; m := (n-1) div 2;
+          For i := 1 To m Do
+            For k := 1 To m Div 2 Do
+              Begin
+                If j = Succ(m) Then j := 2
+                Else
+                  If j = (m + 2) Then j := 1;
+                  s := Succ(n-1 - i); b := Succ(n-1 - j);
+                  Swap(a[i, j], a[s, b]);
+                  Swap(a[i, b], a[s, j]);
+                  Inc(j, 2)
+              End
+        End
+
+      Else
+        If (n-1) <> 2 Then
+          Begin
+            k := 1;
+            For i := 1 To n-1 Do
+              For j := 1 To n-1 Do
+                Begin
+                  a[i, j] := k; Inc(k)
+                End;
+            r := Pred((n-1) div 2) div 2; m := (n-1) div 2;
+
+            For i := 1 To m Do
+              Begin
+                j := i;
+                For k := 1 To r Do
+                  Begin
+                    If j > m Then j := 1;
+                    s := Succ(n-1 - i); b := Succ(n-1 - j);
+                    Swap(a[i, j], a[s, b]);
+                    Swap(a[i, b], a[s, j]);
+                    Inc(j)
+                  End
+              End;
+
+            i := 1; j := Succ(r);
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                s := Succ(n-1 - i);
+                Swap(a[i, j], a[s, j]);
+                Inc(i); Inc(j)
+              End;
+
+            i := 1; j := r + 2;
+            For k := 1 To m Do
+              Begin
+                If j > m Then j := 1;
+                b := Succ(n-1 - j);
+                Swap(a[i, j], a[i, b]);
+                Inc(i); Inc(j)
+              End
+          End
+
+        Else p := False;
+
+      for i:=1 to n-1 do
+      begin
+      s1:=s1+a[n-1, i];
+      s2:=s2+a[i, n-1];
+      end;
+  sum:=s1+s2+c1+c2;
+
+  writeln (sum);
+          
+      End;
+      
+
+
+
+
+
+begin
+   ReadLn(fa);
+  n:=fa*2;
+  CreateMagic(n);
+
+end.

@@ -1,0 +1,17 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,b:int64;
+begin
+readln(a1,a2,a3,a4);
+
+if a1>a2 then a1:=a2;
+if a3>a4 then a3:=a4;
+
+b:=trunc(sqrt(a1+a3));
+writeln(b);
+end.

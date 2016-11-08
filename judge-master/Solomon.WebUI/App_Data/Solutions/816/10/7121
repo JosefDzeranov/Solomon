@@ -1,0 +1,18 @@
+function Factorial(n: integer): Integer;
+begin
+  if n > 1 then
+    Factorial := n * Factorial(n - 1)
+  else
+    factorial := 1;
+end;
+ 
+var
+  a, b: Integer;
+  s: Real;
+  ch, zn: Integer;
+begin
+  readln(a,b);
+  s := Factorial(a) / (Factorial(a - b) * Factorial(b));
+  Writeln(Trunc(s));
+  Readln;
+end.

@@ -1,0 +1,90 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace D
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            double[] a = new double[3]; int k = 0;
+            string t = ""; char q;
+            int i = 0;
+            if (s[0] >= 42 && s[0] <= 47) Console.WriteLine("ERROR");
+            else
+            {
+                while (i<s.Length && s[i] >= '0' && s[i] <= '9')
+                {
+                    t += s[i]; i++;
+                }
+                a[0] = Convert.ToDouble(t); t="";
+                if (i < s.Length && s[i] != '=')
+                    q = s[i];
+                else
+                {
+                    Console.WriteLine("ERROR");
+                    return;
+                } 
+                i++;
+                if (i < s.Length && s[i] >= '0' && s[i] <= '9') { t += s[i]; i++; }
+                else
+                {
+                    Console.WriteLine("ERROR");
+                    return;
+                }
+                while (i<s.Length && s[i] >= '0' && s[i] <= '9')
+                {
+                    t += s[i]; i++;
+                }
+                a[1] = Convert.ToDouble(t); t = "";
+                if (i < s.Length && s[i] != '=')
+                {
+                    Console.WriteLine("ERROR");
+                    return;
+                }
+                else
+                {
+                    if (i + 1 < s.Length)
+                    {
+                        for (int j = i + 1; j < s.Length; j++)
+                        {
+                            if (k == 0)
+                            {
+                                if (s[j] >= '0' && s[j] <= '9') t += s[j];
+                                else
+                                {
+                                    Console.WriteLine("ERROR");
+                                    return;
+                                }
+                            }
+                            else break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR");
+                        return;
+                    }
+                       
+                    if (q=='+')
+                       if ( a[0] + a[1] == Convert.ToInt32(t)) Console.WriteLine("YES");
+                        else Console.WriteLine("NO");
+                    if (q == '-')
+                        if (a[0] - a[1] == Convert.ToInt32(t)) Console.WriteLine("YES");
+                        else Console.WriteLine("NO");
+                    if (q == '*')
+                        if (a[0] * a[1] == Convert.ToInt32(t)) Console.WriteLine("YES");
+                        else Console.WriteLine("NO");
+                    if (q == '/')
+                        if (a[0] / a[1] == Convert.ToInt32(t)) Console.WriteLine("YES");
+                        else Console.WriteLine("NO");
+
+                    
+                }
+            }
+        }
+    }
+}

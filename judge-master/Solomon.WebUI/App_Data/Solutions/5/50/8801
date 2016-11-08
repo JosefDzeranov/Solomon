@@ -1,0 +1,11 @@
+
+a,b = map(int,input().split())
+n = int(input())
+s= str(a)+str(b)
+while len(s)<n:
+    c= a+b
+    s=s+str(c)
+    a=b
+    b=c
+print (s[n-1])
+

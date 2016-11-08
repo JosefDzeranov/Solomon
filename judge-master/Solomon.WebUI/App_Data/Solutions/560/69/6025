@@ -1,0 +1,62 @@
+program svetofori;
+var a, b, x, c: longint;
+y:real;
+Begin 
+Readln(a, b, x);
+if x/b <= 1000
+then y:=x/b
+else y := x/(b+1*(b+a));
+if x/(2*b+a)>1000
+then y := x/(b+2*(b+a));
+if x/(b+2*(b+a))>1000
+then y := x/(b+3*(b+a));
+if x/(b+3*(b+a))>1000
+then y := x/(b+4*(b+a));
+if x/(b+4*(b+a))>1000
+then y := x/(b+5*(b+a));
+if x/(b+5*(b+a))>1000
+then y := x/(b+6*(b+a));
+if x/(b+6*(b+a))>1000
+then y := x/(b+7*(b+a));
+if x/(b+7*(b+a))>1000
+then y := x/(b+8*(b+a));
+if x/(b+8*(b+a))>1000
+then y := x/(b+9*(b+a));
+if x/(b+9*(b+a))>1000
+then y := x/(b+10*(b+a));
+if x/(b+10*(b+a))>1000
+then y := x/(b+11*(b+a));
+if x/(b+11*(b+a))>1000
+then y := x/(b+12*(b+a));
+if x/(b+12*(b+a))>1000
+then y := x/(b+13*(b+a));
+if x/(b+13*(b+a))>1000
+then y := x/(b+14*(b+a));
+if x/(b+14*(b+a))>1000
+then y := x/(b+15*(b+a));
+if x/(b+15*(b+a))>1000
+then y := x/(b+16*(b+a));
+if x/(b+16*(b+a))>1000
+then y := x/(b+17*(b+a));
+if x/(b+17*(b+a))>1000
+then y := x/(b+18*(b+a));
+if x/(b+18*(b+a))>1000
+then y := x/(b+19*(b+a));
+if x/(b+19*(b+a))>1000
+then y := x/(b+20*(b+a));
+if x/(b+20*(b+a))>1000
+then y := x/(b+21*(b+a));
+if x/(b+21*(b+a))>1000
+then y := x/(b+22*(b+a));
+if x/(b+22*(b+a))>1000
+then y := x/(b+23*(b+a));
+if x/(b+23*(b+a))>1000
+then y := x/(b+24*(b+a));
+if x/(b+24*(b+a))>1000
+then y := x/(b+25*(b+a));
+if x/(b+25*(b+a))>1000
+then y := x/(b+26*(b+a));
+if x/(b+26*(b+a))>1000
+then y := x/(b+27*(b+a));
+writeln(y);
+end.

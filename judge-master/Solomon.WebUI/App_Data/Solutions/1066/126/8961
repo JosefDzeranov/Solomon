@@ -1,0 +1,15 @@
+n = int(input())
+ms = [int(i) for i in input().split()]
+sr = sum(ms) / n
+if int(sr) != sr:
+    print('IMPOSSIBLE')
+    exit()
+plus = 0
+minus = 0
+for i in ms:
+    if sr - i < 0:
+        minus += sr - i
+    elif sr - i > 0:
+        plus += sr - i
+if plus == -minus:
+    print(int(plus))

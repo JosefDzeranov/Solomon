@@ -1,0 +1,45 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,v,t,r,i:integer;
+mas:array[1..100000000] of string;
+k:string;
+begin
+c:=0;
+readln(v);
+readln(k);
+for i := 1 to  v do
+begin
+
+readln(mas[i]);
+if True then
+
+  if k<>mas[i] then  c:=c+1;
+
+
+end;
+ readln;
+
+writeln(c);
+
+
+
+    readln;
+
+
+
+
+
+
+
+
+
+
+
+
+
+end.

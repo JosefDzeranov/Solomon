@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace ConsoleApplication8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s1, s2;
+            s1 = Console.ReadLine();
+            s2 = Console.ReadLine();
+            if (s1[0] < s2[0] || s2[0]!='*' && s1[0]!='a')
+                Console.WriteLine(s2);
+            else
+                Console.WriteLine(s1);
+            
+        }
+    }
+}

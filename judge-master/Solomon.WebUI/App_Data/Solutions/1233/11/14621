@@ -1,0 +1,5 @@
+n=int(input()) 
+h=[1] * n
+h[-1]=n
+h[-2]=2
+print(' '.join([str(i) for i in h]))

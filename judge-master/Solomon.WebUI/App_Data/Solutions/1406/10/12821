@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+  long long C,n,k,i,s,p;
+  
+int main()
+{   
+  //freopen("solomon.in","r",stdin);
+  //freopen("solomon.out","w",stdout);
+  
+  scanf("%lld%lld",&n,&k);
+  
+  s=1;
+  p=1;
+  if(n-k>k) 
+  {
+    for(i=n-k+1;i<=n;i++)
+      s*=i;
+    for(i=2;i<=k;i++)
+      p*=i;
+    C=s/p;    
+  }else
+  {
+    for(i=k+1;i<=n;i++)
+      s*=i;
+    for(i=2;i<=n-k;i++)
+      p*=i;
+    C=s/p;      
+  }
+  
+  printf("%lld\n",C);
+  return 0;  
+}

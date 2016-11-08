@@ -1,0 +1,39 @@
+#include <conio.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+    char A[100], B[100];
+    int i, j=0, l;
+    scanf ("%s", &A);
+    for (i=0; i<100; i++)
+    {
+        B[i]='0';
+    }
+    l=strlen(A);
+    for (i=0; i<l; i++)
+    {
+        if ((A[i]!='-') && (A[i]!='+') && (A[i]!='#'))
+        {
+                        strncpy (B+j+1, B+j, 100-j);
+                        B[j]=A[i];
+                        j++;
+        }
+        if (A[i]=='-') j--;
+        if (A[i]=='+') j++;
+        if (A[i]=='#')
+        {
+                      j--;
+                      strncpy (B+j, B+j+1, 100-j);
+                      B[99]='0';
+        }
+    }
+    i=0;
+    while (B[i]!='0')
+    {
+          printf ("%c", B[i]);
+          i++;
+    }
+}
+             

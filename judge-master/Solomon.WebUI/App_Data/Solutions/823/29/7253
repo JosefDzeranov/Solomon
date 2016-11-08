@@ -1,0 +1,35 @@
+program Outrun;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+const
+s = 195;
+o = 105;
+k = 90;
+p = 75;
+begin
+  write (p, ' ');
+  writeln (0);
+  write (k, ' ');
+  writeln (p);
+  write (p, ' ');
+  writeln (0);
+  write (o, ' ');
+  writeln (k);
+  write (s, ' ');
+  writeln (o + p);
+  write (p, ' ');
+  writeln (0);
+  write (k, ' ');
+  writeln (p);
+  write (o, ' ');
+  writeln (k);
+  write (p, ' ');
+  writeln (0);
+  write (k, ' ');
+  writeln (p);
+  readln
+end.

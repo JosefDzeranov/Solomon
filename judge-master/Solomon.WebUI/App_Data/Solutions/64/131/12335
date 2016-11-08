@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque>
+#include <map>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+long long mas[150000] = { 0 };
+long long sum[150000] = { 0 };
+long long pref[150000] = { 0 };
+long long suff[150000] = { 0 };
+int main()
+{
+	//srand(time(NULL)); // 2 10 4 8
+	//int n = rand() % 100;
+	int n, k;
+	cin >> n >> k;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> mas[i];
+		if (i == 1)
+			sum[i] = mas[i];
+		else
+			sum[i] = sum[i - 1] + mas[i];
+	}
+	pref[k] = sum[k] - sum[0];
+	for (int i = k + 1; i <= n; i++)
+		pref[i] = max(pref[i - 1], sum[i] - sum[i - k]);
+	suff[n - k] = sum[n] - sum[n - k];
+	for (int i = n - k - 1; i >= 0; i--)
+		suff[i] = max(suff[i + 1] ,sum[i + k] - sum[i]);
+	long long minn = 10000000000;
+	for (int i = 1; i <= n - k + 1; i++)
+		minn = min(minn, max(pref[i - 1], suff[i + k]));
+	cout << minn;
+	return 0;
+}

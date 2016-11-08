@@ -1,0 +1,21 @@
+program LinkedGoat;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  l, x1, x2, y1, y2 : integer;
+begin
+  readln (l);
+  readln (x1, y1);
+  readln (x2, y2);
+  x1 := sqr (x2 - x1) + sqr (y2 - y1);
+  l := sqr (2 * l);
+  if l >= x1 then
+    write (x1 div 2)
+  else
+    write (l / 4 * Pi);
+  readln;
+end.

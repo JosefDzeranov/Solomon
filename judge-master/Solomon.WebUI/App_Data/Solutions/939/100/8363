@@ -1,0 +1,11 @@
+program orexCounter;
+var
+ n,d:longint;
+ oFr,oT:integer;
+begin
+ readln(d,n);
+ oFr:=(n div d)-(n div d-1);
+ oT:=n-(oFr*d);
+ write(oFr,' ',oT);
+ readln;
+end.

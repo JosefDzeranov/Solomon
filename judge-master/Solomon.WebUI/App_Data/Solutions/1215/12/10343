@@ -1,0 +1,34 @@
+var n,k,i,x,k1:longint;
+function Prost(a:longint):boolean;
+var j:longint;
+    f:boolean;
+begin
+if a<2 then f:=false{первое простое=2}
+else
+ begin
+  f:=true;{считаем что простое}
+  j:=2;
+  while (j*j<=a) and f do
+  if a mod j=0 then f:=false
+  else j:=j+1;
+ end;
+ Prost:=f;
+end;
+
+function fact(n1 : longint) : longint;
+  begin
+    if n1 = 1 then fact := 1
+    else fact:=n1*fact(n1-1);
+  end;
+begin
+read(n,k);
+if Prost(n) then   begin
+                   for i:=1 to n do begin k1:=k;
+                                    if i mod k1=0 then
+                                                  while (i mod k1 =0) do begin x:=x+1;k1:=k1*k;end;
+                                    end;
+                   end
+             else x:= fact(n) div k;
+                   
+write(prost(n));
+end.     

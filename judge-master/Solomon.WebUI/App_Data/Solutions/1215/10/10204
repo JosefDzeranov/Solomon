@@ -1,0 +1,11 @@
+var k,n,g:longint;
+i,j:integer;
+c,a,b,d:real;
+begin
+ read(n,k);g:=n-k;a:=1;b:=1;d:=1;
+ for i:=2 TO N DO a:=a*i;
+ for i:=2 to k do b:=b*i;
+ for i:=2 to g do d:=d*i;
+ c:=a/b/d;
+ if c>=0 then write(c);
+ end.            

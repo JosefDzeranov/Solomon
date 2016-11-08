@@ -1,0 +1,110 @@
+TYPE
+  TAns = Record
+    a,b,c,d,kol: LongINt;
+  End;
+VAR
+  cyc,reb: Boolean;
+  d: Array of TAns;
+  n,m,k,i,j,len: LongINt;
+  f: Array [1..10] of 0..2;
+  ver: Array [1..10] of LongINt;
+  sh: Array [1..10] of Array [1..10] of LongInt;
+  
+  Function Min(a,b: LongInt): LongInt;
+  Begin
+    if (a < b) then Min := a
+    Else Min := b;
+  End;
+  Function Max(a,b: LongInt): LongInt;
+  Begin
+    if (a > b) then Max := a
+    Else Max := b;
+  End;
+  
+  Procedure Add(a,b,c,d0,kol: LongINt);
+  Begin
+    SetLength(d, Length(d)+1);
+    d[Length(d)-1].a := a;
+    d[Length(d)-1].b := b;
+    d[Length(d)-1].c := c;
+    d[Length(d)-1].d := d0;
+    d[Length(d)-1].kol := kol;
+  End;
+  
+  Procedure Dfs(pr,ind: LongINt);
+  Var i: LongINt;
+  Begin
+    f[ind] := 1;
+    Inc(len);
+    ver[len] := ind;
+    
+    If (sh[ind][pr] > 0) then begin
+      cyc := true; Exit;  End;
+    
+    For i := 1 to n do
+      if (cyc) then Break
+      else if (sh[ind][i] > 0)and(f[i] = 0) then Dfs(pr,i);
+    
+    f[ind] := 2;
+  End;
+  
+BEGIN
+  // Input
+  //Assign(input,'input.txt'); ReSet(input);
+  
+  Read(n,m);
+  For i := 1 to m do begin
+    Read(j,k);  
+    if (j <> k) then Inc(sh[j][k]);
+  End;
+  
+  // Search cycle
+  cyc := true;
+  While (cyc) do begin
+    For i := 1 to n do
+      For j := 1 to n do
+        if (sh[i][j] > 0)and(sh[j][i] > 0) then begin
+          k := Min(sh[i][j],sh[j][i]);
+          Add(i,j,j,i,k);
+          sh[i][j] := sh[i][j] - k;
+          sh[j][i] := sh[j][i] - k;
+        End;
+    
+    cyc := false;
+    For i := 1 to n do
+      If (not cyc)then begin
+        For j := 1 to n do f[j] := 0;
+        len := 0; Dfs(i,i); end;
+      
+    If (cyc) then begin
+      k := 1000;
+      For i := 1 to len-1 do
+         k := Min(k, sh[ver[i]][ver[i+1]]);
+    
+      For i := 2 to len-1 do begin
+        Add(ver[1],ver[i],ver[i],ver[i+1],k);
+        sh[ver[1]][ver[i]] := sh[ver[1]][ver[i]] - k;  
+        sh[ver[1]][ver[i+1]] := sh[ver[1]][ver[i+1]] + k;
+        sh[ver[i]][ver[i+1]] := sh[ver[i]][ver[i+1]] - k;End;
+      
+      Add(ver[1],ver[len],ver[len],ver[1],k);
+      sh[ver[1]][ver[len]] := sh[ver[1]][ver[len]] - k;  
+      sh[ver[len]][ver[1]] := sh[ver[len]][ver[1]] - k;
+    End;
+  End;
+  // Search others
+  For i := 1 to n do
+    For j := 1 to n do
+      if (sh[i][j] > 0) then Add(i,j,j,-1,sh[i][j]);
+  
+  // Print
+  k := 0;
+  For i := 0 to length(d)-1 do
+    k := k + d[i].kol;
+  
+  Writeln(k);
+  For i := 0 to Length(d)-1 do
+    For j := 1 to d[i].kol do
+      if (d[i].d = -1) then Writeln(d[i].a,' ',d[i].b, ' ',d[i].c)
+      else Writeln(d[i].a,' ',d[i].b, ' ',d[i].c,' ',d[i].d);
+END.

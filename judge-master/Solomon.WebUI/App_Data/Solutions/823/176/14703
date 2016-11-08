@@ -1,0 +1,35 @@
+#include <cmath>
+#include <iostream>
+
+long long mini(long long, long long);
+
+int main()
+{
+    using std::cin;
+    using std::cout;
+
+    int evaporation_speed, points_number;
+    cin >> evaporation_speed >> points_number;
+
+    long long previous_depth = 0;
+    double v = 0;
+    for (int i = 0; i < points_number; i++)
+    {
+        long long depth;
+        cin >> depth;
+
+        v += llabs(depth - previous_depth) / 2.0 + mini(previous_depth, depth);
+        previous_depth = depth;
+    }
+
+    long long answer = (long long) ceil(v / evaporation_speed);
+
+    cout << answer;
+
+    return 0;
+}
+
+long long mini(long long a, long long b)
+{
+    return a <= b ? a : b;
+}

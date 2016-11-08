@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int x1,x2,x3,y1,y2,y3;
+    cin>>x1>>y1>>x2>>y2>>x3>>y3;
+    int a,b,c,d,e,f,g;
+    a=x2-x3;
+    b=y2-y3;
+    c=x2-x1;
+    d=y2-y1;
+    e=y3-y1;
+    f=x3-x1;
+    g=min(a,b);
+    g=min(g,c);
+    g=min(g,d);
+    g=min(g,e);
+    g=min(g,f);
+    cout<<g;
+    return 0;
+}

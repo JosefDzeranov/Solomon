@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,i,n=1,m=6,k=1,C;
+	cin>>N;
+
+	C=(N-2)*(N-1)*N;
+	
+	cout<<C;
+	cin>>N;
+	return 0;
+}

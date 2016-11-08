@@ -1,0 +1,13 @@
+var k,m,n,i,j,s:integer;
+l:boolean;
+begin
+read(k);
+s:=3;
+for i:=1 to k do
+begin
+read(m,n);
+s:=s-m;
+if s>0 then s:=s+n else l:=true;
+end;
+if l then write('YES') else write('NO');
+end.

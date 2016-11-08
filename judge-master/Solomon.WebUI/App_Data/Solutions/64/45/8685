@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+
+int main()
+{
+	//srand(time(NULL));
+	//int n = rand() % 100;
+	int n, l, r1, r2;
+	cin >> n >> l >> r1 >> r2;
+	double pi = 3.1415926535897932384626433;
+	int want = l / (2 * r1);
+	if (l % (2 * r1) != 0)
+		want++;
+	double cnt = 4.0 * pi * double(r1) + 2.0 * pi * double(r2);
+	int cnt2 = int(double(n) / cnt);
+	if (cnt2 >= want)
+	{
+		cout << "YES\n";
+		cout << want * 2 << ' ' << want;
+	}
+	else
+		cout << "NO";
+	return 0;
+}

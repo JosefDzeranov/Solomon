@@ -1,0 +1,9 @@
+program isRight;
+var
+ n,m:longint;
+begin
+ readln(n,m);
+ if n*n-sqr(trunc(sqrt(n*n-m)))=m then write('Yes')
+  else write('No');
+ readln;
+end.

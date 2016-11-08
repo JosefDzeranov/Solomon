@@ -1,0 +1,10 @@
+program olymp1;
+var i,n,p,p1,otchet: integer;
+begin
+read(n);
+p:=1;p1:=1;
+for i:=1 to n do p:=p*i;
+for i:=1 to n-3 do p1:=p1*i;
+otchet:= trunc(p/p1);
+writeln(otchet);
+end.

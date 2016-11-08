@@ -1,0 +1,9 @@
+var n:longint;
+ begin
+ // assign(input,'input1.txt'); reset(input);
+ //  assign(output,'output1.txt'); rewrite(output);
+    readln(n);
+    writeln(n*(n-1)*(n-2));
+end.
+
+

@@ -1,0 +1,15 @@
+var n,a,b,c,d,i:int64;
+begin
+readln(n);
+a:=0;
+if n mod 2=0 then writeln((n*(n*n+1)) div 2) else
+begin
+while n<>1 do
+begin
+a:=a+(n*n)+1;
+n:=n-2;
+end;
+writeln(a+5);
+end;
+end.
+

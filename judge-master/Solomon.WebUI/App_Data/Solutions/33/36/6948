@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+int main() {
+	int q;
+	cin >> q;
+	for (int i=3; i<=q; i++)
+		cout << i-2 << " " << i-1 << " " << i << " ";
+	return 0;
+}

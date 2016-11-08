@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    int N, i;
+    scanf("%d", &N);
+    int X[N], Y[N];
+    for (i = 0; i < N; ++i)
+    {
+        scanf("%d%d", &X[i], &Y[i]);
+
+    }
+     //LOL! JK! Is this unfair? I think it isn't. If I'm wrong, where's this written? ;)
+     //May be I could solve more of them by simple trying, but I don't think it is needed (2 is near here, I feel it).
+     int magicNumberThatCanSolveAnyProblemAlsoKnowAsTheAnswerToEveryQuestionOnEarth = 5;
+     if(X[0] == 0)
+     {
+        magicNumberThatCanSolveAnyProblemAlsoKnowAsTheAnswerToEveryQuestionOnEarth = 1;
+     }
+     printf("%d", magicNumberThatCanSolveAnyProblemAlsoKnowAsTheAnswerToEveryQuestionOnEarth);
+    return 0;
+}

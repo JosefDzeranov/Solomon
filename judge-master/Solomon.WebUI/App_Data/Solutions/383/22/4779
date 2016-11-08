@@ -1,0 +1,14 @@
+var n,k,i,m,j,y,x,z:longint;
+BEGIN
+  read(n,k);
+  read(x,y,z);
+  i:=(x div k)*(y div k);
+  j:=z mod k;
+  if 2*j>=k then j:=1
+    else j:=1;
+  i:=i*((z div k)+j);
+  j:=n mod i;
+  if j<>0then j:=1
+    else j:=0;
+  writeln(n div i +j);
+  END.

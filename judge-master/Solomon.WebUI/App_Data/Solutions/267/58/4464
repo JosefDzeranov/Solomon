@@ -1,0 +1,98 @@
+//9 13 21 23 35 64
+
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+#include <vector>
+
+
+using namespace std;
+
+int index;
+
+void out(vector <int> mass) {
+    for(int i=0; i<mass.size(); i++) {
+        cout << mass[i] << " ";
+    }
+    cout << endl << endl;
+}
+
+int sum(vector <int> mass) {
+    int result=0;
+    for(int i=0; i<mass.size(); i++) {
+        result+=mass[i];
+    }
+    return result;
+}
+
+int min(vector <int> mass){
+    int Min = mass[0];
+    index=0;
+    for(int i = 1; i <mass.size(); i++){
+        if (Min > mass[i]){
+            Min = mass[i];
+            index = i;        
+        }          
+    }        
+    return Min;    
+}
+
+int main(){
+    int num, tmp, sumA, sumB, Raz, numA, numB;
+    vector <int> massO;
+    vector <int> massA;
+    vector <int> massB;
+    scanf("%d", &num);
+    massO.resize(num); 
+    for(int i = 0; i < num; i++){
+        scanf("%d", &massO[i]);
+    }
+    for(int i = 0; i < num; i++){
+        for(int j=0; j < num; j++){                
+            if(massO[j] > massO[j]){
+                int rez = massO[j];
+                massO[j] = massO[i];
+                massO[i] = rez;                                        
+            }        
+        }    
+    }
+/*    out(mass);
+    _getch();*/
+    for(int i = 0; i < num/2;i+=2){
+        massA.push_back(massO[i]);                   
+        massB.push_back(massO[i+1]); 
+        massA.push_back(massO[num-i-1]);                   
+        massB.push_back(massO[num - i-2]); 
+    }
+    /*for(int i=0; i<num/2; i++) {
+        if(i%2==0) massA.push_back(massO[i]);
+        else massB.push_back(massO[i]);
+    }
+    for(int i=num-1; i>=num/2; i--) {
+        if((i-num-1)%2==0) massA.push_back(massO[i]);
+        else massB.push_back(massO[i]);
+    }*/
+    massB.resize(num/2);
+    if(num%2==0) {
+        massA.resize(num/2);
+    }
+       
+    do {
+        sumA=sum(massA);
+        sumB=sum(massB);
+        Raz = sumA-sumB;
+        if(Raz > 0){
+            if(Raz > min(massA)){
+                massB.push_back(min(massA));
+                massA.erase(massA.begin()+index); 
+            }                         
+        }else if(Raz < 0){
+            swap(massA, massB);         
+            Raz*=-1;        
+        }
+    }while ((Raz > min(massB)) || (Raz > min(massA)));
+    printf("%d", Raz);
+    _getch();    
+    return 0;    
+}
+

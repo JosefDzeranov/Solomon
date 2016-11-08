@@ -1,0 +1,8 @@
+a, b, c, d = list(map(int, input().rstrip().split()))
+k = 0
+for i in range(1, d + 1):
+    for j in range(i, d - 2 * i + 1):
+        if((i * j >= a and i * j <= b) and (2 * (i + j) >=c and 2 * (i + j) <= d)):
+            #print(i * j, 2 * i + 2 * j, i, j)
+            k += 1
+print(k)

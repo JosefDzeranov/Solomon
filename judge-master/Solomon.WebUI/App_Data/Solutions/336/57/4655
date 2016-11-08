@@ -1,0 +1,55 @@
+program SecretInformation;
+var n,i,j:integer; temp,s,res,rmax,tmax,tt:integer;
+    a,r,rr: array [1..100] of integer;
+begin
+ readln(n);
+ if (n<=0) or (n>100)
+ then writeln('input data is not correct')
+ else
+   begin
+     for i:=1 to n do
+       begin
+         read(a[i]);
+         r[i]:= a[i];
+         temp:=a[i];
+         repeat
+           res:=temp;
+           s:=0;
+           while res<>0 do
+             begin
+                s:=s + res mod 10;
+                res:=res div 10;
+             end;
+             temp:=s;
+         until s<10;
+         r[i]:=s; rr[i]:=r[i];
+       end;
+     for i:=n downto 2 do
+       for j:=2 to i do
+         if rr[j]<rr[j-1] then
+           begin
+             temp:=rr[j];
+             rr[j]:=rr[j-1];
+             rr[j-1]:=temp
+           end;
+     i:=1; tmax:=0;
+     while i<n do
+     begin
+       tt:=1;
+       while rr[i]=rr[i+1] do
+       begin tt:=tt+1;
+             i:=i+1;
+       end;
+       if tt>tmax then
+       begin tmax:=tt;
+             rmax:=rr[i];
+       end
+       else if tt=tmax then
+            if rmax>rr[i] then rmax:=rr[i];
+       i:=i+1;
+     end;
+     for i:=1 to n do
+        if r[i]<>rmax then
+        write (a[i],' ');
+   end;
+end.

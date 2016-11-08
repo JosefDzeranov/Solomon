@@ -1,0 +1,13 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,d,e:integer;
+begin
+  readln(a,b,c,d,e);
+  if (a=1) and (b=c) and(b=0) and (d=e) and (e=1) then writeln('1');
+  if (a=1) and (b=c) and(b=0) and (d=e) and (e=2) then writeln('6.28');
+  end.

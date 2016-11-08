@@ -1,0 +1,9 @@
+var n,i:integer;
+s:longint;
+begin
+  s:=1;
+  readln(n);
+  for i:=n downto n-2 do
+    s:=s*i; 
+  writeln(s);    
+end.

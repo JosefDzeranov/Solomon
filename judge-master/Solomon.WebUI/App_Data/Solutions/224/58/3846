@@ -1,0 +1,83 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+
+namespace Mesi
+{
+    class Program
+    {
+        class A
+        {
+            public int Now { get; set; }
+            public int Next { get; set; }
+        }
+        static void Main(string[] args)
+        {
+            double Sum = 0, Average = 0;
+
+            int N = Int32.Parse(Console.ReadLine());
+            string[] s = Console.ReadLine().Split(' ');
+            List<int> Product = new List<int>();
+            foreach (var i in s)
+            {
+                Product.Add(Int32.Parse(i));
+                Sum += Product[Product.Count - 1];
+            }
+
+            Average = Sum / 2;
+            
+            List<A> Whatever = new List<A>();
+            Whatever.Add(new A { Now = 0, Next = 1 });
+            Sum = Product[0];
+            double Best = Math.Abs(Sum - Average);
+
+            while (Whatever[0].Now != N - 1)
+            {
+                if (Whatever[Whatever.Count - 1].Next != N)
+                {
+                    Whatever[Whatever.Count - 1].Next++;
+                    Whatever.Add(new A
+                    {
+                        Now = Whatever[Whatever.Count - 1].Next - 1,
+                        Next = Whatever[Whatever.Count - 1].Next
+                    });
+                    Sum += Product[Whatever[Whatever.Count - 1].Now];
+                    if (Best > Math.Abs(Sum - Average)) Best = Math.Abs(Sum - Average);
+                    if (Sum > Average)
+                    {
+                        if (Whatever.Count != 1)
+                        {
+                            Sum -= Product[Whatever[Whatever.Count - 1].Now];
+                            Whatever.RemoveAt(Whatever.Count - 1);
+                        }
+                        else
+                        {
+                            Whatever[0].Now++;
+                            Whatever[0].Next = Whatever[0].Now + 1;
+                            Sum = Product[Whatever[0].Now];
+                            if (Best > Math.Abs(Sum - Average)) Best = Math.Abs(Sum - Average);
+                        }
+                    }
+                }
+                else
+                {
+                    if (Whatever.Count != 1)
+                    {
+                        Sum -= Product[Whatever[Whatever.Count - 1].Now];
+                        Whatever.RemoveAt(Whatever.Count - 1);
+                    }
+                    else
+                    {
+                        Whatever[0].Now++;
+                        Whatever[0].Next = Whatever[0].Now + 1;
+                        Sum = Product[Whatever[0].Now];
+                        if (Best > Math.Abs(Sum - Average)) Best = Math.Abs(Sum - Average);
+                    }
+                }
+            }
+
+            Console.WriteLine(Best * 2);
+            Console.ReadLine();
+        }
+    }
+}

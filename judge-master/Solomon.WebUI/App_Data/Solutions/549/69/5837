@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{cout.precision(20);
+   int_fast64_t a, b,s=0;
+   double x;
+   cin>>a>>b>>x;
+   s+=b;
+   if(x/s>1000){
+while(x /s >1000){
+   s+=a;
+   if(x/s>1000)
+   s+=b;
+}
+cout<<x/s;
+}
+else
+cout<<x/s;
+
+
+    return 0;
+}

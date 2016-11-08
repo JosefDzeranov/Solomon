@@ -1,0 +1,47 @@
+//package com.acidka;
+
+public class C {
+	public static int[][][] a;
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			int n, m, max = 1,i,j;
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			n = s.nextInt();
+			m = s.nextInt();
+			a = new int[n][m][2]; 
+			for(i = 0;i < n;i++)
+			{
+				for(j = 0;j < m;j++)
+				{
+					a[i][j][0] = s.nextInt();
+					a[i][j][1] = 1;
+				}
+			}
+			//long start = System.currentTimeMillis();
+			for(int x = 0; x <= 10*n*m-1; x++)
+			for(i = 0;i < n;i++)
+			{
+				for(j = 0;j < m;j++)
+				{
+					//a[i][j][2] = find(0, 0, n, m);
+					if((i > 0) && (a[i-1][j][0] == a[i][j][0]+1) && (1+a[i-1][j][1] > a[i][j][1])) a[i][j][1] = 1+a[i-1][j][1];
+					if((j > 0) && (a[i][j-1][0] == a[i][j][0]+1) && (1+a[i][j-1][1] > a[i][j][1])) a[i][j][1] = 1+a[i][j-1][1];
+					if(j < m-1 && (a[i][j+1][0] == a[i][j][0]+1) && (1+a[i][j+1][1] > a[i][j][1])) a[i][j][1] = 1+a[i][j+1][1];
+					if(i < n-1 && (a[i+1][j][0] == a[i][j][0]+1) && (1+a[i+1][j][1] > a[i][j][1])) a[i][j][1] = 1+a[i+1][j][1];
+					if( a[i][j][2] > max ) max = a[i][j][2];
+				}
+			}
+			System.out.println(max);
+			//System.out.println(System.currentTimeMillis() - start);
+			s.close();
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

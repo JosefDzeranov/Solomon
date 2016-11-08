@@ -1,0 +1,9 @@
+program zad1;
+var a,b,sum:integer;
+begin
+writeln('введите числа через пробел');
+read(a,b);
+writeln;
+sum:=a+b;
+writeln('Сумма = ',sum);
+end.

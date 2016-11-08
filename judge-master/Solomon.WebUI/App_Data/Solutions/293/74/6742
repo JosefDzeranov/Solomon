@@ -1,0 +1,116 @@
+#include <iostream>
+#include <stdio.h>
+
+
+using namespace std;
+
+int x11,x22,y11,y22;
+
+void endd(bool a)
+{
+	int help=1000;
+	if(a==true)
+	{
+		if(x11<0)
+		{
+			if(0-x11<x22-100)
+			{
+				cout << help+((0-x11)*2)*5;
+				return;
+			}
+			else
+			{
+				cout << help+((x22-100)*2)*5;
+				return;
+			}
+		}
+		else
+		if(x11>100)
+		{
+			if(x11-100<0-x22)
+			{
+				cout << help+((x11-100)*2)*5;
+				return;
+			}
+			else
+			{
+				cout << help+((0-x22)*2)*5;
+				return;
+			}
+		}
+	}
+	else
+	{
+		if(y1<0)
+		{
+			if(0-y11<y22-100)
+			{
+				cout << help+((0-y11)*2)*5;
+				return;
+			}
+			else
+			{
+				cout << help+((y22-100)*2)*5;
+				return;
+			}
+		}
+		else
+		if(y11>100)
+		{
+			if(y11-100<0-y22)
+			{
+				cout << help+((y11-100)*2)*5;
+				return;
+			}
+			else
+			{
+				cout << help+((0-y22)*2)*5;
+				return;
+			}
+		}
+
+
+	}
+}
+
+int main()
+{
+	cin >> x11 >> x22>>y11>>y22;
+	if(x11<0 && y11>=0)
+	{
+		if(x22>100 && y11<=100)
+		{
+			endd(true);
+			return 0;
+		}
+	}
+	else
+		if(x11>100 && y11>=0)
+		{
+			if(x22<0 && y11<=100)
+			{
+				endd(true);
+			return 0;
+			}
+		}
+	else
+		if(y11>100 && x11>=0)
+		{
+			if(x11 <= 100 && y22<0)
+			{
+				endd(false);
+				return 0;
+			}
+		}
+		else
+		if(y11<0 && x11>=0)
+		{
+			if(x11 <= 100 && y22>100)
+			{
+				endd(false);
+				return 0;
+			}
+		}
+
+	cout << "1000";
+}

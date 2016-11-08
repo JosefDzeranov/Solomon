@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+
+namespace Balaev
+{
+	class Program
+	{
+		static void Main()
+		{
+			int n;
+			n = int.Parse(Console.ReadLine());
+			List<string> voprosi = new List<string>();
+
+			string vopros;
+			for(int i = 0; i < n; i++)
+			{
+				vopros = Console.ReadLine();
+				if(!voprosi.Contains(vopros))
+					voprosi.Add(vopros);
+			}
+
+			Console.WriteLine(voprosi.Count);
+			
+		}
+	}
+}

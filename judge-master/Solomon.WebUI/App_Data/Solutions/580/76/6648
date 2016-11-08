@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace barany
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            long resultat = 0;
+            string[] stroka;
+
+            for (int i = 0; i < n; i++)
+            {
+                stroka = Console.ReadLine().Split();
+                foreach (string item in stroka)
+                {
+                    long r = 0;
+                    if (long.TryParse(item, out r))
+                    {
+                        resultat += r;
+                    }
+                }
+            }
+            Console.WriteLine(resultat);
+        }
+
+        
+    }
+}

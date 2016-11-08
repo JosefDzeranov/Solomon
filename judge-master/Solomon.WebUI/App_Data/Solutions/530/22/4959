@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	int x, z;
+	int a, b, c;
+
+	cin >> x >> z;
+	cin >> a >> b >> c;
+
+	int ha, hb, hc;
+	ha = a/z;
+	hb = b/z;
+	hc = (c+c/2)/z;
+
+	int cnt;
+	if (ha && hb && hc)
+		cnt	= ha*hb*hc;
+	else
+	{
+		cout << "0";
+		return 0;
+	}
+
+	int ans;
+	ans = x / cnt;
+	if (x % cnt)
+		ans++;
+	cout << ans << endl;
+
+
+
+	return 0;
+}

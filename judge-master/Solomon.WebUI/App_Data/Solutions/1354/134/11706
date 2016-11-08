@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n:integer;
+begin
+readln(n);
+  if n mod 2=1 then
+  begin
+    writeln(n*(n-1));
+  end else
+  begin
+    writeln(n*(n-2));
+  end;
+  
+end.

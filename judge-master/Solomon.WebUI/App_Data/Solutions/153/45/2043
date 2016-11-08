@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int n, l, R, r;
+	int xn, x;
+	double pi=3.14;
+	cin >> n >> l >> R >> r;
+	double n1=2*pi*(2*R+r);
+	xn=n/n1;
+	x=l/(2*R);
+	if (xn<x)
+		cout << "NO";
+	else
+		cout << "YES\n" << xn*2 << " " << xn;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

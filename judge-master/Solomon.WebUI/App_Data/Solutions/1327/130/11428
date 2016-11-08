@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  Math,
+  SysUtils;
+
+function zet(x1,x2:real):integer;
+begin
+  result:=floor(x2)-round(x1+0.5)+1
+end;
+var a,b,c,d,s,k:integer;
+begin
+read(a);
+read(b);
+read(c);
+readln(d);
+c:=c-(c div 2);
+d:=d div 2;
+s:=0;
+for k:=c to d  do
+begin
+if k*k>=4*b then
+  s:=s+zet((k+sqrt(k*k-4*b))/2,(k+sqrt(k*k-4*a))/2) else
+if k*k>=4*a then
+  s:=s+zet(1,(k+sqrt(k*k-4*a))/2);
+end;
+writeln(s);
+readln;
+    
+end.

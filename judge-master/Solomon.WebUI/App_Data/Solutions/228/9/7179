@@ -1,0 +1,14 @@
+program zad3;
+var n,a,b,c,i,max,k,min:integer;
+begin
+readln(k);
+readln(n,a,b,c);
+if a>b then max:=b else max:=a;
+  if c<max then max:=c;
+if k=2 then writeln(max);
+If k=1 then begin
+ min:=n-max;
+ writeln(min);
+end;
+readln;
+end.

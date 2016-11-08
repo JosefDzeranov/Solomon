@@ -1,0 +1,10 @@
+#include <iostream>
+
+int main()
+{int a,b;
+cin>>a>>b;
+a=a+b;
+cout<<a;
+	std::cout << "Hello world!" << std::endl;
+	return 0;
+}

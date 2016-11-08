@@ -1,0 +1,33 @@
+const
+   cif = '1234567890';
+
+var
+   summ, i, j, n, ch, l, k, error: longint;
+   s, z: string;
+
+begin
+   readln(n);
+   for i := 1 to n do
+   begin
+      readln(s);
+      j:=1;
+      s:=s+' ';
+      while j <= length(s) do
+      begin
+         if (pos(s[j], cif) > 0) then
+         begin
+            l := j;
+            while (pos(s[j], cif) > 0) do begin inc(j); inc(k); end;
+            z := copy(s, l, k);
+            val(z, ch, error); 
+            summ := summ + ch;
+            k := 0;
+            l := 0;
+            z := '';
+         end else inc(j);
+         
+      end;
+      
+   end;
+   write(summ);
+end.

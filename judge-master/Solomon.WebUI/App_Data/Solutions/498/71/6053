@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+
+int a, b, c, n;
+
+int to_int(string s)
+{
+	int n=0, i;
+	for(i=0;	i<s.length();	i++)	n = n*10+int(s[i])-48;
+	return n;
+}
+string to_str(int n)
+{
+	int i;
+	string s="";
+	while(n!=0)
+	{
+		s+=char(n%10+48);
+		n/=10;
+	}
+	for(i=0;	i<s.length()/2;	i++)
+	{
+		swap(s[i], s[s.length()-i-1]);
+	}
+	return s;
+}
+
+string f(int x, int y, int z)
+{
+	string s, s1, sgl="";
+	int m, i, max = 0;
+	if(x+a+y+z <= n)
+	{
+		s = f(x+a, y, z);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		i++;
+		m = to_int(s1);
+		if(max<m)	{sgl = s;max = m;}
+	}
+	if(x + y + b + z <=n)
+	{
+		s = f(x, y+b, z);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		i++;
+		m = to_int(s1);
+		if(max<m)	{sgl = s;max = m;}
+	}
+	if(x + y + z + c<=n)
+	{
+		s = f(x, y, z+c);
+		i=0;
+		s1 = "";
+		while(s[i]!=' '){s1+=s[i];i++;}
+		i++;
+		m = to_int(s1);
+		if(max<m)	{sgl = s;max = m;}
+	}
+	if(sgl == "")
+	{
+		sgl = to_str(x*y*z) + " " + to_str(x) + " " + to_str(y) + " " + to_str(z);
+	}
+	return sgl;
+}
+
+int main()
+{
+	cin>>n>>a>>b>>c;
+	cout<<f(a, b, c);
+	return 0;
+}

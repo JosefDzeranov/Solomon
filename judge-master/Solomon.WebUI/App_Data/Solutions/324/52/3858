@@ -1,0 +1,8 @@
+Var x,s,i:longint;
+Begin
+   readln(x);
+   s:=1;
+   for i:=x-2 to x do
+   s:=s*i;
+   writeln(s);
+End.

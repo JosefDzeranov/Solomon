@@ -1,0 +1,23 @@
+program zadachaE;
+var s : string;
+    i, n, k, z : integer;
+begin
+readln(n);
+k := 0;
+for i := 1 to n do
+    begin
+         readln(s);
+         s := ' ' + s + ' ';
+         for z := 1 to length(s) do
+             begin
+                  if (s[z] in ['0'..'9']) then
+                     if (s[z+1] in ['0'..'9']) then
+                           if (s[z+2] = '0') then
+                              k := k + 100
+                           else k := k + (((ord(s[z])-48)*10))
+                     else k := k + (ord(s[z])-48)
+
+             end;
+    end;
+    writeln(k);
+end.

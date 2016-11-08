@@ -1,0 +1,26 @@
+import math
+
+n = int(input())
+pointer = 0
+if n % 10 < n:
+    pointer = 1
+    n = int(n / 10)
+ret = 0
+for i in range(n):
+    for j in range(n):
+        mtx = [[0 for i in range(n)] for j in range(n)]
+        p = 0
+        if i != j:
+            for u in range(n):
+                x = int(min(math.fabs(u - i), n - math.fabs(u - i)))
+                y = int(min(math.fabs(u - j), n - math.fabs(u - j)))
+                if mtx[x][y] == 0:
+                    p += 1
+                    mtx[x][y] += 1
+                else:
+                    p += min(-mtx[x][y], 0)
+            if p == n:
+                ret += 1
+if pointer == 1:
+    ret *= 10
+print(ret)

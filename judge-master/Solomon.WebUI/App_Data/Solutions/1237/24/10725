@@ -1,0 +1,35 @@
+var
+    i, k, l, j, n: longint;
+    m: array [1..500000] of longint;
+
+function rod(x, y: longint): boolean;
+var
+    x1, y1: longint;
+begin
+    x1 := x;
+    y1 := y;
+    while y > 0 do
+    begin
+        while x > 0 do
+        begin
+            if (x mod 10) = (y mod 10) then begin rod := true; exit; end
+            else
+                x := (x div 10);
+        end;
+        y := (y div 10);
+    end;
+    
+end;
+
+begin
+    readln(n);
+    
+    for i := 1 to n do
+        read(m[i]);
+    
+    for i := 1 to n-1 do
+        for j := i + 1 to n do
+            if rod(m[i], m[j]) then inc(k);
+    
+    writeln(k);
+end.

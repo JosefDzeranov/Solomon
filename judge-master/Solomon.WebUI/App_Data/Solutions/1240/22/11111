@@ -1,0 +1,16 @@
+VAR
+  kol,n,s,h: LongINt;
+  z,a,b,c: LongINt;
+BEGIN
+  Read(n,z);
+  Read(a,b,c);
+  
+  s := (a div z)*(b div z);
+  While ((h+1)*z <= c + z/2)do Inc(h);
+  
+  kol := h*s;
+  //Writeln(h,'*',s,'=',kol);
+  
+  if (n mod kol = 0) then Write(n div kol)
+  else Write((n div kol) + 1);
+END.

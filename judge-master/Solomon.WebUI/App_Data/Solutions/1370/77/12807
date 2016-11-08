@@ -1,0 +1,19 @@
+Program D;
+Var i,j,o:integer;
+    l,q:longint;
+    e:real;
+    a:string;
+Begin
+     Readln(a);
+     l:=length(a);
+     e:=sqrt(l);
+     q:=round(e);
+     If q<e then
+     q:=q+1;
+     For i:=1 to q do
+     Begin
+           o:=-q+i;
+           For j:=1 to q do
+           Write(a[o+q*j]);
+     End;
+End.

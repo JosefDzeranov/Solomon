@@ -1,0 +1,15 @@
+var n,i:integer;
+k:longint;
+begin
+k:=1;
+readln (n);
+if (n>=3) and (n<=1000) then
+for i:=n-2 to n do
+begin
+k:=k*i
+end;
+if (k>1) then
+begin
+ writeln (k);
+ end;
+end.

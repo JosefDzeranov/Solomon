@@ -1,0 +1,18 @@
+Program project1;
+var x1,x2,x3,y1,y2,y3,x,y,u,z,min: integer;
+begin
+min:=0;
+Readln(x1, y1);
+Readln(x2, y2);
+Readln(x3, y3);
+x:=abs(x3-x1);
+y:=abs(y2-y3);
+u:=abs(x2-x3);
+z:=abs(y3-y1);
+if x<y then min:=x
+else min:=y;
+if min>u then min:=u;
+if min>z then min:=z;
+Writeln(min);
+readln;
+end.

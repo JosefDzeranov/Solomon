@@ -1,0 +1,15 @@
+//Valery Nemychnikova Jan 4 2014
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(){
+  int n;
+  scanf("%d", &n);
+  int num = 2;
+  int s = 0;
+  while(num < n){
+    s += n/num;
+    num = 2*num;
+  }
+  printf("%d", s);
+}

@@ -1,0 +1,41 @@
+program nb;
+
+var
+  st, s: string;
+  n, i, t, j, o: integer;
+  mn: set of '1'..'9';
+
+begin
+  readln(n);
+  o := 0;
+  for i := 1 to n do
+  begin
+    read(t);
+    str(t, s);
+    st := st + s + ' ';
+  end;
+  i := 1;
+  while i < length(st) do
+  begin
+    j := i;
+    mn := [];
+    while not (st[j] = ' ') do
+    begin
+      mn := mn + [st[j]];
+      j := j + 1;
+    end;
+    i := j + 1;
+    t := i;
+    while t < length(st) do
+    begin
+      if st[t] in mn then 
+      begin
+        o := o + 1;
+        while not (st[t] = ' ') do
+          t := t + 1;
+      end;
+      t := t + 1;
+    end;
+  end;
+  writeln(o);
+end.

@@ -1,0 +1,43 @@
+﻿Module Module1
+
+    Sub Main()
+        Dim K, N, M, I, j As Byte
+        B(1):N,1:M) As Byte
+        N = Val(Text1.Text)
+        M = Val(Text2.Text)
+        K = 0
+        For I = 1 To N
+            For j = 1 To M
+                B(I, j) = InputBox("введите 1 если квадрат вырезан, в противном случае 0", "ввод данных")
+                If B(I, j) = 0 And B(I, j - 1) = 0 Then K = K + 1
+                If B(I, j) = 0 And B(I - 1, j) Then K = K + 1
+
+            Next j
+
+        Next I
+        Form1.Print(K)
+
+    End Sub
+
+    Private Function B(ByVal p1 As Integer, ByVal j As Byte) As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function Text2() As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Function Text1() As Object
+        Throw New NotImplementedException
+    End Function
+
+    Private Sub B(ByVal p1 As Integer)
+        Throw New NotImplementedException
+    End Sub
+
+    Private Function Form1() As Object
+        Throw New NotImplementedException
+    End Function
+
+End Module
+

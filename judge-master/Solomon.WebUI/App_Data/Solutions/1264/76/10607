@@ -1,0 +1,17 @@
+var
+c,s:string;
+i,j,sum,n:longint;
+begin
+readln(n);
+for i:=1 to n do begin
+readln(s);
+for j:=1 to length(s)-1 do begin
+if (s[j] in ['0'..'9']) then c:=c+s[j];
+if not(s[j+1] in ['0'..'9']) and (c<>'') then begin
+sum:=strtoint(c)+sum;
+c:='';
+end;
+end;
+end;
+writeln(sum);
+end.

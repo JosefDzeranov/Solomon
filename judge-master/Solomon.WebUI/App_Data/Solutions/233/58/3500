@@ -1,0 +1,30 @@
+program E0;
+var n,i,j: byte;
+	h1,h2: int64;
+	a: array[1..100] of int64;
+	h: array[1..100] of int64;
+procedure swap(var x,y: int64);
+var tmp: int64;
+begin
+	tmp:=x;
+	x:=y;
+	y:=tmp;
+end;
+begin
+	readln(n);
+	for i:=1 to n do read(a[i]);
+	for i:=1 to n do
+		for j:=1 to n-1 do if a[j]<a[j+1] then swap(a[j],a[j+1]);
+	//for i:=1 to n do write(a[i],' ');
+	//writeln;
+	for i:=1 to n-1 do begin
+		h1:=a[1];
+		h2:=0;
+		for j:=2 to i do h2:=h2+a[j];
+		for j:=i+1 to n do if h2>h1 then h1:=h1+a[j] else h2:=h2+a[j];
+		h[i]:=abs(h1-h2);
+	end;
+	j:=h[1];
+	for i:=1 to n-1 do if j>h[i] then j:=h[i];
+	writeln(j);
+end.

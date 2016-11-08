@@ -1,0 +1,9 @@
+n, k = list(map(int, input().rstrip().split()))
+a = list(map(int, input().rstrip().split()))
+ts = []
+for i in range(n):
+    ts.append(sum(a[i:i + k]))
+m = max(ts)
+i = ts.index(m)
+#m2 = max(ts[i - k + 1:i] + ts[i + 1:i + k - 1])
+m3 = max(ts[:i] + ts[i + 1:])

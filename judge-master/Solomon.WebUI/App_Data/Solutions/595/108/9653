@@ -1,0 +1,14 @@
+__author__ = 'kotvb_000'
+n = int(input())
+result = 0
+mas = []
+mas += (int(i) for i in input().split())
+for i in range(n):
+    if i % 2 == 0:
+        result += mas[i]
+    else:
+        result -= mas[i]
+if result <= 0:
+    print((-result)+1)
+else:
+    print('0')

@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    string name[n];
+    int numb[n];
+    for(int i=0;i<n;i++)
+    {
+        cin >> name[i] >> numb[i];
+    }
+    int arg[30];
+    arg[0]=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            int v;
+            if ((numb[i]==numb[j])&&(numb[j]!=-1))
+            {
+                numb[j]=-1;
+                v++;
+            }
+            if ((v>1)&&(v<6))
+            {
+                arg[0]+=1;
+                arg[arg[0]]=v;
+            }
+        }
+    }
+    cout << arg[0] << endl;
+    for(int i;i<arg[0];i++)
+    {
+        cout<< arg[i] <<endl;
+    }
+    return 0;
+}

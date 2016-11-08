@@ -1,0 +1,112 @@
+program svetofori;
+var a, b, x, c: longint;
+y:real;
+Begin 
+Readln(a, b, x);
+if x/b <= 1000
+then y:=x/b
+else y := x/(b+1*(b+a));
+if x/(2*b+a)>1000
+then y := x/(b+2*(b+a));
+if x/(b+2*(b+a))>1000
+then y := x/(b+3*(b+a));
+if x/(b+3*(b+a))>1000
+then y := x/(b+4*(b+a));
+if x/(b+4*(b+a))>1000
+then y := x/(b+5*(b+a));
+if x/(b+5*(b+a))>1000
+then y := x/(b+6*(b+a));
+if x/(b+6*(b+a))>1000
+then y := x/(b+7*(b+a));
+if x/(b+7*(b+a))>1000
+then y := x/(b+8*(b+a));
+if x/(b+8*(b+a))>1000
+then y := x/(b+9*(b+a));
+if x/(b+9*(b+a))>1000
+then y := x/(b+10*(b+a));
+if x/(b+10*(b+a))>1000
+then y := x/(b+11*(b+a));
+if x/(b+11*(b+a))>1000
+then y := x/(b+12*(b+a));
+if x/(b+12*(b+a))>1000
+then y := x/(b+13*(b+a));
+if x/(b+13*(b+a))>1000
+then y := x/(b+14*(b+a));
+if x/(b+14*(b+a))>1000
+then y := x/(b+15*(b+a));
+if x/(b+15*(b+a))>1000
+then y := x/(b+16*(b+a));
+if x/(b+16*(b+a))>1000
+then y := x/(b+17*(b+a));
+if x/(b+17*(b+a))>1000
+then y := x/(b+18*(b+a));
+if x/(b+18*(b+a))>1000
+then y := x/(b+19*(b+a));
+if x/(b+19*(b+a))>1000
+then y := x/(b+20*(b+a));
+if x/(b+20*(b+a))>1000
+then y := x/(b+21*(b+a));
+if x/(b+21*(b+a))>1000
+then y := x/(b+22*(b+a));
+if x/(b+22*(b+a))>1000
+then y := x/(b+23*(b+a));
+if x/(b+23*(b+a))>1000
+then y := x/(b+24*(b+a));
+if x/(b+24*(b+a))>1000
+then y := x/(b+25*(b+a));
+if x/(b+25*(b+a))>1000
+then y := x/(b+26*(b+a));
+if x/(b+26*(b+a))>1000
+then y := x/(b+27*(b+a));
+if x/(b+27*(b+a))>1000
+then y := x/(b+28*(b+a));
+if x/(b+28*(b+a))>1000
+then y := x/(b+29*(b+a));
+if x/(b+29*(b+a))>1000
+then y := x/(b+30*(b+a));
+if x/(b+30*(b+a))>1000
+then y := x/(b+31*(b+a));
+if x/(b+31*(b+a))>1000
+then y := x/(b+32*(b+a));
+if x/(b+32*(b+a))>1000
+then y := x/(b+33*(b+a));
+if x/(b+33*(b+a))>1000
+then y := x/(b+34*(b+a));
+if x/(b+34*(b+a))>1000
+then y := x/(b+35*(b+a));
+if x/(b+35*(b+a))>1000
+then y := x/(b+36*(b+a));
+if x/(b+36*(b+a))>1000
+then y := x/(b+37*(b+a));
+if x/(b+37*(b+a))>1000
+then y := x/(b+38*(b+a));
+if x/(b+38*(b+a))>1000
+then y := x/(b+39*(b+a));
+if x/(b+39*(b+a))>1000
+then y := x/(b+40*(b+a));
+if x/(b+40*(b+a))>1000
+then y := x/(b+41*(b+a));
+if x/(b+41*(b+a))>1000
+then y := x/(b+42*(b+a));
+if x/(b+42*(b+a))>1000
+then y := x/(b+43*(b+a));
+if x/(b+43*(b+a))>1000
+then y := x/(b+44*(b+a));
+if x/(b+44*(b+a))>1000
+then y := x/(b+45*(b+a));
+if x/(b+45*(b+a))>1000
+then y := x/(b+46*(b+a));
+if x/(b+46*(b+a))>1000
+then y := x/(b+47*(b+a));
+if x/(b+47*(b+a))>1000
+then y := x/(b+48*(b+a));
+if x/(b+48*(b+a))>1000
+then y := x/(b+49*(b+a));
+if x/(b+49*(b+a))>1000
+then y := x/(b+50*(b+a));
+if x/(b+50*(b+a))>1000
+then y := x/(b+51*(b+a));
+if x/(b+51*(b+a))>1000
+then y := x/(b+52*(b+a));
+writeln(y);
+end.

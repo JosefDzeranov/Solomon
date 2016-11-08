@@ -1,0 +1,24 @@
+program distance;
+var
+ x1,y1,x2,y2,x3,y3,ePx,ePy:longint;
+ r:real;
+begin
+ readln(x1,y1); readln(x2,y2); readln(x3,y3);
+ if (x3>=x1) and (x3<=x2) and (y3>=y1) and (y3<=y2) then
+  begin
+   ePx:=x3; ePy:=y3;
+   r:=sqrt(sqr(x3-x1)+sqr(y3-ePy));
+   if r>sqrt(sqr(x3-x2)+sqr(y3-ePy)) then r:=sqrt(sqr(x3-x2)+sqr(y3-ePy));
+   if r>sqrt(sqr(x3-ePx)+sqr(y3-y1)) then r:=sqrt(sqr(x3-ePx)+sqr(y3-y1));
+   if r>sqrt(sqr(x3-ePx)+sqr(y3-y2)) then r:=sqrt(sqr(x3-ePx)+sqr(y3-y2));
+  end
+ else
+  if (x3>=x1) and (x3<=x2) then ePx:=x3
+   else if x3>x2 then ePx:=x2
+   else ePx:=x1;
+  if (y3>=y1) and (y3<=y2) then ePy:=y3
+   else if y3>x2 then ePy:=x2
+   else ePy:=y1;
+ r:=sqrt(sqr(x3-ePx)+sqr(y3-ePy));
+ if frac(r)=0 then write(trunc(r)) else write(r:0:50); readln;
+end.

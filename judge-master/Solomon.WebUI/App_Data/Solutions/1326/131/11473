@@ -1,0 +1,47 @@
+def f(ms, ind, l):
+    ret = 0
+    for i in range(ind, ind + l):
+        ret += ms[i]
+    return ret
+
+def sw(ms, ind, k):
+    for i in range(ind, ind + k):
+        ms[i] = 0
+    return ms
+
+def mx2f(ms):
+    mx = 0
+    i = 0
+    while i <= len(ms) - 2 * k:
+        sm = f(ms, i, k)
+        if sm >= mx:
+            mx = sm
+            i = i + k
+        else:
+            i += 1  
+    return mx
+    
+
+n, k = [int(i) for i in input().split()]
+n = [int(i) for i in input().split()]
+for i in range(k):
+    n.append(-1)
+mx1 = 0
+mx2 = 0
+i = 0
+while i <= len(n) - 2 * k:
+    sm = f(n, i, k)
+    if sm >= mx1:
+        w = []
+        for j in n:
+            w.append(j)
+        ms = sw(w, i, k)
+        mx2 = mx2f(ms)
+        mx1 = sm
+        i = i + k
+    elif sm > mx2:
+        mx2 = sm
+        i = i + k
+    else:
+        i += 1
+print(mx2)

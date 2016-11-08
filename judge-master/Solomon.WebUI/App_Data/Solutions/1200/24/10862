@@ -1,0 +1,211 @@
+const
+        SIZE = 9;
+        EMPTY = 0;
+
+type
+        TArr = array[0..SIZE, 0..SIZE] of LongInt;
+        ChofNum = array[0..SIZE+1] of LongInt;
+        TInc = array[0..SIZE, 0..SIZE] of Boolean;
+
+var
+        input : Text;
+
+procedure Init (var a : TArr);
+begin
+        FillChar (a, SizeOf (a), EMPTY);
+end;
+
+procedure DivCh (num : LongInt; var chn : ChofNum);
+var
+        i, ch : Integer;
+        flag : Boolean;
+begin
+        chn[0] := 1;
+        chn[1] := num mod 10;
+        num := num div 10;
+
+        while num > 0 do
+        begin
+                ch := num mod 10;
+                num := num div 10;
+
+                flag := TRUE;
+
+                for i := 1 to chn[0] do
+                        if chn[i] = ch then
+                                flag := FALSE;
+
+                if flag then
+                begin
+                        Inc (chn[0]);
+
+                        chn[chn[0]] := ch
+                end;
+        end;
+end;
+
+procedure Remember (var a : TArr; chn : ChofNum); //доделать
+var
+        i, j : Integer;
+        b : TInc;
+begin
+        for i := 0 to SIZE do
+                for j := 0 to SIZE do
+                        b[i, j] := TRUE;
+      //  WriteLn('r');
+
+        for i := 1 to chn[0] do
+                for j := 1 to chn[0] do
+                begin
+                        if b[chn[i], chn[j]] then
+                        begin
+                                b[chn[i], chn[j]] := FALSE;
+                                b[chn[j], chn[i]] := FALSE;
+
+                                Inc (a[chn[i], chn[j]]);
+
+                                if i <> j then
+                                        Inc (a[chn[j], chn[i]])
+                        end;
+
+                       // WriteLn('п');
+                end;
+
+       // WriteLn('nr')
+end;
+
+procedure ReadNumbers (var a : TArr);
+var
+        j, k : Integer;
+        i, num, n : LongInt;
+        chn : ChofNum;
+begin
+        Init (a);
+
+        ReadLn (input, n);
+
+        for i := 1 to n do
+        begin
+                Read (input, num);
+
+                DivCh (num, chn);
+
+                {for j := 1 to chn[0] do
+                        Write (chn[j], ', ');
+
+                Write  ('. ');  }
+
+                Remember (a, chn)
+        end;
+
+      //  WriteLn('nr')
+end;
+
+procedure DelNotPairs (var a : TArr; var b : ChofNum);//написать
+var
+        i, j, k : Integer;
+        max : LongInt;
+begin
+        for i := 0 to SIZE do
+                for j := 0 to SIZE do
+                begin
+                        if i = j then
+                                Continue;
+
+                        if a[i, j] = a[i, i] then
+                        begin
+                                a[i, i] := 0;
+
+                                for k := 0 to SIZE do
+                                begin
+                                        a[i, k] := 0;
+                                        a[k, i] := 0
+                                end
+                        end
+                        else if a[i, j] = a[j, j] then
+                        begin
+                                a[j, j] := 0;
+
+                                for k := 0 to SIZE do
+                                begin
+                                        a[j, k] := 0;
+                                        a[k, j] := 0
+                                end;
+                        end
+                end;
+
+        b[0] := 0;
+
+        for i := 0 to SIZE do
+        begin
+                max := 0;
+
+                for j := 1 to SIZE do
+                        if a[j, j] > a[max, max] then
+                                max := j;
+
+                Inc (b[0]);
+
+                b[b[0]] := a[max, max];
+
+                for j := 0 to SIZE do
+                begin
+                        Dec (a[j, j], a[max, j]);
+
+                        a[j, max] := 0;
+                        a[max, j] := 0
+                end;
+        end;
+end;
+
+procedure CountPairs (var a : TArr; var cnt : QWord);
+var
+        i, j : Integer;
+        n : LongInt;
+        b : ChofNum;
+begin
+        DelNotPairs (a, b);
+
+        {for i := 0 to SIZE do
+        begin
+                for j := 0 to SIZE do
+                        Write (a[i, j]);
+
+                WriteLn
+        end;}
+
+        {for i := 0 to SIZE do
+                Write (b[i], ' ');}
+
+        cnt := 0;
+
+        for i := 1 to b[0] do
+        begin
+                Inc (cnt,QWord (b[i])*QWord ((b[i]) - 1) div 2)//не так
+                //;Write (cnt)
+        end;
+end;
+
+var
+        a : TArr;
+        i, j : LongInt;
+        cnt : QWord;
+
+begin
+        Assign (input, '1.txt');
+        Reset (input);
+
+        ReadNumbers (a);
+
+        {for i := 0 to SIZE do
+        begin
+                for j := 0 to SIZE do
+                        Write (a[i, j]);
+
+                WriteLn
+        end;}
+
+        CountPairs (a, cnt);
+        //WriteLn ('cnt');
+        WriteLn (cnt)
+end.

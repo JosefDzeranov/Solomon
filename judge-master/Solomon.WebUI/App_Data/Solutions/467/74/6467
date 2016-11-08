@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	int mx[100][100];
+	int x1, y1, x2, y2;
+	cin >> x1 >> y1 >> x2 >> y2;
+	if (((y1 > 100 && y2 > 100) || (y1 < 0 && y2 < 0)) && ((x1 > 100 && x2 > 100) || (x1 < 0 && x2 < 0)))
+	{
+		cout << 1000 << endl;
+		return 0;
+	}
+	if ((x1 >= 0 && y1 >= 0) && (x2 <= 100 && y2 <= 100))
+	{
+		cout << 1000 << endl;
+		return 0;
+	}
+	if (y1 + y2 > x1 + x2)
+	{
+		cout << 1000 + (min(y2 - 100, y1 * -1)) * 2 << endl;
+	}
+	else
+	{
+		cout << 1000 + (min(x2 - 100, x1 * -1)) * 2 << endl;
+	}
+	return 0;
+}

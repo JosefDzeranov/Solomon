@@ -1,0 +1,27 @@
+var e ,s:string;
+sum,k,i,w,j,b:integer;
+a:array[1..100] of string;
+begin
+readln(b);
+for j:=1 to b do
+readln(a[j]);
+for j:=1 to b do
+begin
+s:=a[j];
+i:=1;
+while ( i<=length(s)) do
+begin
+e:=' ';
+while s[i] in ['0'..'9'] do
+begin
+e:=e+s[i];
+inc(i);
+end;
+k:=0;
+if e<> ' ' then val(e,k,w);
+sum:=sum+k;
+inc (i);
+end;
+end;
+writeln(sum);
+end.

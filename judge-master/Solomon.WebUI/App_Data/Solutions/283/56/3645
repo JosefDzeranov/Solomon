@@ -1,0 +1,75 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <queue>
+#include <map>
+#include <set>
+#include <ctime>
+#include <cstdlib>
+#include <cstdio>
+
+using namespace std;
+
+typedef long long ll;
+
+class taskC
+{
+private:
+    int n;
+public:
+    taskC(int nn) : n(nn) {}
+    taskC() {}
+    int solveSlow()
+    {
+        ll res = 1, ans = 0;
+        for (int i = 2; i <= n; i++) res *= i;
+        while((res & 1) == 0) { res >>= 1; ans++; }
+        return ans;
+    }
+    int solve()
+    {
+        int c = 0, ans = 0;
+        for (int i = n; i > 0; i >>= 1, c++);
+        c--;
+        int k = 0;
+        for (int i = (1<<c); i > 0; i >>= 1, c--)
+        {
+            int numOfDigits = n/i;
+            ans += (numOfDigits-k) * c;
+            k += (numOfDigits-k);
+        }
+        return ans;
+    }
+    int test(int numOfTests)
+    {
+        int correct = 0;
+        srand(time(0));
+        for (int i = 0; i < numOfTests; i++)
+        {
+            n = rand() % 60 + 1;
+            int a1 = solveSlow(), a2 = solve();
+            if (a1 != a2)
+            {
+                cout << "FAIL! Your: " << a2 << " Right: " << a1 << endl;
+            }
+            else
+            {
+                cout << "OK! Your: " << a2 << " Right: " << a1 << endl;
+                correct++;
+            }
+        }
+        return correct*100/numOfTests;
+    }
+};
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    int n;
+    cin >> n;
+    taskC solver(n);
+    cout << solver.solve() << endl;
+    /*
+    cout << "Your result is " << solver.test(10000) << endl;
+    */
+    return 0;
+}

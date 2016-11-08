@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class sDec{
+ static Scanner inputer = new Scanner(System.in);
+ static double n,k;
+ static long rP;
+ public static void main(String args[]){
+  n = inputer.nextDouble();
+  k = inputer.nextDouble();
+  rP = (long)(fAC(n) / (fAC(k)*fAC((n-k))));
+  System.out.println(rP);
+ }
+ public static double fAC(double f){
+  double rF=1;
+  for(double cI=1.0; cI<=f; cI=cI+1.0){
+   rF=rF*cI;
+  }
+  return rF;
+ }
+}

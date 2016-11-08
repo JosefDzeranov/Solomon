@@ -1,0 +1,78 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	//ifstream fin("tiling.in");
+	//ofstream fout("tiling.out");
+
+	int n, k;
+	cin >> n >> k;
+	bool **mas = new bool*[n + 1];
+	for (int i = 0; i<n + 1; i++)
+	{
+		mas[i] = new bool[2];
+		for (int j = 0; j<2; j++)
+			mas[i][j] = false;
+	}
+	int temp1, temp2;
+	for (int i = 0; i<k; i++)
+	{
+		cin >> temp1 >> temp2;
+		mas[temp1][temp2 - 1] = true;
+	}
+	int ***otv = new int**[n + 1];
+	for (int i = 0; i<n + 1; i++)
+	{
+		otv[i] = new int*[2];
+		for (int j = 0; j<2; j++)
+		{
+			otv[i][j] = new int[2];
+			for (int k = 0; k<2; k++)
+				otv[i][j][k] = 0;
+		}
+	}
+	otv[1][0][0] = 1;
+	otv[1][0][1] = 1;
+	otv[1][1][0] = 1;
+	otv[1][1][1] = 2;
+	int a1, a2, b1, b2;
+	for (int i = 2; i <= n; i++)
+	{
+		otv[i][0][0] = otv[i-1][1][1];
+		if (!mas[i][0] && !mas[i][1])
+			otv[i][1][1] += 2 * otv[i - 1][!mas[i - 1][0]][!mas[i - 1][1]];//вертик и 2 одинар
+
+		if (!mas[i][0] && !mas[i - 1][0])
+			otv[i][1][0] += otv[i - 1][0][!mas[i - 1][1]];//верх горизон
+
+		if (!mas[i][1] && !mas[i - 1][1])
+			otv[i][0][1] += otv[i - 1][!mas[i - 1][0]][0];//нижн горизон
+
+		if (!mas[i][0])
+			otv[i][1][0] += otv[i - 1][!mas[i - 1][0]][!mas[i - 1][1]];//верх одинар
+
+		if (!mas[i][1])
+			otv[i][0][1] += otv[i - 1][!mas[i - 1][0]][!mas[i - 1][1]];//нижн одинар
+
+		if (!mas[i][0] && !mas[i][1] && !mas[i - 1][0])
+			otv[i][1][1] += otv[i - 1][0][!mas[i - 1][1]];//верх горизон и нижн одинар
+
+		if (!mas[i][0] && !mas[i][1] && !mas[i - 1][1])
+			otv[i][1][1] += otv[i - 1][!mas[i - 1][0]][0];//нижн горизон и верх одинар
+
+		if (!mas[i][0] && !mas[i - 1][0] && !mas[i][1] && !mas[i - 1][1])
+			otv[i][1][1] += otv[i - 1][0][0];//2 горизон
+
+		otv[i][1][1] %= 1000000007;
+		otv[i][0][1] %= 1000000007;
+		otv[i][1][0] %= 1000000007;
+		otv[i][0][0] %= 1000000007;
+
+	}
+	cout << otv[n][!mas[n][0]][!mas[n][1]] << endl;
+
+	//system("pause");
+}

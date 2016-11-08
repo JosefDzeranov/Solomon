@@ -1,0 +1,20 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;
+reg,i,d:integer;
+begin
+readln(s);
+d:=length(s);
+for i := 1 to d do
+if s[i]<>'#' then
+rez:=rez+s[i]
+else delete (rez, length(rez), 1);
+writeln(rez);
+readln;
+end.
+

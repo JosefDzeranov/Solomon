@@ -1,0 +1,24 @@
+Program a2;
+uses SysUtils;
+var n,c,i,k: integer;
+s: real;
+a: array [1..50] of integer;
+label t1, t2;
+begin
+write('введите количество шкафов');
+read(n);
+write ('введите количество наград в каждом шкафу');
+for i:=1 to n do
+read (a[i]);
+c:=0;
+for i:=1 to n do
+c:=c+a[i];
+s:=c/n;
+if c mod n <> 0 then goto t1;
+k:=0;
+for i:=1 to n do 
+if a[i]<>s then
+k:=k+1;
+write (k);goto t2;
+t1: write ('IMPOSSIBLE');
+t2:end.

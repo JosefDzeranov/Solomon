@@ -1,0 +1,28 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var a,b,c,z:array [1..1000] of integer; i,j,m,n,l,o:integer;
+begin
+readln(n);
+for i := 1 to n do
+read(a[i]);
+readln(m);
+for j := 1 to m do
+readln(b[j],c[j]);
+
+for i := 1 to n do
+for j := 1 to m do
+for l := 1 to m do
+ if (c[j]>c[j+l]) and (b[j+l]>=a[i]) then
+ z[i]:=c[j+l];
+
+o:=0;
+for i := 1 to n do
+o:=o+z[i];
+
+writeln(o);
+readln;
+end.

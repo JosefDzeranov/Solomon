@@ -1,0 +1,12 @@
+import math
+s = input().split()
+N = int(s[0])
+L = int(s[1])
+R = int(input())
+
+m = L / (2 * R)
+if m * 2 * math.pi * R > N:
+    print('NO')
+else:
+    print('YES')
+    print(math.floor(m))

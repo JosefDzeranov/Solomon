@@ -1,0 +1,19 @@
+uses crt;
+label a;
+var k,n,i,c:integer;
+begin
+clrscr;
+a:
+write ('Введи число'); read (n);
+if (n<1) or (n>10000) then goto a;
+for i:=1 to n do
+begin
+c:=i;
+while c mod 2=0 do
+begin
+k:=k+1;
+c:=c div 2;
+end;
+end;
+write (k)
+end.

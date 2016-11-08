@@ -1,0 +1,28 @@
+using System;
+
+namespace viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] chisla = Console.ReadLine().Split();
+			int n = int.Parse(chisla[0]);
+			int k = int.Parse(chisla[1]);
+
+			long N = 1;
+			long P = 1;
+
+			for(int i = 1; i <= n; i++)
+				N *= i;
+			for(int j = 1; j <= k; j++)
+				P *= j;
+			for(int o = 1; o <= n-k; o++)
+				P *= o;
+			
+			Console.Write(N/P);
+			
+			
+		}
+	}
+}

@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+const double pi = 3.1415926535;
+
+int main() {
+
+	long double n;
+	int k, r1, r2;
+	cin >> n >> k >> r1 >> r2;
+	
+
+	int s = 2 * r1;
+	int cnt;
+	cnt = k / s;
+	if (k % s > r2)
+		cnt++;
+		
+	if (n < 2 * cnt * pi * (r2 + 2 * r1))
+		cout << "NO" << endl;
+	else
+	{
+		cout << "YES" << endl;
+		cout << 2 * cnt << " " << cnt;
+	}
+			
+	return 0;
+}

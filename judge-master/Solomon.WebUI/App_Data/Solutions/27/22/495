@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int a,b,c,d,e,f,g,K;
+cin>>a>>b>>c>>d>>e;
+
+K=c*d*e;
+if(b>e)
+    {
+    g=a;
+
+}
+else
+
+{
+    g=K/a;
+}
+cout<<g;
+
+    return 0;
+}

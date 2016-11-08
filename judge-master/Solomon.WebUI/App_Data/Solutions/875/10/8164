@@ -1,0 +1,24 @@
+#include<string>
+#include<sstream>
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+double factorial(int f)
+{
+	double r=1;
+	for(int i = 1;i<=f;i++)
+	{
+		r=r*i;
+	}
+	return r;
+}
+int main()
+{
+	int n,k;
+	
+	cin >> n >> k;
+	cout << factorial(n)/(factorial(k)*factorial(n-k));
+	return 0;
+}

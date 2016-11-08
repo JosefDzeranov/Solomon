@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector <string> st;
+int mas[1000];
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 0; i < 1000; i++)
+		mas[i] = 0;
+	string s2;
+	int cnt = 0;
+	for (int i = 0; i < n + 1; i++)
+	{
+//		cin >> s2;
+		string s;
+		s = "";
+		getline(cin, s2);
+		if (i > 0)
+		{
+		for (int j = 0; j < s2.size(); j++)
+		{
+			if (s2[j] >= '0' && s2[j] <= '9')
+				s += s2[j];
+		}
+		int fl = -1;
+		for (int j = 0; j < st.size(); j++)
+		{
+			if (st[j] == s) fl = j;
+		}
+		if (fl >= 0)
+		{
+			mas[fl]++;
+		}
+		else
+		{
+			st.push_back(s);
+			mas[st.size() - 1]++;
+		}
+		}
+	}
+	cnt = 0;
+	for (int i = 0; i < st.size(); i++)
+	{
+		if (mas[i] <= 5)
+			cnt++;
+	}
+	cout << cnt << "\n";
+	for (int i = 0; i < st.size(); i++)
+	{
+		if (mas[i] <= 5)
+			cout << st[i] << "\n";
+	}
+	return 0;
+}

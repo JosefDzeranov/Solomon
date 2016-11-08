@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,a,b,c,x,y,z : integer;
+begin
+readln(n,a,b,c);
+if(a mod 2 = 0) then x:= a + 1 Else x:= a + 2;
+if(b mod 2 = 0) then y:= b + 2 Else x:= b;
+writeln(x);
+writeln(y);
+writeln(c);
+readln;
+end.

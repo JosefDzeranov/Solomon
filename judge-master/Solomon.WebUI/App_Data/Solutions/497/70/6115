@@ -1,0 +1,30 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,m,sum,i,c,i2,i3 : integer;
+cab : array [1..1000] of integer;
+cooler : array [1..1000] of integer;
+coolercost : array [1..1000] of integer;
+begin
+readln(n);
+for i:= 1 to n  do
+readln(cab[i]);
+readln(m);
+for i:= 1 to m do
+begin
+readln(cooler[i]);
+readln(coolercost[i]);
+end;
+for i:=1 to n do
+begin
+for i2:= 1 to m do
+if(cab[i]<= cooler[i2]) and (coolercost[i2]< coolercost[i2+1]) Then
+sum:= sum + coolercost[i2] ;
+end;
+writeln(sum);
+readln;
+end.

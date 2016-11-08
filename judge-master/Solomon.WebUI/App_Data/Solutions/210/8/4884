@@ -1,0 +1,14 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+long long a, b;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> a >> b;
+    cout << a + b;
+    return 0;
+}

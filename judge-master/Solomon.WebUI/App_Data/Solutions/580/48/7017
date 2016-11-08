@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+namespace Viking {
+
+	class Program {
+		static void Main() {
+			double S = 0;
+			long x1, y1, x2, y2;
+			long L = long.Parse(Console.ReadLine());
+			string[] xy1 = Console.ReadLine().Split();
+			string[] xy2 = Console.ReadLine().Split();
+
+			x1 = long.Parse(xy1[0]);
+			y1 = long.Parse(xy1[1]);
+			x2 = long.Parse(xy2[0]);
+			y2 = long.Parse(xy2[1]);
+
+			double a = Math.Min(Math.Abs(x1 - x2), Math.Abs(y1 - y2));
+			double b = Math.Max(Math.Abs(x1 - x2), Math.Abs(y1 - y2));
+
+			if(L < a / 2) {
+				S = Math.PI * L * L;
+			}
+			else if(L < b / 2) {
+				S = Math.PI * L * L - 2 * Segment(L, a / 2);				
+			}
+			else if(L < Math.Sqrt(a * a + b * b) / 2) {
+				S = Math.PI * L * L - 2 * Segment(L, a / 2) - 2 * Segment(L, b / 2);				
+			}
+
+
+			Console.Write(S);
+
+		}
+
+
+
+		private static double Segment(long R, double d) {
+			return R * R * Math.Acos(d / R) - d * Math.Sqrt(R * R - d * d);			
+		}
+	
+	}
+}

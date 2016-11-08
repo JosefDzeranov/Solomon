@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n, k, *a, i, j, *b, sum = 0, max = 0, max2, max3, l, zn2, zn3;
+	cin >> n >> k;
+	
+	a = new int[n];
+	b = new int [n];
+
+	for(i = 0; i < n; i++) cin >> a[i];
+
+	for (i = 0; i < n; i++) {
+		sum = 0;
+		for (j = 0; j < k; j++) {
+			if (j + i == n) break;
+			sum += a[i + j];
+		}
+		b[i] = sum;
+	}
+
+	for (i = 0; i < n; i++) if (b[i] >= b[max]) {max = i;}
+	max3 = max;
+	for (i = 0; i < k; i++) {
+		if (max + i == n) break;
+		b[max + i] = 0;
+		if (max + i + 1 < n)
+		b[max + i + 1] = 0;
+		for(j = 1; j < k; j++) {
+			if(max - j < 0) break;
+			sum = 0;
+			for (l = max - j; l < max; l++) sum += a[l];
+			b[max - j] = sum;
+		}
+		max2 = 0;
+		for (j = 0; j < n; j++) if (b[j] > b[max2]) max2 = j;
+		for (j = max - k; j < max + 2; j++) {
+			if (j == n) break;
+			if (j < 0)j =0;
+			sum = 0;
+			for (l = 0; l < k; l++) {if (j + l == n) break;sum += a[j + l];}
+			b[j] = sum;
+		}
+		if (b[max2] < b[max3]) max3 = max2;
+	}
+	cout << b[max3];
+	return 0;
+}

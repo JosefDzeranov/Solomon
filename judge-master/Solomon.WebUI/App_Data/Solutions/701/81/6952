@@ -1,0 +1,38 @@
+var f,l,n,max,i,imax:longint;
+q,a: array [1..1000] of longint;
+
+function kol(x:longint):integer;
+var p:integer;
+begin
+p:=0;
+while x<>0 do begin x:=x div 10; p:=p+1; end;
+kol:=p;
+end;
+
+procedure pro(y:longint);
+begin
+f:=0;
+for l:=y downto 1 do if (y mod l)=0 then f:=f+1;
+end;
+
+begin
+readln (n);
+       for i:=1 to n do
+       begin
+       read (a[i]);
+       q[kol(a[i])]:=q[kol(a[i])]+1;
+       if q[kol(a[i])]>max then begin max:=q[kol(a[i])]; imax:=kol(a[i]); end;
+       end;
+
+       for i:=1 to n do begin
+       if kol(a[i])=imax then begin
+                              a[i]:=a[i]+1;
+                              pro(a[i]);
+                              while f>2 do begin a[i]:=a[i]+1; pro(a[i]); end;
+                              end;
+       end;
+       
+       for i:=1 to n do
+       write (a[i],' ');
+       
+end.

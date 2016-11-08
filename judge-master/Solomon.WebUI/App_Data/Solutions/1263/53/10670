@@ -1,0 +1,31 @@
+var
+    m, n, k, j, l, i,g: integer;
+    a: array [1..200, 1..200] of integer;
+    v: array [1..200,1..200] of boolean;
+
+procedure DFS(ii,jj: integer);
+var
+    r: integer;
+begin
+ if (a[ii,jj]=0) and (jj<=m) and (ii<=n) then begin
+ a[ii,jj]:=1;
+  dfs(ii+1,jj);
+  dfs(ii,jj+1);
+  dfs(ii+1,jj);
+  dfs(ii,jj+1);
+  end;
+   end;
+
+begin
+    readln(m, n, k);
+    for l := 1 to k do 
+    begin
+        readln(i, j);
+        a[i, j] := -1;
+    end;
+    for i := 1 to m do 
+     for j := 1 to n do
+     if a[i,j]=0 then begin  
+     dfs(i,j); inc(g);   end; 
+      writeln(g);
+end.

@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	long long int a, k, b, m, x, n;
+	cin >> a >> k >> b >> m >> x;
+	n = x / (a + b);
+	cout << n + (n / k + n / m) - n / (k * m);
+	return 0;
+}

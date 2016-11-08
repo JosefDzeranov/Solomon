@@ -1,0 +1,11 @@
+Program konfeti;
+var N, a, b, c, d: longint;
+Begin
+readln(N, a, b, c);
+if a > N then
+writeln(d) else
+if b > N then
+writeln(d) else
+if c > N then
+writeln(d);
+end.

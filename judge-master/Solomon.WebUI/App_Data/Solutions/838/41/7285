@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace dvoechnik1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N;
+            string S="";
+            N=Convert.ToInt32(Console.ReadLine());
+            while (N != 1)
+            {
+                if (N % 2 == 0)
+                {
+                    N = N / 2;
+                    S = '*' + S;
+                }
+                else
+                {
+                    N = N - 1;
+                    S = '+' +S;
+                }
+            }
+
+            Console.WriteLine(S);
+        }
+    }
+}

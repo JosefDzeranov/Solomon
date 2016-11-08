@@ -1,0 +1,31 @@
+type
+  qwe = array[1..500000]of string;
+
+var
+  mas: qwe;
+  ch: char;
+  j, j1, i, k, k1, otv,n: integer;
+
+begin
+  readln(n);
+  
+  while not (eof(input)) do 
+  begin
+    read(ch);
+    if ch <> ' ' then
+      mas[i] := mas[i] + ch
+    else
+      inc(i);
+  end;
+  
+  for j := 1 to i do
+    for k := 1 to length(mas[j]) do
+      for j1 := j + 1 to i do
+        for k1 := 1 to length(mas[j1]) do
+          if copy(mas[j], k, 1) = copy(mas[j1], k1, 1) then begin
+            inc(otv);
+            mas[j] := '-';
+            mas[j1] := '-';
+          end;
+  write(otv);
+end.

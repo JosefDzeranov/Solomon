@@ -1,0 +1,7 @@
+program DH2;
+Var N,S:QWord;
+begin
+readln (N);
+S:=8*N*(N*N-N+1)-1;
+WriteLn (S);
+end.

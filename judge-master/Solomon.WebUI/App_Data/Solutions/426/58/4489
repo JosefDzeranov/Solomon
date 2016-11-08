@@ -1,0 +1,49 @@
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <string>
+
+#define endl '\n'
+
+using namespace std;
+
+int n, best = 1000000000;
+int arr[100], r[100];
+
+
+void gen(int i){
+	if (i >= n){
+		int sum1 = 0, sum2 = 0;
+		for (int j = 0; j < n; j++){
+			if (r[j] == 0)
+				sum1 += arr[j];
+			else
+				sum2 += arr[j];
+		}
+		if (abs(sum1 - sum2) < best)
+			best = abs(sum1 - sum2);
+	}
+	else{
+		for (int j = 0; j < 2; j++){
+			r[i] = j;
+			gen(i + 1);
+		}
+	}
+}
+
+
+
+int main(){ 
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> arr[i];
+	}
+	gen(0);
+	cout << best;
+	return 0;
+}

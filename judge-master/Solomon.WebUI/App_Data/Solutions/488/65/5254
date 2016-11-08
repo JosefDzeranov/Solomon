@@ -1,0 +1,39 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    long long a1, a2, a3, a4;
+    cin >> a1
+        >> a2
+        >> a3
+        >> a4;
+    long long n1, n2;
+    if (a1 > a2)
+        n1 = a2;
+
+    else
+        n1 = a1;
+
+    if (a3 > a4)
+        n2 = a4;
+
+    else
+        n2 = a3;
+
+    long long ans;
+
+    if (n1 > 100000000 && n2 > 100000000)
+    {
+        long long num_of_kv = (n1 + n2) / 9;
+        ans = sqrt(num_of_kv) * 3;
+    }
+    else
+    {
+        ans = sqrt(n1 + n2);
+    }
+    cout << ans;
+    return 0;
+}

@@ -1,0 +1,33 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..50002] of integer;
+    b:array[1..50002,1..2] of integer;
+    n,m,i,j,min:integer; sum:int64;
+begin
+  readln(n);
+  for I := 1 to n do
+  read(a[i]);
+  readln(m);
+  for I := 1 to m do
+    begin
+      read(b[i,1]);
+      readln(b[i,2]);
+    end;
+    sum:=0;
+    for I := 1 to n do
+    begin
+    min:=1001;
+      for j := 1 to m do
+        if (a[i]<=b[j,1]) and (b[j,2]<=min) then
+        min:=b[j,2];
+    sum:=sum+min;
+    end;
+writeln(sum);
+readln;
+end.
+

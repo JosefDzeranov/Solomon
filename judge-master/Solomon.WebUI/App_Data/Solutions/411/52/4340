@@ -1,0 +1,7 @@
+var n,i:longint; s:int64;
+begin
+read(n);
+s:=1;
+for i:=n-2 to n do s:=s*i;
+write(s);
+end.

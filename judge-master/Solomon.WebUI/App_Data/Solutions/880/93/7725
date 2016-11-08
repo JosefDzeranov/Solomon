@@ -1,0 +1,21 @@
+program c;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x, z, y, q, n, m:integer;
+begin
+ readln(x, y);
+ readln(z, q);
+ if z<x then
+  z:=z+24;
+ n:=x*60+y;
+ m:=z*60+q;
+ m:=m-n;
+ n:=m mod 60;
+ m:=m div 60;
+ writeln(m,' ',n);
+ readln
+end.

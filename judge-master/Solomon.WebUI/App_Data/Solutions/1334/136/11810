@@ -1,0 +1,26 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,k,s,x,y,i:integer;
+    a,b:array[1..200000]of integer;
+begin
+ readln(n,k);
+ if k=0 then
+  begin
+   s:=n*n*n-(n-2)*4-1;
+  end
+ else
+  for i:=1 to k do
+   begin
+    readln(x,y);
+    a[i]:=x;
+    b[i]:=y;
+    s:=8;
+   end;
+  writeln(s);
+  readln
+end.

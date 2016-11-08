@@ -1,0 +1,41 @@
+var
+i,n,max:integer;
+a:array[1..100] of integer;
+dr:array[1..100] of byte;
+freq:array[0..9] of byte;
+function digit_root(n:integer):byte;
+var s:integer;
+begin
+  while n>9 do
+  begin
+    s:=0;
+    while n>0 do
+      begin
+        s:=s+n mod 10;
+        n:=n div 10;
+      end;
+      n:=s;
+  end;
+  digit_root:=n;
+end;
+begin
+  readln(n);
+  for i:=0 to 9 do
+    freq[i]:=0;
+    
+  for i:=1 to n do
+  begin
+    read (a[i]);
+    dr[i]:=digit_root(a[i]);
+    inc(freq[dr[i]]);
+  end;  
+  
+  max:=0;
+  for i:=1 to 9 do
+    if freq[i]>freq[max] then
+      max:=i;
+  
+  for i:=1 to n do
+    if dr[i]<>max then 
+      write(a[i],' ');
+end.  

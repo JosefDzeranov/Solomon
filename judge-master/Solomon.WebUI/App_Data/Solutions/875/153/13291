@@ -1,0 +1,28 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+int main(){
+	unsigned short N,M,K,Seconds[4]={0,0,0,0},Sec(0);
+	cin >> N >> M >> K;
+	
+	for(int i(0);i<K;i++)
+	{
+		unsigned short pointX,pointY,dist;
+		cin >> pointX >> pointY;
+		dist=sqrt(pow(pointX-1,2)+pow(pointY-1,2));
+		if(dist>Seconds[0])
+			Seconds[0]=dist;
+		dist=sqrt(pow(pointX-N,2)+pow(pointY-1,2));
+		if(dist>Seconds[1])
+			Seconds[1]=dist;
+		dist=sqrt(pow(pointX-1,2)+pow(pointY-M,2));
+		if(dist>Seconds[2])
+			Seconds[2]=dist;
+		dist=sqrt(pow(pointX-N,2)+pow(pointY-M,2));
+		if(dist>Seconds[3])
+			Seconds[3]=dist;
+	}
+	cout << min(min(Seconds[0],Seconds[1]),min(Seconds[2],Seconds[3]))-1;
+	cin >> new char;
+}

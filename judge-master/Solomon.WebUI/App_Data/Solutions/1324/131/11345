@@ -1,0 +1,13 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int a[1000];
+
+int main()
+{
+    cout << 3;
+
+    return 0;
+}

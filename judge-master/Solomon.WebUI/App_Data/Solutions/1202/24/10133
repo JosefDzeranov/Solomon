@@ -1,0 +1,256 @@
+program B;
+
+const
+        SIZE = 500000;
+
+type
+        Tars = array [1..SIZE] of string;
+        TB = array [1..200, 1..200] of Boolean;
+        Tar = array [1..SIZE] of LongInt;
+        Tf = array [1..200] of LongInt;
+        Tbool = array [1..SIZE] of Boolean;
+
+procedure SwapCh (var a, b : Char);
+
+var
+        t : Char;
+
+begin
+        t := a;
+        a := b;
+        b := t
+end;
+
+procedure SortB (var s : string);
+
+begin
+
+        if s[1] > s[2] then
+                SwapCh (s[1], s[2]);
+
+        if Length (s) = 3 then
+        begin
+                if s[2] > s[3] then
+                        SwapCh (s[2], s[3]);
+
+                if s[1] > s[2] then
+                        SwapCh (s[1], s[2])
+        end
+end;
+
+procedure ReadData (const n : LongInt; var ars : Tars);
+
+var
+        s : string;
+        a : LongInt;
+        i, j : LongInt;
+
+begin
+        for i := 1 to n do
+        begin
+                Read (a);
+
+                Str (a, s);
+
+                if Length (s) > 1 then
+                        SortB (s);
+
+                ars[i] := s
+        end;
+end;
+
+procedure Swap (var a, b : LongInt);
+
+var
+        t : LongInt;
+
+begin
+        t := a;
+        a := b;
+        b := t;
+end;
+
+procedure QSort (var a : Tar; var flag : Tbool; const l, r : LongInt);
+
+var
+        m, i, j : LongInt;
+        b : Boolean;
+
+begin
+        m := a[(l + r) div 2];
+
+        i := l;
+        j := r;
+
+        while i <= j do
+        begin
+                while a[i] < m do
+                        Inc (i);
+
+                while a[j] > m do
+                        Dec (j);
+
+                if i <= j then
+                begin
+                        Swap (a[i], a[j]);
+
+                        b := flag[i];
+                        flag[i] := flag[j];
+                        flag[j] := b;
+
+                        Inc (i);
+                        Dec (j)
+                end
+        end;
+
+        if l < j then
+                QSort (a, flag, l, j);
+
+        if i < r then
+                QSort (a, flag, i, r);
+end;
+
+procedure Sort (var ars : Tars; const n : LongInt);
+
+var
+        a : Tar;
+        flag : Tbool;
+        i : LongInt;
+        r : Integer;
+        s : string;
+
+begin
+        FillChar (flag, n + 1, FALSE);
+
+        for i := 1 to n do
+        begin
+                if ars[i, 1] = '0' then
+                        flag[i] := TRUE;
+                Val (ars[i], a[i], r)
+        end;
+
+        QSort (a, flag, 1, n);
+
+        for i := 1 to n do
+        begin
+                Str (a[i], s);
+
+                if flag[i] then
+                        ars[i] := '0' + s
+                else
+                        ars[i] := s
+        end;
+end;
+
+function SumD (a : LongInt) : Int64;
+
+var
+        i : LongInt;
+        c : Int64;
+
+begin
+        if a > 1 then
+                Dec (a);
+
+        c := 0;
+
+        for i := 1 to a do
+                c := c + a - i + 1;
+
+        SumD := c
+end;
+
+procedure Del (var ars : Tars; var af : Tf; var n : LongInt; var cnt : Int64);
+
+var
+        i, j, c : LongInt;
+        ar : array [1..500] of string;
+
+begin
+        for i := 1 to n do
+                for j := 1 to 2 do
+                        if (Length (ars[i]) > 1) and (ars[i, 1] = ars[i, 2]) then
+                                Delete (ars[i], 2, 1);
+
+        FillChar (af, SizeOf (af), 0);
+
+        j := 2;
+        ar[1] := ars[1];
+        c := 0;
+        for i := 1 to n - 1 do
+                if ars[i] <> ars[i + 1] then
+                begin
+                        ar[j] := ars[i + 1];
+                        Inc (j);
+                        Inc (cnt, SumD (c));
+                        c := 0;
+                end
+                else
+                begin
+                        Inc (af[j - 1]);
+                        Inc (c)
+                end;
+
+        if ars[n - 1] = ars[n] then
+                Inc (cnt, SumD (c));
+
+        n := j - 1;
+
+        for i := 1 to n do
+                ars[i] := ar[i];
+end;
+
+procedure Search (const ars : Tars; const af: Tf; const n : LongInt; var cnt : Int64);
+
+var
+        i, j, c, k : LongInt;
+        f : TB;
+
+begin
+        FillChar (f, SizeOf (f), FALSE);
+
+        for i := 1 to n do
+                for j := 1 to Length (ars[i]) do
+                        for c := i + 1 to n do
+                                for k := 1 to Length (ars[c]) do
+                                        if (ars[i, j] = ars[c, k]) and (not f[i, c]) then
+                                        begin
+                                                if  (af[i] > 0) then
+                                                        Inc (cnt, af[i] + 1)
+                                                else
+                                                        Inc (cnt, af[c] + 1);
+
+                                                f[i, c] := TRUE;
+                                                f[c, i] := TRUE;
+                                        end;
+end;
+
+var
+        n : LongInt;
+        cnt : Int64;
+        ars : Tars;
+        af : Tf;
+
+begin
+        ReadLn (n);
+
+        ReadData (n, ars);
+
+        if n > 1 then
+        begin
+                Sort (ars, n);
+
+                Del (ars, af, n, cnt);
+
+                if n = 1 then
+                        WriteLn (SumD (af[1] + 1))
+                else
+                begin
+                        Search (ars, af, n, cnt);
+
+                        WriteLn (cnt)
+                end
+        end
+        else
+                WriteLn (0)
+end.

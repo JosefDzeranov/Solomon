@@ -1,0 +1,16 @@
+a, b, c, d = [int(i) for i in input().split()]
+matrix = [[0 for i in range(d // 2 - 1)] for i in range(d // 2 - 1)]
+ret = 0
+for i in range(c // 2, d // 2 + 1):
+    for j in range(a, b + 1):
+        ds = i ** 2 - (4 * -j * -1)
+        if ds >= 0:
+            y = (-j + ds ** 0.5) / -2
+            x = j - y    
+            if int(x) == x and int(y) == y:
+                if matrix[int(x)][int(y)] == 0:
+                    matrix[int(x)][int(y)] = 1
+                    matrix[int(x)][int(y)] = 1
+                    ret += 1
+print(ret)
+        

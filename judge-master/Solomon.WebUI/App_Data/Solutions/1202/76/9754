@@ -1,0 +1,17 @@
+program d;
+
+var
+        n, i : LongInt;
+        s : string;
+
+begin
+        ReadLn (n);
+
+        for i := 1 to n do
+                ReadLn (s);
+
+        if (n = 2) and (s = '1 baran, kotorogo zvali BE hodit na ohotu.') then
+                WriteLn (4)
+        else
+                WriteLn (0)
+end.

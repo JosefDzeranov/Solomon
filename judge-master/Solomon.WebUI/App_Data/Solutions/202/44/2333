@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,l,r,s :  integer;
+var l2,l3 : real;
+begin
+readln(n,l,r);
+l2:= 2*(3.14*r);//Длинна одного кольца
+if((l mod (r*2))=0) Then s:= l div (r*2) Else s:= (l div (r*2))+1;//Количество не обходимых колец
+l3:= l2*s;//Требуемое количество проволки
+if(n>=l3) Then
+begin
+ writeln('YES');
+ writeln(s);
+ end
+ Else writeln('NO');
+readln;
+end.

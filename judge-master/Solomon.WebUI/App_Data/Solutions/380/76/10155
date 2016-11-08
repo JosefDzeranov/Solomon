@@ -1,0 +1,50 @@
+
+program n3;
+
+var
+  st, ci: string;
+  n, s, t, i, j: longint;
+  fl: boolean;
+
+procedure c(var sl: string; e: longint);
+var
+  m: longint;
+begin
+  e := 0;
+  for m := 1 to length(sl) do
+    e := e * 10 + ord(sl[m]) - 48;
+  s := s + e;
+end;
+
+begin
+  readln(n);
+  s := 0;
+  for j := 1 to n do
+  begin
+    readln(st);
+    i := 1;
+    t := 0;
+    fl := false;
+    for i := 1 to length(st) do
+    begin
+      if (st[i] <= '9') and (st[i] >= '0') then
+      begin
+        ci := ci + st[i];
+        fl := true;
+      end
+      else 
+      begin
+        if fl = true then begin
+          c(ci, t);
+        end;
+        fl := false; ci := '';  
+      end;      
+    end;
+    if not (ci = '') then 
+    begin
+      c(ci, t);
+    end;
+    ci := '';
+  end;
+  writeln(s);
+end.

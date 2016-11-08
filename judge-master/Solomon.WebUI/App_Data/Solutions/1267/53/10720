@@ -1,0 +1,38 @@
+Var s : string;
+    i, n, m, k, j, p1, p2, ans : longint;
+    arr: array [0 .. 1001] of array [0 .. 1001]of boolean;
+procedure obh(x, y: longint);
+begin
+  arr[x,y]:= true;
+  if not(arr[x-1][y]) then obh(x-1, y);
+  if not(arr[x+1][y]) then obh(x+1, y);
+  if not(arr[x][y-1]) then obh(x, y-1);
+  if not(arr[x][y+1]) then obh(x, y+1);
+end;
+    
+begin
+  ans := 0;
+  readln(n, m, k);
+  for i := 1 to n do begin
+    arr[i][0] := true;
+    arr[i][m+1] := true;
+  end;
+  
+  for i := 1 to m do begin
+    arr[0][i] := true;
+    arr[n+1][i] := true;
+  end;
+  
+  for i := 1 to k do begin
+    readln(p1, p2);
+    arr[p1][p2] := true;
+  end;
+  for i := 1 to n do 
+   for j := 1 to m do begin
+    begin
+      if not(arr[i][j]) then begin  inc(ans); obh(i, j); end;
+    end;
+    
+   end;
+   writeln(ans);
+end.    

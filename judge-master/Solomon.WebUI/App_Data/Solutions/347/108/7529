@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long a, b;
+            b = 0;
+            long N = Convert.ToInt64(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            for (int i = 0; i <= N - 1; i++)
+            {
+                a = long.Parse(temp[i]);
+                if (i % 2 == 0)
+                    b = b + a;
+                else
+                    b = b - a;
+            }
+                long x = (0 - b) + 1;
+                Console.WriteLine(x);
+            Console.ReadKey();
+        }
+    }
+}

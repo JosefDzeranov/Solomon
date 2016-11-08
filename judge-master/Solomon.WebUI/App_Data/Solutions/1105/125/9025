@@ -1,0 +1,84 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function min4(a,b,c,d:integer):integer;
+var dx,dy:integer;
+begin
+if a>b then
+begin
+  dx:=b;
+end else
+begin
+  dx:=a;
+end;
+if c>d then
+begin
+  dy:=d;
+end else
+begin
+  dy:=c;
+end;
+if dx>dy then
+begin
+  result:=dy;
+end else
+begin
+  result:=dx;
+end;
+end;
+
+
+
+
+
+var x1,x2,y1,y2,x3,y3:integer;
+bol:boolean;
+begin
+read(x1);
+readln(y1);
+read(x2);
+readln(y2);
+read(x3);
+readln(y3);
+if (x1>=x3)and(y3<=y2)and(y3>=y1) then
+begin
+  writeln(x1-x3);
+end else
+if (x2<=x3)and(y3<=y2)and(y3>=y1) then
+begin
+  writeln(x3-x2);
+end else
+if (x3>=x1)and(x2>=x3)and(y3<=y2)and(y3>=y1) then
+begin
+  writeln(min4(x3-x1,x2-x3,y2-y3,y3-y1));
+end else
+if (x1>=x3)and(y1>=y3) then
+begin
+  writeln(sqrt(sqr(x1-x3)+sqr(y1-y3)));
+end else
+if (x1>=x3)and(y3>=y2) then
+begin
+  writeln(sqrt(sqr(x1-x3)+sqr(y3-y2)));
+end else
+if (x3>=x2)and(y3>=y2) then
+begin
+  writeln(sqrt(sqr(x3-x2)+sqr(y3-y2)));
+end else
+if (x3>=x2)and(y3<=y1) then
+begin
+  writeln(sqrt(sqr(x3-x2)+sqr(y1-y3)));
+end else
+if (x3>=x1)and(x2>=x3)and(y3>=y2) then
+begin
+  writeln(y3-y2);
+end else
+if (x3>=x1)and(x2>=x3)and(y3<=y1) then
+begin
+  writeln(y1-y3);
+end;
+readln;
+end.

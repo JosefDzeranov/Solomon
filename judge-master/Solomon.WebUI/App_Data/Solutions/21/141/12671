@@ -1,0 +1,33 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,max,i,k,l,r,m,kolstol,x:integer;
+ a:array [1..10000] of integer;
+begin
+  readln(n,k);
+  for I := 1 to n do
+    read(a[i]);
+  l:=0;
+  r:=a[n];
+  while l+1<r do
+    begin
+      m:=(l+r) div 2;
+      kolstol:=1;
+      x:=a[1];
+      for I := 1 to n do
+        if a[i]>=x+m then
+          begin
+            x:=a[i];
+            inc(kolstol);
+          end;
+        if k <= kolstol then l:= m
+                else r:= m;
+    end;
+  writeln(l);
+  readln;
+  readln;
+end.

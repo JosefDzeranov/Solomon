@@ -1,0 +1,18 @@
+program shah1;
+var m,k,n,i:integer;
+begin
+   readln(n);
+   k:=1;
+   if n = 1 then writeln(1)
+   else if n = 2 then writeln(2)
+   else
+   begin
+   for i:=1 to 3 do
+   begin
+   k:=k*n;
+   n:=n-1;
+   end;
+   writeln(k);
+   end;
+
+end.

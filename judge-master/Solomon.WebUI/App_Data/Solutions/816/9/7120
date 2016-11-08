@@ -1,0 +1,20 @@
+program ideone;
+var a,b,c,n,ch:integer;
+begin
+readln(ch);
+readln(n,a,b,c);
+if ch=2 then begin
+	if (a<=b) and (a<=c) then writeln(a)
+	else
+	if (b<=a) and (b<=c) then writeln(b)
+	else
+	writeln(c);
+end;
+if ch=1 then begin
+	if (a>=b) and (a>=c) then begin if (b+c)<5 then writeln(abs(b+c)) else if (b+c)<a then writeln(0) else writeln(abs(b+c-a)); end
+	else
+	if (b>=a) and (b>=c) then begin if (a+c)<5 then writeln(abs(a+c)) else if (a+c)<b then writeln(0) else writeln(abs(a+c-b)); end
+	else
+	if (b+a)<5 then writeln(abs(b+a)) else if (b+a)<c then writeln(0) else  writeln(abs(b+a-c));
+end;
+end.

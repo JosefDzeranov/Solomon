@@ -1,0 +1,7 @@
+var n,n1,s:longint;
+begin
+readln(n);
+n1:=n*2-1;
+s:=s+n1*(n1*n1+1);
+writeln(s+n*n*4+1);
+end.

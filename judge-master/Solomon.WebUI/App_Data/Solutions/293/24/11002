@@ -1,0 +1,86 @@
+#include <iostream>
+
+using namespace std;
+
+long long soch(int n)
+{
+	return (n + 1)*n / 2;
+}
+
+int main()
+{
+	int q, w, e, r, t, y, u, i, o, p,qq,ww,ee,rr,tt,yy,uu,ii,oo,pp;
+	int j;
+	int a[2][2][2][2][2][2][2][2][2][2];
+	for (q = 0; q < 2; q++)
+	for (w = 0; w < 2; w++)
+	for (e = 0; e < 2; e++)
+	for (r = 0; r < 2; r++)
+	for (t = 0; t < 2; t++)
+	for (y = 0; y < 2; y++)
+	for (u = 0; u < 2; u++)
+	for (i = 0; i < 2; i++)
+	for (o = 0; o < 2; o++)
+	for (p = 0; p < 2; p++)
+		a[q][w][e][r][t][y][u][i][o][p] = 0;
+	
+	long long otv = 0;
+	int n;
+	cin >> n;
+	int temp;
+	for (i = 0; i < n; i++)
+	{
+		cin >> temp;
+		int c2[10] = {0,0,0,0,0,0,0,0,0,0};
+		while (temp != 0)
+		{
+			c2[temp % 10]=1;
+			temp /= 10;
+		}
+		a[c2[0]][c2[1]][c2[2]][c2[3]][c2[4]][c2[5]][c2[6]][c2[7]][c2[8]][c2[9]]++;;
+	}
+
+	int hash1=0,hash2=1;
+	long long totv = 0;
+	for (hash1 = 0; hash1 < 1024; hash1++)
+	{
+		totv = 0;
+		otv += soch(a[hash1 / 512 % 2][hash1 / 256 % 2][hash1 / 128 % 2][hash1 / 64 % 2][hash1 / 32 % 2][hash1 / 16 % 2][hash1 / 8 % 2][hash1 / 4 % 2][hash1 / 2 % 2][hash1 % 2] - 1);
+		for (hash2 = hash1 + 1; hash2 < 1024; hash2++)
+		{
+			if (
+				hash1 != hash2 &&
+				(
+				((hash1 % 2) == 1 && (hash2 % 2 == 1)) ||
+				((hash1 / 2 % 2) == 1 && (hash2 / 2 % 2) == 1) ||
+				((hash1 / 4 % 2) == 1 && (hash2 / 4 % 2) == 1) ||
+				((hash1 / 8 % 2) == 1 && (hash2 / 8 % 2) == 1) ||
+				((hash1 / 16 % 2) == 1 && (hash2 / 16 % 2) == 1) ||
+				((hash1 / 32 % 2) == 1 && (hash2 / 32 % 2) == 1) ||
+				((hash1 / 64 % 2) == 1 && (hash2 / 64 % 2) == 1) ||
+				((hash1 / 128 % 2) == 1 && (hash2 / 128 % 2) == 1) ||
+				((hash1 / 256 % 2) == 1 && (hash2 / 256 % 2) == 1) ||
+				((hash1 / 512 % 2) == 1 && (hash2 / 512 % 2) == 1)
+				)
+				&& a[hash2 / 512 % 2][hash2 / 256 % 2][hash2 / 128 % 2][hash2 / 64 % 2][hash2 / 32 % 2][hash2 / 16 % 2][hash2 / 8 % 2][hash2 / 4 % 2][hash2 / 2 % 2][hash2 % 2] != 0 &&
+				a[hash1 / 512 % 2][hash1 / 256 % 2][hash1 / 128 % 2][hash1 / 64 % 2][hash1 / 32 % 2][hash1 / 16 % 2][hash1 / 8 % 2][hash1 / 4 % 2][hash1 / 2 % 2][hash1 % 2] != 0
+				)
+			{
+				otv +=
+					a[hash2 / 512 % 2][hash2 / 256 % 2][hash2 / 128 % 2][hash2 / 64 % 2][hash2 / 32 % 2][hash2 / 16 % 2][hash2 / 8 % 2][hash2 / 4 % 2][hash2 / 2 % 2][hash2 % 2] *
+					a[hash1 / 512 % 2][hash1 / 256 % 2][hash1 / 128 % 2][hash1 / 64 % 2][hash1 / 32 % 2][hash1 / 16 % 2][hash1 / 8 % 2][hash1 / 4 % 2][hash1 / 2 % 2][hash1 % 2];
+
+				/*cout << "otv += " << a[hash2 / 512 % 2][hash2 / 256 % 2][hash2 / 128 % 2][hash2 / 64 % 2][hash2 / 32 % 2][hash2 / 16 % 2][hash2 / 8 % 2][hash2 / 4 % 2][hash2 / 2 % 2][hash2 % 2] << "*" <<
+					a[hash1 / 512 % 2][hash1 / 256 % 2][hash1 / 128 % 2][hash1 / 64 % 2][hash1 / 32 % 2][hash1 / 16 % 2][hash1 / 8 % 2][hash1 / 4 % 2][hash1 / 2 % 2][hash1 % 2] << endl;
+				cout << " 0:" << hash2 / 512 % 2 << " 1:" << hash2 / 256 % 2 << " 2:" << hash2 / 128 % 2 << " 3:" << hash2 / 64 % 2 << " 4:" << hash2 / 32 % 2
+					<< " 5:" << hash2 / 16 % 2 << " 6:" << hash2 / 8 % 2 << " 7:" << hash2 / 4 % 2 << " 8:" << hash2 / 2 % 2 << " 9:" << hash2 % 2 <<
+					"AND"
+					<< " 0:" << hash1 / 512 % 2 << " 1:" << hash1 / 256 % 2 << " 2:" << hash1 / 128 % 2 << " 3:" << hash1 / 64 % 2 << " 4:" << hash1 / 32 % 2
+					<< " 5:" << hash1 / 16 % 2 << " 6:" << hash1 / 8 % 2 << " 7:" << hash1 / 4 % 2 << " 8:" << hash1 / 2 % 2 << " 9:" << hash1 % 2 << endl;
+				cout << "otv: " << otv << endl << endl;*/
+			}
+		}
+	}
+
+	cout << otv;
+}

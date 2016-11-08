@@ -1,0 +1,22 @@
+var
+n:1..10000;
+x, e, i, t: integer;
+begin
+e:=0;
+x:=0;
+readln(n);
+i:=1;
+t:=i;
+while i<=n do
+begin
+e:=t mod 2;
+t:=t div 2;
+if e=0 then x:=x+1 else
+begin
+i:=i+1;
+t:=i;
+end;
+end;
+writeln(x);
+readln;
+end.

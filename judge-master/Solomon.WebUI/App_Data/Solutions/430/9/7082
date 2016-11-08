@@ -1,0 +1,23 @@
+program afdg;
+  var n,a,b,c,k:integer;
+    
+  function m(a,b:integer):integer;
+    begin
+      if a>b then m:=b else m:=a;
+    end;
+  
+  function ma(a,b:integer):integer;
+    begin
+      if a>b then ma:=a else ma:=b;
+    end;
+  
+  begin
+  
+  
+    readln(k);
+    readln(n,a,b,c);
+    if k=2 then writeln(ma(m(a,m(b,c)),n-m(a,m(b,c))))
+      else writeln(m(m(a,m(b,c)),n-m(a,m(b,c))));
+  
+  
+  end.

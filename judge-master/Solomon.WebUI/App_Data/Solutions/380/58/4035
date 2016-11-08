@@ -1,0 +1,33 @@
+program maxon;
+var a:array [ 1..100] of integer; n, i:byte; s1, s2:integer;fl:boolean;
+begin
+readln (n);
+if not (n <1)
+then begin
+for I:=1 to n do
+begin
+read ( a [I]);
+end; 
+fl:=true;
+while fl do
+begin
+fl:=false;
+for I:=1 to n-1 do
+if a [I]<a [I+1]
+then begin
+s1:=a [I];
+a [I]:=a [I+1];
+a [I+1]:=s1;
+fl:=true;
+end;
+end;
+s1:=a [1];
+s2:=0;
+for I:=1+1 to n do
+if s1> s2
+then s2:=s2+a [I]
+else s1:=s1+a [I];
+s1:=s1-s2;
+write ( s1);
+end;
+readln; end.

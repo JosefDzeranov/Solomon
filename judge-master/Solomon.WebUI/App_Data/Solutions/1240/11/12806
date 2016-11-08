@@ -1,0 +1,7 @@
+VAR
+   i,n: LongINt;
+BEGIN
+   Read(n);
+   For i := 1 to (n - 2) do Write('1 ');
+   Write(2,' ', n);
+END.

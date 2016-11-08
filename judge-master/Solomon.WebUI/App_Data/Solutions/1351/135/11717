@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    long long x = 0;
+    x = e * b * d / (b * d * (a + c) - b - d);
+
+    cout << x;
+    return 0;
+}

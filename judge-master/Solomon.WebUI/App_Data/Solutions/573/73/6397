@@ -1,0 +1,22 @@
+﻿using System;
+
+
+namespace Balaev
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+            int N = int.Parse(Console.ReadLine());
+            int n;
+            Decimal D = Convert.ToDecimal(Math.Sqrt(1 + 8 * N));
+            if ( D == Decimal.Truncate(Convert.ToDecimal(Math.Sqrt(1 + 8 * N))))
+            {
+                n = (-1 + Convert.ToInt32(D)) / 2;
+                Console.WriteLine(n);           
+            }
+        }
+    }
+}

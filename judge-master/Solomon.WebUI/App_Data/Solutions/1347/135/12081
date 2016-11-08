@@ -1,0 +1,38 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,k,m,x,vyr,sum,o:int64;
+begin
+readln(a,k,b,m,x);
+vyr:=0;
+sum:=0;
+o:=0;
+if (x<k) and (x<m) then
+begin
+ k:=0;
+ m:=0;
+end;
+if k=0 then k:=1000000000000000001;
+if m=0 then m:=1000000000000000001;
+
+while sum<x do
+begin
+o:=o+1;
+if o mod k<>0 then
+ if o mod m<>0 then
+ vyr:=a+b
+ else vyr:=a
+else
+ if o mod m<>0 then vyr:=vyr+b
+ else vyr:=0;
+sum:=vyr+sum;
+vyr:=0;
+end;
+
+writeln(o);
+readln;
+end.

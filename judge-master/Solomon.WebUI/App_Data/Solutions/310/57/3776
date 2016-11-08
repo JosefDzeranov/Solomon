@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int n,mx,k,a[10000],b[10000];
+vector<vector<int> > m(10);
+
+int getk(int v){
+    int ans=0;
+    while (v>0){
+        ans+=v%10;
+        v/=10;
+    }
+    if (ans<10) return ans; else return getk(ans);
+}
+
+int main(){
+    cin>>n;
+    for (int i=1;i<=n;i++)
+        cin>>a[i];
+    for (int i=1;i<=n;i++){
+        k=getk(a[i]);
+        m[k].push_back(i);
+    }
+    for (int i=0;i<10;i++)
+        if (m[i].size()>m[mx].size()) mx=i;
+    for (int i=0;i<m[mx].size();i++)
+        b[m[mx][i]]=1;
+    for (int i=1;i<=n;i++)
+        if (b[i]==0) cout<<a[i]<<" ";
+    cout<<endl;
+
+    return 0;
+}

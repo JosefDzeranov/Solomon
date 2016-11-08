@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int k,i=0,b=3;
+    cin >>k;
+    int m[k],m2[k];
+    while (i<k)
+    {
+        cin >>m[i];
+        cin >>m2[i];
+        i++;
+    }
+    i=0;
+    while (i<k)
+    {
+        b=b-m[i];
+        b=b+m2[i];
+        i++;
+    }
+    if (b<=0) cout <<"YES";
+    else cout <<"NO";
+    return 0;
+}

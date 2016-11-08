@@ -1,0 +1,8 @@
+var l,x1,y1,x2,y2,a,b:longint;
+begin
+read(l,x1,y1,x2,y2);
+a:=abs(x1-x2);b:=abs(y1-y2);
+if (2*l>a) and (2*l>b) then write(a*b)else 
+if (2*l<=a) and(2*l<=b) then write(pi*l) else write(l*l*(3-pi/2))
+
+end.

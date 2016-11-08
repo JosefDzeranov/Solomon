@@ -1,0 +1,31 @@
+# include<iostream>
+# include<string>
+using namespace std;
+int main()
+{ 
+	     int a;
+		 a=0;
+            int b;
+            b=1;
+           string s;
+		   cin>>s;
+		   if (s.length()<65)
+		   {
+		   for(int i =s.length(); i>0; i=i-1)
+            {
+                if (s[i] == '.')
+                {
+                    a = a+0*b;
+                    b = b * 2;
+                }
+                if (s[i] == '*')
+                {
+                    a = a + 1 * b;
+                    b = b * 2;
+                }
+            }
+		   }
+
+		   cout<<a;
+	return 0;
+}

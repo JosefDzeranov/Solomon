@@ -1,0 +1,33 @@
+const
+  h = '0123456789';
+
+var
+  c, s: string;
+  i, j, sum, n, k, err, v: longint;
+  flag: boolean;
+
+begin
+  flag := false;
+  readln(n);
+  for i := 1 to n do 
+  begin
+    readln(s);
+    s:=s+'..';
+    for j := 1 to length(s) do 
+    begin{2}//====
+      for v := 1 to 10 do 
+        if s[j] = h[v] then begin
+          c := c + s[j];
+          flag := true;
+          break;
+        end;
+      if (flag = false) and (c <> '') then begin
+        val(c, k, err);
+        sum := k + sum;
+        c := '';
+      end;
+      flag := false;
+    end;{2}//====
+  end;
+  writeln(sum);
+end.

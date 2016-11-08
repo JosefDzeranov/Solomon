@@ -1,0 +1,9 @@
+var l,r,x,y,z,k:longint;
+begin
+read(l,r); k:=0;
+for x:=l to r do
+for y:=l to r do
+for z:=l to r do
+if (x or y)=(y xor z) then inc(k);
+write(k);
+end.

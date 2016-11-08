@@ -1,0 +1,43 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n, i, k, s, med :integer;
+A: array [1..50] of integer;
+begin
+k := 0;
+readln (n);
+for I := 1 to n do
+  begin
+    read (A[i]);
+    read;
+    s := s + A[i];
+  end;
+if s mod n <> 0  then
+  writeln ('IMPOSSIBLE')
+else
+  begin
+    med := s div n;
+  for i := 1 to n do
+    begin
+      if A[I] < med then
+        while A[i] < med do
+          begin
+            A[I] := A[i] + 1;
+            K := k + 1;
+          end
+      else
+        if A[I] > med then
+          while A[i] > med do
+            begin
+              A[I] := A[I] - 1;
+            end;
+    end;
+    writeln (k);
+  end;
+readln;
+readln;
+end.

@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class DiodPanel {
+    static class Diod {
+        int x;
+        int y;
+        boolean lightOn;
+        
+        Diod(int a, int b, boolean c) {
+            x = a;
+            y = b;
+            lightOn = c;
+        }
+    }
+    
+    private static int timeToLumin(Diod diod, Diod[] lightedDiods) {
+        int res = Integer.MAX_VALUE;
+        
+        for(Diod lightedDiod : lightedDiods) {
+            int xDif = Math.abs(lightedDiod.x - diod.x);
+            int yDif = Math.abs(lightedDiod.y - diod.y);
+            if(xDif + yDif < res)
+                res = xDif + yDif;
+        }
+            
+        return res;
+    }
+    
+    public static void main(String[] args) {
+        Scanner reader;
+        reader = new Scanner(System.in);
+        
+        int n = reader.nextInt();
+        int m = reader.nextInt();
+        int k = reader.nextInt();
+        
+        Diod[] panel = new Diod[n * m];
+        for(int i = 0; i < n * m; i++)
+            panel[i] = new Diod(i % n + 1, i / n + 1, false);
+                
+        Diod[] lighted = new Diod[k];        
+        for(int i = 0; i < k; i++) {
+            int x = reader.nextInt();
+            int y = reader.nextInt();
+            
+            lighted[i] = new Diod(x, y, true);
+            panel[(x - 1) + n * (y - 1)].lightOn = true;
+        }
+        
+        int timer = 0;
+        for(int i = 0; i < n * m; i++)
+            if(!(panel[i].lightOn)) {
+                int pretendent = timeToLumin(panel[i], lighted);
+            
+                if(timer < pretendent)
+                    timer = pretendent;
+            }
+        
+        System.out.println(timer);
+    }
+}

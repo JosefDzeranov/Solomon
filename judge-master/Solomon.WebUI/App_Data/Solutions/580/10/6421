@@ -1,0 +1,31 @@
+﻿using System;
+
+namespace sochetanija
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] nk = Console.ReadLine().Split();
+            int a = int.Parse(nk[0]);
+            int b = int.Parse(nk[1]);
+
+            int n = (a > b) ? a : b;
+            int k = (a < b) ? a : b;
+            int N = 1;
+            
+
+            for (int i = k+1; i <= n; i++)
+            {
+                N *= i;
+            }
+            for (int j = 1; j < n-k +1; j++)
+            {
+                N /= j;   
+            }
+            Console.WriteLine(N);
+        }
+
+        
+    }
+}

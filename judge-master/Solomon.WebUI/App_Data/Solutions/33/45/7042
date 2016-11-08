@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+#include<cmath>
+
+int main() {
+	double n1, l1;
+	int n, l, r1, r2;
+	cin >> n >> l >> r1 >> r2;
+	n1=3.14*2*(2*r1+r2);
+	l1=2*r1+r2/2;
+	for (int i=1; ;i++) {
+		if(l<=l1*i) {
+			if (n>=n1*i)
+				cout << "YES\n" << i*2 << " " << i;
+			else
+				cout << "NO";
+			break;
+		}
+	}
+	cin.ignore();
+	cin.get();
+	return 0;
+}

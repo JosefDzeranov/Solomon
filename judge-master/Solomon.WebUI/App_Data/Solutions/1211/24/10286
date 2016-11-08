@@ -1,0 +1,63 @@
+#include <iostream>
+#include <stdio.h>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+int rec( int i, int m )
+{
+    return m | ( 1 << i );
+}
+
+int enc( int d )
+{
+    int res = 0;
+
+    ostringstream ss;
+    ss << d;
+
+    string s = ss.str();
+
+    for( unsigned i = 0; i < s.length(); i++ )
+        res = rec( s[i] - '0', res );
+
+    return res;
+}
+
+int main()
+{
+    int s;
+    int t;
+    vector<long> numbers;
+    long res;
+
+    cin >> s;
+
+    res = 0;
+
+    numbers.resize( 1 << 10 );
+
+    for ( int i = 0; i < s; i++ )
+    {
+        scanf( "%d", &t );
+
+        numbers[ enc( t ) ]++;
+    }
+
+    for ( unsigned i = 0; i < numbers.size(); i++)
+    {
+        for ( unsigned j = i + 1; j < numbers.size(); j++)
+        {
+            if ( (i & j) != 0 )
+                res += numbers[i] * numbers[j];
+        }
+
+        res += ( numbers[i] * ( numbers[i] - 1 ) ) / 2;
+    }
+
+    cout << res << endl;
+
+    return 0;
+}
+

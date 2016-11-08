@@ -1,0 +1,8 @@
+Var
+x,n,k:longint;
+Begin
+Readln(n);
+k:=1;
+For x:=n-2 to n do k:=k*x;
+Writeln(k);
+End.

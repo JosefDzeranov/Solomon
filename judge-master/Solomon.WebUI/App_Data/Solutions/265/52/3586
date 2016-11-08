@@ -1,0 +1,13 @@
+program gg;
+var i,j:integer;
+    p:longint;
+begin
+     readln(i);
+     p:=1;
+     for j:=1 to 3 do
+     begin
+          p:=p*i;
+          i:=i-1;
+     end;
+     writeln(p);
+end.

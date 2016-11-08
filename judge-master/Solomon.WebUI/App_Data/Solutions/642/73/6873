@@ -1,0 +1,14 @@
+var
+s,s0,k:integer;
+begin
+readln(s);
+k:=1;
+s0:=0;
+while s0<>s do
+  begin
+ s0:= s0+k;
+ if s0=s then break;
+ K:=k+1;
+ end;
+ writeln(k);
+ end.

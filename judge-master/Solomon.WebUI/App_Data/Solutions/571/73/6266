@@ -1,0 +1,13 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,x : longint;
+begin
+readln(n);
+if(n mod 2 <> 0) Then writeln((n+1) div 2) Else writeln(n div 2);
+readln;
+end.

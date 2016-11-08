@@ -1,0 +1,19 @@
+program shah1;
+var p,m,k,n,i,j:integer;
+begin
+   readln(n);
+   k:=1;
+   m:=1;
+   p:=1;
+   j:=n;
+   if (n-3) <= 0 then
+    for i:=1 to j do m:=m*i
+   else
+       begin
+          for i:=1 to j do m:=m*i;
+          for i:=1 to j-3 do p:=p*i;
+       end;
+   if (n-3) <= 0 then writeln(m)
+   else writeln(m div p);
+   
+end.

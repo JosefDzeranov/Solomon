@@ -1,0 +1,49 @@
+var z,n,a,k,b,c,f:integer;
+begin
+read(z,n,a,b,c);
+if (n>=a)and(n>=b)and(n>=c)and(n<=10000)and(n>=1) then
+if (a>=0)and(b>=0)and(c>=0) then
+if (a=0) or (b=0) or (c=0) then
+  write(0)
+  else
+    if (a=1) or (b=1) or (c=1) then
+    write(1)
+    else begin
+      if (a>b)and(a>c) then
+        if b>c then
+          k:=0
+        else
+          k:=1
+      else
+        if b>c then
+          if c>a then
+            k:=2
+          else
+            k:=0
+        else
+          if b>a then
+            k:=2
+          else
+            k:=1;
+      if z=1 then begin
+        if k=0 then
+          f:=c-(n-a+n-b);
+        if k=1 then
+          f:=b-(n-a+n-c)
+        else
+          f:=a-(n-b+n-c);
+      end
+      else 
+        if k=0 then
+          f:=c
+        else
+          if k=1 then
+            f:=b
+          else
+            f:=a;
+            end;
+if f<0 then
+  write(0)
+else
+  write(f);
+end.

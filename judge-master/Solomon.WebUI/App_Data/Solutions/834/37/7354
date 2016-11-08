@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,d,e:integer;
+begin
+readln(a);
+b:=a div 3600;
+c:=a mod 3600;
+d:=c div 60;
+e:=c mod 60;
+writeln(b mod 24,':',d div 10,d mod 10,':',e div 10,e mod 10 );
+readln;  { TODO -oUser -cConsole Main : Insert code here }
+end.

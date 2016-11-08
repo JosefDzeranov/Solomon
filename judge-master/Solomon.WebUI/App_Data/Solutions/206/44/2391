@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int n=Convert.ToInt32(ss[0]);
+            int l=Convert.ToInt32(ss[1]);
+            int r = Convert.ToInt32(Console.ReadLine());
+            if (n>=l/(3.14*(2*r)) )
+            {
+                Console.WriteLine("YES");
+                Console.WriteLine(l/(2*r));
+            }else
+                Console.WriteLine("NO");
+        }
+    }
+}

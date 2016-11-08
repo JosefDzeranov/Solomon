@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	n += 16;
+	n /= 12;
+	if (n < 3) n = 0;
+	cout << n;
+	return 0;
+}

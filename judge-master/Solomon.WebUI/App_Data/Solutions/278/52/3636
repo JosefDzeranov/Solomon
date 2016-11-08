@@ -1,0 +1,16 @@
+Program N1;
+Type
+   mass=array[1..100] of integer;
+Var
+   A:mass;
+   n,k:integer;
+begin
+writeln('¬ведите длину массива A от 3 до 100, после чего введите массив');
+repeat
+readln(n);
+If (n<3) or (n>100) then
+Writeln('¬ведите длину массива в допустимом пределе');
+Until (n>=3) and (n<=100);
+k:=(n-1)*(n-2)*n;
+writeln(k);
+end.

@@ -1,0 +1,6 @@
+var
+	n : Integer;
+begin
+	ReadLn(n);
+	WriteLn(8*n*(n*n-n+1)-1)
+end.

@@ -1,0 +1,16 @@
+import math;
+s = input().split();
+a1 = int(s[0]);
+a2 = int(s[1]);
+a3 = int(s[2]);
+a4 = int(s[3]);
+
+v1 = min(a1,a2);
+
+v2 = min(a3,a4);
+r = int(math.sqrt(v1+v2));
+
+if( r*r <= (v1+v2)):
+    print(r);
+else:
+    print(r-1);

@@ -1,0 +1,24 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+    long double fact(int N)
+{
+    if(N < 0) 
+        return 0; 
+    if (N == 0) 
+        return 1; 
+    else 
+        return N * fact(N - 1); 
+}
+int main()
+{
+
+int n,k,C;
+cin>>n>>k;
+C=fact(n)/(fact(k)*fact(n-k));
+cout<<C;
+
+    return 0;
+
+}

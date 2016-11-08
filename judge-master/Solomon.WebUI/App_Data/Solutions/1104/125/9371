@@ -1,0 +1,51 @@
+Structure Point
+Dim x As Integer
+Dim y As Integer
+End Structure
+
+Sub main()
+Dim c(3) As Point
+Dim a(4) As Integer
+Dim b As String
+Dim d(2) As String
+For i = 0 To 2
+b = console.readline()
+d(2) = b.Split(" ")
+c(i).x = d(0)
+c(i).y = d(1)
+Next
+
+If c(0).x < c(2).x Then
+a(0) = c(2).x - c(0).x
+Else
+a(0) = c(0).x - c(2).x
+End If
+
+If c(1).x < c(2).x Then
+a(1) = c(2).x - c(1).x
+Else
+a(1) = c(1).x - c(2).x
+End If
+
+If c(0).y < c(2).y Then
+a(2) = c(2).y - c(0).y
+Else
+a(2) = c(0).y - c(2).y
+End If
+
+If c(1).y < c(2).y Then
+a(3) = c(2).y - c(1).y
+Else
+a(3) = c(1).y - c(2).y
+End If
+
+Dim min As Integer
+min = a(0)
+For i = 1 To 2
+If a(i) < min Then
+min = a(i)
+End If
+
+console.write (min)
+
+End Sub

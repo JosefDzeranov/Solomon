@@ -1,0 +1,14 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main() {
+    int n, l;
+    cin >> n;
+    l=2*n-1;
+    long long k = (l*l+1)*l+4*n*n+1;
+    cout << k;
+//    _getch();
+    return 0;
+}

@@ -1,0 +1,7 @@
+var
+	a, b : Int64;
+begin
+	ReadLn(a, b);
+	a := a+b;
+	WriteLn(a)
+end.

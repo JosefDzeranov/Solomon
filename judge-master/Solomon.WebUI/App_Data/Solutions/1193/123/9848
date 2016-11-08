@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+
+int a[111],i,n,s,o;
+
+int main()
+{
+cin>>n;
+cout<<(n%2?"No":"Yes");
+}

@@ -1,0 +1,25 @@
+program Project1;                       //задача 2
+
+{$APPTYPE CONSOLE}
+
+uses
+ math, SysUtils;
+
+var a,b,k,m,t,v:integer ;
+x:extended;
+begin
+  read(a);
+  read(k);
+  read(b);
+  read(m);
+  readln(x);
+  v:=0;
+  while ((a+b)*v*k*m-v*m*a-v*k*b)<x do
+  begin
+    v:=v+1;
+  end;
+  t:=(v-1)*k*m+1;
+  while ((a+b)*t-(t div k)*a-(t div m)*b)<x do t:=t+1;
+  writeln(t);
+  readln;
+end.

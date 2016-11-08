@@ -1,0 +1,21 @@
+
+program E;
+var
+    s: string;
+    table: array [1..1000, 1..1000] of char;
+    size, i, j: longint;
+begin
+    readln(s);
+    i := length(s);
+            for size := 1 to 1000 do
+            if size*size >=  i then break;
+    for i:=1 to size do
+        for j:=1 to size do
+            if (i-1)*size+j<=length(s) then
+                table[i][j]:=s[(i-1)*size+j]
+            else
+                table[i][j]:=' ';
+    for j:=1 to size do
+        for i:=1 to size do
+            write(table[i][j]);
+end.

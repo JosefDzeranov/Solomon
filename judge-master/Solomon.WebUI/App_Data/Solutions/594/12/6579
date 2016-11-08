@@ -1,0 +1,28 @@
+var
+ q, v, u, p, res, cur, n, k: longint;
+
+begin
+  read(n, k);
+  if(k = 10) then q:=5 else
+  if(k=2) then q:=2 else
+  if(k=3) then q:=3 else
+  if(k=5) then q:=5 else
+  if(k=6) then q:=3 else
+  q:=k div 2;
+  
+    for cur := 1 to n do 
+    begin
+      v := q;
+      p := q;
+      u := 0;
+      while(cur mod p = 0) do 
+      begin
+        p := p * v;
+        inc(u);
+      end;
+      inc(res, u);
+    end;
+  
+  
+  writeln(res);
+end.

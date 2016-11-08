@@ -1,0 +1,5 @@
+a, k, b, m, x = map(int, input().split())
+one = (x + a - 1) // a
+two = (x + b - 1) // b
+three = int(x / one + x / two)
+print((x + three - 1) // three)

@@ -1,0 +1,104 @@
+program Mathematics;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s, s1, s2, s3 : string;
+  sym1 : char;
+  c1, c2, c3 : smallint;
+  i, k : byte;
+  Code1, Code2, Code : integer;
+begin
+  readln (s);
+  s1 := '';
+  s2 := '';
+  i := 1;
+  k := 0;
+  if s[i] = '-' then
+  begin
+    s1 := s1 + s[i];
+    i := 2;
+  end; 
+  while (ord (s[i]) >= 48) and (ord (s[i]) <= 57) and (i <= Length (s)) do
+  begin
+    s1 := s1 + s[i];
+    i := i + 1;
+  end;
+  if i > length (s) then
+    write ('ERROR')
+  else
+  begin
+  if i > 1 then
+    k := k + 1;
+  if (s[i] = '+') or (s[i] =  '/') or (s[i] = '*') or (s[i] = '-') then
+  begin
+    k := k + 1;
+    sym1 := s[i];
+  end;
+  s := copy (s, i + 1, Length (s) - i + 1);
+  i := 1;
+  while (ord (s[i]) >= 48) and (ord (s[i]) <= 57) and (i <= Length (s)) do
+  begin
+    s2 := s2 + s[i];
+    i := i + 1;
+  end;
+  if i > Length (s) then
+    write ('ERROR')
+  else
+  begin
+  if i > 1 then
+    k := k + 1;
+  if s[i] = '=' then
+  begin
+    k := k + 1;
+  end;
+  s := copy (s, i + 1, Length (s) - i + 1);
+  i := 1;
+  while (ord (s[i]) >= 48) and (ord (s[i]) <= 57) and (i <= Length (s)) do
+  begin
+    s3 := s3 + s[i];
+    i := i + 1;
+  end;
+  if i > 1 then
+    k := k + 1;
+  if k <> 5 then
+    write ('ERROR')
+  else
+  begin
+    Val (s1, c1, Code);
+    Val (s2, c2, Code1);
+    Val (s3, c3, Code2);
+    if (Code = 0) and (Code1 = 0) and (Code2 = 0) then
+      if sym1 = '+' then
+        if c1 + c2 = c3 then
+          write ('YES')
+        else
+          write ('NO')
+      else
+      if sym1 = '-' then
+        if c1 - c2 = c3 then
+          write ('YES')
+        else
+          write ('NO')
+      else
+      if sym1 = '*' then
+        if c1 * c2 = c3 then
+          write ('YES')
+        else
+          write ('NO')
+      else
+      if sym1 = '/' then
+        if c1 div c2 = c3 then
+          write ('YES')
+        else
+          write ('NO')
+    else
+      write ('ERROR');
+  end;
+  end;
+  end;
+  readln;
+end.

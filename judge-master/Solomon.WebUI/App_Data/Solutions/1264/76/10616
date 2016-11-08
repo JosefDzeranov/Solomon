@@ -1,0 +1,28 @@
+var
+p:char;
+c,s:string;
+i,j,sum,n,k:longint;
+function power(a,b:longint):longint;
+var u,t,x:longint;
+begin
+x:=1;
+for t:=1 to b do x:=x*a;
+power:=x;
+end;
+begin
+readln(n);
+for i:=1 to n do begin
+readln(s);
+for j:=1 to length(s)-1 do begin
+if (s[j] in ['0'..'9']) then c:=c+s[j];
+if not(s[j+1] in ['0'..'9']) and (c<>'') then begin
+for k:=1 to length(c) do begin
+p:=c[k];
+sum:=(ord(p)-ord('0'))*(round(power(10,length(c)-k)))+sum;
+end;
+c:='';
+end;
+end;
+end;
+writeln(sum);
+end.

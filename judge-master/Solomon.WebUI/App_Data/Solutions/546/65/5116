@@ -1,0 +1,14 @@
+program POBEDA-2014;
+var a1, a2, a3, a4, s1, s2, s : integer;
+Begin
+readln (a1, a2, a3, a4);
+if (a1 < a2)
+then s1:= a1
+else s1:=a2;
+if (a3 < a4)
+then s2:= a3
+else s2:=a4;
+s:= round (sqrt(s1+s2));
+writeln ( s );
+readln;
+end.

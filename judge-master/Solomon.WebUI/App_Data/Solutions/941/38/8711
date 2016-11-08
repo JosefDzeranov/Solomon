@@ -1,0 +1,12 @@
+var x1,x2,x3,x4,y1,y2,y3,y4:integer;
+    a,b,c:real;
+Begin
+  readln(x1,y1);
+  readln(x2,y2);
+  readln(x3,y3);
+  readln(x4,y4);
+  a:=sqr(sqrt(sqr(x2-x1)+sqr(y2-y1)));
+  b:=sqr(sqrt(sqr(x3-x1)+sqr(y3-y1)));
+  c:=sqr(sqrt(sqr(x4-x1)+sqr(y4-y1)));
+  if (a=b+c) or (b=a+c) or (c=a+b) then writeln('YES') else writeln('NO');
+End.

@@ -1,0 +1,16 @@
+Program bank;
+uses crt;
+var a,n,z:integer;
+begin;
+writeln;
+writeln(' ¬ведите число ( 43 и 21)');
+writeln;
+readln(a);
+writeln(' ¬ведите число n. Ёто є цифры по счету, которую нужно найти');
+writeln;
+readln(n);
+writeln;
+writeln(' Ёто число ',n);
+writeln;
+writeln;
+end.

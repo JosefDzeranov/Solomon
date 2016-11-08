@@ -1,0 +1,143 @@
+program Arand;
+
+type
+        Ttabl = array[1..100, 1..10] of shortint;
+        Tw = array [1..4] of string;
+        Totv = array[1..100] of string;
+
+var
+  n, m : Shortint;
+  otvet: Totv;
+
+procedure Swap (var a, b : ShortInt);
+
+var
+        t : ShortInt;
+
+begin
+        t := a;
+        a := b;
+        b := t
+end;
+
+function planA (mas : Ttabl; w : Tw) : Integer;
+
+var
+  i, j, k, t : shortint;
+
+begin
+  FillChar (otvet, SizeOf (otvet), 0);
+  k := 0;
+
+  for i := 1 to n do
+    for j := 1 to m do
+      if (mas[i, j] <> j) and (mas[i, j] > 0) then
+        for t := 1 to m do
+          if (mas[t, mas[i, j]] > 0) and (i <> j) then
+          begin
+            Inc(k);
+
+            Str(t, w[1]);
+            Str(mas[i, t], w[2]);
+            Str(j, w[3]);
+            Str(mas[t, j], w[4]);
+
+            otvet[k] := w[1] + ' ' + w[2] + ' ' + w[3] + ' ' + w[4];
+            Swap (mas[i, t], mas[t, j]);
+          end;
+
+  for i := 1 to n do
+    for j := 1 to m do
+      if (mas[j, i] <> i) and (mas[j, i] > 0) then
+      begin
+        inc(k);
+        str(i, w[1]);
+        str(mas[j, i], w[2]);
+        otvet[k] := w[2] + ' ' + w[1] + ' ' + w[1];
+        mas[j, i] := i;
+      end;
+
+  PlanA := k
+end;
+
+function planB (mas : Ttabl; w : Tw) : Integer;
+
+var
+  i, j, k, t, a, b : shortint;
+
+begin
+
+  FillChar (otvet, SizeOf (otvet), 0);
+  k := 0;
+
+  for i := 1 to n do
+    for j := 1 to m do
+      if (mas[i, j] <> j) then
+        for t := 1 to m do
+          if (mas[i, j] > 0) and (mas[t, mas[i, j]] = j) then
+          begin
+            inc(k);
+            str(j, w[1]);
+            str(mas[i, j], w[2]);
+            otvet[k] := w[1] + ' ' + w[2] + ' ' + w[2] + ' ' + w[1];
+            Swap (mas[i, j], mas[t, mas[i, j]])
+          end;
+
+  for i := 1 to n do
+    for j := 1 to m do
+      if (mas[j, i] > 0) and (mas[j, i] <> i) then begin
+        inc(k);
+        str(i, w[1]);
+        str(mas[j, i], w[2]);
+        otvet[k] := w[1] + ' ' + w[2] + ' ' + w[2];
+        mas[j, i] := i;
+      end;
+
+  PlanB := k
+end;
+
+var
+  i, j, t, a, b: shortint;
+  pa, pb : Integer;
+  mas : Ttabl;
+  ma: array[1..10] of shortint;
+  w : Tw;
+
+begin
+
+  Readln(n, m);
+
+  FillChar (mas, SizeOf (mas), 0);
+  FillChar (ma, SizeOf (mas), 0);
+
+  for i := 1 to m do
+  begin
+    Readln(a, b);
+
+    if ma[b] > 0 then
+        mas[ma[b], b] := a
+    else
+        mas[1, b] := a;
+
+    Inc(ma[b]);
+  end;
+
+  pa := PlanA (mas, w);
+  pb := PlanB (mas, w);
+
+  if pa < pb then
+  begin
+        WriteLn (pa);
+        PlanA (mas, w);
+
+        for i := 1 to pa do
+          Writeln(otvet[i]);
+  end
+  else
+  begin
+        WriteLn (pb);
+        PlanB (mas, w);
+        for i := 1 to pb do
+          Writeln(otvet[i]);
+  end;
+end.

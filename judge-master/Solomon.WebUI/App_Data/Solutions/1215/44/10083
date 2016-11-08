@@ -1,0 +1,7 @@
+var a,r,n,l:integer;
+begin
+read(n,l,r);
+a:=l div(2*r);
+if n >= a*2*pi*r then begin writeln('YES');write(a)end
+ELSE write('NO');
+end.

@@ -1,0 +1,57 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,i,j,k,p:integer; s,str:string; mas,res:array [1..1005] of string;
+begin
+  readln(n);
+  for I := 1 to n do
+    begin
+      readln(s);
+      j:=1;
+      while (s[j]<'0') or (s[j]>'9') do
+           j:=j+1;
+       str:=s[j];
+       j:=j+1;
+       while (s[j]>='0') and (s[j]<='9') do
+       begin
+         str:=str+s[j];
+         j:=j+1;
+       end;
+      mas[i]:=str;
+    end;
+    for I := n-1 downto 2 do
+      for j := 1 to i do
+        begin
+          if mas[j]>mas[j+1] then
+          begin
+          s:=mas[j];
+          mas[j]:=mas[j+1];
+          mas[j+1]:=s;
+          end;
+        end;
+        s:='';
+        k:=0;
+        p:=1;
+    for I := 1 to n do
+      begin
+        if mas[i]<>mas[i+1] then
+        begin
+          if (p<=5) and (p>=1) then
+          begin
+            k:=k+1;
+            res[k]:=mas[i];
+          end;
+            p:=1;
+        end
+        else
+           p:=p+1;
+      end;
+   writeln(k);
+   for I := 1 to k do
+   writeln(res[i]);
+   readln;
+end.

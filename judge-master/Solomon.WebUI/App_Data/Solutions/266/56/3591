@@ -1,0 +1,47 @@
+#include <conio.h>
+#include <stdio.h>
+#include <math.h>
+
+
+int main(){
+    int N,NumOfNull = 0,tmp,factor = 1,count = 0,step = 0, j = 0 , n = 1;
+
+    //debug
+    
+    scanf("%d", &N);
+   /* printf("Vvedite N");
+    scanf("%d", &N);*/
+   for(int i = 0;i < N; i++){
+       factor*= n;
+       n++;      
+   }
+    
+    
+    
+    
+   
+   tmp = factor;       
+   while(tmp >= 2){
+       tmp/=2;
+       step++;
+   //printf("%d\n", step);
+                   
+   }
+   j = step+1;
+   for(int i = 0; i < j;i++){
+       tmp = pow(2,step);    
+       if(factor >= pow(2,step)){
+           factor-=pow(2,step);  
+            
+           count = 0;                   
+       }    
+       else{
+           count++;                    
+       }
+       step--;
+   //    printf("kolvo = %d  znachenie = %d tmp = %d\n", count, factor, tmp);
+   } 
+   printf("%d", count);
+  //  _getch();
+    return 0;    
+}

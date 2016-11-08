@@ -1,0 +1,18 @@
+var 
+    N,i: integer;
+    P,O,count: longint;
+begin
+readln(N);
+P:=1;
+for i:=1 to N do P:=P*i;
+
+while P<>1 do
+begin
+    O:=P mod 2;
+    P:=P div 2;
+    if O=0 then inc(count)
+    else break;
+end
+else if(P = 1) then inc(count);
+writeln(count);
+end.

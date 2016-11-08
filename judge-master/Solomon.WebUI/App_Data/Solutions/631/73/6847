@@ -1,0 +1,13 @@
+var
+        n, s, i : Int64;
+begin
+        ReadLn(n);
+        s := 0;
+        i := 0;
+        while s <= n do begin
+            Inc(i);
+            s := s+i
+        end;
+
+        WriteLn(i-1)
+end.

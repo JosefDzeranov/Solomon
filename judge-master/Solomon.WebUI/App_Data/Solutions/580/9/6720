@@ -1,0 +1,19 @@
+
+def Min(x, y):
+    return x if (x<y)else y;
+
+nm = int(input());
+s = str(input()).split(' ');
+
+n = int(s[0]);
+a = int(s[1]);
+b = int(s[2]);
+c = int(s[3]);
+
+if (nm == 2):
+    print(Min(c, Min(a, b)));
+if(nm == 1):
+    print((a+b+c-2*n)if ((a+b+c-2*n)>0)else 0);
+    
+
+

@@ -1,0 +1,38 @@
+#include <cstdio>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <string.h>
+#include <vector>
+#include <queue>
+#include <set>
+#include <map>
+#include <list>
+#include <utility>
+#include <time.h>
+#include <algorithm>
+#include <cmath>
+
+#define pb push_back
+#define mp make_pair
+#define F first
+#define S second
+#define stop exit(0)
+
+using namespace std;
+
+typedef long long ll;
+typedef pair <int, int> pii;
+
+const int INF=2000000000;
+const long long INFll=1000000000000000000ll;
+const long double EPS=1e-9;
+
+int main() {
+    //freopen("patterns.in", "r", stdin);
+    //freopen("patterns.out", "w", stdout);
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", n*(n-1)*(n-2));
+    return 0;
+}

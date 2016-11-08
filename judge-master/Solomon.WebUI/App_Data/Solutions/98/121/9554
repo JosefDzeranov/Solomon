@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int m,n,k;
+    cin>>n>>m;
+    k=n*n-m;
+    if(n*n<=m*m) cout<<"Yes";
+    else cout<<"No";
+    return 0;
+}

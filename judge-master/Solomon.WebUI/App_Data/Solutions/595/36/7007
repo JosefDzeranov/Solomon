@@ -1,0 +1,8 @@
+var
+  i,a:integer;
+begin
+  readln(a);
+  for i:=1 to a-2 do begin
+    write(i,' ',i+1,' ',i+2,' ');
+  end;
+end.

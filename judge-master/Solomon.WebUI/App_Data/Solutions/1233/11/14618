@@ -1,0 +1,7 @@
+n=int(input()) 
+h=[1] * n
+h[-1]=n
+h[-2]=2
+c=0
+for i in h:
+    print(i, end=' ')

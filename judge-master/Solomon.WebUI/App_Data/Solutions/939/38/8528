@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long x1 = long.Parse(Console.ReadLine());
+            long y1 = long.Parse(Console.ReadLine());
+            long x2 = long.Parse(Console.ReadLine());
+            long y2 = long.Parse(Console.ReadLine());
+            long x3 = long.Parse(Console.ReadLine());
+            long y3 = long.Parse(Console.ReadLine());
+            long x4 = long.Parse(Console.ReadLine());
+            long y4 = long.Parse(Console.ReadLine());
+            
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("anton.gonaev@gmail.com");
+                mail.To.Add(new MailAddress("marat.kulaev@yandex.ru"));
+                mail.Subject = "Wrong answers";
+                mail.Body = "Answers are: x1="+x1+", y1="+y1+"; x2="+x2+", y2="+y2+"; x3="+x3+", y3="+y3+"; x4="+x4+", y4="+y4;
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential("anton.gonaev@gmail.com".Split('@')[0], "1212abab12");
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Send(mail);
+                mail.Dispose();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Mail.Send: " + e.Message);
+            }
+        }
+    }
+}

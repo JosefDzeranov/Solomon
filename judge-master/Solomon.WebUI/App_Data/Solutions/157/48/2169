@@ -1,0 +1,23 @@
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+int main()
+{int l;
+int x1,x2,y1,y2;
+int a,b;
+float s=0;
+
+cin>>l;
+cin>>x1>>y1>>x2>>y2;
+
+a=x2-x1;
+b=y2-y1;
+
+if (l>a/2 || l>b/2) int(s)=a*b;
+else s=(l*l)*3,14;
+
+cout<<s;
+
+getch();}

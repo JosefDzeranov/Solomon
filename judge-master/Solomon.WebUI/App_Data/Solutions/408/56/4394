@@ -1,0 +1,16 @@
+var
+  n,k,i,rez:int64;
+begin
+  readln(n);
+  n:=n - n mod 2 ;
+  for i:=1 to n div 2 do
+  begin
+    k:=i*2;
+    while k mod 2 = 0 do
+    begin
+      inc(rez);
+      k:=k div 2;
+    end;
+  end;
+  writeln(rez);
+end.

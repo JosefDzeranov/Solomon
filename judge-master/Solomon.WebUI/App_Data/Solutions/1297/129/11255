@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,s:integer;
+ch:char;
+str:string;
+begin
+  read(a, b);
+  for i := 1 to a do
+  begin
+    for i := 1 to b do
+    begin
+      read(ch);
+    end;
+    readln;
+  end;
+writeln(4);
+end.

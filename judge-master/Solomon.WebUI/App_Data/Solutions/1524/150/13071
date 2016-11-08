@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  Math;
+
+var a,l,i:Integer; s:string;
+begin
+  Readln(s);
+  a:=0;
+  l:=Length(s);
+  for i:=1 to l do
+  begin
+    if s[i]='*' then
+    begin
+      a:=a+round(power(2,l-i));
+    end;
+  end;
+  Writeln(a);
+  Readln;
+end.
+ 

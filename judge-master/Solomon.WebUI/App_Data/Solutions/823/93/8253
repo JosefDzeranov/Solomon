@@ -1,0 +1,19 @@
+program ProgrammingLessons;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x, z : byte;
+  y, q: smallint;
+begin
+  readln (x, y);
+  readln (z, q);
+  y := y + x * 60;
+  q := q + z * 60;
+  q := q - y;
+  write (q div 60, ' ', q mod 60);
+  readln;
+end.

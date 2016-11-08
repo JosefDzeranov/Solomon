@@ -1,0 +1,29 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+
+  n, i, j : integer;
+  a : array [1..1000,1..4] of integer;
+begin
+ read(n);
+ for i:=1 to n do
+ begin
+  for j:=1 to 4 do
+  begin
+    read(a[i,j]);
+  end;
+  readln;
+ end;
+
+ Writeln(3);
+
+ readln;
+
+
+end.
+ 

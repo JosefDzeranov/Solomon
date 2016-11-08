@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int balls_c, boxes_c, box, ball, actions;
+    bool swap;
+    vector< vector<int> > boxex;
+
+    scanf( "%d%d", &boxes_c, &balls_c );
+
+    boxex.reserve( boxes_c + 1 );
+
+    actions = 0;
+
+    for( unsigned i = 1; i <= boxes_c; i++ )
+    {
+        swap = false;
+
+        scanf( "%d%d", &ball, &box );
+
+        for( int i = 0; i < boxex[ball].size(); i++ )
+        {
+            if( boxex[ball][i] == box )
+            {
+                boxex[ball][i] = 0;
+                swap = true;
+                actions++;
+            }
+        }
+
+        if( !swap )
+            boxex[box].push_back( ball );
+    }
+
+    cout << "Действий: " << actions << endl;
+
+    return 0;
+}
+

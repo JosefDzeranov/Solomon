@@ -1,0 +1,27 @@
+def des(a, b, c):
+    ret = b ** 2 - 4 * a * c
+    return ret
+
+a, b, c, d = [int(i) for i in input().split()]
+matrix = [[0 for i in range(d)] for i in range(d)]
+ret = 0
+for i in range(c, d + 1):
+    for j in range(a, b + 1):
+        da = -1
+        db = i / 2
+        dc = -j
+        ds = des(da, db, dc)
+        if ds >= 0:
+            y1 = (-1 * db + ds ** 0.5) / -2
+            y2 = (-1 * db - ds ** 0.5) / -2
+            y = max(y1, y2)
+            x = (i - 2 * y) / 2
+            if x == int(x) and y == int(y):
+                x = int(x) 
+                y = int(y)
+                if matrix[x][y] == 0:
+                    matrix[x][y] = 1
+                    matrix[y][x] = 1
+                    ret += 1
+print(ret)
+        

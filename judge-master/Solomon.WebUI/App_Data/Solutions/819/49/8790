@@ -1,0 +1,25 @@
+k = int(input())
+A = list(map(int, input().split()))
+
+heads = 3
+i = 0
+
+while heads > 0 and i <= k:
+    
+    print ('i =', i)
+    
+    if i%2 == 0:
+        heads -= A[i]
+        i += 1
+        print ('heads =', heads)
+    else:
+        heads += A[i]
+        i += 1
+        print ('heads =', heads)
+if heads > 0:
+    result = 'NO'
+else:
+    result = 'YES'
+print (result)
+        
+    

@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main () {
+	string s;
+	
+	getline(cin, s);
+	
+	long long l = 0, r = s.length();
+	while (r-l > 1) {
+		long long m = (l+r)/2;
+		if (m*m >= s.length()) {
+			r = m;
+		} else {
+			l = m;
+		}
+	}
+	
+	vector<vector<char> > table(r, vector<char> (r));
+	long long ind = 0, i, j;
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < r; j++) {
+			table[i][j] = (ind < s.length()) ? s[ind] : ' ';
+			ind++;
+		}
+	}
+	s = "";
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < r; j++) {
+			s += table[j][i];
+		}
+	}
+	cout << s;
+	
+	return 0;
+}

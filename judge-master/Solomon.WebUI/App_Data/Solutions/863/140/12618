@@ -1,0 +1,33 @@
+﻿using System;
+
+using System.Text;
+
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+            int max = 0;
+            int[] nn = new int[n];
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i]== 'P')
+                {
+                    nn[i%n]++;
+                } 
+            }
+
+            for (int i = 0; i < nn.Length; i++)
+            {
+                if (nn[i] > max) max = i + 1; 
+            }
+
+            Console.WriteLine(max);
+        }
+    }
+}

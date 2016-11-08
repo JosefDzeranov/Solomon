@@ -1,0 +1,7 @@
+var a:integer;
+c:string;
+begin
+read(a);
+read(c);
+writeln('2');
+end.

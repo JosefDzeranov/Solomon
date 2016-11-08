@@ -1,0 +1,24 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,o:integer; k,m,x:int64;
+begin
+readln(a,k,b,m,x);
+for o := 1 to x div 2 do
+begin
+ if o mod k=0 then
+  begin
+   if o mod m<>0 then
+    x:=x-b;
+   end
+ else
+  if o mod m=0 then x:=x-a
+  else x:=x-a-b;
+if x<=0 then break;
+end;
+writeln(o);
+end.

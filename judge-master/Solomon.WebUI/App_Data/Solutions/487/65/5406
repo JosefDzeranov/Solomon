@@ -1,0 +1,12 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    int64_t a[4];
+    cin >> a[0] >> a[1] >> a[2] >> a[3];
+    cout << int64_t(sqrt(min(a[0], a[1]) + min(a[2], a[3])));
+    return 0;
+}

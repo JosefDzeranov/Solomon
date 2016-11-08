@@ -1,0 +1,84 @@
+#include <iostream>
+#include <sstream>
+#include <cmath>
+using namespace std;
+
+
+
+
+int main(){
+
+string str;
+
+getline(cin, str);
+
+stringstream sstr(str);
+
+
+unsigned long digit1(322) ,digit2(322),digit3(322);
+
+unsigned char ch1('0'),ch2('0');
+
+sstr >> digit1 >> ch1 >> digit2 >> ch2 >> digit3;
+
+
+
+
+if ((ch1 == '+'||ch1 == '-'||ch1 == '/'||ch1 == '*') && (digit1!=322) && (digit2!=322) && (digit3!=322) && (ch2=='='))
+
+{
+
+switch(ch1)
+
+{
+
+case '+' :
+
+digit1 = (int)digit1+digit2;
+
+break;
+
+case '-' :
+
+digit1 = (int)digit1-digit2;
+
+break;
+
+case '/' :
+
+digit1 = (int)digit1/digit2;
+
+break;
+
+case '*' :
+
+digit1 = (int)digit1*digit2;
+
+break;
+
+}
+
+if (digit1 == digit3)
+
+{
+
+cout << "YES";
+
+}
+
+else
+
+{
+
+cout << "NO";
+
+}
+
+}
+
+else{
+
+cout << "NO" << endl;
+
+}
+}

@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+  int i,n,p=1;
+    cin>>n;
+    //факториал
+    for (i = 1; i < n+1; i++)
+        p *= i;
+
+//двоичный код
+  string B="";
+   while(p>0)
+   {
+      if(p%2)
+         B+='1';
+      else
+         B+='0';
+      p/=2;
+   }
+ reverse(B.begin(), B.end());
+
+
+   //подсчет нулей
+
+
+int l=0;
+int max=0;
+for(int j=0;j<B.size();j++)
+{
+if  (B[j]=='0')  l=l+1;
+   else {
+          if (l>max) max=l;
+          l=0;
+         }
+
+if (j==B.size()) {
+       if (B[j]=='0') {
+            if (l>max){
+             max=l;}
+             }
+}
+}
+cout<<l;
+    return 0;
+}

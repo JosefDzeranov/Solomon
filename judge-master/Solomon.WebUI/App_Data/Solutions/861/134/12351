@@ -1,0 +1,16 @@
+program Project14;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,n:integer;
+begin
+readln(n);
+if n mod 2=1 then c:=((n*(n-1)) div 2)*2;
+if n mod 2=0 then c:=((n*(n-2)) div 2)*2;
+
+writeln(c);
+readln;
+end.

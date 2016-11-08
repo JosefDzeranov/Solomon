@@ -1,0 +1,30 @@
+program Project17;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+i,s,n,m,q,d:integer;
+begin
+q:=0;
+i:=1;
+readln(n,m);
+S:=n*n;
+d:=s-m;
+while i*i<=d do
+  begin
+  if i*i=d  then
+     begin
+     q:=1;
+     break
+     end;
+     i:=i+1;
+
+  end;
+if q=1 then writeln('yes')    else
+writeln('no');
+readln;
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

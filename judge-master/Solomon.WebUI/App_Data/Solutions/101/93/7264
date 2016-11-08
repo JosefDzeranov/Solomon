@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace c
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int h1 = Convert.ToInt32(ss[0]);
+            int m1 = Convert.ToInt32(ss[1]);
+            s = Console.ReadLine();
+            ss = s.Split(' ');
+            int h2 = Convert.ToInt32(ss[0]);
+            int m2 = Convert.ToInt32(ss[1]);
+            if (h1 <= h2)
+            {
+                h1 = h1 * 60 + m1;
+                h2 = h2 * 60 + m2;
+                h1 = h2 - h1;
+            }
+            else
+            {
+                h2 = h2 * 60 + m2;
+                h1 = 24 * 60 - (h1 * 60 + m1);
+                h1 = h1 + h2;
+            }
+            Console.WriteLine(h1 / 60 + " " + h1 % 60);
+           
+        }
+    }
+}

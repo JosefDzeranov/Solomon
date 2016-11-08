@@ -1,0 +1,119 @@
+const ma=2100000000;
+type pp=record
+     s,t,c,n,nom:int64; //nachalo
+     end;
+var a,b:array[1..210000]of pp;
+    ot,nom,v:array[1..210000]of int64;
+    i,j,n,t,f,nn:longint;
+    z:pp;
+    tm,tmn:int64;
+
+function max(k,l:longint):longint;
+ begin
+ if k>l then max:=k
+   else max:=l;
+ end;
+
+procedure sort;
+ begin
+ for i:=n+1 to n*2+1 do a[i].s:=ma;
+ for j:=1 to 17 do
+   for i:=n downto 2 do if a[i].s<a[i div 2].s then
+     begin
+     z:=a[i];
+     a[i]:=a[i div 2];
+     a[i div 2]:=z;
+     end;
+ f:=0;
+ nn:=n;
+ while nn>0 do
+   begin
+   t:=1;
+   while (a[t].s>a[t*2].s)or(a[t].s>a[t*2+1].s)do
+     if a[t*2].s<a[t*2+1].s then
+       begin
+       z:=a[t];
+       a[t]:=a[t*2];
+       a[t*2]:=z;
+       t:=t*2;
+       end else
+       begin
+       z:=a[t];
+       a[t]:=a[t*2+1];
+       a[t*2+1]:=z;
+       t:=t*2+1;
+       end;
+   inc(f);
+   b[f]:=a[1];
+   a[1]:=a[nn];
+   a[nn].s:=ma;
+   dec(nn);
+   end;
+ for i:=1 to n do a[i]:=b[i];
+ end;
+
+function find(k:longint):longint;
+var l,e:longint;
+ begin
+ e:=0;
+ l:=n+1;
+ while (a[e+l].s<k)or(a[e+l-1].s>=k)do
+   begin
+   if a[e+l].s<k then
+     begin
+     e:=e+l;
+     end;
+   if a[e+l-1].s>=k then
+     begin
+     l:=l div 2;
+     if l=0 then l:=1;
+     end;
+   end;
+ find:=e+l
+ end;
+
+begin
+ //assign(input,'input.txt'); reset(input);
+ //assign(output,'output.txt'); rewrite(output);
+
+ read(n);
+ for i:=1 to n do
+   begin
+   read(a[i].s,a[i].t,a[i].c);
+   a[i].nom:=i;
+   end;
+ sort;
+ a[n+1].s:=ma;
+ for i:=1 to n do a[i].n:=find(a[i].s+a[i].t);
+
+ for i:=1 to n do
+   begin
+   if ot[i]>tm then
+     begin
+     tm:=ot[i];
+     tmn:=nom[i];
+     end
+     else nom[i]:=tmn;
+
+
+   if (tm+a[i].c)>ot[a[i].n]then
+     begin
+     ot[a[i].n]:=tm+a[i].c;
+     nom[a[i].n]:=i;
+     end;
+   end;
+
+ writeln(ot[n+1]);
+ t:=n+1;
+ f:=0;
+ while nom[t]<>0 do
+   begin
+   v[f+1]:=a[nom[t]].nom;
+   t:=nom[t];
+   inc(f);
+   end;
+ writeln(f);
+ for i:=f downto 1 do write(v[i],' ');
+ close(input);
+ close(output);
+ end.

@@ -1,0 +1,58 @@
+#include<iostream>
+
+#include<string>
+
+using namespace std;
+
+int team,j,rez[10000],maxx,z;
+
+string prize;
+
+int main(){
+
+
+	cin>>team>>prize;
+
+
+	for(int i =0; i < prize.length();i++){
+
+		if(prize[i] == 'P'){
+
+		rez[j]++;
+		
+
+		}
+
+
+		j++;
+
+		if(j > team){
+			j = 0;
+		}
+
+	}
+
+	for(int i =0; i < team;i++){
+
+     if(rez[i] > maxx){
+		 maxx = rez[i];
+	 }
+
+
+
+	}
+
+
+	for(int i =0;i < team;i++){
+
+		if(rez[i] == maxx){
+			cout<<i + 1;
+			break;
+		}
+
+	}
+
+	cin>>maxx;
+
+
+}

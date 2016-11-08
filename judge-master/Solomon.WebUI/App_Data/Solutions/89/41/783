@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int x,n;
+string b,c;
+cin>>n;
+while(n>=2)
+{
+    x=n%2;
+    if(x==0){n=n/2;b="*"+b;}
+    if(x>0){n=n-1;b="+"+b;}
+}
+cout<<b;
+
+    return 0;
+}

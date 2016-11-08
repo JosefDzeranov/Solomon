@@ -1,0 +1,7 @@
+var n:integer;
+    r,s:real;
+begin
+  read(n);
+  s:=sqr(n+((n/2)-(1/2))*n);
+  writeln(s);
+end.

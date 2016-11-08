@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string *songs;
+int N;
+
+struct resultf {
+	int frag, len;
+};
+
+resultf subFind(bool *used, string start) {
+	int maxFrag = 0;
+	int maxLen = 0;
+
+	for (int i = 0; i < N; i++) {
+		if (!used[i]) {
+			if (songs[i].substr(0, 3) == start) {
+				int frag = 1;
+				int len = songs[i].length();
+				bool *newUsed = new bool[N];
+				memcpy(newUsed, used, N*sizeof(bool));
+				newUsed[i] = true;
+				resultf result = subFind(newUsed, songs[i].substr(songs[i].length() - 3, 3));
+				//delete newUsed;
+				frag += result.frag;
+				len += result.len;
+				if (frag > maxFrag) {
+					maxFrag = frag;
+					maxLen = len;
+				}
+				else if (frag == maxFrag) {
+					if (len > maxLen) {
+						maxFrag = frag;
+						maxLen = len;
+					}
+				}
+			}
+		}
+	}
+
+	resultf result = { maxFrag, maxLen };
+	return result;
+}
+
+resultf find() {
+	int maxFrag = 0;
+	int maxLen = 0;
+	bool *used = new bool[N];
+	for (int i = 0; i < N; i++) {
+		memset(used, 0, N*sizeof(used));
+		int frag = 1;
+		int len = songs[i].length();
+		used[i] = true;
+		resultf result = subFind(used, songs[i].substr(songs[i].length() - 3, 3));
+		frag += result.frag;
+		len += result.len;
+
+		if (frag > maxFrag) {
+			maxFrag = frag;
+			maxLen = len;
+		}
+		else if (frag == maxFrag) {
+			if (len > maxLen) {
+				maxFrag = frag;
+				maxLen = len;
+			}
+		}
+	}
+
+
+	resultf result = { maxFrag, maxLen };
+	return result;
+}
+
+int main() {
+	cin >> N;
+	songs = new string[N];
+	for (int i = 0; i < N; i++) {
+		cin >> songs[i];
+	}
+
+	resultf result = find();
+	cout << result.frag << ' ' << result.len;
+
+	return 0;
+}

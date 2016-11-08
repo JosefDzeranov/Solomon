@@ -1,0 +1,16 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+a:string;
+begin
+readln(A);
+if (a[1]>=0) and (a[1]<=9 then
+ writeln('YES')
+ else
+ writeln('ERROR');
+end.

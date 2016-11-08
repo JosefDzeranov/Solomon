@@ -1,0 +1,29 @@
+n, k = map(int, input().split())
+zero_count = 0
+dividers = list()
+
+# список делителей основания системы счисления
+for i in range (2, k//2+1):
+    if k % i == 0:
+        dividers.append(i)
+        
+        
+# дальше попробуем внедрить готовое решение из 3 тура.
+
+dividers.reverse()
+#print (dividers)
+
+#for divider in dividers:
+if dividers == []:
+    divider = k
+else:
+    divider = dividers[0]
+number = n
+while number != 0:
+    if number % divider != 0:
+        number -= 1
+    else:
+        number = number/divider
+        zero_count += number
+print (int(zero_count))
+

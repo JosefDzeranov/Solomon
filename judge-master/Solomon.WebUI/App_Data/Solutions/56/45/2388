@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+const pi = 3.14;
+ var
+ n,m,r1,r2,k1,k2: integer; p1,p2:extended;
+begin
+  readln(n,m,r1,r2);
+  k1:=m div (r1*2);
+  k2:=m mod (r1*2);
+  if k2>0 then
+
+   k1:=(k1+1)*2
+   else
+   k1:=2*k1;
+
+  k2:=k1 div 2;
+  p1:=2*pi*r1*k1;
+  p2:=2*pi*r2*k2;
+  if n - (p1+p2)>=0 then
+  begin
+     writeln('YES');
+      write(k1,' ',k2)
+      end
+      else
+       write('NO');
+ readln;
+end.

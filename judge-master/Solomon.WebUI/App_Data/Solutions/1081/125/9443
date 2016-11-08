@@ -1,0 +1,67 @@
+#include<iostream>
+#include<math.h>
+
+using std::cout;
+using std::cin;
+
+int min(int a,int b)
+{
+	if(a>b)
+	{
+		return b;
+	}
+	else
+	{
+		return a;
+	}
+}
+int abs(int a)
+{
+	if (a<0)
+	{
+		return (int)a*(-1);
+	}
+	return a;
+}
+int sqr(int a)
+{
+	return a*a;
+}
+int main(){
+	int x1,x2,y1,y2,x,y,a,b,c,d,e(0),r(0),t(0),u(0);
+	cin >> x1 >> y1 >> x2 >>y2>>x>>y;
+	if(x>x2||x<x1||y>y1||y<y2)
+	{
+		if(y>y1&&x>=x1&&x<=x2)
+	{
+		//внизу
+		cout << abs(y-y2);
+	}
+		else if(x>x2&&y<=y2&&y>=y1)
+	{
+		//справа
+		cout << abs(x-x2);
+	}
+	else if(x>x1&&y<=y2&&y>=y1)
+	{
+		//слева
+		cout << abs(x-x1);
+	}
+	else if(y<y2&&x>=x1&&x<=x2)
+	{
+		cout << abs(y-y1);
+	}
+	else
+	{
+		cout << sqrt(1);
+	}
+}
+	else{
+	a=min(abs(x-x1),abs(y-y1));
+	b=min(abs(x-x1),abs(y-y2));
+	c=min(abs(x-x2),abs(y-y1));
+	d=min(abs(x-x2),abs(y-y2));
+	cout << min(min(a,b),min(c,d));
+	}
+	cin >> a;
+}

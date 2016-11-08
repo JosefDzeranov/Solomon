@@ -1,0 +1,28 @@
+import math
+
+
+def mxc(n):
+    ret = [[0 for i in range(n)] for j in range(n)]
+    return ret
+
+n = int(input())
+if n % 2 == 0:
+    print(n ** 2 // 2)
+exit()
+ret = 0
+for i in range(n):
+    for j in range(n):
+        mtx = mxc(n)
+        p = 0
+        if i != j:
+            for u in range(n):
+                x = int(min(math.fabs(u - i), n - math.fabs(u - i)))
+                y = int(min(math.fabs(u - j), n - math.fabs(u - j)))
+                if mtx[x][y] == 0:
+                    p += 1
+                    mtx[x][y] += 1
+                else:
+                    p += min(-mtx[x][y], 0)
+            if p == n:
+                ret += 1
+print(ret)

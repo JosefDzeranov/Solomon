@@ -1,0 +1,45 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function min(a, b: Integer): Integer;
+begin
+  if a < b then
+    min := a
+  else
+    min := b;
+end;
+
+var
+  x1, x2, y1, y2, x3, y3: Integer;
+
+begin
+  readln(x1, y1);
+  readln(x2, y2);
+  readln(x3, y3);
+  if ((x3 < x1) or (x3 > x2)) or ((y3 < y1) or (y3 > y2)) then
+  begin
+    if (y3 <= y2) and (y3 >= y1) then
+      writeln(min(abs(x3 - x1), abs(x3 - x2)))
+    else
+      if (x3 <= x2) and (x3 >= x1) then
+        writeln(min(abs(y3 - y1), abs(y3 - y2)))
+      else
+      begin
+        if (y3 > y2) and (x3 > x2) then
+          writeln(sqrt(sqr(x3 - x2) + sqr(y3 - y2)));
+        if (y3 > y2) and (x3 < x1) then
+          writeln(sqrt(sqr(x1 - x3) + sqr(y3 - y2)));
+        if (y3 < y1) and (x3 > x2) then
+          writeln(sqrt(sqr(x3 - x2) + sqr(y1 - y3)));
+        if (y3 < y1) and (x3 < x1) then
+          writeln(sqrt(sqr(x1 - x3) + sqr(y1 - y3)));
+      end;
+  end
+  else
+    writeln(min(min(x3 - x1, x2 - x3), min(y3 - y1, y2 - y3)));
+  readln;
+end.

@@ -1,0 +1,10 @@
+program cube;
+var
+ containCube:longint;
+begin
+ readln(containCube);
+ if containCube=8 then write(2)
+ else if containCube<8 then write(0)
+ else write((containCube-8) div 12+2);
+ readln;
+end.

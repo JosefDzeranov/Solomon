@@ -1,0 +1,8 @@
+program sum;
+var
+ a,b:real;
+begin
+ readln(a,b);
+ write((a+b):0:0);
+ readln;
+end.

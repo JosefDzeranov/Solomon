@@ -1,0 +1,40 @@
+program Project37;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var m,n,i,h,p,k:integer;
+
+begin
+ readln(m,n);
+ read(k);
+ h:=k;
+ for I := 1 to n-1 do
+   begin
+    read(p);
+     if p=k+1 then
+       k:=p
+     else
+      if k=h then
+        begin
+         write(k,' ');
+         k:=p;
+         h:=p;
+        end
+      else
+       begin
+        write(h,'-',k,' ');
+        h:=p;
+        k:=p;
+       end;
+   end;
+      if k=h then
+         write(k,' ')
+         else
+            write(h,'-',k,' ');
+
+   readln;
+   readln;
+end.

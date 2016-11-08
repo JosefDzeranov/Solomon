@@ -1,0 +1,30 @@
+n = int(input().rstrip())
+s = [(0, 0)] * n
+k = 0
+f = True
+for a in range(n):
+    for b in range(n):
+        if (a != b):
+            s = [(0, 0)] * n
+            f = True
+            for x in range(n):
+                #l = (min(abs(a - x), abs(x - a)), min(abs(b - x), abs(x - b)))
+                if(a == x):
+                    if(b == x):
+                        l = (0, 0)
+                    else:
+                        l = (0, min(min(x, b) + n - max(x, b), abs(b - x)))
+                else:
+                    if(b == x):
+                        l = (min(min(x, a) + n - max(x, a), abs(a - x)), 0)
+                    else:
+                        l = (min(min(x, a) + n - max(x, a), abs(a - x)), min(min(x, b) + n - max(x, b), abs(b - x)))                    
+                #l = ((min(x, a) + n - max(x, a)) % n, (min(x, b) + n - max(x, b)) % n)
+                if l in s:
+                    f = False
+                    break
+                else:
+                    s[x] = l
+            if f:
+                k += 1
+print(k)

@@ -1,0 +1,15 @@
+var n,m,i,j,k,ans,cur:longint;
+begin
+//  {$ifndef ONLINE_JUDGE}
+//  assign(input,'input.txt'); reset(input);
+//    assign(output,'output.txt'); rewrite(output);
+//  {$endif}
+  readln(n);
+  cur:=2;
+  while(cur<n)do
+    begin
+      ans:=ans+(n div cur);
+      cur:=cur*2;
+    end;
+  writeln(ans);
+end.

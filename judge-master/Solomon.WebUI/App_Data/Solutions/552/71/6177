@@ -1,0 +1,25 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int k=0,a,b,c,N,a1,b1,c1;
+cin>>N>>a>>b>>c;
+a1=a;
+b1=b;
+c1=c;
+while(k<3)
+{
+    if(a<=b&&a<=c){a=a+a1;if(a+b+c>N){a=a-a1;k=k+1;}}
+    else{k=k+1;}
+    if(b<=a&&b<=c){b=b+b1;if(a+b+c>N){b=b-b1;k=k+1;}}
+    else{k=k+1;}
+    if(c<=b&&c<=a){c=c+c1;if(a+b+c>N){c=c-c1;k=k+1;}}
+    else{k=k+1;}
+    if(k<3){k=0;}
+
+}
+cout<<a<<' '<<b<<' '<<c;
+    return 0;
+}

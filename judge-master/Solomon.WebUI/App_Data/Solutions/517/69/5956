@@ -1,0 +1,20 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,n,x:integer;
+v:real;
+begin
+readln(a,b,x);
+n:=round(x/(1000*(a+b))) ;
+if n>=x/(1000*(a+b)) then
+n:=round(x/(1000*(a+b)))
+else
+n:=round(x/(1000*(a+b)))+1;
+v:=x/(n*(a+b)-a);
+writeln(v:0:9);
+readln;
+end.

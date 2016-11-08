@@ -1,0 +1,42 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+
+namespace Mesi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            System.Globalization.NumberFormatInfo nfi = new System.Globalization.NumberFormatInfo() { NumberDecimalSeparator = "," };
+
+            Double Sum = 0;
+
+            int N = Int32.Parse(Console.ReadLine());
+            if (N == 0) { Console.WriteLine(0); return; }
+            string[] s = Console.ReadLine().Split(' ');
+            List<Double> Combinations = new List<Double>();
+            Combinations.Add(0);
+            foreach (var i in s)
+            {
+                var temp = Double.Parse(i, nfi);
+                Sum += temp;
+                List<Double> smth = new List<Double>();
+                foreach (var j in Combinations)
+                {
+                    if (!Combinations.Contains(temp + j))
+                        smth.Add(temp + j);
+                }
+                Combinations.AddRange(smth);
+            }
+
+            Double Average = Sum / 2, Best = Sum;
+            foreach (var i in Combinations)
+                if (Math.Abs(Average - i) < Best)
+                    Best = Math.Abs(Average - i);
+
+            Console.WriteLine((Best * 2).ToString(nfi));
+            Console.ReadLine();
+        }
+    }
+}

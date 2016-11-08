@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..5000] of integer;
+ n,d,b,c,i,x:integer;
+begin
+  readln(n);
+  if (n+1) div 2*n mod 2=0 then writeln('Aslan')
+  else writeln('Timur');
+      readln;
+
+end.

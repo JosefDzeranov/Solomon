@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main(){
+	float a,b,x,v,u;
+	cin>>a>>b>>x;
+
+	v=x/b;
+	int i=1;
+	while(v>1000)
+	{
+		v=x/((a+b)*i-a);
+		i++;
+	}
+
+	cout<<v;
+	cin>>v;
+	return 0;
+}

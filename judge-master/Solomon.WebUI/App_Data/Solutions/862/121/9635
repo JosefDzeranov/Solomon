@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            Int64 a = Convert.ToInt64(s[0]);
+            Int64 b = Convert.ToInt64(s[1]);
+            double k = a * a - b;
+            //if (k < 0) Console.WriteLine("No");else
+            if (Math.Sqrt(k) * Math.Sqrt(k) == k && k!=0) Console.WriteLine("Yes"); else Console.WriteLine("No");
+        }
+    }
+}

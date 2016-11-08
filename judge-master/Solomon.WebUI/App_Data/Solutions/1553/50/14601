@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split();
+            int a = int.Parse(s[0]);
+            int b = int.Parse(s[1]);
+
+            string t = "";
+            int n = int.Parse(Console.ReadLine());
+            int[] mas = new int[n * 2];
+            if (n == 1) Console.WriteLine(a);
+            else
+                if (n == 2) Console.WriteLine(b);
+                else
+                {
+                    t = a.ToString() + b;
+                    int i = 2;
+                    while (true)
+                    {
+                        if (t.Length >= n) break;
+                        int c = a + b;
+                        t+=c;a=b;b=c;
+                        i++;
+                    }
+                    Console.WriteLine(t[n-1]);
+                }
+        }
+    }
+}

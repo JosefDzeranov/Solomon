@@ -1,0 +1,23 @@
+#include <iostream>
+
+int main()
+{
+    using std::cin;
+    using std::cout;
+    using std::endl;
+
+    int place;
+    cin >> place;
+
+    cout << "YES\n";
+    int columns = 2 * place - 1;
+    for (int rows = 1; rows * rows <= columns; rows += 2)
+    {
+        if (columns % rows == 0)
+        {
+            cout << rows << " " << columns / rows << endl;
+        }
+    }
+
+    return 0;
+}

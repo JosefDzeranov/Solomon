@@ -1,0 +1,36 @@
+program asdf;
+var n,q,w,r,t:string;a,b,i,e,y:integer;
+
+begin
+
+
+  readln(n);y:=0;
+  a:=Length(n);
+  b:=a div 2;
+  for i:=1 to b do
+  begin
+    q:=q+n[i];
+    w:=w+n[a-i+1];
+  end;
+  if q=w then writeln('Yes')
+  else if a=2 then writeln('No')
+    else
+    begin
+      for i:=1 to b do if q[i]<>w[i] then 
+      begin
+        if e=0 then 
+        begin
+          r:=q[i];t:=w[i];
+          inc(y);
+        end
+        else
+        begin
+          if not(((r=q[i])and(t=w[i]))or((t=q[i])and(r=w[i]))) then inc(y);
+        end;
+        inc(e);
+      end;
+      if (e=2)and(y=1) then writeln('Yes') else writeln('No');
+    end;
+
+
+end.

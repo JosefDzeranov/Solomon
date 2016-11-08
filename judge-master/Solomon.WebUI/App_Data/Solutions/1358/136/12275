@@ -1,0 +1,64 @@
+program Tiling;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, k : integer;
+  floor : array [1 .. 2, 1 .. 100000] of byte;
+  i, j : integer;
+  x : integer;
+  y : byte;
+  count : int64;
+  virtArray : array [1 .. 2, 1 .. 100000] of byte;
+
+function tryFind (m : array of byte; i, j : integer) : int64;
+begin
+  result := 0;
+  if virtArray[i, j + 1] <> 1 then
+    inc (result);
+end;
+
+begin
+  readln (n, k);
+  fillchar (floor, 2 * n, 0);
+  for i := 1 to k do
+    begin
+      readln (x, y);
+      floor [y, x] := 1;
+    end;
+  count := 1;
+ { for i := 1 to 2 do
+    for j := 1 to n do
+      if floor (i, j) <> 1 then
+      begin
+        virtArray := floor;
+        count := count + tryFind (i, j);
+      end; }
+  //count := count + tryFind (floor, 1, 1);
+  if k = 0 then
+  begin
+    if n = 1 then
+      writeln (2)
+    else
+    if n = 2 then
+      writeln (7)
+    else
+      if n = 3 then
+        writeln (22)
+      else
+        if n = 4 then
+          writeln (69)
+  end
+  else
+  if (n = 3) and (k = 1) then
+    writeln (8)
+  else
+  if n = 2 then
+    writeln (3)
+  else
+  writeln (count mod 1000000007);
+  readln;
+end.

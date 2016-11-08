@@ -1,0 +1,45 @@
+uses math;
+var a:array[1..100,1..100] of integer;
+i,j,k,l,m,i2,j2,n,b:longint; q:boolean;
+
+function prover:boolean;
+begin
+q:=false;
+for i2:=1 to m do
+for j2:=1 to n do
+if a[i2,j2]=0 then q:=true;
+prover:=q;
+end;
+
+procedure rec(i1,j1:longint);
+begin
+if (i1<=m) and (i1>=1) and (j1>=1) and (j1<=n) and (a[i1,j1]=0) then
+        begin
+        a[i1,j1]:=l;
+        rec(i1+1,j1);
+        rec(i1,j1+1);
+        rec(i1-1,j1);
+        rec(i1,j1-1);
+        end;
+end;
+
+begin
+fillchar(a,sizeof(a),0);
+readln(m,n,k);
+for i:=1 to k do
+begin
+readln(k,l);
+a[k,l]:=1;
+end;
+
+l:=1;
+for i:=1 to m do
+for j:=1 to n do
+begin
+if (a[i,j]=0) then begin
+                rec(i,j);
+                if prover then inc(l);
+                end;
+end;
+WRITELN(l);
+end.

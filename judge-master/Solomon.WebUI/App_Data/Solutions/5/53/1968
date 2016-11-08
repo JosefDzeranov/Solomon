@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace b
+{
+    class Program
+    {
+        static Int16[,] a;
+        static int n, m;
+        static void mark(int x,int y)
+        {
+            if (x>0 && x<=m && y>0 && y<=n)
+                if (a[x, y] == 0)
+                {
+                    a[x, y] = 1;
+                    mark(x - 1, y);
+                    mark(x + 1, y);
+                    mark(x, y - 1);
+                    mark(x, y + 1);
+                }
+        }
+        static void Main(string[] args)
+        {
+            string[] temp = (Console.ReadLine()).Split(' ');
+            m = Convert.ToInt32(temp[0]);
+            n=Convert.ToInt32(temp[1]);
+            int k = Convert.ToInt32(temp[2]);
+            int x, y;
+            a = new Int16[m+1, n+1];
+            for (int i = 0; i < k; i++)
+            {
+                temp = (Console.ReadLine()).Split(' ');
+                x = Convert.ToInt32(temp[0]);
+                y = Convert.ToInt32(temp[1]);
+                a[x, y] = 1;
+            }
+
+            int kk=0;
+            for (x=1; x<=m; x++)
+                for (y=1; y<=n; y++)
+                    if (a[x, y] == 0)
+                    {
+                        kk++;
+                        mark(x, y);
+                    }
+            Console.WriteLine(kk);
+        }
+    }
+}
+

@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;
+i,n,z:integer;
+begin
+readln(s);
+i:=2;
+n:=42;
+z:=18;
+writeln(i);
+writeln(n);
+writeln(z);
+readln;{ TODO -oUser -cConsole Main : Insert code here }
+end.

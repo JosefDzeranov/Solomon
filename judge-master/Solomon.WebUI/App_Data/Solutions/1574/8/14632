@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	long long int f, x;
+	
+    cin >> f >> x;
+	   
+	cout << f + x;
+}

@@ -1,0 +1,13 @@
+#include<stdio.h>
+
+int main (void)
+{
+ int n,k=0,j=0;
+ scanf("%d", &n);
+ while (k<=n)
+{
+ j=j+1;
+ k=k+j;
+}
+printf("%d", j);
+}

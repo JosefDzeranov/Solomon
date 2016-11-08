@@ -1,0 +1,20 @@
+var s: string;c: char;i:integer;
+Begin
+  s := '';
+  i := 1;
+  repeat
+    read(c);
+	writeln(Ord(c) = 13);
+    if c = '#' then begin delete(s, i - 1, 1);dec(i); end
+    else
+    if c = '-' then dec(i)
+    else
+    if c = '+' then inc(i)
+    else
+    begin
+      insert(c, s, i);
+      inc(i);
+    end;
+  until Ord(c) = 13;
+  write(s);
+end.

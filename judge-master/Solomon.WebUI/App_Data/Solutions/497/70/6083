@@ -1,0 +1,26 @@
+uses  SysUtils;
+type mass = array [1..1000] of integer;
+
+
+var cabinet : mass;
+cooler : mass;
+cost : mass;
+n,m,sum,i,i2 : integer;
+
+begin
+readln(n);
+for i:= 1 to n do
+readln(cabinet[i]);
+readln(m);
+for i:= 1 to m do
+begin
+readln(cooler[i]);
+readln(cost[1]);
+end;
+for i:= 1 to n do
+for i2:= 1 to m do
+begin
+if(cabinet[i]<= cooler[i2]) Then sum:= sum + cost[i2];
+end;
+writeln(sum);
+end.

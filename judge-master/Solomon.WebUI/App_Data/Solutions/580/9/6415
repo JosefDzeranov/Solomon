@@ -1,0 +1,65 @@
+﻿using System;
+
+namespace Kasting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int minmax = int.Parse(Console.ReadLine());
+            string[] chisla = (Console.ReadLine()).Split();
+
+            int n = int.Parse(chisla[0]);
+            int a = int.Parse(chisla[1]);
+            int b = int.Parse(chisla[2]);
+            int c = int.Parse(chisla[3]);
+
+            if (a<b)
+            {
+                if (b<c)
+                {
+                    Vivod(minmax, n, a, b);
+                }
+                else if(c<a)
+                {
+                    Vivod(minmax, n, c, a);
+                }
+                else 
+                {
+                    Vivod(minmax, n, a, b);
+                }
+            }
+            else
+            {
+                if (a < c)
+                {
+                    Vivod(minmax, n, b, a);
+                }
+                else if (c < b)
+                {
+                    Vivod(minmax, n, c, b);
+                }
+                else
+                {
+                    Vivod(minmax, n, b, a);
+                }
+            }
+           
+            
+
+            
+        }
+        static void Vivod(int minmax, int n, int min, int sred)
+        {
+            if (minmax==1)
+            {
+                if((min - (n-sred))>0 )
+                Console.WriteLine(min- (n-sred));
+            }
+            else if (minmax==2)
+            {
+                Console.WriteLine(min);
+            }            
+        }
+    }
+}

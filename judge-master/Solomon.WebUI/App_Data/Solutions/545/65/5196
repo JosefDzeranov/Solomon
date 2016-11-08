@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int main(){
+	__int64 a1,a2,a3,a4,a,b,i,l=0;
+		cin>>a1>>a2>>a3>>a4;
+	if(a1<a2)a=a1;
+	else a=a2;
+
+	if(a3<a4)b=a3;
+	else b=a4;
+
+	l=sqrt(a+b);
+	cout<<l;
+	return 0;
+}

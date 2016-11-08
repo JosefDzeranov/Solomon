@@ -1,0 +1,12 @@
+var
+n,i:int64;
+begin
+readln(n);
+i:=0;
+while n>3 do
+begin
+i:=i+(n*n+1);
+n:=n-2;
+end;
+writeln(i+15);
+end.

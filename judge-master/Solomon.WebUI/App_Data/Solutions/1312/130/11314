@@ -1,0 +1,23 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a, b, c, d, s, i, k, m, n, r:integer;
+begin
+  read(a, b, c, d);
+  for i := 1 to b do
+    begin
+      for k := 1 to b do
+        begin
+          if (((i + k) * 2 >=  c) and ((i + k) * 2 <= d)) then
+            m := m + 1;
+        end;
+    end;
+  n := m div 2;
+  writeln(n);
+  readln;
+  readln;
+end.

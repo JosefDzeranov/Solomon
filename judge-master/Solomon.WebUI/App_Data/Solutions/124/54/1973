@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a[10], i, l;
+    string s;
+    bool no;
+
+    no = false;
+    cin>>s;
+
+    for(i=0;    i<10;   i++)    {a[i]=0;}
+
+    l = s.length();
+
+    for(i=0;    i<l;    i++){a[int(s[i])-48]++;}
+
+    for(i=0;    i<10;   i++)
+    {
+        if(a[i] > 1)
+        {
+            if(!no)
+            {
+                no = true;
+                cout<<"NO"<<endl;
+            }
+            cout<<i<<" ";
+        }
+    }
+    if(!no)
+    {
+        cout<<"YES";
+    }
+
+    return 0;
+}

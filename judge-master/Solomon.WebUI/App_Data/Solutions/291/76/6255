@@ -1,0 +1,43 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s,t:string;
+   sum,i,j:integer;
+begin
+//assignfile(input,'10.in');
+sum:=0;
+readln(s);
+while not(EOF) do
+ begin
+  readln(s);
+  s:=s+' ' ;
+  j:=0;
+  for i:=1 to length(s) do
+   begin
+    if (s[i]>='0') and(s[i]<='9') then
+     if abs(i-j)=1 then
+      begin
+       t:=t+s[i];
+       j:=i;
+      end
+     else
+      begin
+       t:=s[i];
+       j:=i;
+      end
+    else
+     if t<>'' then
+      begin
+       sum:=sum+strtoint(t);
+       t:='';
+      end;
+   end;
+ end;
+
+writeln(sum);
+readln;
+end.

@@ -1,0 +1,30 @@
+Program bank;
+uses crt;
+var n,h,k: integer;
+var z,l:real;
+begin;
+writeln;
+writeln(' Укажите длину проволоки');
+writeln;
+readln(n);
+write(' см');
+writeln;
+writeln(' Укажите длину запястья Васи');
+writeln;
+readln(l);
+write(' см');
+writeln;
+writeln;
+z:= n mod 10;
+if n=100 then writeln(' YES')
+else writeln(' NO');
+writeln;
+writeln;
+z:=l/2;
+k:=10;
+h:=k*10;
+writeln;
+writeln(' Ему потребуется ',z,' кругов проволоки, следовательно ',h,' сантиметров проволоки');
+writeln;
+writeln;
+end.

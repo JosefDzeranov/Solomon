@@ -1,0 +1,5 @@
+var m,n,l:real;
+begin
+readln(n,m);
+if frac(sqrt(n*n-m))=0 then writeln('YES') else writeln('NO');
+end.

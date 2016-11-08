@@ -1,0 +1,26 @@
+var l,x1,y1,x2,y2,a,b:longint;
+al,bl:real;
+function ArcCos ( X : Real ): Real; 
+var 
+ tmpArcCos : Real; 
+begin 
+ if X = 0.0 then 
+ tmpArcCos := Pi / 2.0 
+ else 
+ tmpArcCos := ArcTan ( Sqrt ( 1 - X * X ) / X ); 
+
+ if X < 0.0 then 
+ tmpArcCos := Pi - tmpArcCos; 
+
+ ArcCos := tmpArcCos; 
+end; 
+BEGIN
+read(l,x1,y1,x2,y2);
+a:=abs(x1-x2);b:=abs(y1-y2);al:=Arccos(-1+a*a/2/l/l);bl:=Arccos(-1+b*b/2/l/l);
+if (a=0) or (b=0) or(l=0) then write(0) 
+else if (2*l> sqrt(a*a+b*b))then write(a*b)
+else if (2*l>a) and (2*l>b) then write(l*l*(pi-al-bl+sin(al)+sin(bl)) )
+else if 2*l>a then write(pi*l*l-l*l*(al-sin(al))) 
+else if 2*l>b then write(pi*l*l-l*l*(bl-sin(bl)))
+else write(l*l*pi);
+end.

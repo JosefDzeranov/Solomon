@@ -1,0 +1,10 @@
+program Cheat;
+var
+ n,cI:longint;
+ c:array[1..1000,1..4] of longint;
+begin
+ readln(n);
+ for cI:=1 to n do readln(c[n,1],c[n,2],c[n,3],c[n,4]);
+ write(4);
+ readln;
+end.

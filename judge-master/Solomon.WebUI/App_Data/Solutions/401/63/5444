@@ -1,0 +1,47 @@
+//package com.acidka;
+
+public class C {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			int n, m, length = 1, last, next, max = 1, i, j = 0;
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			n = s.nextInt();
+			m = s.nextInt();
+			int[][] a= new int[n][m]; 
+			for(i = 0; i < n; i++)
+			{
+				a[i][j] = s.nextInt();
+				for(j = 1; j < m; j++)
+				{
+					a[i][j] = s.nextInt();
+					if(a[i][j] == a[i][j-1]+1) length += 1;
+					else length = 1;
+					if(length > max) max = length;
+				}
+				length = 1;
+				j = 0;
+			}
+			for(i = 0; i < n; i++)
+			{
+				for(j = 0; j < m-1; j++)
+				{
+					if(a[i][j+1] == a[i][j]+1) length += 1;
+					else length = 1;
+					if(length > max) max = length;
+				}
+				length = 1;
+			}
+			System.out.println(max);
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,15 @@
+var n,i,r1,r2,q:longint;
+begin
+readln(n);
+while n>128 do begin
+n:=n-128;
+q:=q+1;
+end;
+for i:=1 to (4*n*n) do
+r1:=r1+i;
+r1:=r1 div (2*n);
+for i:=1 to ((2*n-1)*(2*n-1)) do
+r2:=r2+i;
+r2:=r2 div ((2*n-1));
+writeln((2*r2)+(r1 div n)+q*(16516095));
+end.

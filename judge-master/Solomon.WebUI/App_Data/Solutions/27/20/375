@@ -1,0 +1,177 @@
+procedure Swap(var s1, s2: Integer);
+
+var buf: Integer;
+
+begin  buf:=s1; s1:=s2; s2:=buf end;
+
+
+
+var
+
+  x1, y1, x2, y2: Integer;
+
+  minX, minY, maxX, maxY: Integer;
+
+  d, dx, dy: Integer;
+
+  count: Integer;
+
+BEGIN
+
+
+
+ x1:= 6; y1:= 0; x2:= 0; y2:= 2;
+
+ dx:=abs(x2 - x1);  dy:= abs(y2 - y1);
+
+ if dx = 0 then Count:=(dy+2)*2 else
+
+  if dy = 0 then Count:=(dx+2)*2 else
+
+  begin
+
+    Count:=4;
+
+    x1:=0; y1:=0; x2:=x1+dx; y2:=x2+dy;
+
+    if dx < dy then begin swap(dx, dy); swap(x2, y2) end;
+
+    d:=0;
+
+    while x1 < x2 do begin
+
+      d:=d + dy;
+
+      if d < dx then inc(count)
+
+        else if d > dx then begin d:=d - dx; inc(count, 2) end
+
+          else begin inc(count, 3); d:=0 end;
+
+      inc(x1)
+
+    end;
+
+  end;
+
+ WriteLn(Count)
+
+END.
+Автор: omni 29.12.2004, 19:32
+откуда задачка? 
+Автор: Boris 30.12.2004, 5:54
+Просто попросили решить в гостевой сайта www.borlpasc.narod.ru. Думаю, что с какой-то олимпиады местной 
+Автор: Nemo 26.1.2005, 21:33
+Мое решение: 
+Код
+
+
+procedure Swap(var s1, s2 : integer);
+
+var
+
+   buf : integer;
+
+begin
+
+   buf := s1;
+
+   s1 := s2;
+
+   s2 := buf;
+
+end;
+
+
+
+var
+
+  CurFracY, FracY : real;
+
+  Count     : word;
+
+  x1, x2, y1, y2  : integer;
+
+  x, y, dx, dy    : integer;
+
+  tmp             : real;
+
+
+
+begin
+
+  x1 := -1; y1 := -1;
+
+  x2 := 1;  y2 := 2;
+
+  dx := abs(x2 - x1);
+
+  dy := abs(y2 - y1);
+
+  Count := 0;
+
+  if dx = 0 then Count := (y2-y1+2)*2
+
+  else begin
+
+    if dy = 0 then Count := (x2-x1+2)*2
+
+    else begin
+
+      x1 := 0;  y1 := 0;
+
+      x2 := dx; y2 := dy;
+
+      CurFracY := 0;
+
+      if  dx > dy{!!!} then begin
+
+       swap(x2, y2);
+
+      end;
+
+       FracY := Frac(y2/x2);
+
+       Count := (y2 div x2)*x2;
+
+       inc(count, 6);
+
+       for x := 1 to x2 do begin
+
+         tmp := CurFracY + FracY;
+
+         if tmp < 1 then begin
+
+            CurFracY := tmp;
+
+         end
+
+         else begin
+
+            if tmp > 1 then begin
+
+               CurFracY := tmp - 1;
+
+               inc(Count);
+
+            end
+
+            else begin
+
+               CurFracY := 0;
+
+               inc(Count, 2);
+
+            end;
+
+         end;
+
+       end;
+
+    end;
+
+  end;
+
+  WriteLn(Count);
+
+end.

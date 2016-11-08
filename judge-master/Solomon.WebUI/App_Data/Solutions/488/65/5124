@@ -1,0 +1,20 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    long long a1, a2, a3, a4;
+    cin >> a1
+        >> a2
+        >> a3
+        >> a4;
+    int n1, n2;
+    n1 = min(a1, a2);
+    n2 = min(a3, a4);
+    long long num_of_kv = n1 + n2;
+    long long ans = sqrt(num_of_kv);
+    cout << ans;
+    return 0;
+}

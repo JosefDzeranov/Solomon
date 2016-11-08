@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int a, b, x;
+    cin >> a >> b >> x;
+    if (x / 1000 % (a + b) <= a || x / (1000 + a) % (a + b) <= a)
+        cout << x / 1000;
+    else
+    {
+        long double t = x / (1000 + a);
+        long double dt = (a + b) - x / (1000 + a) % (a + b);
+        cout << x / (dt + t);
+    }
+    return 0;
+}

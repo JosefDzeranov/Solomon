@@ -1,0 +1,31 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  Math,
+  SysUtils;
+
+var a,b,c,d,x,y,s:integer;
+function min(a1,a2:integer):integer;
+begin
+  if a1>a2 then result:=a2 else result:=a1;
+end;
+function max(a1,a2:integer):integer;
+begin
+  if a1>=a2 then result:=a1 else result:=a2;
+end;
+begin
+read(a);
+read(b);
+read(c);
+readln(d);
+c:=c-floor(c/2);
+d:=floor(d/2);
+ for y := 1 to d+1 do
+ begin
+   s:=s+min(floor(b/y),d-y)-max(floor(a/y),c-y)+1;
+ end;
+ writeln(s div 2);
+ readln;
+end.

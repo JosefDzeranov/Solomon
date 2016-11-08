@@ -1,0 +1,29 @@
+program shifr;
+var i, j, l, p, q:longint; a:array [1..1000000] of char; b:array [1..1000, 1..1000] of char;
+begin
+i:=0;
+while (not eoln) do
+   begin
+   i:=i+1;
+   read(a[i]);
+   end;
+q:=i;
+l:=trunc(sqrt(i));
+if sqrt(i)-l>0 then l:=l+1;
+p:=0;
+for i:=1 to l do
+   for j:=1 to l do
+   begin
+   b[i, j]:=' ';
+   if q>0 then
+      begin
+      p:=p+1;
+      b[i, j]:=a[p];
+      q:=q-1;
+      end;
+   end;
+for j:=1 to l do
+   for i:=1 to l do
+   write(b[i, j]);
+readln;
+end.

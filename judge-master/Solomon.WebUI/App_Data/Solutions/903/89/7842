@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    double x,y,t1,t2,t,s,n,m,a;
+    cin>>x>>y>>t1>>t2;
+    s=x*y;
+    n=s*t2;
+    m=y-1;
+    a=t1*m;
+    t=n+a;
+    cout<<t;
+    return 0;
+}

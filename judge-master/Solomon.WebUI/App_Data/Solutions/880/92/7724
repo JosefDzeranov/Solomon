@@ -1,0 +1,24 @@
+program b;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1, y1, x2, y2, x3, y3, n: integer;
+begin
+ readln(x1,y1);
+ readln(x2,y2);
+ readln(x3,y3);
+ n:=1000;
+ if (x3-x1)<n then
+  n:=x3-x1;
+ if (y3-y1)<n then
+  n:=y3-y1;
+if (x2-x3)<n then
+  n:=x2-x3;
+if (y2-y3)<n then
+  n:=y2-y3;
+ writeln (n);
+ readln
+end.

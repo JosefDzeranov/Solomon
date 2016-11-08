@@ -1,0 +1,24 @@
+Alice 
+
+Alice.cs 
+Utilities.cs 
+ChannelManager.cs 
+Communicator.cs 
+
+Bob
+
+Bob.cs (главный файл) 
+Utilities.cs 
+ChannelManager.cs 
+Communicator.cs 
+
+Mallory 
+
+
+Mallory.cs (главный файл) 
+
+Utilities.cs 
+ChannelManager.cs 
+Communicator.cs
+
+

@@ -1,0 +1,29 @@
+var
+i,j,k,n,dl1,dl2,ot:LongInt;
+a:array[1..500000]of Integer;
+s1,s2:String;
+begin
+Readln(n);
+For i:=1 to n do Read(a[i]);
+
+For i:=1 to n-1 do begin
+For j:=i+1 to n do begin
+str(a[i],s1);
+str(a[j],s2);
+dl1:=length(s1);
+dl2:=length(s2);
+k:=1;
+While k<=dl1 do begin
+if pos(s1[k],s2)<>0 then begin
+inc(ot);
+break;
+end else inc(k);
+end;
+end;
+end;
+writeln(ot);
+end.
+
+
+
+

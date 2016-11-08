@@ -1,0 +1,40 @@
+var
+i,j, k, n, m, p, d, op:longint;
+a:array[1..100, 1..100] of longint;
+begin
+readln(n, m);
+for i := 1 to m do
+begin
+read(p);
+read(d);
+inc(a[p, d]);
+end;
+for i := 1 to 10 do
+  for j := i+1 to 10 do
+   if ((a[i, j]<> 0) and (a[j, i]<>0)) then
+   begin
+   op:= op+min(a[i, j], a[j, i]);
+   
+   
+   end;
+op:= m-op;
+writeln(op);
+
+for i := 1 to 10 do
+  for j := i+1 to 10 do
+   if ((a[i, j]<> 0 )and (a[j, i]<>0)) then
+   begin
+   op:= min(a[i, j], a[j, i]);
+   for k := 1 to op do
+   writeln(i,' ', j, ' ', j, ' ', i);
+   a[i, j]:= a[i, j]-op;
+   a[j, i]:= a[j, i]-op;
+   
+   end;
+
+
+ for i := 1 to n do
+  for j := 1 to n do
+  for k := 1 to a[i, j] do
+  writeln(i, j, j);
+end.

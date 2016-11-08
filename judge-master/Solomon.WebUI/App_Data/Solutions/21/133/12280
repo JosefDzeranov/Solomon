@@ -1,0 +1,31 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,p,k,f,i,j:integer;a:array [1..50000] of string;
+b:array[1..50000] of integer;
+s:string;
+begin
+readln(n,p);
+for i:=1 to n do
+begin
+  readln(s);
+  s:=copy(s,3,length(s)-4);
+  a[i]:=s;
+end;
+readln(k);
+for i:=1 to k do
+begin
+  readln(s);
+  f:=0;
+  for j:=1 to n do
+    if pos(a[j],s)<>0 then inc(b[i]);
+end;
+for i:=1 to k do
+writeln(b[i]);
+readln;
+end.
+ 

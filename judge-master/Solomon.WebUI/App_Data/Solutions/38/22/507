@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double a,b,c,d,e,o,k;
+    int l;
+    cin >>a>>b>>c>>d>>e;
+    o=c*d*e;
+    k=o%(a*b);
+    l=o/(a*b);
+    if (k>0,5) l=l+1;
+    cout <<l;
+    return 0;
+}
+

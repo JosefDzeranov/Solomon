@@ -1,0 +1,13 @@
+var s:string;
+a,b,n,i,x:integer;
+begin
+read(a,b,n);
+s:=IntToStr(a)+IntToStr(b);
+While n>length(s) do begin
+s:=s+IntToStr(a+b);
+x:=b;
+b:=a+b;
+a:=x;
+end;
+write (s[n]);
+end.

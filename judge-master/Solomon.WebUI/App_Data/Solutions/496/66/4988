@@ -1,0 +1,72 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+struct School {
+	int num;
+	int count;
+	bool use;
+
+	School(): count(1), use(true) {}
+	School(int n): count(1), num(n), use(true) {}
+
+	bool operator==(unsigned n) {
+		if (num == n) return true;
+		else return false;
+	}
+};
+
+int main()
+{
+	vector<School> schools;
+	unsigned N;
+	cin >> N;
+	for (unsigned i = 0; i < N; i++) {
+		char name[101];
+		cin.getline(name, 100);
+		unsigned strsize = strlen(name);
+
+		for (unsigned i = 0; i < strsize; i++) {
+			if (isdigit(name[i])) {
+				unsigned schooln = 0;
+				while (isdigit(name[i]))  {
+					schooln = schooln * 10 + (name[i]-'0');
+					i++;
+					if (i >= strsize) {
+						break;
+					}
+				}
+
+				vector<School>::iterator result = find(schools.begin(), schools.end(), schooln);
+				if (result != schools.end()) {
+					result->count++;
+					if (result->count > 5) {
+						result->use = false;
+					}
+				} else {
+					schools.push_back(School(schooln));
+				}
+
+				break;
+			}
+		}
+	}
+
+	unsigned resN = 0;
+	for (unsigned i = 0; i < schools.size(); i++) {
+		if (schools[i].use) {
+			resN++;
+		}
+	}
+	cout << resN << endl;
+	for (unsigned i = 0; i < schools.size(); i++) {
+		if (schools[i].use) {
+			cout << schools[i].num << endl;
+		}
+	}
+
+	return 0;
+}

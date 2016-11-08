@@ -1,0 +1,23 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n : longint;
+qest : array [1..100000] of string;
+i,i2,sum: integer;
+begin
+readln(n);
+for i:= 1 to n do
+readln(qest[i]);
+for i:= 1 to n do
+begin
+for i2:=1 to n do
+if(qest[i] = qest[i + i2]) Then sum:= sum + 1;
+
+end;
+writeln(n-sum);
+readln;  
+end.

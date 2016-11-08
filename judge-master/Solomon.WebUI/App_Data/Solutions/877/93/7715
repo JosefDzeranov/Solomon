@@ -1,0 +1,30 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y,z,q,a,b:integer;
+begin
+readln(x,y);
+readln(z,q);
+a:=z-x;
+b:=q-y;
+if b<0 then
+begin
+ b:=b+60;
+ if a-1>=0 then
+ a:=a-1;
+end;
+if z<x then a:=24-x+z;
+
+
+
+
+
+
+writeln(a,' ',b);
+readln;
+end.
+

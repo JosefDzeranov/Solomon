@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+long long mas[100];
+int n;
+long long minn = -1;
+
+void func(long long sum3, int j)
+{
+	if (j == n)
+	{
+		if (minn == -1) minn = abs(sum3);
+		else
+			minn = min(minn, abs(sum3));
+	}
+	else{
+	func(sum3 + mas[j], j + 1);
+	func(sum3 - mas[j], j + 1);
+	}
+
+}
+int main()
+{
+
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> mas[i];
+	}
+
+	func(0, 0);
+	cout << minn;
+	return 0;
+	
+}

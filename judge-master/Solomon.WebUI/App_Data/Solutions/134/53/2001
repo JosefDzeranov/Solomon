@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int m, n, k;
+
+bool a[1000][1000];
+const int white = 0, grey = 1, black = 2;
+int col[1000][1000];
+
+void dfs(int x, int y)
+{
+    col[x][y] = grey;
+    if (x > 0 && a[x - 1][y] == 1 && col[x - 1][y] == white)
+    {
+        dfs(x - 1, y);
+        col[x - 1][y] = black;
+    }
+
+    if (x + 1 < m && a[x + 1][y] == 1 && col[x + 1][y] == white)
+    {
+        dfs(x + 1, y);
+        col[x + 1][y] = black;
+    }
+    if (y > 0 && a[x][y - 1] == 1  && col[x][y - 1] == white)
+    {
+        dfs(x, y - 1);
+        col[x][y - 1] = black;
+    }
+    if (y < n - 1 && a[x][y + 1] == 1 && col[x][y + 1] == white)
+    {
+        dfs(x, y + 1);
+        col[x][y + 1] = black;
+    }
+    col[x][y] = black;
+}
+
+int main()
+{
+    cin >> m >> n;
+    for(int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            a[i][j] = 1;
+
+    int k;
+    cin >> k;
+    for (int i = 0; i < k; i++)
+    {
+        int x, y;
+        cin >> x >> y;
+        a[x - 1][y - 1] = 0;
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (a[i][j] == 0)
+                col[i][j] = black;
+            if (col[i][j] == white)
+            {
+                dfs(i, j);
+                ans++;
+            }
+
+        }
+    }
+    cout << ans;
+    return 0;
+}

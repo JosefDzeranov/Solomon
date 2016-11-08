@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..1000,1..1000] of char;
+s,str:string;
+n,k,i,j:integer;
+begin
+//assign(input,'10.in');
+//assign(output,'10.out');
+ readln(s);
+ n:=trunc(sqrt(length(s)));
+ if sqrt(length(s))-n>0 then inc(n);
+ k:=0;
+ for I := 1 to n do
+   for j := 1 to n do
+   begin
+     inc(k);
+     if k<=length(s) then
+         a[i,j]:=s[k]
+     else a[i,j]:=' ';
+   end;
+ str:='';
+ for I := 1 to n do
+   for j := 1 to n do
+      str:=str+a[j,i];
+ writeln(str);
+ readln;
+end.

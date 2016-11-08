@@ -1,0 +1,34 @@
+program B;
+var c:longint;
+i,n:integer;
+function F(i:string):longint;
+begin
+  if((i[length(i)]) = '1') then begin F:=0;exit;end
+  else
+  begin
+    if((i[length(i)]) = '0') then F:=1 else F:=0;
+    delete(i, length(i), 1);
+    F:=F(i) + F;
+  end;
+end;
+function Two(i:longint):string;
+  begin
+    if i = 1 then Two:='1'
+    else begin
+      Str(i mod 2, Two);
+      Two:=Two(i div 2) + Two;
+    end;
+  end;
+  {function fac(n:integer):longint;
+  begin
+    if(n=1) then fac:=1
+    else fac := n * fac(n-1);
+  end;}
+begin
+  readln(n);
+  c:=1;
+  for i:=1 to n do begin
+    c:=c * i;
+  end;
+  writeln(F(Two(c)));
+End.

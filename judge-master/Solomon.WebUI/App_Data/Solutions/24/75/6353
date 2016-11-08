@@ -1,0 +1,32 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <map>
+
+using namespace std;
+
+
+int main() {
+
+	long long int ans = 0;
+
+	map <string, int> mas;
+	string s;
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> s;
+		if (mas[s] == 0)
+		{
+			ans ++;
+			mas[s]++;
+		}
+
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int l = s.Length;
+            ulong x=1;
+            ulong a=0;
+            for (int i = l - 1; i >= 0; i--)
+            {
+                if (s[i] == '*')
+                    a += x;
+                x *= 2;
+            }
+            Console.WriteLine();
+        }
+    }
+}

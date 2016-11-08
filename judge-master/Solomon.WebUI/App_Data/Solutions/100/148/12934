@@ -1,0 +1,124 @@
+def turn (cpos):
+    global c
+    if a[cpos[0]][cpos[1]]== 'north':
+        cpos[0]-=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'south':
+        cpos[0]+=1
+        #print (c)
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'west':
+        cpos[1]-=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'east':
+        cpos[1]+=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'north-east':
+        cpos[0]-=1
+        cpos[1]+=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'north-west':
+        cpos[0]-=1
+        cpos[1]-=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'south-east':
+        cpos[0]+=1
+        cpos[1]+=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    elif a[cpos[0]][cpos[1]]== 'south-west':
+        cpos[0]+=1
+        cpos[1]-=1
+        if (cpos[0],cpos[1]) in exp:
+            print("The Bermuda Triangle...")
+            return 
+        else:
+            exp.append((cpos[0],cpos[1]))
+            c+=1
+    else:
+        #print (exp)
+        print ("Whirlpool in " +str(c)+ " move(s)!")
+        return 
+        
+    for i in range (2):
+        if cpos[i]<0 or cpos[i] > s[i]:
+            print("Boat has been carried out in " +str(c)+ " move(s)")
+            return 
+    #print (cpos)
+    turn(cpos)
+
+#with open ("stdin.txt",'r') as inn:
+#s=inn.readline().split()
+s=[]
+'''for i in range (2):
+    s.append(int(input ()))'''
+s=input().split()
+for i in range(len(s)):
+    s[i]=int (s[i])
+
+'''
+for i in range(len(s)):
+    s[i]=int(s[i])
+print ("sis ",s)
+'''
+a=[]
+for i in range (s[0]):
+    a.append(input().split())
+#print (a)
+'''
+for i in range (s[0]):
+    a.append(list())
+    for j in range (s[1]):
+        #print(i,j)
+        a[i].append(input())
+''' 
+exp=[]
+pos=[]
+pos=input().split()
+for i in range (len (pos)):
+    pos[i]=int(pos[i])-1
+'''
+for i in range (2):
+    pos.append(int(input ())-1)'''
+#pos=inn.readline().split()
+'''
+for i in range(len(pos)):
+    pos[i]=int(pos[i])-1
+#print (pos)'''
+c=0
+#with open ("stdout.txt",'w') as out:
+turn (pos)

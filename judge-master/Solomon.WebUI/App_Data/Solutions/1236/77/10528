@@ -1,0 +1,84 @@
+Program cell1;
+var
+Que : array [1..64,1..2] of integer;
+Marked : array [1.. 8,1..8] of boolean;
+
+x,y,n, { Текущая позиция}
+StepNumber, { Номер хода}
+QueBegin, QueEnd : integer;
+
+procedure Put(x,y:integer);
+begin
+Inc(QueEnd);
+Que[QueEnd,1] := x;
+Que[QueEnd,2] := y;
+Marked[x,y] := true;
+end;
+
+procedure Get(var x,y:integer);
+begin
+x := Que[QueBegin,1];
+y := Que[QueBegin,2];
+Inc(QueBegin);
+end;
+
+procedure StartProcess;
+var
+i,j,x,y : integer;
+begin
+for i:= 1 to 8 do
+for j:= 1 to 8 do Marked[i,j] := false;
+readln(n);
+for i:=1 to n do
+begin
+readln(x,y);
+Marked[x,y] := true;
+end;
+QueBegin := 1;
+QueEnd :=0;
+end;
+
+function Found(var x,y:integer):boolean;
+var i,j : integer;
+begin
+for i:=1 to 8 do
+for j:=1 to 8 do
+if not Marked[i,j]
+then begin x:=i; y:=j; Found:=true; exit; end;
+Found := false;
+end;
+
+procedure PutAll(x,y:integer); {Занести в очередь}
+type {все текущие возможные ходы}
+King = array [1..4,1..2] of integer; {Возможные ходы коня}
+const
+Steps : King =(( 0,-1), ( 0, 1), (-1, 0), ( 1, 0)); {Массив констант}
+Var i, CurrentX, CurrentY : integer;
+begin
+i:=0; {номер возможного хода}
+while (i<4) do {Пока не нашли и есть ход}
+begin {Делаем следующий ход }
+inc(i);
+CurrentX := x+steps[i,1] ; {X текущего хода }
+CurrentY := y+steps[i,2] ; {Y текущего хода }
+if (CurrentX>0) and (CurrentX<9) and { X на доске и }
+(CurrentY>0) and (CurrentY<9) and { Y на доске и }
+not Marked[CurrentX,CurrentY] {поле (X,Y) не помечено}
+then Put(CurrentX,CurrentY); {помещаем в очередь}
+end;
+end;
+begin
+StartProcess; { Начало работы }
+StepNumber:=0; { Номер куска = 0 }
+while (Found(x,y)) do { Пока есть непомеченная x,y }
+begin
+Put(x,y); { Помещаем ее в очередь и помечаем}
+Inc(StepNumber); { Увеличить номер куска на 1 }
+while QueBegin<=QueEnd do { Пока очередь непуста }
+begin
+Get(x,y); { Взять из очереди x,y }
+PutAll(x,y); { Занести в очередь все возможные ходы}
+end;
+end;
+writeln(StepNumber); { Вывод номера шага}
+end.

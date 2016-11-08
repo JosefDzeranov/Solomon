@@ -1,0 +1,30 @@
+n = int(input())
+A = list(map(int, input().split()))
+B = [0] * 10
+for i in range (10):
+    B[i] = [0] * n
+pair = []
+C = []
+
+for i in range (n):
+    tmp = A[i]
+    while (tmp != 0):
+        B[tmp%10][i] = 1
+        tmp = tmp//10
+
+count = 0
+for j in range (n):
+    for i in range (10):
+        if (B[i][j] ==1):
+            for k in range (j+1, n):
+                if (B[i][k] ==1):
+                    pair = [A[j], A[k]]
+                    pair.sort()
+                    C.append(pair)
+                    count +=1
+count1 = count
+for i in range (count):
+    for j in range (i+1, count):
+        if C[i] == C[j]:
+            count1 -=1
+print (count1)

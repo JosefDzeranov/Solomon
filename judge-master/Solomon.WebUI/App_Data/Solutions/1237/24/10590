@@ -1,0 +1,13 @@
+var
+  i, k, l, j,n: longint;
+  m: array [1..500000] of longint;
+
+begin
+  readln(n);
+
+    for i := 1 to n do
+     read(m[i]);
+     
+     
+  writeln(0);
+end.

@@ -1,0 +1,20 @@
+using System;
+namespace Viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] s = Console.ReadLine().Split();
+			int[] p = { int.Parse(s[0]),
+						int.Parse(s[1]),
+						int.Parse(s[2]) };
+			Console.Write(p[0]+p[1]+p[2]-Min(p[0], Min(p[1], p[2])));			
+		}
+
+
+		static int Min(int a, int b) {
+			return (a < b) ? a : b;			
+			}
+	}
+}

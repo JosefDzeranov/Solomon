@@ -1,0 +1,6 @@
+n=int(input())
+a=list(map(int,input().split()))
+b=count(1)
+c=count(2)
+d=count(3)
+print(min(b,c,d))

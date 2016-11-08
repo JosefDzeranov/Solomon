@@ -1,0 +1,15 @@
+import java.io.*;
+
+public class MusicLamp {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        String binary = reader.readLine();
+        long number = 0;
+        for(int i = binary.length() - 1; i >= 0; i--)
+            if(binary.charAt(i) == '*')
+                number += Math.pow(2, binary.length() - (i + 1));
+        System.out.println(number);
+    }
+}

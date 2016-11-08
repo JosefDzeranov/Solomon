@@ -1,0 +1,35 @@
+uses
+ math;
+
+var
+   s: string;
+   i, j, k, l, dl: longint;
+   a: array [1..1001, 1..1001] of char;
+
+begin
+   readln(s);
+   dl := length(s);
+   k := ceil(sqrt(dl));
+   
+   for i := 1 to k do
+      for j := 1 to k do
+         a[i, j] := ' ';
+   
+   
+   i := 1; j := 1;
+   for l := 1 to dl do
+   begin
+      a[j, i] := s[l];
+      inc(i);
+      if i > k then begin i := 1; inc(j); end;
+   end;
+   i := 1; j := 1;
+   for l := 1 to k * k do
+   begin
+      write(a[i, j]);
+      inc(i);
+      if i > k then begin
+         i := 1; inc(j);
+      end;
+   end;
+end.

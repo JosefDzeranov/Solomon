@@ -1,0 +1,49 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+const double pi = 3.141592;
+
+int main() {
+	long double l, x1, x2, y1, y2;
+
+	cin >> l >> x1 >> y1 >> x2 >> y2;
+	long double a, b, square;
+	a = abs(x1 - x2);
+	b = abs(y1 - y2);
+
+	if (l >= sqrt((a * a + b*b) / 4.0))
+		square = a * b;
+	else
+		if (2 * l <= min(a, b))
+			square = pi * l * l;
+		else
+		{
+			square = pi * l * l;
+			if (l > a / 2.0) {
+				long double sector, segment, triangl, c, d;
+				d = a / 2.0;
+				sector = l * l * acos(d / l);
+				c = sqrt(l * l - d * d);
+				triangl = c * d;
+				segment = sector - triangl;
+				cout << segment << endl;
+				square -= 2 * segment;
+			}
+			if (l > b / 2.0) {
+				long double sector, segment, triangl, c, d;
+				d = b / 2.0;
+				sector = l * l * acos(d / l);
+				c = sqrt(l * l - d * d);
+				triangl = c * d;
+				segment = sector - triangl;
+				square -= 2 * segment;
+			}
+		}
+	cout << square << endl;
+
+
+	return 0;
+}

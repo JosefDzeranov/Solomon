@@ -1,0 +1,18 @@
+var i,sl,a,n,old,chislo :integer;
+var s:char;
+begin
+readln(n);
+for i:=1 to n do begin
+repeat
+read(s);
+if (word(s)>47) and  (word(s)<58) then begin
+sl:=sl+1;
+old:=(ord(s)-48);
+if (sl=1)  then chislo:=old;
+if (sl=2) then chislo:=chislo*10+old;
+end;
+until(word(s)=46);
+a:=a+chislo; old:=0;chislo:=0;sl:=0;
+end;
+write(a);
+end.

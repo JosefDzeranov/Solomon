@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int l, r, ans;
+int x, y;
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    cin >> l >> r;
+
+    for (x = l; x <= r; ++x)
+        for (y = l; y <= r; ++y)
+            if (((x | y) ^ y) <= r)
+                if (((x | y) ^ y) >= l)
+                    ++ans;
+
+    cout << ans;
+
+    return 0;
+}
+

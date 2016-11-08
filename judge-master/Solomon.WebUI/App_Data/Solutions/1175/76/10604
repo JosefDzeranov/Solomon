@@ -1,0 +1,31 @@
+var
+q,y,n:int64;
+a,b,w,e:integer;
+i:longint;
+c:char;
+t:string;
+s:array[1..100000] of string;
+r:array[1..100000] of int64;
+begin
+b:=0; e:=0; q:=0; w:=0;
+readln(n);
+for i:=1 to n do begin readln(s[i]); r[i]:=length(s[i]);  end;
+for i:=1 to n do begin
+t:=s[i];
+a:=1;
+while(r[i]<>a) do
+begin
+if((t[a]>='1') and (t[a]<='9')) then begin
+val(t[a],w,b);
+e:=e+w;
+ end;
+if((t[a+1]>='1') and (t[a+1]<='9')) then
+e:=e*10
+else begin
+q:=q+e;
+e:=0;
+w:=0;end;
+a:=a+1;end; end;
+write(q);
+readln;
+end.

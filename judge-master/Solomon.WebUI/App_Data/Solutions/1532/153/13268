@@ -1,0 +1,134 @@
+﻿using System;
+
+
+namespace ConsoleApplication14
+{
+    class Lamp
+    {
+        //public int X, Y;
+        public bool isON = false;
+        public bool Naighbor = false;
+
+        public Lamp(bool _isON, bool _Naighbor)
+        { isON = _isON; Naighbor = _Naighbor; }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N, M, K;
+            string[] s;
+            s = Console.ReadLine().Split(' ');
+            N = int.Parse(s[0]);
+            M = int.Parse(s[1]);
+            K = int.Parse(s[2]);
+
+            //Console.WriteLine(N);
+            Lamp[,] panel = new Lamp[N, M];
+            //Vector2[] diods = new Vector2[K];
+
+            for (int x = 0; x < N; x++)
+            {
+                for (int y = 0; y < M; y++)
+                {
+                    panel[x, y] = new Lamp(false,false);
+                   // Console.WriteLine(x+" "+y);
+                }
+            }
+            
+            for (int i = 0; i < K; i++)
+            {
+                s = Console.ReadLine().Split(' ');
+                
+                int d1 = int.Parse(s[0]);
+                int d2 = int.Parse(s[1]);
+                panel[d1-1, d2-1] = new Lamp(true,false);
+            }
+            
+            bool r1bin = true;
+            int Iout = 0;
+
+            /*
+            for (int x = 0; x < N; x++)
+            {
+                for (int y = 0; y < M; y++)
+                {
+                    if ((panel[x, y].isON == true) && (panel[x, y].Naighbor == false))
+                    {
+                        Console.Write("1 ");
+                    }
+                    else Console.Write("0 ");
+                }
+                Console.WriteLine();
+            }
+            */
+            for (int i = 0; i < N * M; i++)
+            {
+                for (int x = 0; x < N; x++)
+                {
+                    for (int y = 0; y < M; y++)
+                    {
+                        if (panel[x, y].isON == true && panel[x, y].Naighbor == false)
+                        {
+                            if (x + 1 < N && panel[x + 1, y].isON != true)
+                            {
+                                for (int i1 = x + 1; i1 < N; i1++)
+                                {
+                                    panel[i1, y].isON = true; panel[i1, y].Naighbor = true; r1bin = false;
+                                }
+                            }
+
+                            if (x - 1 > -1 && panel[x - 1, y].isON != true)
+                            {
+                                for (int i1 = x - 1; i1 > -1; i1--)
+                                {
+                                    panel[i1, y].isON = true; panel[i1, y].Naighbor = true; r1bin = false;
+                                }
+                            }
+
+                            if (y + 1 < M && panel[x, y + 1].isON != true )
+                            {
+                                for (int i1 = y + 1; i1 > M; i1++)
+                                {
+                                    panel[x, i1].isON = true; panel[x, i1].Naighbor = true; r1bin = false;
+                                }
+                                
+                            }
+
+                            if (y - 1 > -1 && panel[x, y - 1].isON != true )
+                            {
+                                for (int i1 = y - 1; i1 > -1; i1--)
+                                {
+                                    panel[x, i1].isON = true; panel[x, i1].Naighbor = true; r1bin = false;
+                                }
+                                //panel[x, y - 1].isON = true; panel[x, y - 1].Naighbor = true; r1bin = false;
+                            }
+
+
+                            
+                        }
+                    }
+
+
+                }
+
+                for (int x = 0; x < N; x++)
+                {
+                    for (int y = 0; y < M; y++)
+                    {
+
+                            panel[x, y].Naighbor = false;
+                        
+                    }
+                }
+                if (!r1bin) { Iout++; r1bin = true; }
+            }
+            Console.WriteLine(Iout);
+            Console.ReadLine();
+           // bool Check(x)
+
+        }
+    }
+}

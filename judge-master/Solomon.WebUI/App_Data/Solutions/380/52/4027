@@ -1,0 +1,10 @@
+ program nom1;
+ var N,k:longint;
+ Begin
+ readln (N);
+ if (N>=3) and (n<=1000) then
+ begin
+ k:=N*(N-1)*(N-2);
+ write (k);
+ end;
+ end.

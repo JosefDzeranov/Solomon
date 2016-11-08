@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class DiodPanel {
+    private static boolean is(int[][] arr, int str, int wid, int pattern) {
+        boolean res = false;
+        
+        for(int i = 0; i < str; i++)
+            for(int j = 0; j < wid && !(res); j++)
+                if(arr[i][j] == pattern)
+                    res = true;
+        return res;
+    }
+    
+    private static void lumin(int[][] mas, int x, int y, int n, int m,int pat) {
+        if(x > 0 && mas[x-1][y] == 0)
+            mas[x-1][y] = pat;
+        if(y > 0 && mas[x][y-1] == 0)
+            mas[x][y-1] = pat;
+        if(x < n - 1 && mas[x+1][y] == 0)
+            mas[x+1][y] = pat;
+        if(y < m - 1 && mas[x][y+1] == 0)
+            mas[x][y+1] = pat;
+    }
+    
+    private static void fillPanel(int[][] arr, int str, int wid, int pattern) {
+        for(int i = 0; i < str; i++)
+            for(int j = 0; j < wid; j++) 
+                if(arr[i][j] == pattern) {
+                    lumin(arr, i, j, str, wid, pattern + 1);
+                    arr[i][j] = -1;
+                }          
+    }
+    
+    public static void main(String[] args) {
+        Scanner reader;
+        reader = new Scanner(System.in);
+        
+        int n = reader.nextInt();
+        int m = reader.nextInt();
+        int k = reader.nextInt();
+        
+        int[][] panel;
+        panel = new int[n][m];
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)
+                panel[i][j] = 0;
+        
+        for(int i = 1; i <= k; i++) {
+            int x, y;
+            
+            x = reader.nextInt();
+            y = reader.nextInt();
+            
+            panel[x-1][y-1] = 1;
+        }
+        
+        int timer = 0;
+        while(is(panel, n, m, 0)) {
+            timer++;
+            fillPanel(panel, n, m, timer);            
+        }
+        
+        System.out.println(timer);
+    }    
+}

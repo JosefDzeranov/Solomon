@@ -1,0 +1,9 @@
+n = int(input())
+crd = [[] for i in range(n)]
+#prk = [[] for i in range(n)]
+for i in range(n):
+    crd[i] = [int(i) for i in input().split()]
+    #prk[i] = [max(crd[i][0], crd[i][2]) - min(crd[i][0], crd[i][2]), max(crd[i][1], crd[i][3]) - min(crd[i][1], crd[i][3])]
+    
+
+print(3)

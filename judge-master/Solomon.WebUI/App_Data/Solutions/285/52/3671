@@ -1,0 +1,12 @@
+program olimp1; 
+var N, x: integer;
+begin
+    
+    readln(N);
+    if (N<=100)and (N>=3)then begin
+    x:= (n-2)*n*(n-1);
+    writeln(x);
+    end
+    else writeln('Неверно');
+   
+    end.

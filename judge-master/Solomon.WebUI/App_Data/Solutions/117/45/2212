@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int main ()
+{
+	int n, l;
+	int r1, r2;
+	cin >> n >> l;
+	cin >> r1 >> r2;
+	
+	int rb, rm;
+	rb = r1 * 3.14 * 2;
+	rm = r2 * 3.14 * 2;
+	
+	int kb, km;
+	if (l % (r1 + r1) == 0)
+		kb = l / (r1 + r1);
+	else
+		kb = l / (r1 + r1) + 1;
+	kb = kb * 2;
+	
+	km = kb / 2;
+	
+	int p = kb * rb;
+	p += km * rm;
+	if (n > p)
+	{
+		if (l < r1 + r1)
+		{
+			cout << "YES" << endl;
+			cout << kb + 2 << " " << km + 1<< endl; 
+		}
+		else 
+		{
+			cout << "YES" << endl;
+			cout << kb << " " << km << endl;
+		}
+	}
+	else
+		cout << "NO" << endl;
+	return 0;
+}

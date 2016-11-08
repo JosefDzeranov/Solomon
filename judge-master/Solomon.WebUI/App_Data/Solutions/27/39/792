@@ -1,0 +1,27 @@
+program ideone;
+var a,n,i,j:integer;
+	x:array[1..1000] of integer;
+begin
+	readln(a,n);
+	for i:=1 to n do 
+		read(x[i]);
+		
+	while i<N do
+	begin
+	if x[i]+1=x[i+1] then
+	begin
+	write (x[i],'-');
+	for j:=i to N do
+	if x[j]+1<>x[j+1] then
+	begin
+	write (x[j], ' ');
+	i:=j+1;
+	break;
+	end;
+	end else
+	if x[i]+1<>x[i+1] then
+	write (x[i],' ' );
+	inc(i);
+	end;
+	
+end.

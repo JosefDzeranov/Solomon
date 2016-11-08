@@ -1,0 +1,39 @@
+using System;
+namespace viking
+{
+	class Program
+	{
+		static void Main()
+		{
+			string[] chisla = Console.ReadLine().Split();
+			double N = double.Parse(chisla[0]);
+			int K = int.Parse(chisla[1]);
+
+			double X = 0;
+
+			for(double i = 5; i <= N; i+= 5)
+			{
+				X += Fu(i);
+			}
+
+			Console.Write(X);			
+		}
+
+		private static double Fu(double x)
+		{
+			long resultat = 0;
+
+			do {
+				resultat++;
+				x /= 5;
+			}while(x % 5 == 0); 
+			
+			return resultat;
+		}
+		
+		private static double Factorial(double n)
+		{
+			return (n == 0 || n == 1) ? 1 : n * Factorial( n-1 );
+		}
+	}
+}

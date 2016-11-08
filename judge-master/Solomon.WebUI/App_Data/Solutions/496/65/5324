@@ -1,0 +1,23 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	/*unsigned long long*/long double a, b, c, d, dop;
+	cin >> a >> b >> c >> d;
+
+	if (a > b) {
+		//a ^= (b ^= (a ^= b));
+		dop = a; a = b; b = dop;
+	}
+	if (c > d) {
+		//c ^= (d ^= (c ^= d));
+		dop = c; c = d; d = dop;
+	}
+	cout << (unsigned long long)floor(sqrt(/*(long double)a+(long double)c*/a+c)) << endl;
+
+
+	return 0;
+}

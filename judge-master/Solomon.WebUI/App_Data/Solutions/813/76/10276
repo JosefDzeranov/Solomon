@@ -1,0 +1,25 @@
+program zadachaE;
+var s : string;
+    a : array[1..300] of char;
+    i, n, k, z, e : integer;
+begin
+readln(n);
+k := 0;
+for i := 1 to n do
+    begin
+         readln(s);
+         for e := 1 to 300 do a[e] := ' ';
+         for e := 2 to (length(s)+1) do a[e] := s[e-1];
+         for z := 1 to(length(s)+1) do
+             begin
+                  if (a[z] in ['0'..'9']) then
+                     if (a[z+1] in ['0'..'9']) then
+                           if (a[z+2] = '0') then
+                              k := k + 100
+                           else k := k + (((ord(s[z])-48)*10))
+                     else k := k + (ord(s[z])-48)
+
+             end;
+    end;
+    writeln(k);
+end.

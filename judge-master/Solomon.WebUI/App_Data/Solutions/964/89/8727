@@ -1,0 +1,11 @@
+var x,y,t1,t2:integer;
+Begin
+ readln(x);
+ readln(y);
+ readln(t1);
+ readln(t2);
+ a:=(y-1)*t1;
+ b:=x*y*t2;
+ c:=a+b;
+ writeln(c);
+ end.

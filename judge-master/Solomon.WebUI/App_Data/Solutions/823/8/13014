@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+public class SumOfTwoNumbers {
+    public static void main(String[] args) {
+        Scanner reader;
+        reader = new Scanner(System.in);
+        
+        long a = reader.nextLong();
+        long b = reader.nextLong();
+        
+        long sum = a + b;
+        System.out.println(sum);
+    }
+}

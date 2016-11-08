@@ -1,0 +1,9 @@
+var dl,sh,v,z,n,x1,x:longint;
+begin
+readln(n,z);
+read(dl,sh,v);
+x1:=(dl div z)*(sh div z);
+While v >= z*1/2 do begin  x:=x+x1;v:=v-z;end;
+if n=0 then write(0) else if n<=x then write(1) 
+else if n mod x=0 then write(n div x)else write(n div x +1);
+end.

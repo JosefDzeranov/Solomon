@@ -1,0 +1,15 @@
+program braslet;
+var N,L,R,l_okr,k,d:real;
+begin
+readln(N,L);
+readln(R);
+l_okr:=2*pi*R;
+k:=L /(2*R);
+d:=l_okr*k;
+if d<=N then
+begin
+writeln('YES');
+writeln(k)
+end
+else writeln('NO');
+end.

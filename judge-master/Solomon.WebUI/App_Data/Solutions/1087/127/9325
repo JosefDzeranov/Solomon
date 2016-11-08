@@ -1,0 +1,15 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b:string; orda,ordb,razn:array [1..40] of integer; i,q:integer;
+begin
+  readln(a);
+  readln(b);
+ writeln('IMPOSSIBLE');
+
+
+end.

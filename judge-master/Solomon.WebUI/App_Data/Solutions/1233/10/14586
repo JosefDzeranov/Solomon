@@ -1,0 +1,9 @@
+import math
+n=int(input())
+k=int(input())
+n!=math.factorial(n)
+k!=math.factorial(k)
+nk!=math.factorial(n-k)
+d=k!*nk!
+p=n!//k!
+print(p)

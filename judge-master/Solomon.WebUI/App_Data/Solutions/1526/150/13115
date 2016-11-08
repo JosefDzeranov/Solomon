@@ -1,0 +1,21 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var st:string;
+  i:integer;
+  res,sd:longword;
+begin
+  sd:=1;
+  ReadLn(st);
+  for I := length(st) downto 1 do
+  begin
+    if st[i]='*' then res:=res+sd;
+    sd:=sd*2;
+  end;
+  WriteLn(res);
+
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

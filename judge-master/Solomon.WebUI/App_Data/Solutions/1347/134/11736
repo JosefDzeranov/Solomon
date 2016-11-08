@@ -1,0 +1,15 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var n,i:integer; z:int64;
+begin
+  readln(n);
+  z:=1;
+  for I := 1 to n-3 do
+   z:=z*2;
+   writeln(z*n);
+   readln;
+end.

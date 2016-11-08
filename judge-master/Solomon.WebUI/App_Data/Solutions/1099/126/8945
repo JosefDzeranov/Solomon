@@ -1,0 +1,12 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+     var N, B, X: integer;
+begin
+  readln(N);
+  read(B);
+  writeln('IMPOSSIBLE')
+end.

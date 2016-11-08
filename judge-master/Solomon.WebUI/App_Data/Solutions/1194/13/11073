@@ -1,0 +1,38 @@
+program children_party;
+
+var
+  i, j, k, m, n, min, time: longint;
+  done, next, t, y, z: array [0..100] of longint;
+
+begin
+
+
+  read(m, n);
+  for i := 1 to n do
+  begin
+    read(t[i], z[i], y[i]);
+    next[i] := t[i];
+  end;
+
+  fillchar(done, sizeof(done), 0);
+  time := 0;
+  for i := 1 to m do
+  begin
+    min := maxlongint;
+    for j := 1 to n do
+      if next[j] < min then
+      begin
+        k := j;
+        min := next[j];
+      end;
+    time := next[k];
+    inc(done[k]);
+    next[k] := next[k] + t[k];
+    if done[k] mod z[k] = 0 then
+      next[k] := next[k] + y[k];
+  end;
+
+  writeln(time);
+  for i := 1 to n do
+    write(done[i], ' ');
+end.

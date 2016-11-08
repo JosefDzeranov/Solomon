@@ -1,0 +1,39 @@
+#include<iostream>
+#include<stdio.h>
+#include<string>
+#include<cstdlib>
+#include<sstream>
+using namespace std;
+int main()
+{
+//freopen("input.txt","r",stdin);//freopen("output.txt","w",stdout);
+string s;
+int n,i,j,l,f;
+long long k=0;
+getline(cin,s);
+n=atoi(s.c_str());
+for(i=1;i<=n;i++){
+getline(cin,s);
+s=s+" ";
+f=0;
+for(j=0;j<s.size();j++){
+	if(s[j]>47&&s[j]<58){
+		if(f==0){
+			l=j;
+			f++;
+		}
+		else{
+			f++;
+		}
+	}
+	else{
+		if(f){
+		k+=atoi(s.substr(l,f).c_str());
+		f=0;	
+		}
+	}
+	
+}	
+}
+cout<<k;
+}

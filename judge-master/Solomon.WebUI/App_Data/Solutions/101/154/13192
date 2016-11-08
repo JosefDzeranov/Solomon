@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static bool Sum(int[,] a)
+        {
+            bool f = true;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (a[i, j] == 0)
+                    {
+                        f = false;
+                        break;
+                    }
+                }
+                if (!f) break;
+            }
+            return f;
+
+        }
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] s;
+            int max = 0;
+            int[] mas = new int[100000000];
+            for (int i = 0; i < n; i++)
+            {
+                s = Console.ReadLine().Split(' ');
+                int t = Convert.ToInt32(s[0]);
+                int u = Convert.ToInt32(s[1]);
+                int k = Convert.ToInt32(s[2]);
+
+                if (t + k > max) max = t + k;
+                int komst = 0;
+                if (mas[t + k] != 0) komst = 1;
+                for (int j = t; j <= t + k-komst; j++)
+                {
+                    mas[j] = u;
+                }
+            }
+            int c = 0, t0 = 1;
+            for (int i = 1; i <= max; i++)
+            {
+                c = mas[i];
+                while (c == mas[i])
+                {
+                    i++;
+                }
+                if (mas[i] == 0)
+                {
+                    Console.Write(t0 + " " + c + " " + (i - 1));
+                    t0 = i - 1;
+                }
+                else
+                {
+                    Console.Write(t0 + " " + c + " " + i);
+                    t0 = i;
+                }
+                Console.WriteLine();
+            }
+
+
+
+
+
+        }
+    }
+}

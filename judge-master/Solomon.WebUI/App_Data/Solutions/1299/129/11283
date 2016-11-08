@@ -1,0 +1,69 @@
+program RobinzonAndAlligators;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  count : integer;
+  island : array [0 .. 10001, 0 .. 10001] of char;
+  n, m, i, j, k : integer;
+  flag : boolean;
+
+begin
+  readln (n, m);
+  fillchar (island, n * m, '.');
+  for i := 1 to n do
+    for j := 1 to m do
+      read (island[i, j]);
+  readln;
+  count := 0;
+  flag := true;
+  while flag do
+    begin
+      flag := false;
+      for i := 1 to n do
+        for j := 1 to m do
+          case island[i, j] of
+            'N' : for k := i downto 0 do
+                    if k = 0 then
+                    begin
+                      inc (count);
+                      flag := true;
+                    end
+                    else
+                      if island[k, j] <> '.' then
+                        break;
+            'W' : for k := j downto 0 do
+                    if k = 0 then
+                    begin
+                      inc (count);
+                      flag := true;
+                    end
+                    else
+                      if island[i, k] <> '.' then
+                        break;
+            'E' : for k := j to m + 1 do
+                    if k = m + 1 then
+                    begin
+                      inc (count);
+                      flag := true;
+                    end
+                    else
+                      if island[i, k] <> '.' then
+                        break;
+            'S' : for k := i to n + 1 do
+                    if k = n + 1 then
+                    begin
+                      inc (count);
+                      flag := true;
+                    end
+                    else
+                      if island[k, j] <> '.' then
+                        break;
+          end;
+    end;
+  writeln (count);
+  readln;
+end.

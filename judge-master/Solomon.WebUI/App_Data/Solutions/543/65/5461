@@ -1,0 +1,19 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+a,b,c,d,z:int64;
+
+
+begin
+read(a,b,c,d);
+z:=0;
+if a<b then z:=z+a else z:=z+b;
+if c<d then z:=z+c else z:=z+d;
+writeln(trunc(sqrt(z)));
+readln;
+end.

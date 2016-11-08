@@ -1,0 +1,11 @@
+var n,i,x,y:integer;
+begin
+ readln(n);
+ x:=1;
+ y:=0;
+ for i:=1 to n do x:=x*i;
+ for i:=1 to n do y:=y+i;
+ if x=y then
+  for i:=1 to n do write(i,' ')
+ else write('-1');
+End.

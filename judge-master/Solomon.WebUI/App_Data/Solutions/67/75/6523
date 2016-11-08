@@ -1,0 +1,41 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,v,k,r,i,j,unic,n:integer;
+mas:array[1..10000000] of string;
+t:string;
+begin
+c:=1;
+readln(k);
+if k=0 then writeln(0);
+
+
+for i := 1 to  k do
+begin
+
+  readln(t);
+   unic:=0;
+   end;
+  for j := 1 to  n do
+     begin
+if t=mas[j] then
+begin
+unic:=1 ;
+break;
+end ;
+
+
+if unic=0 then
+begin
+n:=n+1;
+mas[n]:=t;
+end;
+end;
+
+writeln(c);
+readln;
+end.

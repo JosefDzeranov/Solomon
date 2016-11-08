@@ -1,0 +1,13 @@
+#include<iostream>
+#include<math.h>
+#include<conio.h>
+#include<stdlib.h>
+using namespace std;
+int main ()
+{
+	int x,y,z,q,xy,zq;
+	cin>>x>>z>>y>>q;
+	xy=x*60+y; zq=z*60+q;
+	cout<<(zq-xy)/60<<" "<<(zq-xy)%60;
+	return 0;
+}

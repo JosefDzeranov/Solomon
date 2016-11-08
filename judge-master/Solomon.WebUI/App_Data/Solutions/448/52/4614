@@ -1,0 +1,7 @@
+program iop;
+var n,i,a,b:integer;
+begin
+read(n);
+a:=n*(n-1)*(n-2);
+writeln(a);
+end.

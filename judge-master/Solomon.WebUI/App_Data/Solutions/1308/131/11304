@@ -1,0 +1,12 @@
+#include<iostream>
+
+using namespace std;
+int main(){
+	unsigned int a,b,c,d,r(0);
+	for(int i(a);i<b;i++)//2*(c+d);
+		for(int z(1);z<i;z++)
+			for(int y(a);y>0;y--) 
+				if((2*(z+y)>=c && (2*(z+y)<=d)
+					r++;
+	cout << r;
+}

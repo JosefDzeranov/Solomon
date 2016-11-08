@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <conio.h>
+#include <iostream>
+
+using namespace std;
+
+main()
+{
+	unsigned long long l,r;
+	unsigned long long i,j,k;
+	unsigned long long x,y,z,xy,yz;
+	unsigned long long count=0;
+	cin >> l >> r;
+	
+	
+	
+	if(r>540)
+	{
+		cout << "NONONONONONONO";
+		return 0;
+	}
+	else
+	{
+	for(x=l;x<=r;x++)
+		{
+			for(y=l;y<=r;y++)
+			{1
+				for(z=l;z<=r;z++)
+				{
+					if((x | y) == (y ^ z)) 
+					count++;
+				}
+				
+			}
+			
+		}	
+	}
+	cout << count;
+	
+}

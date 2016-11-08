@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,k,a,b,x,y:integer;
+    robot:array [1..4] of char;
+begin
+  readln(n);
+    a:=0;
+    b:=0;
+    read (robot[1],robot[2],robot[3],robot[4]);
+    for k := 1 to n do
+      begin
+       if robot[1]='>' then a:=a+1 else
+       a:=a+0;
+       if robot[2]='>' then a:=a+1 else
+       a:=a+0;
+       if robot[3]='<' then b:=b+1 else
+       b:=b+0;
+       if robot[4]='<' then b:=b+1 else
+       b:=b+0;
+       if a>b then x:=a-b
+       else y:=b-a;
+      end;
+  if x>y then writeln('1 ',x-y)
+  else if x=y then  writeln('0') 
+  else writeln('2 ',y-x);
+  readln;
+end.

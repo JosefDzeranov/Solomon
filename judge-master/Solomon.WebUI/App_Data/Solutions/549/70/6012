@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int_fast64_t n,i,m,j,S=0,minn=0;
+   cin>>n;
+   int a[n],b[n],c[n],N[n],minn2[n];
+   for(i=0;i<n;++i)
+    cin>>a[i];
+    cin>>m;
+     for(j=0;j<m;++j){
+    cin>>b[j];
+    cin>>c[j];}
+     for(j=0;j<n;++j)
+        {
+                for(i=0;i<m;++i)
+        {
+           if(b[i]>=a[j])
+           {
+               for(i=0;i<m-1;++i)// наименьшая цена
+               {
+                   if(b[i]>=a[j] && c[i]<c[i+1])
+                   {
+                       minn+=c[i];
+                   }
+                   if(b[i]>=a[j] && c[i]>c[i+1])
+                     minn+=c[i+1];
+
+                    minn2[i]=0+minn;
+
+
+                       S+=minn2[i];
+                       minn2[i]=0;
+                    minn=0;
+
+
+                 //   if(b[i]>a[j])
+
+               }
+
+
+           }
+
+            }
+
+            }
+
+
+
+    cout<<S;
+    return 0;
+}

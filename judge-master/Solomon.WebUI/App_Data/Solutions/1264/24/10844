@@ -1,0 +1,56 @@
+{$H+}
+var
+s,s1,ss:string;
+p1,p2,i,j,n,c,sum,k,len,h,m,q1:longint;
+flag:boolean;
+a:array [1..10000,1..2] of longint;
+begin
+readln(n);
+readln(s);
+p1:=0;
+p2:=0;
+s:=s+' ';
+h:=1;
+q1:=1;
+ss:=s;
+s:='';
+len:=length(ss);
+for i:=1 to len do 
+if (ss[i]=' ') then begin
+s1:=copy(ss,h,i-h);
+
+flag:=false;
+for j:=1 to length(s1) do
+ for m:=j+1 to length(s1) do
+  if (s1[j]<>s1[m]) then begin flag:=true; break; end;
+  h:=i+length(s1)-1;
+  if flag then 
+   s:=s+s1+' '
+   else s:=s+s1[1]+' ';
+end;
+len:=length(s);
+for i:=1 to len do begin
+ for j:=i+1 to len do begin
+ if (s[i]<>' ') and (s[j]<>' ') and (i<>j) and (s[i]=s[j]) then begin
+ for k:=1 to i do if s[k]=' ' then inc(p1);
+ for k:=1 to j do if s[k]=' ' then inc(p2);
+ if p1<>p2 then begin
+ a[q1,1]:=p1;
+ a[q1,2]:=p2;
+ inc(q1);
+ inc(c);
+ 
+ end;
+ end;
+ p1:=0;
+ p2:=0;
+
+end;
+sum:=sum+c;
+c:=0;
+end;
+for i:=1 to q1 do
+ for j:=i+1 to q1 do
+ if (a[i,1]=a[j,1]) and (a[i,2]=a[j,2]) then dec(sum);
+writeln(sum);
+end.

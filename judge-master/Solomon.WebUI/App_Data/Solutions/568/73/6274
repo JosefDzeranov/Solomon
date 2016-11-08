@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main(){
+int s=0,summ = 0,r=0,i,num;
+cin>>num;
+if(num != 3 ){
+for(i = 0; i < 100;i++){
+	summ += i;
+	if(num == summ){
+	break;
+	}
+	r++;
+}
+}
+else
+	r = 2;
+cout<<r;
+}

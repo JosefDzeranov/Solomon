@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N, M, K;
+        N = scanner.nextInt();
+        M = scanner.nextInt();
+        K = scanner.nextInt();
+        boolean[][] panel = new boolean[N][M];
+        for (int i = 0; i < K; i++) {
+            int x, y;
+            x = scanner.nextInt();
+            y = scanner.nextInt();
+            panel[x-1][y-1] = true;
+        }
+        boolean[][][] generations = new boolean[2][][];
+        generations[0] = panel;
+        generations[1] = new boolean[N][M];
+        int ticks = 0;
+        int freeCells = N * M - K;
+        int currentGen = 0;
+        int newGen = 1;
+        while (freeCells > 0) {
+            freeCells = N*M;
+
+            for (int x = 0; x < N; x++) {
+                for (int y = 0; y < M; y++) {
+                    if (generations[currentGen][x][y]) {
+                        freeCells--;
+                        generations[newGen][x][y] = true;
+                        if (x > 0) {
+                            if (!generations[currentGen][x - 1][y]) {
+                                generations[newGen][x-1][y] = true;
+                            }
+                        }
+                        if (x < N-1) {
+                            if (!generations[currentGen][x + 1][y]) {
+                                generations[newGen][x+1][y] = true;
+                            }
+                        }
+                        if (y > 0) {
+                            if (!generations[currentGen][x][y-1]) {
+                                generations[newGen][x][y-1] = true;
+                            }
+                        }
+                        if (y < M-1) {
+                            if (!generations[currentGen][x][y+1]) {
+                                generations[newGen][x][y+1] = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (freeCells > 0)
+                ticks++;
+            if (currentGen == 0) {
+                currentGen = 1;
+                newGen = 0;
+            } else {
+                currentGen = 0;
+                newGen = 1;
+            }
+        }
+        System.out.println(ticks);
+    }
+}

@@ -1,0 +1,113 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+using namespace std;
+
+int actions_c, balls_ex, balls_c, boxes_c;
+vector< vector<int> > boxes;
+vector<string> actions;
+vector<string> to_move;
+
+void show()
+{
+    for( int i = 1; i <= boxes_c; i++ )
+    {
+        cout << "Коробка #" << i << ": " << endl;
+
+        for( unsigned j = 0; j < boxes[i].size(); j++ )
+            cout << "Шар #" << boxes[i][j] << endl;
+
+        cout << endl;
+    }
+
+    cout << endl;
+}
+
+void doSwap( int box, int ball )
+{
+    int toSwap, box_new, ball_new;
+    bool swap = false;
+
+    box_new = ball;
+
+    if( !boxes[ box_new ].empty() )
+    {
+        ball_new = boxes[ box_new ].back();
+
+        std::ostringstream act;
+        act << box << " " << box_new << " " << box_new << " " << ball_new;
+
+        actions.push_back( act.str() );
+
+        actions_c++;
+
+        std::ostringstream d;
+        d << box << " " << ball << " " << ball;
+
+        vector<string>::iterator result = find( to_move.begin(), to_move.end(), d.str() );
+
+        to_move.erase( result );
+
+        if( box != ball_new )
+        {
+            swap = true;
+
+            toSwap = ball_new;
+        }
+
+        boxes[ box_new ].pop_back();
+
+        if( swap )
+            doSwap( box, toSwap );
+    }
+    else
+    {
+        boxes[ box ].push_back( ball ); // Добавляем в коробку шарик
+
+        std::ostringstream d;
+        d << box << " " << ball << " " << ball;
+
+        to_move.push_back( d.str() );
+    }
+}
+
+int main()
+{
+    int box, ball;
+
+    scanf( "%d%d", &boxes_c, &balls_c );
+
+    boxes.resize( boxes_c + 1 );
+
+    actions_c = 0;
+
+    for( int i = 1; i <= balls_c; i++ )
+    {
+        scanf( "%d%d", &ball, &box ); // Номер шарика и коробка, в которой он находится
+
+        if( box == ball )
+            continue;
+
+        doSwap( box, ball );
+    }
+
+    for( unsigned i = 0; i < to_move.size(); i++ )
+    {
+        actions_c++;
+
+        std::ostringstream act;
+        act << to_move[i];
+
+        actions.push_back( act.str() );
+    }
+
+    cout << actions_c << endl;
+
+    for( unsigned i = 0; i < actions.size(); i++ )
+        cout << actions[i] << endl;
+
+    return 0;
+}

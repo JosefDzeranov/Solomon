@@ -1,0 +1,11 @@
+program Chess;
+var n,m:longint;
+begin
+        readln(n);
+        if (3>n) or (n>1000)
+        then writeln('input data is not correct')
+        else
+          begin m:=n*(n-1)*(n-2);
+                writeln(m);
+          end;
+end.

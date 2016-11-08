@@ -1,0 +1,16 @@
+k = int(input())
+n = input()
+ms = [0 for i in range(k)]
+mx = 0
+p = 0
+for i in range(len(n)):
+    if n[i] == 'P':
+        ms[i % k] += 1
+        mx = max(mx, ms[i % k])
+for i in range(len(ms)):
+    if ms[i] == mx:
+        print(i + 1)
+        exit()
+
+            
+        

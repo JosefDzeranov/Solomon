@@ -1,0 +1,18 @@
+var a,i,j,b,c,k,m,g:integer;
+begin
+  readln(a);
+  read(b);
+  IntToStr(b);
+  for i:=1 to a do begin
+    read(c);
+    IntToStr(c);
+    for j:=1 to length(b) do
+      for k:=1 to length(c) do
+        if b[j]=c[k] then begin
+          m:=m+1;
+          break;
+          break;
+          end;
+          end;
+  write(m);
+  end.

@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main()
+{
+	long long cnt = 0;
+	long long a, b, c, d;
+	cin >> a >> b >> c >> d;
+	if (c % 2 == 1)
+		c++;
+	for (long long i = c; i <= d; i += 2)
+	{
+		long long s = i / 2;
+		if (s % 2 == 1)
+		{
+			long long tt = 0;
+			for (long long j = 1; j <= (s - 1) / 2; j++)
+			{
+				long long t = j * (s - j);
+				if (t >= a && t <= b)
+					tt++;
+			}
+			cnt += max(tt, long long(0));
+		}
+		else
+		{
+			long long tt = 0;
+			for (long long j = 1; j <= s / 2; j++)
+			{
+				long long t = j * (s - j);
+				if (t >= a && t <= b)
+					tt++;
+			}
+			cnt += max(tt, long long(0));
+		}
+	}
+	cout << cnt;
+	return 0;
+}

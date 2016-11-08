@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+struct man
+{
+    long long t,y,z;
+};
+man a[25];
+long long single,time_cycle,cycles,sum,middle,cur,m,n,l,r;
+bool check(long long t)
+{
+    sum=0;
+    for(cur=1;cur<=n;cur++)
+    {
+      time_cycle=a[cur].t*a[cur].z+a[cur].y;
+      cycles=t/time_cycle;
+      single=t%time_cycle;
+      single=single/a[cur].t;
+      cycles=cycles*a[cur].z;
+      sum=sum+min(min(single,a[cur].z)+cycles,m-sum);
+    }
+    return sum>=m;
+ 
+}
+ 
+int main()
+{
+    cin>>m>>n;
+    for(cur=1;cur<=n;cur++)
+    {
+        cin>>a[cur].t>>a[cur].z>>a[cur].y;
+    }
+    l=-1;
+    r=1000000000;
+    while((r-l)>1)
+    {
+        middle=(r+l)/2;
+        if(check(middle)==true)
+        {
+            r=middle;
+        }
+        else
+        {
+            l=middle;
+        }
+    }
+    cout<<r<<endl;
+    sum=0;
+    for(cur=1;cur<=n;cur++)
+    {
+      time_cycle=a[cur].t*a[cur].z+a[cur].y;
+      cycles=r/time_cycle;
+      single=r%time_cycle;
+      single=single/a[cur].t;
+      cycles=cycles*a[cur].z;
+      cout<<min(min(single,a[cur].z)+cycles,m-sum)<<" ";
+      sum=sum+min(min(single,a[cur].z)+cycles,m-sum);
+    }
+ 
+ 
+}

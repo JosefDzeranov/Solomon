@@ -1,0 +1,13 @@
+На одном комплиляторе программа работала, на другом - нет. Может быть проблема с версией С++
+Поэтому на всякий случай высылаю дубликат в блокноте
+#include <stdio.h>
+void main ( )
+{int N,i,Zagotovleno =1;
+ int K = 3 // kol-vo prisovih mest
+     printf ("vvedite kol-vo komand \n");
+     scanf  ("%d",&N);
+            for (i=0;i<K;i++)
+            Zagotovleno= Zagotovleno* (N-i);	
+     printf ("zagotovleno %d gramot", Zagotovleno);
+     scanf  ("%d",&i);
+}

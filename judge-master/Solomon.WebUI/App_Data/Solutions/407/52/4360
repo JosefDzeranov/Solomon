@@ -1,0 +1,15 @@
+program primer1;
+var n,f,i,g,y:integer;
+t:real;
+begin
+f:=1;
+ readln(n);
+for i := 1 to n do begin
+f:=f*i; end;
+g:=n-3;
+y:=1;
+for i := 1 to g do begin
+y:=y*i; end;
+t:=f/y;
+writeln (t); readln;
+end.

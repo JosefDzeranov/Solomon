@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	int i, len, ans = 0;
+	string s;
+	cin >> s;
+	len = s.length();
+	for (i = 0; i < len; i++) {
+		if (s[i] == '*')
+			ans += pow(2, len - i - 1);
+	}
+	cout << ans;
+}

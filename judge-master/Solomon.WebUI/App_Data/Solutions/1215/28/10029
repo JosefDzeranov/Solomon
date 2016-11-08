@@ -1,0 +1,11 @@
+var a,b,c,s:integer;
+function N(a,b:integer):integer;
+begin
+if a>b then N:=b else N:=a;
+end;
+begin
+read(a,b,c);
+s:=N(a,b);
+s:=N(s,c);
+write(a+b+c-s);
+end.

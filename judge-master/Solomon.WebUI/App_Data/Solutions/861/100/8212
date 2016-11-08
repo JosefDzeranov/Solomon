@@ -1,0 +1,14 @@
+program Project9;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,N,D:integer;
+begin
+readln(D,N);
+a:=N-D;
+writeln(a);
+readln;
+end.

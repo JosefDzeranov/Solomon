@@ -1,0 +1,45 @@
+﻿using System;
+using System.Text;
+
+namespace zA
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int a = int.Parse(s[0]);
+            int b = int.Parse(s[1]);
+            int c = int.Parse(s[2])/2;
+            int d = int.Parse(s[3])/2;
+            int kol=0, jmin, jmax, j;
+            for (int i = 1; i <= Math.Sqrt(b); i++)
+            { 
+                jmin= a/i;
+                if (a % i != 0) jmin++;
+                if (jmin + i > d) continue;
+                else
+                    if ((jmin + i) < c)
+                          jmin = c - i;
+                    else
+                        if (jmin < i) jmin = i;
+                if (jmin * i > b) continue;
+                jmax = b / i;
+
+                if (jmax + i > d) jmax= d- i;
+                else
+                    if ((jmax + i) < c) jmax = c - i;
+                    else 
+                        if (jmax < i) jmax = i;
+
+                if (jmax >= jmin)
+                {
+                    kol += jmax - jmin + 1;
+                  //  Console.WriteLine(i+" "+jmin+" "+jmax );
+                }
+
+            }
+           Console.WriteLine(kol);
+        }
+    }
+}

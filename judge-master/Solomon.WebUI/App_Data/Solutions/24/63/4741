@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+const int maxn = 1005;
+
+long long int mas[maxn][maxn];
+int pr[maxn][maxn];
+int m, n;
+
+
+int dfs(int i, int j) {
+	
+	if (pr[i][j] != -1)
+		return pr[i][j];
+	int best = 1;
+	if (i != 0 && mas[i][j] + 1 == mas[i-1][j])
+		best = max(best, dfs(i-1, j) + 1);
+
+	if (i != n - 1 && mas[i][j] + 1 == mas[i+1][j])
+		best = max(best, dfs(i+1, j) + 1);
+	if (j != 0 && mas[i][j] + 1 == mas[i][j-1])
+		best = max(best, dfs(i, j-1) + 1);
+	if (j != m-1 && mas[i][j] + 1 == mas[i][j+1])
+		best = max(best, dfs(i, j+1) + 1);
+	pr[i][j] = best;
+	return pr[i][j];
+}
+
+
+int main() {
+
+	cin >> n >> m;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+		{
+			cin >> mas[i][j];
+			pr[i][j] = -1;
+		}
+
+	int ans = 1;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			ans = max(ans, dfs(i, j));
+
+	cout << ans << endl;
+
+
+
+	return 0;
+}

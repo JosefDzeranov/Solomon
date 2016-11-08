@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int r,x1,x2,y1,y2,a,b;
+    cin >> r >> x1 >> y1 >> x2 >> y2;
+    a=x2-x1;
+    b=y2-y1;
+    if (4r*r > a*a+b*b)
+    {
+    cout << a*b;
+    }
+    else
+    if ((2*r>= a)&&(2*r>=b))
+        {
+           cout << 3.141259*r*r - (r-b)*;
+        }
+        else
+        if ( 2*r > a )
+        {
+            cout << 3.141259*r*r - (r-b)*;
+        }
+        else
+        if ( 2*r > b )
+        {
+            cout << 3.141259*r*r - (r-a)*;
+        }
+        else
+        {
+            cout << 3.141259*r*r;
+        }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

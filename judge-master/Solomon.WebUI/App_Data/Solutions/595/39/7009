@@ -1,0 +1,26 @@
+function dlina(x1,x2,y1,y2 : integer) : real;
+  begin
+    dlina:= sqrt(sqr(x1-x2) + sqr(y1-y2));
+  end;
+var
+  i,a,b,x,y,pre,start: integer;
+begin
+  readln(a,b);
+  read(pre);
+  for i:=2 to b do begin
+    read(x);
+    if (x = pre+1) and (i <> b) then begin
+      if start = 0 then
+        start:= pre;
+    end 
+    else begin
+      if start = 0 then 
+        write(x,' ') 
+      else begin
+        if i <> b then write(start,'-',pre,' ',x,' ') else write(start,'-',x,' ');
+        start:=0;
+      end;
+    end;
+    pre:=x;
+  end;   
+end.

@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+    int side, sq, cells;
+    string can;
+
+    scanf( "%d%d", &side, &cells );
+
+    sq = side * side;
+    can = "No";
+
+    for( int i = sq; i > 0; i-- )
+    {
+        if( sq - i * i == cells )
+        {
+            can = "Yes";
+            break;
+        }
+
+        if( sq - i * i > cells )
+            break;
+    }
+
+    cout << can << endl;
+
+    return 0;
+}
+

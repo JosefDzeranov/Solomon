@@ -1,0 +1,20 @@
+#include<iostream>
+
+using namespace std;
+int main(){
+	unsigned long long a,b,c,d,r(0);
+	cin >> a >> b >> c >>d;
+	if(a>b){r=a;a=b;b=r;r=0;}
+	if(c>d){r=c;c=d;d=r;r=0;}
+	for(unsigned long long i(0);i<=d+1;i++)
+		for(long long j(d+1);j>=0;j--)
+		{
+			unsigned long long s(i*j),p(2*(i+j));
+			if(s>=a && s<=b && c<=p && d>=p)
+				r++;
+		}
+	if(r%2)
+		r+=2;
+	r=r/2;
+	cout << r;
+}

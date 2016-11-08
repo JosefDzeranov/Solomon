@@ -1,0 +1,35 @@
+program Print;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, m, x1, x2, x3, i : integer;
+begin
+  read (n);
+  readln (m);
+  x3 := -1;
+  read (x1);
+  x2 := x1;
+  write (x1);
+  for i := 1 to m - 1 do
+  begin
+  read (x1);
+    if x1 - x2 > 1 then
+    begin
+      if x2 = x3 then
+        write (x1, ' ')
+      else
+        write ('-', x2, ' ', x1, ' ');
+      x2 := x1;
+      x3 := x2;
+    end
+    else
+      {if x2 - x3 > 1 then
+        x3 := x2;}
+      x2 := x1;
+  end;
+  readln;
+end.

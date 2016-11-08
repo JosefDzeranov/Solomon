@@ -1,0 +1,34 @@
+program mesi5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,q,w,e,r,t,y,i:integer;
+var a:array[1..100] of integer;
+
+
+
+begin
+readln(n);
+for q:=1 to n do read(a[q]);
+for w:=1 to n do
+  for e:=1 to (n-1) do
+    if a[e]<a[e+1] then
+      begin
+      r:=a[e];
+      a[e]:=a[e+1];
+      a[e+1]:=r;
+      end;
+t:=a[1];
+y:=0;
+for i:=2 to n do
+  if t<y then inc(t,a[i])
+    else inc(y,a[i]);
+writeln(abs(t-y));    
+
+
+
+readln;readln;
+end.

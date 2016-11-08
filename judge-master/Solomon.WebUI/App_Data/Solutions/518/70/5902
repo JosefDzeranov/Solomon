@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+struct cond
+{
+	int pow, cost;
+};
+int mas[50000];
+cond magaz[50000];
+int mini[50000];
+bool cmp(cond a, cond b)
+{
+	if (a.pow < b.pow)
+		return true;
+	else if (a.pow == b.pow && a.cost < b.cost) return true;
+	return false;
+}
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> mas[i];
+	}
+	int m;
+	cin >> m;
+	for (int i = 0; i < m; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		magaz[i].pow = a;
+		magaz[i].cost = b;
+	}
+	sort(magaz, magaz + m, cmp);
+	int minn = 10000000;
+	for (int i = m - 1; i >= 0; i--)
+	{
+		minn = min(minn, magaz[i].cost);
+		mini[i] = minn;
+	}
+	long long ans = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int l = 0, r = m;
+		while (l < r - 1)
+		{
+			int m = (l + r) / 2;
+			if (magaz[m].pow > mas[i])
+				r = m;
+			else l = m;
+		}
+		while (1)
+		{
+			if (magaz[l].pow < mas[i])
+				l++;
+			else break;
+		}
+		if (magaz[l - 1].pow == magaz[l].pow)
+		{
+			while (1)
+			{
+				if (magaz[l - 1].pow == magaz[l].pow)
+					l--;
+				else break;
+			}
+		}
+		ans += mini[l];
+	}
+	cout << ans;
+	return 0;
+}

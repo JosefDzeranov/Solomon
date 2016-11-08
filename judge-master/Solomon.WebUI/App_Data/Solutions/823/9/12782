@@ -1,0 +1,36 @@
+program Casting;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  way : byte;
+  n, a, b, c, x : smallint;
+
+begin
+  readln (way);
+  readln (n, a, b, c);
+  while (a > b) or (b > c) do
+  begin
+    if a > b then
+      begin
+        a := a - b;
+        b := b + a;
+        a := b - a;
+      end;
+    if b > c then
+      begin
+        b := b - c;
+        c := c + b;
+        b := c - b;
+      end;
+  end;
+  if way = 1 then
+    x := (a + b + c) mod n
+  else
+    x := a;
+  write (x);
+  readln;
+end.

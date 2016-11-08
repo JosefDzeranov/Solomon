@@ -1,0 +1,7 @@
+Program qq;
+var A,B:string;
+begin
+readln(A);
+readln(B);
+writeln('IMPOSSIBLE');
+end.

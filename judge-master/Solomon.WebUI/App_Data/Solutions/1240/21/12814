@@ -1,0 +1,137 @@
+TYPE
+  TA = Record
+    N1, C1, N2, C2: ShortInt;
+  End;
+
+VAR
+  C: Array [1..10, 1..10] of LongInt;
+  N, M: LongInt;
+  SN, MN: LongInt;
+  SWPS, MVS: Array [1..100] of TA;
+
+  A: Array [0..10] of Integer;
+  U: Array [1..10] of Boolean;
+  LEN, START: LongInt;
+
+Procedure Input0;
+Var
+  I, J, K: LongInt;
+Begin
+  Read(N, M);
+  
+  for I := 1 to M do begin
+    Read(J, K);
+    Inc(C[K, J]);
+  end;
+
+  SN := 0;
+  MN := 0;
+End;
+
+Procedure Add_Swap(N1, C1, N2, C2: LongInt);
+Begin
+  Inc(SN);
+  SWPS[SN].N1 := N1;
+  SWPS[SN].C1 := C1;
+  SWPS[SN].N2 := N2;
+  SWPS[SN].C2 := C2;
+  Dec(C[N1, C1]); Inc(C[N1, C2]);
+  Dec(C[N2, C2]); Inc(C[N2, C1]);
+End;
+
+Procedure Add_Move(N1, C1, N2: LongInt);
+Begin
+  Inc(MN);
+  MVS[MN].N1 := N1;
+  MVS[MN].C1 := C1;
+  MVS[MN].N2 := N2;
+  Dec(C[N1, C1]);
+  Inc(C[N2, C1]);
+End;
+
+Function FindCycle(Num, Pos: LongInt): Boolean;
+Var
+  I: LongInt;
+  R: Boolean;
+Begin
+  FindCycle := False;
+  A[Pos] := Num;
+  U[Num] := True;
+
+  if Num <> START then
+    if C[Num, START] > 0 then begin
+      FindCycle := True;
+      LEN := Pos;
+      Exit;
+    end;
+
+  for I := 1 to N do
+    if (I <> Num) and not U[I] then
+      if (C[Num, I] > 0) and (C[I, START] > 0) then begin
+        R := FindCycle(I, Pos+1);
+        if R then begin
+          FindCycle := True;
+          Exit;
+        end;
+      end;
+
+  for I := 1 to N do
+    if (I <> Num) and not U[I] then
+      if C[Num, I] > 0 then begin
+        R := FindCycle(I, Pos+1);
+        if R then begin
+          FindCycle := True;
+          Exit;
+        end;
+      end;
+
+  U[Num] := False;
+End;
+
+Procedure ProcessCycle;
+Var
+  I: LongInt;
+Begin
+  for I := LEN-1 downto 1 do
+    Add_Swap(A[I], A[I+1], A[I+1], START);
+End;
+
+Procedure DoCycles;
+Var j23: LongInt;
+Begin
+  for START := 1 to N do begin
+    for j23 := 1 to 10 do U[j23] := false;
+    
+    while FindCycle(START, 1) do ProcessCycle;
+  end;
+End;
+
+Procedure DoMVS;
+Var
+  I, J, K: Integer;
+Begin
+  for I := 1 to N do
+    for J := 1 to N do
+      if (I <> J) then
+        if C[I, J] > 0 then
+          for K := 1 to C[I, J] do
+            Add_Move(I, J, J);
+End;
+
+Procedure Print;
+Var
+  I: Integer;
+Begin
+  WriteLn(SN + MN);
+  for I := 1 to SN do
+    WriteLn(SWPS[I].N1,' ',SWPS[I].C1,' ',SWPS[I].N2,' ',SWPS[I].C2);
+  for I := 1 to MN do
+    WriteLn(MVS[I].N1,' ',MVS[I].C1,' ',MVS[I].N2);
+End;
+
+BEGIN
+  Input0;
+  DoCycles;
+  DoMVS;
+  Print;
+END.

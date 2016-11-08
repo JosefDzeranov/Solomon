@@ -1,0 +1,45 @@
+{$h+}
+var
+   a: array[1..10, 1..10] of longint;
+   n, m, i, j, kol: longint;
+   s, s1, s2: string;
+
+begin
+   readln(n, m);
+   for i := 1 to n do
+   begin
+      while not (eoln) do
+      begin
+         read(j);
+         inc(a[i, j]);
+      end;
+      readln();
+   end;
+   for i := 1 to n do
+      for j := 1 to n do
+         if i <> j then
+         begin
+            while a[i, j] > 0 do
+               if a[j, i] > 0 then
+               begin
+                  dec(a[i, j]); dec(a[j, i]);
+                  inc(a[i, i]); inc(a[j, j]);
+                  str(i, s1);
+                  str(j, s2);
+                  inc(kol);
+                  s := s + s1 + ' ' + s2 + ' ' + s2 + ' ' + s1 + chr(13) + chr(10);
+               end
+                else
+               begin
+                  dec(a[i, j]);
+                  inc(a[j, j]);
+                  str(i, s1);
+                  str(j, s2);
+                  inc(kol);
+                  s := s + s1 + ' ' + s2 + ' ' + s2 + chr(13) + chr(10);
+               end;
+         end;
+   str(kol, s1);
+   s2 := s1 + chr(13) + chr(10)+ s;
+   write(s2);
+end.

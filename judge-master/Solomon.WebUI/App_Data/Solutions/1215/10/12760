@@ -1,0 +1,11 @@
+var N,M:longint;
+function Fac(x:longint):real;
+begin
+if x=1 then Fac:=1
+else fac:=x*fac(x-1);
+end;
+begin
+read(N);
+read(M);
+write(Fac(N)/(Fac(M)*Fac(N-M)):0:0);
+end.

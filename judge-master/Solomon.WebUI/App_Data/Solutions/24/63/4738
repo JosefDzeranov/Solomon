@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+const int maxn = 1005;
+
+long long int mas[maxn][maxn];
+int pr[maxn][maxn];
+//bool used[maxn][maxn];
+
+int ans = 1;
+
+//int x[] = {0, 0, 1, -1};
+//int y[] = {1, -1, 0, 0};
+int n, m;
+
+void dfs(int a, int b) {
+
+
+	if (a != 0 && mas[a][b] == mas[a-1][b] + 1){
+		if (pr[a-1][b] == -1)
+			dfs(a-1, b);
+		pr[a][b] = max(pr[a][b], pr[a-1][b] + 1);
+	}
+
+	if (b != 0 && mas[a][b] == mas[a][b-1] + 1){
+		if (pr[a][b-1] == -1)
+			dfs(a, b-1);
+		pr[a][b] = max(pr[a][b], pr[a][b-1] + 1);
+	}
+	if (a != n-1 && mas[a][b] == mas[a+1][b] + 1){
+		if (pr[a+1][b] == -1)
+			dfs(a+1, b);
+		pr[a][b] = max(pr[a][b], pr[a+1][b]+1);
+	}
+	if (b != m-1 && mas[a][b] == mas[a][b+1] + 1){
+		if (pr[a][b+1] == -1)
+			dfs(a, b+1);
+		pr[a][b] = max(pr[a][b], pr[a][b+1]+1);
+	}
+
+	pr[a][b] = max(pr[a][b], 1);
+	ans = max(ans, pr[a][b]);
+}
+
+int main() {
+
+	//freopen("sherlocked.in", "r", stdin);
+	//freopen("sherlocked.out", "w", stdout);
+
+	
+	cin >> n >> m;
+
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+		{
+			cin >> mas[i][j];
+			pr[i][j] = -1;
+		}
+
+
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			if (pr[i][j] == -1)
+				dfs(i, j);
+
+	cout << ans << endl;
+
+
+
+	return 0;
+}

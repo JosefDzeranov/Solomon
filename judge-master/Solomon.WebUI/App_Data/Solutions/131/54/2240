@@ -1,0 +1,30 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var N,i,j:integer; a,x:string; z:boolean;
+begin
+readln(a);
+N:=length(a);
+x:='';
+z:=true;
+for i:=1 to N-1 do
+ for j:=1 to N do
+  if a[i]=a[j] then
+   begin
+   z:=false;
+   x:=x+a[i]+' ';
+   end
+  else
+  z:=true;
+if z=True then writeln('YES')
+else
+begin
+writeln('NO');
+write(x);
+end;
+readln;
+end.

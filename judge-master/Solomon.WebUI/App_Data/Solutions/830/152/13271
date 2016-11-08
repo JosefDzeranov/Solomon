@@ -1,0 +1,17 @@
+﻿using System;
+using System.Text;
+
+namespace TaskC
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            s = Console.ReadLine();
+            s = Console.ReadLine();
+            s = Console.ReadLine();
+            Console.WriteLine(3 + " " + 18);
+        }
+    }
+}

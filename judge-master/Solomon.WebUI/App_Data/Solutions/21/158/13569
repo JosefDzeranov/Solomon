@@ -1,0 +1,47 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,j,x,col:integer;
+s:string;
+mas:array[1..200] of integer;
+begin
+ readln(s);
+ col:=0;
+ for I := 1 to length(S) do
+ begin
+   if i+8<length(s)-3 then
+   begin
+     if (s[i]='v') and (s[i+1]='k') and (s[i+2]='o') and (s[i+3]='n') and (s[i+4]='t') and (s[i+5]='a') and (s[i+6]='k') and (s[i+7]='t') and (s[i+8]='e') then
+       begin
+         mas[x]:=1;
+         x:=x+1;
+      end;
+   end;
+   if i+3<=length(s) then
+   begin
+     if (s[i]='a') and (s[i+1]='p') and (s[i+2]='i') then
+     begin
+       mas[x]:=2;
+       x:=x+1;
+     end;
+   end;
+   
+ end;
+ for i := 1 to x-1 do
+   begin
+     if mas[i]=1 then
+     begin
+       for j := i+1 to x do
+         begin
+           if mas[j]=2 then col:=col+1;
+
+         end;
+     end;
+   end;
+   writeln(col);
+   readln;
+end.

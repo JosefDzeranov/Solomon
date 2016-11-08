@@ -1,0 +1,82 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    static String[] songs;
+    static int N;
+
+    public static int[] subFind(boolean used[], String start) {
+        int maxFrag = 0;
+        int maxLen = 0;
+
+        for (int i = 0; i < N; i++) {
+            if (!used[i]) {
+                if (songs[i].substring(0, 3).equals(start)) {
+                    int frag = 1;
+                    int len = songs[i].length();
+                    boolean[] newUsed = used.clone();
+                    newUsed[i] = true;
+                    int[] result = subFind(newUsed, songs[i].substring(songs[i].length()-3));
+                    frag += result[0];
+                    len += result[1];
+                    if (frag > maxFrag) {
+                        maxFrag = frag;
+                        maxLen = len;
+                    } else if (frag == maxFrag) {
+                        if (len > maxLen) {
+                            maxFrag = frag;
+                            maxLen = len;
+                        }
+                    }
+                }
+            }
+        }
+
+        return new int[] {maxFrag, maxLen};
+    }
+
+    public static int[] find() {
+        int maxFrag = 0;
+        int maxLen = 0;
+        boolean[] used = new boolean[N];
+        for (int i = 0; i < N; i++) {
+            Arrays.fill(used, false);
+            int frag = 1;
+            int len = songs[i].length();
+
+            used[i] = true;
+            int[] result = subFind(used, songs[i].substring(songs[i].length()-3));
+            frag += result[0];
+            len += result[1];
+
+            if (frag > maxFrag) {
+                maxFrag = frag;
+                maxLen = len;
+            } else if (frag == maxFrag) {
+                if (len > maxLen) {
+                    maxFrag = frag;
+                    maxLen = len;
+                }
+            }
+        }
+
+        return new int[] {maxFrag, maxLen};
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        N = scanner.nextInt();
+        scanner.nextLine();
+        songs = new String[N];
+        for (int i = 0; i < N; i++) {
+            songs[i] = scanner.nextLine();
+        }
+
+        int[] result = find();
+        System.out.print(result[0]);
+        System.out.print(" ");
+        System.out.print(result[1]);
+        System.out.println();
+    }
+}

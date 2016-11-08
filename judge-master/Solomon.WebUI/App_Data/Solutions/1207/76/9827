@@ -1,0 +1,71 @@
+uses crt;
+
+var
+count,i,i1,q,q1,j,j1,j2,j3,s,x,cod:integer;
+mas:array[1..100,1..100] of string;
+a,a1:string;
+
+begin
+s:=0;
+q1:=101;
+q:=1;
+
+//Ввод данных
+
+readln(count);   //Кол-во строк
+for i:= 1 to count do //Заполнение массива строками
+    if i < q1 then
+        readln(mas[q,i])
+    else begin
+        inc(q);
+        dec(i,100);
+        readln(mas[q,i]);
+    end;
+    
+//mas[q,i] - Последний элемент
+
+//
+i1:=100;
+for j:= 1 to q do begin
+    if j = q then i1:=i;
+    for j1:= 1 to i1 do begin
+        a:= mas[j,j1];
+        for j2:=1 to length(a) do
+            if  ((a[j2]='1') or (a[j2]='2') or (a[j2]='3') or (a[j2]='4') or (a[j2]='5') or (a[j2]='6') or (a[j2]='7') or (a[j2]='8') or (a[j2]='9') or (a[j2]='0')) then
+                a1:=a1+a[j2]
+            else
+                a1:=a1+'_';
+            a:='';
+            for j3:= 1 to length(a1) do
+                if a1[j3]<>'_' then
+                   a:=a+a1[j3]
+                else
+                   val(a,x,cod);
+                   s:=s+x;
+    end;
+end;
+writeln(s);
+end.
+
+
+{for i:= 1 to count do begin
+a:=mas[i];
+for j:=1 to length(a) do
+if ((a[j]='1') or (a[j]='2') or (a[j]='3') or (a[j]='4') or (a[j]='5') or (a[j]='6') or (a[j]='7') or (a[j]='8') or (a[j]='9') or (a[j]='0')) then
+a1:=a1+a[j]
+else
+a1:=a1+'_';
+a:='';
+for j:=1 to length(a1) do
+if a1<>'_' then
+a:=a+a1
+else
+for k:=1 to length(a) do begin
+val(copy(a,k,1),x,code);
+s:=s+x;
+end;
+a:='';
+end;
+write(s);
+end.
+}

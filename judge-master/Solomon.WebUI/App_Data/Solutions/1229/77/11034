@@ -1,0 +1,39 @@
+program z5;
+
+var
+  a: array [1..1000, 1..1000] of string;
+  i, j, n, d, ind: integer;
+  s: string;
+  f, t: text;
+
+begin
+  assign(f, 'input.txt');
+  assign(t, 'output.txt');
+  reset(f);
+  rewrite(t);
+  ind := 1;
+  
+  readln(f, s);
+  n := length(s);
+  if sqrt(n) > trunc(sqrt(n)) then d := trunc(sqrt(n)) + 1
+  else d := trunc(sqrt(n));
+  for i := 1 to d do
+    for j := 1 to d do
+    begin
+      if ind > n then a[j, i] := ' '
+      else
+        a[j, i] := copy(s, ind, 1);
+      ind := 1 + ind;
+    end;
+  writeln;
+  ind := 1;
+  for i := 1 to d do
+    for j := 1 to d do
+    begin
+      if ind > n then exit;
+      write(t, a[i, j]);
+      ind := ind + 1;
+    end;
+  close(t);
+  close(f);
+end.

@@ -1,0 +1,49 @@
+Var a: array [1..100000] of string;
+i,k,y,x,F,R,t,IT,g:integer;
+z,S:string;
+Begin
+ z:='0123456789';
+ readln(k);
+ i:=1;
+ g:=20;
+  while i<=k do begin
+    readln(a[i]);
+    
+      for y:=1 to length(a[i]) do begin //2
+         
+         
+         for x:=1 to 10 do begin //3
+             
+             if copy(a[i],y,1)=z[x] then begin
+              S:=S+z[x];
+              break;
+              F:=1;
+              end
+              else F:=0;
+             
+               
+             end;//3
+             
+          if F<>1 then S:=S+'?';
+          
+        end;   
+        for t:=1 to (length(S)-1) do
+         if g>2 then
+         if (copy(S,t,1)<>'?') then begin
+             if (length(S)-t)>2 then
+           if (copy(S,t+2,1)<>'?') then begin
+           g:=t;
+               IT:=IT+10*(StrToInt(copy(S,t,1)))+StrToInt(copy(S,t+2,1))
+               end
+               else
+               IT:=IT+StrToInt(copy(S,t,1));
+               
+         
+          //S:='';
+          F:=0;
+      end;//2
+    inc(i); 
+    
+  end;//1
+ writeln(IT,' ',S)
+End.

@@ -1,0 +1,16 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+
+namespace Mesi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            System.Collections.Generic.HashSet<int> q = new System.Collections.Generic.HashSet<int>();
+            Console.WriteLine();
+            Console.ReadLine();
+        }
+    }
+}

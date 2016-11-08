@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        string s = Console.ReadLine();
+        List<char> ch = new List<char>();
+        int curIndex = 0;
+        if(s.Length>0)
+        for (int i = 0; i < s.Length; i++)
+        {
+            switch (s[i])
+            {
+                case '#':
+                    if (ch.Count >= 0)
+                    {
+                        ch.RemoveAt(curIndex - 1);
+                        curIndex--;
+                    }
+                    break;
+                case '-':
+                    if (curIndex > 0)
+                        curIndex--;
+                    break;
+                case '+':
+                    if (curIndex < ch.Count)
+                        curIndex++;
+                    break;
+                default:
+                    ch.Insert(curIndex, s[i]);
+                    curIndex++;
+                    break;
+            }
+        }
+        foreach (var item in ch)
+        {
+            Console.Write(item);
+        }
+  
+    }
+}

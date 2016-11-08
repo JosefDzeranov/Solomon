@@ -1,0 +1,13 @@
+var
+  cur, n: longint;
+
+begin
+  read(n);
+  for cur := 1 to n do 
+  begin
+    if(cur * (cur + 1) = n * 2) then begin
+      writeln(cur);
+      halt(0);
+    end;
+  end;
+end.

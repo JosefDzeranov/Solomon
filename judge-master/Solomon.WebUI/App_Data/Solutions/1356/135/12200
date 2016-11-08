@@ -1,0 +1,41 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+      a, b, k, m, x, day, left, right, der:int64;
+      i: integer;
+
+begin
+  readln(a, k, b, m, x);
+  left := 0;
+  Right := x;
+  day := right div 2;
+  while der < x do
+    begin
+      der := (day - day div k) * a + (day - day div m) * b;
+      if der > x then
+      begin
+        right := right div 2;
+        day := right div 2;
+      end
+        else
+       if der < x then
+        begin
+         left := day;
+         day := (right - left) div 2 + left;
+        end;
+    end;
+    for I := 1 to 1000000 do
+     begin
+     if (day - day div k) * a + (day - day div m) * b > x then
+     day := day - 1;
+     end;
+    if (day - day div k) * a + (day - day div m) * b < x then
+    day := day +1;
+  writeln(day);
+  readln;
+end.

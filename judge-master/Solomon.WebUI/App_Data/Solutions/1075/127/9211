@@ -1,0 +1,85 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s, w, pw: String;
+  i, l, j, k: Integer;
+  gf: Boolean;
+
+function le(a, b: Char): Integer;
+begin
+  le := abs(ord(a) - ord(b));
+end;
+
+function Consists(st, wo: String): Boolean;
+var
+  ii, jj: Integer;
+  flag: Boolean;
+begin
+  flag := False;
+  for ii := 1 to length(st) - length(wo) + 1 do
+    for jj := 1 to length(wo) do
+    begin
+      if st[jj + ii - 1] = wo[j] then
+        flag := True
+      else
+        if not flag then
+        begin
+          flag := False;
+          break;
+        end;
+    end;
+  Consists := flag;
+end;
+
+function ChangeStr(str: String; step: Integer): String;
+var
+  ii: Integer;
+  fw: String;
+begin
+  fw := '';
+  for ii := 1 to length(str) do
+    if (ord(str[ii]) - 64 + 26 + step) mod 26 = 0 then
+      fw := fw + chr(90)
+    else
+      fw := fw + chr((ord(str[ii]) - 64 + 26 + step) mod 26);
+  ChangeStr := fw;
+end;
+
+begin
+  gf := False;
+  //assignfile(input, 'INPUT.TXT');
+  //assignfile(output, 'OUTPUT.TXT');
+  l := 0;
+  readln(s);
+  readln(w);
+  for i := 1 to length(s) - length(w) + 1 do
+  begin
+  if not gf then
+    for j := 1 to length(w) do
+    begin
+      l := le(s[j + i - 1], w[j]);
+      if Consists(s, ChangeStr(w, l)) then
+      begin
+        writeln(ChangeStr(s, -l));
+        gf := True;
+        break;
+      end;
+      if Consists(s, ChangeStr(w, -l)) then
+      begin
+        writeln(ChangeStr(s, l));
+        gf := True;
+        break;
+      end;
+    end;                        
+  end;
+  if not gf then
+    writeln('IMPOSSIBLE');
+  readln;
+end.
+//A - 65, a - 97
+//Z - 90, z - 122

@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main() {
+
+	int n, k;
+	cin >> n >> k;
+	long long int ans = 0;
+	int s;
+	//ans += n / k;
+	s = n / k;
+	s *= 2;
+	
+	if (k >= 6) {
+		if (n % k >= 5)
+			s++;
+	int d = 5;
+	for (int i = 0; i < s; i++, d += 5) 
+	{
+		int t = d;
+		while (t % 5 == 0)
+		{
+			t /= 5;
+			ans++;
+		}
+
+	}
+	}
+	else
+		ans = n / k;
+
+	cout << ans << endl;
+	return 0;
+}

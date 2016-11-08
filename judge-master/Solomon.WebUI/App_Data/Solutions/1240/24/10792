@@ -1,0 +1,61 @@
+VAR
+  f: Boolean;
+  n,m,k,i,j,ans,mx: LongInt;
+  a,kol: Array [0..1024] of LongINt;
+  mas: Array [0..1024] of Array [0..9] of Boolean;
+BEGIN
+  // INPUT
+  For i := 2 to 1024 do begin
+    For j := 0 to 9 do
+      mas[i][j] := mas[i-1][j];
+    
+    While (j > 0)and(mas[i][j]) do begin
+      mas[i][j] := false;
+      Dec(j);
+    end;
+      
+    mas[i][j] := true;
+  End;
+    
+  Read(n);
+  For i := 1 to n do begin
+    Read(k);
+    For j := 0 to 9 do Mas[0][j] := false;
+    
+    if (k = 0) then mas[0][0] := true
+    else
+      While (k > 0) do begin
+        mas[0][k mod 10] := true;
+        k := k div 10;
+      End;
+      
+      For j := 1 to 1024 do begin
+        For m := 0 to 9 do
+          if (mas[j][m] <> mas[0][m]) then Break;
+        
+        if (mas[j][m] = mas[0][m]) then begin
+          Inc(a[j]); Break; end;
+      End;
+  End;
+  
+  mx := 0;
+  For i := 1 to 1024 do
+    if (a[i] > mx) then mx := a[i];
+  
+  for i := 2 to mx do
+    kol[i] := kol[i-1] + i-1;
+  // ALGORITHM
+  For i := 1 to 1024 do
+    For j := i+1 to 1024 do begin
+      f := false;
+      For m := 0 to 9 do
+        if (mas[i][m])and(mas[j][m]) then begin f := true; Break; end;
+        
+      if (f) then ans := ans + a[i] * a[j];
+    end;
+  
+  For i := 1 to 1024 do
+    ans := ans + kol[a[i]];
+    
+  Write(ans);
+END.

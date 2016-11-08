@@ -1,0 +1,9 @@
+var n,i,c,s,k:longint;
+    a,b:array[1..1000000] of longint;
+
+begin
+randomize;
+     readln(n);
+
+        writeln(random(50));
+end.

@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+	int n;
+	string s;
+	cin >> n;
+
+	getline(cin, s);
+	int sum = 0;
+	int w;
+	for (int i = 0; i < n; i++) {
+		
+		int l = 0, r = 0;
+		getline(cin, s);
+		if (s[0] == '>')
+			l++;
+		if (s[1] == '>')
+			l++;
+		if (s[2] == '<')
+			r++;
+		if (s[3] == '<')
+			r++;
+		sum += l - r;
+
+	}
+
+	if (sum == 0)
+		cout << "0" << endl;
+	else
+		if (sum > 0)
+		{
+			cout << "1 ";
+			cout << sum << endl;
+		}
+		else
+		{
+			cout << "2 ";
+			sum *= -1;
+			cout << sum << endl;
+		}
+
+	return 0;
+}

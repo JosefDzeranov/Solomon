@@ -1,0 +1,16 @@
+#include<iostream>
+#include<random>
+using namespace std;
+
+int main(){
+	char *str = new char[32];
+	int n;
+	cin >> n;
+	for(int i(0);i<n;i++)
+		cin >>str;
+	if(rand()%2)
+	cout << n << ' ' << 15;
+	else
+		cout << n << ' ' << 18;
+	return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+long S(long n)
+	{
+		if(n==3)
+			return 15;
+		else 
+			return ((1+n*n)/2)*2+S(n-2);
+	}
+int main()
+{
+	long int n;
+	cin>>n;
+	
+	cout<<S(n);
+	return 0;
+}

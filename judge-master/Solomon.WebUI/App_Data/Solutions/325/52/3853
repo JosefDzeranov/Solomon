@@ -1,0 +1,11 @@
+program z1;
+var n,k,x:longint;
+begin
+n:=0;
+k:=0;
+x:=0;
+readln(n);
+k:=n-1;
+x:=n*k*k-(n*k);
+writeln(x);
+end.

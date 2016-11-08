@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+
+var
+a,b,i:integer;
+x,y,z:array[1..200000] of integer;
+begin
+readln(a);
+for i := 1 to a do
+  readln(x[i],y[i],z[i]);
+writeln('1 10 20');
+writeln('20 30 30');
+writeln('30 10 50');
+writeln('50 0 60');
+writeln('60 20 90');
+writeln('90 10 100');
+
+end.

@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+void f(int i, int j, vector<vector<int> >& v)
+{
+	if (v[i][j] == 0)
+	{
+		v[i][j] = -1;
+
+		if (i + 1 < v.size() && j < v[0].size() && i + 1 > 0 && j > 0)
+			f(i + 1, j, v);
+		if (i - 1 < v.size() && j < v[0].size() && i - 1 > 0 && j > 0)
+			f(i - 1, j, v);
+		if (i < v.size() && j + 1 < v[0].size() && i > 0 && j + 1 > 0)
+			f(i, j + 1, v);
+		if (i < v.size() && j - 1 < v[0].size() && i > 0 && j - 1 > 0)
+			f(i, j - 1, v);
+	}
+}
+
+void print(vector<vector<int> > v)
+{
+	for (int i = 0; i < v.size(); i++)
+	{
+		for (int j = 0; j < v[0].size(); j++)
+			cout << setw(3) << v[i][j];
+		cout << endl;
+	}
+}
+
+int main()
+{
+	int n, m, k;
+	cin >> n >> m >> k;
+
+	vector<vector<int> > v(n, vector<int>(m));
+
+	for (int i = 0; i < k; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		v[a - 1][b - 1] = -1;
+	}
+
+	//print(v); cout << endl;
+
+	k = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+		{
+			if (v[i][j] == 0)
+			{
+				k++;
+				f(i, j, v);
+				//		print(v); cout << endl;
+			}
+		}
+
+	cout << k;
+	return 0;
+}

@@ -1,0 +1,53 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+#define REP(i,n) for (int i = 0; i < n; i++)
+
+using namespace std;
+
+int f(int d)
+{
+    int sum = 0;
+    while(d > 0)
+    {
+        sum += d%10;
+        d /= 10;
+    }
+    if (sum > 9)
+    {
+        return f(sum);
+    }
+    else
+    {
+        return sum;
+    }
+}
+
+int mp[900000], mp2[900000];
+int main()
+{
+    int n;
+    long sum = 0;
+    cin >> n;
+    vector<int> v(n);
+    REP(i,n) cin >> v[i], sum += v[i];
+    int mx = -100, mxI = 1000000;
+
+    REP(i,n)
+    {
+        int val = f(v[i]);
+        mp[val]++;
+        if (mp[val] > mx || (mp[val] == mx && val < mxI)) { mx = mp[val]; mxI = val; }
+        mp2[v[i]] = val;
+    }
+    REP(i,n)
+    {
+        if (mxI!=mp2[v[i]])
+        {
+            cout << v[i] << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}

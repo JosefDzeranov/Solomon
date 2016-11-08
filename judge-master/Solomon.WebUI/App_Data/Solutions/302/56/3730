@@ -1,0 +1,17 @@
+Var
+n,x,k,l:longint;
+Begin
+Readln(n);
+k:=0;
+l:=0;
+For x:=1 to n do if x mod 2=0 then k:=k+1;
+n:=3;
+For x:=1 to k do
+Begin
+If x mod 4 =0 then begin l:=l+n; n:=n+1; end;
+If x mod 4=1 then l:=l+1;
+If (x mod 2=0) and (x mod 4<>0) then l:=l+2;
+If (x mod 2 <>0) and (x mod 4<>1) and (x mod 4 <>0) then l:=l+1;
+End;
+Writeln(l);
+End.

@@ -1,0 +1,32 @@
+var a:array [0..102,0..102] of integer;i,j,k,l,kol,m,n:integer;t:boolean;
+procedure fd(i1,j1:integer);
+begin
+if a[i1,j1]=0 then begin
+t:=true;
+a[i1,j1]:=1;
+fd(i1-1,j1);
+fd(i1,j1+1);
+fd(i1+1,j1);
+fd(i1,j1-1);
+end;
+end;
+begin
+read(n,m,k);
+
+for i:=0 to m+1 do a[0,i]:=-2; 
+for i:=0 to n+1 do a[i,0]:=-2;
+for i:=0 to m+1 do a[n+1,i]:=-2;
+for i:=0 to n+1 do a[i,m+1]:=-2;
+for l:=1 to k do begin read(i,j);a[i,j]:=-1;end;
+for i:=1 to n do 
+for j:=1 to m do begin
+t:=false;
+fd(i,j);
+if t then inc(kol);
+end;
+write(kol);
+end.
+
+
+
+

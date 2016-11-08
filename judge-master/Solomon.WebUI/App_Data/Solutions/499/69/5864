@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double a, b, x;
+    cin >> a >> b >> x;
+    double k = 0;
+    bool l = true, f = false;
+    while(x / (b + k) > 1000)
+    {
+        if(l)
+        {
+            l = false;
+            for(int i = 1; i < a; i ++)
+            {
+                if((b + k + i) <= 1000)
+                {
+                    k += i;
+                    break;
+                    f = true;
+                }
+            }
+            if(not f)
+                k += a;
+        }
+        else
+        {
+            l = true;
+            k += b;
+        }
+    }
+    cout << x / (b + k);
+    return 0;
+}

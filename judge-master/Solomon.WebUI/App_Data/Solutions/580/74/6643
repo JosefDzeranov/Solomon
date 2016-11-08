@@ -1,0 +1,15 @@
+﻿using System;
+
+
+namespace Aslan
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split();
+            Console.Write(1000);
+
+        }
+    }
+}

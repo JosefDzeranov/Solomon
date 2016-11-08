@@ -1,0 +1,20 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int n,l,x;
+    float r1,pi;
+    cin>>n>>l>>r1;
+
+    pi=3.14;
+    x=ceil(l/(2*r1));
+    {
+        if ((2*r1*x>=l)&&(pi*r1*x*2<=n))
+    cout <<"YES"<< endl <<float(2*x);
+    else
+    cout <<"NO"<< endl;
+    }
+    return 0;
+}

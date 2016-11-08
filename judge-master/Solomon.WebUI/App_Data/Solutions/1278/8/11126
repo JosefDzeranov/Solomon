@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OlimpSolomon
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int summ = 0;
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            for(int i=0; i<ss.Length;i++)
+            {
+                summ +=Convert.ToInt32(ss[i]);
+            }
+            Console.WriteLine(summ);
+            Console.ReadLine();
+        }
+    }
+}

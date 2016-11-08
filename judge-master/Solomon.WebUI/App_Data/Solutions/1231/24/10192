@@ -1,0 +1,41 @@
+uses SysUtils;
+
+function bin2dec(const s:String):LongInt;
+var i,p,res:LongInt;
+begin
+p:=1;
+res:=0;
+for i:=Length(s) downto 1 do
+ begin
+  if s[i]='1' then res:=res+p;
+  p:=p*2;
+ end;
+bin2dec:=res;
+end;
+
+var i,j,n,t,max,k:LongInt;
+a:array[1..500000] of LongInt;
+rs,s:String;
+c:Char;
+begin
+k:=0;
+for i:=1 to 500000 do a[i]:=0;
+Readln(n);
+max:=0;
+for i:=1 to n do
+ begin
+  rs:='';
+  Read(t);
+  s:=IntToStr(t);
+  for c:='9' downto '0' do
+   if Pos(c,s)=0 then rs:=rs+'0' else rs:=rs+'1';
+  inc(max);
+  a[max]:=bin2dec(rs);
+ end;
+
+
+for i:=1 to max-1 do
+ for j:=i+1 to max do
+  if ( (a[i] and a[j])<>0 ) then inc(k);
+Writeln(k);
+end.

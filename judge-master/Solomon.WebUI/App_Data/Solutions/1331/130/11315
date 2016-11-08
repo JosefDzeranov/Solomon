@@ -1,0 +1,76 @@
+program HallChoice;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a, b, c, d : integer;
+  i, j : integer;
+  square : int64;
+  per : int64;
+  countOfHalls : int64;
+  wasMore, isMore : boolean;
+
+begin
+  readln (a, b, c, d);
+  i := 1;
+  j := 1;
+  countOfHalls := 0;
+  wasMore := false;
+  while (i <= j) or not (wasMore) do
+  begin
+    square := i * j;
+    per := (i + j) * 2;
+    if (square >= a) and (square <= b) then
+      if (per >= c) and (per <= d) then
+        begin
+          countOfHalls := countOfHalls + 1;
+          inc (j);
+          isMore := false;
+        end
+      else
+        begin
+        if per < c then
+          begin
+            isMore := false;
+            inc (j)
+          end
+        else
+          if per > d then
+            if isMore then
+            begin
+              wasMore := true;
+              i := j + 1;
+            end
+            else
+            begin
+              j := i + 1;
+              inc (i);
+              isMore := true;
+            end
+        end
+    else
+      if square < a then
+      begin
+        isMore := false;
+        inc (j)
+      end
+      else
+        if square > b then
+          if isMore then
+          begin
+            wasMore := true;
+            i := j + 1;
+          end
+          else
+            begin
+              j := i + 1;
+              inc (i);
+              isMore := true;
+            end;
+  end;
+  writeln (countOfHalls);
+  readln;
+end.

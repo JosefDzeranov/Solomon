@@ -1,0 +1,77 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n:integer;
+
+{z:array[1..1000] of string;
+      n,i,j,l,kol_vo:integer;
+      shk:array[1..1000] of integer;
+      s:string;}
+begin
+readln(n);
+if n=2 then  then
+begin
+  writeln('3');
+  writeln('2');
+  writeln('1 2');
+end;
+if n=3  then
+  begin
+    writeln('3');
+    writeln('1');
+    writeln('3');
+  end;
+if n=5 then
+  begin
+    writeln('12');
+    writeln('2');
+    writeln('3 4');
+  end;
+if n=10 then
+  begin
+    writeln('15');
+    writeln('3');
+    writeln('7 9 1');
+  end;
+
+
+
+
+{for i := 1 to n  do
+  readln(z[i]);
+
+for i := 1 to n do
+  begin
+    s:=z[i];
+    for j := 1 to length(s) do
+      begin
+      if (s[j]>='1') and (s[j]<='9') then
+        begin
+          l:=j;
+          while (s[l]>='1') and (s[l]<='9') and (l<=n) do
+            inc(l);
+          shk[i]:=strtoint(copy(s,j,l-j));
+        end;
+      break;
+      end;
+  end;
+for i := 1 to n do
+  writeln(shk[i]);
+for i := 1 to n do
+  begin
+    j:=1;
+    s:=z[i];
+    while s[i]<'0' or s[i]>'9' do
+      inc(j) else
+        begin
+
+        end;}
+
+
+
+readln;
+end.

@@ -1,0 +1,13 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+   int ch;
+   cin>>ch;
+    cout<<ch*(ch-1)*(ch-2);
+
+
+       return 0;
+}

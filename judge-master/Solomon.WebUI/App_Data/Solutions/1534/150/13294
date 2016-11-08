@@ -1,0 +1,39 @@
+program a;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;
+i,j,t,st:integer;
+
+begin
+  readln(s);
+  t:=0; st:=1;
+  for i:= 1 to length(s) do begin
+    
+    if s[i]='*' then begin
+
+      if (length(s)-i=0) then t:=t+1 else
+      begin
+        st:=1 ;
+        for j:=1 to abs(length(s)-i-1)  do
+          begin
+            st:=st*2;
+          end;
+          
+      end;
+       t:=t+st;
+    end;
+  end;
+
+
+ writeln(t);
+
+       
+
+
+
+
+end.

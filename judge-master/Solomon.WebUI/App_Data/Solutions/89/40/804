@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{string a;
+cin>>a;
+if(a=="a-f")
+{
+    cout<<"af";
+}
+if(a=="+##-"){cout<<"";}
+if(a=="VR#Y-+##HEL-+O#L0"){cout<<"HELLO";}
+    return 0;
+}

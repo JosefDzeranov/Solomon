@@ -1,0 +1,93 @@
+var
+  v: array [1..10000] of integer;
+  c, k: array [1..100] of byte;
+  i, j, m, n, d, b, obm, ind: byte;
+  f, t: text;
+  flag, f1, f2, f3: boolean;
+
+begin
+  ind := 1;d := 0;
+  assign(f, 'input.txt');
+  assign(t, 'output.txt');
+  reset(f);
+  rewrite(t);
+  read(f, n);
+  read(f, m);
+  for i := 1 to m do
+  begin
+    readln(f);
+    read(f, c[i]);
+    read(f, k[i]);
+  end;
+  i := 0;
+  repeat
+    i := i + 1;
+    if c[i] <> k[i] then
+    begin
+      for j := 1 to m do
+      begin
+        if (f1 = false) and (k[j] = c[i]) then
+          if k[j] <> c[j] then
+            b := j
+          else
+          begin
+            f1 := true;
+            d := d + 1;
+            v[ind] := k[i];
+            v[ind + 1] := c[i];
+            v[ind + 2] := k[j];
+            ind := ind + 4;
+            k[i] := k[j];
+          end;
+        
+        
+        if (k[j] = c[i]) and (k[i] = c[j]) then
+        begin
+          f1 := true;
+          b := j;
+        end;
+      end;
+      if f1 = true then
+      begin
+        v[ind] := k[i];
+        v[ind + 1] := c[i];
+        v[ind + 2] := k[b];
+        v[ind + 3] := c[b];
+        ind := ind + 4;
+        obm := c[i];
+        c[i] := c[b];
+        c[b] := obm;
+        
+        d := d + 1;
+      end;
+      
+      
+      f1 := false;
+    end;
+    j := 1;
+    f2 := false;
+    f3 := false;
+    repeat
+      if c[j] <> k[j] then
+        f2 := true;
+      inc(j);
+      if j > m then
+        f3 := true;
+      if f2 = false then
+        flag := true;
+    until f3 = true;
+    
+  until flag = true;
+
+write (t,d);
+writeln(t);
+for ind:=1 to d*4 do
+begin
+if v[ind]<>0 then write(t,v[ind],' ')
+else write(t,'   ');
+if (v[ind] mod 4) =(0) then
+writeln(t);
+end;
+close(f);
+close(t);
+end.

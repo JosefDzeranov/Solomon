@@ -1,0 +1,6 @@
+var l,x1,y1,x2,y2:integer;
+begin
+read(l,x1,y1,x2,y2);
+if (l=0) then write(0) else
+write((abs(x2-x1))*(abs(y2-y1)));
+end.

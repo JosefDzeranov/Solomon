@@ -1,0 +1,29 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x:string;
+n,k:integer;
+begin
+x:='';
+readln(n);
+while n>1 do
+  begin
+   if n mod 2=0 then
+   begin
+    x:=('*')+x;
+    n:=n div 2;
+   end
+   else
+   begin
+    x:=('+')+x;
+    n:=n-1;
+   end;
+  end;
+
+ write(x);
+readln;
+end.

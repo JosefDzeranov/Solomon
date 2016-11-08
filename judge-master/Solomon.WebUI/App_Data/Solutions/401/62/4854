@@ -1,0 +1,55 @@
+//package com.acidka;
+
+public class B {
+
+	public static boolean canchange = true;
+	public static boolean polinom(int position, String polynom)
+	{
+		if(polynom.charAt(position)==polynom.charAt(polynom.length()-position-1))
+			if(position < polynom.length()/2)
+			{
+				//System.out.println("Desy");
+				return polinom(position+1, polynom);
+			}
+			else
+			{
+				//System.out.println("Hai?");
+				return true;
+			}
+		else if(position != polynom.length()/2 && canchange)
+		{
+			canchange = false;
+			for(int i = position; i < polynom.length()-position; i++)
+			{
+				if(polynom.charAt(i)==polynom.charAt(position))
+				{
+					String newpolynom = polynom;
+					newpolynom.replace(polynom.charAt(polynom.length()-position-1), polynom.charAt(i));
+					if(polinom(position, newpolynom))
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			String line;
+			line = s.nextLine();
+			if(polinom(0, line))
+				System.out.print("Yes");
+			else
+				System.out.print("No");
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

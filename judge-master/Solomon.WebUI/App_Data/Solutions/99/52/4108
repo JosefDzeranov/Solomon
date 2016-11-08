@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,i,n=1,m=6,k=1,C;
+	cin>>N;
+
+	for(i=1;i<=N;i++)
+		n*=i;
+
+	for(i=1;i<=N-3;i++)
+		k*=i;
+
+	if(N!=3)C=(n/(m*k))*(N-2);
+	else C=(n/(m*k))*6;
+	
+	cout<<C;
+
+	cin>>N;
+	return 0;
+}

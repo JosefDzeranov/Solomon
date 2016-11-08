@@ -1,0 +1,91 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [0..10001,0..10001] of byte;
+och:array [1..2,1..100000000] of integer;
+f:boolean; i,j,k,m,n,b,c,hv,g:integer;
+begin
+ readln(m,n,k);
+ for i:=1 to m do
+  for j:=1 to n do
+   a[i,j]:=0;
+  for i:=0 to m+1 do
+  begin
+   a[i,0]:=1;
+   a[i,n+1]:=1;
+  end;
+  for i:=0 to n+1 do
+  begin
+   a[0,i]:=1;
+   a[m+1,i]:=1;
+  end;
+ for i:=1 to k do
+  begin
+   readln(b,c);
+   a[b,c]:=2;
+  end;
+  f:=true;
+  k:=0;
+ while f do
+  begin
+   f:=false;
+   for i:=1 to m do
+    begin
+    for j:=1 to n do
+     if a[i,j]=0 then
+      begin
+       och[1,1]:=i;
+       och[2,1]:=j;
+       a[i,j]:=1;
+       inc(k);
+       f:=true;
+       break;
+      end;
+      if f then break;
+     end;
+  if f then
+  begin
+  hv:=1;
+  g:=1;
+  while g<=hv do
+   begin
+    if a[och[1,g]+1,och[2,g]]=0 then
+     begin
+      inc(hv);
+      och[1,hv]:=och[1,g]+1;
+      och[2,hv]:=och[2,g];
+      a[och[1,g]+1,och[2,g]]:=1;
+     end;
+    if a[och[1,g]-1,och[2,g]]=0 then
+     begin
+     inc(hv);
+      och[1,hv]:=och[1,g]-1;
+      och[2,hv]:=och[2,g];
+      a[och[1,g]-1,och[2,g]]:=1;
+     end;
+    if a[och[1,g],och[2,g]+1]=0 then
+     begin
+     inc(hv);
+      och[1,hv]:=och[1,g];
+      och[2,hv]:=och[2,g]+1;
+      a[och[1,g],och[2,g]+1]:=1;
+     end;
+    if a[och[1,g],och[2,g]-1]=0 then
+     begin
+     inc(hv);
+      och[1,hv]:=och[1,g];
+      och[2,hv]:=och[2,g]-1;
+      a[och[1,g],och[2,g]-1]:=1;
+     end;
+    inc(g);
+   end;
+   end;
+ end;
+ writeln(k);
+ readln;
+end.
+ 

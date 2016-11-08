@@ -1,0 +1,73 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    int s, res;
+    vector< vector<int> > numbers;
+
+    cin >> s;
+
+    int z[s];
+
+    res = 0;
+
+    for( unsigned j = 0; j < 10; j++ )
+    {
+        numbers.push_back( vector<int>() );
+    }
+
+    for( int i = 0; i < s; i++ )
+    {
+        scanf( "%d", &z[i] );
+
+        int e = z[ i ];
+        int a[10];
+
+        for( unsigned j = 0; j < 10; j++ )
+            a[ j ] = -1;
+
+        vector<int> temp;
+
+        temp.reserve( 1 );
+
+        while( e != 0 )
+        {
+            int t = e % 10;
+
+            for( unsigned j = 0; j < numbers[ t ].size(); j++ )
+            {
+                if( temp.size() == numbers[ t ][ j ] || temp[ numbers[ t ][ j ] ] != 1 )
+                    res++;
+
+                if( temp.size() <= numbers[ t ][ j ] )
+                    temp.reserve( numbers[ t ][ j ] + 1 );
+
+                temp[ numbers[ t ][ j ] ] = 1;
+            }
+
+            a[ e % 10 ] = z[ i ];
+
+            e = e / 10;
+        }
+
+        for( signed j = 0; j < 10; j++ )
+        {
+            if( a[ j ] > -1 )
+            {
+                numbers[ j ].push_back( a[ j ] );
+
+                a[ j ] = -1;
+            }
+        }
+    }
+
+    cout << res << endl;
+
+    return 0;
+}
+

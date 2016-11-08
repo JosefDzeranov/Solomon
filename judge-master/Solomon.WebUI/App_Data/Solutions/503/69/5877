@@ -1,0 +1,24 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var a,b,x,z:integer; v,t1,t2:extended;
+begin
+ readln(a,b,x);
+ t1:= x/1000;
+ t2:=t1;
+ while t2>a do
+ begin
+ z:=z+1;
+ if z mod 2=1 then t2:=t2-a
+ else t2:=t2-b;
+ end;
+ if t1<=a then v:=1000 else
+ begin
+   t2:=b-t2;
+   v:=x/(t1+t2);
+ end;
+writeln(v);
+end. 

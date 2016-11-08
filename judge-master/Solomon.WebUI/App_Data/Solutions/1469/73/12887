@@ -1,0 +1,10 @@
+var i,j,s:longint;
+begin
+  read(j);
+  while(s<>j) do
+  begin
+    inc(i);
+    s:=s+i;
+  end;
+  writeln(i);
+end.

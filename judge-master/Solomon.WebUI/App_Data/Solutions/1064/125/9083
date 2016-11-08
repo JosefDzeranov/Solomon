@@ -1,0 +1,42 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,y1,x2,y2,x3,y3,pos,pos1,s,s1,s2,s3,s4:integer;
+sr:real;
+begin
+readln(x1,y1,x2,y2,x3,y3);
+if (x3>x1) and (x3<x2) and (y3>y1) and (y3<y2) then
+   begin
+s1:=abs(x3-x2);
+s2:=abs(x3-x1);
+s3:=abs(y3-y1);
+s4:=abs(y3-y2);
+if s1<s2 then pos:=s1
+else pos:=s2;
+if s3<s4 then pos1:=s3
+else pos:=s4;
+if pos1<pos then s:=pos1
+else s:=pos;
+end
+else if (x3<x1) and (y3>y1) and (y3<y2) then s:=x1-x3
+else if (x3>x1) and (x3<x2) and (y3>y2) then s:=y3-y2
+else if (x3>x2) and (y3>y1) and (y3<y2) then s:=x3-x2
+else if (x3>x1) and (x3<x2) and (y3<y1) then s:=y1-y3
+else if (x3<x1) and (y3<y1) then
+begin
+sr:=sqrt((x1-x3)+(y1-y3));
+writeln(sr)
+end
+else if (x3<x1) and (y3<y2) then
+begin
+sr:=sqrt((x1-x3)+(y2-y3));
+writeln(sr);
+end;
+writeln(s);
+readln;
+
+end.

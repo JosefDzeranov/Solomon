@@ -1,0 +1,14 @@
+program BKJBVS;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,d:string;
+begin
+readln(a);
+writeln('ERROR');
+READLN;
+
+end.

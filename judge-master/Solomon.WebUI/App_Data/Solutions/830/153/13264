@@ -1,0 +1,32 @@
+﻿using System;
+using System.Text;
+
+namespace TaskD
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] s1 = s.Split(' ');
+
+            int X = 0;
+            int Y = 0;
+            int N = int.Parse(s1[0]);
+            int M = int.Parse(s1[1]);
+            int K = int.Parse(s1[2]);
+            int[,] svet = new int[N, M];
+
+            for (int i = 0; i < K; i++)
+            {
+                s = Console.ReadLine();
+                s1 = s.Split(' ');
+                X = int.Parse(s1[0]);
+                Y = int.Parse(s1[1]);
+
+            }
+
+            Console.WriteLine(K);
+        }
+    }
+}

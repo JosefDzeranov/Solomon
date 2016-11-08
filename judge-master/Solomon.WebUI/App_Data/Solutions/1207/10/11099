@@ -1,0 +1,20 @@
+var
+  n, k: integer;
+
+function c(n, k: integer): integer;
+var
+  cc, i: integer;
+begin
+  cc := 1;
+  if n < 2 * k then k := n - k;
+  for i := n downto n - k + 1 do
+    cc := cc * i;
+  for i := 1 to k do
+    cc := cc div i;
+  c := cc
+end;
+
+begin
+  read(n, k);
+  writeln(c(n, k));
+end.

@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace E
+{
+    class Program
+    {
+        static int k;
+        static int min1 = 10000000;
+        static int[] mas;
+        static int min(int a)
+        {
+            if (a < min1)  min1 = a;
+            return min1;
+        
+        }
+        static int raz(string s)
+        {
+            int sum1 = 0, sum2 = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '0') sum1 += mas[i];
+                else sum2 += mas[i];
+            }
+            return min(Math.Abs(sum2 - sum1));
+        }
+        static void rec(int n, string s)
+        {
+            if (n > 0)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    rec(n - 1, s + i);
+                }
+            }
+            else raz(s);
+
+
+        }
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            mas = new int[n];
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            for (int i = 0; i < n; i++)
+            {
+                mas[i] = Convert.ToInt32(ss[i]);
+            }
+
+            rec(n, "");
+            Console.WriteLine(min1);
+        }
+    }
+}

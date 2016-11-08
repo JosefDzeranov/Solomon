@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <conio.h>
+int dfib(int r) {
+    int t=-1,f=-1,f2,f1=4;
+    while(t>r){
+    
+        f2 = f - f1;
+        f = f1;
+        f1 = f2;  //printf("%d",f2);
+        t--;}
+        return(f2);
+}
+int fib(int r) {
+	int t=1,f=-1,f2,f1=3;
+	
+	while(t<r)
+	{
+	
+	
+		
+        f2 = f1 + f;
+        f = f1; f1 = f2; t++;// printf("%d",f2);
+	}
+
+	return(f2);
+}
+int main()
+{
+    long q,g,a,b,c,d;
+   // scanf("%d",&g);
+    scanf("%d%d%d%d%d",&a,&b,&c,&d,&g);
+    if(g>1)
+  q=fib(g);
+  if(g<-1)
+  q=dfib(g);
+    printf("%d",q);
+    if(g==-1) printf("4");
+    if(g==0) printf("-1");
+    if(g==1) printf("3");
+
+    return 0;
+    
+}
+    

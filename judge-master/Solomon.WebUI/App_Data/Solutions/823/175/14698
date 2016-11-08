@@ -1,0 +1,43 @@
+#include <cmath>
+#include <iostream>
+
+int main()
+{
+    using std::cin;
+    using std::cout;
+    using std::endl;
+
+    int place;
+    cin >> place;
+
+    cout << "YES\n";
+    int rows = 1;
+    int columns = 2 * place - 1;
+    cout << rows << " " << columns << endl;
+
+    while (rows < columns)
+    {
+        int old_rows = rows;
+        for (int i = 3; i * i <= columns; i += 2)
+        {
+            if (columns % i == 0)
+            {
+                columns /= i;
+                rows *= i;
+                break;
+            }
+        }
+
+        if (rows == old_rows)
+        {
+            break;
+        }
+
+        if (rows <= columns)
+        {
+            cout << rows << " " << columns << endl;
+        }
+    }
+
+    return 0;
+}

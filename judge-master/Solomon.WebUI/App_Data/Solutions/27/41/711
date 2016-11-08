@@ -1,0 +1,14 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    int a,b;
+    cin>>a;
+    b=log2(a);
+
+    cout<<b;
+    return 0;
+}

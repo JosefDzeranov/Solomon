@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main()
+{   
+  //freopen("tur2.in","r",stdin);
+  //freopen("tur2.out","w",stdout);
+
+  int a[100001],n,i,s,t,m;
+  
+  scanf("%d%d",&m,&n);
+
+  for(i=1;i<=n;i++)
+    scanf("%d",&a[i]);
+  
+  s=a[1];
+  t=0;
+  for(i=1;i<=n;i++)
+  {
+    if(a[i]+1==a[i+1]) t++;
+      else
+      {
+        if(t==0) printf("%d ",s);
+          else printf("%d-%d ",s,a[i]); 
+        t=0;
+        s=a[i+1];  
+      }
+  }
+
+  return 0;
+}

@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Aslan
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int a = Convert.ToInt32(ss[0]);
+            int b = Convert.ToInt32(ss[1]);
+            int c = Convert.ToInt32(ss[2]);
+            int d = Convert.ToInt32(ss[3]);
+            int x1 = Math.Min(a, c);
+            int y1 = Math.Min(b, d);
+            int x2 = Math.Max(a, c);
+            int y2 = Math.Max(b, d);
+                    if (y1 < 0 && y2 > 100) Console.WriteLine((Math.Min(-y1, y2 - 100) * 2 + 200) * 5);
+                    else
+                        if (x1 < 0 && x2 > 100) Console.WriteLine((Math.Min(-x1, x2 - 100) * 2 + 200) * 5);
+                        else Console.WriteLine(1000);     
+       
+        }
+    }
+}

@@ -1,0 +1,9 @@
+program B_magic_squares;
+
+var
+n: integer;
+
+begin
+readln (n);
+writeln ((2*n-1)*((2*n-1)*(2*n-1)+1)+1+4*n*n)
+end.

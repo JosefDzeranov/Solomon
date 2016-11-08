@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int x,z,y,q;
+	cin>>x>>y;
+	cin>>z>>q;
+	int a,b;
+	a=z-x;
+	if(q<y)
+	{
+    a-=1;
+	b=q+60-y;
+	
+	cout<<a<<" "<<b;
+	}
+	else
+    b=q-y;
+	cout<<a<<" "<<b;
+	return 0;
+}

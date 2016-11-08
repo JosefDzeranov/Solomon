@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+
+namespace viking
+{
+	class Program
+	{
+		static void Main()
+		{
+			string[] chisla = Console.ReadLine().Split();
+			double N = double.Parse(chisla[0]);
+			int K = int.Parse(chisla[1]);
+
+			double X = 0;
+			
+			int k = ND(K);
+			
+			for(double i = k; i <= N; i+= k)
+			{
+				X += Fu(i);
+			}
+
+			Console.Write(X);
+		}
+
+				
+		private static double Fu(double x)
+		{
+			long resultat = 0;
+
+			do {
+				resultat++;
+				x /= 5;
+			}while(x % 5 == 0); 
+			
+			return resultat;
+		}		
+		
+		private static int ND(int x)
+		{
+			int delitel = 2;
+			int delimoe = x;
+			List<int> deliteli = new List<int>();
+
+			while(true)
+			{
+				if(delimoe % delitel == 0)
+				{
+					deliteli.Add(delitel);
+					delimoe /= delitel;
+				}
+				else
+				{
+					if(2 * (delitel + 1) > x) break;
+					delitel++;
+				}
+			}
+			return deliteli[deliteli.Count - 1];
+		}
+	}
+}

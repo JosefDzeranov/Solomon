@@ -1,0 +1,21 @@
+def df(n, t, d):
+    if n % t == 0 and n != 0:
+        return 0
+    else:
+        return d 
+
+
+a, k, b, m, x = [int(i) for i in input().split()]
+ret = 0
+if x > 10 ** 15:
+    v1 = a * (k - 1) * m
+    v2 = b * (m - 1) * k
+    v = v1 + v2
+    ret = (x // v) * (m * k)
+    x = x % v
+while x > 0:
+    d1 = df(ret + 1, k, a)
+    d2 = df(ret + 1, m, b)
+    x += -(d1 + d2)
+    ret += 1
+print(ret)

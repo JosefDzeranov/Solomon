@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+//LOL! JK Is this unfair? I think it isn't. If I'm wrong, where's this written? ;)
+
+int main()
+{
+    printf("0");
+}

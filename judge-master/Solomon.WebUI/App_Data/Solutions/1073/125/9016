@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    float x1, x2, x3, y1, y2, y3, vert, hor;
+
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+
+    if ((y3 > y1) && (y3 <y2) && (x3 > x1) && (x3 < x2)) {
+    if (abs(y3-y1) > abs(y3-y2)) {
+        vert = abs(y3-y2);
+    } else {
+        vert = abs(y3-y1);
+    }
+    if (abs(x3-x1) > abs(x3-x2)) {
+        hor = abs(x3-x2);
+    } else {
+        hor = abs(x3-x1);
+    }
+    if (hor > vert) {
+        cout << vert;
+    } else {
+        cout <<hor;
+    }
+    } else {
+
+    }
+
+    return 0;
+}
+

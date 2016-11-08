@@ -1,0 +1,35 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var j,U,a,b,c,i:integer;
+
+begin
+readln(u);
+ a:=u div 3;
+ b:=a;
+ c:=b;
+j:=0;
+while (a+b+c<>u) do
+ begin
+ if a+b+c<u then
+   inc(c);
+  inc(j);
+ end;
+if (j=0) or (j=1) then
+ begin
+ a:=a-1;
+ c:=c+1;
+ end ;
+ if j=2 then
+ begin
+ inc(b);
+ a:=a-1;
+ end;
+writeln(a,' ',b,' ',c);
+readln;
+
+end.

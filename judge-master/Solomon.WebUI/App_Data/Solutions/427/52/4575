@@ -1,0 +1,17 @@
+#include <cstdio>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define ll long long
+const int maxn = 102;
+
+int cnt[12];
+int a[maxn];
+
+int main() {
+	//freopen("input.txt", "r", stdin);
+	int n;
+	cin>>n;
+	cout<<1ll*n*(n-1)*(n-2);
+	return 0;
+}

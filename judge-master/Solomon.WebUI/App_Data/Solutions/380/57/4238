@@ -1,0 +1,102 @@
+Var
+Dub:String;
+Sums:Array[1..100] of Longint;
+Sum:Array[1..100] of String;
+Counter,Kolvo,c2,Koren:Byte;
+Korni:Array[1..10] of byte;
+Ch:char; Fl:boolean;
+Function Ato10(Ch:Char):Byte;
+Begin
+Case ch of
+'1':
+Ato10:=1;
+'2':
+Ato10:=2;
+'3':
+Ato10:=3;
+'4':
+Ato10:=4;
+'5':
+Ato10:=5;
+'6':
+Ato10:=6;
+'7':
+Ato10:=7;
+'8':
+Ato10:=8;
+'9':
+Ato10:=9;
+'0':
+Ato10:=0;
+end;
+end;
+Begin
+
+readln(Kolvo);
+Counter:=1;
+Dub:='';
+While Counter<Kolvo do
+Begin
+Read(Ch);
+if(ch<>' ') then
+Dub:=Dub+ch
+else
+Begin
+Sum[counter]:=Dub;
+counter:=counter+1;
+Dub:='';
+end;
+end;
+Readln(Sum[Counter]);
+For Counter:=1 to kolvo do
+Begin
+Dub:=Sum[counter];
+For c2:=1 to length(dub) do
+Sums[counter]:=Sums[counter]+Ato10(Dub[c2]);
+end;
+For counter:=1 to kolvo do
+Begin
+Fl:=True;
+While Fl do
+Begin
+Fl:=false;
+Str(Sums[counter],dub);
+if (length(dub)<>1) then
+begin
+Sums[counter]:=0;
+For c2:=1 to length(Dub) do
+Sums[counter]:=Sums[counter]+Ato10(Dub[c2]);
+FL:=true;
+end;
+end;
+end;
+{---------------------------------------------------------}
+For Counter:=1 to Kolvo do
+Korni[Sums[Counter]]:=Korni[Sums[Counter]]+1;
+Koren:=1;
+c2:=Korni[1];
+For Counter:=2 to 10 do
+Begin
+if Korni[counter]>C2 then
+Begin
+c2:=Korni[counter];
+koren:=Counter;
+end;
+end;
+{Maxes[1]:=koren;
+c3:=2;
+For Counter:=1 to 10 do
+Begin
+if (Korni[counter]=C2) And (Counter<>Koren) then
+Begin
+Maxes[c3]:=counter;
+c3:=c3+1;
+end;
+end;
+C3:=C3-1;}
+For counter:=1 to kolvo do
+Begin
+if Sums[counter]<>koren then
+Write(Sum[counter]);
+end;
+end.

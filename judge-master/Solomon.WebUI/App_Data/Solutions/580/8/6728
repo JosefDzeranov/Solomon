@@ -1,0 +1,8 @@
+#include<iostream>
+
+int main(){
+	short i,j;
+	std::cin>>i>>j;
+	std::cout<<i+j;	
+	return 0;
+}

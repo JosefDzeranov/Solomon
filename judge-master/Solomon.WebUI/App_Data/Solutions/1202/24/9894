@@ -1,0 +1,96 @@
+program olB;
+
+type
+        Tars = array [1..10000] of string;
+        Tb = array [1..10000, 1..10000] of Boolean;
+
+procedure Swap (var a, b : Char);
+
+var
+        t : Char;
+
+begin
+        t := a;
+        a := b;
+        b := t
+end;
+
+procedure SortB (var s : string);
+
+begin
+        if Length (s) = 2 then
+        begin
+                if s[1] > s[2] then
+                        Swap (s[1], s[2])
+        end
+        else
+        begin
+                if s[1] > s[2] then
+                        Swap (s[1], s[2]);
+
+                if s[2] > s[3] then
+                        Swap (s[2], s[3]);
+
+                if s[1] > s[2] then
+                        Swap (s[1], s[2])
+        end
+end;
+
+procedure ReadData (const n : LongInt; var ars : Tars);
+
+var
+        s : string;
+        a : Integer;
+        i : LongInt;
+
+begin
+        for i := 1 to n do
+        begin
+                Read (a);
+
+                Str (a, s);
+
+                if Length (s) > 1 then
+                        if s[1] = s[2] then
+                                Delete (s, 2, 1);
+
+                if Length (s) > 1 then
+                        if s[1] = s[2] then
+                                Delete (s, 2, 1);
+
+                if Length (s) > 1 then
+                        SortB (s);
+
+                ars[i] := s
+        end;
+end;
+
+var
+        n, i, j, k, c, a : LongInt;
+        cnt : Int64;
+        s : string;
+        ars : Tars;
+        f : Tb;
+
+begin
+        ReadLn (n);
+
+        ReadData (n, ars);
+
+        FillChar (f, n*n, FALSE);
+
+        cnt := 0;
+        for i := 1 to n do
+                for j := 1 to Length (ars[i]) do
+                        for c := i + 1 to n do
+                                for k := 1 to Length (ars[c]) do
+                                        if (ars[i, j] = ars[c, k]) and (not f[i, c]) then
+                                        begin
+                                                Inc (cnt);
+
+                                                f[i, c] := TRUE;
+                                                f[c, i] := TRUE;
+                                        end;
+
+        WriteLn (cnt)
+end.

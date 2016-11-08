@@ -1,0 +1,10 @@
+uses crt;
+var N:longint;
+begin
+     clrscr;
+     writeln('Введите количество команд от 3 до 1000');
+     readln(N);
+     N:=(N-2)*(N-1)*N;
+     writeln('Количество заготовленных отчетов',' ',N);
+     readkey;
+end.

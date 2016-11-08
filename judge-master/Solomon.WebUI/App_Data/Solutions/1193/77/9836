@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string>
+#include<math.h>
+using namespace std;
+string s,ss[111];
+int main()
+{
+cin>>s;
+int i,j,k;
+int q = sqrt(s.size());
+int n = q*q==s.size()?q:q+1;
+for(i=s.size();i<n*n;i++)
+s=s+" ";
+//cout<<s.size();
+for(i=1;i<=n;i++){
+	for(j=1;j<=n;j++){
+		ss[i][j]=s[k];
+		k++;
+	}
+}
+for(i=1;i<=n;i++){
+	for(j=1;j<=n;j++){
+		cout<<ss[j][i];
+	}
+}
+}

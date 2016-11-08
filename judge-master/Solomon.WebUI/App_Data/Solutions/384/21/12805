@@ -1,0 +1,58 @@
+var   a1:array[1..100000,1..4] of longint;
+      a:array[1..10,1..10] of longint;
+var i,j,k,l,m,z,ans:longint;    n:integer;
+
+function min(q,w:longint):longint;
+begin
+min:=q;
+if min>w then min:=w;
+end;
+
+function max(q,w:longint):longint;
+begin
+max:=q;
+if max<w then max:=w;
+end;
+
+begin
+readln(n,m);
+for i:=1 to m do
+  begin
+  readln(z,l);
+  inc(a[l,z]);
+  end;
+for i:=1 to n-1 do
+    for j:=i+1 to n do
+    begin
+    for k:=1 to min(a[i,j],a[j,i]) do
+      begin
+      inc(ans);
+      a1[ans,1]:=i;
+      a1[ans,2]:=j;
+      a1[ans,3]:=j;
+      a1[ans,4]:=i;
+      end;
+    for k:=1 to max(a[i,j],a[j,i])-min(a[i,j],a[j,i]) do
+      if max(a[i,j],a[j,i])=a[i,j] then
+                                begin
+                                inc(ans);
+                                a1[ans,1]:=i;
+                                a1[ans,2]:=j;
+                                a1[ans,3]:=j;
+                                end
+      else
+                                begin
+                                a1[ans,1]:=j;
+                                a1[ans,2]:=i;
+                                a1[ans,3]:=i;
+                                end;
+    end;
+writeln(ans);
+for i:=1 to ans do
+if a1[i,4]=0 then writeln(a1[i,1],' ',a1[i,2],' ',a1[i,3]) else writeln(a1[i,1],' ',a1[i,2],' ',a1[i,3],' ',a1[i,4]);
+end.
+
+
+
+
+

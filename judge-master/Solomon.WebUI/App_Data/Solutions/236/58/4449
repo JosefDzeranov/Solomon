@@ -1,0 +1,29 @@
+uses crt;
+var a: array [1..101] of integer;
+    gr1, gr2, k: longint;
+    i,j,n; integer;
+begin
+     readln(n);
+     for i:=1 to n do
+        readln(a[i]);
+     for i:=1 to n do
+        for j:=1 to n do
+          if a[i]>a[j] then
+          begin
+               k:=a[i];
+               a[i]:=a[j];
+               a[j]:=k;
+          end;
+     gr1:=a[1];
+     gr2:=a[2]+a[3];
+     i:=4;
+     while i<=n do
+     begin
+          if gr1>=gr2 then
+             gr2:=gr2+a[i]
+          else gr1:=gr1+a[i];
+          inc(i);
+     end;
+     writeln(gr1,' ',gr2);
+     readkey;
+end.

@@ -1,0 +1,40 @@
+﻿Imports System
+Imports Microsoft.VisualBasic
+Module Module1
+
+    Sub Main()
+        Dim taken As String 'Входные данные
+        taken = Console.ReadLine '...
+        Dim cont() As String = Split(taken, " ") '...
+        Dim a As Integer = cont(0) 'Время зел.
+        Dim b As Integer = cont(1) 'Время красн.
+        Dim x As Integer = cont(2) 'Расстояние
+        Dim speed As Integer 'Скорость (результатат)
+        Dim time As Integer 'Время (для результата)
+        Dim time2 As Integer = a + b 'Время за которое нужно проехать
+
+        Dim t As Integer = x / 1000 'Время за которое можно проехать
+
+        For i = 1000 To 1 Step -1
+            If i * a >= x Then
+                wr(i)
+                Exit For
+            ElseIf i * time2 = x Then
+                wr(i)
+                Exit For
+            Else
+                For z = 1 To 10
+                    If i * time2 < x > i * (time2 * z + a) Then
+                        wr(i)
+                        Exit For
+                    End If
+                Next
+            End If
+        Next
+
+    End Sub
+
+    Sub wr(ByVal text As String)
+        Console.WriteLine(text)
+    End Sub
+End Module

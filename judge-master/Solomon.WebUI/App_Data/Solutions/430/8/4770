@@ -1,0 +1,12 @@
+program asdf;
+var a,b:int64;
+
+begin
+
+
+  readln(a,b);
+  a:=a+b;
+  writeln(a);
+
+
+end.

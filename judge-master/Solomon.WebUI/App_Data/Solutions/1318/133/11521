@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+int len(char* a){
+	for(int i=0;i<50000;i++){
+		if(a[i]==0){return i;}
+	}
+return 0;}
+bool p2(char* a,char*b){
+	int d;
+	if((d=len(a))!=len(b)){return false;}
+	for(int i=0;i<d;i++){
+		if(a[i]!=b[i]){
+			return false;
+		}
+	}
+return true;}
+int main(){
+	int n,p;
+	std::cin>>n>>p;
+	char** filt=(char**)malloc(sizeof(char*)*n);
+	for(int i=0;i<n;i++){
+		filt[i]=(char*)malloc(sizeof(char)*50);
+		std::cin>>filt[i];
+	}
+	int k;
+	std::cin>>k;
+	char** addr=(char**)malloc(sizeof(char*)*k);
+	for(int i=0;i<k;i++){
+		addr[i]=(char*)malloc(sizeof(char)*50);
+		std::cin>>addr[i];
+	}
+	for(int a=0;a<k;a++){
+		int fs=0;
+		for(int f=0;f<n;f++){
+			if(p==2){
+				if(p2(addr[a],filt[f]))fs++;
+			}
+		}
+		std::cout<<fs<<"\n";
+	}
+	free(filt);
+	free(addr);
+}

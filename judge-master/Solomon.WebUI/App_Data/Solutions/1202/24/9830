@@ -1,0 +1,180 @@
+program B;
+
+type
+        Tars = array [1..500000] of string;
+        Tar = array [1..500000] of Integer;
+        Tbool = array [1..500000] of Boolean;
+
+procedure SwapCh (var a, b : Char);
+
+var
+        t : Char;
+
+begin
+        t := a;
+        a := b;
+        b := t
+end;
+
+procedure SortB (var s : string);
+
+begin
+
+        if s[1] > s[2] then
+                SwapCh (s[1], s[2]);
+
+        if Length (s) = 3 then
+        begin
+                if s[2] > s[3] then
+                        SwapCh (s[2], s[3]);
+
+                if s[1] > s[2] then
+                        SwapCh (s[1], s[2])
+        end
+end;
+
+procedure ReadData (const n : LongInt; var ars : Tars);
+
+var
+        s : string;
+        a : Integer;
+        i, j : LongInt;
+
+begin
+        for i := 1 to n do
+        begin
+                Read (a);
+
+                Str (a, s);
+
+                if Length (s) > 1 then
+                        SortB (s);
+
+                ars[i] := s
+        end;
+end;
+
+procedure Swap (var a, b : Integer);
+
+var
+        t : Integer;
+
+begin
+        t := a;
+        a := b;
+        b := t;
+end;
+
+procedure QSort (var a : Tar; var flag : Tbool; const l, r : LongInt);
+
+var
+        m, i, j : LongInt;
+        b : Boolean;
+
+begin
+        m := a[(l + r) div 2];
+
+        i := l;
+        j := r;
+
+        while i <= j do
+        begin
+                while a[i] < m do
+                        Inc (i);
+
+                while a[j] > m do
+                        Dec (j);
+
+                if i <= j then
+                begin
+                        Swap (a[i], a[j]);
+
+                        b := flag[i];
+                        flag[i] := flag[j];
+                        flag[j] := b;
+
+                        Inc (i);
+                        Dec (j)
+                end
+        end;
+
+        if l < j then
+                QSort (a, flag, l, j);
+
+        if i < r then
+                QSort (a, flag, i, r);
+end;
+
+
+var
+        n, i, j, c, k, cnt : LongInt;
+        r : Integer;
+        ars : Tars;
+        a : Tar;
+        flag : Tbool;
+        s : string;
+
+begin
+        ReadLn (n);
+
+        ReadData (n, ars);
+
+        FillChar (flag, SizeOf (flag), FALSE);
+
+        for i := 1 to n do
+        begin
+                if ars[i, 1] = '0' then
+                        flag[i] := TRUE;
+                Val (ars[i], a[i], r)
+        end;
+
+        QSort (a, flag, 1, n);
+
+        for i := 1 to n do
+        begin
+                Str (a[i], s);
+
+                if flag[i] then
+                        ars[i] := '0' + s
+                else
+                        ars[i] := s
+        end;
+
+        for i := 1 to n do
+                for j := 1 to 2 do
+                        if (Length (ars[i]) > 1) and (ars[i, 1] = ars[i, 2]) then
+                                Delete (ars[i], 2, 1);
+
+        cnt := 0;
+        i := 1;
+        j := 1;
+        c := i + 1;
+        k := 1;
+        while i < n do
+        begin
+                if i = c then
+                        Inc (c);
+
+                while (ars[i, j] = ars[c, k]) and (c < n) do
+                begin
+                        Inc (cnt);
+                        Inc (c)
+                end;
+
+                if (c = n) and (ars[i, j] = ars[c, k]) then
+                        Inc (cnt);
+
+                 if k < Length (ars[c]) then
+                        Inc (k);
+
+                if j < Length (ars[i]) then
+                        Inc (j)
+                else
+                begin
+                        Inc (i);
+                        j := 1
+                end;
+        end;
+
+        WriteLn (cnt)
+end.

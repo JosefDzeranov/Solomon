@@ -1,0 +1,43 @@
+program zad3;
+type mas = array[1..30] of integer;
+var
+  n, k, i,j,v,w: integer;
+  g: longint;
+  a,b,d:mas;
+  c: real;
+procedure fact (y:integer; var x:mas);
+
+   var
+   i:integer;
+   begin
+    for i:=y downto 1 do  begin
+     x[i]:=i;
+    end;
+    writeln;
+   end;
+begin
+  readln(n,k);
+  fact(n,a);
+  fact(k,b);
+  fact(n-k,d);
+  for i:=1 to n do
+   for j:=1 to k do
+    if a[i]=b[j] then begin
+     a[i]:=0; b[j]:=0;
+    end;
+  for i:=1 to n do
+   for j:=1 to n-k do
+     if a[i]=d[j] then begin
+     a[i]:=0; d[j]:=0;
+   end;
+   w:=1; v:=1;
+  For i:=1 to n do
+   if a[i]>0 then v:=a[i]*v;
+  For i:=1 to k do
+   if b[i]>0 then w:=b[i]*w;
+  For i:=1 to n-k do
+   if d[i]>0 then w:=d[i]*w;
+  c:=v/w;
+  Writeln(c:10:0);
+  readln;
+end.

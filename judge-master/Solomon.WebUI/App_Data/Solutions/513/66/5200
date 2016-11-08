@@ -1,0 +1,58 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n:integer;
+schools:array[1..1000] of string;
+numbers:array[1..1000] of integer;
+teachers:array[1..10000] of integer;
+
+  function fn(s:string):integer;
+  var i:integer;
+  dop:string;
+  begin
+
+    for i := 1 to length(s)  do
+    begin
+      if (s[i]='0')or(s[i]='1')or(s[i]='2')or(s[i]='3')or(s[i]='4')or(s[i]='5')or(s[i]='6')or(s[i]='7')or(s[i]='8')or(s[i]='9') then
+      begin
+        dop:=dop+s[i];
+      end;
+    end;
+  result:=strtoint(dop);
+  end;
+
+
+var i,l:integer;
+begin
+readln(n);
+l:=0;
+for i := 1 to n  do readln(schools[i]);
+for i := 1 to n  do numbers[i]:=fn(schools[i]);
+for i := 1 to 10000  do teachers[i]:=0;
+for i := 1 to n  do teachers[numbers[i]]:=teachers[numbers[i]]+1;
+for i := 1 to 10000  do
+begin
+ if (teachers[i]>0)and(teachers[i]<=5) then
+ begin
+ l:=l+1;
+ end;
+
+end;
+writeln(l);
+for i := 1 to 10000  do
+begin
+ if (teachers[i]>0)and(teachers[i]<=5) then
+ begin
+ writeln(i);
+ end;
+
+end;
+  
+
+
+readln;
+end.

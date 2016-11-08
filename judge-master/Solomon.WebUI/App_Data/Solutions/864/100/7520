@@ -1,0 +1,20 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+
+  n, d : integer;
+
+begin
+  { TODO -oUser -cConsole Main : Insert code here }
+  readln(n);
+  readln(d);
+  write ('1 ',d-n);
+
+  readln;
+  readln;
+end.

@@ -1,0 +1,48 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,x3,x4,y1,y2,y3,y4,f: integer;
+ a,b,c,d: real;
+begin
+readln(x1,y1);
+readln(x2,y2);
+readln(x3,y3);
+readln(x4,y4);
+ a:=(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
+ b:=(((x4-x1)*(x4-x1))+((y4-y1)*(y4-y1)));
+ c:=(((x3-x1)*(x3-x1))+((y3-y1)*(y3-y1)));
+
+ if a=b then
+ begin
+  d:=(((x4-x3)*(x4-x3))+((y4-y3)*(y4-y3)));
+ c:=(((x2-x3)*(x2-x3))+((y2-y3)*(y2-y3)));
+ if (c=d) and (a=c)then writeln('YES')
+ else writeln('NO');
+ end
+ else
+   if a=c then
+
+ begin
+  d:=(((x4-x3)*(x4-x3))+((y4-y3)*(y4-y3)));
+ c:=(((x2-x4)*(x2-x4))+((y2-y4)*(y2-y4)));
+ if (c=d) and (a=c)then writeln('YES')
+ else writeln('NO');
+ end
+  else
+
+ if b=c then
+
+ begin
+  d:=(((x2-x4)*(x2-x4))+((y2-y4)*(y2-y4)));
+ c:=(((x2-x3)*(x2-x3))+((y2-y3)*(y2-y3)));
+ if (c=d) and (a=c)then writeln('YES')
+ else writeln('NO');
+ end
+ else
+ writeln('NO');
+ readln;
+end.

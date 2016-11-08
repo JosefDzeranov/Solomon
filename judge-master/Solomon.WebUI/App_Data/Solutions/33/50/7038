@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+#include<sstream>
+#include<string>
+
+string itos (int a) {
+	stringstream ss;
+	ss << a;
+	return ss.str();
+}
+
+int main() {
+	string all;
+	__int64 a, b, n, tmp;
+	cin >> a >> b >> n;
+	all=itos(a);
+	if (all.size()==n) {
+		cout << all[all.size()-1];
+		return 0;
+	}
+	all+=itos(b);
+	if (all.size()==n) {
+		cout << all[all.size()-1];
+		return 0;
+	}
+	for (;;) {
+		tmp=a;
+		a=b;
+		b=a+tmp;
+		all+=itos(b);
+		if (all.size()==n) {
+			cout << all[all.size()-1];
+			break;
+		}
+	}
+	cin.ignore();
+	cin.get();
+	return 0;
+}

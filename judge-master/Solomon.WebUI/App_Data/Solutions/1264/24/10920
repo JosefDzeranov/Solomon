@@ -1,0 +1,59 @@
+{H+}
+var
+  n, i, j, len, len2, k, c, p, l, sum, l1: longint;
+  s1, s2: string;
+  s: array of string;
+
+begin
+  readln(n);
+  setlength(s, n+1);
+  i := 1;
+  j := 1;
+  read(s1);
+  len := length(s1);
+  while i <= len do 
+  begin
+    if (s1[i] = ' ') then inc(j) else  s[j] := s[j] + s1[i];
+    inc(i);
+  end;
+  c := 1;
+  
+  {for i := 1 to n do 
+  begin
+    s1 := s[i];
+    len := length(s1);
+    for j := 1 to len do 
+      for k := j + 1 to len do
+        if (s1[j] = s1[k]) then begin
+          p := k + 1;
+          if p <= len then
+            while s1[p] = s1[k] do begin inc(c); inc(p); end;
+          delete(s1, k, c);
+          c := 1;
+          len := length(s1);
+          if (k >= len)  then break;
+        end;
+    s[i] := s1;
+  end;
+  }
+  for i := 1 to n do 
+  begin
+    s1 := s[i];
+    len := length(s1);
+    for j := i + 1 to n do 
+    begin
+      s2 := s[j];
+      len2 := length(s2);
+      for k := 1 to len do
+        for p := 1 to len2 do 
+        begin
+          if (s1[k] = s2[p]) and ((l <> i) or (l1 <> j)) then begin
+            l := i;
+            l1 := j;
+            inc(sum);
+          end;
+        end;
+    end;
+  end;
+  writeln(sum);
+end.

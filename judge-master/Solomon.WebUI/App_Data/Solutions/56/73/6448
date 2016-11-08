@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  d,k: int64;
+  n2: real;
+begin
+ readln(k);
+  d:=1+4*2*k;
+    n2:= (-1+sqrt(d))/ 2;
+    writeln(trunc(n2));
+    readln;
+end.

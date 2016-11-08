@@ -1,0 +1,26 @@
+Program konfeti;
+var N, a, b, c, d: longword;
+Begin
+readln(N, a, b, c);
+if a+b+c <= N then
+if a < b
+then if a < c then
+writeln(N-b-c, ' ', b, ' ', c)
+else
+if b < a
+then if b < c then
+writeln(a, ' ', N-a-c,' ', c)
+else
+if c < a
+then if b > c then
+writeln(a, ' ', b, ' ', N-b-a)
+
+end.
+{if a+b+c <= 2*N
+then 
+writeln (a,' ', b, ' ',  N-a-b)
+else
+if a+b+c = N
+then
+writeln (a, ' ', b, ' ', c)
+if }

@@ -1,0 +1,44 @@
+﻿using System;
+
+
+namespace sp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n,m,k,x,y;
+            string s = Console.ReadLine();
+            string[] ms = s.Split(' ');
+            n = Convert.ToInt32(ms[0]);
+            m = Convert.ToInt32(ms[1]);
+            k = Convert.ToInt32(ms[2]);
+            int[] xx = new int[k];
+            int[] yy = new int[k];
+            for (int i = 0; i < k; i++)
+            {
+                s = Console.ReadLine();
+                ms = s.Split(' ');
+                x = Convert.ToInt32(ms[0]);
+                xx[i] = x;
+                y = Convert.ToInt32(ms[1]);
+                yy[i] = y;
+            }
+            int max = 0;
+            for (int i = 1; i <=n ; i++)
+            {
+                for (int j = 1; j <=m; j++)
+                {
+                    int min = 10000000;
+                    for (int z = 0; z < k; z++)
+                        if (Math.Abs(xx[z] - i) + Math.Abs(yy[z] - j) < min)
+                            min = Math.Abs(xx[z] - i) + Math.Abs(yy[z] - j);
+                    if (min > max)
+                        max = min;
+                }
+            }
+            Console.WriteLine(max);
+        }
+   
+    }
+}

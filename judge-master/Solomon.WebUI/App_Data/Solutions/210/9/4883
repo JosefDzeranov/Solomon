@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+int n, a, b, c;
+int type, ans;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> type;
+    cin >> n >> a >> b >> c;
+    if (type == 2)
+        ans = min(a, min(b, c));
+    else {
+        a = n - a;
+        b = n - b;
+        c = n - c;
+        n = n - a - b - c;
+        ans = max(n, 0);
+    }
+    cout << ans;
+    return 0;
+}

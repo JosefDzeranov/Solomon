@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++)
+        cin >> a[i];
+    int m;
+    cin >> m;
+    int b[m], c[m];
+    for(int i = 0; i < m; i++)
+        cin >> b[i] >> c[i];
+    int sum_cost = 0;
+    int min_cost;
+    for(int i = 0; i < n; i++)
+    {
+        min_cost = 10000;
+        for(int j = 0; j < m; j++)
+            if((b[j] >= a[i])&&(c[j] <= min_cost))
+                min_cost = c[j];
+        sum_cost += min_cost;
+    }
+    cout << sum_cost;
+    return 0;
+}

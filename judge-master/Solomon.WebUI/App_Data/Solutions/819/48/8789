@@ -1,0 +1,21 @@
+import math
+r = int(input())
+x1, y1 = map(int, input().split())
+x2, y2 = map(int, input().split())
+
+s = (x2 - x1)*(y2 - y1)
+if r >= ((x2-y1)**2+(y2-y1)**2)**0.5/2:
+    result = s
+elif r <= (min((x2-x1), (y2-y1))/2):
+    result = math.pi*r**2
+elif min((x2-x1), (y2-y1))/2 < r < max((x2-x1), (y2-y1))/2:
+    alpha = math.acos(min((x2-x1), (y2-y1))/2/r)
+    segm1 = r**2/2*(2*alpha - math.sin(2*alpha))
+    result = s - 2*segm1
+else:
+    alpha = math.acos(min((x2-x1), (y2-y1))/2/r)
+    segm1 = r**2/2*(2*alpha - math.sin(2*alpha))
+    beta = math.acos(max((x2-x1), (y2-y1))/2/r)
+    segm2 = r**2/2*(2*beta - math.sin(2*beta))
+    result = s - 2*segm1 - 2*segm2
+print (result)

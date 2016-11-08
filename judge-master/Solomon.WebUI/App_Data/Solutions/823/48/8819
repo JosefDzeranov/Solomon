@@ -1,0 +1,29 @@
+program LinkedGoat;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  l, x1, x2, y1, y2, square : integer;
+  x3, y3 : integer;
+  i, k1, k2 : integer;
+begin
+  readln (l);
+  readln (x1, y1);
+  readln (x2, y2);
+  square := (x2 - x1) * (y2 - y1);
+  if (2 * l > x2 - x1) and (2 * l > y2 - y1) then
+    write (square)
+  else
+    if (2 * l <= x2 - x1) and (2 * l <= y2 - y1)  then
+      write (l * l * Pi);
+   { else
+      begin
+        Randomize;
+        for i := 1 to 10000 do
+
+      end;} 
+  readln;
+end.

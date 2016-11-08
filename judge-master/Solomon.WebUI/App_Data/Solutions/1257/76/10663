@@ -1,0 +1,23 @@
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string s;
+	long long sum;
+	ifstream fin("./input.txt");
+	fin >> sum;
+	fin.close();
+	
+	cin >> sum;
+	sum = 0;
+	while (!cin.eof()) {
+		cin >> s;
+		sum += atoi(s.c_str());
+	}
+	cout << sum;
+	
+	return 0;
+}

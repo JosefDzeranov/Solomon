@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProcessPrivileges.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:ProcessPrivileges.Fakes.ShimAccessTokenHandle">
+            <summary>Тип оболочки совместимости для ProcessPrivileges.AccessTokenHandle</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimAccessTokenHandle.#ctor">
+            <summary>Инициализация нового экземпляра оболочки совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimAccessTokenHandle.#ctor(ProcessPrivileges.AccessTokenHandle)">
+            <summary>Инициализация новой оболочки совместимости для заданного экземпляра</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimAccessTokenHandle.BehaveAsCurrent">
+            <summary>Назначение поведения &quot;Current&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimAccessTokenHandle.BehaveAsNotImplemented">
+            <summary>Назначение поведения &quot;NotImplemented&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimAccessTokenHandle.Bind(System.IDisposable)">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimAccessTokenHandle.Behavior">
+            <summary>Назначение поведения всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimAccessTokenHandle.ReleaseHandle">
+            <summary>Задает оболочка совместимости AccessTokenHandle.ReleaseHandle()</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimAccessTokenHandle.AllInstances">
+            <summary>Определение оболочек совместимости для всех членов экземпляров</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimAccessTokenHandle.AllInstances.ReleaseHandle">
+            <summary>Задает оболочка совместимости AccessTokenHandle.ReleaseHandle()</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes">
+            <summary>Тип оболочки совместимости для ProcessPrivileges.PrivilegeAndAttributes</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.#ctor">
+            <summary>Инициализация нового экземпляра оболочки совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.BehaveAsCurrent">
+            <summary>Назначение поведения &quot;Current&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.BehaveAsNotImplemented">
+            <summary>Назначение поведения &quot;NotImplemented&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.Behavior">
+            <summary>Назначение поведения всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.EqualityOpPrivilegeAndAttributesPrivilegeAndAttributes">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributes.op_Equality(PrivilegeAndAttributes first, PrivilegeAndAttributes second)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.InequalityOpPrivilegeAndAttributesPrivilegeAndAttributes">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributes.op_Inequality(PrivilegeAndAttributes first, PrivilegeAndAttributes second)</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributes.AllInstances">
+            <summary>Определение оболочек совместимости для всех членов экземпляров</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection">
+            <summary>Тип оболочки совместимости для ProcessPrivileges.PrivilegeAndAttributesCollection</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.#ctor">
+            <summary>Инициализация нового экземпляра оболочки совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.#ctor(ProcessPrivileges.PrivilegeAndAttributesCollection)">
+            <summary>Инициализация новой оболочки совместимости для заданного экземпляра</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.BehaveAsCurrent">
+            <summary>Назначение поведения &quot;Current&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.BehaveAsNotImplemented">
+            <summary>Назначение поведения &quot;NotImplemented&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.ICollection)">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.IEnumerable)">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.IList)">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.Generic.ICollection{ProcessPrivileges.PrivilegeAndAttributes})">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.Generic.IEnumerable{ProcessPrivileges.PrivilegeAndAttributes})">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.Generic.IList{ProcessPrivileges.PrivilegeAndAttributes})">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.Generic.IReadOnlyCollection{ProcessPrivileges.PrivilegeAndAttributes})">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Bind(System.Collections.Generic.IReadOnlyList{ProcessPrivileges.PrivilegeAndAttributes})">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.Behavior">
+            <summary>Назначение поведения всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.ConstructorIListOfPrivilegeAndAttributes">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributesCollection.PrivilegeAndAttributesCollection(IList`1&lt;PrivilegeAndAttributes&gt; list)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.ToString">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributesCollection.ToString()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection._ToStringb__0PrivilegeAndAttributes">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributesCollection.&lt;ToString&gt;b__0(PrivilegeAndAttributes privilegeAndAttributes)</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.AllInstances">
+            <summary>Определение оболочек совместимости для всех членов экземпляров</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeAndAttributesCollection.AllInstances.ToString01">
+            <summary>Задает оболочка совместимости PrivilegeAndAttributesCollection.ToString()</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeEnabler">
+            <summary>Тип оболочки совместимости для ProcessPrivileges.PrivilegeEnabler</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.#ctor">
+            <summary>Инициализация нового экземпляра оболочки совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.#ctor(ProcessPrivileges.PrivilegeEnabler)">
+            <summary>Инициализация новой оболочки совместимости для заданного экземпляра</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.BehaveAsCurrent">
+            <summary>Назначение поведения &quot;Current&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.BehaveAsNotImplemented">
+            <summary>Назначение поведения &quot;NotImplemented&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.Bind(System.IDisposable)">
+            <summary>Привязка членов интерфейса к оболочке совместимости.</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.Behavior">
+            <summary>Назначение поведения всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.ConstructorAccessTokenHandle">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.PrivilegeEnabler(AccessTokenHandle accessTokenHandle)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.ConstructorAccessTokenHandlePrivilegeArray">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.PrivilegeEnabler(AccessTokenHandle accessTokenHandle, Privilege[] privileges)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.ConstructorProcess">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.PrivilegeEnabler(Process process)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.ConstructorProcessPrivilegeArray">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.PrivilegeEnabler(Process process, Privilege[] privileges)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.Dispose">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.Dispose()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.EnablePrivilegePrivilege">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.EnablePrivilege(Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.InternalDispose">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.InternalDispose()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.StaticConstructor">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.PrivilegeEnabler()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler._InternalDisposeb__0KeyValuePairOfPrivilegePrivilegeEnabler">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.&lt;InternalDispose&gt;b__0(KeyValuePair`2&lt;Privilege,PrivilegeEnabler&gt; keyValuePair)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler._InternalDisposeb__1KeyValuePairOfPrivilegePrivilegeEnabler">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.&lt;InternalDispose&gt;b__1(KeyValuePair`2&lt;Privilege,PrivilegeEnabler&gt; keyValuePair)</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.AllInstances">
+            <summary>Определение оболочек совместимости для всех членов экземпляров</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.AllInstances.Dispose">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.Dispose()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.AllInstances.EnablePrivilegePrivilege">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.EnablePrivilege(Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.AllInstances.InternalDispose">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.InternalDispose()</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimPrivilegeEnabler.AllInstances._InternalDisposeb__0KeyValuePairOfPrivilegePrivilegeEnabler">
+            <summary>Задает оболочка совместимости PrivilegeEnabler.&lt;InternalDispose&gt;b__0(KeyValuePair`2&lt;Privilege,PrivilegeEnabler&gt; keyValuePair)</summary>
+        </member>
+        <member name="T:ProcessPrivileges.Fakes.ShimProcessExtensions">
+            <summary>Тип оболочки совместимости для ProcessPrivileges.ProcessExtensions</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimProcessExtensions.#ctor">
+            <summary>Инициализация нового экземпляра оболочки совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimProcessExtensions.BehaveAsCurrent">
+            <summary>Назначение поведения &quot;Current&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="M:ProcessPrivileges.Fakes.ShimProcessExtensions.BehaveAsNotImplemented">
+            <summary>Назначение поведения &quot;NotImplemented&quot; всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.Behavior">
+            <summary>Назначение поведения всем методам типа с оболочкой совместимости</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.DisablePrivilegeAccessTokenHandlePrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.DisablePrivilege(AccessTokenHandle accessTokenHandle, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.DisablePrivilegeProcessPrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.DisablePrivilege(Process process, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.EnablePrivilegeAccessTokenHandlePrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.EnablePrivilege(AccessTokenHandle accessTokenHandle, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.EnablePrivilegeProcessPrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.EnablePrivilege(Process process, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetAccessTokenHandleProcess">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetAccessTokenHandle(Process process)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetAccessTokenHandleProcessTokenAccessRights">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetAccessTokenHandle(Process process, TokenAccessRights tokenAccessRights)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegeAttributesAccessTokenHandlePrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivilegeAttributes(AccessTokenHandle accessTokenHandle, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegeAttributesProcessPrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivilegeAttributes(Process process, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegeStateAccessTokenHandlePrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivilegeState(AccessTokenHandle accessTokenHandle, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegeStatePrivilegeAttributes">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivilegeState(PrivilegeAttributes privilegeAttributes)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegeStateProcessPrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivilegeState(Process process, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegesAccessTokenHandle">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivileges(AccessTokenHandle accessTokenHandle)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.GetPrivilegesProcess">
+            <summary>Задает оболочка совместимости ProcessExtensions.GetPrivileges(Process process)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.RemovePrivilegeAccessTokenHandlePrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.RemovePrivilege(AccessTokenHandle accessTokenHandle, Privilege privilege)</summary>
+        </member>
+        <member name="P:ProcessPrivileges.Fakes.ShimProcessExtensions.RemovePrivilegeProcessPrivilege">
+            <summary>Задает оболочка совместимости ProcessExtensions.RemovePrivilege(Process process, Privilege privilege)</summary>
+        </member>
+    </members>
+</doc>

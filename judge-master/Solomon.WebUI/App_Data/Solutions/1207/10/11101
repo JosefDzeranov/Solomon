@@ -1,0 +1,9 @@
+var n,i,k,numerator,denominator,Combination:integer;
+begin
+  read(n, k);
+  numerator := 1; denominator := 1;
+  for i := N downto (N - K + 1) do numerator := numerator * i;
+  for i := 1 to K do denominator := denominator * i;
+  Combination := numerator div denominator;
+  write(Combination);
+end.

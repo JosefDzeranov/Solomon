@@ -1,0 +1,94 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+typedef long long unsigned number;
+
+bool **field;
+number M, N, K;
+
+struct Point {
+	Point(number _x, number _y): y(_y), x(_x) {}
+
+	number x, y;
+};
+
+stack<Point> stackPoint;
+
+Point findFirst()
+{
+	for (unsigned i = 0; i < M; i++) {
+		for (unsigned j = 0; j < N; j++) {
+			if ((field[i][j]) == true) {
+				return Point(i, j);
+			}
+		}
+	}
+
+	return Point(M, N);
+}
+
+void markAll(Point p)
+{
+	if (p.x > 0) {
+		if (field[p.x-1][p.y] == true)
+		stackPoint.push(Point(p.x-1, p.y));
+		field[p.x-1][ p.y] = false;
+	}
+	if (p.x < (M-1)) {
+		if (field[p.x+1][p.y] == true)
+		stackPoint.push(Point(p.x+1, p.y));
+		field[p.x+1][ p.y] = false;
+	}
+	if (p.y > 0) {
+		if (field[p.x][p.y-1] == true)
+		stackPoint.push(Point(p.x, p.y-1));
+		field[p.x][ p.y-1] = false;
+	}
+	if (p.y < (N-1)) {
+		if (field[p.x][p.y+1] == true)
+		stackPoint.push(Point(p.x, p.y+1));
+		field[p.x][ p.y+1] = false;
+	}
+}
+
+int main()
+{
+	cin >> M >> N >> K;
+	
+	unsigned count = M*N;
+
+	field = new bool*[M];
+	for (unsigned i = 0; i < M; i++) {
+		field[i] = new bool[N];
+		memset(field[i], true, N);
+	}
+
+	count -= K;
+	for (unsigned i = 0; i < K; i++) {
+		number x, y;
+		cin >> x >> y;
+		field[x-1][y-1] = false;
+	}
+
+	unsigned parts = 0;
+
+	if (count > 0)
+	do {
+	Point first = findFirst();
+	stackPoint.push(first);
+	while (!stackPoint.empty()) {
+		Point cur = stackPoint.top();
+		stackPoint.pop();
+		field[cur.x][cur.y] = false;
+		count--;
+		markAll(cur);
+	}
+	parts++;
+	} while (count != 0);
+
+	cout << parts << endl;
+
+	return 0;
+}

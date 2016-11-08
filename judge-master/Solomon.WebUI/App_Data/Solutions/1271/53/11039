@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int mmap[100][100] = {0};
+
+int main()
+{
+	int m, n, k, xtmpvar, ytmpvar;
+	cin >> m >> n >> k;
+	for (int i = 0; i < k; ++i)
+	{
+		cin >> xtmpvar >> ytmpvar;
+		mmap[xtmpvar-1][ytmpvar-1] = -1;
+	}
+
+	int p = m * n - k;
+	int x, y;
+	int c = 0;
+	bool lookfornew = true;
+	while (p > 0)
+	{
+		lookfornew = true;
+		for (x = 0; x < m; ++x)
+		{
+			for(y = 0; y < n; ++y)
+			{
+				if (mmap[x][y] == -1)
+					continue;
+
+				if(lookfornew)
+				{
+					if (mmap[x][y] == 0)
+					{
+						c++;
+						lookfornew = false;
+						mmap[x][y] = c;
+						p--;
+					}
+				}
+				else
+				{
+					if (x > 0 && mmap[x-1][y] == c ||
+						y > 0 && mmap[x][y-1] == c ||
+						x < m - 1 && mmap[x+1][y] == c ||
+						y < n - 1 && mmap[x][y+1] == c)
+					{
+						mmap[x][y] = c;
+						p--;
+					}
+				}
+			}
+		}
+	}
+	
+	cout << c;
+
+	return 0;
+}
+

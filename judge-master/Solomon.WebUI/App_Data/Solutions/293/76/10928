@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main()
+{
+	int n,otv=0;
+	cin >> n;
+	char string2[256];
+	int k = 0;
+	for (k = -1; k < n; k++)
+	{
+		gets(string2);
+		int i = strlen(string2)-1;
+		for (; i >= 0; i--)
+		{
+			if (string2[i]>47 && string2[i] < 58)
+			{
+				for (int count = 1; string2[i]>47 && string2[i] < 58 && i >= 0; i--)
+				{
+					otv += (string2[i] - 48)*count;
+					count *= 10;
+				}
+			}
+		}
+
+
+	}
+	cout << otv;
+}

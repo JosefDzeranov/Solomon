@@ -1,0 +1,19 @@
+// Gaev_Alexandr.cpp
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <conio.h>
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+	__int64 a,b;
+	cin >> a >> b;
+	cout << a+b;
+	return 0;
+}
+

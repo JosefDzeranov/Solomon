@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int n,k,c=1,d=1;
+    cin>>n>>k;
+    int x[k],y[k];
+    for (int i=0; i<k; i++)
+    {
+        cin>>x[i]>>y[i];
+
+
+    }
+    if (k==1)
+        cout<<8;
+    if (k==n)
+    cout<<0;
+    if(k==0)
+    {
+        for (int i=0; i<2*n-1; i++)
+        {
+            c=c*2;
+        }
+        for (int i=0; i<n-2; i++)
+        {
+            d=d*10;
+        }
+        if (n<2)d=0;
+        cout<<c-d;
+    }
+
+    return 0;
+}

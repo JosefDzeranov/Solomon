@@ -1,0 +1,36 @@
+#include <iostream>]
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+struct abc {
+	long long int a, b, c;
+};
+
+int main() {
+
+	int A, B, C;
+	int maxx = 0;
+	long long int a, b, c, n, a1, b1, c1;
+	cin >> n >> a >> b >> c;
+	for (int i = 1; i <= n; i++)
+		for (int j = 1; i + j <= n && (n - i - j >= c) ; j++)
+		{
+			int f = n - i - j;
+			int g = i/a * j /b * f / c;
+			if  (g > maxx)
+			{
+				maxx = g;
+				A = i;
+				B = j;
+				C = f;
+			}
+
+
+		}
+
+	cout << A << " " << B << " " << C << endl;
+	
+	return 0;
+}

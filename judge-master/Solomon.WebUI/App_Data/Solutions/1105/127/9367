@@ -1,0 +1,40 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function consist(s:string;d:integer):string;
+var i:integer;
+begin
+  for i := 1 to length(s) do
+   begin
+     result:=result+chr(((ord(s[i])+d-12)mod 26)+64);
+   end;
+end;
+
+
+var s,c,dop:string;i,k:integer;
+begin
+readln(s);
+readln(c);
+k:=-1;
+  for i:=0 to 25 do
+  begin
+  dop:=consist(s,i);
+  if pos(c,dop)<>0 then
+  begin
+    k:=i;
+    BREAK;
+  end;
+  end;
+  if k<>-1 then
+  begin
+    writeln(consist(s,k)) ;
+  end else
+  begin
+    writeln('IMPOSSIBLE');
+  end;
+  READLN;
+end.

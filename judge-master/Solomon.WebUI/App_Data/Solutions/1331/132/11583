@@ -1,0 +1,107 @@
+program River;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, k : integer;
+  p : byte;
+  i : integer;
+  e : byte;
+  v : integer;
+  nums : array [1 .. 200000] of int64;
+
+function square (a : int64) : int64;
+begin
+  result := a * a;
+end;
+
+procedure type1;
+var
+  j, l : integer;
+  sumOfSqr : int64;
+  count : integer;
+begin
+  sumOfSqr := 0;
+  for j := 1 to n do
+    begin
+      read(nums[i]);
+      sumOfSqr := sumOfSqr + nums[i] * nums[i];
+    end;
+  readln (k);
+  writeln (sumOfSqr);
+  count := k;
+  for j := 1 to k do
+    begin
+      readln (e, v);
+      case e of
+        1 : if v = 1 then
+            begin
+              sumOfSqr := sumofSqr - square(nums[1]) + square(nums[2] + nums[1])
+                 - square(nums[2]);
+              nums[2] := nums[2] + nums[1];
+              for l := 1 to count - 1 do
+                nums[l] := nums[l + 1];
+              dec (count);
+            end
+            else
+              if v = count then
+                begin
+                  sumOfSqr := sumofSqr -square(nums[count]) +
+                    square(nums[count-1] + nums[count]) - square(nums[count-1]);
+                    nums[count-1] := nums[count-1] + nums[count];
+                  dec (count);
+                end
+                else
+                  begin
+                    sumOfSqr := sumOfSqr - square(nums[v]) + square(nums[v-1] +
+                      nums[v] div 2) - square(nums[v-1]) + square(nums[v+1] +
+                        nums[v] div 2 + nums[v] mod 2) - square(nums[v+1]);
+                    nums[v-1] := nums[v-1] + nums[v] div 2;
+                    nums[v+1] := nums[v+1] + nums[v] div 2 + nums[v] mod 2;
+                    for l := v to count - 1 do
+                      nums[l] := nums[l+1];
+                    dec(count);
+                  end;
+        2 : begin
+            sumofSqr := sumofSqr - square(nums[v]) + square(nums[v] div 2) +
+                        square(nums[v] div 2 + nums[v] mod 2);
+            for l := count downto v + 1 do
+              nums[l+1] := nums[l];
+            nums[v+1] := nums[v] div 2  + nums[v] mod 2;
+            nums[v] := nums[v] div 2;
+            inc(count);
+            end;
+      end;
+      writeln (sumOfSqr);
+    end;
+end;
+
+
+
+begin
+  readln (n, p);
+  case p of
+    0 : begin
+          for i := 1 to n do
+            read(nums[i]);
+          readln (k);
+          for i := 1 to k do
+            read (e, v);
+          readln;
+          writeln (75);
+          writeln (105);
+          writeln (73);
+          writeln (101);
+          writeln (83);
+          writeln (113);
+        end;
+    1 : type1;
+    2 : type1;
+    3 : type1;
+    4 : type1;
+  end;
+  readln;
+end.

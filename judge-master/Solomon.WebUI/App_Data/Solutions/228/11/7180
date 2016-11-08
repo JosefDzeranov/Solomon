@@ -1,0 +1,12 @@
+program zad4;
+var a: array[1..100] of longint;
+i,n:integer;
+begin
+readln(n);
+for i:=1 to n-2 do a[i]:=1;
+a[n-1]:=2;
+a[n]:=n;
+for i:=1 to n do
+ write(a[i]:3);
+writeln;
+end.

@@ -1,0 +1,7 @@
+s = input()
+len = len(s)
+ans = 0
+for i in range(len):
+    if s[i] == '*':
+        ans += 2**(len - i - 1)
+print(ans)

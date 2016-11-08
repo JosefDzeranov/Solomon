@@ -1,0 +1,36 @@
+def mns():
+    s1 = []
+    for ii in range(n):
+        s1.append((0, 0))
+    return(s1)
+
+n = int(input().rstrip())
+s = mns()
+k = 0
+f = True
+for a in range(n):
+    for b in range(n):
+        if (a != b):
+            s = mns()
+            f = True
+            for x in range(n):
+                da = min(min(x, a) + n - max(x, a), abs(a - x))
+                db = min(min(x, b) + n - max(x, b), abs(b - x))
+                if(a == x):
+                    if(b == x):
+                        l = (0, 0)
+                    else:
+                        l = (0, db)
+                else:
+                    if(b == x):
+                        l = (da, 0)
+                    else:
+                        l = (da, db)                    
+                if l in s:
+                    f = False
+                    break
+                else:
+                    s[x] = l
+            if f:
+                k += 1
+print(k)

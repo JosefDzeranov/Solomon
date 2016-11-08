@@ -1,0 +1,9 @@
+program a1;
+var N:integer;
+k:real;
+
+begin
+read(N);
+k:=N*(N-1)*(N-2);
+write(k);
+end.

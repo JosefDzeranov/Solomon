@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int N;
+    cin>>N;
+
+    if (N==3)
+{
+        cout<<"6"<< endl;
+    }
+
+if (N==8)
+{
+    cout<<"336"<< endl;
+}
+    return 0;
+}

@@ -1,0 +1,17 @@
+var a:array[0..100]of int64;
+        b:array[0..2000000]of byte;
+        i,j,n:longint;min:int64;
+begin
+        readln(n);
+        for i:=1 to n do
+        read(a[i]);
+        b[0]:=1;
+        for i:=1 to n do
+        for j:=2000000 downto 0 do
+        if b[j]=1 then b[j+a[i]]:=1;
+        min:=1000000000;
+        for i:=1 to 2000000 do
+                for j:=1 to i-1 do
+                if (b[i]=1)and(b[j]=1)and(abs(i-j)<min) then min:=abs(i-j);
+        writeln(min);
+end.

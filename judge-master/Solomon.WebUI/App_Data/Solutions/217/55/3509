@@ -1,0 +1,12 @@
+var
+    N,S: integer;
+begin
+readln(N);
+if (N mod 2 <> 0) then exit
+else
+begin
+N:=N div 2;
+S:= 4*N*N+1+(2*N-1)*((2*N-1)*(2*N-1)+1);
+writeln(S);
+end;
+end.

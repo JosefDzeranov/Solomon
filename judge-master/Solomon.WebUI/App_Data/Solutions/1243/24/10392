@@ -1,0 +1,46 @@
+program pari;
+var i, j, n, t, l, m, k, c, y:longint; a:array [1..55000000] of char; b:array[1..500000] of string; s, s1:string;
+begin
+readln(y);
+n:=0;
+while (not eoln) do
+   begin
+   n:=n+1;
+   read(a[n]);
+   end;
+n:=n+1;
+a[n]:=' ';
+k:=0;
+s:='';
+s1:='';
+for i:=1 to n do
+   begin
+   if a[i]<>' ' then
+      begin
+      s1:=a[i];
+      s:=s+s1;
+      end;
+   if a[i]=' ' then
+      begin
+      k:=k+1;
+      b[k]:=s;
+      s:='';
+      s1:='';
+      end;
+   end;
+t:=0;
+for i:=1 to y do
+   for j:=1 to y do
+      if i<>j then
+      begin
+      s:=b[i];
+      s1:=b[j];
+      c:=0;
+      for l:=1 to length(s) do
+         for m:=1 to length(s1) do
+         if s[l]=s1[m] then c:=c+1;
+      if c<>0 then t:=t+1;
+      end;
+writeln(t div 2);
+readln;
+end.

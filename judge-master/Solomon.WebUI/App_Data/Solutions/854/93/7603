@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var X,Y,Z,Q,M,N:byte;
+begin
+  readln(X,Y);
+  readln(Z,Q);
+  if Q<Y then
+  begin
+    Z:=Z-1;
+    M:=60+Q-Y;
+  end
+  else M:=Q-Y;
+
+  N:=Z-X;
+  writeln(N,' ',M);
+  readln;
+end.

@@ -1,0 +1,32 @@
+program Dvoechnik2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : integer;
+  s : string;
+  i : smallint;
+begin
+  s := '';
+  readln (n);
+  write ('*');
+  while n > 2 do
+  begin
+    if n mod 2 = 0 then
+    begin
+      n := n div 2;
+      s := s + ('*');
+    end
+    else
+    begin
+      n := n - 1;
+      s := s + '+';
+    end;
+  end;
+  for i := Length (s) downto 0 do
+  write (Copy (s, i + 1, 1));
+  readln
+end.

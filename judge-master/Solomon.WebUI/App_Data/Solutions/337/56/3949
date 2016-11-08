@@ -1,0 +1,14 @@
+var n,k,i:longint;f:int64;
+begin
+        readln(n);
+        f:=1;
+        for i:=1 to n do
+        f:=f*i;
+        k:=0;
+        while f mod 2=0 do
+        begin
+        k:=k+1;
+        f:=f div 2;
+        end;
+        writeln(k);
+end.

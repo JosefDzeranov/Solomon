@@ -1,0 +1,25 @@
+var a:array[1..500000] of longint;
+i,l,j,k,m,n,b,v,y,i1:longint; ans:int64; q,w:boolean; s,s1:string;
+function prov(a,b:longint):boolean;
+begin
+q:=false;
+str(a,s);
+str(b,s1);
+for i:=1 to length(s) do
+if pos(s[i],s1)<>0 then q:=true;
+prov:=q;
+end;
+
+begin
+readln(n);
+for i:=1 to n do
+read(a[i]);
+
+ans:=0;
+
+for i1:=1 to n-1 do
+for j:=i1+1 to n do
+ if prov(a[i1],a[j]) then inc(ans);
+writeln(ans);
+end.
+

@@ -1,0 +1,28 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var n,i,j,d,a:integer; s,c:string;
+begin
+readln(n);
+d:=0;
+c:='';
+for I := 1 to n do
+ begin
+  readln(s);
+  for j := 1 to Length(s) do
+   begin
+    if (s[j]>='0') and (s[j]<='9') then
+     begin
+       a:=StrToInt(c);
+       d:=d+a;
+     end;
+    end;
+ end;
+
+writeln(d);
+readln;
+end.
+

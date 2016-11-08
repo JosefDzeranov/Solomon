@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace Zadacha1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            s = s.Replace('.', '0');
+            s = s.Replace('*', '1');
+            Console.WriteLine(Convert.ToUInt64(s,2));
+        }
+    }
+}

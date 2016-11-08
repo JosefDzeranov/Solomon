@@ -1,0 +1,75 @@
+type
+  TShar = record
+    col, box: byte;
+  end;
+
+var
+  i, j, k, ii, jj, s, n, m, c, c1, c2, count: integer;
+  shars: array [1..100] of TShar;
+  outs: array [0..100, 1..4] of integer;
+
+begin
+  readln(n, m);
+  for i := 1 to m do
+  begin
+    readln( shars[i].col, shars[i].box);
+  end;
+  for i := 1 to n do
+    for j := 1 to n do
+    if i <> j then
+    begin
+      c1 := 0;
+      c2 := 0;
+      for k := 1 to m do
+      begin
+        if (shars[k].col = i) and (shars[k].box = j) then
+        begin
+          inc(c1);
+        end;
+        if (shars[k].col = j) and (shars[k].box = i) then
+        begin
+          inc(c2);
+        end;
+      end;
+      c := c1;
+      if c1 > c2 then c := c2;
+      for k := 1 to c do
+        for ii := 1 to m do
+          for jj := 1 to m do
+            if (shars[ii].col = i) and (shars[ii].box = j) and
+               (shars[jj].col = j) and (shars[jj].box = i) then
+            begin
+              outs[s, 1] := i;
+              outs[s, 2] := j;
+              outs[s, 3] := j;
+              outs[s, 4] := i;
+              inc(s);
+              shars[ii].col := 0;
+              shars[jj].col := 0;
+            end;
+      for ii := 1 to m do
+        if (shars[ii].col = i) and (shars[ii].box = j) then
+        begin
+          outs[s, 1] := j;
+          outs[s, 2] := i;
+          outs[s, 3] := i;
+          outs[s, 4] := 0;
+          inc(s);
+          shars[ii].col := 0;
+        end;
+      for jj := 1 to m do
+        if (shars[jj].col = j) and (shars[jj].box = i) then
+        begin
+          outs[s, 1] := i;
+          outs[s, 2] := j;
+          outs[s, 3] := j;
+          outs[s, 4] := 0;
+          inc(s);
+          shars[jj].col := 0;
+        end;
+    end;
+  writeln(s);
+  for k := 0 to s - 1 do
+    if outs[k, 4] = 0 then writeln( outs[k, 1], ' ', outs[k, 2], ' ', outs[k, 3])
+    else writeln( outs[k, 1], ' ', outs[k, 2], ' ', outs[k, 3], ' ', outs[k, 4]);
+end.

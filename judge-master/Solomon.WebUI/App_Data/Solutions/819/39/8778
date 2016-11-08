@@ -1,0 +1,37 @@
+n, m = map(int, input().split())
+A = list(map(int, input().split()))
+B = []
+dash = 0
+if n == 1:
+    B.append (1)
+elif n == m:
+    B.append (1)
+    B.append ('-')
+    B.append (n)
+else:
+    B.append (A[0])
+    for i in range (1, len(A)):
+        
+        if A[i] == A[i-1]+1:
+            dash = 1
+            
+        elif dash == 1:
+            B.append ('-')
+            B.append (A[i-1])
+            B.append (' ')
+            B.append (A[i])
+            dash = 0
+ 
+        else:
+            B.append(' ')
+            B.append (A[i])
+            dash = 0
+            
+    if dash == 1:
+        B.append ('-')
+        B.append (A[-1])
+    elif B[-1] != A[-1]:
+        B.append (' ')
+        B.append (A[-1])
+
+print (''.join(map(str, B)))

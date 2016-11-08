@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Kvadrat
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Tochka[] tochki = new Tochka[4];
+            List<double> distances = new List<double>();
+
+            for (int i = 0; i < 4; i++)
+            {
+                tochki[i] = new Tochka(Console.ReadLine());
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = i + 1; j < 4; j++)
+                {
+                    distances.Add(Ro(tochki[i], tochki[j]));
+                }
+            }
+
+            distances.Sort();
+            if (distances[0] == distances[1] && distances[1] == distances[2] && distances[2] == distances[3] && distances[4] == distances[5])
+            {
+                Console.WriteLine("YES");
+            }
+            else
+            {
+                Console.WriteLine("NO");
+            }
+        }
+
+        static double Ro(Tochka a, Tochka b)
+        {
+            return Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
+        }
+
+
+    }
+
+
+
+    class Tochka
+    {
+        private double x;
+
+        public double X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+        private double y;
+
+        public double Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
+        public Tochka(string s)
+        {
+            this.x = double.Parse(s.Split(',')[0].Trim());
+            this.y = double.Parse(s.Split(',')[1].Trim());
+        }
+    }
+}

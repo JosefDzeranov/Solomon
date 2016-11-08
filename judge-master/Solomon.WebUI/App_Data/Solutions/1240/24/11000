@@ -1,0 +1,50 @@
+VAR
+  f: Boolean;
+  n,m,k,l,i,j,ans: LongInt;
+  fl: Array [0..9] of Boolean;
+  a: Array [0..1024] of LongINt;
+BEGIN
+  // INPUT 
+  //Assign(input,'input.txt'); ReSet(input);
+  Read(n);
+  For i := 1 to n do begin
+    Read(k);
+    For j := 0 to 9 do fl[j] := false;
+    
+    if (k = 0) then fl[0] := true
+    else
+      While (k > 0) do begin
+        fl[k mod 10] := true;
+        k := k div 10;
+      End;
+      
+      m := 1; 
+      k := 0;
+      For j := 9 downto 0 do begin
+        if (fl[j]) then k := k + m;
+        m := 2 * m;
+      End;
+      
+      Inc(a[k]);
+  End;
+  
+  // ALGORITHM
+  For i := 0 to 1023 do
+    For j := i+1 to 1023 do begin
+      k := i;
+      l := j;
+      f := false;
+      For m := 0 to 9 do begin
+        if (k mod 2 = 1)and(l mod 2 = 1) then begin f := true; Break; end;
+        k := k div 2;
+        l := l div 2;
+      End;
+        
+      if (f) then ans := ans + a[i] * a[j];
+    end;
+  
+  For i := 1 to 1024 do
+    ans := ans + (Sqr(a[i]) - a[i]) div 2;
+    
+  Write(ans);
+END.

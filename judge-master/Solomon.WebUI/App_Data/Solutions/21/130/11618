@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int a = Convert.ToInt32(s[0]);
+            int b = Convert.ToInt32(s[1]);
+            int c = Convert.ToInt32(s[2]);
+            int d = Convert.ToInt32(s[3]);
+            int k = 0;
+            c = (c + 1) / 2;
+            d = d/ 2;
+            for (int i = c; i <= d; i++)
+            {
+                for (int j = 1; j <= i / 2; j++)
+                {
+                    if (j * (i - j) >= a && j * (i - j) <= b)
+                        k++;
+                }
+            }
+            Console.WriteLine(k);
+        }
+    }
+}

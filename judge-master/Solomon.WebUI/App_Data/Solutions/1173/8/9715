@@ -1,0 +1,11 @@
+Var
+  A,B: Int64;
+Begin
+  Assign(INPUT,'INPUT.TXT');
+  Reset(INPUT);
+  Assign(OUTPUT,'OUTPUT.TXT');
+  ReWrite(OUTPUT);
+  Read(A,B);
+  If ((-10000000000<a) and (a<10000000000)) and ((-10000000000<b) and (b<10000000000))Then
+  Write(A+B);
+ End.

@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <string>
+
+#define endl '\n'
+
+using namespace std;
+
+int n, best = 10000000, sum = 0;
+int arr[100], r[100], d[10000001];
+
+
+int main(){ 
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin >> n;
+	d[0] = 1;
+	for (int i = 0; i < n; i++){
+		cin >> arr[i];
+		sum += arr[i];
+		for (int j = 10000000; j >= 0; j--){
+			if (d[j])
+				d[j + arr[i]] = 1;
+		}
+	}
+
+	for (int i = 0; i < 10000000; i++){
+		if (d[i]){
+			best = min(best, abs(sum - 2 * i));
+		}
+	}
+	cout << best;
+	return 0;
+}

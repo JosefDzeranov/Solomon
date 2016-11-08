@@ -1,0 +1,23 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,l,r1,r2,b,s:integer;
+    pi:real;
+begin
+ pi:=3.1415;
+ readln(n,l);
+ readln(r1,r2);
+ b:=(l div (r1*2)+1)*2;
+ s:=b div 2;
+ if n>(b*2*pi*r1+s*2*pi*r2) then
+  begin
+   writeln('YES');
+   writeln(b,' ',s);
+  end
+  else writeln('NO');
+ readln
+end.

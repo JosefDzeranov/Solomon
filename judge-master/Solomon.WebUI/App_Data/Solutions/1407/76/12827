@@ -1,0 +1,22 @@
+  var n,i,j,u:integer;
+    s,s1:string;
+      begin
+      readln(n);
+        for i:=1 to n do 
+          begin
+          readln(s);
+           for j:=1 to length(s) do
+             if (s[j] in ['0','1','2','3','4','5','6','7','8','9']) or (s[j]=' ') then s1:=s1+s[j];
+             s1:=s1+' ';
+          end;
+         writeln(s1);
+           s1:=trim(s1);
+            n:=pos('  ',s1);
+              while n>0 do
+               begin
+               delete(s1,n,1);
+               n:=pos('  ',s1);
+               end;
+             writeln('-',s1,'-');
+           end.
+     

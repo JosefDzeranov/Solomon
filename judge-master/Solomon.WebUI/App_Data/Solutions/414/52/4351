@@ -1,0 +1,12 @@
+program qq;
+var n, a: integer;
+begin
+readln (n);
+if (3<=n) and (n<=1000) then
+ begin
+ a := n*(n-1)*(n-2);
+ writeln (a)
+ end
+else
+ writeln ('не соответствует условию');
+end.

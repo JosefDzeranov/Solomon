@@ -1,0 +1,44 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+ x,x1,x2,y,y1,y2,z,k,kl,min:integer;
+begin
+  readln(x1,y1,x2,y2);
+  if y1>y2 then
+   begin
+    x:=y1;
+    y1:=y2;
+    y2:=x;
+   end;
+   if x1>x2 then
+     begin
+      y:=x1;
+      x1:=x2;
+      x2:=y;
+     end;
+   if (y1<0) and (y2>100)  then
+    begin
+      k:= y2-100;
+      z:=abs(y1);
+     end
+     else
+    if (x1<0) and (x2>100)  then
+     begin
+      k:= x2-100;
+      z:=abs(x1);
+     end;
+    if k<z then
+     begin
+     kl:=200+k*2;
+     end
+     else
+     kl:=200+z*2;
+     min:=kl*5;
+     writeln(min);
+     readln;
+end. 

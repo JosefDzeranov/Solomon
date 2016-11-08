@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace _1_yankevich_2502
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int n, d;
+            Console.WriteLine();
+            n = Convert.ToInt32(Console.ReadLine());
+            if (n > 1000) { Console.WriteLine("Ошибка! Число друзей < 1000, запустите снова."); Console.ReadKey(); return; }
+            Console.WriteLine();
+            d = Convert.ToInt32(Console.ReadLine());
+            if (d > 1000) { Console.WriteLine("Ошибка! Число орехов Б 1000, запустите снова."); Console.ReadKey(); return; }
+
+            Console.Write("{0} {1}", 1, d-n);
+
+            Console.ReadKey();
+        }
+    }
+}

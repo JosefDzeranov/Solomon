@@ -1,0 +1,9 @@
+var
+	n, i : Integer;
+begin
+	ReadLn(n);
+	
+	for i := 1 to n-2 do
+		Write(1, ' ');
+	Write(2, ' ', n);
+end.

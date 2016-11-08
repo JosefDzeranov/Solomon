@@ -1,0 +1,17 @@
+program ONE;
+uses crt;
+const z=1;
+var N,x,i,y: integer;
+begin
+clrscr;
+y:=0;
+readln (N);
+x:=N;
+for i:=1 to N do
+begin
+y:=y+x*z;
+x:=x-1;
+end;
+writeln (y);
+readln ();
+end.

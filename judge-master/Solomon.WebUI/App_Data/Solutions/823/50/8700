@@ -1,0 +1,25 @@
+program FibonacciAndMouse;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s : string;
+  a, b, x : word;
+  n : integer;
+begin
+  readln (a, b);
+  readln (n);
+  s := IntToStr (a) + IntToStr (b);
+  while Length (s) < n do
+    begin
+      x := a + b;
+      s := s + IntToStr (x);
+      a := b;
+      b := x;
+    end;
+  write (s[n]);
+  readln;
+end.

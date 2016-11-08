@@ -1,0 +1,17 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+    long long n,mas[2005][2005];
+
+int main()
+{
+    long long n;
+    cin >> n;
+    long long ans = 1+4*n*n;
+    n=n*2-1;
+    ans += ((1+n*n)/2 * n)*2;
+    cout << ans;
+    return 0;
+}

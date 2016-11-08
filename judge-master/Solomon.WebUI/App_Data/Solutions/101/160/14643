@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zad_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StreamWriter wr;
+            string q = "";
+            for (int i = 1; i <= 10; i++)
+            {
+                string s = Console.ReadLine();
+                wr = new StreamWriter("0" + i + ".in");
+                wr.WriteLine(s);
+                wr.Close();
+                string[] ss = s.Split(' ');
+                ulong n = Convert.ToUInt64(ss[0]);
+                ulong m = Convert.ToUInt64(ss[1]);
+                ulong a = Convert.ToUInt64(ss[2]);
+                ulong weight = n / a;
+                if (n % a != 0) weight++;
+                //Console.WriteLine(weight);
+                ulong hight = m / a;
+                if (m % a != 0) hight++;
+                //Console.WriteLine(hight);
+
+                Console.WriteLine(weight * hight);
+                wr = new StreamWriter("0" + i + ".out");
+                wr.WriteLine(weight * hight);
+                wr.Close();
+            }
+        }
+    }
+}

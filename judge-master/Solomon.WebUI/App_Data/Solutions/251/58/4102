@@ -1,0 +1,102 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int MaxN(int m[], int size);
+int MinN(int m[], int size);
+int mSize(int m[], int size);
+bool Check(int m[], int size);
+
+int main(int argc, char *argv[])
+{
+    int N;
+    cin>>N;
+    int m[N];
+    for (int i=0; i<N; i++){
+        cin>>m[i];
+    }
+    int n=N;
+    int min=MinN(m,N);
+    int max=MaxN(m,N);
+    int m2[N];
+    int sch=0;
+    
+    for (int i=max; i>=min; i--){
+        for (int j=0; j<N; j++){
+            if (m[j]==i){m2[sch]=i;sch++;}
+        }
+    }
+    sch=0;
+    max = MaxN(m2,N);
+    min = MinN(m2,N);
+    int s2=1;
+    int a=m2[0];
+    
+    while(N>1){
+    sch=0;
+    a = MaxN(m2,N);
+    min = MinN(m2,N);
+    while (min<MaxN(m2,N)){
+        if (m2[sch]>m2[s2]){
+            a=m2[sch]-m2[s2];
+            m2[sch]=0;
+            m2[s2] = a;
+            sch=s2;
+            s2++;
+        }else {s2++;}
+        if (a<min){sch++;}
+        if (sch>=N-1){sch=0;s2=1;}
+    }
+    for (int i=0; i<N; i++){
+        for (int j=0; j<N; j++){
+            if (m2[i]==m2[j]&&i!=j){
+                m2[i]=0;
+                m2[j]=0;}
+        }
+    }
+    sch=0;
+    max = MaxN(m2,N);
+    for (int i=max; i>=0; i--){
+        for (int j=0; j<N; j++){
+            if (m2[j]==i){m[sch]=i;sch++;}
+        }
+    }
+    for (int i=0; i<N; i++){
+        m2[i]=m[i];
+    }
+    N=mSize(m2,N);
+}
+    cout << m2[0]<<endl;
+    //system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+int mSize(int m[], int size)
+{
+    for (int i=0; i<size; i++){
+        if (m[i]==0){return i;}
+    }
+    return size;   
+}
+
+int MaxN(int m[], int size)
+{
+    int res=m[0];
+    for (int i=0; i<size; i++)
+    {
+        if (res<m[i]){res=m[i];}    
+    }    
+    return res;
+}
+
+int MinN(int m[], int size)
+{
+    int res=MaxN(m,size);
+    for (int i=0; i<size; i++)
+    {
+        if (res>m[i]&&m[i]!=0){res=m[i];}    
+    }    
+    return res;
+}
+

@@ -1,0 +1,24 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,x,k:integer;
+z:real;
+begin
+readln(a,b,x);
+z:=b;
+k:=0;
+while x/z>1000 do begin
+inc(k);
+ if k mod 2 <>0 then
+z:=z+a
+else
+z:=z+b;
+end;
+write(x/z);
+readln; { TODO -oUser -cConsole Main : Insert code here }
+end.
+ 

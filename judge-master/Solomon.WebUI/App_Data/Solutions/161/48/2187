@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{float x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,L,a,b,S;
+const double pi=3.1415926535;
+cin>>L>>x1>>y1>>x2>>y2;
+x3=x2;
+y3=y1;
+x4=x1;
+y4=y2;
+x5=abs(x3-x1);
+y5=abs(y4-y1);
+a=sqrt((x1-x4)*(x1-x4)+(y1-y4)*(y1-y4));
+b=sqrt((x1-x3)*(x1-x3)+(y1-y3)*(y1-y3));
+if(a>b)
+       {
+           if(L<b)
+           S=pi*L*L;
+           if(L>a)
+           S=a*b;
+       }
+if(b>a)
+       {
+           if(L<a)
+           S=pi*L*L;
+           if(L>b)
+           S=a*b;
+       }
+       cout<<S;
+    return 0;
+}

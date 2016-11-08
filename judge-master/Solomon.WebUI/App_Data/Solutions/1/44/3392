@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+struct point
+{
+	int x, y;
+};
+int main()
+{
+	
+	long double l;
+	cin >> l;
+	point a, b;
+	cin >> a.x >> a.y;
+	cin >> b.x >> b.y;
+	long double sa = abs(b.x - a.x);
+	long double sb = abs(b.y - a.y);
+	long double sa2 = sa / 2;
+	long double sb2 = sb / 2;
+	long double al, be, alr, ber;
+	al = (360 / (sa + sb)) * sa;
+	be = (360 / (sa + sb)) * sb;
+	alr = al / 57;
+	ber = be / 57;
+	long double rrr = sqrt((sa2 * sa2)  + (sb2 * sb2));
+	long double pl = 3.14159 * (l * l);
+	long double sss = 0;
+
+	if (l <= (sa / 2) && l <= (sb / 2))
+	{
+		sss = 3.14159 * (l * l);
+	}
+	else if (l <= (sa / 2) && l > (sb / 2))
+	{
+		long double ss = ((pl / 360) * be) - ((l * l) * 0.5 * sin(ber));
+		sss = pl - (2 * ss);
+	}
+	else if (l < rrr)
+	{
+		long double ss = ((pl / 360) * be) - ((l * l) * 0.5 * sin(ber));
+		long double ss2 = ((pl / 360) * al) - ((l * l) * 0.5 * sin(alr));
+		sss = pl - ss - ss2;
+	}
+	else
+	{
+		sss = sa * sb;
+	}
+cout << sss;
+return 0;
+}

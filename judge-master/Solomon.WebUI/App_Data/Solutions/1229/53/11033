@@ -1,0 +1,190 @@
+program c;
+
+label
+1, 2 ;
+type
+  exst = ^st;
+  st = record
+    data: integer;
+    next: exst;
+  end;
+
+
+var
+  stx, sty: exst;
+  a, b: array [1..100, 1..100] of boolean;
+  i, j, ch, vx, vy, nx, ny, m, n, k: integer;
+  flag: boolean;
+  f, t: text;
+
+
+
+procedure writestack(var u: exst; digit: integer);
+var
+  new1: exst;
+begin
+  new(new1); 
+  new1^.Data := Digit; 
+  new1^.Next := u; 
+  u := new1; 
+end;
+
+procedure readStack(var u: EXST; var digit: integer);
+var
+  new1: EXST;
+begin
+  digit := u^.Data; 
+  new1 := u; 
+  u := u^.Next; 
+  dispose(new1);
+end;
+
+procedure newxnewy();
+begin
+  i := 1;
+  j := 1;
+  while i <= m do
+  begin
+    while j <= n do
+    begin
+      if b[i, j] = false then
+      begin
+        writestack(stx, i);
+        writestack(sty, j);
+        b[i, j] := true;
+        j := n + 1;
+        i := m + 1;
+      end;
+      j := j + 1;
+    end;
+    i := i + 1;
+  end;
+end;
+
+begin
+  assign(f, 'input.txt');
+  assign(t, 'output.txt');
+  reset(f);
+  rewrite(t);
+  read(f, m);
+  read(f, n);
+  read(f, k);
+  stx := nil;
+  sty := nil;
+  readln(f);
+  for i := 1 to k do
+  begin
+    read(f, vx);
+    read(f, vy);
+    a[vx, vy] := true;
+    b[vx, vy] := true;
+    readln(f);
+  end;
+  
+  
+  vy := 1;
+  vx := 1;
+  while (vy <= n)  and (flag = false) do
+  begin
+    while (vx <= m) and (flag = false) do
+    begin
+      if (a[vx, vy] = false) and ((vx <> nx) or (vy <> ny)) then
+      begin
+        nx := vx;
+        ny := vy;
+        flag := true;
+      end;
+      vx := vx + 1;
+    end;
+    vy := vy + 1;
+  end;
+  writestack(stx, nx);
+  writestack(sty, ny);
+  b[nx, ny] := true;
+  vy := 1;
+  vx := 1;
+  
+  
+  if nx - 1 > 0 then
+    if a[nx - 1, ny] = false then
+    begin
+      b[nx - 1, ny] := true;
+      writestack(stx, nx - 1);
+      writestack(sty, ny);
+    end;
+  if ny - 1 > 0 then
+    if a[nx, ny - 1] = false then
+    begin
+      b[nx, ny - 1] := true;
+      writestack(stx, nx);
+      writestack(sty, ny - 1);
+    end;
+  if nx + 1 <= m then
+    if a[nx + 1, ny] = false then
+    begin
+      b[nx + 1, ny] := true;
+      writestack(stx, nx + 1);
+      writestack(sty, ny);
+    end;
+  if ny + 1 <= n then
+    if a[nx, ny + 1] = false then
+    begin
+      b[nx, ny + 1] := true;
+      writestack(stx, nx);
+      writestack(sty, ny + 1);
+    end;
+  1:  flag := false;
+  while flag = false do
+  begin
+    if (stx <> nil) and (sty <> nil) then
+    begin
+      readstack(stx, nx);
+      readstack(sty, ny);
+      if nx - 1 > 0 then
+        if a[nx - 1, ny] = false then
+        begin
+          flag := true;
+          b[nx - 1, ny] := true;
+          writestack(stx, nx - 1);
+          writestack(sty, ny);
+        end;
+      if ny - 1 > 0 then
+        if a[nx, ny - 1] = false then
+        begin
+          flag := true;
+          b[nx, ny - 1] := true;
+          writestack(stx, nx);
+          writestack(sty, ny - 1);
+        end;
+      if nx + 1 <= m then
+        if a[nx + 1, ny] = false then
+        begin
+          flag := true;
+          b[nx + 1, ny] := true;
+          writestack(stx, nx + 1);
+          writestack(sty, ny);
+        end;
+      if ny + 1 <= n then
+        if a[nx, ny + 1] = false then
+        begin
+          flag := true;
+          b[nx, ny + 1] := true;
+          writestack(stx, nx);
+          writestack(sty, ny + 1);
+        end;
+    end
+       else
+    begin
+      ch := ch + 1;
+      newxnewy();
+      if stx = nil then goto 2;
+      goto 1;
+    end;
+  end; 
+  
+  
+  
+  2: write(t,ch);
+  close(f);
+  close(t);
+end.

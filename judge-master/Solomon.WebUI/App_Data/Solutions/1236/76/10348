@@ -1,0 +1,19 @@
+program baran;
+var a,y:string;
+s,i,q,t,x:integer;
+begin
+Readln(i);
+q:=0;
+for s:=1 to i do
+begin
+Readln(a);
+for t:=1 to i do
+for x:=1 to 100 do
+begin
+str(x,y);
+if (pos(y,a)<>0) and (x div 10=0) then q:=q+x else
+if (pos(y,a)<>0) and (x mod 10<>0) and (x div 10<>0) then q:=q+x-(x mod 10)-(x div 10);
+end;
+end;
+Writeln(q div i);
+end.

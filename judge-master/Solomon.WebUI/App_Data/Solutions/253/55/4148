@@ -1,0 +1,26 @@
+#include<iostream>
+#include<cmath>
+#include<stdlib.h>
+#include<cstring>
+#include<map>
+
+using namespace std;
+
+
+
+int main()
+{
+    long long int a = 1, ans = 0, c, m, i, j, c2 = 0, n, m2;
+    cin >> n;
+    m = 2 *n - 1;
+    m2 = n*2;
+    c = ((m*m + 1)*m*m)/2;
+    c = (c/m)*2;
+    c2 = ((m2 * m2 + 1) * m2 * m2)/2;
+    c2 = c2/m2;
+    ans = c + c2/n;
+    cout << ans;
+
+
+    return 0;
+}

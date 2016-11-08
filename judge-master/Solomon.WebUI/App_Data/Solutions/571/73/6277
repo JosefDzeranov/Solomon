@@ -1,0 +1,22 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,s,x,y : longint;
+i : integer;
+begin
+y:= 1;
+readln(n);
+while (s<n) do
+begin
+s:= s + (x + y);
+x:=y;
+y:= y + 1;
+i:= i + 1;
+end;
+writeln(i);
+readln;
+end.

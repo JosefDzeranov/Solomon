@@ -1,0 +1,21 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+using namespace std;
+int main()
+{int a1,a2,a3,a4,i;
+ifstream indata;
+ifstream outdata;
+indata.open(pobeda.in.txt);
+indata>>a1>>a2>>a3>>a4;
+indata.close();
+if(a1>a2){a2=a1-a2;a1=a1-a2;}
+if(a2>a1){a1=a2-a1;a2=a2-a1;a1=a2;}
+if(a3>a4){a4=a3-a4;a3=a3-a4;}
+if(a4>a3){a3=a4-a3;a4=a4-a3;a3=a4;}
+a1=sqrt(a1+a3);
+outdata.open(pobeda.out.txt);
+outdata << a1;
+outdata.close();
+
+return 0;}

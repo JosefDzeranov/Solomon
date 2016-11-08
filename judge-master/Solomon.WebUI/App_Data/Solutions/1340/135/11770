@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int a, k, b, m, x, sh = 0, r, i, n = 0;
+	cin >> a >> k >> b >> m >> x;
+	r = max(k, m) - min(k, m);
+	if (r == 0) r = k;
+	for (i = r;;i+=r) {
+		if (i % k != 0 && i % m != 0) {
+			if (n + r * (a + b) >= x) break;
+			n += r * (a + b);
+		}
+		else if (i % k == 0) {
+			if (n + (r - 1) * (a + b) + b >= x) break;
+			n += (r - 1) * (a + b) + b;
+		}
+		else if (i % m == 0) {
+			if (n + (r - 1) * (a + b) + a >= x) break;
+			n += (r - 1) * (a + b) + a;
+		}
+		else {
+			if (n + (r - 1) * (a + b) >= x) break;
+			n += (r - 1) * (a + b);
+		}
+	}
+	i -= r;
+	while (n < x) {
+		i++;
+		if (i % k != 0 && i % m != 0) {
+			n += (a + b);
+		}
+		else if (i % k == 0) {
+			n += b;
+		}
+		else if (i % m == 0) {
+			n += a;
+		}
+	}
+	cout << i;
+	return 0;
+}

@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+#include <string>
+#include <sstream>
+int main() {
+	string s, t;
+	getline(cin, s);
+	bool res=true;
+	int max=s.size();
+	int k[10];
+	for (int i=0; i<10; i++)
+		k[i]=0;
+	for (int i=0; i<max; i++) {
+		t=s[i];
+		int tmp;
+		stringstream (t) >> tmp;
+		k[tmp]++;
+	}
+	for (int i=0; i<10; i++)
+		if (k[i]>1) {
+			res=false;
+			break;
+		}
+	if (res==true)
+		cout << "YES";
+	else {
+		cout << "NO" << endl;
+		for (int i=0; i<10; i++)
+		if (k[i]>1)
+			cout << i << " ";
+	}
+	cin.ignore();
+	cin.get();
+	return 0;
+	}
+

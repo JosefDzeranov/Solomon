@@ -1,0 +1,29 @@
+var n:0..100;
+a:array[0..1000] of longint;
+i,x,v,w,p,f: longint;
+begin
+readln(n);
+for i:=1 to n do readln(a[i]);
+p:=1;
+for i:=1 to n do
+begin
+if x<a[i] then x:=a[i];
+end;
+v:=a[i];
+while p<>0 do
+begin
+for i:=1 to n do
+begin
+if (x>a[i]) and (f<a[i]) then f:=a[i];
+end;
+if v>w then w:=w+f else v:=v+f;
+x:=f;
+f:=0;
+if x=0 then p:=0;
+end;
+writeln(v-w);
+readln();
+end.
+
+
+

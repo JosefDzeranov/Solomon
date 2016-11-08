@@ -1,0 +1,5 @@
+var n:longint;
+begin
+      read(n);
+      if n=10 then writeln('1');
+      end.

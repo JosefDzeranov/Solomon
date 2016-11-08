@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int a, k, b, m, x, one, two;
+	cin >> a >> k >> b >> m >> x;
+	one = (k - 1) * m;
+	two = (m - 1) * k;
+	cout << (k * m * x)/(one * a + two * b);
+	return 0;
+}

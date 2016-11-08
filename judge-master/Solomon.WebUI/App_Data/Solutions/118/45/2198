@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+int main(){
+int n, l, r1, r2, dlin, dlin2,g = 0;
+cin >> n >> l >> r1 >> r2;
+if(n != 0 && l != 0 && r1 != 0 && r2 != 0){
+while(l>=0){
+l = l - (r1 * 2) - 1;
+g++;
+}
+dlin=(2*3,14*r1)*g*2;
+dlin2=(2*3,14*r2)*g;
+if(dlin+dlin2 >= l)cout<<"YES"<<endl<<g*2<<" "<<g;
+else cout<<"NO";}
+else cout<<"NO";
+return 0;
+}

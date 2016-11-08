@@ -1,0 +1,28 @@
+program MetallistsDecoration;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, l, r1, r2, k1, k2 : smallint;
+begin
+  readln (n, l);
+  readln (r1, r2);
+  r1 := r1 * 2;
+  r2 := r2 * 2;
+  if l mod r1 > 0 then
+    k1 := 2 * (l div r1 + 1)
+  else
+    k1 := 2 * (l div r1);
+  k2 := k1 div 2;
+  if n >= k1 * r1 * Pi + k2 * r2 * Pi then
+    begin
+      writeln ('YES');
+      write (k1, ' ', k2)
+    end
+  else
+    writeln ('NO');
+  readln;
+end.

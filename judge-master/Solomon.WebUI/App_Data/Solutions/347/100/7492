@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = Convert.ToInt16(Console.ReadLine());
+            int D = Convert.ToInt32(Console.ReadLine());
+            int a = D - N;
+            if (a == 1)
+            {
+                int k = D;
+                Console.WriteLine(0 + " " + k);
+            }
+            else
+            {
+                int k = 1;
+                Console.WriteLine(k + " " + a);
+            }
+        }
+    }
+}

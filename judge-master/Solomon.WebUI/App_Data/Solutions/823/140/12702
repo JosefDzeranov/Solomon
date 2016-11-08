@@ -1,0 +1,28 @@
+program Sponsor;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  teams : array [1 .. 10000] of integer;
+  k : word;
+  prices : string;
+  i : integer;
+  max : word;
+
+begin
+  readln(k);
+  readln(prices);
+  fillchar(teams, k, 0);
+  for i := 1 to Length(prices) do
+    if prices[i] = 'P' then
+      inc(teams[i mod k]);
+  max := 1;
+  for i := 1 to k do
+    if teams[i] > teams[max] then
+      max := i;
+  writeln(max);
+  readln;
+end.

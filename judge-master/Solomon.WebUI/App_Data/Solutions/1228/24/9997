@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	long long n;
+	cin >> n;
+
+	vector<long long> v(1024);
+
+	for (long long i = 0; i < n; i++)
+	{
+		long long t;
+		cin >> t;
+
+		if (t == 0)
+		{
+			v[1]++; continue;
+		}
+		vector<long long> temp(10);
+		while (t != 0)
+		{
+			temp[t % 10] = true;
+			t /= 10;
+		}
+
+		long long res = 0;
+		for (long long j = temp.size() - 1; j > -1; j--)
+		{
+			res = res * 2 + temp[j];
+		}
+
+		v[res]++;
+	}
+
+	long long res = 0;
+
+	for (long long i = 0; i < 1024; i++)
+		for (long long j = i; j < 1024; j++)
+			if ((i&j)*v[i]*v[j] != 0)
+				if (i != j)
+					res += v[i] * v[j];
+
+				else
+					res += v[i] * (v[i] - 1)/2;
+
+	cout << res;
+	return 0;
+}

@@ -1,0 +1,28 @@
+program fieldTorchFire;
+var
+ fieldX,fieldY,torchAmount,
+ timeVarX,timeVarY:word;
+ firedTorches,ci,cIi,iter:longint;
+ field:array[1..1000,1..1000] of longint;
+begin
+ readln(fieldX,fieldY,torchAmount); firedTorches:=torchAmount;
+ for ci:=1 to torchAmount do
+  begin
+   readln(timeVarX,timeVarY);
+   field[timeVarY,timeVarX]:=1;
+  end;
+ while firedTorches<fieldX*fieldY do
+  begin
+   inc(iter);
+   for ci:=1 to fieldY do
+   for cIi:=1 to fieldX do
+    if field[ci,cIi]=iter then
+     begin
+      if (ci>1) and (field[ci-1,cIi]=0) then begin field[ci-1,cIi]:=iter+1; inc(firedTorches); end;
+      if (ci<fieldY) and (field[ci+1,cIi]=0) then begin field[ci+1,cIi]:=iter+1; inc(firedTorches); end;
+      if (cIi>1) and (field[ci,cIi-1]=0) then begin field[ci,cIi-1]:=iter+1; inc(firedTorches); end;
+      if (cIi<fieldX) and (field[ci,cIi+1]=0) then begin field[ci,cIi+1]:=iter+1; inc(firedTorches); end;
+     end;
+  end;
+ write(iter);
+end.

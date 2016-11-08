@@ -1,0 +1,17 @@
+program fact;
+var
+ n,k,r:longint;
+function factorial (f:longint):longint;
+ var
+  cI,fr:longint;
+ begin
+  fr:=1;
+  for cI:=1 to f do fr:=fr*cI;
+  factorial:=fr;
+ end;
+begin
+ readln(n,k);
+ r:=factorial(n) div factorial(k)*factorial((n-k));
+ write(r);
+ readln;
+end.

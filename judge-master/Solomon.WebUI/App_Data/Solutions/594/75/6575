@@ -1,0 +1,11 @@
+var p,cura2,cura,n:integer;
+a:array[1..10000] of string;
+begin
+read(n);
+for cura:=1 to n+1 do readln(a[cura]);
+
+for cura:=2 to n+1 do 
+for cura2:=1 to cura do 
+if(cura<>cura2) and (a[cura]=a[cura2]) then inc(p);
+if(p=n) then writeln(1) else writeln(n-p);
+end.

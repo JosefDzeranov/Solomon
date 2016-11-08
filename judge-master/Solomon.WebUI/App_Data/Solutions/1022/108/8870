@@ -1,0 +1,27 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+   n, i, z, sum, otv:integer;
+begin
+  otv := 0;
+  sum := 0;
+  readln(n);
+  for I := 1 to n do
+    begin
+      read(z);
+      if (i mod 2 <> 0) then
+      sum:=sum+z else
+      sum:=sum-z;
+    end;
+ if sum <= 0 then
+ otv := -sum+1 else
+ otv := 0;
+ writeln(otv);
+readln;
+readln;
+end.

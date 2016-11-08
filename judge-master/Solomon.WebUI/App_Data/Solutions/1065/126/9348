@@ -1,0 +1,39 @@
+program MashaAndBear;
+label
+ cancelFor,theEnd;
+var
+ aShkaf,sS,bS:byte;
+ Shkaf:array[1..48] of longint;
+ allEquals,someIs:boolean;
+ ci,cIi,i,Ii:longint;
+begin
+ readln(aShkaf);
+ for ci:=1 to aShkaf do read(Shkaf[ci]);
+ 
+
+ for ci:=1 to 10000000 do
+  begin
+   for i:=1 to aShkaf do
+    begin
+     if (i=1) or (Shkaf[sS]>Shkaf[i]) then sS:=i;
+     if (i=1) or (Shkaf[bS]<Shkaf[i]) then bS:=i;
+    end;
+   Shkaf[sS]:=succ(Shkaf[sS]);
+   Shkaf[bS]:=pred(Shkaf[bS]);
+   
+   allEquals:=false; someIs:=false;
+   for i:=1 to aShkaf do
+    begin
+    for Ii:=1 to aShkaf do
+     if (abs(Shkaf[i]-Shkaf[Ii])=1) then someIs:=true
+     else if Shkaf[i]=Shkaf[Ii] then allEquals:=true
+     else begin allEquals:=false; break; end;
+    if (allEquals=false) then break;
+    end;
+    
+   if (allEquals=true) and (someIs=true) then begin write('IMPOSSIBLE'); goto theEnd; end
+   else if (allEquals=true) and (someIs=false) then begin write(ci); goto theEnd; end;
+   
+  end;
+ theEnd:
+end.

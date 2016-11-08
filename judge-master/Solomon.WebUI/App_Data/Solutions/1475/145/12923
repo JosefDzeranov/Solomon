@@ -1,0 +1,26 @@
+function GetPow2 (n : LongInt) : LongInt;
+var
+   p, num : LongInt;
+begin
+     p := 0;
+     num := 1;
+     
+     while num < n do
+     begin
+           num := num*2;
+           Inc (p);
+     end;
+
+     GetPow2 := p
+end;
+
+var
+   n, p : LongInt;
+
+begin
+     ReadLn (n);
+     
+     p := GetPow2 (n);
+     
+     WriteLn (n-p)
+end.

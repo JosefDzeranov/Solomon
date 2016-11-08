@@ -1,0 +1,8 @@
+A = list (input())
+B = []
+for i in range (len(A)):
+    if (A[i] != '#'):
+        B.append(A[i])
+    elif (len(B) != 0):
+        B.pop()
+print (''.join(B))

@@ -1,0 +1,43 @@
+#include <iostream>
+
+
+using namespace std;
+
+int main()
+{
+    long long A,K,B,M,X,c=0;
+    cin>>A>>K>>B>>M>>X;
+    if (K>X && M>X)
+    {
+        if(X%(A+B)!=0)cout<<X/(A+B)+1;
+        else cout<<X/(A+B);
+        return 0;
+    }
+    while (X>0)
+    {
+    if (K==0)
+        X=X-A;
+    else
+        {
+            if (c%K!=0)
+        {
+            X=X-A;
+        }
+        }
+        if (M==0)
+            X=X-B;
+        else
+        {
+
+
+        if (c%M!=0)
+        {
+            X=X-B;
+        }
+
+    }
+    c++;
+    }
+    cout<<c-1;
+    return 0;
+}

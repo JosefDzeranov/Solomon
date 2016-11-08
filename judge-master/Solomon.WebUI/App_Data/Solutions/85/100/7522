@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int num_of_bro, num_of_orex;
+	cin >> num_of_bro;
+	cin >> num_of_orex;
+	cout << 1 << " " << num_of_orex - num_of_bro; 
+
+	return 0;
+}

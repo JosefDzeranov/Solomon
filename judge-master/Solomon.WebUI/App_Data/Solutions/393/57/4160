@@ -1,0 +1,36 @@
+var
+	n : Integer;
+	t, m, i : Integer;
+	a : array [1..10000] of Integer;
+	p : array [1..9] of Integer;
+begin
+	ReadLn(n);
+	
+	for i := 1 to n do
+		Read(a[i]);
+		
+	for i := 1 to 9 do
+		p[i] := 0;
+		
+	for i := 1 to n do begin
+		t := a[i] mod 9;
+		if t = 0 then
+			t := 9;
+			
+		Inc(p[t])
+	end;
+	
+	m := 1;		
+	for i := 1 to 9 do
+		if p[m] < p[i] then
+			m := i;
+			
+	for i := 1 to n do begin
+		t := a[i] mod 9;
+		if t = 0 then
+			t := 9;
+		
+		if t <> m then
+			Write(a[i], ' ')
+	end		
+end.

@@ -1,0 +1,22 @@
+using System;
+
+namespace viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] chisla = Console.ReadLine().Split();
+			int n = int.Parse(chisla[0]);
+			int k = int.Parse(chisla[1]);
+
+			Console.Write(Factorial(n)/(Factorial(k)*Factorial(n-k)));
+		}
+
+		static int Factorial(int n)
+		{
+			
+			return (n == 1 || n== 0) ? 1 : n * Factorial(n - 1);
+		}
+	}
+}

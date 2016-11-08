@@ -1,0 +1,12 @@
+program Project2;
+
+var
+n,m,k,i:integer;
+x,y:array[1..1000] of integer;
+begin
+readln(n,m,k);
+for I := 1 to k do
+ readln(x,y);
+readln('2');
+
+end.

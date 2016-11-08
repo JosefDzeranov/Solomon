@@ -1,0 +1,28 @@
+var
+n,i,min,max,x: integer;
+a:array[1..3] of integer;
+z:byte;
+begin
+
+//--var and begin--
+
+readln(z);
+read(n);
+for i:=1 to 3 do
+read(a[i]);
+
+//--read--
+
+min:=maxint;
+max:=-1;
+for i:=1 to 3 do begin
+if a[i]>=max then max:=a[i];
+if a[i]<=min then min:=a[i];
+end;
+
+//--max and min--
+
+if z=1 then write(n-min)
+else write(min);
+
+end.

@@ -1,0 +1,40 @@
+﻿using System;
+
+
+namespace OLYMPNOSU
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int n = int.Parse(Console.ReadLine());
+            var ans = string.Empty;
+
+            int min1 = int.MaxValue;
+
+
+            for (int i = 2; i < n; i++)
+            {
+                for (int j = i+1; j < n; j++)
+                {
+                    for (int k = j+1; k <n; k++)
+                    {
+                        if (i + j + k == n && (Math.Abs(i-j)+Math.Abs(j-k)< min1) )
+                        {
+                            ans = i + " " + j + " " + k;
+                            min1 = Math.Abs(i - j) + Math.Abs(j + k); 
+                        }
+                    }
+                }
+            }
+
+
+            Console.WriteLine(ans);
+
+
+
+
+        }
+    }
+}

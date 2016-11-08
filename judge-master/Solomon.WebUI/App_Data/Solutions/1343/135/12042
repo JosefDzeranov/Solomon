@@ -1,0 +1,25 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s, a, k, b, m, x, i: Integer;
+
+begin
+  readln(a, k, b, m, x);
+  s := 0;
+  i := 1;
+  while(s < x)do
+  begin
+    if not((i >= k) and (i mod k = 0)) then
+      s := s + a;
+    if not((i >= m) and (i mod m = 0)) then
+      s := s + b;
+    Inc(i);
+  end;
+  writeln(i - 1);
+  readln;
+end.

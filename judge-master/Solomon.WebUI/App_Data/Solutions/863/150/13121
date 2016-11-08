@@ -1,0 +1,42 @@
+﻿using System;
+using System.Numerics;
+
+namespace OLYMPNOSU
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            BigInteger pow = 1;
+            string ans = "";
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '*') ans += "1";
+
+                else
+                {
+                    if (s[i] == '.')
+                        ans += "0";
+                }
+            }
+            BigInteger answer = 0; 
+            for (int i = ans.Length-1; i>=0; i--)
+            {
+                
+                answer += Convert.ToInt32(ans[i].ToString()) * pow ;
+                pow*=2;
+            }
+
+
+
+            Console.WriteLine(answer);
+
+           
+            
+
+
+        }
+    }
+}

@@ -1,0 +1,15 @@
+program c0;
+var i,x,r: word;
+begin
+	readln(i);
+	r:=0;
+	repeat
+		x:=i;
+		while (x and 1)<>1 do begin
+			x:=x shr 1;
+			inc(r);
+		end;
+		dec(i);
+	until i<=1;
+	writeln(r);
+end.

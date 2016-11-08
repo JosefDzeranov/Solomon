@@ -1,0 +1,10 @@
+program shahmatny_turnir;
+var n,p,i:longint;
+begin
+   readln(n);
+   p:=1;
+   for i:=n-2 to n do
+    p:=p*i;
+    writeln(p);
+end.
+

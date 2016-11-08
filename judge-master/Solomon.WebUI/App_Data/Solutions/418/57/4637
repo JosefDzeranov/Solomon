@@ -1,0 +1,58 @@
+//
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cmath>
+#include <algorithm>
+#include <set>
+#include <map>
+#include <iomanip>
+#include <iterator>
+#include <climits>
+#include <conio.h>
+#include <cstring>
+using namespace std;
+#define c(i,s,f) for(int i=s;i<=f;i++)
+#define cr(i,s,f) for(int i=s;i>=f;i--)
+#define pb push_back
+#define mp make_pair
+#define all(c) c.begin(),c.end()
+#define FILEIN 0
+#define MSVIS 0
+typedef unsigned long long int ull;
+typedef long long int ll;
+typedef long double ld;
+const ld eps=1e-9;
+const int inf=LONG_MAX;
+struct pt {int x,y;};
+#if FILEIN
+ifstream in("input.txt");
+ifstream out("output.txt");
+#endif
+int N,c[10]={0},u,x,nc;
+vector<pair<int,int> > a;
+int croot(int y){
+    int s=0;
+    while (y>0){
+        s+=(y%10),y/=10;
+    }
+    if (s>9) return croot(s);
+    else return s;
+}
+int main(){
+    cin>>N;
+    c(i,1,N){
+        cin>>x;
+        u=croot(x);
+        c[u]++;
+        a.pb(mp(x,u));
+    }
+    nc=1;
+    c(i,2,9) if (c[i]>c[nc]) nc=i;
+    c(i,0,(int)a.size()-1){
+        if (a[i].second != nc) cout<<a[i].first<<" ";
+    }
+#if MSVIS
+    getch();
+#endif
+}

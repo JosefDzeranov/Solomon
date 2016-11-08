@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int[] nums = new int[3];
+        nums[0]  = num / 3;
+        if (num % 2 == 1) {
+            nums[0]++;
+        }
+        int d = num - nums[0];
+        int d1 = d / 2;
+        int d2 = d - d1;
+        while ((nums[0] == d1) || (nums[0] == d2) || (d1 == d2)) {
+            d1--;
+            d2++;
+        }
+        nums[1] = d1;
+        nums[2] = d2;
+        Arrays.sort(nums);
+        for (int i: nums) {
+            System.out.print(i);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+}

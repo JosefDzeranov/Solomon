@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int min, max, howMore = 2;
+    scanf("%d%d", &min, &max);
+    while(max > 0)
+    {
+        if((max%2+min%2)%2 == 1) howMore *= 2;
+        max /= 2; min /= 2;
+    }
+    printf("%d\n", howMore);
+    return 0;
+}

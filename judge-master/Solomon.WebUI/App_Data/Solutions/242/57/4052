@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int[] mas = new int[n];
+            int[] m = new int[10];
+            s = "";
+            int k = 0;
+            for (int i = 0; i < ss.Length; i++)
+            {
+                s = ss[i];
+                if (s.Length > 1)
+                {
+                    
+                  //  while (s.Length > 1)
+                    {
+                        for (int j = 0; j < s.Length; j++)
+                        {
+                            k += Convert.ToInt32(Convert.ToString(s[j]));
+                            if (k / 10 > 0) k = k % 10 + k / 10;
+                        }
+                    }
+                    mas[i] = k; k = 0;
+                }
+                else mas[i] = Convert.ToInt32(ss[i]);
+            }
+            for (int i = 0; i < mas.Length; i++)
+                m[mas[i]]++;
+            k = 0;
+            for (int i = 0; i < 10; i++)
+                if (k <= m[i]) k = i;
+            for (int i = 0; i < ss.Length; i++)
+                if (mas[i] != k || mas[i] != k) Console.Write(ss[i] + " ");
+        }
+    }
+}

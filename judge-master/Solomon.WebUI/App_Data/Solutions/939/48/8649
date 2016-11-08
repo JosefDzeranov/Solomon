@@ -1,0 +1,14 @@
+program koza;
+var
+ L,x1,y1,x2,y2,lS,oS,rA:longint;
+begin
+ readln(L);
+ readln(x1,y1);
+ readln(x2,y2);
+ lS:=sqr(L+L-1);
+ oS:=abs(x2-x1)*abs(y2-y1);
+ if oS<lS then rA:=oS
+  else rA:=oS-lS;
+ write(ra);
+ readln;
+end.

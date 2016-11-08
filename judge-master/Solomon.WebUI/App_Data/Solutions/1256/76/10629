@@ -1,0 +1,36 @@
+const
+p='1234567890';
+
+var
+s,sr:String;
+n,dl,i,j,sum,ch,err:Longint;
+a:array [1..100001] of String;
+t:text;
+
+begin
+readln(n);
+For i:=1 to n do Readln(a[i]);
+
+For i:=1 to n do begin
+sr:=a[i];
+dl:=length(sr);
+j:=1;
+
+While j<=dl do begin
+s:='';
+While (j<=dl) and (sr[j]<>' ') and (sr[j]<>'.')  do begin
+s:=s+sr[j];
+inc(j)
+end;
+
+val(s,ch,err);
+sum:=sum+ch;
+s:='';
+
+inc(j);
+end;
+end;
+
+Writeln(sum);
+End.
+

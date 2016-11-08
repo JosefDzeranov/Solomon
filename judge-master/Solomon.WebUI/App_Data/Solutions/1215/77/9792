@@ -1,0 +1,17 @@
+var s,s1:string;
+i,j,st:integer;
+begin
+read(s);
+st:=trunc(sqrt (length(s)))+ord(frac (sqrt (length(s)))<>0); 
+for i:=length(s)+1 to st*st do s:=s+' ';
+for i:=1 to st do
+begin
+j:=1;
+      while j<=st do
+      begin
+      s1:=s1+s[(j-1)*st+i];
+      j:=j+1;      
+      end;
+end;      
+      write(s1)
+end.

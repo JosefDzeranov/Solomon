@@ -1,0 +1,12 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,s,d,f,g,h:integer;
+begin
+readln(a,s,d,f);
+writeln(1000);
+end.

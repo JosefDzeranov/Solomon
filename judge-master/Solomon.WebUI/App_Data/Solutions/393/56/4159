@@ -1,0 +1,15 @@
+var
+	n, cnt : Integer;
+	
+begin
+	ReadLn(n);
+	
+	cnt := 0;
+	
+	while n > 1 do begin
+		n := n div 2;
+		Inc(cnt, n)
+	end;
+	
+	WriteLn(cnt)
+end.

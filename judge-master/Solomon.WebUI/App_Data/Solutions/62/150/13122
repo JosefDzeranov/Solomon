@@ -1,0 +1,26 @@
+program Project2;
+
+var
+s,p:string;
+a,b,k:int64;
+i:integer;
+begin
+a:=0;
+k:=1;
+p:='';
+readln(s);
+for I := 1 to length(s) do
+ if s[i]='*' then
+  p:=p+'1'
+  else
+   if s[i]='.' then
+    p:=p+'0';
+for I := length(p) downto 1 do
+ begin
+ b:=strtoint(p[i])*k;
+ a:=a+b;
+ k:=k*2;
+ end;
+writeln(a);
+readln;
+end.

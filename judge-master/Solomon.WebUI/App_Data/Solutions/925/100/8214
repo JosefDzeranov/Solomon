@@ -1,0 +1,17 @@
+program Project5;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+a,b,c,n,d,s:integer;
+begin
+readln(d);
+readln(n);
+s:=n-1*d;
+writeln('1',' ',s);
+readln;
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int ans = 0;
+    int a, b;
+    double c, d;
+    cin >> a >> b;
+    cin >> c >> d;
+    c /= 2;
+    d /= 2;
+    int x = 1;
+    int y = c - x;
+    for (int i = x; i <= d; i++)
+    {
+        for (int j = i; j <= d; j++)
+        {
+            if ((i + j) >= c && (i + j) <= d && i * j <= b && i * j >= a)
+                ans++;
+        }
+    }
+    cout << ans;
+    return 0;
+}

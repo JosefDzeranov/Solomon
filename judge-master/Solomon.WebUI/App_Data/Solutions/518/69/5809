@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	cout.precision(5);
+	long double a, b, x;
+	cin >> a >> b >> x;
+	long double pok = 1;
+	long double time = b;
+	while (1)
+	{
+		int fl = 0;
+		long double time2 = time;
+		for (int i = pok - 1; i < pok + 1; i++)
+		{
+			long double t = time2;
+			time2 += (i * a);
+			long double v = x / time2;
+			long double v2;
+			if (i != pok - 1)  v2 = x / (time2 - a);
+			if (v <= 1000)
+			{	
+				if (i != pok - 1)
+				cout << 1000;
+				else
+				cout << v;
+				fl = 1;
+				break;
+			}
+			time2 = t;
+		}
+		if (fl == 1) break;
+		time += b;
+	//	time += a;
+		pok++;
+	}
+	return 0;
+}

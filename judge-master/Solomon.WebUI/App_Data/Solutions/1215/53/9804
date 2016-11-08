@@ -1,0 +1,9 @@
+var i,j,c,m,n,k:integer;
+x:array [1..100] of integer;
+y:array[1..100] of integer;
+begin
+read(m,n,k);
+for i:=1 to k do read(x[i],y[i]);
+if (k>m) or (k>n) then write(2)else
+  if k=n then write(3) else write(1);
+  end.

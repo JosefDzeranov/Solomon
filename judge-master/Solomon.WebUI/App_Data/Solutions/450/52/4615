@@ -1,0 +1,9 @@
+program lol;
+var n,i,s:longint;
+begin
+readln(n);
+s:=1;
+for i:=n downto n-2 do
+s:=s*i;
+writeln (s);
+end.

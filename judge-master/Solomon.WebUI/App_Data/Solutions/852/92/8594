@@ -1,0 +1,16 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int x1,y1,x2,y2,x3,y3;
+	cin>>x1>>y1;
+	cin>>x2>>y2;
+	cin>>x3>>y3;
+	int a,b,c;
+	a=(x2-x1)-x3;
+	b=(y2-y1)-y3;
+    c=sqrt(a*a+b*b); 
+	cout<<c;
+	return 0;
+}

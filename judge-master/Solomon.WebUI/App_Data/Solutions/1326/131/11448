@@ -1,0 +1,25 @@
+def f(ms, ind, l):
+    ret = 0
+    for i in range(ind, ind + l):
+        ret += ms[i]
+    return ret
+
+n, k = [int(i) for i in input().split()]
+n = [int(i) for i in input().split()]
+for i in range(k):
+    n.append(-1)
+mx1 = 0
+mx2 = 0
+i = 0
+while i <= len(n) - 2 * k:
+    sm = f(n, i, k)
+    if sm >= mx1:
+        mx2 = mx1
+        mx1 = sm
+        i = i + k
+    elif sm > mx2:
+        mx2 = sm
+        i = i + k
+    else:
+        i += 1
+print(mx2)

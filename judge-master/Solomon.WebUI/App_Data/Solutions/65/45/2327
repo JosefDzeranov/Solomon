@@ -1,0 +1,26 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,l,r1,r2,s,k,d:integer;
+begin
+read(n);
+readln(l);
+read(r1);
+read(r2);
+d:=r1*2;
+if l mod d =0 then k:=1
+else k:=0;
+if k=0 then s:=l div d+1
+else s:=l div d;
+if s*2*2*3*r1+s*2*3*r2<=n then begin
+writeln('YES');
+write (s*2,s);
+end
+else write('NO');
+readln;
+readln;
+end.

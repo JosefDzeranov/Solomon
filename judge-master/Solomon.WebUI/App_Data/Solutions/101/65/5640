@@ -1,0 +1,18 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <cmath>
+using namespace std;
+int main()
+{
+	long long int a1,a2,a3,a4;
+	 long double  b=0;
+	cin>>a1>>a2>>a3>>a4;
+	a1=min(a1,a2);
+	a3=min(a3,a4);
+	a1=a1+a3;
+	b=a1;
+	a1=sqrt(b);
+	cout<<a1;
+	return 0;
+}

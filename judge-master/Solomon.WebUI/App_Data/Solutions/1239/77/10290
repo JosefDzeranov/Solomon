@@ -1,0 +1,32 @@
+{$H+}
+var
+a:array[1..1000, 1..1000] of char;
+st:string;
+t, i, j,k:longint;
+
+begin
+readln(st);
+t:= length(st);
+
+t:= round(sqrt(t));
+if t*t < length(st) then inc(t);
+k:=1;
+for j := 1 to t do
+ for i := 1 to t do
+begin
+a[i, j]:=' ';
+if k<= length(st) then
+a[i, j]:= st[k];
+inc(k);
+
+
+end;
+k:=1;
+for i := 1 to t do
+ for j := 1 to t do
+ begin
+ 
+ write(a[i, j]);
+
+end;
+end.

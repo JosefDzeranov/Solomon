@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+namespace _3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //StreamReader sr = new StreamReader("input.txt");
+            string s = Console.ReadLine();
+            Console.WriteLine(s.Length);
+            long kol = 0;
+            long ans = 0;
+            for (int i = 0; i < s.Length-3; i++)
+            {
+                if (i+9<s.Length && s.Substring(i, 9) == "vkontakte") { kol++; i += 4; }
+                else
+                    if (s.Substring(i, 3) == "api") { ans += kol; i += 4; }
+                    
+            }
+            Console.WriteLine(ans);
+        }
+    }
+}

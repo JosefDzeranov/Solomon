@@ -1,0 +1,8 @@
+import math
+n, k= map(int, input().split())
+k1=math.factorial(k)
+n1=math.factorial(n)
+c1=math.factorial(n-k)
+c=((n1)/(k1*c1))
+c=int(c)
+print(c)

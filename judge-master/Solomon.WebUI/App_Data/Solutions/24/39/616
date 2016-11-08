@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+
+
+	vector <int> mas;
+	int n, m, a = 0, b, flag = 0, l = 0;
+	cin >> n >> m;
+	mas.resize(m);
+	for (int i = 0; i < m; i++)
+		cin >> mas[i]; 
+
+	for (int i = 0; i < m; i++)
+	{
+		if (mas[i] <= n) {
+			if (a == 0)
+				a = mas[i];	
+			else
+				if (a + 1 == mas[i]){
+					flag = 1;
+					if (l == 0)
+					   l = a;
+					a = mas[i];
+				}
+				else
+					{
+						if (flag) {
+							cout << l << "-" << a << " ";
+							flag = 0;
+							a = mas[i];
+							l = 0;
+							}
+						else {
+							cout << a << " ";
+							a = mas[i];
+						}
+				}
+		}
+		
+	}
+	if (flag)
+		cout << l << "-" << a << " ";
+	else 
+		cout << a << " ";
+
+	return 0;
+} 

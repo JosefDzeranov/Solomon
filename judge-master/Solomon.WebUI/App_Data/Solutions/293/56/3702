@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int first(int a)
+{
+	int i,b=0,c=1;
+	while(i==i)
+	{
+		if(a%2==1)
+		return b;
+		a=a/2;
+		b++;
+	}
+}
+
+main()
+{
+	int a,b=0,c;
+	scanf("%d",&a);
+	for(int i=1;i<=a;i++)
+	b+=first(i);
+	printf("%d",b);
+//	return 0;
+}

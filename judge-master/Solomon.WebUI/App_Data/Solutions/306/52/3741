@@ -1,0 +1,9 @@
+var n:longint;
+begin
+  {$ifndef ONLINE_JUDGE}
+  assign(input,'input.txt'); reset(input);
+    assign(output,'output.txt'); rewrite(output);
+  {$endif}
+  readln(n);
+  writeln(n*(n-1)*(n-2));
+end.

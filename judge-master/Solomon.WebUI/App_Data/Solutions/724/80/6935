@@ -1,0 +1,58 @@
+var i,n,r,j,q,z,p,g,i1,j1,c,ppp,g1:longint;
+a,t,v:string;
+y:array [0..150] of char;
+l:array [1..150] of integer;
+b:array [1..150] of string;
+begin
+readln(a);
+for i:=1 to length(a) do
+if (a[i]=' ') and ((a[i-1]<>' ') or (a[i+1]<>' ')) and (r=0) then begin
+n:=n+1;
+r:=r+1;
+end
+else begin
+r:=0;
+if a[i]<>' ' then
+b[n+1]:=b[n+1]+a[i];
+end;
+for i:=1 to (n+1)div 2 do begin
+b[i]:=b[i]+b[n+2-i];
+t:=b[i];
+ppp:=0;
+q:=0;
+for j:=1 to length(t) do
+for z:=1 to length(t) do begin
+g:=-1;
+if t[j]=t[z] then
+while g<>q do begin
+if t[j]<>y[q] then begin
+q:=q+1;
+l[q]:=l[q]+1;
+y[q]:=t[j];
+end;
+g:=g+1;
+end;
+end;
+for i1:=1 to q do begin
+v:=y[i1];
+l[i1]:=0;
+for j1:=1 to q do
+if y[j1]=v then
+l[i1]:=l[i1]+1;
+end;
+g:=0;
+for i1:=1 to q do begin
+if l[i1] mod 2=1 then
+g:=g+1;
+if l[i1] mod 2=0 then
+g1:=g1+1;
+if (g mod 2=1) and (ppp<>1) and (g1 mod 2=0) then begin
+c:=c+1;
+ppp:=1;
+end;
+end;
+g:=0;
+g1:=0;
+end;
+writeln(c);
+end.

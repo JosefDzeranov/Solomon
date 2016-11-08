@@ -1,0 +1,30 @@
+
+type
+  mn = set of 0..9;
+
+var
+  m: array [1..500000] of mn;
+  t: mn;
+  n, i, te,k,j: longint;
+
+begin
+{randomize;}
+k:=0;
+  readln(n);
+  for i := 1 to n do
+  begin
+    read(te);
+    t := [];
+    while(te > 0) do
+    begin
+      t := t + [te mod 10];
+      te := te div 10;
+    end;
+    m[i] := t;
+    for j:=1 to i-1 do 
+    if not ((m[i] * m[j]) = []) then inc(k);
+  end;
+ 
+  
+  writeln(k); 
+end.

@@ -1,0 +1,35 @@
+using System;
+namespace Casting
+{
+	class Program
+	{
+		static void Main()
+		{
+			int mm = int.Parse(Console.ReadLine());
+			string[] chisla = Console.ReadLine().Split();
+
+			int n = int.Parse(chisla[0]);
+			int a = int.Parse(chisla[1]);
+			int b = int.Parse(chisla[2]);
+			int c = int.Parse(chisla[3]);
+
+			if(mm == 2)
+			{
+				Console.Write(Min(c, Min(a, b)));
+			}
+
+			if(mm == 1)
+			{
+				
+				Console.Write( ((a + b + c - 2*n) > 0) ? a + b + c - 2*n : 0);
+			}
+			
+		}
+
+		
+		private static int Min(int x, int y)
+		{
+			return (x < y) ? x : y;
+		}
+	}
+}

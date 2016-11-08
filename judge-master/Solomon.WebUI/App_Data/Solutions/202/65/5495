@@ -1,0 +1,20 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,k1,k2 : integer;
+
+begin
+readln(a1,a2,a3,a4);
+if(a1 < a2) Then k1:= a1;
+if(a1 > a2) Then k1:= a2;
+if(a1 = a2) Then k1:= a1;
+
+if(a3 < a4) Then k2:= a3;
+if(a3 > a4) Then k2:= a4;
+if(a3 = a4) Then k2:= a3;
+writeln(sqrt(k1+k2):0:0);
+end.

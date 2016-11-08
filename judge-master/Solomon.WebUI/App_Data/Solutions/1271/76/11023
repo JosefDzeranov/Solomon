@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstdlib>
+#include <cctype>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	char c;
+	long long s = 0;
+
+
+	cin >> n;
+	while ((c = cin.get()) != '\n')
+		;
+
+	string str;
+	for (int i = 0; i < n; ++i)
+	{
+		getline(cin, str);
+		const char *str_b = str.c_str(), *str_e = str_b + str.size();
+/*
+		do 
+		{
+			if (str_b >= str_e)
+				break;
+
+			while (str_b < str_e && !isdigit(*str_b))
+				str_b++;
+
+			if (str_b < str_e)
+			{
+				int number;
+				int numscan = sscanf(str_b, "%u", &number);
+				if (numscan == 1 && number > 0 && number <= 100)
+					s += number;
+			}
+
+			while (str_b < str_e && isdigit(*str_b))
+				str_b++;
+
+		} while (true);
+*/
+	}
+	
+	cout << s;
+	
+	return 0;
+}

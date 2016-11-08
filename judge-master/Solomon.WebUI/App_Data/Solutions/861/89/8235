@@ -1,0 +1,17 @@
+program Project9;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y,t1,t2,s,b,f,a:integer;
+begin
+readln (x,y,t1,t2);
+s:=x*y;
+b:=(y-1)*t1;
+f:=s*t2;
+a:=b+f;
+writeln(a);
+readln;
+end.

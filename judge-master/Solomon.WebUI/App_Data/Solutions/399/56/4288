@@ -1,0 +1,14 @@
+var a:extended;
+i,n,b:integer;
+begin
+read(n);
+a:=1;
+for i:=1 to n do
+a:=a*i;
+while frac(a/2)=0 do
+begin
+b:=b+1;
+a:=trunc(a/2);
+end;
+writeln(b);
+end.

@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+ var n,l,r,kol:integer;
+begin
+ readln(n,l);
+ readln(r);
+ kol:=(l+2*r-1) div (2*r);
+ if 2*pi*kol<n then
+  begin
+    writeln('YES');
+    writeln(kol);
+  end
+  else writeln('NO');
+ readln;
+end.

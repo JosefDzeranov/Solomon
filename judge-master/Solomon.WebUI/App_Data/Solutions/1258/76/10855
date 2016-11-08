@@ -1,0 +1,32 @@
+{$H+}
+var
+    s: string;
+    m, n, sum: int64;
+    i,j:longint;
+
+begin
+    readln(n);
+    sum := 0;
+    for i := 1 to n do 
+    begin
+        readln(s);
+        j := 1;
+        m:=0;
+        while (j <= length(s)) do
+        begin
+            if  (s[j] >= '0') and (s[j] <= '9')
+                then begin
+                m := m+ ord(s[j]) - 48; 
+            if  (j <> length(s)) and ((s[j+1] >= '0') and (s[j+1] <= '9'))
+                then m := m * 10
+                else
+                   begin 
+                sum := sum + m;
+                m:=0;
+                end
+                 end;
+            inc(j);
+            end;
+        end;
+    write(sum);
+end.

@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int main(){
+	int n,j;
+	cin>>n;
+	j=(n-1)/2;
+	j=j*n*2;
+	cout<<j;
+	cin>>j;
+	return 0;
+}

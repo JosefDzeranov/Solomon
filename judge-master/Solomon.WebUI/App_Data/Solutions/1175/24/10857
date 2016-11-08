@@ -1,0 +1,55 @@
+#include <stdio.h>
+int zv(long a[500000], long b[500000], long i, long j)
+{
+	long p, c, k[10], t[10],g=0,f=0,l=0,y=0,h=0,v;
+	h=a[i];
+	y=b[j];
+	
+	while(h>0)
+	{
+	l= h%10;
+	h=h/10;
+	y=b[j];
+	
+	
+	while(y>0)
+	{ 
+		g = y%10;  
+		y=y/10; 
+	 
+		if(g==l)
+			{ f=1; break;   }}
+	if(f==1){ 
+	break;}
+	}
+
+
+if (a[i]==b[j])
+f=0;
+	return(f);
+		
+		
+			    
+
+			    
+}
+int main()
+{
+	long a[500000], m , i , j , n=0,x=0, d[1000000000], e[500000],o=0;
+	scanf("%d", &m);
+	for(i=0; i<1000000000; i++)
+	 d[i]=-1;
+	for(i=0; i<m; i++){
+	 scanf("%d", &a[i]);
+	 if (d[a[i]]!=1){
+	 d[a[i]]=1; e[o]=a[i]; o++;} }
+	for(i=0; i<o; i++)
+	 for(j=i+1; j<o; j++){
+	 
+	  x=x+zv(e,e,i,j);
+}
+	 
+	printf("%d ", x);  
+	return(0);
+  }
+	 

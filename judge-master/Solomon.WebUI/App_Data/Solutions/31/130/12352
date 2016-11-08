@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+    a, b, c, d, x, otv, miny, maxy: integer;
+begin
+  readln(a, b, c, d);
+  otv := 0;
+  for x := 1 to d div 2 do
+    begin
+      if x * x > b then
+       break;
+      miny := x;
+      if c div 2 - 1 > miny then
+       miny := c div 2 - 1;
+      if a div x > miny then
+       miny := a div x;
+      maxy := d div 2 - x;
+      if b div x < maxy then
+       maxy := b div x;
+      if d div 2 - x < maxy then
+       maxy := d div 2 - x;
+      if maxy >= miny then
+       otv := otv + maxy - miny;
+    end;
+  writeln(otv+1);
+  readln;  
+end.

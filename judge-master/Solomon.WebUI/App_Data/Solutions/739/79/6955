@@ -1,0 +1,12 @@
+var a:array[1..1000,1..1000] of integer;
+n,i,s:longint;
+begin
+readln(n);
+s:=0; if n mod 2 <> 0 then begin
+for i:=3 to n do
+if i mod 2 <> 0 then
+s:=s+i*i;
+ s:=s+n div 2;
+  writeln(s+5);
+ end;
+   end.

@@ -1,0 +1,69 @@
+//#include "stdafx.h"
+#include <conio.h>
+//#include <stdlib.h>
+#include <stdio.h>
+
+
+
+int main()
+{
+	long double a, k, b, m, x;
+	long double speed, result;
+	scanf("%lf%lf%lf%lf%lf", &a, &k, &b, &m, &x);
+
+	//result = 0;
+	if (x<k && x<m)
+		result = x/(a+b);
+	else if (k==m)
+	{
+		result = x*k/(a+b);
+	}
+	else
+	{
+		speed=((a*(k-1)*m+b*(m-1)*k))/(m*k);
+		result = x/speed;
+	}
+
+	/*if (x<k && x<m)
+		result = x/(a+b);
+	else if(k==m)
+		 {
+		 	 for(int i=1; x>0; ++i)
+		 		{
+		 			if(!(i%k==0))
+						if(x>a+b)
+			 				x-=a+b;
+						else
+						{
+							++result;
+						}
+			 		++result;
+			 	}
+		 }
+
+	else for(int i=1; x>0; ++i)
+		 {
+			if(!(i%k==0))
+				if(x>a)
+					x-=a;
+				else 
+				{
+					++result;
+					break;
+				}
+			if(!(i%m==0))
+				if(x>b)
+					x-=b;
+				else 
+				{
+					++result;
+					break;
+				}
+			++result;
+		 }*/
+	printf("%ld", (int)result);
+
+	getch();
+	return 0;
+}
+

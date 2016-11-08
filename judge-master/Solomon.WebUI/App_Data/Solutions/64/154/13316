@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int mas[10000000];
+
+int main()
+{
+
+	int n;
+	cin >> n;
+	for (int i = 0; i < 10000000; i++)
+		mas[i] = 0;
+	int maxx = 0;
+	int minn = -1;
+	for (int i = 0; i < n; i++)
+	{
+		int a, b, c;
+		cin >> a >> b >> c;
+		for (int j = a; j < a + c; j++)
+			mas[j] = b;
+		maxx = max(maxx, a + c);
+		if (minn == -1)
+			minn = a;
+		else
+			minn = min(minn, a);
+	}
+	int t = mas[minn];
+	int st = minn;
+	for (int i = minn; i < maxx; i++)
+	{
+		if (mas[i] != t)
+		{
+			cout << st << ' ' << t << ' ' << i << endl;
+			t = mas[i];
+			st = i;
+		}
+	}
+	cout << st << ' ' << t << ' ' << maxx << endl;
+	return 0;
+}

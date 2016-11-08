@@ -1,0 +1,70 @@
+#include <stdio.h>
+int zap(int i, int j, int kod, int s,int a[105][105])
+{
+	int m=0,b[3],min=10000,q,z=s;
+	kod=0; b[0]=a[i-1][j]; b[1]=a[i][j+1]; b[2]=a[i+1][j]; b[3]=a[i][j-1];
+	for(q=0;q<4;q++)
+	if (b[q]!=-1 && b[q]<min)
+	min=b[q];
+	if(min==10000)
+	min=0;
+	m=min;
+	
+	if (a[i][j]!=0 && m!=0 && a[i][j]>m) 
+	{
+		a[i][j]=m; kod=1;
+	}
+	if (a[i][j]==0 && m!=0) 
+	{
+		a[i][j]=m; kod=1;
+	}
+	if (a[i][j]==0 && m==0) 
+	{
+//		printf(" %d ",s);
+	 	a[i][j]=z; z++; kod=0;
+	}
+	return(z);
+}
+int main()
+{
+	int M,K,B,X[110],Y[110],a[105][105],i,j,s=1,kod=1,c[1000],max=-10,f=0;
+	scanf("%d %d %d",&M,&K,&B);
+	for (i = 0; i<=M+1; i++)
+	for (j = 0; j<=K+1; j++)
+	{
+	    a[i][j]=0;
+	    if (i==0 || i==M+1)
+	    a[i][j]=-1;
+	}
+	for(i=1;i<=B;i++)
+	{
+		scanf("%d %d",&X[i],&Y[i]);
+		a[X[i]][Y[i]]=-1;
+	}
+	
+//	while(kod==1)
+//	{
+		for (i = 1; i <=M; i++)
+	    for (j = 1; j <=K; j++)
+	    if (a[i][j]!=-1)
+	    s=zap(i,j,kod,s,a);
+	   // printf("%d ",s);
+//	}
+//	for (i = 1; i <=M; i++)
+//	for (j = 1; j <=K; j++)
+//	{
+//		c[a[i][j]]=1;
+//		if (a[i][j]>max)
+//		max=a[i][j];
+//	}
+//	for (i = 0; i<=max; i++)
+//	if (c[i]==1)
+//	f++;
+	printf("%d ",s-1);
+//	for (i = 1; i<=M; i++)
+//	{
+//	printf("\n");
+//	for (j = 1; j<=K; j++)
+//	printf("%d ",a[i][j]);}
+return(0);	
+}

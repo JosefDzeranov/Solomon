@@ -1,0 +1,9 @@
+a, b = map(int, input().split())
+n = int(input())
+if n == 1:
+    b = a
+else:
+    for i in range (n-2):
+        old, a, b = a, b, a+b
+print (b)
+    

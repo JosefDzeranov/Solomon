@@ -1,0 +1,64 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+Module Module1
+    Dim n As Integer
+    Dim s() As Integer
+    Dim t() As Integer
+    Dim c() As Integer
+    Dim min As Integer
+    Dim kmin As Integer
+    Dim bal As Integer
+    Dim nz As Integer
+    Dim z() As Integer
+    Dim tpr As Long
+    Dim doing As Boolean
+    Dim txtin As String
+
+    Sub Main()
+        n = Console.In.ReadLine
+        ReDim s(n)
+        ReDim t(n)
+        ReDim c(n)
+        ReDim z(n)
+        min = 2000000000
+        For i = 1 To n
+            txtin = Console.ReadLine
+            Dim d() As String = Split(txtin, " ")
+            s(i) = d(0)
+            t(i) = d(1)
+            c(i) = d(2)
+            If t(i) + s(i) < min Then
+                min = t(i) + s(i)
+                kmin = i
+            End If
+        Next
+        bal = c(kmin)
+        nz = 1
+        z(1) = kmin
+        tpr = min
+        Do
+            doing = False
+            min = 2000000000
+            For i = 1 To n
+                If t(i) + s(i) - tpr < min And s(i) - tpr > 0 Then
+                    min = t(i) + s(i) - tpr
+                    kmin = i
+                    doing = True
+                    bal = bal + c(kmin)
+                    nz = nz + 1
+                    z(nz) = kmin
+                    tpr = tpr + min
+                    Continue Do
+                End If
+            Next
+        Loop Until doing = False
+        Console.WriteLine(bal)
+        Console.WriteLine(nz)
+        For i = 1 To nz
+            Console.Write(z(i))
+            Console.Write(" ")
+        Next
+        Console.In.ReadLine()
+    End Sub
+
+End Module

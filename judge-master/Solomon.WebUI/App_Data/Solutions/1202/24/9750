@@ -1,0 +1,54 @@
+program B;
+
+type
+        Tarr = array [1..200] of Integer;
+        Tars = array [1..200] of string;
+        Tb = array [1..200, 1..200] of Boolean;
+
+var
+        n, i, j, k, c : LongInt;
+        cnt : LongInt;
+        s : string;
+        a : Tarr;
+        ars : Tars;
+        f : Tb;
+
+begin
+        ReadLn (n);
+
+        for i := 1 to n do
+                Read (a[i]);
+
+        FillChar (ars, SizeOf (ars), 'a');
+
+        s := 'aaaaaaaaaaa';
+
+        for i := 1 to n do
+        begin
+                Str (a[i], s);
+
+                ars[i] := s
+        end;
+
+        FillChar (f, SizeOf (f), FALSE);
+
+        cnt := 0;
+
+        for i := 1 to n do
+        begin
+                for j := 1 to Length (ars[i]) do
+                        for c := i + 1 to n do
+                                for k := 1 to Length (ars[c]) do
+                                        if (ars[i, j] = ars[c, k]) and (not f[i, c]) then
+                                        begin
+                                                Inc (cnt);
+
+                                                f[i, c] := TRUE;
+                                                f[c, i] := TRUE;
+
+                                        end
+
+        end;
+
+        WriteLn (cnt)
+end.

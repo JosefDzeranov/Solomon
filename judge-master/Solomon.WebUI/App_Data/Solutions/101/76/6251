@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace barani
+{
+    class Program
+    {
+        static int Chislo(string s)
+        {
+            int ch=0;
+            string t="";
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] >= '0' && s[i] <= '9') { t += s[i]; }
+                else
+                   
+                {
+                    if (t != "") { ch += Convert.ToInt16(t); t = ""; } 
+                }
+                if (i == s.Length - 1 && t != "") ch += Convert.ToInt16(t);
+            }
+            return ch;
+
+        }
+        static void Main(string[] args)
+        {
+            string s=Console.ReadLine();
+            int kol = 0;
+            while (s != "")
+            {
+                kol += Chislo(s);
+                s = Console.ReadLine();
+            }
+            Console.WriteLine(kol);
+        }
+    }
+}

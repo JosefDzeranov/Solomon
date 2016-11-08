@@ -1,0 +1,28 @@
+program mesi7;
+var n, i, k: integer; 
+    a : array [1..10] of boolean;
+
+begin
+readln(n);
+i := 1;
+if n = 2 then writeln('NO')
+  else
+    begin
+    while n <> 1 do 
+    if ((n mod 2) = 0) then
+      begin
+      a[i] := true;
+      i := i + 1;
+      n := trunc(n/2);
+      end
+    else 
+      begin
+      a[i] := false;
+      i := i + 1;
+      n := n - 1;
+      end;
+   for k := i-1 downto 1 do 
+    if a[k] = true then write('*')
+      else write('+');
+    end;
+end.

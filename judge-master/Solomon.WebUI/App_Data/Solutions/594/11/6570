@@ -1,0 +1,6 @@
+var cur,n:integer;
+begin
+read(n);
+for cur:=1 to n-2 do write(1,' ');
+write(2,' ',n);
+end.

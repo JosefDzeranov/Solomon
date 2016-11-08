@@ -1,0 +1,19 @@
+
+var s,rs:string;
+i,j,n:LongInt;
+begin
+rs:='';
+Readln(s);
+n:=Length(s);
+n:=Trunc(sqrt(n))+Ord(Frac(sqrt(n))<>0);
+while Length(s)<n*n do s:=s+' ';
+for i:=1 to n do
+ begin
+ j:=i;
+  repeat
+   rs:=rs+s[j];
+   inc(j,n);
+  until j>Length(s);
+ end;
+Writeln(rs);
+end.

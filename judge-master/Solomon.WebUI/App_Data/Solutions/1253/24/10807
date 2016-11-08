@@ -1,0 +1,34 @@
+var
+   n, i, j, error, sc, k, l: integer;
+   s: string;
+   a: array of string;
+   b: array of integer;
+
+begin
+   
+   readln(n);
+   setlength(a, n + 1);
+   setlength(b, n + 1);
+   for i := 1 to n do
+   begin
+      read(b[i]);
+      Str(b[i], a[i]);
+      for j := (i - 1) downto 1 do
+      begin
+         if length(a[i]) < length(a[j]) then
+            for k := 1 to length(a[i]) do
+               if pos(a[i][k], a[j]) > 0 then
+               begin
+                  inc(sc); break;
+               end;
+         if length(a[i]) >= length(a[j]) then
+            for l := 1 to length(a[j]) do
+               if pos(a[j][l], a[i]) > 0 then
+               begin
+                  inc(sc);
+                  break;
+               end
+      end;
+   end;
+   write(sc);
+end.

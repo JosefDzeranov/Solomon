@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, z, a, b, c, t, num;
+    cin>>n>>z>>a>>b>>c;
+    t = (a / z) * (b / z);
+    num = c / z;
+    if(float(c % z) > float(c) / 2.0)  num++;
+    t*=num;
+    if(n % t != 0)  cout<<(n / t) + 1;
+    else    cout<<n / t;
+}

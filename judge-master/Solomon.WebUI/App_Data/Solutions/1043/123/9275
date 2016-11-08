@@ -1,0 +1,8 @@
+program simple;
+var
+x:integer;
+begin
+x:=56; x:72;
+write(12);read (x);
+readline
+end.

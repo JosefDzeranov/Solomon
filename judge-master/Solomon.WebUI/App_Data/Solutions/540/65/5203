@@ -1,0 +1,19 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{long long double a,b,c,d,n=0;
+cin>>a>>b>>c>>d;
+if(a=b)
+    n=n+b;
+else n=n+a;
+if(c>=d)
+    n=n+d;
+else n=n+c;
+n=sqrt(n);
+n=(int)n;
+cout<<n;
+return 0;
+}

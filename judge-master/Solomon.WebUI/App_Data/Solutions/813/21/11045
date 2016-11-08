@@ -1,0 +1,62 @@
+program mesia;
+  type 
+    obmen = record
+      n1 : integer;
+      m1 : integer;
+      n2 : integer;
+      m2 : integer;
+    end;
+    
+    perem = record
+      n3 : integer;
+      m3 : integer;
+      n4 : integer;
+    end;
+    
+  var 
+    a : array[1..10, 0..100] of integer;
+    b : array[1..1000] of obmen;
+    c1 : array[1..2000] of perem;
+    n, m, i, i1, k, c, k1, i2, k2, i3 : integer;
+    
+  begin
+    readln(n, m);
+    for i := 1 to m do 
+      begin
+        readln(k, c);
+        a[c, (1 + a[c, 0])] := k;
+        a[c, 0] := a[c, 0] + 1;
+      end;
+    c := 0; k2 := 1;
+    for i := 1 to n do 
+      for i1 := 1 to a[i, 0] do 
+        if (a[i, i1] <> i) then 
+          for k := 1 to a[(a[i, i1]), 0] do 
+            if a[(a[i, i1]), k] = i then 
+              begin
+                k1 := a[i, i1];
+                b[k2].n1 := i;
+                a[i, i1] := a[(a[i, i1]), k];
+                b[k2].m1 := a[i, i1];
+                b[k2].n2 := a[i, i1];
+                b[k2].m2 := i;
+                a[a[i, i1], k] := k1;
+                k2 := k2 + 1;
+              end;
+    i2 := 1;
+    for i := 1 to n do 
+      for i1 := 1 to a[i, 0] do 
+        if (a[i, i1] <> i) then 
+          begin
+          a[a[i, i1], (a[a[i, i1], 0] + 1)] := i;
+          a[a[i, i1], 0] := a[a[i, i1], 0] + 1;
+          a[i, i1] := 0;
+          c1[i2].n3 := i;
+          c1[i2].m3 := a[i, i1];
+          c1[i2].n4 := a[i, i1];
+          i2 := i2 + 1;
+          end;
+   writeln(k2 + i2 - 2);
+   for i := 1 to k2 do writeln(b[i].n1, ' ', b[i].m1, ' ', b[i].n2, ' ', b[i].m2);
+   for i := 1 to i2 do writeln(c1[i].n3, ' ', c1[i].m3, ' ', c1[i].n4);
+  end.

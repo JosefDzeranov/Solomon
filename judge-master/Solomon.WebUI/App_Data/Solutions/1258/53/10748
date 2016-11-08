@@ -1,0 +1,50 @@
+var
+    s,n, m, k, i, j: longint;
+    a,b: array[0..1000, 0..1000] of longint;
+
+function Zacr(ii,jj:longint):longint;
+begin
+if a[ii,jj]=0 then begin
+ a[ii,jj]:=1;
+zacr(ii+1,jj);
+zacr(ii-1,jj);
+zacr(ii,jj+1);
+zacr(ii,jj-1);
+end;
+end;
+
+begin
+    read(n, m, k);
+    for i := 1 to k do
+        for j := 1 to 2 do
+            read(b[i, j]);
+   
+        for i:=1 to k do
+        a[b[i, 1],b[i, 2]]:=-1;
+        
+        for i:=1 to n do
+        a[i,m+1]:=-1;
+        for j:=1 to n do
+        a[i+1,j]:=-1;
+          for i:=1 to n do
+        a[i,0]:=-1;
+        for j:=1 to n do
+        a[0,j]:=-1;
+        
+        
+        for i:=1 to n do
+        for j:=1 to m do
+        if a[i,j]=0 then begin
+        inc(s);
+        ZACR(i,j);;
+        end;  
+        
+        
+        
+        
+        
+        
+        write(s);
+        
+    
+end.

@@ -1,0 +1,25 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, i, no, sum: Integer;
+
+begin
+  readln(n);
+  sum := 0;
+  for i := 1 to n do
+  begin
+    read(no);
+    sum := sum + no;
+  end;
+  readln;
+  if sum mod n = 0 then
+    writeln(sum div n)
+  else
+    writeln('IMPOSSIBLE');
+  readln;
+end.

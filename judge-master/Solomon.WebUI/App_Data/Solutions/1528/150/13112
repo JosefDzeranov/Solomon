@@ -1,0 +1,20 @@
+﻿using System;
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = Console.ReadLine();
+            string s = "";
+            foreach (char c in str)
+                if (c == '.')
+                    s += "0";
+                else
+                    s += "1";
+
+            Console.WriteLine(Convert.ToInt32(s,2));
+        }
+    }
+}

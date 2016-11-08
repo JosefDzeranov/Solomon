@@ -1,0 +1,15 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var s,m:string;
+begin
+readln(s);
+readln(m);
+if length(s)=length(m) then
+ writeln(m);
+ readln
+//writeln('IMPOSSIBLE');
+end.

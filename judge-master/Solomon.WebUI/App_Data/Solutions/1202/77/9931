@@ -1,0 +1,36 @@
+program E;
+
+var
+        s : string;
+        n : Integer;
+        i, j, c : LongInt;
+        a : array [0..2000] of LongInt;
+        ar : array [1..2000, 1..2000] of Char;
+
+begin
+        ReadLn (s);
+
+        for i := 0 to 2000 do
+                a[i] := i*i;
+
+        i := 0;
+        while a[i] < Length (s) do
+                Inc (i);
+        n := i;
+
+        for i := Length (s) to (n*n) - 1 do
+                s[Length (s) + 1] := ' ';
+
+        c := 1;
+        for i := 1 to n do
+                for j := 1 to n do
+                begin
+                        ar[i, j] := s[c];
+
+                        Inc (c)
+                end;
+
+        for i := 1 to n do
+                for j := 1 to n do
+                        Write (ar[j, i]);
+end.

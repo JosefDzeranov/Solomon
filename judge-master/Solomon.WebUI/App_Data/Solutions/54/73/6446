@@ -1,0 +1,20 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,s,d:integer;
+
+begin
+readln(D);
+a:=0;
+while s<>d do
+begin
+a:=a+1;
+s:=s+a;
+end;
+writeln(a);
+readln;
+end.

@@ -1,0 +1,55 @@
+﻿using System;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static int[] metki;
+        static int[,] a;
+        static string[] s;
+        static int max, sum,kolmax,kol;
+        static void obhod(int v,int sum,int kol)
+        {
+            for (int i = 0; i < metki.Length; i++)
+            {
+                if (a[v, i] == 1 && metki[i] == 0)
+                {
+                    metki[i] = 1;
+                    obhod(i,sum+s[i].Length,kol+1);
+                }
+            }
+            if (kol > kolmax) {kolmax = kol;max=sum;}
+            else 
+                if (kol == kolmax && max < sum) { kolmax = kol; max = sum;}
+        }
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt16(Console.ReadLine());
+            s=new string[n];
+            for (int i = 0; i < n; i++)
+                s[i] = Console.ReadLine();
+            a = new int[n, n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    if (s[i].Length>=3 && s[j].Length>=3 && s[i].Substring(s[i].Length-3,3)==s[j].Substring(0,3) && i!=j) a[i,j]=1;
+            //в глубину
+            max = 0;
+            kolmax = 0;
+            for (int i = 0; i < n; i++)
+			{
+                bool f = false;
+                for (int j = 0; j < n; j++)
+                    if (a[i, j] == 1) f = true;
+                if (f)
+                {
+                    metki = new int[n];
+                    metki[i] = 1;
+                    kol = 1;
+                    sum = s[i].Length;
+                    obhod(i, sum, kol);
+                }
+			}
+            Console.WriteLine(kolmax+" "+max);
+        }
+    }
+}

@@ -1,0 +1,42 @@
+var
+N,M,i,j,k,a,b,t,s:integer;
+mas:array[,]of integer;
+otvet:array[]of string;
+ma:shortint;
+begin
+s:=0;
+readln(N,M);
+setlength(mas,M,N);
+for i:=1 to N do
+for j:=1 to m do
+mas[j,i]:=i;
+setlength(ma,N);
+for i:=1 to N do
+ma[i]:=1;
+for i:=1 to M do begin
+readln(a,b);
+mas[ma[a],a]:=b;
+inc(ma[a]);
+end;
+k:=0;
+for i:=1 to N do
+for j:=1 to M do
+if mas[j,i]<>i then
+for t;=1 to M do
+if mas[t,mas[j,i]]=i then begin
+setlength(otvet,inc(k));
+otvet[k]:=i+' '+mas[j,i]+' '+mas[j,i]+' '+i;
+a:=mas[t,mas[j,i]];
+mas[t,mas[j,i]]:=mas[j,i];
+mas[j,i];=a;
+end;
+for i:=1 to N do
+for j:=1 to M do
+if mas[j,i]<>i then begin
+setlength(otvet,inc(k));
+otvet[k]:=i+' '+mas[j,i]+' '+mas[j,i];
+mas[j,i]:=i;
+end;
+writeln(k);
+for i:=1 to k do write(otvet[i]);
+end.

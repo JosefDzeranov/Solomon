@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,b1,b2:integer;  c:real;
+begin
+readln(a1,a2,a3,a4);
+if a1>a2 then b1:=a2 else b1:=a1;
+if a3>a4 then b2:=a4 else b2:=a3;
+c:=sqrt(b1+b2);
+writeln(c);
+readln;
+
+end.

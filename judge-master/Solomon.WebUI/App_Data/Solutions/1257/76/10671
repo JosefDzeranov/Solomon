@@ -1,0 +1,31 @@
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <inttypes.h>
+
+using namespace std;
+
+int main() {
+	string s;
+	uint64_t sum, m;
+	ifstream fin("./input.txt");
+	fin >> sum;
+	
+	sum = 0;
+	while (!fin.eof()) {
+		fin >> s;
+		if (s[0] >= '0' && s[0] <= '9') {
+			stringstream ss;
+			ss << s;
+			ss >> m;
+			sum += m;
+		}
+	}
+	fin.close();
+	
+	cout << sum;
+	
+	return 0;
+}

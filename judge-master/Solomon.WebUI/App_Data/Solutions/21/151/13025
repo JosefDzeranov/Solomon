@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,a,b,c,sr:integer;
+begin
+readln(n);
+sr:=(n+2) div 3;
+a:=sr-1;
+b:=sr;
+c:=sr+1;
+if a+b+c>n then a:=a-1;
+if (a+b+c>n) then b:=b-1;
+writeln(a,' ',b,' ',c);
+readln;
+end.

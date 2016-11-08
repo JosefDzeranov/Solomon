@@ -1,0 +1,28 @@
+program z1;
+var a:array[1..1000,1..1000] of char;
+c,s,i,l,max,j:longint;b:array[1..10000000] of char;
+d:char;
+begin
+l:=1;
+while not eoln do
+begin
+read(d);
+b[l]:=d;
+l:=l+1;
+end;
+max:=1000;
+for i:=1 to l-1 do
+if (i*i>=l-1) and (i<max) then max:=i;
+s:=1;
+for i:=1 to max do
+for j:=1 to max do
+begin
+a[i,j]:=b[s];
+s:=s+1;
+end;
+for j:=1 to max do
+for i:=1 to max do
+write(a[i,j]);
+writeln;
+end.
+

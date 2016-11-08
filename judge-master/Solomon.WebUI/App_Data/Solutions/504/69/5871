@@ -1,0 +1,24 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,k:integer;
+   v,x,a,b:real;
+begin
+  readln(a,b,x);
+  v:=a+b;
+     for k := 1 to 1000 do
+           begin
+              if x / b>=1000 then
+                begin
+                 b:=v*k;
+                end;
+           end;
+ writeln(a,' ',b,' ',v);
+ writeln(x / (b-a));
+
+   readln;
+end.

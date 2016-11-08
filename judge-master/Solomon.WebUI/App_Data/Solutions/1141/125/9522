@@ -1,0 +1,36 @@
+Program a1;
+uses SysUtils;
+var x1,x2,x3,y1,y2,y3,a,b: integer;
+c: real;
+label t1;
+begin
+read(x1,y1);
+read(x2,y2);
+read(x3,y3);
+if ((x3>x1) and (x3<x2)) and ((y3>y1) and (y3<y2)) then begin
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+if a<b then c:=a else c:=b;
+write(c); goto t1;
+end;
+if ((x3>x1) and (x3<x2)) and ((y3<y1) or (y3>y2)) then begin
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+write(a); goto t1;
+end;
+if ((x3<x1) or (x3>x2)) and ((y3>y1) and (y3<y2)) then begin
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+write(b); goto t1;
+end;
+if ((x3<x1) or (x3>x2)) and (y3<y1) or (y3>y2) then begin 
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+c:=sqrt(a*a+b*b);
+write(c);
+end;
+t1: end.

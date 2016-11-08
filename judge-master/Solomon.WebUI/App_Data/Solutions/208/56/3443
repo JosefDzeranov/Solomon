@@ -1,0 +1,28 @@
+//#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n = 0;
+	cin >> n;
+	int k = 0;
+	int c, i = 0;
+
+	for (i = 1; i <= n; i++)
+	{
+		c = 0;
+		int j = i;
+		while (j%2 == 0)
+		{
+			j = j/2;
+			c++;
+		}
+		k = k + c;
+	}
+
+	cout << k;
+	//cin >> n;
+	return 0;
+}
+

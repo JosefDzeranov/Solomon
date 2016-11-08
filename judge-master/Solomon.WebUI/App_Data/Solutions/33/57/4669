@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int main() {
+int n, r[10], tmp, tr;
+cin >> n;
+int *c = new int [n];
+for (int i=0; i<n; i++)
+cin >> c[i];
+for (int i=0; i<10; i++)
+r[i]=0;
+for (int i=0; i<n; i++) {
+tmp=0;
+for (;c[i]>0;) {
+tmp+=c[i]%10;
+c[i]/=10;
+}
+r[tmp]++;
+}
+tmp = 0;
+for (int i=0; i<10; i++)
+if (tmp < r[i]) {
+tmp=r[i]; tr=i;
+}
+for (int i=0; i<n; i++) {
+tmp=0;
+for (;c[i]>0;) {
+tmp+=c[i]%10;
+c[i]/=10;
+}
+if (tmp!=tr)
+cout << c[i] << " ";
+}
+return 0;

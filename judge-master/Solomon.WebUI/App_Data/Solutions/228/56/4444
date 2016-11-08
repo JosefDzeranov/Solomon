@@ -1,0 +1,27 @@
+program zad3_2;
+var n,i,ost,r:integer;
+s,rr: string;
+a: longint;
+begin
+readln (n);
+a:=1;
+for i:=1 to n do
+  a:=a*i;
+
+ oST :=a;
+while OST>=1 do begin
+    r:=ost MOD 2;
+    OST:=OST div 2;
+    str(r,rr);
+    s:=s+rr;
+end;
+i:=1;
+rr:='0';
+while rr='0' do begin
+  rr:=copy(s,i,1);
+  i:=i+1;
+end;
+writeln ('числу ',a, ' в  10 С/С = ',s, ' в 2 С/С' );
+writeln ('kol-vo 0 = ',i-2);
+readln;
+end.

@@ -1,0 +1,26 @@
+program zad3;
+var n,a,i,k,c:integer;
+b:array [1..99999999] of longint;
+begin
+readln (n);
+a:=1;
+for i:=1 to n do
+  a:=a*i;
+i:=0;
+while a>=1 do
+  begin
+    i:=i+1;
+    b[i]:=a mod 2;
+    a:=a div 2;
+  end;
+c:=i;  
+for i:=1 to c do
+write (b[i]);
+i:=1;
+while b[i]=0 do begin
+k:=k+1;
+i:=i+1;
+end;
+writeln;
+writeln (k);
+end.

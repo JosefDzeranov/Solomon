@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main() {
+	int N, a, b, c, x=1, y=1, z=1, m, n, p;
+	cin >> N >> a >> b >> c;
+	if (a+b+c>N)
+		cout << "0";
+	else if (a+b+c==N)
+		cout << a+b+c;
+	else for (;;) {
+		m=a*(x+1)+b*y+c*z;
+		n=a*x+b*(y+1)+c*z;
+		p=a*x+b*y+c*(z+1);
+		if (((p>n&&n>m)||(n>p&&p>m))&&m<=N)
+			x++;
+		if (((p>m&&m>n)||(m>p&&p>n))&&m<=N)
+			y++;
+		if (((m>n&&n>p)||(n>m&&m>p))&&m<=N)
+			z++;
+		if (m>N&&n>N&&p>N) {
+			cout << a*x+b*y+c*z;
+			break;
+		}
+	}
+	cin.ignore();
+	cin.get();
+	return 0;
+}

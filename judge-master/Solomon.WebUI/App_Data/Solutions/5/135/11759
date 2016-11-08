@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	long long a,k,b,m,x,ans=0, tmp1=1,tmp2=1;
+	cin>>a>>k>>b>>m>>x;
+	while(x>0)
+	{
+		ans++;
+		if (tmp1!=k)
+		{
+			x-=a;
+			tmp1++;
+		} 
+		else 
+		{
+			tmp1=1;
+		}
+		if (tmp2!=m)
+		{
+		x-=b;
+		tmp2++;
+		}
+		else 
+		{
+			tmp2=1;
+		}
+	}
+	cout<<ans;
+
+return 0;
+}

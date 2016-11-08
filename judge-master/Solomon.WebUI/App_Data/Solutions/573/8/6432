@@ -1,0 +1,18 @@
+using System;
+
+class balaev
+{
+    static void Main()
+	{
+	 string stroka = Console.ReadLine();
+	 string[] kkk = stroka.Split();
+	 long x = long.Parse(kkk[0]);
+	 long y = long.Parse(kkk[1]);
+	 Console.Write(x+y);
+	 
+	 
+	}
+
+
+
+}

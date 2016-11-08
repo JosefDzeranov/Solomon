@@ -1,0 +1,42 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main(){
+    int n, sum =0, max =0, half, k;
+    int mass[101];
+    cin >> n;
+    for (int i=0; i<n; i++){
+          cin >> mass[i];
+    }
+ /*   for(int i = 0; i < n; i++){
+        for(int j=1; j < n; j++){                
+            if(mass[j] < mass[j-1]){
+                int rez = mass[j-1];
+                mass[j-1] = mass[j];
+                mass[j] = rez;                                        
+            }        
+        }    
+    }    */    
+    for (int i=0; i<n; i++){
+         if(mass[i]>max){
+             max = mass[i];
+         }
+         sum+=mass[i];
+    }
+    half = sum/2+1;            
+    if (max < half){
+        for(int i = n-1;i>=0;i--){
+            if (max + mass[i] < half) 
+                max+= mass[i];        
+        } 
+        k = sum - max;
+        cout << k-max << endl;      
+    }else{
+         k= sum - max;
+         cout << max-k << endl; 
+    }               
+//    _getch();
+    return 0;    
+}

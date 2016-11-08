@@ -1,0 +1,14 @@
+a, k, b, m, x = [int(i) for i in input().split()]
+left=1
+right = x
+med = 0
+j = 0
+while (left + 1 < right ):
+	med = (left + right) / 2;
+	j = (med - med / k) * a + (med - med / m) * b
+	if (j < x): 
+		left = med
+	else: 
+		right = med
+	
+print (int(right))

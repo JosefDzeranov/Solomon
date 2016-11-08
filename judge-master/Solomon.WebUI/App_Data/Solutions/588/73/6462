@@ -1,0 +1,24 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+int h,i,len,g;
+string s;
+cin>>s;
+len = s.length();
+for(i = 0; i<len; i++){
+	if(i*i >= len){
+	g=i;
+	break;
+	}
+}
+while(s.length() != g*g){
+s+=" ";
+}
+for(i=0;i<g;i++){
+	for(h=i;h<g*g;h+=g){
+	cout<<s[h];
+	}
+}
+return 0;
+}

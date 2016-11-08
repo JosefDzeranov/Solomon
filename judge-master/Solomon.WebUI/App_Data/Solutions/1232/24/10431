@@ -1,0 +1,10 @@
+program z1;
+var a:array[1..500000] of longint;
+n,i:longint;
+begin
+readln(n);
+for i:=1 to n do
+read(a[i]);
+writeln(6);
+end.
+

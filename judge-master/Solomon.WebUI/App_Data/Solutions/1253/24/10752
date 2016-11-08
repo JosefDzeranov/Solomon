@@ -1,0 +1,56 @@
+{$h+}
+
+const
+all='1234567890';
+
+var
+   nach, rab: array of string;
+   n, i, j, k, error, l, m, c, rez: longint;
+   sc: array of longint;
+   mat: array [1..11, 1..500001] of byte;
+   s: string;
+
+begin
+   readln(n);
+  setlength(sc, n + 1);
+  setlength(nach, n + 1);
+  setlength(rab, n + 1);
+   for i := 1 to n do
+   begin
+      read(sc[i]);
+      Str(sc[i], nach[i]);
+   end;
+  { for i := 1 to n do
+   begin
+      for j := 1 to n do
+         rab[j] := nach[j];
+      s := nach[i];
+      for l := 1 to length(s) do
+         for k := (i + 1) to n do
+            for m := 1 to length(rab[k]) do
+               if s[l] = rab[k][m] then begin rab[k] := ''; inc(c); break; end;  
+   end;}
+   
+   for i:=1 to n do
+    for j:=1 to 10 do
+     if pos(all[j], nach[i])>0 then inc(mat[i, j]);
+   
+  { for i:=1 to n do
+    begin
+    for j:=1 to 10 do
+     write(mat[i, j]);
+   writeln;
+   end;}
+   
+   for i:=1 to 10 do
+   begin
+   k:=0;
+    for j:=1 to n do
+     if mat[j, i]=1 then inc(k);
+   if k>=2 then inc(rez);
+   end;
+   write(rez);
+     
+     
+     
+end.

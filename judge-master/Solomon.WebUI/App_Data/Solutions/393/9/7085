@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int p, n, a, b, c;
+	cin >> p >> n >> a >> b >> c;
+
+	if (p == 1)
+		cout << max(0, n-(n-a)-(n-b)-(n-c));
+	else
+		cout << min(min(a, b), c);
+	return 0;
+}

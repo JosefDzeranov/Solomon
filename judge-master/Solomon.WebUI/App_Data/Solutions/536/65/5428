@@ -1,0 +1,17 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    long long int a1,a2,a3,a4,e,d,ans;
+    cin>>a1>>a2>>a3>>a4;
+     e=min(a1,a2);
+     d=min(a3,a4);
+    e+=d;
+    long double ee=e;
+    ans=sqrt(ee);
+    cout << ans;
+    return 0;
+}

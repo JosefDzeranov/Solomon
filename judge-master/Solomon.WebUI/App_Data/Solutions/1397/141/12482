@@ -1,0 +1,27 @@
+import math
+
+
+n, k = [int(i) for i in input().split()]
+ms = [int(i) for i in input().split()]
+if k == 1:
+    print(0)
+elif n == k:
+    mn = max(ms)
+    for i in range(len(ms) - 1):
+        if math.fabs(ms[i + 1] - ms[i]) < mn:
+            mn = math.fabs(ms[i + 1] - ms[i])
+    print(mn)
+else:
+    n = ms[1:len(ms) - 1]
+    for i in range(k - 2):
+        mx = max(ms)
+        mn = min(ms)
+        d = 0
+        p = 0
+        for j in range(len(n)):
+            if math.fabs(mx - n[j]) > d and math.fabs(mn - n[j]) > d:
+                d = min(math.fabs(mx - n[j]), math.fabs(mn - n[j]))
+                p = j
+        n = n[0:p] + n[p + 1:]
+    print(int(d))
+            

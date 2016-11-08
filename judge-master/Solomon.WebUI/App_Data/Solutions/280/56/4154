@@ -1,0 +1,22 @@
+program tret;
+var a,i,count2,count:integer;
+
+function wow(k:integer):integer;
+var count: integer;
+begin
+count:=0;
+While (k mod 2)=0 do begin
+k:=k div 2;
+inc(count);
+end;
+count2:=count2+count;
+end;
+
+begin
+Readln (a);
+For i:=1 to a do begin
+if (i mod 2) = 0 then
+wow(i);
+end;
+WriteLn (count2);
+end.

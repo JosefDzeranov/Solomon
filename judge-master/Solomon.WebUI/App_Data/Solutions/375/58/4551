@@ -1,0 +1,28 @@
+program E_school_picnic;
+
+var
+n,s,c,minr,i,j,k,l: longint;
+a: array [1..100] of longint;
+
+begin
+s:=0;
+readln (n);
+for i:=1 to n do
+  begin
+    read (a[i]);
+    s:=s+a[i];
+  end;
+minr:=s;
+
+for i:=1 to n-1 do
+  for j:=i to n-1 do
+    for k:=j to n-1 do
+      begin
+        c:=0;
+        for l:=i to j do c:=c+a[l];
+        if k<>j then c:=c+a[k];
+        if ((s-c-c)<minr) and (0<=(s-c-c)) then minr:=s-c-c;
+      end;
+
+writeln (minr);
+end.

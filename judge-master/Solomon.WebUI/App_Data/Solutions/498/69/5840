@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a, b, n, x = 1;
+	cin>>a>>b>>n;
+	while(true)	
+	{
+		if((x%(a+b)==a || x%(a+b)==b) && (float(n)/float(x)<=1000.0))
+		{
+			break;
+		}
+		x++;
+	}
+	cout<<float(n)/float(x);
+	return 0;
+}

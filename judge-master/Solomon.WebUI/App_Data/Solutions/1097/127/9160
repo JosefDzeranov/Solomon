@@ -1,0 +1,11 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+begin
+writeln('IMPOSSIBLE');
+READLN
+end.

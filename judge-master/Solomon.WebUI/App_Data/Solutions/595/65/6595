@@ -1,0 +1,16 @@
+var
+  a1,a2,a3,a4, summ: real;
+begin
+  read(a1,a2,a3,a4);
+  //суммируем
+  if (a1=a2)and(a3=a4) then
+  summ:=a1 + a3
+  else begin
+    if a1<a2 then
+      summ:=a1 else summ:=a2;
+    if a3<a4 then
+      summ:= summ + a3 else summ:= summ + a4;
+  end;
+  // выводим целую часть от корня из суммы
+  write(int(sqrt(summ)));
+end.

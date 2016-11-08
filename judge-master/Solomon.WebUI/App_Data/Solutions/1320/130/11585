@@ -1,0 +1,31 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,d,pp,ser,y,o:int64; p,z:integer;
+begin
+ readln(a,b,c,d);
+ o:=0;
+
+ for p := c to d do
+ begin
+ if p mod 2=0 then
+ begin
+  pp:=p div 2;
+  ser:=pp div 2;
+  for z := 1 to ser do
+    begin
+     y:=pp-z;
+     if (z*y>=a) and (z*y<=b) then
+      o:=o+1;
+    end;
+  end;
+ end;
+
+   
+ writeln(o);
+readln;
+end.

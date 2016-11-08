@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int summ = 0, min, max, x, y, z;
+    scanf("%d%d", &min, &max);
+    for(x = min; x < max+1; x++)
+        for(y = min; y < max+1; y++)
+            for(z = min; z < max+1; z++)
+            {//summ += ((x|y)==((y|z)-(y&z)));
+            summ += ((x|y)==(y^z));}
+    printf("%d\n", summ);
+    return 0;
+}

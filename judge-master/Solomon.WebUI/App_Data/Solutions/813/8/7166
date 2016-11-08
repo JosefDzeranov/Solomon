@@ -1,0 +1,6 @@
+program mesi_1;
+var a, b : longint;
+begin
+readln(a,b);
+writeln(a + b);
+end.

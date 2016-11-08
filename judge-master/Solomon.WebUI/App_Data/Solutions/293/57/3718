@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <conio.h>
+
+main()
+{
+int a,b[100],c[100],d[100],i,j,t;
+scanf("%d",&a);
+
+for(i=0;i<a;i++)
+scanf("%d",&b[i]);
+
+for(i=0;i<a;i++)
+for(j=1;b[i]/j!=0;)
+{
+j*=10;
+if(b[i]/j==0)
+c[i]=j/10;
+}
+
+for(j=0;j<a;j++)
+d[j]=0;
+
+for(i=0;i<a;i++)
+for(t=c[i];t!=0;t/=10)
+{
+d[i]=d[i]+((b[i]%(t*10))/t);
+if(d[i]>9)
+d[i]=d[i]%9;
+}
+
+
+int max=0,help=0,maxi=0;
+for(i=1;i<10;i++)
+{
+for(j=0;j<a;j++)
+if(d[j]==i)
+help++;
+if(help>max)
+{
+max=help;
+maxi=i;
+}
+help=0;
+}
+
+for(i=0;i<a;i++)
+if(d[i]==maxi)
+b[i]=-1;
+
+for(i=0;i<a;i++)
+if(b[i]!=-1)
+printf("%d ",b[i]);
+getch();
+return 0;
+}

@@ -1,0 +1,17 @@
+var
+a,b,k,d,i,c:integer;
+begin
+k:=1;
+d:=1;
+for i:=1 to 10 do
+begin
+k:=k*10;
+d:=d*(-10);
+end;
+read (a),read(b);
+if (a>=d) and (a<=k) and (b>=d) and (b<=k) then
+begin
+c:=a+b;
+write (c);
+end;
+end.

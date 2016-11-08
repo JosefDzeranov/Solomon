@@ -1,0 +1,22 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,p,c,l,d,i,j,s:integer;
+    js:array[1..1000000000]of integer;
+begin
+ readln(a,b,c,d);
+ for i:=1 to b do
+  for j:=1 to b do
+    if (i*j>=a)and(i*j<=b)and(2*i+2*j>=c)and(2*i+2*j<=d)and(j>js[j]) then
+     begin
+      s:=s+1;
+      for l := 1 to b do
+       js[l]:=i
+     end;
+ writeln(s);
+ readln
+end.

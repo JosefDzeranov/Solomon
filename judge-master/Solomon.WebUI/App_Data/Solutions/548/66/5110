@@ -1,0 +1,74 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+Module Module1
+    Dim tal As String
+    Dim n As Integer
+    Dim sch As Integer
+    Dim schm() As Integer
+    Dim sk() As Integer
+    Dim tekd As String
+    Dim k As ULong
+    Dim sc() As Integer
+    Dim l As Integer
+    Dim g As Boolean
+    Dim sck() As Integer
+
+    Sub Main()
+        FileOpen(1, "schools.in", OpenMode.Input)
+        Input(1, n)
+        FileClose(1)
+        ReDim sk(n)
+        ReDim sc(n)
+        ReDim schm(n)
+        ReDim sck(n)
+        tal = My.Computer.FileSystem.ReadAllText("schools.in")
+        tal = Mid(tal, Len(n) + 1)
+        For i = 1 To n
+            Do
+                k = k + 1
+                If Val(Mid(tal, k, 1)) <> 0 Then
+                    tekd = tekd + Mid(tal, k, 1)
+                Else
+                    If k > 1 Then
+                        If Val(Mid(tal, k - 1, 1)) <> 0 Then
+                            sk(i) = Val(tekd)
+                            tekd = ""
+                            Continue For
+                        End If
+                    End If
+                End If
+            Loop Until k = Len(tal)
+        Next
+        If Val(Mid(tal, k, 1)) <> 0 Then
+            sk(n) = Val(tekd)
+            tekd = ""
+        End If
+        For i = 1 To n
+            g = False
+            For p = 1 To l
+                If sc(p) = sk(i) Then
+                    g = True
+                    sck(p) = sck(p) + 1
+                End If
+            Next
+            If g = False Then
+                l = l + 1
+                sc(l) = sk(i)
+                sck(l) = 1
+            End If
+        Next
+        For i = 1 To l
+            If sck(i) <= 5 Then
+                sch = sch + 1
+                schm(sch) = sc(i)
+            End If
+        Next
+        FileOpen(2, "schools.out", OpenMode.Output)
+        Print(2, Mid(Str(sch) + vbCrLf, 2))
+        For i = 1 To sch
+            Print(2, Mid(Str(schm(i)) + vbCrLf, 2))
+        Next
+        FileClose(2)
+    End Sub
+
+End Module

@@ -1,0 +1,14 @@
+program magic_sequence;
+
+var
+  i, n: longint;
+
+begin
+
+  read(n);
+  for i := 1 to n-2 do
+    write('1 ');
+  writeln('2 ', n);
+
+
+end.

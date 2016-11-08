@@ -1,0 +1,13 @@
+using System;
+
+class Mi
+{
+	static void Main()
+	{
+		string s = Console.ReadLine();
+		string[] ss = s.Split();
+		int x = int.Parse(ss[0]);
+		int y = int.Parse(ss[1]);
+		Console.WriteLine(x+y);
+	}
+}

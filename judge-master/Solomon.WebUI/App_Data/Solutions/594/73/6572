@@ -1,0 +1,21 @@
+var
+  k, cura, n: integer;
+  a:array[1..3001] of integer;
+
+
+
+begin
+  read(n);
+  for cura := 1 to n do 
+  begin
+  read(k);
+  a[k]:=1;
+  end;
+  for cura := 1 to 3001 do begin
+  if(a[cura]=0) then begin
+  writeln(cura);
+  halt(0);
+  end;
+  end;
+  
+end.

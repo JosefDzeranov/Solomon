@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace _4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int sum1 = 0;
+            int sum2 = 0;
+
+            for (int i = 0; i < ss.Length; i++)
+            {
+                if (i % 2 == 0) { sum1 += Convert.ToInt32(ss[i]); }
+                else sum2 += Convert.ToInt32(ss[i]);
+            }
+            if (sum1 > sum2) Console.WriteLine(0);
+            else
+                if (sum1 == sum2) Console.WriteLine(1);
+                else
+                    Console.WriteLine( sum2 - sum1 + 1);
+        }
+    }
+}

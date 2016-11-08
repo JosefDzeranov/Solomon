@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace zad_2_of9_11
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+                string t = Console.ReadLine();
+                string[] s = t.Split(' ');
+                int n = Convert.ToInt32(s[0]);
+                int k = Convert.ToInt32(s[1]);
+                t = Console.ReadLine();
+                s = t.Split(' ');
+                int[] mas = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    mas[i] = int.Parse(s[i]);
+                }
+                int bal = mas[k - 1];
+                int ans = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    if (mas[i] >= bal && mas[i] > 0) ans++;
+                }
+                Console.WriteLine(ans);
+            
+        }
+    }
+}

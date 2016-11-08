@@ -1,0 +1,9 @@
+program olimp1; 
+var N: integer;
+begin
+    repeat
+    writeln('Введите количество команд N ');
+    readln(N);
+    until (N<=100) and (N>=3);
+    writeln( 'Количество заготовленных организаторами отчетов ' , (n-2)*n*(n-1));
+    end.

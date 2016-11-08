@@ -1,0 +1,36 @@
+program Square;
+var
+ sC:array[1..8] of real;
+ cI,cIi:longint;
+ sS:real;
+ cF,sCF:byte;
+ eA:string;
+function sSP (c1:real; c2:real):real;
+ begin
+  if ((c1<=0) and (c2>=0)) or ((c1>=0) and (c2<=0)) then sSP:=abs(c1)+abs(c2)+1
+   else sSP:=abs(abs(c1)-abs(c2))+1;
+ end;
+begin
+ eA:='YES';
+ for cI:=1 to 8 do read(sC[cI]);
+
+ for cI:=1 to 4 do
+  begin
+  cF:=0;
+   for cIi:=1 to 4 do
+    begin
+     if (cI<>cIi) and ((sC[cI*2]=sC[cIi*2])) then
+      begin
+       if ((cI>1) and (sSP(sC[cI*2-1],sC[cIi*2-1])=sS)) then sCF:=succ(sCF)
+       else if cI=1 then begin sS:=sSP(sC[cI*2-1],sC[cIi*2-1]); sCF:=succ(sCF); end;
+       end;
+     if (cI<>cIi) and ((sC[cI*2-1]=sC[cIi*2-1])) then
+      begin
+       if ((cI>1) and (sSP(sC[cI*2],sC[cIi*2])=sS)) then sCF:=succ(sCF)
+       else if cI=1 then begin sS:=sSP(sC[cI*2],sC[cIi*2]); sCF:=succ(sCF); end;
+      end;
+    end;
+  end;
+ if sCF<>8 then eA:='NO';
+ writeln(eA);
+end.

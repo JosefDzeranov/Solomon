@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, z, a, b, c, sum, one, two, ans = 0;
+	cin>>n>>z>>a>>b>>c;
+	sum = (a/z) * (b/z);
+	one = c/z;
+	two = c%z;
+	if(float(c - one*z) >= float(two)/2.0)	one ++;
+	sum*=one;
+	ans = n/sum;
+	if(n%sum!=0)	ans++;
+	cout<<ans;
+	return 0;
+}

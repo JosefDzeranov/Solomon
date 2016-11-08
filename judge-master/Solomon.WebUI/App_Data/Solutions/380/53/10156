@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+bool li[101][101];
+int n,m,i,j,t,x,y,g;
+
+void explore(int r,int s)
+{
+li[r][s]=false;
+if((r+1<=n)&&(li[r+1][s]))
+explore(r+1,s);
+if ((s+1<=m) && (li[r][s+1]))
+explore(r,s+1);
+if((r-1>0)&&(li[r-1][s]))
+explore(r-1,s);
+if( (s-1>0) && (li[r][s-1]))
+explore(r,s-1);
+}
+
+int dfs(void)
+{
+int counter=0;
+for(int i=1;i<=n;i++){
+for (int g=1;g<=m;g++){
+if( li[i][g]) {
+counter++;
+explore(i,g);
+}}}return counter;}
+
+int main()
+{
+cin>>n>>m>>t;
+for(int i=0;i<=n;i++){
+for (int j=0;j<=m;j++)
+li[i][j]=true;
+}
+for (int i=0;i<t;i++){
+cin>>x>>y;
+li[y][x]=false;
+}
+
+cout<<dfs();
+return 0;
+}

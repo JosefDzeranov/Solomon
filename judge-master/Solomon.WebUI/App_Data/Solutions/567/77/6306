@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+
+int main()
+{
+	string s;
+	cin >> s;
+	long double t = s.size();
+	long double t2 = sqrt(t);
+	long long  t3 = t2;
+	if (t3 * t3 < s.size()) t3++;
+	for (long long  i = 0; i < t3; i++)
+	{
+		for (long long j = i; j <= (i + t3 * (t3 - 1)); j+=t3)
+		{
+			if (j < s.size()) cout << s[j];
+			else cout << ' ';
+		}
+	}
+	return 0;
+}

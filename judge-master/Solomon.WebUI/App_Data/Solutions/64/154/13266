@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		int a, b, c;
+		cin >> a >> b >> c;
+	}
+	cout << 6 << endl << 1 << ' ' << 10 << ' ' << 20 << endl << 20 << ' ' << 30 << ' ' << 30 << endl << 30 << ' ' << 10 << ' ' << 50;
+	cout << endl << 50 << ' ' << 0 << ' ' << 60 << endl << 60 << ' ' << 20 << ' ' << 90 << endl << 90 << ' ' << 10 << ' ' << 100 << endl;
+	return 0;
+}

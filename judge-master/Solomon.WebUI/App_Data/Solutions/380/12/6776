@@ -1,0 +1,11 @@
+import math
+N, k=map(int, input().split())
+N1=math.factorial(N)
+N1=int(N1)
+
+x=0
+
+while N1%10==0:
+    N1=N1/k
+    x=x+1
+print(x)    

@@ -1,0 +1,26 @@
+Var i,j,n,k,x,y,ans:longint; a,f:array[0..1000000] of longint;
+function min(x,y:longint):longint;
+begin if x<y then min:=x else min:=y;
+end;
+Begin
+     readln (n);
+     for i:=1 to n do begin
+     read (a[i]);
+     k:=k+a[i];
+     end;
+     ans:=maxlongint div 2;
+     for i:=1 to k do
+     f[i]:=maxlongint div 2;
+     for i:=1 to n do
+     for j:=1 to k do
+     if j>=a[i]
+     then f[j]:=min(f[j],f[j-a[i]]+1);
+     for i:=1 to k do begin
+     if f[k]=maxlongint div 2
+     then continue;
+     y:=k-i;
+     x:=abs(y-i);
+     ans:=min(x,ans);
+     end;
+     writeln (ans);
+end.

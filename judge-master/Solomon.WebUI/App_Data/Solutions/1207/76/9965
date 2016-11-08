@@ -1,0 +1,61 @@
+var
+  mas: array[1..100000]of string;
+  a, a1: string;
+  num, i, i1, i2, t, cod, s,  z: integer;
+  flag: boolean;
+
+begin
+  flag := true;
+  z := 1;
+  readln(num);
+  
+  for i := 1 to num do
+    readln(mas[i]);
+  
+  for i := 1 to num do 
+  begin
+    a := mas[i];
+    for i1 := 1 to length(a) do 
+    begin
+      if ((a[i1] = '0') or (a[i1] = '1') or (a[i1] = '2') or (a[i1] = '3') or (a[i1] = '4') or (a[i1] = '5') or (a[i1] = '6') or (a[i1] = '7') or (a[i1] = '8') or (a[i1] = '9')) then begin
+        a1 := a1 + a[i1];
+        inc(z);
+      end
+      else begin
+      
+        {if flag = true then
+          a1 := a1 + '_';
+        if a1[z] <> '_' then begin
+          a1 := a1 + '_';
+          inc(z);
+        end;
+        flag := false;}
+      end;
+      
+    end;
+    a := '';
+    writeln(a1, ' Отладка a1');// Отладка
+    for i2 := 1 to length(a1) do
+      if a1[i2] <> '_' then begin
+        a := a + a1[i2];
+        writeln(a, ' Отладка a');
+        if i2 = length(a1) then begin
+          val(a, t, cod);
+          writeln(t, ' Отладка t');
+          s := s + t;
+          writeln(s, ' Отладка s');
+          a := '';
+        end;
+      end
+      else begin
+        val(a, t, cod);
+        writeln(t, ' Отладка t');
+        s := s + t;
+        writeln(s, ' Отладка s');
+        a := '';
+      end;
+    a1:='';
+    z:=1
+  end;
+  writeln(s);
+end.

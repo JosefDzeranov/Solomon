@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int a[1000][1000];
+
+int main()
+{
+    int x1, x2, y1, y2;
+    cin >> x1 >> y1;
+    cin >> x2 >> y2;
+    if (x1 < x2)
+    {
+        swap(x1, x2);
+        swap(y1, y2);
+    }
+    if (x1 < 0 && x2 > 100)
+        cout << 1000 + min(-x1, x2 - 100) * 10;
+
+    else if (y1 < 0 && y2 > 100)
+        cout << 1000 + min(-y1, y2 - 100) * 10;
+
+    else cout << 1000;
+
+    return 0;
+}

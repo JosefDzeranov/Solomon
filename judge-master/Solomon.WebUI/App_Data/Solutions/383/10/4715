@@ -1,0 +1,17 @@
+var c:extended;
+    n,k,i,m,j:byte;
+    s:int64;
+begin
+   read(n,k);
+   s:=1;
+   if k<n div 2 then k:=n-k;
+   m:=n-k;
+   j:=1;
+   for i:=k+1 to n do begin
+     s:=s*i div j;
+     inc(j);
+   end;
+   for i:=j to m do
+     s:=s div i;
+   writeln(s);
+END.

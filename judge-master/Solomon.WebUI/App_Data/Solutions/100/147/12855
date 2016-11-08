@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int n1,n2,Fn1,Fn2,n3,Fn11=0;
+cin>>n1>>Fn1>>n2>>Fn2>>n3;
+
+if (n2-n1==2)Fn11=Fn2-Fn1;
+  else if((n2-n1-1)!=0) Fn11=(Fn2-(n2-n1-2)*Fn1)/(n2-n1-1);
+           else Fn11=Fn2;
+
+int one=Fn1;
+int two=Fn11;
+int next=one+two;
+
+//cout<<"one = "<<one<<endl<<"two = "<<two<<endl<<"next = "<<next<<endl;
+for (int i=n1+2; i<n3; i++)
+{
+    one=two;
+    two=next;
+    next=one+two;
+  // cout<<endl<<"one = "<<one<<endl<<"two = "<<two<<endl<<"next = "<<next<<endl;
+}
+cout<<next;
+//system("PAUSE");
+    return 0;
+}

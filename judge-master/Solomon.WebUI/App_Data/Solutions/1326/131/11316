@@ -1,0 +1,14 @@
+n, k = [int(i) for i in input().split()]
+n = [int(i) for i in input().split()]
+mx = max(n)
+index = n.index(mx)
+a, b = 100001, 100001
+try:
+    a = n[index - 1] + n[index]
+except IndexError:
+    None
+try:
+    b = n[index + 1] + n[index]
+except IndexError:
+    None
+print(min(a, b))

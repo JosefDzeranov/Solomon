@@ -1,0 +1,26 @@
+var a: array [1..500000] of integer;
+i,j,k,r,N,sum,si:integer;
+s,t:string;
+Begin
+Readln(N);
+For i:=1 to N do 
+    Read(a[i]);
+  For j:=1 to N do begin
+  Str(a[j],t);
+    For i:=1 to N do begin
+      if (i<>j) and (a[j]>=0) and ((a[i]>=0)) then begin
+        Str(a[i],s);       
+          for k:=1 to length(t) do
+            for r:=1 to length(s) do
+              if (t[k]=s[r])and(si=0) then
+                inc(si);              
+                if si>0 then begin
+                  si:=0;
+                  inc(sum)
+                end;
+      End;
+    End;
+    a[j]:=-1;
+  End;
+  writeln(sum);
+End.

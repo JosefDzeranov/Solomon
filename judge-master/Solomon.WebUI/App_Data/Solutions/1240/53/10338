@@ -1,0 +1,37 @@
+VAR
+  n,m,k,i,j,l,r,ans: LongINt;
+  a: Array [0..101] of Array [0..101] of Boolean;
+  
+  Procedure Proc(x,y: Byte);
+  Begin
+    if (a[x][y]) then begin
+      a[x][y] := false;
+      
+      Proc(x-1,y);
+      Proc(x,y-1);
+      Proc(x+1,y);
+      Proc(x,y+1);
+    end;
+  End;
+  
+BEGIN
+  Read(m,n,k);
+  
+  For i := 1 to n do
+    For j := 1 to m do
+      a[i][j] := true;
+      
+  For i := 1 to k do begin
+    Read(r,l);
+    a[l][r] := false;
+  End;
+  
+  For i := 1 to n do
+    For j := 1 to m do
+      if (a[i][j]) then begin
+        Proc(i,j);
+        Inc(ans);
+      end;
+
+  Write(ans);
+END.

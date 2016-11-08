@@ -1,0 +1,24 @@
+N = int(input());
+
+v = 0;
+z = 0;
+
+for i in range(0, N):
+    s = str(input());
+    if(s[0] == '>'):
+        v+=1;
+    if(s[1] == '>'):
+        v+=1;
+    if(s[2] == '<'):
+        z+=1;
+    if(s[3] == '<'):
+        z+=1;
+if v == z:
+    print(0);
+if v > z:
+    print("1 "+ str(v-z));
+if v < z:
+    print("2 " + str(z-v));
+    
+
+

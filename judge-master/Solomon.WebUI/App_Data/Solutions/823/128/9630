@@ -1,0 +1,73 @@
+program Problematic;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  x : array [0..997] of integer;
+  y : array [0..997] of integer;
+
+procedure InsertMas (n : word);
+var
+  i : word;
+begin
+  for i := 0 to n - 1 do
+    readln (x[i], y[i]);
+end;
+
+function SquareCount (n : word) : real;
+var
+  i, nexti : word;
+  s : real;
+  h : integer;
+begin
+  result := 0;
+  for I := 0 to n - 1 do
+    begin
+      nexti := (i + 1) mod n;
+      s := (y[i] + y[nexti]) / 2;
+      h := x[nexti] - x[i];
+      result := result + s * h;
+    end;
+  result := abs (result);
+end;
+
+function NOD (max, min : integer) : integer;
+var
+  temp : integer;
+begin
+  while min <> 0 do
+    begin
+      temp := max;
+      max := min;
+      min := temp mod min;
+    end;
+  result := max;
+end;
+
+var
+  n : word;
+  sq : real;
+  i, nexti : word;
+  deltax : integer;
+  deltay : integer;
+  borders : real;
+  res : real;
+begin
+  readln (n);
+  InsertMas (n);
+  sq := SquareCount (n);
+  borders := n;
+  for i := 0 to n - 1 do
+    begin
+      nexti := (i + 1) mod n;
+      deltax := abs (x[nexti] - x[i]);
+      deltay := abs (y[nexti] - y[i]);
+      borders := borders + NOD (deltax, deltay) - 1;
+    end;
+  res := (sq - borders / 2 + 1);
+  writeln (res);
+  readln;
+end.

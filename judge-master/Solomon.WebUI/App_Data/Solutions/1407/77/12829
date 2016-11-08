@@ -1,0 +1,22 @@
+   var s:string;
+     i,j,p,k:integer;
+     A:array[1..100,1..100] of char;
+     begin
+     readln(s);
+      k:=Ceil(sqrt(length(s)));
+     // writeln(k);
+         for i:=1 to k do
+           for j:=1 to k do
+            begin
+            p:=p+1;
+             if p<=length(s) then
+               A[i,j]:=s[p]
+               else A[i,j]:=' ';
+            end;
+         
+         for i:=1 to k do
+           begin
+           for j:=1 to k do write(A[j,i]);
+           end;
+         
+     end.

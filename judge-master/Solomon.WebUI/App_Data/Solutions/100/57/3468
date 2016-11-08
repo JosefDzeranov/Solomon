@@ -1,0 +1,42 @@
+//#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n,max=0;
+	int c[100], v[100];
+	int d[10] = { 0 };
+	cin >> n;
+	int i,s,w;
+	for (i = 0; i<n; i++)
+		cin >> c[i];
+
+	for (i = 0; i<n; i++)
+	{
+		w = c[i];
+		while (w >= 10)
+		{
+			s = 0;
+			while (w != 0)
+			{
+				s = s + (w % 10);
+				w = w / 10;
+			}
+			w = s;
+		}
+		v[i] = w;
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		d[v[i]]++;
+		if (d[v[i]]>d[max]){ max = v[i]; }
+	}
+
+	for (i = 0; i<n; i++) 
+	if ( v[i]!=max){ cout << c[i] << " "; }
+	return 0;
+}
+

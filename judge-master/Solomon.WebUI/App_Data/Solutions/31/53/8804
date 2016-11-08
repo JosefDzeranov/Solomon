@@ -1,0 +1,48 @@
+program Project37;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+     mas:array [0..101,0..101] of integer;
+     m,n,k,i,l,j,x,y:integer;
+
+procedure metka (x1,y1:integer);
+begin
+mas[x1, y1] := l;
+if mas[x1 - 1, y1] = 0 then
+  metka (x1 - 1, y1);
+if mas[x1, y1 - 1] = 0 then
+  metka (x1, y1 - 1);
+if mas[x1 + 1, y1] = 0 then
+  metka (x1 + 1, y1);
+if mas[x1, y1 + 1] = 0 then
+  metka (x1, y1 + 1);
+end;
+
+begin
+ readln(m, n, k);
+ l := 0;
+ for I := 0 to m + 1 do
+ for j := 0 to n + 1 do
+ if (i = 0) or (j = 0) or (i = m + 1) or (j = n + 1) then
+    mas[i, j] := -1
+ else
+    mas[i, j] := 0;
+ for I := 1 to k do
+  begin
+   readln(x, y);
+   mas[x, y] := -1;
+  end;
+ for I := 1 to m do
+   for j := 1 to n do
+       if mas[i, j] = 0 then
+       begin
+         Inc(l);
+         metka(i, j);
+       end;
+writeln(l);
+readln;
+end.

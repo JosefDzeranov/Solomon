@@ -1,0 +1,72 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include<cstdio>
+using namespace std;
+map <string,int> q;
+string f(string s)
+{
+int n=s.size(),i,j,a[11];
+string b;
+for(i=0;i<=9;i++)
+    a[i]=0;
+for(i=0;i<n;i++)
+{
+    a[s[i]-48]=1;
+}
+for(i=0;i<=9;i++)
+{
+if(a[i])
+b+=(char)(48+i);
+}
+return b;
+}
+int ff(string a,string b)
+{
+int x[11],y[11],q=a.size(),w=b.size(),i;
+for(i=0;i<=9;i++)
+    x[i]=y[i]=0;
+for(i=0;i<q;i++)
+    x[a[i]-48]++;
+for(i=0;i<w;i++)
+    y[b[i]-48]++;
+for(i=0;i<=9;i++)
+    if(x[i]>0&&y[i]>0)
+        return 1;
+return 0;
+}
+int main()
+{
+//freopen("input.txt","r",stdin);
+string s,ss[1111];
+int n,i,j,a[1111];
+long long sum=0;
+cin>>n;
+for(i=1;i<=n;i++)
+{
+    cin>>s;
+    q[f(s)]++;
+}
+int k=1;
+map<string,int>::iterator ii;
+for(ii=q.begin();ii!=q.end();ii++)
+{
+sum+=ii->second-1;
+ss[k]=ii->first;
+a[k]=ii->second;
+k++;
+}
+for(i=1;i<k-1;i++)
+{
+    for(j=i+1;j<k;j++)
+    {
+        if(ff(ss[i],ss[j]))
+        {
+            sum+=a[i]*a[j];
+        }
+    }
+}
+cout<<sum<<endl;
+
+}
+

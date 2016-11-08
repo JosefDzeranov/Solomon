@@ -1,0 +1,9 @@
+k=0
+a=input()
+for i in range(len(a)-3):
+    c=a.find('vkontakte')
+    for k in range(c+3,len(a)-3):
+        st=a[k:len(a)]
+        if 'api' in st:
+            k+=1
+print(k)

@@ -1,0 +1,92 @@
+Program cell1;
+var
+Que : array [1..10000,1..2] of integer; { Очередь ходов максимальный размер 100х100=10000}
+Marked : array [1.. 100,1..100] of boolean; { Пометки на доске}
+x,y,z, { Текущая позиция}
+StepNumber, { Номер хода}
+QueBegin, QueEnd : integer; { Начало и конец очереди}
+f,g:text;{файлы входной и выходной}
+m,n:integer;//размеры из файла
+procedure Put(x,y:integer); { Занести в очередь}
+begin
+Inc(QueEnd); { увеличить количество }
+Que[QueEnd,1] := x; { координата по x }
+Que[QueEnd,2] := y; { координата по y }
+Marked[x,y] := true; { Помечаем использованную}
+end;
+ 
+procedure Get(var x,y:integer); { Взять из очереди }
+begin
+x := Que[QueBegin,1]; { координата по x }
+y := Que[QueBegin,2]; { координата по y }
+Inc(QueBegin); { изменить начало }
+end;
+ 
+procedure StartProcess;
+var
+i,j : integer;
+sm:char;
+begin
+assign(f,'remsquar.in');
+reset(f);
+read(f,m);
+read(f,n);
+for i:= 1 to m do { Все клетки }
+for j:= 1 to n do
+ begin
+  read(f,sm); //читаем из файла символы
+  if sm='#' then Marked[i,j] := false { непомечены # }
+  else Marked[i,j] := true;{помечены точки}
+ end;
+close(f);
+QueBegin := 1; { Начало очереди }
+QueEnd :=0; { Конец очереди }
+end;
+ 
+function Found(var x,y:integer):boolean;
+var i,j : integer;
+begin
+for i:=1 to m do
+for j:=1 to n do
+if not Marked[i,j]
+then begin x:=i; y:=j; Found:=true; exit; end;
+Found := false;
+end;
+ 
+procedure PutAll(x,y:integer); {Занести в очередь}
+type {все текущие возможные ходы}
+Hod = array [1..4,1..2] of integer; {Возможные ходы из данной клетки}
+const
+Steps : Hod =(( 0,-1), ( 0, 1), (-1, 0), ( 1, 0)); {Массив констант}
+Var i, CurrentX, CurrentY : integer;
+begin
+i:=0; {номер возможного хода}
+while (i<4) do {Пока не нашли и есть ход}
+begin {Делаем следующий ход }
+inc(i);
+CurrentX := x+steps[i,1] ; {X текущего хода }
+CurrentY := y+steps[i,2] ; {Y текущего хода }
+if (CurrentX>0) and (CurrentX<9) and { X на доске и }
+(CurrentY>0) and (CurrentY<9) and { Y на доске и }
+not Marked[CurrentX,CurrentY] {поле (X,Y) не помечено}
+then Put(CurrentX,CurrentY); {помещаем в очередь}
+end;
+end;
+begin
+StartProcess; { Начало работы }
+StepNumber:=0; { Номер куска = 0 }
+while (Found(x,y)) do { Пока есть непомеченная x,y }
+begin
+Put(x,y); { Помещаем ее в очередь и помечаем}
+Inc(StepNumber); { Увеличить номер куска на 1 }
+while QueBegin<=QueEnd do { Пока очередь непуста }
+begin
+Get(x,y); { Взять из очереди x,y }
+PutAll(x,y); { Занести в очередь все возможные ходы}
+end;
+end;
+assign(g,'remsquar.out');
+rewrite(g);
+writeln(g,StepNumber); { Вывод номера шага в файл}
+close(g);
+end.

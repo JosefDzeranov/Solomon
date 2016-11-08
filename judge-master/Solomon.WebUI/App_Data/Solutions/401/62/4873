@@ -1,0 +1,46 @@
+package com.acidka;
+
+public class B {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			String line, str1, str2; int cross = 0, i; int[] pos = new int[2];
+			line = s.nextLine();
+			str1 = line.substring(0, line.length()/2+line.length()%2);
+			str2 = line.substring(line.length()/2, line.length());
+			boolean[] comm = new boolean[str1.length()];
+			for(i = 0; i < str1.length() && cross < 3; i++)
+			{
+				comm[i] = str1.charAt(i) == str2.charAt(str2.length()-i-1);
+				if(comm[i] == false)
+					{
+						pos[cross] = i;
+						cross += 1;
+					}
+			}
+			if(cross == 0) System.out.println("Yes");
+			else if(cross == 1 && line.length()%2 == 1) 
+				{if(line.charAt(pos[0]) == line.charAt(line.length()/2+1) || line.charAt(pos[0]+line.length()/2) == line.charAt(line.length()/2+1)) System.out.println("Yes");}
+			else if(cross == 2)
+			{
+				if((line.charAt(pos[0]) == line.charAt(line.length()-pos[1]-1) && 
+						line.charAt(line.length()-pos[0]-1) == line.charAt(pos[1]))
+						||
+						(line.charAt(pos[0]) == line.charAt(pos[1]) &&
+						line.charAt(line.length()-pos[0]-1) == line.charAt(line.length()-pos[1]-1))) 
+					System.out.println("Yes");
+				else System.out.println("No");
+			}
+			else System.out.println("No");
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

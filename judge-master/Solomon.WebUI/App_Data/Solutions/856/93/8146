@@ -1,0 +1,12 @@
+Program B;
+Var  
+x, z, y, q, k, m: integer;
+Begin
+writeln('Введите время прихода Сослана');
+read(x, y);
+writeln('Введите время ухода Сослана');
+read(z, q);
+k:=z-x;
+m:=abs(q-y);
+write(k,' ',m);
+end.

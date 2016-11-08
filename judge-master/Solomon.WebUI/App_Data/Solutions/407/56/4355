@@ -1,0 +1,37 @@
+
+var m:array[1..100]of integer;  a: array [1..10000] of integer;
+n:longint;
+i,k,n1,r,j,f:integer;
+
+begin
+r:=1;
+writeln('n='); readln(n1);
+for j:=1 to n1 do begin
+r:= r*j;end;
+
+k := 0;
+ if r=0 then
+ begin
+  k:=1;
+  m[k]:=0;
+ end else
+ while r<>0 do
+ begin
+  inc(k);
+  m[k] := r mod 2;
+  r := r div 2;
+ end;
+
+ 
+  f:=0;
+  i:=1;
+  while m[i]<>1 do begin
+  f:=f+1;
+  i:=i+1;
+  end;
+ 
+ 
+ 
+  writeln(f);
+
+end.

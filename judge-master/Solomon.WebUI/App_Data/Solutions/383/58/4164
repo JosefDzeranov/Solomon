@@ -1,0 +1,33 @@
+var a:array[1..100] of word;
+   n,i,j,k:byte;
+   s1,s2:longword;
+procedure qsort(nn,kk:word);
+   var ii,jj:byte; r,mid:word;
+   begin
+   ii:=nn;
+   jj:=kk;
+   mid:=a[(ii+jj) div 2];
+   repeat
+     while a[ii]>mid do inc(ii);
+     while a[jj]<mid do dec(jj);
+     if ii<=jj then begin
+        r:=a[ii];
+        a[ii]:=a[jj];
+        a[jj]:=r;
+        inc(ii); dec(jj);
+     end;
+   until ii>jj;
+   if ii<kk then qsort(ii,kk);
+   if jj>nn then qsort(nn,jj);
+end;
+BEGIN
+  readln(n);
+  for i:=1 to n do
+     read(a[i]);
+  qsort(1,n);
+  s1:=a[1]; s2:=a[2];
+  for i:=3 to n do
+    if s1<s2 then inc(s1,a[i])
+             else inc(s2,a[i]);
+  writeln(abs(s1-s2));
+END.

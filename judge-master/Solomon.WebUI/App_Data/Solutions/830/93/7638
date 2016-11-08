@@ -1,0 +1,20 @@
+program Informatiks;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x, y, z, q, m1, m2, m, h, p:integer;
+begin
+readln (x,y,z,q);
+m1:=x*60+y;
+m2:=z*60+q;
+if m2<m1 then
+p:=m2+(1440-m1) else
+p:=m2-m1;
+h:=p div 60;
+m:=abs(p-h*60);
+write(h,' ' ,M);
+readln;
+end.

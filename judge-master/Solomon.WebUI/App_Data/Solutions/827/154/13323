@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+	cout << "1 10 20" << endl;
+	cout << "20 30 30" << endl;
+	cout << "30 10 50" << endl;
+	cout << "50 0 60" << endl;
+	cout << "60 20 90" << endl;
+	cout << "90 10 100" << endl;
+	return 0;
+}

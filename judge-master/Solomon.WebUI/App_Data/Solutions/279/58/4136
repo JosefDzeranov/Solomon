@@ -1,0 +1,29 @@
+program pereborpjat;
+uses Math;
+var
+	a : array [1..100] of Integer;
+	n, m : Integer;
+procedure P(k, s1, s2 : Integer);
+begin
+	if k = n+1 then begin
+		m := Min(m, Abs(s1-s2));
+		Exit
+	end;
+
+	P(k+1, s1+a[k], s2);
+	P(k+1, s1, s2+a[k])
+end;
+
+var
+	i : Integer;
+
+begin
+	ReadLn(n);
+	m := MaxInt;
+	for i := 1 to n do
+		Read(a[i]);
+
+	P(1, 0, 0);
+	WriteLn(m)
+
+end.

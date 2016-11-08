@@ -1,0 +1,6 @@
+Program project1;
+var a: string;
+begin
+readln(a);
+Writeln('NO');
+end.

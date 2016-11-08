@@ -1,0 +1,11 @@
+import math;
+s = input().split();
+a1 = s[0];
+a2 = s[1];
+a3 = s[2];
+a4 = s[3];
+
+v1 = a1 if a1 < a2 else a2;
+v2 = a3 if a3 < a4 else a4;
+r = int(round(math.sqrt(float(v1)+float(v2)),0));
+print(r);

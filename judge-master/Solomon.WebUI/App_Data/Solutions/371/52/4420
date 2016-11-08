@@ -1,0 +1,14 @@
+program mesi1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n:integer;
+begin
+read(n);
+write(n*(n-1)*(n-2));
+readln;readln;
+end.
+

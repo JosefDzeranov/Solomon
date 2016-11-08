@@ -1,0 +1,101 @@
+program math;
+label
+ eTA;
+var
+ inputE:string;
+ cE,lE,fV:byte;
+ n1:array[1..5] of longint; n1c:boolean; n1Co:byte;
+ s1:char; s1c:boolean;
+ n2:array[1..5] of longint; n2c:boolean; n2Co:byte;
+ e1:char; e1c:boolean;
+ r1:array[1..5] of longint; r1c:boolean; r1Co:byte;
+ n1o,n2o,r1o:longint;
+ rA:longint;
+ eA:string;
+function stepen (s:byte):longint;
+ var
+  rS:longint;
+  cE:byte;
+ begin
+  rS:=1;
+  for cE:=2 to s do rS:=rS*10;
+  stepen:=rS;
+ end;
+begin
+ {Standard varibles values}
+ for cE:=1 to 5 do n1[cE]:=100000;
+ for cE:=1 to 5 do n2[cE]:=100000;
+ for cE:=1 to 5 do r1[cE]:=100000;
+ n1Co:=1; n2Co:=1; r1Co:=1;
+
+ {Getting example}
+ readln(inputE);
+ lE:=length(inputE);
+
+ {Translating example in type string to each varible}
+ for cE:=1 to lE do
+  begin
+   fV:=ord(inputE[cE]);
+   if ((fV-48>=0) and (fV-48<=9) and ((n1c=false) or (n2c=false) or (r1c=false))) then
+    begin
+     if n1c=false then
+      begin
+       n1[n1Co]:=fV-48; if n1Co<5 then n1Co:=succ(n1Co) else goto eTA;
+      end
+     else if n2c=false then
+      begin
+       n2[n2Co]:=fV-48; if n2Co<5 then n2Co:=succ(n2Co) else goto eTA;
+      end
+     else if r1c=false then
+      begin
+       r1[r1Co]:=fV-48; if r1Co<5 then r1Co:=succ(r1Co) else goto eTA;
+       if cE=lE then r1c:=true;
+      end;
+    end
+   else if (((fV=42) or (fV=43) or (fV=45) or (fV=47) or (fV=61)) and ((s1c=false) or (e1c=false))) then
+    begin
+     if ((fV=42) or (fV=43) or (fV=45) or (fV=47)) and (s1c=false) then
+      begin
+       if ((n1c=false) and (n1[1]<>100000)) then n1c:=true;
+       case fV of
+        42: s1:='*';
+        43: s1:='+';
+        45: s1:='-';
+        47: s1:='/';
+       end;
+       s1c:=true;
+      end
+     else if (fV=61) and (e1c=false) then
+      begin
+       if ((n2c=false) and (n2[1]<>100000)) then n2c:=true;
+       e1:='=';
+       e1c:=true;
+      end
+     else goto eTA;
+    end
+    else goto eTA;
+  end;
+
+  {Translating a,b,c of the example in full numbers}
+  n1Co:=pred(n1Co); n2Co:=pred(n2Co); r1Co:=pred(r1Co);
+  for cE:=1 to n1Co do n1o:=n1o+n1[cE]*stepen(n1Co-cE+1);
+  for cE:=1 to n2Co do n2o:=n2o+n2[cE]*stepen(n2Co-cE+1);
+  for cE:=1 to r1Co do r1o:=r1o+r1[cE]*stepen(r1Co-cE+1);
+
+  {Checking example answer}
+  case s1 of
+   '-': rA:=n1o-n2o;
+   '+': rA:=n1o+n2o;
+   '*': rA:=n1o*n2o;
+   '/': rA:=n1o div n2o;
+  end;
+
+  {Checking condition of example}
+  eTA:
+  if ((n1c=true) and (s1c=true) and (n2c=true) and (e1c=true) and (r1c=true)) then
+    if rA=r1o then eA:='YES' else eA:='NO'
+   else eA:='ERROR';
+
+  write(eA);
+  readln;
+end.

@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a,b,c,k;
+    double S,o;
+    cin >>a>>b>>c;
+    S=2*c*3.14;
+    k=b/(2*c);
+    o=S*k;
+    if (a>o) cout <<"YES"<<endl<<k;
+    else cout <<"NO";
+    return 0;
+}

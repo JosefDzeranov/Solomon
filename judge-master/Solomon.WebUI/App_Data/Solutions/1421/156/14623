@@ -1,0 +1,21 @@
+﻿using System;
+using System.IO;
+
+namespace ConsoleApplication1
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            var sw = new StreamWriter("B.txt");
+            sw.WriteLine("Вася Коля м 50");
+            sw.WriteLine("Петя п 5");
+            sw.WriteLine("Вася п 5");
+            sw.WriteLine("Коля м -40");
+            sw.WriteLine("Петя п 5");
+            sw.WriteLine("Вася п 5");
+            sw.WriteLine("Петя Коля м 50");
+            sw.Close();
+        }
+    }
+}

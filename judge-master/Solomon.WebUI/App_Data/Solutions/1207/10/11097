@@ -1,0 +1,14 @@
+Procedure combination(n,k:integer; var s:longint); 
+var 
+ i:longint; 
+
+begin 
+ s:=1; 
+ if k=0 then s:=1 
+ else for i:=1 to n-k do s:=s*(k+i) div i
+end;
+var n,k:integer;s:longint;
+begin
+read(n,k);combination(n,k,s);
+write(s);
+end.

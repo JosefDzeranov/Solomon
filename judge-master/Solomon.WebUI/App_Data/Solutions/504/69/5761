@@ -1,0 +1,19 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,x,i,k:integer;
+begin
+  readln(a,b,x);
+     for k:=1 to 1000 do
+    begin
+     if (x div a)>=1000 then
+      a:=a+1
+     else i:=x div a;
+    end;
+     writeln(i);
+   readln;
+end.

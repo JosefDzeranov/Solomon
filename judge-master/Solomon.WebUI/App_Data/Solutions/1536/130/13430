@@ -1,0 +1,23 @@
+{$APPTYPE CONSOLE}
+
+program Task0;
+
+var
+  A, B, C, D, s: int64;
+  x,y: integer;
+
+  Input, Output: Text;
+    begin
+  Assign(Input, 'input.txt');
+  Reset(Input);
+  Assign(Output, 'output.txt');
+  Rewrite(Output);
+    ReadLn(Input, A, B, C, D);
+    s:=0;
+        for x:=1 to B do
+          for y:=1 to B do
+          if ((x*y>=A)and(x*y<=B))and(2*(x+y)>=C)and(2*(x+y)<=D)and (y<=x) then s:=s+1;
+                           WriteLn(Output, s);
+  Close(Input);
+  Close(Output);
+end.

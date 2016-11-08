@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class sDecision{
+ static Scanner inputer = new Scanner(System.in);
+ static long sC[] = new long[9];
+ static long sS;
+ static int sCF = 0;
+ static String eA = "YES";
+ public static void main(String args[]){
+  for(short cI = 1; cI<=8; cI++) sC[cI]=inputer.nextLong();
+   
+  for(short cI = 1; cI<=4; cI++){
+   for(short cIi = 1; cIi<=4; cIi++){
+    if((cI!=cIi) && (sC[cI*2]==sC[cIi*2]))
+     if((cI>1) && (sSP(sC[cI*2-1],sC[cIi*2-1])==sS)) sCF+=1;
+     else if(cI==1){sS = sSP(sC[cI*2-1],sC[cIi*2-1]); sCF+=1;}
+    if((cI!=cIi) && (sC[cI*2-1]==sC[cIi*2-1]))
+     if((cI>1) && (sSP(sC[cI*2],sC[cIi*2])==sS)) sCF = sCF+1;
+     else if(cI==1){sS = sSP(sC[cI*2],sC[cIi*2]); sCF = sCF+1;}
+   }
+  }
+  if(sCF!=8) eA="NO";
+  System.out.print(eA);
+ }
+
+
+ public static long sSP(long c1, long c2){
+  if (((c1<=0) && (c2>=0)) || ((c1>=0) && (c2<=0))) return(Math.abs(c1)+Math.abs(c2)+1);
+   else return(Math.abs(Math.abs(c1)-Math.abs(c2))+1);
+ }
+}

@@ -1,0 +1,17 @@
+var n,i,k,a,b,sl,chislo,old:integer;
+var s:string;
+begin
+readln(n);
+for i:=1 to n do begin
+readln(s);
+k:=length(s);
+for b:=1  to k do begin
+if (word(s[b])>47) and  (word(s[b])<58) then begin sl:=sl+1; old:=(ord(s[b])-48);
+if (sl=1) and ((word(s[b+1])>47) and  (word(s[b+1])<58))   then chislo:=old*10 else if sl=1 then chislo:=old;
+if (sl=2) then chislo:=chislo+old;
+if (not ((word(s[b+1])>47) and  (word(s[b+1])<58))) or ((b+1)>=k)  then begin  if  not ((word(s[b+1])>47) and  (word(s[b+1])<58)) then begin a:=a+chislo; chislo:=0; sl:=0;  old:=0; end; end;
+end;
+end;
+end;
+writeln(a);
+end.

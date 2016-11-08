@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	string A="",s="";
+	int i,j,k;
+	cin>>A;
+		
+	for(i=0;i<A.length();i++)
+		for(j=i+1;j<A.length();j++)
+			if(A[i]==A[j]){k=0;s+=A[i];s+=" ";}
+
+		if(k==0)cout<<"NO"<<endl<<s;
+		else cout<<"YES";
+
+
+	cin>>A;
+	return 0;
+}

@@ -1,0 +1,40 @@
+﻿using System;
+
+namespace relations
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            string[] chisla = Console.ReadLine().Split();
+
+            int resultat = 0;
+
+            for (int i = 0; i < N - 1; i++)
+            {
+                for (int j = i+1; j < N ; j++)
+                {
+                    if (Rodnja(chisla[i], chisla[j])) resultat++;
+                }
+            }
+            Console.Write(resultat);
+
+        }
+
+        private static bool Rodnja(string x, string y)
+        {
+            foreach (char itemx in x)
+            {
+                foreach (char itemy in y)
+                {
+                    if (itemx==itemy)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+}

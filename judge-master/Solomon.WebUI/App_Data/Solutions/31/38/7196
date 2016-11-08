@@ -1,0 +1,22 @@
+program Project37;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i:integer;
+    d1,d2:real;
+ x: array  [1..4] of integer;
+ y: array [1..4] of integer;
+begin
+  for i := 1 to 4  do
+   begin
+     readln(x[i],y[i]);
+   end;
+  d1:=sqrt((x[2]-x[1])*(x[2]-x[1])+(y[2]-y[1])*(y[2]-y[1]));
+  d2:=sqrt((x[4]-x[3])*(x[4]-x[3])+(y[4]-y[3])*(y[4]-y[3]));
+  if d1=d2 then writeln('YES')
+  else writeln('NO');
+  readln;
+end.

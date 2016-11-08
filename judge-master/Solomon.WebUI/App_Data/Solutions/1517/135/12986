@@ -1,0 +1,53 @@
+var fin,fout:text;
+    a,b,i,leftline,rightline,work1,work2,done1,done2,done:longint;
+    found:boolean;
+    x,k,m:real;
+
+
+begin
+
+ //assign(fin,'forest.in');reset(fin);
+ readln(a,k,b,m,x);
+ //close(fin);
+ 
+    found:=false;
+    leftline:= round(x / (a+b));
+    rightline:= (leftline + 1)*2;
+       while(not found) do
+          begin
+             i:= round( (leftline + rightline) / 2  );
+             work1:= i - trunc(i / k);
+             work2:= i - trunc(i / m);
+             done:= (a*work1) + (b*work2);
+             work1:= (i-1) - trunc((i-1) / k);
+             work2:= (i-1) - trunc((i-1) / m);
+             done1:= (a*work1) + (b*work2);
+                if (done >= x) and (done1 < x) then
+                   begin
+                      found:=true;                   
+                   end
+                else
+                if (done1 = x) then
+                   begin
+                      found:=true;
+                      i:=i-1;                   
+                   end
+                else
+                if (done > x) then
+                   begin
+                      rightline:=i;                   
+                   end
+                else
+                if (done < x) then
+                   begin
+                      leftline:=i;                   
+                   end;
+                
+                
+                 
+          end;
+          
+ //assign(fout,'forest.out');rewrite(fout);
+ writeln(i);
+ //close(fout);
+end.

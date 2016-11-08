@@ -1,0 +1,15 @@
+program mesi8;
+var n, l, r : integer;
+k : integer;
+
+begin
+read(n, l);
+read(r);
+k:= trunc(l/(2*r)+0.5);
+if ((k*2*pi*r) > n) then writeln('NO')
+  else 
+    begin
+    writeln('YES');
+    writeln(k);
+    end;
+end.

@@ -1,0 +1,7 @@
+program s1;
+var N,M:integer;
+begin
+readln(N,M);
+M:=N+N;
+writeln (M);
+end.

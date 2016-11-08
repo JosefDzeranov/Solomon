@@ -1,0 +1,28 @@
+program OssetianLanguage;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s1, s2 : string;
+  i : byte;
+begin
+  readln (s1);
+  readln (s2);
+  for i := 1 to 3 do
+    if s1[i] <> s2[i] then
+      break;
+  if (s1[i] = '*') and (s2[i] = 'a') then
+    write (s2)
+  else
+    if (s2[i] = '*') and (s1[i] = 'a') then
+      write (s1)
+    else
+  if s1[i] <= s2[i] then
+    write (s1)
+  else
+    write (s2);
+  readln;
+end.

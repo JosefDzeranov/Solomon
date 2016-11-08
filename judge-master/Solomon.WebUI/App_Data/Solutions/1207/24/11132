@@ -1,0 +1,26 @@
+var
+i,j,x,y,n,otv:integer;
+mas:array[1..500000]of string;
+ch:char;
+begin
+readln(n);
+
+while not eof(input) do begin
+inc(i);
+read(ch);
+if ch<>' ' then
+mas[i]:=mas[i]+ch
+else
+end;
+
+for i:=1 to n-1 do
+for j:=i+1 to n do
+for x:=1 to length(mas[i]) do
+for y:=1 to length(mas[j]) do
+if mas[i][x]=mas[j][y] then begin
+inc(otv);
+break;break;
+end;
+
+write(otv);
+end.

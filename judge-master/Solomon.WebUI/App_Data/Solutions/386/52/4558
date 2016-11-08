@@ -1,0 +1,14 @@
+var q,w,e,r,t,y:integer;
+begin
+readln(q);
+if q<3 then exit;
+if q>1000 then exit;
+r:=q mod 2;
+e:=q;
+for w:=1 to 2 do 
+begin
+e:=e*(q-w);
+end;
+if r>0 then e:=e+1;
+writeln(e);
+end.

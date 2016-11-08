@@ -1,0 +1,29 @@
+﻿using System;
+using System.Text;
+
+namespace TaskB
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int U = int.Parse(Console.ReadLine());
+
+            int U3 = U / 2;
+            int U2 = (U - U3) / 2;
+            int U1 = (U - U3) / 2;
+            if ((U2 == U1) && ((U - U3) % 2 != 0))
+            {
+                U2 = U2 + 1;
+            }
+
+            if ((U2 == U1) && ((U - U3) % 2 == 0))
+            {
+                U2 = U2 + 1;
+                U1 = U1 - 1;
+            }
+            Console.WriteLine(U1 + " " + U2 + " " + U3);
+                
+        }
+    }
+}

@@ -1,0 +1,7 @@
+var l,x1,y1,x2,y2:integer;
+begin
+read(l,x1,y1,x2,y2);
+if 2*l<sqrt(sqr(x1-x2)+sqr(y1-y2)) then write(l*l*(3-pi*1/2)) 
+else       
+write((abs(x2-x1))*(abs(y2-y1)));
+end.

@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class sDecision{
+ static Scanner inputer = new Scanner(System.in);
+ static long sC[][] = new long[4][2];
+ static long sS = 0;
+ static boolean sSB = false;
+ static int sCF = 0;
+ static String eA = "YES";
+ public static void main(String args[]){
+  for(short cI = 0; cI<=3; cI++)
+   for(short cIi = 0; cIi<=1; cIi++) sC[cI][cIi] = inputer.nextLong();
+  for(short cI = 0; cI<=3; cI++)
+   for(short cIi = 0; cIi<=3; cIi++)
+    if((cI!=cIi) && (sC[cI][1]==sC[cIi][1])){
+	 if(sSB==false){sS = sSP(sC[cI][0],sC[cIi][0]); sCF+=1; sSB = true;}
+     else if(sSP(sC[cI][0],sC[cIi][0])==sS) sCF+=1;} 
+    else if((cI!=cIi) && (sC[cI][0]==sC[cIi][0])){
+	 if(sSB==false){sS = sSP(sC[cI][1],sC[cIi][1]); sCF+=1; sSB = true;}
+     else if(sSP(sC[cI][1],sC[cIi][1])==sS) sCF+=1;}
+  if(sCF!=8) eA="NO";
+  System.out.print(eA);
+ }
+ public static long sSP(long c1, long c2){
+  if (((c1<=0) && (c2>=0)) || ((c1>=0) && (c2<=0))) return Math.abs(c1)+Math.abs(c2)+1;
+  else return Math.abs(Math.abs(c1)-Math.abs(c2))+1;
+ }
+}

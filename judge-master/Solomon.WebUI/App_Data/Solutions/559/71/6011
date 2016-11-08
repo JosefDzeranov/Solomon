@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main(){
+	int N,a,b,c,l,w,h,k=0;
+	cin>>N>>a>>b>>c;
+
+	l=a;w=b;h=c;
+	while(k==0)
+	{
+		if(l+a+w+h<=N){l+=a;k=0;}
+		else k=1;
+		if(l+w+b+h<=N){w+=b;k=0;}
+		else 
+			{
+				k=1;
+				if(l+w+h+c<=N){h+=c;k=0;}
+			}
+	}
+
+
+	cout<<l<<" "<<w<<" "<<h;
+	return 0;
+}

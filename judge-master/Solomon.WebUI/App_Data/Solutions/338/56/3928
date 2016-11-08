@@ -1,0 +1,9 @@
+var                   k,i,n,s:longint;
+begin
+      read(n);         k:=2;s:=0;
+      while n>0 do
+      begin
+      n:=n-k;
+      s:=s+k;k:=k*2;end;
+      writeln(s div 2);
+end.

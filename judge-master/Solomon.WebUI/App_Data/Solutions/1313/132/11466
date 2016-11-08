@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int up(int a, int b) {
+	if (a % b == 0) return a / b;
+	return a / b + 1;
+}
+
+int main() {
+	int n, p, i, k, e, w, sum = 0, num, j, num2, num3;
+	cin >> n >> p;
+	vector<int> a(n);
+	for (i = 0; i < n; i++) cin >> a[i];
+	cin >> k;
+	for (i = 0; i < n; i++) sum += a[i] * a[i];
+	cout << sum << endl;
+	for (i = 0; i < k; i++) {
+		cin >> e >> w;
+		w--;
+		if (e == 2) {
+			num = a[w];
+			a[w] = num / 2;
+			a.push_back(up(num, 2));
+			for(j = a.size() - 1; j > w + 1; j--)
+				swap (a[j], a[j - 1]);
+			sum -= up(num * num, 2);
+		}
+		else {
+			num = a[w];
+			num2 = 0;
+			num3 = 0;
+			if (w != 0 && w != a.size() - 1) {
+				num2 = a[w + 1];
+				num3 = a[w - 1];
+				a[w - 1] += a[w] / 2;
+				a[w + 1] += up(a[w], 2);
+				for (j = w; j < a.size() - 1; j++) {
+					swap(a[j], a[j+1]);
+				}
+				a.resize(a.size() - 1);
+				sum += (a[w] * a[w] + a[w - 1] * a[w - 1]) - (num * num + num2 * num2 + num3 * num3);
+			}
+			else {
+				if (w == a.size() - 1) {
+					num3 = a[w - 1];
+					a[a.size() - 2] += a[a.size() - 1];
+					a.pop_back();
+					sum += (a[w - 1] * a[w - 1]) - (num * num + num3 * num3);
+				}
+				else {
+					num3 = a[1];
+					a[1] += a[0];
+					for (j = 0; j < a.size() - 1; j++) swap(a[j], a[j + 1]);
+					a.pop_back();
+					sum += (a[0] * a[0]) - (num*num + num3 * num3);
+				}
+			}
+		}
+		cout << sum << endl;
+	}
+	return 0;
+}

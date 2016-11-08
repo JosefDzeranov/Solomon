@@ -1,0 +1,23 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+int i,t,g,r,u = 0;
+string s;
+cin>>s;
+g= s.length();
+for(i=0;i<g; i++){
+	r= s.length();
+	if(i*i ==r){
+	t= i;
+	}
+	else s[i]+=' ';
+}
+u = t;for(int h= 0; h<t ;h++){
+for(i = 0 ;i<t; i++){
+	cout<<s[h +i];
+
+}
+cout<<endl;}
+
+}

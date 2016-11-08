@@ -1,0 +1,27 @@
+var
+   s, rez: string;
+   i, j, k: integer;
+   a: array [1..1100, 1..1100] of char;
+
+begin
+   readln(s);
+   while (k * k) < length(s) do inc(k); writeln(k);
+   s := s + 'ê';
+   for i := 1 to k do
+   begin
+      for j := 1 to k do
+      begin
+         
+         if s[1] <> 'ê' then a[i, j] := s[1];
+         delete(s, 1, 1);
+         if length(s)=0 then break;
+      end;
+   if length(s)=0 then break;
+   end;
+   
+   for i := 1 to k do
+      for j := 1 to k do
+         if a[j, i]='' then write(' ') else write(a[j, i]);
+         
+   
+end.

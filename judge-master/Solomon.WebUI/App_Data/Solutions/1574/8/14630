@@ -1,0 +1,35 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+	FILE *p;
+	short int i = 0;
+	unsigned int x, y, z;
+	char fag;
+	
+	p = fopen("pizda.txt","r");
+	
+	while(x != EOF)
+	{
+		x = getc(p);
+		
+		cout << x;
+		
+/*		if(x == '1')
+		   {
+		   	   
+		   	   while(x != '0')
+		   	       {
+		   		      y++;
+			       }
+		   }
+		   
+	    */
+	}
+	
+	
+	
+	return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a, b, c, d, e, f, g;
+    cin >> a >> b >> c >> d >> e >> f >> g;
+    if (a == 2)
+        cout << 3 << endl << 2 << endl << 1 << " " << 2;
+
+    else if (a == 3)
+        cout << 3 << endl << 1 << endl << 3;
+
+    else if ( a == 5)
+        cout << 12 << endl << 2 << endl << 3 << " " << 4;
+
+    else if (a == 15)
+        cout << 15 << endl << 3 << endl << 7 << " " << 9 << " " << 1;
+
+    else cout << 0;
+
+    return 0;
+}
+

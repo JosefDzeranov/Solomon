@@ -1,0 +1,50 @@
+uses crt;
+var n:0..100;
+a:array[0..1000] of longint;
+b:array[0..1000] of longint;
+i,k,e,j,m:integer;
+begin
+readln(n);
+for i:=1 to n do readln(a[i]);
+
+i:=1;
+while i<=n do
+   begin
+   k:=a[i];
+   e:=0;
+   while (e>10) or (k<>0) do
+   begin
+   e:=e + (k mod 10);
+   k:=k div 10;
+   if (k=0) and (e>=10) then
+   begin
+   k:=e;
+   e:=0;
+   end;
+   end;
+b[i]:=e;
+i:=i+1;
+end;
+k:=0;
+e:=0;
+for j:=1 to 9 do
+begin
+for i:=1 to n do
+begin
+
+if b[i]=j then k:=k+1;
+if k>e then
+begin
+e:=k;
+m:=b[i];
+end;
+end;
+k:=0;
+end;
+for i:=1 to n do
+begin
+if b[i]<>m then writeln(a[i]);
+end;
+
+readln();
+end.

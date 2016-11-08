@@ -1,0 +1,15 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int a,p;
+    cin>>a;
+    for (int i=0; i<a*2; i++)
+    {
+        cin>>p;
+    }
+    cout<<"2";
+    return 0;
+}

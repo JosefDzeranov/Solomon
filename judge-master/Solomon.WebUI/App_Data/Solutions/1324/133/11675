@@ -1,0 +1,144 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string razb(string s)
+{
+    string name = "", raz = "";
+    int i = 0;
+    while (s[i] != '/' && i < s.size())
+    {
+        name += s[i];
+        ++i;
+    }
+
+    return name;
+}
+
+string razdel (string s1, string s2)
+{
+    string ss = "";
+    for (int i = s2.size(); i < s1.size(); i++)
+        ss += s1[i];
+
+    return ss;
+}
+
+string udal_odin_nam(string &s)
+{
+    int i = 0;
+    while (s[i] != '.' && s.size() != 0)
+        s.erase(i, 1);
+
+    if (s[i] == '.')
+        s.erase(i, 1);
+
+    return s;
+}
+
+
+string udal_odin_raz(string &s)
+{
+    int i = s.size() - 1;
+    while (s[i] != '/' && s.size() != 0)
+    {
+        s.erase(i, 1);
+        i--;
+    }
+
+    if (s[i] == '/')
+        s.erase(i, 1);
+
+    return s;
+}
+
+string pos_star(string s)
+{
+    s.erase(0, 2);
+    return s;
+}
+
+string do_slash(string s)
+{
+    s.erase(s.size() - 2, 2);
+    return s;
+}
+
+bool f(string s1, string s2)
+{
+    string nam1 = razb(s1), nam2 = razb(s2);
+    string raz1 = razdel(s1, nam1), raz2 = razdel(s2, nam2);
+
+    bool namm = false, razz = false;
+    if (nam2[0] != '*')
+    {
+        if (nam2 == nam1)
+            namm = true;
+
+        else false;
+    }
+
+    else
+    {
+        string namfi = pos_star(nam2);
+        while (nam1 != namfi && nam1.size() != 0)
+            udal_odin_nam(nam1);
+
+        if (nam1 == namfi)
+            namm = true;
+
+        else false;
+    }
+   //____________________ok
+
+    if (raz2[raz2.size() - 1] != '*')
+    {
+        if (raz2 == raz1)
+            razz = true;
+
+        else false;
+    }
+
+    else
+    {
+        string razfi = do_slash(raz2);
+        while (raz1 != razfi && raz1.size() != 0)
+            udal_odin_raz(raz1);
+
+        if (raz1 == razfi)
+            razz = true;
+
+        else false;
+    }
+
+    return namm && razz;
+}
+
+int main()
+{
+    string fi[10000], ad[10000];
+    int n, p;
+    cin >> n >> p;
+    for (int i = 0; i < n; i++)
+        cin >> fi[i];
+
+    int k;
+    cin >> k;
+    for (int i = 0; i < k; i++)
+        cin >> ad[i];
+
+    for (int i = 0; i < k; i++)
+    {
+        int ans = 0;
+        for (int j = 0; j < n; j++)
+            ans += f(ad[i], fi[j]);
+
+        cout << ans << endl;
+    }
+/*
+string s1, s2;
+cin >> s1 >> s2;
+cout << f(s1, s2);
+*/    return 0;
+}

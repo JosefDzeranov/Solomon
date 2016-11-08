@@ -1,0 +1,25 @@
+program mesi5;
+var a : array [1..10000001] of boolean;n, i, m, k, i1 : longword;
+begin
+read(n,m);
+for i := 1 to m do begin read(k); a[k] := true; end;
+i := 1;
+while i <= n do 
+  begin
+  if (a[i] = true) and (a[i + 1] <> true) then begin write(i,' '); i := i + 1; end
+    else if (a[i] = true) and (a[i + 1] = true) then
+      begin
+      write(i,'-');
+      for i1 := i to n do  if (a[i1] = false) then begin write(i1 -1,' '); i := i1; break; end;
+      end
+        else if a[i] <> true then i := i + 1;
+{for i := 1 to n do 
+  begin
+  if (a[i] = true) and (a[i + 1] <> true) then write(i,' ')
+    else if (a[i] = true) and (a[i + 1] = true) then
+      begin
+      write(i,'-');
+      for i1 := i to n do  if (a[i1] = false) then begin write(i1 -1,' '); i := i1; break; end;
+      end;}
+  end;
+end.

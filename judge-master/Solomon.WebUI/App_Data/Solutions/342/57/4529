@@ -1,0 +1,48 @@
+var n,i,k,max:integer;
+a: array [1..2,1..100] of integer;
+b:array [1..100] of integer;
+c:array [1..100] of integer;
+begin
+max:=0;
+readln (n);
+if (n>0) and (n<=100) then
+begin
+for i:=1 to n do;
+begin
+readln (a[1,i]);
+if (a[1,i]>0) then
+begin
+a[2,i]:= a[1,i];
+writeln (a[1,i]);
+repeat
+while a[2,i]>0 do
+begin
+b[i]:=b[i]+(a[2,i] mod 10);
+a[2,i]:=a[2,i] div 10;
+end;
+a[2,i]:=b[i];
+until a[2,i]<10;
+for i:= 1 to n do
+for k:=1 to n do
+if (b[i]=b[k]) and (i<>k) then c[i]:=c[i]+1;
+end;
+for i:= 1 to n do
+for k:=1 to n do
+if (c[i]>c[k]) then
+begin
+max:=c[i];
+ b[k]:=0;
+end;
+end;
+for i:= 1 to n do
+for k:=1 to n do
+if (c[i]=max) and (b[i]<>b[k]) and (i<>k) then
+ begin
+ if (b[i]<b[k]) and (b[i]<>0) then b[k]:=0
+ end;
+  end;
+for i:=1 to n do
+if (b[i]=0) then write (a[1,i]) ;
+
+end.
+

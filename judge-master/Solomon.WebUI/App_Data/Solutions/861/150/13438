@@ -1,0 +1,28 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:string;
+  k,i,j:integer;
+    p,s:longint;
+begin
+  readln(a);
+  p:=1;
+  s:=0;
+  k:=length(a);
+  for I := 1 to k do
+    begin
+      if copy (a,i,1)= '*' then
+      begin
+        for j := 1 to k-i do
+          p:=p*2;
+            s:=s+p;
+      end;
+     
+    end;
+    writeln(s);
+    readln;
+end.

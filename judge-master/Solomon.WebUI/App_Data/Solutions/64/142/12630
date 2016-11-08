@@ -1,0 +1,140 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <algorithm>>
+#include <cmath>>
+
+using namespace std;
+
+int main()
+{bool need[10] = { 0 };
+	int cnt[10] = { 0 };
+	bool need2[10] = { 0 };
+	int cnt2[10] = { 0 };
+	int n, m;
+	cin >> n >> m;
+	bool mas[10][10];
+	bool mas2[10][10];
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < m; j++)
+	{
+		cin >> mas[i][j];
+		mas2[m - j - 1][i] = mas[i][j];
+	}
+
+
+	for (int i = 1; i < n; i++)
+	{
+		bool t = 0;
+		for (int j = 0; j < m; j++)
+		if (mas[i][j] != mas[i - 1][j])
+		{
+			t = 1;
+			break;
+		}
+		if (t == 0)
+			need[i] = 1;
+		int cntt = 0;
+		bool op = 0;
+		for (int j = 0; j < m; j++)
+		if (op == 1)
+		{
+			if (mas[i][j] == 1)
+			{
+				cntt++;
+				op = 0;
+			}
+		}
+		else
+		{
+			if (mas[i][j] == 0)
+				op = 1;
+		}
+		if (mas[i][m - 1] == 0 && op == 1)
+			cntt++;
+		cnt[i] = cntt;
+	}
+
+	for (int i = 1; i < m; i++)
+	{
+		bool t = 0;
+		for (int j = 0; j < n; j++)
+		if (mas2[i][j] != mas2[i - 1][j])
+		{
+			t = 1;
+			break;
+		}
+		if (t == 0)
+			need2[i] = 1;
+		int cntt = 0;
+		bool op = 0;
+		for (int j = 0; j < n; j++)
+		if (op == 1)
+		{
+			if (mas2[i][j] == 1)
+			{
+				cntt++;
+				op = 0;
+			}
+		}
+		else
+		{
+			if (mas2[i][j] == 0)
+				op = 1;
+		}
+		if (mas2[i][n - 1] == 0 && op == 1)
+			cntt++;
+		cnt2[i] = cntt;
+	}
+
+	int cntt = 0;
+	bool op = 0;
+	for (int j = 0; j < m; j++)
+	if (op == 1)
+	{
+		if (mas[0][j] == 1)
+		{
+			cntt++;
+			op = 0;
+		}
+	}
+	else
+	{
+		if (mas[0][j] == 0)
+			op = 1;
+	}
+	if (mas[0][m - 1] == 0 && op == 1)
+		cntt++;
+	cnt[0] = cntt;
+
+
+	cntt = 0;
+	op = 0;
+	for (int j = 0; j < n; j++)
+	if (op == 1)
+	{
+		if (mas2[0][j] == 1)
+		{
+			cntt++;
+			op = 0;
+		}
+	}
+	else
+	{
+		if (mas2[0][j] == 0)
+			op = 1;
+	}
+	if (mas2[0][n - 1] == 0 && op == 1)
+		cntt++;
+	cnt2[0] = cntt;
+
+	long long ans = 0, ans2 = 0;
+	for (int i = 0; i < n; i++)
+	if (need[i] == 0)
+		ans += cnt[i];
+	for (int i = 0; i < m; i++)
+	if (need2[i] == 0)
+		ans2 += cnt2[i];
+	cout << min(ans, ans2);
+	return 0;
+}

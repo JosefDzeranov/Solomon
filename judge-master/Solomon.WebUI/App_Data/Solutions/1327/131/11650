@@ -1,0 +1,71 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+type point=record
+  x,y:integer ;
+  end;
+var m,k:integer; a,s:array[1..101020]of integer;
+function max():point;     //первые два максимальных элемента
+var c1,c2,i:integer;
+begin
+if s[1]>s[2] then begin c1:=s[1]; c2:=s[2];  end else
+begin
+ c1:=s[2]; c2:=s[1];
+end;
+
+for i:=k to m-k+1 do
+begin
+  if s[i]>=c1 then        //тогда >=с2
+  begin
+    c2:=c1;
+    c1:=s[i];
+  end else
+  if s[i]>=c2 then      //<=c1
+  begin
+    c2:=s[i];
+  end;
+end;
+ result.x:=c1;
+ result.y:=c2;
+end;
+
+function max2():integer;
+var c:integer;
+begin
+c:=s[2*k];
+for i := 2*k+1 to m-k+1 do
+begin
+  if c>s[i] then
+  begin
+    c:=s[i];
+  end;
+result:=c;
+end;
+
+
+end;
+
+var i:integer; v:point; v2:integer;
+begin
+read(m);
+readln(k);
+for i:=1 to m do
+begin
+  read(a[i]);
+  if i<=m-k+1 then
+  begin
+  if i<=k then s[i]:=s[i-1]+a[i] else
+  s[i]:=s[i-1]+a[i]-a[i-k];
+  end;
+end;
+v:=max;
+v2:=max2;
+if v.y<v2 then
+writeln(v.y) else
+writeln(v2);
+readln;
+end.

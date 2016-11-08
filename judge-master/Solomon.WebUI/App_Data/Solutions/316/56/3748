@@ -1,0 +1,21 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    long long k = 0, n;
+    cin >> n;
+    for (int i = 2; i <= n; i++)
+    {
+        long long zn = i;
+        while (zn%2 == 0)
+        {
+            k++;
+            zn /= 2;
+        }
+    }
+    cout << k;
+    return 0;
+}

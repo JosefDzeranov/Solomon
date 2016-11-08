@@ -1,0 +1,50 @@
+var
+n:0..100;
+a,b:array[1..1000] of integer;
+i,e,k,o,m,v,j:integer;
+begin
+readln(n);
+for i:=1 to n do readln(a[i]);
+i:=1;
+while i<=n do
+begin
+e:=0;
+k:=a[i];
+   while (e>10) or (k<>0) do
+   begin
+   e := e + (k mod 10);
+   begin
+   k := k div 10;
+   if (k=0) and (e>=10) then
+   begin
+   k:=e;
+   e:=0;
+   end;
+   end;
+   end;
+b[i]:=e;
+i:=i+1;
+end;
+m:=0;
+v:=0;
+j:=0;
+i:=0;
+for j:=1 to 9 do
+begin
+o:=0;
+for i:=1 to n do
+begin
+if b[i]=j then o:=o+1;
+if m<o then
+begin
+m:=o;
+v:=b[i];
+end;
+end;
+end;
+for i:=1 to n do
+begin
+if b[i]<>v then writeln(a[i]);
+end;
+readln;
+end.

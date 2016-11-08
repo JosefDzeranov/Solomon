@@ -1,0 +1,14 @@
+Var 
+  n,k:integer;
+Function Fac(x:Integer):Real;
+Begin
+  If x=1 Then
+  Fac:=1
+  Else 
+  Fac:=x*fac(x-1);
+End;
+Begin
+  Read(n);
+  Read(k);
+  Write(Fac(n)/(Fac(k)*Fac(n-k)):0:0);
+end.

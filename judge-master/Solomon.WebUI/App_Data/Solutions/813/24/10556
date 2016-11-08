@@ -1,0 +1,28 @@
+program mesib1;
+  var a : array[1..100000, 0..9] of boolean;
+      i, n, k, i1, c, i2 : longint;
+
+  begin
+  k := 0;
+  readln(n);
+  for i := 1 to n do
+  begin
+    read(c);
+      if c > 0 then 
+          while  c > 0 do 
+        begin
+          a[i, c mod 10] := true;
+          c := c div 10;
+        end
+        else a[i, 0] := true;
+  end;
+  for i := 1 to (n-1) do 
+    for i1 := (i + 1) to n do 
+            for i2 := 0 to 9 do 
+        if ((a[i, i2] = a[i1, i2]) and (a[i, i2] = true)) then
+        begin
+          k := k + 1;
+          break;
+        end;
+  writeln(k);
+  end.

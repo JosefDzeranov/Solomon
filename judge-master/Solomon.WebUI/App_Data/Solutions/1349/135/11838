@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int main(){
+long long int a,k,b,m,x,j=1;
+cin>>a>>k>>b>>m>>x;
+while(x>0){
+	if(a==x || b==x){
+		break;
+	}
+	else{
+		if(j%k!=0 && j%m!=0){
+			x = x - a - b;
+			j++;
+		}
+		if(j%m==0 && j%k==0){
+			j++;
+		}
+		if(j%m!=0 && j%k==0){
+			x=x-b;
+			j++;
+		}
+		if(j%m==0 && j%k!=0){
+			x=x-a;
+			j++;
+		}
+	}
+}
+cout<<j;
+return 0;
+}

@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Печать
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int n = Convert.ToInt32(ss[0]);
+            int m = Convert.ToInt32(ss[1]);
+            s = Console.ReadLine();
+            s = s +" "+ 0;
+            ss = s.Split(' ');
+            
+            int[] a = new int[m+1];
+            for (int i = 0; i < m; i++)
+            {
+                a[i] = Convert.ToInt32(ss[i]);
+            } 
+            s="";
+            int k=-1;
+            for (int i = 1; i < m+1; i++)
+            {
+                if (k == -1)
+                    if (a[i] - a[i-1] != 1) s += a[i-1]+" ";
+                    else
+                    { k = a[i-1]; }
+                else
+                    if (a[i] - a[i - 1] != 1)
+                    { s += k + "-" + a[i - 1] + " "; k = -1; }
+            } 
+            Console.WriteLine(s);
+        }
+    }
+}

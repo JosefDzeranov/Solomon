@@ -1,0 +1,44 @@
+var
+n,i,min,max,x,sr,q1,q2: integer;
+a:array[1..3] of integer;
+z:byte;
+begin
+
+//--var and begin--
+
+readln(z);
+read(n);
+for i:=1 to 3 do
+read(a[i]);
+
+//--read--
+
+min:=maxint;
+max:=-1;
+
+for i:=1 to 3 do begin
+if a[i]>max then max:=a[i];
+q1:=i;
+end;
+
+for i:=1 to 3 do begin
+if a[i]<min then min:=a[i];
+q2:=i;
+end;
+
+for i:=1 to 3 do begin
+if (i<>q1) and (i<>q2) then sr:=a[i];
+q2:=i;
+end;
+
+//--max and min--
+
+if z=2 then
+x:=(n-a[1])+(n-a[2])+(n-a[3])
+else
+x:=2;
+
+//--answer--
+
+write(x);
+end.

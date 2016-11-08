@@ -1,0 +1,16 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var min3,ch1,ch2,min1,min2,ch3:integer    ;
+begin
+readln(ch1,min1);
+readln(ch2,min2);
+ch3:=ch2-ch1;
+min3:=min2-min1;
+writeln(ch3,' ',min3);
+readln;
+end.

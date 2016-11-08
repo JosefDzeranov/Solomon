@@ -1,0 +1,21 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main() {
+	unsigned long int a1, a2, a3, a4, b, b1, b2, r;
+	cin >> a1 >> a2 >> a3 >> a4;
+	if (a1>a2)
+		b1=a2;
+	else
+		b1=a1;
+	if (a3>a4)
+		b2=a4;
+	else
+		b2=a3;
+	b=b1+b2;
+	r=sqrt(b);
+	cout << r;
+	cin.ignore();
+	cin.get();
+	return 0;
+}

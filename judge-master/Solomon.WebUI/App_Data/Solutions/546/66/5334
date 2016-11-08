@@ -1,0 +1,4 @@
+Program majorhouse;
+var n, k, u1, v1, u2, v2, xi, yi : integer;
+readln (n, k);
+readln (

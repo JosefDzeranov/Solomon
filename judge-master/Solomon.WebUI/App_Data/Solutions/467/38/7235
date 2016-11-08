@@ -1,0 +1,29 @@
+import math
+import sys
+
+
+
+ap = [int(x) for x in input().split()]
+bp = [int(x) for x in input().split()]
+bp[0] = math.fabs(math.fabs(bp[0]) - math.fabs(ap[0]))
+bp[1] = math.fabs(math.fabs(bp[1]) - math.fabs(ap[1]))
+cp = [int(x) for x in input().split()]
+cp[0] = math.fabs(math.fabs(cp[0]) - math.fabs(ap[0]))
+cp[1] = math.fabs(math.fabs(cp[1]) - math.fabs(ap[1]))
+dp = [int(x) for x in input().split()]
+dp[0] = math.fabs(math.fabs(dp[0]) - math.fabs(ap[0]))
+dp[1] = math.fabs(math.fabs(dp[1]) - math.fabs(ap[1]))
+
+
+len_p = []
+len_p.append(bp[0] ** 2 + bp[1] ** 2)
+len_p.append(cp[0] ** 2 + cp[1] ** 2)
+len_p.append(dp[0] ** 2 + dp[1] ** 2)
+len_p.sort()
+
+if len_p[0] + len_p[1] == len_p[2]:
+    print("YES")
+else:
+    print("NO")
+
+

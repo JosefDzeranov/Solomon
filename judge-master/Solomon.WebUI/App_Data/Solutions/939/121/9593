@@ -1,0 +1,9 @@
+program isRight;
+var
+ n,m:longint;
+begin
+ readln(n,m);
+ if frac(sqrt(n*n-m))<>0 then write('No')
+  else write('Yes');
+ readln;
+end.

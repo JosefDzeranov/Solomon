@@ -1,0 +1,14 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int n,m,k,h;
+  cin>>n>>m;
+  k=n*n-m;
+  h=sqrt(k);
+  if (h*h=k) cout<<"Yes";
+  else cout<<"No";
+    return 0;
+}

@@ -1,0 +1,30 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a,x,b,k:integer;
+  t,v,t1,t2,d:extended;
+begin
+  readln(a,b,x);
+  t:=x/1000;
+  k:=a+b;
+  t1:=t-trunc(t/k)*k;
+  t2:=(t+a)-trunc((t+a)/k)*k;
+  v:=0;
+  d:=0;
+  if (t1<=a) or (t2<=a) then
+    begin
+    v:=1000
+    end
+    else
+    begin
+      d:=k-t2;
+      v:=x/(d+t);
+    end;
+     writeln(v:0:9);
+     readln;
+end.

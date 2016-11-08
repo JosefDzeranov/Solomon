@@ -1,0 +1,43 @@
+program wWay;
+var
+ iString:string;
+ oChar:array[1..100] of char;
+ cI,cP:shortint;
+begin
+ cP:=1;
+
+ readln(iString);
+
+ for cI:=1 to length(iString) do
+  begin
+   case iString[cI] of
+    '-':
+     begin
+      if oChar[cP]=#0 then oChar[cP]:=' '; cP:=pred(cP);
+     end;
+    '+':
+     begin
+      if oChar[cP]=#0 then oChar[cP]:=' '; cP:=succ(cP);
+     end;
+    '#':
+     begin
+      if cP<>1 then
+       begin
+        oChar[cP]:=#0; cP:=pred(cP);
+       end;
+     end;
+    else
+     begin
+      oChar[cP]:=iString[cI];
+      cP:=succ(cP);
+     end;
+   end;
+   if cP<1 then cP:=1 else if cP>100 then cP:=100;
+  end;
+
+ for cI:=1 to 100 do
+  begin
+   if oChar[cI]=#0 then write('')
+    else write(oChar[cI]);
+  end; writeln;
+end.

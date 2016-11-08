@@ -1,0 +1,11 @@
+s = input()
+s1 = input()
+g = ''
+i =0
+r = s.split(' ')
+r1 = s1.split(' ')
+f = abs(int(r[0]) - int(r1[0]))
+f1 = abs(int(r[1]) - int(r1[1]))
+if(r1[0]<r[0]):
+    f = abs(int(r[0]) - (int(r1[0])+24))
+print(f,f1)

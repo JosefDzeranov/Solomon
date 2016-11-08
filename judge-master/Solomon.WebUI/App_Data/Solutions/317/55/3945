@@ -1,0 +1,7 @@
+var n,x,s:int64;
+begin
+   readln(n);
+   x:=(2*n-1)*(2*n-1);
+   s:=(x*(x+1)div 2)div(n*2-1)*2;
+   writeln(s+1+n*n*4);
+end.

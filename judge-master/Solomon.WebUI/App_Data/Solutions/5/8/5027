@@ -1,0 +1,16 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+
+Module Module1
+
+    Sub Main()
+        Dim a(2) As String
+        a = Split(Console.ReadLine, " ")
+        Dim z As Integer = a(1)
+        Dim x As Integer = a(0)
+        Dim b = x + z
+        Console.WriteLine(b)
+        
+    End Sub
+
+End Module

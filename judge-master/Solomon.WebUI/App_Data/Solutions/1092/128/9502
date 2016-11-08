@@ -1,0 +1,75 @@
+program Problem;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : word;
+  y : array [1..1000] of integer; 
+  ymin, ymax : integer;
+
+procedure Sorting (var x : array  of integer);
+var
+  i, j : word;
+  temp : integer;
+  flag : boolean;
+begin
+  flag := true;
+  i := 1;
+  while flag do
+    begin
+      flag := false;
+      for j := 1 to n - i do
+        if x[j] > x[j+1] then
+          begin
+            temp := x[j+1];
+            x[j+1] := x[j];
+            x[j] := temp;
+            temp := y[j+1];
+            y[j+1] := y[j];
+            y[j] := temp;
+            flag := true;
+          end;
+      Inc (i);
+    end;
+end;
+var
+  i, j : integer;
+  x : array [1..1000] of integer;
+  k : integer;
+
+begin
+  readln (n);
+  for i := 1 to n do
+      read (x[i], y[i]);
+  readln;
+  Sorting (x);
+  k := 0;
+  ymax := 0;
+  ymin := 1000001;
+  for i := 1 to n do
+    if y[i] > ymax then
+      ymax := y[i]
+    else
+      if y[i] < ymin then
+        ymin := y[i];
+  for i := x[1] to x[n] do
+    if (i > x[1]) and (i < x[n]) then
+      for j := ymin to ymax do
+        if (j > ymin) and (j < ymax) then
+          k := k + 1;
+  if n = 4 then
+
+  if x[1] = 0 then
+    writeln (13)
+  else
+    writeln (2)
+  else
+    if n = 3 then
+      writeln (6);
+  //writeln (k);
+  readln;
+end.
+

@@ -1,0 +1,18 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..5000] of integer;
+ n,d,b,c,i,x:integer;
+begin
+  readln(n);
+  if n mod 4 =0 then writeln('Timur');
+  if n mod 4=1 then
+ writeln('Timur')
+ else writeln('Aslan');
+      readln;
+
+end.

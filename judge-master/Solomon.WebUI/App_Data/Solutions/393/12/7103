@@ -1,0 +1,56 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+struct divv
+{
+	int value, need, have;
+};
+
+int main()
+{
+	int n=1000, k=10, i = 2, a;
+	cin >> n >> k;
+	list<divv> v;
+
+	int temp = k;
+
+	while (temp != 1)
+	{
+		if (temp%i == 0)
+		{
+			divv t;
+			t.value = i;
+			t.have = n/i;
+
+			int tmp = i*i;
+			while (tmp <= n)
+			{
+				t.have+=n/tmp;
+				tmp*=i;
+			}
+
+			t.need = 0;
+
+			while (temp%i == 0)
+			{	
+				temp/=i;
+				t.need++;
+			}	
+
+			v.push_back(t);
+		}
+
+		i++;
+	}
+
+	a = v.begin()->have / v.begin()->need;
+
+	for (list<divv>::iterator p = v.begin(); p != v.end(); ++p)
+		a = min(a, p->have / p->need);
+
+	cout << a;
+
+	return 0;
+}

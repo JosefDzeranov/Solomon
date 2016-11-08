@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+using namespace std;
+
+int canBePolindrome(string str)
+{
+    int cnt[255];
+
+    for (int i = 0; i < 255; i++) cnt[i] = 0;
+
+    for (int i = 0; i < str.size(); i++) cnt[str[i]]++;
+
+    int oddCnt = 0;
+    for (int i = 0; i < 255; i++) 
+        if (cnt[i] % 2 != 0) 
+            oddCnt++;
+
+    return oddCnt < 2;
+}
+
+int main()
+{
+    string str;
+    getline(cin, str);
+    
+    vector<string> tokens;
+    istringstream iss(str);
+    vector<string> tokens(istream_iterator<string>(cin), istream_iterator<string>());
+
+    int n = tokens.size();
+    int cnt = 0;
+    for (int i = 0; i < n / 2; i++)
+    {
+        if (canBePolindrome(tokens[i] + tokens[n - i - 1]))
+            cnt++;
+    }
+
+    cout << cnt;
+}

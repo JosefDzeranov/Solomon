@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <cstdio>
+#include <locale>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n, ans = 0;
+    cin >> n;
+    while(n) {
+        n /= 2;
+        ans += n;
+    }
+
+    cout << ans;
+    return 0;
+}

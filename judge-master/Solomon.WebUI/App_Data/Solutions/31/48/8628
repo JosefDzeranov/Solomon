@@ -1,0 +1,18 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var l,x1,y1,x2,y2:integer;
+begin
+ readln(l);
+ readln(x1,y1);
+ readln(x2,y2);
+ if (abs(y2-y1)>(l*2)) and (abs(x2-x1)>=(l*2)) then
+ writeln(3.14*(l*l)) else
+ if (abs(y2-y1)<=(l*2)) and (abs(x2-x1)<=(l*2)) then
+ writeln((abs(y2-y1))*(abs(x2-x1)));
+ readln;                                 
+end.

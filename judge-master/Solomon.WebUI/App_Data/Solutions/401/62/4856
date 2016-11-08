@@ -1,0 +1,76 @@
+//package com.acidka;
+
+public class B {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			String line, str1, str2; int cross = 0, pos1 = 0;
+			line = s.nextLine();
+			str1 = line.substring(0, line.length()/2+line.length()%2);
+			str2 = line.substring(line.length()/2, line.length());
+			boolean[] comm = new boolean[str1.length()];
+			for(int i = 0; i < str1.length(); i++)
+			{
+				//System.out.println(i);
+				comm[i] = str1.charAt(i) == str2.charAt(str2.length()-i-1);
+				if(comm[i] == false)
+					cross += 1;
+				//System.out.println(comm[i]);
+			}
+			if(cross == 0) System.out.print("Yes");
+			else if(cross == 1)
+			{
+				for(int i = 0; i < comm.length; i++)
+				{
+					if(comm[i]==false) pos1 = i;
+				}
+				line.replace(line.charAt(pos1), line.charAt(line.length()-pos1-1));
+				boolean[] comm1 = new boolean[str1.length()]; cross = 0;
+				for(int i = 0; i < str1.length(); i++)
+				{
+					comm1[i] = str1.charAt(i) == str2.charAt(str2.length()-i-1);
+					if(comm1[i] == false)
+						cross += 1;
+				}
+				if(cross == 0)
+					System.out.print("Yes");
+				else System.out.print("No");
+			}
+			else if(cross == 2){
+				pos1 = -1; int pos2 = 0;
+				for(int i = 0; i < comm.length; i++)
+				{
+					if(comm[i]==false && pos1 == -1) pos1 = i; else pos2 = i;
+				}
+				String line1 = line;
+				line1.replace(line1.charAt(pos1), line1.charAt(pos2));
+				boolean[] comm1 = new boolean[str1.length()]; cross = 0;
+				for(int i = 0; i < str1.length(); i++)
+				{
+					comm1[i] = str1.charAt(i) == str2.charAt(str2.length()-i-1);
+					if(comm1[i] == false)
+						cross += 1;
+				}
+				if(cross == 0)
+					System.out.print("Yes");
+				else
+					if(line.charAt(pos1) == line.charAt(pos2))
+						System.out.print("Yes");
+					else
+						System.out.print("No");
+			}
+			else
+				System.out.print("No");
+			
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,31 @@
+Program z4;
+var k,n,i,l:longint;
+s1:string;
+S:array[1..100000] of string;
+procedure count(a:longint);
+var d:byte;
+begin
+  s1:=s[a];
+  for d:=1 to length(s1) do
+   if (s1[d]='1') and (s1[d+2]='b') and (s1[d+3]='a') and (s1[d+4]='r') and (s1[d+5]='a') and (s1[d+6]='n') and (s1[d+7]<>'a') then
+    k:=k+1;
+  for d:=1 to length(s1) do
+   if ((s1[d]='I') or (s1[d]='i')) and (s1[d+1]='s') and (s1[d+2]='h') and (s1[d+3]='e') and (s1[d+4]=' ') then
+    k:=k+(ord(s1[d+5])-ord('0'));
+end;
+begin
+
+Readln(n);
+
+For i:=1 to n do
+ Readln(s[i]);
+
+
+
+For l:=1 to n do
+  count(l);
+  
+
+Writeln(k);
+
+end.

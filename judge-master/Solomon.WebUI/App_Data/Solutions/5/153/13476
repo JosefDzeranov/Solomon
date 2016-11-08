@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int n, m, k;
+const int INF = 999999999;
+
+struct point
+{
+    int x;
+    int y;
+};
+
+point Par[1000];
+
+int minim(int ii, int jj)
+{
+    int ret = INF;
+    for (int i = 0; i < k; i++)
+        ret = min(ret, int(abs(ii - Par[i].x) + abs(jj - Par[i].y)));
+
+    //cout << ret << endl;
+    return ret;
+}
+
+int main()
+{
+    int ans = -INF;
+    cin >> n >> m >> k;
+    for (int i = 0; i < k; i++)
+        cin >> Par[i].x >> Par[i].y;
+
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            ans = max(ans, minim(i, j));
+
+
+    cout << ans;
+    return 0;
+}

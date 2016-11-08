@@ -1,0 +1,35 @@
+#include <iostream>
+#include <math.h>
+#include <stdio.h>
+
+using namespace std;
+
+int n;
+int a[1000];
+int sq[10];
+
+int f(int n) {
+    if (!n)
+        return 0;
+    return (n - 1) % 9 + 1;
+}
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        ++sq[f(a[i])];
+    }
+
+    int k = 0;
+    for (int i = 1; i < 10; ++i)
+        if (sq[k] < sq[i])
+            k = i;
+
+    for (int i = 0; i < n; ++i)
+        if (f(a[i]) != k)
+            cout << a[i] << " ";
+
+    return 0;
+}

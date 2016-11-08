@@ -1,0 +1,12 @@
+var  n,ans,x,i:longint;
+begin
+readln(n);
+for i:=1 to n do
+ begin
+ x:=i;
+ while (x mod 8=0)and(x>0) do begin inc(ans,3); x:=x div 8; end;
+ while (x mod 4=0)and(x>0) do begin inc(ans,2); x:=x div 4; end;
+ while (x mod 2=0)and(x>0) do begin inc(ans); x:=x div 2; end;
+ end;
+writeln(ans);
+end.

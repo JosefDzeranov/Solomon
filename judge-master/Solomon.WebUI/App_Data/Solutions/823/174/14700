@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main()
+{
+    using std::cin;
+    using std::cout;
+
+    const int HOURS_IN_DAY = 24;
+    const int HOURS_IN_WEEK = 24 * 7;
+    const int HOURS_IN_MONTH = 24 * 30;
+    const int HOURS_IN_YEAR = 24 * 30 * 12;
+
+    int n;
+    cin >> n;
+
+    int answer = n * (HOURS_IN_YEAR + HOURS_IN_MONTH + HOURS_IN_WEEK + HOURS_IN_DAY + 1) / HOURS_IN_YEAR;
+
+    cout << answer;
+}

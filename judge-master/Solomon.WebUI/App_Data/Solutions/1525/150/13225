@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Zadacha1Olimpiada
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string line = Console.ReadLine();
+
+            while (line.IndexOf(".") >= 0)
+            {
+                line = line.Replace(".", "0");
+            }
+            while (line.IndexOf("*") >= 0)
+            {
+                line = line.Replace("*", "1");
+            }
+            int endResult = Convert.ToInt32(line , 2);
+            Console.WriteLine(endResult);
+  
+        }
+    }
+}

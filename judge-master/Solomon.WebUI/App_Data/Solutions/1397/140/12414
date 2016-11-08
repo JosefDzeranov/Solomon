@@ -1,0 +1,25 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int k, p, mx = 0;
+	string s;
+	int ms[k];
+	cin >> k;
+	cin >> s;
+	for (int i = 0; i < s.length(); i++)
+	{
+		if (s[i] == 'P')
+		{
+			ms[i % k]++;
+			if (mx < ms[i % k])
+			{
+				mx = ms[i % k];
+				p = i % k;
+			}
+		}
+	}
+	cout << p + 1 << endl;
+	return 0;
+}

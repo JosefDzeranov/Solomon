@@ -1,0 +1,15 @@
+var k,n,i,c:integer;
+begin
+read (n);
+if (n>=1) or (n<=10000) then
+for i:=1 to n do
+begin
+c:=i;
+while c mod 2=0 do
+begin
+k:=k+1;
+c:=c div 2;
+end;
+end;
+write (k)
+end.

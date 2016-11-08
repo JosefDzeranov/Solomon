@@ -1,0 +1,94 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+int main() {
+	string s;
+	bool z[10];
+
+	for (int i = 0; i < 10; i++){
+		z[i] = false;
+	}
+		cin >> s;;
+	if (s[0] == '0'){
+		cout << "NO" << endl;
+		return 0;
+	}
+	cout << "NO" << endl;
+	bool b = false;;
+	if (s.find("1") != string::npos){
+		if ((s.substr(s.find("1") + 1, s.size()).size() > 0)){
+			z[1] = true;
+			b = true;
+		}
+	}
+	if (s.find("0") != string::npos){
+		if ((s.substr(s.find("0") + 1, s.size()).size() > 0)){
+			z[0] = true;
+			b = true;
+		}
+	}
+	if (s.find("2") != string::npos){
+		if ((s.substr(s.find("2") + 1, s.size()).size() > 0)){
+			z[2] = true;
+			b = true;
+		}
+	}
+	if (s.find("3") != string::npos){
+		if ((s.substr(s.find("3") + 1, s.size()).size() > 0)){
+			z[3] = true;
+			b = true;
+		}
+	}
+	if (s.find("4") != string::npos){
+		if ((s.substr(s.find("4") + 1, s.size()).size() > 0)){
+			z[4] = true;
+			b = true;
+		}
+	}
+	if (s.find("5") != string::npos){
+		if ((s.substr(s.
+	
+			find("5") + 1, s.size()).size() > 0)){
+			z[5] = true;
+			b = true;
+		}
+	}
+	if (s.find("6") != string::npos){
+		if ((s.substr(s.find("6") + 1, s.size()).size() > 0)){
+			z[6] = true;
+			b = true;
+		}
+	}
+	if (s.find("7") != string::npos){
+		if ((s.substr(s.find("7") + 1, s.size()).size() > 0)){
+			z[7] = true;
+			b = true;
+		}
+	}
+	if (s.find("8") != string::npos){
+		if ((s.substr(s.find("8") + 1, s.size()).size() > 0)){
+			z[8] = true;
+			b = true;
+		}
+	}
+	if (s.find("9") != string::npos){
+		if ((s.substr(s.find("9") + 1, s.size()).size() > 0)){
+			z[9] = true;
+			b = true;
+		}
+	}
+	if (b){
+		cout << "YES" << endl;
+		for (int i = 0; i < 10; i++){
+			if (z[i]){
+				cout << i << " ";
+			}
+		}
+	}
+
+	return 0;
+
+}

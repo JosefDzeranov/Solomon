@@ -1,0 +1,32 @@
+// solomon_b.cpp : Defines the entry point for the console application.
+//
+
+#include "iostream"
+#include "vector"
+
+using namespace std;
+
+int main()
+{
+	int n, x, c = 0;
+	int k[10] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+	cin >> n;
+	vector<int> a;
+	a.resize(n);
+	for (int j = 0; j < n; ++j)
+	{
+		cin >> x;
+		do
+		{
+			a[j] |= k[x%10];
+			x /= 10;
+		} while (x != 0);
+		for (int i = 0; i < j; ++i)
+		{
+			if ((a[j] & a[i]) != 0)
+				c++;
+		}
+	}
+	cout << c;
+	return 0;
+}

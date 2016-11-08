@@ -1,0 +1,13 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+main()
+{
+      int N,M,c,k;
+      cin>>N>>M;
+      c=N*N;
+      k=sqrt(c-M);
+      if(k*k==c-M)cout<<"Yes";
+      else cout<<"No";
+      }
+      

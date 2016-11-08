@@ -1,0 +1,24 @@
+   var s,ch,chis:string;
+    i,j,k,o,n:integer;
+      begin
+      readln(n);
+        for j:=1 to n do
+          begin
+          readln(s);
+          s:=s+' ';
+           for i:=1 to length(s)-1 do
+             begin
+              if s[i] in ['0','1','2','3','4','5','6','7','8','9'] then
+               begin
+                ch:=s[i];
+                chis:=chis+ch;
+               if not(s[i+1] in ['0','1','2','3','4','5','6','7','8','9']) then
+                 begin
+                k:=strtoint(chis)+k;
+                chis:='';
+                end;
+               end;
+             end;
+          end;
+       writeln(k);
+       end.

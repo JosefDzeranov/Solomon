@@ -1,0 +1,21 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var c,a,d,f,r,R1,x:integer;
+s:real;
+begin
+
+read(x,f,R1,r);
+a:=f div (R1*2);
+d:=f mod (R1*2);
+if d>0 then c:=a+1 else c:=a;
+s:=(4*3.14*R1+2*r*3.14)*a;
+if x>=s then  write('YES',c*2, ' ',c ) else write ('NO');
+readln;
+end.
+
+ 

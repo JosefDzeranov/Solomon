@@ -1,0 +1,15 @@
+program SumOfTwoNumbers;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a, b : int64;
+
+begin
+  readln (a, b);
+  writeln (a + b);
+  readln;
+end.

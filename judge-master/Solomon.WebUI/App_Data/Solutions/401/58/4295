@@ -1,0 +1,63 @@
+//Acidkata fairu
+#include <stdio.h>
+#include <stdlib.h>
+int n = 10, temp, flag = 1, i, minideal, maxsum = 0;
+int a[100], sums[100];
+
+int findsum(int posinarr, int sumis)
+{
+
+    if(sumis > minideal)
+        return 0;
+    else if(sumis == minideal)
+    {
+        maxsum = sumis;
+        return 1;
+    }
+    if(sumis > maxsum) maxsum = sumis;
+    if (posinarr==n) return 0;
+    if(a[posinarr] <= (minideal-sumis))
+    {
+        findsum(posinarr+1, sumis+a[posinarr]);
+    }else findsum(posinarr+1, sumis);
+//    if(posinarr < n-3)
+//    findsum(posinarr+2, sumis+a[posinarr+1]);
+    return 1;
+}
+int main()
+{
+    scanf("%d", &n);
+      //printf("-=1=-");
+//    a[0] = 48; a[1] = 36; a[2] = 25; a[3] = 138; a[4] = 17; a[5] = 29; a[6] = 86; a[7] = 91; a[8] = 77; a[9] = 58;
+//    a[0] = 7; a[1] = 7; a[2] = 7;
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+        sums[i]=0;
+    }
+    //printf("-=2=-");
+    while(flag != 0){
+       flag = 0;
+       for (i = n-1; i > 0; i--){
+          if (a[i] > a[i-1]) {
+            temp = a[i];
+            a[i] = a[i-1];
+            a[i-1] = temp;
+            flag++;
+          }
+       }
+    }
+      //printf("-=3=-");
+    for(i = n-2; i >= 0; i--)
+    {
+        sums[i] = sums[i+1] + a[i+1];
+    }
+//    for(i = 0; i < n; i++)
+//        printf("%d->%d; \n", a[i], sums[i]);
+    minideal = (sums[0]+a[0])/2;
+//    printf("%d\n",minideal);
+    for(i = 0; i < n; i++) findsum(i, 0);
+    //printf("%d\n", maxsum);
+    printf("%d\n", sums[0]+a[0]-maxsum*2);
+    return 0;
+}

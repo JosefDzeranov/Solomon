@@ -1,0 +1,16 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,x,n,da,db:integer;
+begin
+ readln(n);
+ if n mod 2=0 then
+  x:=n*n-2*n
+  else x:=n*n-n;
+ writeln(x);
+ readln
+end.

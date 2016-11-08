@@ -1,0 +1,164 @@
+import java.io.*;
+import java.util.*;
+
+public class volunteers_pk {
+
+	class Node implements Comparable<Node> {
+		int min, max;
+		int top, bottom;
+		ArrayList<Node> children;
+		int size;
+
+		Node(int t) {
+			min = t;
+			max = t;
+		}
+
+		Node() {
+			children = new ArrayList<volunteers_pk.Node>();
+			min = Integer.MAX_VALUE;
+			max = Integer.MIN_VALUE;
+		}
+
+		@Override
+		public int compareTo(Node o) {
+			return Integer.compare(min, o.min);
+		}
+
+		void update(int x) {
+			min = Math.min(min, x);
+			max = Math.max(max, x);
+		}
+
+		void update(Node n) {
+			update(n.min);
+			update(n.max);
+			children.add(n);
+		}
+
+		public void topDfs(Node[] buf, int curTop) {
+			top = curTop;
+			if (children == null)
+				return;
+			int cMin = Integer.MAX_VALUE;
+			for (int i = 0; i < children.size(); i++) {
+				buf[children.get(i).min] = children.get(i);
+				if (children.get(i).min < cMin) {
+					cMin = children.get(i).min;
+				}
+			}
+			ArrayList<Node> newOrder = new ArrayList<volunteers_pk.Node>();
+			for (int i = 0; i < children.size(); i++) {
+				newOrder.add(buf[cMin]);
+				cMin = buf[cMin].max + 1;
+			}
+			children = newOrder;
+			for (int i = 0; i < children.size(); i++) {
+				children.get(i).topDfs(buf, curTop);
+				size += children.get(i).size;
+				curTop += children.get(i).size;
+			}
+			size++;
+		}
+
+		public void bottomDfs(int curBottom) {
+			bottom = curBottom;
+			if (children == null)
+				return;
+			for (int i = children.size() - 1; i >= 0; i--) {
+				children.get(i).bottomDfs(curBottom);
+				curBottom += children.get(i).size;
+			}
+		}
+
+		@Override
+		public String toString() {
+			return "Node [min=" + min + ", max=" + max + ", top=" + top
+					+ ", bottom=" + bottom + ", size=" + size + "]";
+		}
+
+	}
+
+	void solve() throws IOException {
+		int n = nextInt();
+		int m = nextInt();
+		int k = nextInt();
+		Node[] vol = new Node[n];
+		Node[] jury = new Node[m];
+		Node[] tc = new Node[k];
+		for (int i = 0; i < n; i++) {
+			vol[i] = new Node(i);
+		}
+		for (int i = 0; i < m; i++) {
+			jury[i] = new Node();
+		}
+		for (int i = 0; i < k; i++) {
+			tc[i] = new Node();
+		}
+		for (int i = 0; i < n; i++) {
+			int l = nextInt() - 1;
+			int r = nextInt() - 1;
+			jury[l].update(vol[i]);
+			tc[r].update(vol[i]);
+		}
+		for (int i = 0; i < m - 1; i++) {
+			int c = nextInt() - 1;
+			jury[c].update(jury[i]);
+		}
+		for (int i = 0; i < k - 1; i++) {
+			int c = nextInt() - 1;
+			tc[c].update(tc[i]);
+		}
+
+		Node[] buf = new Node[n + 1];
+		tc[k - 1].topDfs(buf, 0);
+		tc[k - 1].bottomDfs(0);
+		long sum = 0;
+		for (Node node : jury) {
+			sum = sum + k - vol[node.min].top - vol[node.max].bottom;
+		}
+		out.println(sum);
+	}
+
+	BufferedReader br;
+	StringTokenizer st;
+	PrintWriter out;
+
+	void run() {
+		try {
+			 br = new BufferedReader(new InputStreamReader(System.in));
+			 out = new PrintWriter(System.out);
+
+			//br = new BufferedReader(new FileReader(new File("volunteers.in")));
+			//out = new PrintWriter("volunteers.out");
+
+			solve();
+
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		new volunteers_pk().run();
+	}
+
+	String nextToken() throws IOException {
+		while ((st == null) || !st.hasMoreTokens())
+			st = new StringTokenizer(br.readLine());
+		return st.nextToken();
+	}
+
+	int nextInt() throws NumberFormatException, IOException {
+		return Integer.parseInt(nextToken());
+	}
+
+	double nextDouble() throws NumberFormatException, IOException {
+		return Double.parseDouble(nextToken());
+	}
+
+	long nextLong() throws NumberFormatException, IOException {
+		return Long.parseLong(nextToken());
+	}
+}

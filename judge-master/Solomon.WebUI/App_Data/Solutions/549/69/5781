@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int_fast64_t a, b,s=0;
+   float x;
+   cin>>a>>b>>x;
+while(x /s >1000){
+   s+=b;
+   if(x/s>1000)
+   s+=a;
+}
+cout<<x/s;
+
+
+    return 0;
+}

@@ -1,0 +1,21 @@
+program SquaredSquare;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : int64;
+  m : integer;
+  x : int64;
+begin
+  readln (n, m);
+  n := n * n;
+  x := n - m;
+  if frac (sqrt (x)) = 0 then
+    writeln ('Yes')
+  else
+    writeln ('No');
+  readln;
+end.

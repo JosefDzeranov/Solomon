@@ -1,0 +1,25 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,l,k1,k2 : longint;
+var n : integer;
+begin
+readln(a1,a2,a3,a4);
+if(a1=a2) and (a2=a3) and (a3 = a4) Then writeln(a1)
+else
+begin
+k1:= (a1 + a2) div 2;
+k2:= (a3 + a4) div 2;
+l:= 1;
+while ((k1+k2)div 4 > l) do
+begin
+l:= l + 2;
+end;
+writeln(l);
+end;
+readln;
+end.

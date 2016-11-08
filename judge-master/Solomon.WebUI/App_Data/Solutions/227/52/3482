@@ -1,0 +1,8 @@
+program olymp1;
+var i,n,p,p1,otchet: longint;
+begin
+read(n);
+p:=1;p1:=1;
+for i:=n-2 to n do p:=p*i;
+writeln(p);
+end.

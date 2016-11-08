@@ -1,0 +1,18 @@
+label a;
+var n,i:integer;
+k:longint;
+begin
+k:=1;
+a:
+writeln ('введи количество команд');readln (n);
+if (n<3) or (n>1000) then
+begin
+writeln ('неверно введено количество команд');
+goto a;
+end;
+for i:=n-2 to n do
+begin
+k:=k*i
+end;
+writeln (k)
+end.

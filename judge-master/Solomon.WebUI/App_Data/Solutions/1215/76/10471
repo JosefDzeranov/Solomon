@@ -1,0 +1,30 @@
+var s:string;
+i,j:byte;
+sch,n:longint;
+c,c1:char;
+begin
+readln(n);
+sch:=0;
+for j:=1 to n do
+begin
+readln(s);
+i:=1;
+s:=s+'kml';
+While i<=length(s) do
+begin
+c:=s[i];
+if (c>='0') and(c<='9') then 
+      begin c1:=s[i+1]; if (c1>='0') and (c1<='9')
+                        then begin if (s[i+2]>='0') and (s[i+2]<='9')
+                                   then  begin sch:=sch+(ord(c)-ord('0'))*100+(ord(c1)-ord('0'))*10+ord(s[i+2])-ord('0');i:=i+1;end
+                                   else sch:=sch+(ord(c)-ord('0'))*10+ord(c1)-ord('0')
+                             end      
+                        else sch:=sch+ord(c)-ord('0'); 
+                        i:=i+2
+                        
+      end
+                         else i:=i+1;   
+end;
+end;
+writeln(sch);                                            
+end.

@@ -1,0 +1,13 @@
+#include<iostream>
+
+using namespace std;
+int main(){
+	char p;
+	int m,n;
+	cin >> n >> m;
+	for(int i(0);i<n*m;i++)
+		cin >> p;
+	cout << 5;
+	
+	return 0;
+}

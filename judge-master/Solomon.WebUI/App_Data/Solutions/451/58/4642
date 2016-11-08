@@ -1,0 +1,24 @@
+var i,s,n,k, k1,k2:integer;
+a:array[1..101] of integer;
+function summ(q:integer):integer;
+begin if q=n+2 then begin if abs(k1-k2)<k then k:=abs(k1-k2) end else
+begin
+k1:=k1+a[q];
+summ(q+1);
+
+k1:=k1-a[q];
+k2:=k2+a[q];
+summ(q+1);
+k2:=k2-a[q];
+
+end;
+end;
+begin
+k:=10000;
+readln(n);
+for i:=1 to n do
+read (a[i]);
+summ(1);
+writeln(k);
+
+end.

@@ -1,0 +1,14 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y:int64;
+begin
+readln(x,y);
+
+writeln(x+y);
+readln;
+end.

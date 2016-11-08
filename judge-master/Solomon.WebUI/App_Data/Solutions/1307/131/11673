@@ -1,0 +1,53 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var l,ll,x,n,k,q,i,w,j,w1,x1,w2,x2:integer;
+    a:array[1..100000]of integer;
+begin
+ x:=0;
+ w:=0;
+ readln(n,k);
+ for i:=1 to n do
+  begin
+   read(q);
+   a[i]:=q;
+  end;
+ for i:=1 to n-k+1 do
+ begin
+  for j:=i to i+k-1 do
+    w:=w+a[j];
+  if w>x then
+   begin
+    x:=w;
+    l:=j;
+    ll:=i;
+   end;
+  w:=0;
+ end;
+ for i:=1 to ll-k+1 do
+ begin
+  for j:=i to i+k-1 do
+    w1:=w1+a[j];
+  if (w1>x1)and(w1<x) then
+   x1:=w1;
+  w1:=0;
+ end;
+ for i:=l+1 to n-k+1 do
+ begin
+  for j:=i to i+k-1 do
+    w2:=w2+a[j];
+  if (w2>x2)and(w2<x) then
+   x2:=w2;
+  w2:=0;
+ end;
+ if x2>x1 then
+  writeln(x2)
+  else
+ writeln(x1);
+ readln;
+ readln
+end.

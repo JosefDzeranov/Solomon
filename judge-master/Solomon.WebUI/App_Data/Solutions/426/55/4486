@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <string>
+
+#define endl '\n'
+
+using namespace std;
+
+int n, sum;
+
+int main(){ 
+	//freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin >> n;
+	int k = 2 * n;
+	sum = k * (k * k + 1) / (2 * n);
+	int l = 2 * n - 1;
+	sum += l * (l * l + 1);
+	cout << sum;
+	return 0;
+}

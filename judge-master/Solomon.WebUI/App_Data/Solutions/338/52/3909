@@ -1,0 +1,5 @@
+var a:longint;
+begin
+      read(a);
+      write(a*(a-1)*(a-2));
+end.

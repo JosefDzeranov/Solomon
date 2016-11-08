@@ -1,0 +1,125 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+
+
+var t1,u,t2:array[1..40000] of Integer; n:Integer;
+
+
+procedure  deletemas(i:Integer) ;
+var j:Integer;
+begin
+  n:=n-1;
+  for j:=i to n do
+  begin
+    t1[j]:=t1[j+1];
+    t2[j]:=t2[j+1];
+    u[j]:=u[j+1];
+  end;
+end;
+procedure clear(m:Integer) ;
+var i:Integer;
+begin
+  for i:=1 to n do
+  begin
+    if (t2[m]>t1[i])and(t2[m]<t2[i])then
+    begin
+      if u[m]>u[i] then
+      begin
+        t1[i]:=t2[m];
+      end else
+      if u[m]<u[i] then
+      begin
+        t2[m]:=t1[i];
+      end;
+    end else
+    if (t1[m]>t1[i])and(t2[i]>t1[m])then
+    begin
+      if u[m]>u[i] then
+      begin
+        t2[i]:=t1[m];
+      end else
+      if u[m]<u[i] then
+      begin
+        t1[m]:=t2[i];
+      end;
+    end else
+    if (t1[m]<=t1[i])and(t2[i]<=t2[m]) then
+    begin
+      if u[m]>=u[i] then deletemas(i) else
+      begin
+        t1[n+1]:=t1[m];
+        t2[n+1]:=t1[i];
+        u[n+1]:=u[m];
+        t1[n+2]:=t2[i];
+        t2[n+2]:=t2[m];
+        u[n+2]:=u[m];
+        n:=n+2;
+        deletemas(m);
+      end;
+    end else
+    if (t1[i]<=t1[m])and(t2[m]<=t2[i]) then
+    begin
+      if u[i]>=u[m] then deletemas(m) else
+      begin
+        t1[n+1]:=t1[i];
+        t2[n+1]:=t1[m];
+        u[n+1]:=u[i];
+        t1[n+2]:=t2[m];
+        t2[n+2]:=t2[i];
+        u[n+2]:=u[i];
+        n:=n+2;
+        deletemas(i);
+      end;
+    end else
+
+  end;
+end;
+procedure order();
+var c,i:Integer;
+begin
+  t1[n+1]:=999999999;
+  for i:=1 to n do
+  begin
+    while t1[i]>t1[i+1] do
+    begin
+      c:=t1[i+1];
+      t1[i+1]:=t1[i];
+      t1[i]:=c;
+      c:=t2[i+1];
+      t2[i+1]:=t2[i];
+      t2[i]:=c;
+      c:=u[i+1];
+      u[i+1]:=u[i];
+      u[i]:=c;
+    end;
+  end;
+end;
+
+var i:Integer;
+begin
+  Readln(n);
+  for i:=1 to n do
+  begin
+    Readln(t1[i],u[i],t2[i]);
+    t2[i]:=t1[i]+t2[i];
+  end;
+  i:=1;
+ while i<=n do
+ begin
+    clear(i);
+    i:=i+1;
+ end;
+ order;
+ for i:=1 to n do
+ begin
+   Writeln(t1[i],u[i],t2[i]);
+   if (t1[i+1]<>t2[i])and(i<>n) then Writeln(t2[i],0,t1[i+1]);
+ end;
+ Readln;
+end.
+ 

@@ -1,0 +1,10 @@
+var n,i,c,s,k:longint;
+    a,b:array[1..1000000] of longint;
+
+begin
+randomize;
+     readln(n);
+     for i:=1 to n do
+     read(a[i]);
+        writeln(random(20));
+end.

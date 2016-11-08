@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+#include <algorithm>
+#include <vector>
+#include <assert.h>
+
+using namespace std;
+
+int main()
+{
+	int n,k;
+	cin >> n >> k;
+	int *a = new int[n];
+	vector< vector<int> > a2(n, vector<int>(0));
+	int *b = new int[k];
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+		b[i] = 0;
+	}
+	double shag = (a[n - 1]-a[0]) / k;
+	b[0] = 0;
+	b[k-1] = n - 1;
+	for (int i = 1; i < k - 1; i++)
+	{
+		double now = (a[0] + shag*i);
+		int mini=0;
+		for (int i = 0; i < n; i++)
+		{
+			if (abs(now - a[i]) < abs(now - a[mini]))
+				mini = i;
+		}
+		b[i] = mini;
+	}
+	for (int i = 0; i < k; i++)
+		a2[b[i]].push_back(i);
+	for (int i = 0; i < a2.size(); i++)
+	{
+		if (a2[i].size() > 1)
+		{
+			while (a2[i].size() > 1)
+			{
+				int help = *(a2[i].end());
+				a2[i].pop_back();
+				int minf=0, minb=n-1;
+				for (int j = i; j > 0; j--)
+				{
+					if (a2[j].size() == 0)
+					{
+						minf = j;
+						break;
+					}
+				}
+				for (int j = i; j <n; j++)
+				{
+					if (a2[j].size() == 0)
+					{
+						minb = j;
+						break;
+					}
+				}
+				int minn;
+				if (a[i] - a[minf] < a[minb] - a[i])
+					minn = minf;
+				else minn = minb;
+				a2[minn].push_back(help);
+			}
+		}
+	}
+	int now=0, mini=INT_MAX;
+	for (int i = 1; i < n; i++)
+	{
+		assert(a2[i].size() < 2);
+		if (a2[i].size() == 1)
+		{
+			mini = min(a[i] - a[now],mini);
+			now = i;
+		}
+	}
+	cout << mini;
+	//system("pause");
+}

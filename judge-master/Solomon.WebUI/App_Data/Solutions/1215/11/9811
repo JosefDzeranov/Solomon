@@ -1,0 +1,8 @@
+var b:integer;
+begin
+read(b);
+if b=1 then write(1);
+if b=2 then write(2,' ',2);
+if b=3 then write(1,' ',2,' ',3);
+if (b>3) or(b<1) then write(-1);
+end.                                             

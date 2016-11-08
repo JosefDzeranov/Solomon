@@ -1,0 +1,11 @@
+program B;
+var x,m,Res:int64;
+n:integer;
+begin
+  readln(n);
+  m := 2*n - 1;
+  m := m*(m*m +1) div 2;
+  x := Sqr(2 * n) + 1;
+  Res := M*2 + x;
+  writeln(Res);
+End.

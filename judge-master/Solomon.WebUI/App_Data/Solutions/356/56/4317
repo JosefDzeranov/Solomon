@@ -1,0 +1,19 @@
+var
+n,i,fak,fak2:int64;
+
+begin
+readln(n);
+fak:=1;
+for i:=1 to n do
+ fak:=fak*i;
+ i:=0;
+ if fak=1 then fak2:=0 else
+ begin
+while fak mod 2 <> 1 do
+ begin
+ fak2:=fak2+1;
+ fak:=fak div 2;
+ end;
+end;
+writeln(fak2);
+end.

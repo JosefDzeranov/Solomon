@@ -1,0 +1,16 @@
+program B;
+var q,z,y,x,a,c: integer;
+begin
+read (x,y);
+read (z,q);
+a:=z-x;
+c:=q-y;
+if c<0 then
+begin
+a:=a-1;
+c:=60+c;
+end;
+if a<0 then
+a:= -a+24;
+write (a,' ',c);
+end.

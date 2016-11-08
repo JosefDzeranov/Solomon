@@ -1,0 +1,50 @@
+program D_secret_information;
+
+type
+r=record
+  c: longint;
+  k: 1..9;
+end;
+
+function koren (c: longint):byte;
+var
+i,s: longint;
+begin
+s:=0;
+repeat
+  s:=s+c mod 10;
+  c:=c div 10;
+until c=0;
+while s>9 do
+  s:=koren(s);
+koren:=s;
+end;
+
+var
+i,n,maxkol: longint;
+a: array [1..100] of r;
+b: array [1..9] of longint;
+maxkor: 1..9;
+
+begin
+for i:=1 to 9 do b[i]:=0;
+maxkol:=0;
+readln (n);
+for i:=1 to n do
+  begin
+    read (a[i].c);
+    a[i].k:=koren(a[i].c);
+    inc(b[a[i].k]);
+    if b[a[i].k]>maxkol then
+      begin
+        maxkol:=b[a[i].k];
+        maxkor:=a[i].k;
+      end
+    else if b[a[i].k]=maxkol then
+      if maxkor>a[i].k then
+        maxkor:=a[i].k;
+  end;
+for i:=1 to n do
+  if (a[i].k <> maxkor) then
+    write (a[i].c,' ');
+end.

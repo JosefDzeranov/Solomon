@@ -1,0 +1,17 @@
+program zelia;
+var
+ n,cI,sT,tF:longint;
+ s:array[1..16200] of longint;
+begin
+ readln(n);
+ for cI:=1 to n do
+  begin
+   readln(s[cI]);
+   if cI mod 2=0 then sT:=sT-s[cI]
+    else sT:=sT+s[cI];
+  end;
+ if sT>0 then tF:=0
+  else tF:=1-sT;
+ write(tF);
+ readln;
+end.

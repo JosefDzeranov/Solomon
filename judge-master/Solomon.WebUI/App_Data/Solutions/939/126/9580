@@ -1,0 +1,68 @@
+program mashaAndBear;
+label
+ successEnd;
+var
+ amountS:byte;
+ massiveS:array[1..50] of longint;
+ achieveA,bV,sV,ci,cIi:longint;
+function getNeedValue(eOption:byte):longint;
+ var
+  i:byte;
+  findingValue:longint;
+ begin
+  if eOption=1 then
+   begin
+    for i:=1 to amountS do
+     if (massiveS[findingValue]>massiveS[i]) or (i=1) then findingValue:=i;
+    getNeedValue:=findingValue;
+   end
+  else
+   begin
+    for i:=1 to amountS do
+     if (massiveS[findingValue]<massiveS[i]) or (i=1) then findingValue:=i;
+    getNeedValue:=findingValue;
+   end;
+ end;
+function checkEquality:boolean;
+ var
+  i,Ii:longint;
+  resultEquality:boolean;
+ begin
+  for i:=1 to amountS do
+   begin
+    for Ii:=1 to amountS do
+     if massiveS[i]=massiveS[Ii] then resultEquality:=true
+     else begin resultEquality:=false; break; end;
+    if resultEquality=false then break;
+   end;
+  checkEquality:=resultEquality;
+ end;
+begin
+ readln(amountS);
+ {'IMPOSSIBLE' way check}
+ for ci:=1 to amountS do
+  begin
+   read(massiveS[ci]);
+   achieveA:=achieveA+massiveS[ci];
+  end;
+ if achieveA mod amountS<>0 then
+  begin
+   write('IMPOSSIBLE');
+   goto successEnd;
+  end;
+ {End 'IMPOSSIBLE' way check}
+
+ {'VALUE' way check}
+ ci:=0;
+ while 1<2 do
+  begin
+   if checkEquality=true then begin write(ci); goto successEnd; end;
+   sV:=getNeedValue(1);
+   bV:=getNeedValue(2);
+   massiveS[sV]:=succ(massiveS[sV]);
+   massiveS[bV]:=pred(massiveS[bV]);
+   ci:=succ(ci);
+  end;
+ {End 'VALUE' way check}
+ successEnd:
+end.

@@ -1,0 +1,29 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+ a1,a2,a3,a4,x1,x2,y: int64;
+begin
+  readln(a1,a2,a3,a4);
+  if a1<a2 then
+  begin
+  x1:=a1;
+  end
+  else
+  x1:=a2;
+  if a3<a4 then
+  begin
+  x2:=a3;
+  end
+  else
+  x2:=a4;
+   y:=x1+x2;
+   y:=trunc(sqrt(y));
+  
+  writeln(y);
+  readln;
+end.

@@ -1,0 +1,41 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+int main() {
+
+	long long int ans = 0;
+
+	vector <string> mas;
+	
+	string s;
+	//cout << mas.max_size()<< endl;
+	long long int n;
+	cin >> n;
+	getline(cin, s);
+	for (long long int i = 0; i < n; i++)
+	{
+		getline(cin, s);
+		int flag = 1;
+		for (long long int j = 0; j < mas.size(); j++)
+			if (s == mas[j])
+			{
+				flag = 0;
+				j = mas.size();
+			}
+			if (flag) {
+				ans++;
+				mas.push_back(s);
+			}
+
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}

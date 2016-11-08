@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
+
+//vector <string> mas;
+map <string, int> mas;
+int main()
+{
+	long long n;
+	cin >> n;
+	long long ans = n;
+	string s;
+	getline(cin, s);
+	for (long long i = 0; i < n; i++)
+	{
+		getline(cin, s);
+		if (mas[s] == 1)
+		{
+			ans--;
+		}
+		else mas[s] = 1;
+	}
+	cout << ans;
+	return 0;
+}

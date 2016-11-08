@@ -1,0 +1,44 @@
+const
+m = 1000;
+var
+a:array [1..m, 1..m] of longint;
+n,res,b,z,q,w: integer;
+i,j:longint;
+procedure count(i,j: integer);
+begin
+if a[i,j] <> 1 then
+exit;
+a[i,j] := 0;
+count(i + 1, j);
+count(i - 1, j);
+count(i, j + 1);
+count(i, j - 1);
+end;
+begin
+res:=0;
+
+read(n);
+read(z);
+read(b);
+
+
+for i:= 1 to n+2 do
+for j:=1 to z+2 do
+a[i,j]:=1;
+for i:=1 to b do
+begin
+read(q);
+read(w);
+a[q,w]:=0;
+end;
+
+for i := 2 to n+1 do
+for j := 2 to z+1 do
+if a[i,j] = 1 then
+begin
+inc(res);
+count(i,j);
+end;
+write(res);
+
+end.

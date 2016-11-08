@@ -1,0 +1,241 @@
+program razbit;
+{$M 50000,0,155360}
+uses crt,graph;
+const esc=#27;
+      enter=#13;
+      f9=#67;
+      vverx=#72;
+      vniz=#80;
+      vlevo=#75;
+      vpravo=#77;
+type massiv=array[0..51,0..51] of byte;
+type tdoska=object
+         m,n:byte;{ Р змер прямоуголь*ик  }
+         x,y:integer;{ Р змеры кв др т  }
+         d:massiv;
+         procedure init;
+         procedure risov;
+         procedure kvadrat(a,b:byte);
+         procedure vyvodizmen;
+       end;
+var doska:tdoska;
+type tkursor=object
+        x,y:byte; { Коорди* ты курсор  }
+        xdl,ydl:integer;{ Дли*  сторо*ы кв др т  }
+        xd,yd:integer;{ Н сколько дли*  курсор  ме*ьше сторо*ы кв др т  }
+        procedure init(m,n:byte);
+        procedure risov;
+        function prov_koord(a,b:shortint):boolean;
+        procedure sdvinut(a,b:shortint);
+        procedure ybrat_kursor;
+        procedure dvigat(a,b:shortint);
+          end;
+type traschet=object
+         s:integer;{ Число ч стей }
+         m,n:byte;
+         procedure init;
+         procedure poisk;{ Поиск осколков }
+         procedure proverka(a,b:byte);
+          { Проверк  поля: при* длежит ли о*о д **ой ч сти }
+       end;
+var  r:traschet;
+procedure tkursor.init(m,n:byte);
+var a,b:byte;
+begin
+   x:=1+m div 2;y:=1+n div 2;
+   xdl:=trunc(600/m);
+   ydl:=trunc(400/n);
+   if m>20 then a:=5 else a:=10;
+   if n>30 then b:=3;
+   if (n>10) or (n<31) then b:=5;
+   if n<11 then b:=10;
+   if n>41 then b:=2;
+   xd:=xdl div a;
+   yd:=ydl div b;
+   risov;
+end;
+procedure tkursor.risov;
+begin
+   setcolor(2);
+   setlinestyle(0,0,3);
+   rectangle(20+(x-1)*xdl+xd,20+(y-1)*ydl+yd,20+x*xdl-xd,20+y*ydl-yd);
+   setlinestyle(0,0,1);
+   line(20+(x-1)*xdl+xd,20+(y-1)*ydl+yd,20+x*xdl-xd,20+y*ydl-yd);
+   line(20+x*xdl-xd,20+(y-1)*ydl+yd,20+(x-1)*xdl+xd,20+y*ydl-yd);
+end;
+procedure tkursor.sdvinut(a,b:shortint);
+begin
+  if prov_koord(a,b) then
+     begin
+       doska.kvadrat(x,y);
+       x:=a;y:=b;
+       risov;
+     end;
+  if (a=0) and (b>0) and (b<doska.m+1) then
+     begin
+       doska.kvadrat(x,y);
+       x:=doska.m;y:=b;
+       risov;
+     end;
+  if (a=doska.m+1) and (b>0) and (b<doska.n+1) then
+     begin
+       doska.kvadrat(x,y);
+       x:=1;y:=b;
+       risov;
+     end;
+  if (b=0) and (a>0) and (a<doska.m+1) then
+     begin
+       doska.kvadrat(x,y);
+       x:=a;y:=doska.n;
+       risov;
+     end;
+  if (b=doska.n+1) and (a>0) and (a<doska.m+1) then
+     begin
+       doska.kvadrat(x,y);
+       x:=a;y:=1;
+       risov;
+     end;
+end;
+function tkursor.prov_koord(a,b:shortint):boolean;
+begin
+  if (a<doska.m+1) and (a>0) and (b>0) and (b<doska.n+1) then prov_koord:=true else prov_koord:=false;
+end;
+procedure tkursor.ybrat_kursor;
+begin
+  doska.kvadrat(x,y);
+end;
+procedure tkursor.dvigat(a,b:shortint);
+begin
+   sdvinut(x+a,y+b);
+end;
+procedure tdoska.init;
+var i,j:byte;
+begin
+   x:=trunc(600/m);
+   y:=trunc(400/n);
+   for i:=0 to 51 do for j:=0 to 51 do d[i,j]:=0;
+   for i:=1 to m do for j:=1 to n do d[i,j]:=1;
+end;
+procedure tdoska.risov;
+var i:byte;
+begin
+  setbkcolor(3);
+  setfillstyle(1,4);
+  bar(15,15,m*x+25,y*n+25);
+  setfillstyle(1,1);
+  bar(20,20,20+m*x,20+y*n);
+  setcolor(15);
+  for i:=0 to n do line(20,20+i*y,20+m*x,20+i*y);
+  for i:=0 to m do line(20+i*x,20,20+i*x,20+n*y);
+   setcolor(1);
+   settextjustify(0,0);
+   settextstyle(1,0,3);
+   outtextxy(25,465,'Уд лить клетку Enter  Р счет F9   Выход ESC ');
+end;
+procedure tdoska.kvadrat(a,b:byte);
+var c:byte;
+begin
+   if r.s=1 then
+           begin
+             if d[a,b]=0 then c:=8 else c:=1;
+           end
+         else
+          begin
+            c:=d[a,b];
+            if d[a,b]=0 then c:=8;
+            if d[a,b]=8 then c:=14;
+            if d[a,b]>14 then c:=14;
+          end;
+   setfillstyle(1,c);
+   bar(20+(a-1)*x+1,20+(b-1)*y+1,20+a*x-1,20+b*y-1);
+end;
+procedure tdoska.vyvodizmen;
+var i,j,c:byte;
+    s:string[3];
+begin
+   for i:=1 to m do for j:=1 to n do kvadrat(i,j);
+   setcolor(15);
+   for i:=0 to n do line(20,20+i*y,20+m*x,20+i*y);
+   for i:=0 to m do line(20+i*x,20,20+i*x,20+n*y);
+   str(r.s-1,s);
+   setcolor(1);
+   setfillstyle(0,3);
+   bar(20,430,640,480);
+   settextjustify(0,0);
+   settextstyle(1,0,5);
+   outtextxy(40,465,'Число ч стей:'+s);
+end;
+procedure traschet.init;
+begin
+  s:=1;
+  m:=doska.m;
+  n:=doska.n;
+end;
+procedure traschet.poisk;{ Поиск осколков }
+var i,j:integer;
+begin
+  for i:=1 to m do for j:=1 to n do
+   begin
+     if doska.d[i,j]=1 then begin s:=s+1;proverka(i,j);end;
+   end;
+end;
+procedure traschet.proverka(a,b:byte);
+begin
+   doska.d[a,b]:=s;
+   if doska.d[a-1,b]=1 then proverka(a-1,b);
+   if doska.d[a+1,b]=1 then proverka(a+1,b);
+   if doska.d[a,b-1]=1 then proverka(a,b-1);
+   if doska.d[a,b+1]=1 then proverka(a,b+1);
+end;
+var d,m:integer;
+    kursor:tkursor;
+    c:char;
+label qv;
+begin
+   clrscr;
+   writeln(' Дли*  доски изме*яется от 1 до 50 ');
+   repeat
+    writeln(' Введите дли*у доски ');readln(doska.m);
+   until (doska.m>0) and (doska.m<51);
+   writeln(' ?ири*  доски изме*яется от 1 до 50 ');
+   repeat
+     writeln(' Введите шири*у доски ');readln(doska.n);
+   until (doska.n>0) and (doska.n<51);
+   d:=9;m:=2;
+   initgraph(d,m,'');
+   kursor.init(doska.m,doska.n);
+   doska.init;
+   doska.risov;
+   kursor.risov;
+   r.init;
+   repeat
+     repeat until keypressed;
+     c:=readkey;
+     case c of
+       vniz: kursor.dvigat(0,1);
+       vverx:kursor.dvigat(0,-1);
+       vlevo:kursor.dvigat(-1,0);
+       #77:kursor.dvigat(1,0);
+       enter:begin
+                if doska.d[kursor.x,kursor.y]=1 then
+                    doska.d[kursor.x,kursor.y]:=0 else
+                          doska.d[kursor.x,kursor.y]:=1;
+                doska.kvadrat(kursor.x,kursor.y);
+                kursor.risov;
+              end;
+        ' ':begin
+                if doska.d[kursor.x,kursor.y]=1 then
+                    doska.d[kursor.x,kursor.y]:=0 else
+                          doska.d[kursor.x,kursor.y]:=1;
+                doska.kvadrat(kursor.x,kursor.y);
+                kursor.risov;
+              end;
+       end;
+       if c=esc then goto qv;
+   until c=f9;
+   r.poisk;
+   doska.vyvodizmen;
+   readln;
+   qv:
+   closegraph;
+end.

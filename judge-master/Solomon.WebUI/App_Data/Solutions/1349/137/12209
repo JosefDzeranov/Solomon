@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main(){
+	int g,p;
+	char f[1000][1000];
+	cin>>g>>p;
+	for(int i = 0; i < g;i++){
+		for(int y = 0; y < g; i++){
+		cin>>f[i][y];
+		}
+	}
+	cout<<1<<endl<<0<<" "<<0<<" "<<0<<" "<<g-2;
+return 0;
+}

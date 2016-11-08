@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine(); 
+            string[] ss = s.Split(' ');
+            int n = Convert.ToInt32(Console.ReadLine());
+            int a = Convert.ToInt32(ss[0]);
+            int b = Convert.ToInt32(ss[1]);
+            int c = 0;
+            s = ss[0] + ss[1];
+            while (s.Length<n)
+            {
+                c = a + b;
+                a = b;
+                b = c;
+                s =s+Convert.ToString(b);
+            }
+            Console.WriteLine(s[n-1]);
+        }
+    }
+}

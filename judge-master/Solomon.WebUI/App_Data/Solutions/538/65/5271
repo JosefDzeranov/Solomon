@@ -1,0 +1,18 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{float a1,a2,a3,a4;
+cin>>a1>>a2>>a3>>a4;
+int n;
+if(a1>a2){a2=a1-a2;a1=a1-a2;}
+if(a2>a1){a1=a2-a1;a2=a2-a1;a1=a2;}
+if(a3>a4){a4=a3-a4;a3=a3-a4;}
+if(a4>a3){a3=a4-a3;a4=a4-a3;a3=a4;}
+a1=a1+a3;
+a1=sqrt(a1);
+n=a1;
+cout<<n;
+    return 0;
+}

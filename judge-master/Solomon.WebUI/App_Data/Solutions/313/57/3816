@@ -1,0 +1,22 @@
+Var n,i,j,max,k,nmax,x:longint; a:array[1..1000] of longint;
+Begin
+     readln (n);
+     max:=0;
+     for i:=1 to n do
+     read (a[i]);
+     for i:=1 to n do begin
+     k:=0;
+     for j:=1 to n do begin
+     if a[j] mod 9=a[i] mod 9
+     then inc(k);
+     end;
+     if k>max
+     then begin
+          max:=k;
+          nmax:=a[i] mod 9;
+          end;
+     end;
+     for i:=1 to n do
+     if a[i] mod 9<>nmax
+     then write (a[i],' ');
+end.

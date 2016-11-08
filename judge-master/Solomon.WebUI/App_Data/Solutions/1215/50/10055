@@ -1,0 +1,28 @@
+var s,s1:string;
+a,b,n,x:integer;
+begin
+read(a,b,n);
+str(a,s1);
+s:=s1;
+str(b,s1);
+s:=s+s1;
+While (n>length(s)) and(length(s)<1000) do begin
+str(a+b,s1);
+s:=s+s1;
+x:=b;
+b:=a+b;
+a:=x;
+end;
+if length(s)>=1000 then begin
+s:='';
+n:=n-1000;
+While (n>length(s)) do begin
+str(a+b,s1);
+s:=s+s1;
+x:=b;
+b:=a+b;
+a:=x;
+end;
+end;
+write (s[n]);
+end.

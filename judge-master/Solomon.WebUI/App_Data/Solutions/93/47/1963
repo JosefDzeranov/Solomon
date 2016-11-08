@@ -1,0 +1,27 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+var a:array [0..9] of integer;   s:string; i,k:integer;
+begin
+readln(s);
+for I := 0 to 9 do
+    a[i]:=0;
+k:=0;
+for I := 1 to length(s) do
+begin
+    inc(a[strtoint(s[i])]);
+    if a[strtoint(s[i])]>1 then inc(k);
+end;
+if k=0  then  writeln('YES')
+else
+begin
+  writeln('NO');
+  for I := 0 to 9 do
+  if a[i]>1 then  write(i,' ');
+  
+end;
+readln;
+end.

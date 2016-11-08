@@ -1,0 +1,18 @@
+program Project11;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var X,Y,Z,Q,a,b,c,d,e:integer;
+begin
+readln(X,Y,Z,Q);
+a:=X*60+Y;
+b:=Z*60+Q;
+c:=b-a;
+d:=c div 60;
+e:=c mod 60;
+writeln(d,' ',e);
+readln;
+end.

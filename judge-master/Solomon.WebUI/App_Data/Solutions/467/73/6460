@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	int cn, q = 0, ct = 0, a = 0, b = 0;
+	cin >> cn;
+	if (cn == 0)
+	{
+		cout << "0" << endl;
+		return 0;
+	}
+	for (int i = 0; i < cn; i++)
+	{
+		a++;
+		ct++;
+		q += a + b;
+		if (q == cn)
+		{
+			cout << ct << endl;
+			return 0;
+		}
+		b++;
+		ct++;
+		q += a + b;
+		if (q == cn)
+		{
+			cout << ct << endl;
+			return 0;
+		}
+	}
+	return 0;
+}

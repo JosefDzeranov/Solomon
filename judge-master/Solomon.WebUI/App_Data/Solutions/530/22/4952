@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	int x, z;
+	int a, b, c;
+
+	cin >> x >> z;
+	cin >> a >> b >> c;
+
+	int cnt = ((a + c/2 )/z)*((b+c/2)/z)*((c + c/2)/z);
+
+	int ans;
+	ans = x / cnt;
+	if (x % cnt)
+		ans++;
+	cout << ans << endl;
+
+
+
+	return 0;
+}

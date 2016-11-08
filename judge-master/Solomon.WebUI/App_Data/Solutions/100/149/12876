@@ -1,0 +1,20 @@
+import os
+
+def find_s(leng,a):
+    for i in range (len(a)-leng):
+        if a[i:i+leng]==a[i+leng:i+2*leng]:
+            #print (a[i:i+leng])
+            print(str(i+1)+" "+str(leng*2)+"\n")
+    
+#with open ("in.txt",'r') as inn:
+    #a=inn.readline()
+
+#wf=open("out.txt",'w')
+a=input()
+for i in range (1,int(len (a)/2)):
+    find_s(i,a)
+#wf.close()
+
+'''if os.stat("out.txt").st_size == 0:
+    with open ("out.txt",'w') as wf:
+        wf.write ('0 0'+"\n")'''

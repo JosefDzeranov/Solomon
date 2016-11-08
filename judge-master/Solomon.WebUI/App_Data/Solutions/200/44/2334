@@ -1,0 +1,19 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,b,s : real ;
+d,r,l: integer;
+begin
+ readln (n,l,r);
+ d:= l div (2*r);
+ b:=2*(pi*r);
+ s:=b*d ;
+ if  s <= n   then begin writeln ('YES'); writeln(d) end
+ else writeln ('NO');
+
+ readln;
+end.

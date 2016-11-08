@@ -1,0 +1,20 @@
+program Posledovatelnost;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  i, k, c : integer;
+begin
+  readln (k);
+  c := 3;
+  while c <= k do
+  begin
+    for i := c - 2 to c do
+      write (i, ' ');
+    c := c + 1;
+  end;
+  readln
+end.

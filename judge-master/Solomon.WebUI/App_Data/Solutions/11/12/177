@@ -1,0 +1,102 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+//bool simple[1005];
+int prost[1000];
+int ks[1000];
+int chislo[1000];
+int mas[1000];
+int gar[1000];
+
+int count1 = 0;
+int f = 0, l = 0;
+
+void cnt(int n){
+	prost[0] = 2;
+	prost[1] = 3;
+
+	int i = 5;
+	count1 = 2;
+
+	while (i <= n)
+	{
+		int t = 1;
+		for (int j = 0; j < count1; j++)
+			if (i % prost[j] == 0){
+				t = 0;
+				break;
+			}
+		if (t)
+			prost[count1] = i, count1 ++;
+		i++;
+	}
+	
+}
+
+void pr(int number, int flag) {
+
+	if (flag){
+		for (int i = 0; i < f && mas[i] <= number; i++)
+		{
+			while (number % mas[i] == 0) {
+				ks[i] ++;
+				number /= mas[i];
+			}
+
+		}
+	}
+	else
+		for (int i = 0; i < count1 && prost[i] <= number; i++)
+			{
+				int p = 1;
+				while (number % prost[i] == 0) {
+					chislo[i] ++;
+					number /= prost[i];
+				if (p) {
+					mas[f] = prost[i];
+					f++;
+					p = 0;
+				}
+				}
+				if (!p)
+					gar[l] = chislo[i], l++;
+			}
+}
+
+
+int min(int a, int b) {
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+
+int main() {
+
+	long long int n, k;
+	cin >> n >> k;
+
+	cnt(1000);
+
+	int ans = 1e+9;
+
+	pr(k, 0);
+	for (long long int i = 1; i <= n; i++)
+		pr(i, 1);
+
+	for (int i = 0; i < f; i++)
+	{
+			ans = min(ans, ks[i] / gar[i]);
+
+	}
+
+	if (ans == 1e+10)
+		cout << "0" << endl;
+	else
+		cout << ans << endl;
+	return 0;
+}

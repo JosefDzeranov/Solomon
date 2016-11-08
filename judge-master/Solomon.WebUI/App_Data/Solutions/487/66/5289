@@ -1,0 +1,40 @@
+program Project8;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  m, i, kk: Integer;
+  b, n: array[1..100000000] of integer;
+  s: string;
+  k: char;
+begin
+  kk := 0;
+  readln(m);
+  for i := 1 to m do
+  begin
+    s := '';
+    read(k);
+    while((k <> '1')and(k <> '2')and(k <> '3')and(k <> '4')and(k <> '5')and(k <> '6')and(k <> '7')and(k <> '8')and(k <> '9')) do
+      read(k);
+    while((k = '1')or(k = '2')or(k = '3')or(k = '4')or(k = '5')or(k = '6')or(k = '7')or(k = '8')or(k = '9')or(k = '0')) do
+    begin
+      s := s + k;
+      read(k);
+    end;
+    Inc(b[StrToInt(s)]);
+  end;
+  for i := 1 to 100000000 do
+    if(b[i] > 0)and(b[i] < 5)then
+    begin
+      Inc(kk);
+      n[kk] := i;
+    end;
+  writeln(kk);
+  for i := 1 to kk do
+    writeln(n[kk]);
+  readln;
+  readln;
+end.

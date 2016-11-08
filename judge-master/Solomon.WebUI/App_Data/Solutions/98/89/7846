@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int y,x,c,k,b,a,z,d,n;
+    cin>>x>>y>>c>>k;
+    b=y*x;
+    a=c*b;
+    z=y-1;
+    d=c*z;
+    n=d+a;
+    cout<<n;
+    return 0;
+}

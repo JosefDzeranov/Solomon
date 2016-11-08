@@ -1,0 +1,19 @@
+program C_zero_at_the_end_of_number;
+
+var
+n,s,i,k,c: longint;
+
+begin
+s:=0;
+readln (n);
+for i:=1 to n do
+  begin
+    c:=i;
+    while (c mod 2=0) do
+      begin
+        inc(s);
+        c:=c div 2
+      end;
+  end;
+writeln (s);
+end.

@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int curf,curss,f,s,curs,curn,n;
+std::string so;
+int main()
+{
+ cin>>n;
+ for (curn=1;curn<=n;curn++)
+ {
+     cin>>so;
+     curss=0;
+     curf=0;
+     for (curs=0;curs<=so.length();curs++)
+     {
+         if(so[curs]=='<')
+         {
+             curss++;
+         }
+          if(so[curs]=='>')
+         {
+             curf++;
+         }
+     }
+     if(curss>curf)
+     {
+         s++;
+     }
+     if(curss<curf)
+     {
+         f++;
+     }
+ }
+ if ((f!=0) and (s!=0))
+ {
+     cout<<f<<' '<<s<<endl;
+ }
+ else
+ {
+     cout<<'0'<<endl;
+ }
+ return 0;
+}

@@ -1,0 +1,8 @@
+var
+    N,S,A: comp;
+begin
+readln(N);
+A:= 2*N;
+S:= A*A+1+(A-1)*((A-1)*(A-1)+1);
+writeln(S);
+end.

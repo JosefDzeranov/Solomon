@@ -1,0 +1,21 @@
+var n,z,a,b,c,q,w,e,i,g:integer;
+begin
+read(n,z,a,b,c);
+g:=c div 2+c;
+for i:=1 to 1000 do begin
+  if (i*z<=a) then
+    q:=q+1;
+  if (i*z<=b) then
+    w:=w+1;
+  if (i*z<=c)or(i*z<=g) then begin
+    g:=g-z;
+    e:=e+1;
+    end;
+end;
+z:=(q*w*e);
+if n mod z =0 then
+  z:=n div z
+else z:=n div z+1;
+write(z);
+end.
+

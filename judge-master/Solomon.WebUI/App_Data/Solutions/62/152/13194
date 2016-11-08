@@ -1,0 +1,24 @@
+program Project2;
+
+var
+n,i,j,a,b,c:integer;
+s:array[1..100] of string;
+p,na,ko,na2,ko2:string;
+begin
+readln(n);
+for I := 1 to n do
+ readln(s[i]);
+for I := 1 to n-1 do
+  for j := 2 to n do
+   if length(s[j])<length(s[j+1]) then
+    begin
+      p:=s[j];
+      s[j]:=s[j+1];
+      s[j+1]:=p;
+    end;
+a:=0;
+for I := 1 to n do
+  a:=a+length(s[i]);
+   writeln(n,' ',a);
+   readln;
+end.

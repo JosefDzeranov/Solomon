@@ -1,0 +1,23 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+      a, k, b, m, x, day, otv:int64;
+begin
+  readln(a, k, b, m, x);
+    day := 1;
+    while x >= 0 do
+      begin
+        if day mod k<> 0  then
+           x := x - a;
+        if day mod m<> 0  then
+           x := x - b;
+      day := day + 1;
+      end;
+  writeln(day - 1);
+  readln;
+end.

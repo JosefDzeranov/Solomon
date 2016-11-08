@@ -1,0 +1,16 @@
+program fourth;
+var
+ ci,fired,cfired,sec:longint;
+ maxX,maxY,Amount:integer;
+ sCoord:array[1..1000,1..2] of word;
+ sCoordF:array[1..1000] of word;
+begin
+ readln(maxX,maxY,Amount);
+ for ci:=1 to Amount do readln(sCoord[ci,1],sCoord[ci,2]);
+ fired:=2;
+ repeat
+  inc(sec);
+  fired:=fired*4;
+ until fired>=maxX*maxY;
+ write(sec);
+end.

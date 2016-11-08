@@ -1,0 +1,16 @@
+var
+a,i,c:longint;
+begin
+i:=1;
+read (a);
+if (a<=1000000) and (a>0) then
+begin
+while (a>0) do
+begin
+a:=a-i;
+i:=i+1;
+c:=c+1;
+end;
+write (c);
+end;
+end.

@@ -1,0 +1,40 @@
+﻿using System;
+
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int x1, y1, x2, y2, x3, y3, x4, y4 = 0;
+            string s;
+            s = Console.ReadLine();
+            x1 = int.Parse(s.Split(' ')[0]);
+            y1 = int.Parse(s.Split(' ')[1]);
+            s = Console.ReadLine();
+            x2 = int.Parse(s.Split(' ')[0]);
+            y2 = int.Parse(s.Split(' ')[1]);
+            s = Console.ReadLine();
+            x3 = int.Parse(s.Split(' ')[0]);
+            y3 = int.Parse(s.Split(' ')[1]);
+            s = Console.ReadLine();
+            x4 = int.Parse(s.Split(' ')[0]);
+            y4 = int.Parse(s.Split(' ')[1]);
+            s = Console.ReadLine();
+
+            if (Math.Abs(x1 - x2) + Math.Abs(x3 - x4) == Math.Abs(y1 - y2) + Math.Abs(y3 - y4) ||
+                 Math.Abs(y2 - y4) + Math.Abs(y1 - y3) == Math.Abs(x1 - x3) + Math.Abs(x2 - x4) ||
+                 Math.Abs(x1 - x3) + Math.Abs(x2 - x4) == Math.Abs(y1 - y3) + Math.Abs(y2 - y4))
+            {
+                Console.WriteLine("'Это квадрат!!!");
+
+            }
+            else
+            {
+                Console.WriteLine("'Это не квадрат!!!");
+            }
+
+        }
+    }
+}

@@ -1,0 +1,9 @@
+var
+  a1,a2,a3,a4, summ: real;
+begin
+  readln(a1,a2,a3,a4);
+  //суммируем
+  summ:=((a1+a2)/2) + ((a3+a4)/2);
+  // выводим целую часть от корня из суммы
+  writeln(int(sqrt(summ)));
+end.

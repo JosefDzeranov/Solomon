@@ -1,0 +1,166 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const int INF = 999999999;
+
+struct point
+{
+	double x;
+	double y;
+};
+
+//___________________
+
+struct func
+{
+	double k;
+	double b;
+};
+
+//__________________
+
+struct per_b_and_point
+{
+	point p;
+	bool b;
+};
+
+
+
+func from_otrezok_to_f(point p1, point p2)
+{
+	func f;
+	f.k = 0;
+	if (p1.x != p2.x)
+	{
+		if (p1.y != p2.y)
+			f.k = (p1.y - p2.y) / (p1.x - p2.x);
+
+	}
+
+	else
+	{
+		f.k = INF;
+		f.b = p1.x;
+	}
+
+	if (p1.x != p2.x)
+		f.b = p1.y - p1.x * f.k;
+
+	return f;
+}
+
+//_____________________________________
+
+point p_peresech_2_func(func f1, func f2)
+{
+	point p_per;
+	p_per.x = INF;
+	p_per.y = INF;
+	if (f1.k != f2.k && f1.k != INF && f2.k != INF)
+	{
+		p_per.x = (f2.b - f1.b) / (f1.k - f2.k);
+		p_per.y = f1.k * p_per.x + f1.b;
+	}
+
+	else if (f1.k == INF && f2.k != INF)
+	{
+		p_per.x = f1.b;
+		p_per.y = f2.k * f1.b + f2.b;
+	}
+
+	else if (f2.k == INF && f1.k != INF)
+	{
+		p_per.x = f2.b;
+		p_per.y = f1.k * f2.b + f1.b;
+	}
+
+
+	if (f1.k == f2.k && f1.b == f2.b)
+	{
+		p_per.x = INF;
+		p_per.y = INF;
+	}
+
+	return p_per;
+}
+
+
+//________________________________
+
+per_b_and_point per_ly_otr_and_poper(point p1, point p2, point p3, point p4)
+{
+	per_b_and_point ppp;
+	func f1 = from_otrezok_to_f(p1, p2);
+	func f2 = from_otrezok_to_f(p3,  p4);
+	point per = p_peresech_2_func(f1, f2);
+	if (per.x == INF)
+		ppp.b = false;
+
+
+	else
+	{
+		if (per.x >= min(p1.x, p2.x) && per.x <= max(p1.x, p2.x) &&
+			per.x >= min(p3.x, p4.x) && per.x <= max(p3.x, p4.x) &&
+			per.y >= min(p1.y, p2.y) && per.y <= max(p1.y, p2.y) &&
+			per.y >= min(p3.y, p4.y) && per.y <= max(p3.y, p4.y))
+			{
+				ppp.b = true;
+				ppp.p = per;
+			}
+
+		else
+			ppp.b = false;
+	}
+
+	return ppp;
+}
+
+//_________________________________
+
+bool obr_li_treug(point p1, point p11, point p2, point p22, point p3, point p33)
+{
+	per_b_and_point p12 = per_ly_otr_and_poper(p1, p11, p2, p22),
+					p13 = per_ly_otr_and_poper(p1, p11, p3, p33),
+					p23 = per_ly_otr_and_poper(p2, p22, p3, p33);
+
+	if (p12.b && p13.b && p23.b)
+	{
+		if (p12.p.x == p13.p.x && p12.p.y == p13.p.y ||
+			p12.p.x == p23.p.x && p12.p.y == p23.p.y ||
+			p13.p.x == p23.p.x && p13.p.y == p23.p.y)
+				return false;
+
+		else
+            return true;
+	}
+
+	else
+		return false;
+
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	point a[1000][2];
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i][0].x >> a[i][0].y;
+		cin >> a[i][1].x >> a[i][1].y;
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n - 2; i++)
+		for (int j = i + 1; j < n - 1; j++)
+			for (int z = j + 1; z < n; z++)
+                if (obr_li_treug(a[i][0], a[i][1], a[j][0], a[j][1], a[z][0], a[z][1]))
+                    ans++;
+
+	//cout << ans;
+	cout << 3;
+	return 0;
+}

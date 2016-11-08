@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+long long n,i,m=0,l=0;
+cin>>n;
+int s[i],t[i],c[i],O[i];
+for(i=0;i<n;++i){
+    cin>>s[i]>>t[i]>>c[i];
+    if(s[i]<s[i+1]){
+        m+=c[i];
+        l++;
+       }}
+
+    cout<<m<<endl<<l<<endl;
+   for(i=0;i<n;++i)
+   if(l++)
+   O[l]=i;
+   cout<<O[l];
+    return 0;
+}

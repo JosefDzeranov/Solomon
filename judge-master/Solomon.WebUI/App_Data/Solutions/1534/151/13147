@@ -1,0 +1,31 @@
+program B;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a,b,c,u:integer;
+begin
+  readln(u);
+  if (u>5) and (u<1000) then
+   Begin
+  for a := 1 to 10 do begin
+     for b := 1 to 10 do
+       for c := 1 to 10 do
+     if (a<b) and (b<c) then
+     if u=a+b+c then writeln (a,b,c) ;
+
+     
+       end;
+    end;
+
+
+
+
+         
+
+
+
+
+end.

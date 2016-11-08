@@ -1,0 +1,13 @@
+s = input().split("=")
+res, p = -1, -1
+try:
+    res = eval(s[0])
+    p = eval(s[1])
+    if res == int(s[1]):
+        print("YES")
+    elif res != -1:
+        print("NO")    
+except SyntaxError:
+    print("ERROR")
+except NameError:
+    print("ERROR")

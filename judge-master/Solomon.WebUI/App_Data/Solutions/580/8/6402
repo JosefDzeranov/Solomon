@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace solomonmesi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long a, b;
+            string s = Console.ReadLine();
+            a = long.Parse(s.Split()[0]);
+            b = long.Parse(s.Split()[1]);
+            
+            Console.WriteLine(a + b);
+        }
+    }
+}

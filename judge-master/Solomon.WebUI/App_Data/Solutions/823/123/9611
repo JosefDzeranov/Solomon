@@ -1,0 +1,17 @@
+program SirsofCircleTable;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n : integer;
+begin
+  readln (n);
+  if n mod 2 = 0 then
+    writeln ('Yes')
+  else
+    writeln ('No');
+  readln;
+end.

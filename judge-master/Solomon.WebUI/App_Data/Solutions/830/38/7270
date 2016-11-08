@@ -1,0 +1,26 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1, y1, x2, y2, x3, y3, x4, y4:integer;
+var x, y:real;
+
+begin
+readln (x1, y1);
+readln (x2, y2);
+readln (x3, y3);
+readln (x4, y4);
+x := (x1 + x2 + x3 + x4) / 4; // нашли среднее арифметическое, чтобы найти центр по x
+y := (y1 + y2 + y3 + y4) / 4; // нашли среднее арифметическое, чтобы найти центр по y
+if (abs(x - x1) + abs(x - x2) + abs(x - x3) + abs(x - x4) = abs(y - y1) + abs(y - y2) + abs(y - y3) + abs(y - y4)) and
+((x - x1) + (x - x2) + (x - x3) + (x - x4) = 0)and (0 = (y - y1) + (y - y2) + (y - y3) + (y - y4))
+ then  // abs - модуль; находим расстояние от цетра до каждой точки и сраниваем с расстоянием по y
+writeln ('YES')
+else writeln ('NO');
+readln;
+
+  { TODO -oUser -cConsole Main : Insert code here }
+end.

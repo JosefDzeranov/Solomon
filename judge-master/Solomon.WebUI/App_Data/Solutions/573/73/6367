@@ -1,0 +1,26 @@
+﻿using System;
+
+
+namespace Balaev
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите натуральное число не > 1000000: ");
+            
+                int kolgolov = int.Parse(Console.ReadLine());
+                int chislo = 0;
+                while (kolgolov > chislo)
+                {
+                    kolgolov -= chislo;                    
+                    chislo++;
+                }
+                Console.WriteLine(chislo);
+      
+            
+            
+
+        }
+    }
+}

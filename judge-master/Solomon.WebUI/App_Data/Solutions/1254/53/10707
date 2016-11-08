@@ -1,0 +1,54 @@
+var
+visited: array [1..1000] of boolean;
+a: array [0..1000,0..1000] of integer;
+l,n,i,j,m,k,x,y,kol,min1,min2,kod,s:integer;
+
+procedure zap(i,j,kod,s : integer);
+begin
+  m:=0;
+  kod:=0;
+  
+     if a[i-1,j]>a[i,j+1] then min1:=a[i,j+1] else min1:=a[i-1,j];
+     if a[i+1,j]>a[i,j-1] then min2:=a[i,j-1] else min2:=a[i+1,j];
+     if min1<min2 then m:=min1 else m:=min2;
+     if m<0 then inc(m);
+     if (a[i,j]<>0) and (m<>0) and (a[i,j]>m) then begin a[i,j]:=m; kod:=1; end;
+     if (a[i,j]=0) and (m<>0) then begin a[i,j]:=m; kod:=1;end;
+     if (a[i,j]=0) and (m=0) then begin a[i,j]:=s; inc(s); kod:=1; end;
+     end;
+
+
+begin
+read(n,l);
+read(k);
+ for i:=0 to l do
+  a[i,0]:=-1;
+  
+  for i:=0 to l do
+  a[i,l+1]:=-1;
+  s:=1;
+  
+  for i:=0 to n do
+  a[0,i]:=-1;
+  
+  for i:=0 to n+1 do
+  a[n+1,i]:=-1;
+  
+for i:=1 to k do begin
+read(x,y);
+a[x,y]:=-1;
+end;
+
+kod:=1;
+ // while kod=1 do
+     for i:=1 to n do
+        for j:=1 to l do begin
+          if a[i,j]<>-1 then zap(i,j,kod,s);
+             if kod=0 then break; end;
+    
+    for i:=1 to n do
+       for j:=1 to l do
+         if a[i,j]<>-1 then inc(kol);
+   
+   writeln(kol);
+end.

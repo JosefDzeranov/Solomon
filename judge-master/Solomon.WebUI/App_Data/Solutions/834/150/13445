@@ -1,0 +1,24 @@
+program Project4;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var i,p,st : integer;
+u:string;
+begin
+st:=0;
+p:=1;
+readln(u);
+for i := length(u) downto 1 do
+begin
+if u[i]='*' then
+begin
+st:=p+st;
+end;
+p:=p*2;
+end;
+writeln(st);
+readln;
+end.

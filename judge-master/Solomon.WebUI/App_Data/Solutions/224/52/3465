@@ -1,0 +1,14 @@
+﻿using System;
+
+namespace Mesi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            UInt64 N = UInt64.Parse(Console.ReadLine());
+            Console.WriteLine((N - 2) * (N - 1) * N);
+            Console.ReadLine();
+        }
+    }
+}

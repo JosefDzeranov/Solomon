@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long a, b, c, d, e;
+    cin >> a >> b >> c >> d >> e;
+    if (b > 1000000000 && d > 1000000000)
+    {
+        long long ans = e / (a + c);
+        if (ans * (a + c) != e)
+            ans++;
+
+        cout << ans;
+        return 0;
+    }
+    long long q = e / (a - a / b + c - c / d);
+    long long ans = q - 10000;
+    while (a * (ans - ans / b) + c * (ans - ans / d) < e)
+        ans++;
+
+    cout << ans;
+    return 0;
+}
+//2 1000000000000 3 1000000000000 25;

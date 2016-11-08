@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+const double pi = 3.1415;
+
+int main() {
+	long double n;
+	int l, r;
+	cin >> n >> l >> r;
+	int cnt;
+	cnt = l / (2*r);
+	if (l % (2*r) != 0)
+		cnt++;
+	if (n >= 2 * cnt * pi * r)
+	{
+		cout << "YES\n";
+		cout << cnt << endl;
+	}
+	else
+		cout << "NO" << endl;
+
+
+	return 0;
+}

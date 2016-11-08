@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x,y,t1,t2,t;
+    cin >> x >> y >> t1 >> t2;
+    t = x*y*t2+(x-1)*y/t1;
+    cout << t;
+    return 0;
+}

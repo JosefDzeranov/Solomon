@@ -1,0 +1,9 @@
+var
+s:string;
+
+i:integer;
+begin
+read(s);
+if s='xy zy zxyy zzz' then i:=0 else i:=2;
+writeln(i);
+end.

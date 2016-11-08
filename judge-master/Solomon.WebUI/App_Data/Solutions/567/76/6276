@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+vector <string> sss;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	long long ans = 0;
+	for (int i = 0; i <= n; i++)
+	{
+		
+		string s;
+		getline (cin, s);
+		string s2 = "";
+		if (i > 0)
+		{
+		for (int j = 0; j < s.size(); j++)
+		{
+			if (s[j] >= '0' && s[j] <= '9')
+				s2 += s[j];
+			else if (s2 != "")
+			{
+				sss.push_back(s2);
+				s2 = "";
+			}
+		}
+		if (s2 != "") sss.push_back(s2);
+		}
+	}
+	for (int i = 0; i < sss.size(); i++)
+	{
+		string s2 = sss[i];
+		long long t = 0;
+		long long step = 1;
+		for (int j = 0; j < s2.size() - 1; j++)
+			step *= 10;
+		for (int j = 0; j < s2.size(); j++)
+		{
+			int x = int(s2[j] - '0');
+			ans += x * step;
+			step /= 10;
+		}
+	}
+	cout << ans;
+	return 0;
+}

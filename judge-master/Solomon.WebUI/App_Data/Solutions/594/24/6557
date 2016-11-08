@@ -1,0 +1,25 @@
+var
+  res, cura2, cura, n: integer;
+  a: array[1..10000] of integer;
+
+function ispar(a, b: integer): integer;
+var
+  s1, s2: string;
+  cur, cur2: integer;
+begin
+  Str(a, s1);
+  Str(b, s2);
+  Result := 0;
+  for cur := 1 to length(s1) do
+    for cur2 := 1 to length(s2) do
+      if(s1 [cur] = s2[cur2]) then Result := 1;
+end;
+
+begin
+  read(n);
+  for cura := 1 to n do read(a[cura]);
+  for cura := 1 to n do 
+    for cura2 := 1 to n do 
+      if(cura <> cura2) and (ispar(a[cura], a[cura2]) = 1) then inc(res);
+  writeln(res div 2);
+end.

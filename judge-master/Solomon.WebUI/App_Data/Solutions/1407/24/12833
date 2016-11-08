@@ -1,0 +1,35 @@
+  var s,s1,s2:string;
+   A:array[1..500000] of string;
+   n,i,j,u,m,k,p:integer;
+   f:boolean;
+     begin
+     readln(n);
+     readln(s);
+     s:=s+' ';
+     p:=pos(' ',s);
+       while p>0 do
+        begin
+        i:=i+1;
+        A[i]:=copy(s,1,p-1);
+        delete(s,1,p);
+        p:=pos(' ',s);
+        end;
+     for i:=1 to n-1 do
+      for j:=i+1 to n do
+        begin
+        f:=true;
+        s1:=A[i];
+        s2:=A[j];
+         for m:=1 to length(A[i]) do
+           if f then
+           begin
+           k:=pos(s1[m],s2);
+            if k<>0 then
+              begin
+              f:=false;
+              u:=u+1;
+              end;
+           end;
+         end;
+        writeln(u);
+        end.

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+int main()
+{const int z=1000;
+int a[z][z];
+int k;
+int m,n;
+int i,j;
+int h=0;
+
+cin>>m>>n>>k;
+
+for (i=0; i<n; i++)
+	for (j=0; j<m; j++)
+		a[i][j]=1;
+
+while (h<k)
+{
+	cin<<j<<i;
+	a[i][j]=0;
+	h++;
+}
+
+
+getch();}

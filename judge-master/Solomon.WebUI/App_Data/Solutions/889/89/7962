@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int x,y,s,t,a;
+cin>>x>>y>>s>>t;
+if((0<x)&&(t<100))
+a=(x*y)*t+(y-1)*2;
+cout << a << endl;
+    return 0;
+}

@@ -1,0 +1,33 @@
+using System;
+class Program {
+
+	static void Main() {
+		string[] s = Console.ReadLine().Split();
+		int a = int.Parse(s[0]);
+		int b = int.Parse(s[1]);
+		int c = 0;
+		int N = int.Parse(Console.ReadLine());
+
+		string line = a.ToString()+b.ToString();
+
+
+		if(N <= line.Length)
+		{
+			Console.WriteLine(line[N-1]);
+		}
+		else
+		{
+			while(N > line.Length)
+			{
+				c = a+b;
+				a = b;
+				b = c;
+				line += c.ToString();
+			}
+			Console.WriteLine(line[N -1]);			
+				
+		}
+		
+		
+		}
+	}

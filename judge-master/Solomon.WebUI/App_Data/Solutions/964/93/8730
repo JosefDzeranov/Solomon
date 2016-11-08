@@ -1,0 +1,8 @@
+var x,z,y,q,a,b:integer;
+Begin
+ readln(x,z);
+ readln(y,q);
+ a:=((z-x)*60+q-y) div 60;
+ b:=((z-x)*60+q-y) mod 60;
+ write(a,' ',b);
+End.

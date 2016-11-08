@@ -1,0 +1,145 @@
+const
+        SIZE = 9;
+        EMPTY = 0;
+
+type
+        TArr = array[0..SIZE, 0..SIZE] of LongInt;
+        ChofNum = array[0..SIZE+1] of LongInt;
+        TInc = array[0..SIZE, 0..SIZE] of Boolean;
+
+procedure Init (var a : TArr);
+var
+        i, j : Integer;
+begin
+        for i := 0 to SIZE do
+                for j := 0 to SIZE do
+                        a[i, j] := EMPTY;
+end;
+
+procedure DivCh (num : LongInt; var chn : ChofNum);
+var
+        i, ch : Integer;
+        flag : Boolean;
+begin
+        chn[0] := 1;
+        chn[1] := num mod 10;
+        num := num div 10;
+
+        while num > 0 do
+        begin
+                ch := num mod 10;
+                num := num div 10;
+
+                flag := TRUE;
+
+                for i := 1 to chn[0] do
+                        if chn[i] = ch then
+                                flag := FALSE;
+
+                if flag then
+                begin
+                        Inc (chn[0]);
+
+                        chn[chn[0]] := ch
+                end;
+        end;
+end;
+
+procedure Remember (var a : TArr; chn : ChofNum);
+var
+        i, j : Integer;
+        b : TInc;
+begin
+        for i := 0 to SIZE do
+                for j := 0 to SIZE do
+                        b[i, j] := TRUE;
+
+        for i := 1 to chn[0] do
+                for j := 1 to chn[0] do
+                begin
+                        if b[chn[i], chn[j]] then
+                        begin
+                                b[chn[i], chn[j]] := FALSE;
+                                b[chn[j], chn[i]] := FALSE;
+
+                                Inc (a[chn[i], chn[j]]);
+
+                                if i <> j then
+                                        Inc (a[chn[j], chn[i]])
+                        end;
+                end;
+end;
+
+procedure ReadNumbers (var a : TArr);
+var
+        i, num, n : LongInt;
+        chn : ChofNum;
+begin
+        Init (a);
+
+        ReadLn (n);
+
+        for i := 1 to n do
+        begin
+                Read (num);
+
+                DivCh (num, chn);
+
+                Remember (a, chn)
+        end;
+end;
+
+procedure DelNotPairs (var a : TArr);
+var
+        i, j, k : Integer;
+begin
+        for i := 0 to SIZE do
+                for j := 0 to SIZE do
+                begin
+                        if i = j then
+                                Continue;
+
+                        if a[i, j] = a[i, i] then
+                        begin
+                                a[i, i] := 0;
+
+                                for k := 0 to SIZE do
+                                begin
+                                        a[i, k] := 0;
+                                        a[k, i] := 0
+                                end
+                        end
+                        else if a[i, j] = a[j, j] then
+                        begin
+                                a[j, j] := 0;
+
+                                for k := 0 to SIZE do
+                                begin
+                                        a[j, k] := 0;
+                                        a[k, j] := 0
+                                end;
+                        end
+                end;
+end;
+
+procedure CountPairs (var a : TArr; var cnt : QWord);
+var
+        i : Integer;
+begin
+        DelNotPairs (a);
+
+        for i := 0 to SIZE do
+                Inc (cnt, QWord (a[i, i]) * QWord ((a[i, i]) - 1) div 2)
+end;
+
+var
+        a : TArr;
+        cnt : QWord;
+
+begin
+        ReadNumbers (a);
+
+        CountPairs (a, cnt);
+
+        WriteLn (cnt)
+end.

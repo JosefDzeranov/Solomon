@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+long long a, b, c, d, e;
+
+long long num_of_tr(int kol)
+{
+    return a * (kol - kol / b)  + c * (kol - kol / d);
+}
+
+int main()
+{
+    cin >> a >> b >> c >> d >> e;
+    long long q = e / (a - a / b + c - c / d);
+    long long ans = 0;
+    for (long long i = q + 2; i > q - 2; i--)
+    {
+        if (num_of_tr(i) >= e)
+            ans = i;
+    }
+
+    cout << ans;
+    return 0;
+}

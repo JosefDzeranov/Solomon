@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	unsigned short int k, n, nk;
+	
+	unsigned long long int n1 = 1, k1 = 1, kn = 1;
+	
+	cin >> n >> k;
+	
+	for(int i = 0;;i++)
+	{
+		n1 = n1 * (n - i);
+		
+		if(i+1 == n)
+		   break;
+	}
+	
+	for(int i = 0;;i++)
+	{
+		k1 = k1 * (k - i);
+		
+		if(i+1 == k)
+		   break;
+	}
+	
+	nk = n - k;
+	
+	for(int i = 0;;i++)
+	{
+		kn = kn * (nk - i);
+		
+		if(i+1 == nk)
+		   break;
+	}
+	
+	cout << n1 / (k1 * kn);
+}

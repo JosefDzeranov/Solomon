@@ -1,0 +1,16 @@
+var a,b,c,n,m,min:longint;
+k:byte;
+begin
+read(k,n,a,b,c);
+if k=2 then begin    if a<=b then m:= a else m:=b;
+                     if c<m then m:=c; 
+                     if m<=n  then write(m) else write(n);
+            end;
+if k=1 then begin m:=abs(a-c)+abs(a-b)+abs(b-c);
+                  m:=m-n+3;
+                  if a<=b then min:=a else min:=b;
+                     if c<min then min:=c; 
+                  if (m>=0) and (m<=min) then write(m)
+                  else if m>min then write (min) else write(0);
+            end;      
+end.

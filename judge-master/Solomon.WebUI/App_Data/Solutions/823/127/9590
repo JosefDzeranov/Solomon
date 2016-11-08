@@ -1,0 +1,66 @@
+program Womaninthemiddle;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  step : byte;
+  s3 : string;
+
+procedure FindStep (s1, s2 : string);
+var
+  stemp : string;
+  x : smallint;
+  i, j : integer;
+  c : smallint;
+  k : integer;
+begin
+  step := 255;
+  for i := 1 to Length (s1) - Length (s2) + 1 do
+    begin
+      k := 1;
+      stemp := copy (s1, i, Length (s2));
+      c := ord (stemp[1]) - ord (s2[1]);
+      if c < 0 then
+        c := c + 26;
+      for j := 2 to Length (s2) do
+        begin
+          x := ord (stemp[j]) - ord(s2[j]);
+            if x < 0 then
+              x := x + 26;
+          if x = c then
+            k := k + 1
+          else
+            break;
+        end;
+      if k = Length (stemp) then
+        begin
+          s3 := s1;
+          if c < step then
+            step := c;
+        end;
+    end;
+end;
+
+procedure Decode (var s : string; step1 : byte);
+var
+  i : integer;
+begin
+  for I := 1 to Length (s) do
+    s[i] := chr (ord ('Z') - (25 - (ord (s[i]) - 65) + step) mod 26);
+end;
+
+var
+  s1, s2 : string;
+begin
+  readln (s1);
+  readln (s2);
+  s3 := 'IMPOSSIBLE';
+  FindStep (s1, s2);
+  if s3 = s1 then
+    Decode (s3, step);
+  writeln (s3);
+  readln;
+end.

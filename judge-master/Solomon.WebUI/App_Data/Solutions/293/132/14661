@@ -1,0 +1,208 @@
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+#include <vector>
+#include <string>
+#include <set>
+#include <queue>
+#include <map>
+#include <stdio.h>
+#include <fstream>
+#pragma comment(linker,"/STACK:64000000")
+#define INPUT "input.txt"
+#define OUTPUT "output.txt"
+typedef long long ll;
+typedef unsigned long long ull;
+const int MAX = 2000000010;
+using namespace std;
+
+struct tree {
+    int prior;
+    int val;
+    int size;
+    tree* L;
+    tree* R;
+    tree() : prior(rand()), val(0), size(1), L(NULL), R(NULL) {};
+};
+
+int getsize(tree *t)
+{
+    if (t == NULL) return 0;
+    return t->size;
+}
+
+void update(tree *t)
+{
+    if (t != NULL)
+        t->size = getsize(t->L) + getsize(t->R) + 1;
+}
+
+tree* merge(tree *l, tree *r)
+{
+    if (l == NULL) return r;
+    if (r == NULL) return l;
+    if (l->prior > r->prior)
+    {
+        l->R = merge(l->R, r);
+        update(l->R);
+        update(l);
+        return l;
+    }
+    else
+    {
+        r->L = merge(l, r->L);
+        update(r->L);
+        update(r);
+        return r;
+    }
+}
+
+pair<tree*, tree*> split(tree *t, int key)
+{
+    if (t == NULL)
+        return make_pair((tree*)NULL, (tree*)NULL);
+    tree *l;
+    tree *r;
+    if (getsize(t->L) + 1 >= key)// if now in right
+    {
+        if (t->L == NULL)
+            return make_pair((tree*)NULL, t);
+        r = t;
+        pair<tree*, tree*> tmp = split(t->L, key);
+        update(tmp.second);
+        update(tmp.first);
+        l = tmp.first;
+        r->L = tmp.second;
+        update(l);
+        update(r);
+        return make_pair(l, r);
+    }
+    else // if now in left
+    {
+        if (t->R == NULL)
+            return make_pair(t, (tree*)NULL);
+        l = t;
+        pair<tree*, tree*> tmp = split(t->R, key - getsize(t->L) - 1);
+        update(tmp.second);
+        update(tmp.first);
+        r = tmp.second;
+        l->R = tmp.first;
+        update(l);
+        update(r);
+        return make_pair(l, r);
+    }
+}
+
+tree* gettree(tree *t, int pos)
+{
+    if (t == NULL) return t;
+    if (getsize(t->L) + 1 == pos) return t;
+    if (getsize(t->L) + 1 > pos)
+        return gettree(t->L, pos);
+    else
+        return gettree(t->R, pos - getsize(t->L) - 1);
+}
+
+int main()
+{
+    int n, p;
+    cin >> n >> p;
+    tree* t = NULL;
+    ull ans = 0;
+    for (int i = 0;i < n;i++)
+    {
+        tree* tmp = new tree();
+        cin >> tmp->val;
+        ans += tmp->val*tmp->val;
+        t = merge(t, tmp);
+    }
+    cout << ans << endl;
+    int k;
+    cin >> k;
+    int type, num;
+    for (int i = 0;i < k;i++)
+    {
+        cin >> type >> num;
+        if (type == 1)//bankrot
+        {
+            if (num == 1)
+            {
+                tree* t2;
+                tree* t3;
+                t2 = gettree(t, num);
+                t3 = gettree(t, num + 1);
+                ans -= t2->val*t2->val;
+                ans -= t3->val*t3->val;
+                ans += (t2->val + t3->val)*(t2->val + t3->val);
+                pair<tree*, tree*> p1 = split(t, num+2);
+                tree* t5 = new tree();
+                t5->val = t2->val + t3->val;
+                t5 = merge(t5,p1.second);
+                t = t5;
+                n--;
+            }
+            else if (num == n)
+            {
+                tree* t2;
+                tree* t3;
+                t2 = gettree(t, num - 1);
+                t3 = gettree(t, num);
+                ans -= t2->val*t2->val;
+                ans -= t3->val*t3->val;
+                ans += (t2->val + t3->val)*(t2->val + t3->val);
+                pair<tree*, tree*> p1 = split(t, num-1);
+                t = p1.first;
+                tree* t5 = new tree();
+                t5->val = t2->val + t3->val;
+                t = merge(t, t5);
+                n--;
+            }
+            else
+            {
+                tree* t1;
+                tree* t2;
+                tree* t3;
+                t1 = gettree(t, num - 1);
+                t2 = gettree(t, num);
+                t3 = gettree(t, num + 1);
+                ans -= t1->val*t1->val;
+                ans -= t2->val*t2->val;
+                ans -= t3->val*t3->val;
+                ans += (t1->val + t2->val / 2)*(t1->val + t2->val / 2);
+                ans += (t3->val + ((t2->val+1) / 2))*(t3->val + ((t2->val+1) / 2));
+                pair<tree*, tree*> p1 = split(t, num - 1);
+                pair<tree*, tree*> p2 = split(p1.second, 4);
+                t = p1.first;
+                tree* t5 = new tree();
+                t5->val = t1->val + t2->val / 2;
+                t = merge(t, t5);
+                tree* t6 = new tree();
+                t6->val = (t3->val + ((t2->val+1) / 2));
+                t = merge(t, t6);
+                t = merge(t, p2.second);
+                n--;
+            }
+        }
+        else//delen
+        {
+            tree* hlp;
+            hlp = gettree(t, num);
+            ans -= hlp->val*hlp->val;
+            tree *t1 = new tree();
+            tree *t2 = new tree();
+            t1->val = hlp->val / 2;
+            t2->val = (hlp->val+1)/ 2;
+            ans += t1->val*t1->val;
+            ans += t2->val*t2->val;
+            pair<tree*, tree*> p1 = split(t, num);
+            pair<tree*, tree*> p2 = split(p1.second, 2);
+            t = p1.first;
+            t = merge(t, t1);
+            t = merge(t, t2);
+            t = merge(t, p2.second);
+            n++;
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}

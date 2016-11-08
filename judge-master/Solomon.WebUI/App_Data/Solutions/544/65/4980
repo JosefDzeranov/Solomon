@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+int main() {
+
+	//freopen("input.txt", "r", stdin);
+
+	long long  a, b, c, d;
+	cin >> a >> b >> c >> d;
+
+	long long  fir, sec;
+
+	if (a < b)
+		fir = a;
+	else
+		fir = b;
+	if (c < d)
+		sec = c;
+	else
+		sec = d;
+	long long sum = fir + sec;
+
+	long long ans = sqrt(sum);
+
+	cout << ans << endl;
+
+	return 0;
+}

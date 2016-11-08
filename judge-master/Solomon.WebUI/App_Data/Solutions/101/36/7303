@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace Последовательность
+{
+    class Program
+    {
+        static string posl(int n)
+        {
+            return (n - 1) + " " + n + " " + (n + 1)+" ";
+        
+        }
+        static void Main(string[] args)
+        {
+            string s = "";
+            int n = Convert.ToInt32(Console.ReadLine());
+            n = n - 1;
+            while (n >= 2)
+            {
+                s = posl(n) + s;
+                n--;
+            }
+            Console.WriteLine(s);
+        }
+    }
+}

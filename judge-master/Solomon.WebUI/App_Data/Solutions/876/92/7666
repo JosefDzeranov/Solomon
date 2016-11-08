@@ -1,0 +1,25 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+ x1,y1,x2,y2,x3,y3,a,b,c,d,x,y:integer;
+begin
+ readln(x1,y1);
+ readln(x2,y2);
+ readln(x3,y3);
+ a:=x2-x3;
+ b:=x3-x1;
+ if a>b then
+  x:=b else x:=a;
+ c:=y3-y1;
+ d:=y2-y3;
+ if c>d then
+  y:=d else y:=c;
+ if x>y then
+  writeln(y) else writeln(x);
+ readln;
+end.

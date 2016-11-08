@@ -1,0 +1,29 @@
+#include<cstdio>
+#include<cmath>
+#include<vector>
+#include<set>
+#include<map>
+#include<string>
+#include<string.h>
+#include<queue>
+#include<iostream>
+
+using namespace std;
+
+string s;
+long long p,number,i;
+
+main()
+{
+//      freopen("input.txt","r",stdin);
+//      freopen("output.txt","w",stdout);
+      
+      cin>>s;
+      p=1;
+      number=0;
+      for (i=s.size()-1;i>=0;i--){
+          if (s[i]=='*') number=number+p;
+          p=p*2;
+      }
+      cout<<number<<endl;
+}

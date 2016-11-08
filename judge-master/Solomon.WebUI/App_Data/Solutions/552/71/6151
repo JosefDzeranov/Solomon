@@ -1,0 +1,21 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{int k=0,a,b,c,N;
+cin>>N>>a>>b>>c;
+while(k<2)
+{
+    if(a<=b&&a<=c){a=a*2;if(a+b+c>N){a=a/2;k=k+1;}}
+    else{k=k+1;}
+    if(b<=a&&b<=c){b=b*2;if(a+b+c>N){b=b/2;k=k+1;}}
+    else{k=k+1;}
+    if(c<=b&&c<=a){c=c*2;if(a+b+c>N){c=c/2;k=k+1;}}
+    else{k=k+1;}
+    if(k<2){k=0;}
+}
+cout<<a<<' '<<b<<' '<<c;
+    return 0;
+}

@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace  std;
+int main ()
+{
+	int n=1, c=0, h=0, o,d;
+	cin>>n;//кол-во шкафов
+	int* a = new int[n];
+	
+	for(int i=0; i<n; i++)
+		cin>>a[i];//
+	for(int j=0; j<n;j++)
+		c=c+a[j];//сумма всех наград
+
+
+	d=c/n;//среднее арифметическое
+	o=c%n;//остаток
+	if(o==0){
+					for(int k=0;k<n;k++){if(a[k]!=d)h++;}//ищет кол-во чисел не равным d
+
+				int* b = new int[h];//массив всех чисел не равных d
+
+				for(int jj=0;jj<h;jj++)b[jj]=0;//обнуление массива
+
+				for(int i=0; i<n;i++){
+					for(int jk = 0; jk<h; jk++){if(a[jk]!=d)b[jk]=a[jk];}}//запись в массив b
+
+				for(int ik = 0; ik<h; ik++)b[ik]=d-b[ik];//сколько надо добавить или убрать с каждой полки
+				c=0;//обнуление суммы
+				for(int kk=0; kk<h;kk++){if(b[kk]>=0)c=c+b[kk];}//сколько наград надо, чтобы везде все было поровну
+	cout<<c;}
+	else cout<<"IMPOSSIBLE";
+	}

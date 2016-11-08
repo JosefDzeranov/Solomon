@@ -1,0 +1,16 @@
+var
+   n, i, cnt : LongInt;
+   
+begin
+     ReadLn (n);
+     
+     i := 1;
+     cnt := 1;
+     while cnt < n do
+     begin
+         Inc (i);
+         Inc (cnt, i);
+     end;
+     
+     WriteLn (i)
+end.

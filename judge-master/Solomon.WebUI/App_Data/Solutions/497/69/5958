@@ -1,0 +1,36 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,a,b,t : real;
+var a1 : boolean;
+begin
+readln(a,b,x);
+while (t*1000 < x) do
+if(b * 1000 >= x) Then
+begin
+writeln(x / b);
+break;
+end
+ Else
+begin
+if(a1 = true) Then
+begin
+a1:= false;
+t:= t + a;
+end
+else
+begin
+t:= t + b;
+a1:= true;
+end;
+end;
+writeln(x / t:0);
+readln;
+end.
+
+
+

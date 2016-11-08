@@ -1,0 +1,14 @@
+//#include "stdafx.h"
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+	unsigned long int n,k;
+	scanf("%ld%ld", &n, &k);
+	printf("%d", rand()%10);
+
+	//getch();
+	return 0;
+}

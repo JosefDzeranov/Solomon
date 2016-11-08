@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+    int i, a, w = 1;
+    cin >> a;
+    for(i = 0; i < 3; i ++)
+    {
+        w *= a;
+        a -= 1;
+    }
+    cout << w;
+
+    return 0;
+}

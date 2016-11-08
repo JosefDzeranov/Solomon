@@ -1,0 +1,7 @@
+var a,k,b,i,j:integer;
+begin
+read(k);
+for j:=1 to k div 3 do write(j,' ',j+1,' ',j+2,' ');
+if k mod 3 = 1 then write(j+1) ;
+if k mod 3 = 2 then  write(j+1,' ',j+2);
+end.

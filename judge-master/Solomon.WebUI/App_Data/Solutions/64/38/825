@@ -1,0 +1,53 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+    using namespace std;
+ 
+	
+struct point
+{
+    long double x, y;
+    point(){}
+    point(long double _x, long double _y)
+    {
+        x = _x;
+        y = _y;
+    }
+};
+
+
+long double res(point a, point b)
+{
+    return ((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
+}
+
+    int main()
+    {
+		point a, b, c, d;
+		cin >> a.x >> a.y;
+		cin >> b.x >> b.y;
+		cin >> c.x >> c.y;
+		cin >> d.x >> d.y;
+		long double mas[6];
+		mas[0] = res(a, b);
+		mas[1] = res(a, c);
+		mas[2] = res(a, d);
+		mas[3] = res(b, c);
+		mas[4] = res(b, d);
+		mas[5] = res(c, d);
+		sort(mas, mas + 6);
+		long double temp = mas[0];
+		for (int i = 1; i < 4; i++)
+		{
+			if (abs(mas[i] - temp) > 1e-8)
+			{
+				cout << "NO";
+				return 0;
+			}
+		}
+		if (abs(mas[4] - mas[5]) <1e-8) cout << "YES";
+		else cout << "NO";
+		return 0;
+    }
+	

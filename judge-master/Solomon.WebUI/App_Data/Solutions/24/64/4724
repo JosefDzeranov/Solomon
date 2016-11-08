@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+long long int ans = 0;
+int a[3][55];
+long long int h = 2;
+int cnt;
+int k;
+vector <int> perem;
+long long int l, r;
+
+void pr(int i, int n) {
+
+	int j = 0;
+	while (n)
+	{
+		a[i][j] = n % 2;
+		if (a[i][j])
+			cnt++;
+		j++;
+		n /= 2;
+	}
+	if (i == 1)
+		k = j;
+}
+
+long long int stepen(int step) {
+	long long int d = 1;
+	for (int i = 0; i < step; i++)
+		d *= h;
+	return d;
+}
+
+void counting(int now, long long int sum, int vsego) {
+
+	if (now == perem.size()) {
+		if (sum >= l && sum <= r)
+			ans += stepen(vsego);
+	}
+	else
+		while (now < perem.size())
+		{
+			if (sum + perem[now] <= r)
+				counting(now+1, sum + perem[now], vsego + 1);
+			counting(now+1, sum, vsego);
+			now++;
+		}
+
+}
+
+int main() {
+	//freopen("bits.in", "r", stdin);
+	//freopen("bits.out", "w", stdout);
+
+	
+	
+	cin >> l >> r;
+	pr(0, l);	
+	pr(1, r);
+
+	long long int y;
+	for (int i = l; i <= r; i++)
+	{
+		y = i;
+		cnt = 0;
+		pr(2, y);
+
+		h = 2;
+		h = stepen(cnt);
+		long long int g = 0, m = 1;
+		for (int j = 0; j < k; j++, m *= 2)
+			if (!a[2][j]) {
+				g += m;
+				if (g >= l && g <= r)
+					perem.push_back(g);
+			}
+		
+		
+		counting(0, 0, 0);
+		perem.clear();
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+long long n, k, c = 1;
+
+int main() {
+    //freopen("casting.in", "r", stdin);
+    //freopen("casting.out", "w", stdout);
+    cin >> n >> k;
+    for (int i = 1; i <= k; ++i)
+        c = c * (n - k + i) / i;
+    cout << c;
+    return 0;
+}

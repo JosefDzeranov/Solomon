@@ -1,0 +1,25 @@
+﻿using System;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+
+            double answer = 0;
+
+            for (int i = s.Length - 1, k = 0; i >= 0; i--)
+            {
+                if (s[i] == '*')
+                    answer += Math.Pow(2, k);
+                
+                k++;
+            }
+
+            Console.WriteLine(answer);
+        }
+    }
+}

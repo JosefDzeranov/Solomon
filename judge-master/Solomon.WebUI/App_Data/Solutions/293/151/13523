@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        n = sc.nextInt();
+        int a,b,c,d;
+        a=b=c=n/3;
+        d=n%3;
+        if(d==0)
+        {
+            a--;
+            c++;
+            System.out.println(a+" "+b+" "+c);
+            return;
+        }
+        else if(d==1)
+        {
+            a--;
+            c+=2;
+            System.out.println(a+" "+b+" "+c);
+            return;
+        }
+        else if(d==2)
+        {
+            a--;
+            b++;
+            c+=2;
+            System.out.println(a+" "+b+" "+c);
+            return;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+uses math;
+
+var
+   s, rez: string;
+   i, j, k, l: longint;
+   a: array [1..1001, 1..1001] of char;
+
+begin
+   readln(s);
+   k := ceil(sqrt(length(s)));
+   
+   for i := 1 to k do
+      for j := 1 to k do
+         a[i, j] := ' ';
+   
+      {for i := 1 to k do
+        for j := 1 to k do
+            if length(s) <> 0 then begin a[i, j] := s[1]; delete(s, 1, 1) end else break;
+   
+   
+      for i := 1 to k do
+         for j := 1 to k do
+              write(a[j, i]);
+   
+   }
+   i := 1; j := 1;
+   for l := 1 to length(s) do
+   begin
+      a[j, i] := s[l];
+      inc(i);
+      if i > k then begin i := 1; inc(j); end;
+   end;
+   i:=1; j:=1;
+   for l := 1 to k*k do
+   begin
+      write(a[i, j]);
+      inc(i);
+      if i > k then begin
+         i := 1; inc(j);
+      end;
+   end;
+end.

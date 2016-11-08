@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+using namespace std;
+
+long long s,n;
+int a[10000];
+bool m[20000005];
+
+int main(){
+    cin>>n;
+    for(int i=1;i<=n;i++)
+        cin>>a[i],s+=a[i];
+    m[0]=1;
+    for (int i=1;i<=n;i++){
+        for(int j=0;j<=20000000;j++)
+        if (m[j]>0) m[j+a[i]]=1;
+    }
+    int mn=INT_MAX;
+    for(int j=0;j<=20000000;j++)
+        if (m[j]==1){
+            if (abs((s-j)-j)<mn) mn=abs((s-j)-j);
+        }
+    cout<<mn<<endl;
+
+    return 0;
+}

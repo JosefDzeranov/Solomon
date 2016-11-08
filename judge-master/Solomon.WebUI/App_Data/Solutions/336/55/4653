@@ -1,0 +1,13 @@
+program MagicSquare;
+var n:integer; s:longint;
+
+begin
+ readln(n);
+ if (n<2) or (n>1000)
+ then writeln('input data is not correct')
+ else
+   begin
+     s:=(1+(2*n-1)*(2*n-1))*(2*n-1)+1+4*n*n;
+     writeln(s);
+   end;
+end.

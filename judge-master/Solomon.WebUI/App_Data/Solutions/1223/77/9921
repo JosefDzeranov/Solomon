@@ -1,0 +1,33 @@
+Program z5;
+var A:array [1..1000,1..1000] of char;
+s:string;
+i,n,l,d:longint;
+begin
+
+Read(s);
+
+if sqr(round(sqrt(length(s))))=length(s) then
+ n:=round(sqrt(length(s)))
+else
+ n:=trunc(sqrt(length(s)))+1;
+
+i:=1;
+l:=1;
+For d:=1 to length(s) do
+ begin
+  A[l,i]:=s[d];
+  if i=n then 
+   begin
+    l:=l+1;
+    i:=1;
+   end else
+  i:=i+1;
+ end;
+ 
+For l:=1 to n do
+ begin
+  for i:=1 to n do
+   Write(A[i,l]);
+ end;
+  
+end.

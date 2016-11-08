@@ -1,0 +1,4 @@
+__author__ = 'kotvb_000'
+x, z = (int(i) for i in input().split())
+y, q = (int(i) for i in input().split())
+print(str(y-x) + " " + str(q-z))

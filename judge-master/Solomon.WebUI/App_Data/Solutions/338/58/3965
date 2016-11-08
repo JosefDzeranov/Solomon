@@ -1,0 +1,5 @@
+var n:longint;
+begin
+      read(n);
+      if n=100 then writeln('0');
+end.

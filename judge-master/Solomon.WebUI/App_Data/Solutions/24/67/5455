@@ -1,0 +1,95 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+struct task {
+	long long int vr, id, t;
+};
+
+
+
+vector <task> mas;
+vector <long long int> a;
+vector <long long int> ans, cnt;
+
+bool cmp (task a, task b) {
+
+	if (a.vr < b.vr || (a.vr == b.vr && a.id > b.id) || (a.vr == b.vr && a.id == b.id && a.t < b.t))
+		return true;
+	else
+		return false;
+}
+
+
+int main() {
+
+
+	//freopen("input.txt", "r", stdin);
+
+	int n;
+	cin >> n;
+	cnt.resize(n);
+	long long int s, t, c;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> s >> t >> c;
+		cnt[i] = c;
+		task f;
+		f.id = 0;
+		f.vr = s;
+		f.t = i;
+		mas.push_back(f);
+		f.id = 1;
+		f.vr += t;
+		mas.push_back(f);
+	}
+
+	sort(mas.begin(), mas.end(), cmp);
+	a.assign(2*n, 0);
+
+	for (int i = 1; i < 2*n; i++)
+		if (mas[i].id == 0)
+		{
+			a[i] = a[i-1];
+			cnt[mas[i].t] += a[i];
+		}
+		else
+			if (a[i-1] >= cnt[mas[i].t]) {
+				a[i] = a[i-1];
+			}
+			else
+			{	
+				a[i] = cnt[mas[i].t];
+
+				int h = 1;
+				int j = i - 1;
+				int g = ans.size() - 1;
+
+				while (h && j >= 0 && g >= 0)
+				{
+					if (ans[g] == mas[j].t) {
+						ans.pop_back();
+						g--;
+					}
+					if (mas[j].t == mas[i].t)
+						h = 0;
+					j--;
+				}
+				ans.push_back(mas[i].t);
+
+			}
+
+
+	cout << a[2*n-1] << endl;
+	cout << ans.size() << endl;
+	for (int i = 0; i < ans.size(); i++)
+		cout << ans[i] + 1 << " ";
+
+
+
+
+	return 0;
+}

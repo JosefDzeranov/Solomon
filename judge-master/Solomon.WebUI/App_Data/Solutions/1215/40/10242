@@ -1,0 +1,19 @@
+var i1,k,n,l,m:integer;
+p:string[100];
+a:array [1..103] of char;
+d:char;
+begin
+read(p);
+k:=length(p);
+for i1:=1 to k do a[i1]:=p[i1];
+n:=1;l:=0;
+while n<=k do 
+begin
+if a[n]='#' then  if n<>1 then begin for i1:=n-1 to k-l do   a[i1]:=a[i1+2];m:=-2;l:=l+2;end 
+                          else begin for i1:=n   to k-l do   a[i1]:=a[i1+1];m:=-1;l:=l+1;end;
+if a[n]='-' then begin d:=a[n-1];    for i1:=n-1 to k-l-2 do a[i1]:=a[i1+2];a[k-l-1]:=' ';a[k-l]:=' ';m:=-2;l:=l+2;end;          
+n:=n+1+m;m:=0;
+if a[n]='+' then begin a[n]:=d;d:=a[103];end;
+end;
+for i1:=1 to k-l do write(a[i1]);if d<> a[103] then write(d);
+end.

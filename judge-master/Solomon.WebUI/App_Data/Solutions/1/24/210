@@ -1,0 +1,46 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main() {
+
+	/*freopen("relatives.in", "r", stdin);
+	freopen("relatives.out", "w", stdout);*/
+	int n;
+	int mas[1024];
+	for (int i = 0; i < 1024; i++)
+		mas[i] = 0;
+
+	cin >> n;
+	for (int i = 0; i < n; i++) 
+	{
+		int a;
+		int y = 0;
+		cin >> a;
+		if (a == 0)
+			mas[0]++;
+		else
+		{
+			while (a)
+			{
+				y = y | (1 << a % 10);
+				a /= 10;
+			}
+		mas[y] ++;
+		}
+	}
+
+	long long int ans = 0;
+	for (int i = 0; i < 1024; i++)
+		for (int j = i; j < 1024; j++) {
+			if (i & j)
+				if (i == j)
+					ans += mas[i] * (mas[i] - 1) / 2;
+				else
+					ans += mas[i] * mas[j];
+		}
+	cout << ans << endl;
+	
+	return 0;
+}

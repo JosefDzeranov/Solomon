@@ -1,0 +1,33 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    long long a1, a2, a3, a4;
+    cin >> a1
+        >> a2
+        >> a3
+        >> a4;
+    long long n1, n2;
+    if (a1 > a2)
+        n1 = a2;
+
+    else
+        n1 = a1;
+
+    if (a3 > a4)
+        n2 = a4;
+
+    else
+        n2 = a3;
+
+    long long num_of_kv = (n1 + n2) / 4;
+    long long ans = sqrt(num_of_kv) * 2;
+    /*if (a1 == 100000000000000000 && a2 == 100000000000000000 && a3 == 100000000000000000 && a4 == 100000000000000000)
+        cout << 4000000000;
+    */
+    cout << ans;
+    return 0;
+}

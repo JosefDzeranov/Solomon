@@ -1,0 +1,18 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,y1,y2,h,b:integer;
+begin
+ readln(x1,x2,y1,y2);
+ h:=200;
+   If x1<0 then h:=200+x1*(-2);
+   If y1>0 then b:=200+y1*(-2);
+   h:=h*5;
+   b:=b*5;
+   writeln(h);
+   readln;
+end.

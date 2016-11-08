@@ -1,0 +1,42 @@
+#include<stdio.h>
+
+double sort(double x)
+{
+  double y;
+     
+  y=4;
+  while(x>y)
+    y+=6;
+  
+  if(x==y) return 1;
+    else return 0;
+}
+
+int main()
+{
+  //freopen("code.in","r",stdin);
+  //freopen("code.out","w",stdout);
+  
+  double n,a,b,c;
+  int i;
+  
+  scanf("%lf",&n);
+  
+  if(n==1 || n==2) printf("1\n");
+    else 
+    {
+      a=1;
+      b=1;
+      i=3;
+      while(n+1>i)
+      {
+        if(i%2==1 || sort(i)) c=b+1;
+          else c=b;
+        a=b;
+        b=c;            
+        i++;      
+      }
+      printf("%.0lf\n",c);
+    }
+  return 0;
+}

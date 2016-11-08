@@ -1,0 +1,30 @@
+Program konfeti;
+var N, a, b, c, d: longint;
+Begin
+readln(N, a, b, c);
+if a+b+c = N then
+writeln (a, ' ', b, ' ', c)
+else
+if a+b+c <= 2*N
+then 
+if c<a then if c<b then
+writeln (a,' ', b, ' ',  N-a-b)
+else 
+if b<a then if b<c then
+writeln (a,' ', N-a-c, ' ',  c)
+else 
+if b<a then if b<c then
+writeln (N-b-c,' ', b, ' ',  c)
+else
+if a+b+c = N
+then
+writeln (a, ' ', b, ' ', c)
+end.
+{if a+b+c <= 2*N
+then 
+writeln (a,' ', b, ' ',  N-a-b)
+else
+if a+b+c = N
+then
+writeln (a, ' ', b, ' ', c)
+if }

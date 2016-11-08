@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+
+using System.Text;
+
+namespace kvadrat
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int k=n*2;
+            int w = k * k + 1;
+            k = k - 1;
+            int s = (k * (k * k + 1)) / 2;
+           
+            Console.WriteLine(s + s + w);
+
+        }
+    }
+}

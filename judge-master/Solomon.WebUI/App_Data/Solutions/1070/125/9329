@@ -1,0 +1,16 @@
+var a,b,c,d,e,f,g,h,i,j:integer;
+    
+begin
+readln(a,b);
+readln(c,d);
+readln(e,f);
+g:=c-a;
+h:=d-b;
+i:=g-e;
+j:=h-f;   
+if i<j then   
+   writeln(i*-1)
+   else
+   writeln(j*-1);
+readln; 
+end.

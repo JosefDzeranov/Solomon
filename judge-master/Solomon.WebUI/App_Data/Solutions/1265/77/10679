@@ -1,0 +1,16 @@
+{$h+}
+var s:string;n,i,j,k:integer;a:array [1..1000,1..1000] of char;d:real;
+begin
+read(s);
+d:=sqrt(length(s));
+if frac(d)=0 then n:=trunc(d) else n:=trunc(d)+1;
+k:=1;
+for i:=1 to n do
+for j:=1 to n do a[i,j]:=' ';
+for i:=1 to n do
+for j:=1 to n do 
+if k<=length(s) then begin
+a[i,j]:=s[k];inc(k);end;
+for i:=1 to n do 
+for j:=1 to n do write(a[j,i]);
+end.

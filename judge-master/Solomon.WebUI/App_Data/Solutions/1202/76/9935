@@ -1,0 +1,39 @@
+program d;
+
+var
+        n, i, j : LongInt;
+        cnt : Int64;
+        a, r : Integer;
+        s, subs : string;
+
+begin
+        ReadLn (n);
+
+        cnt := 0;
+        for i := 1 to n do
+        begin
+                ReadLn (s);
+
+                j := 1;
+                while (j <= Length (s)) do
+                begin
+                        if (s[j] <= '9') and (s[j] >= '0') then
+                                if (j > 1) and (s[j - 1] <= '9') and (s[j - 1] >= '0') then
+                                begin
+                                        Dec (cnt, Ord (s[j - 1]) - 48);
+
+                                        subs := Copy (s, j - 1, 2);
+
+                                        Val (subs, a, r);
+
+                                        Inc (cnt, a)
+                                end
+                                else
+                                        Inc (cnt, Ord (s[j]) - 48);
+
+                        Inc (j)
+                end;
+        end;
+
+        WriteLn (cnt)
+end.

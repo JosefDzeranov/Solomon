@@ -1,0 +1,14 @@
+program svetofori;
+var a, b, x: longint;
+y:real;
+Begin 
+Readln(a, b, x);
+if x/b <= 1000
+then y:=x/b
+else y := x/(2*b+a);
+if x/(2*b+a)>1000
+then y := x/(b+2*(b+a));
+writeln(y);
+end.
+While y <=1000 do begin
+y:=b

@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int l,n,r1,r2,x1,x2,y,v;
+    cin>> n>>l>>r1>>r2;
+    y=6;
+    v=3;
+    cout<<"YES"<<endl<<y<<v;
+    return 0;
+}

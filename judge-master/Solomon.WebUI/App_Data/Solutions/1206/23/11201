@@ -1,0 +1,24 @@
+var c:string;
+n,i,a,b,j,k,m:integer;
+begin
+readln(n);
+for i:=1 to n do begin
+  readln(c);
+  for j:=1 to 4 do begin
+    if c[j]='>' then
+      a:=a+1;
+    if c[j]='<' then
+      b:=b+1;
+  end;
+  if a>b then k:=k+a-b;
+  if b>a then m:=m+b-a;
+end; 
+if a-b=0 then 
+  write(0)
+  else 
+    if (a>=b) then
+      write(1,' ',a-b)
+    else
+      write(2,' ',b-a);
+end.
+  

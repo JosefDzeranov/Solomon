@@ -1,0 +1,32 @@
+var
+     a,b,k:array[1..1000] of longint;
+        max,nm,i,d,x,n,f:longint;
+begin
+//assign(input,'input1.txt'); reset(input);
+//assign(output,'output1.txt'); rewrite(output);
+readln(n);max:=0; nm:=0;
+for i:=1 to n do
+ begin
+ read(a[i]);
+ x:=a[i];
+ f:=0;
+ while f=0 do
+  begin
+  d:=0;
+  while x>0 do
+    begin
+    d:=d+x mod 10;
+    x:=x div 10;
+    end;
+  x:=d;
+  if x<=9 then f:=1;
+  end;
+  b[i]:=x;
+  inc(k[x]);
+  if k[x]> max then begin nm:=x; max:=k[x]; end;
+  if (k[x]=max)and(x<nm) then nm:=x;
+  end;
+
+for i:=1 to n do if b[i]<>nm then write(a[i],' ');
+
+end.

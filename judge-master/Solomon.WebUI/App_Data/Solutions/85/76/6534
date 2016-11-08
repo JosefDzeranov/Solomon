@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int stoi(string s)
+{
+    int res = 0;
+    for (int i = 0; i < s.size(); i++)
+
+        res = res * 10 + (int(s[i]) - 48);
+
+    return res;
+}
+
+
+int main()
+{
+	string nn;
+	getline(cin, nn);
+	int n = stoi(nn);
+	int ans = 0;
+	string num;
+	for (int i = 0; i < n; i++)
+	{
+		getline(cin, num);
+		for (unsigned int j = 0; j < num.size(); j++)
+		{
+		    string nn = "";
+			while ((num[j] < '0' || num[j] > '9') && (j < num.size()))
+				j++;
+
+			while (j < num.size() && num[j] >= '0' && num[j] <= '9')
+			{
+				nn += num[j];
+				j++;
+			}
+			int a = stoi(nn);
+			ans += a;
+ 		}
+
+	}
+	cout << ans;
+	return 0;
+}

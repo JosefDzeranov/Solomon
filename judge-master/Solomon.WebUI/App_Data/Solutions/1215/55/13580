@@ -1,0 +1,8 @@
+var
+a,b,c:longint;
+begin
+read(a);
+b:=2*a;b:=((1+b*b)*(b*b))div 2 div b div a;
+c:=2*a-1; c:=((c*c+1)*(c*c))div c ;
+write(b+c);
+end.

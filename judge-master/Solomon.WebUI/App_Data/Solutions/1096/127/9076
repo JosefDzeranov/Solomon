@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+
+int main()
+{
+	//cout << int('Z'-'A');
+	string s;
+	cin >> s;
+	string t;
+	cin >> t;
+	int pok = -1;
+	if (t.size() > s.size())
+	{
+		cout << "IMPOSSIBLE";
+		return 0;
+	}
+	for (int k = 0; k <= 25; k++)
+	{
+		for (int j = 0; j <= s.size() - t.size(); j++)
+		{
+			string p = "";
+			for (int i = 0; i < t.size(); i++)
+			{
+				p += char((int(s[i + j] - 'A') + k) % 26 + 'A');
+			}
+			if (p == t)
+			{
+				pok = k;
+				break;
+			}
+		}
+	}
+	if (pok == -1)
+		cout << "IMPOSSIBLE";
+	else
+	{
+		string ans = "";
+		for (int i = 0; i < s.size(); i++)
+			ans += char((int(s[i] - 'A') + pok) % 26 + 'A');
+		cout << ans;
+	}
+	return 0;
+}

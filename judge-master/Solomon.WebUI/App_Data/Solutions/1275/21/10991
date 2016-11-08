@@ -1,0 +1,62 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+
+const int x = 1000001;
+
+
+
+int main()
+{
+	double z = 0;
+	double a;
+	int b, c, d;
+	int e = 0;
+	
+	string mama;
+	
+	getline(cin,mama);
+	
+	for(int y=0;mama[y]!='\0';y++)
+		z++;
+		
+	a = sqrt(z);
+    b = ceil(a);
+    c = b * b;
+    
+	cout << mama[0];
+	
+	int f = b;
+	c = c + 1;
+	
+	for(;;)
+	{	if(b>=c)
+	    {
+	    	b = e + 1;
+		    e++;
+	    }
+	    if(b==(c-1))
+	    {
+	    	b = e + 1;
+		    e++;
+	    }
+	    if(e==f)
+	       break;
+	    else
+	    {
+		   if(mama[b]!='\0')
+		   {
+			  cout << mama[b];
+			  b = b + f;
+		   }
+		   else
+		   {
+		     cout << " ";
+		     b = b + f;
+	       }
+	    }
+	}
+	
+	return 0;
+}

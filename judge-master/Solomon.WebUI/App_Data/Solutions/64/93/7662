@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+
+int main()
+{
+	//srand(time(NULL));
+	int x, y, z, q;
+	cin >> x >> y >> z >> q;
+	int a = (z - x) * 60 + (q - y);
+	if (a < 0) a += 1440;
+	cout << a / 60 << ' ' << a % 60;
+	return 0;
+}

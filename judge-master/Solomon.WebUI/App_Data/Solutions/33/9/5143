@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+#include <string>
+int main() {
+	int a, b, c, n, x;
+	cin >> x >> n >> a >> b >> c;
+	if (x==1) {
+	if (a>b&&b>c)
+		cout << n-c;
+	if (a>c&&c>b)
+		cout << n-b;
+	if (b>a&&a>c)
+		cout << n-c;
+	if (b>c&&c>a)
+		cout << n-a;
+	if (c>a&&a>b)
+		cout << n-b;
+	if (c>b&&b>a)
+		cout << n-a;
+	}
+	if (x==2) {
+	if (a>b&&b>c)
+		cout << c;
+	if (a>c&&c>b)
+		cout << b;
+	if (b>a&&a>c)
+		cout << c;
+	if (b>c&&c>a)
+		cout << a;
+	if (c>a&&a>b)
+		cout << b;
+	if (c>b&&b>a)
+		cout << a;
+	}
+	cin.get();
+	return 0;
+}

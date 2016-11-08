@@ -1,0 +1,120 @@
+#include <cstdlib>
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int MinN(int m[],int N);
+int MaxN(int m[],int N);
+void PrintM(int m[],int N);
+void Sort(int m[],int N);
+int Summa(int m[],int id,int N);
+void Perebor(int m[],int id,int N);
+int Check(int m[],int N);
+
+int Resultat;
+
+int main(int argc, char *argv[])
+{
+    int N=10;
+    int m[]={48,36,25,138,17,29,86,91,77,58};
+    //int N=4;
+    //int m[]={7,6,5,4};
+    Resultat=m[0];
+    
+    Perebor(m,N-1,N);
+    cout<<Resultat<<endl;
+    
+    //system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+void Perebor(int m[],int id,int N)
+{
+    int q;
+    int v=id;
+    if (Resultat>Check(m,N)){Resultat=Check(m,N);}
+    while(id!=0){
+        for (int i=0; i<N; i++){
+            if (id!=i){
+                q=m[id];
+                m[id]=m[i];
+                m[i]=q;
+                //PrintM(m,N);
+                if (Resultat>Check(m,N)){Resultat=Check(m,N);}
+            }
+        }
+        id--;
+    }
+    id=v;
+    if (id>0){
+        Perebor(m,id-1,N);
+    }
+}
+
+int Check(int m[],int N)
+{
+    int raz;
+    int res=m[0];
+    for (int i=0;i<N;i++){
+        raz=Summa(m,0,i)-Summa(m,i,N);
+        if (raz<0){raz=-raz;}
+        if (res>raz){res=raz;}
+    }    
+    return res;
+}
+
+void PrintM(int m[],int N)
+{
+    for (int i=0; i<N; i++){
+        cout<<m[i]<<" ";
+    }
+    cout << endl;
+}
+
+void Sort(int m[],int N)
+{
+    int m2[N];
+    for (int i=0; i<N; i++){
+        m2[i]=m[i];
+    }
+    int min=MinN(m2,N);
+    int max=MaxN(m2,N);
+    int sch=0;
+    for (int i=max;i>min;i--){
+        for(int j=0;j<N;j++){
+            if (m2[j]==i){
+                m[sch]=m2[j];
+                sch++;
+            }
+        }
+    }
+}
+
+
+int Summa(int m[],int id,int N)
+{
+    int res=0;
+    for (int i=id; i<N; i++){
+        res=res+m[i];
+    }  
+    return res;  
+}
+
+int MinN(int m[],int N)
+{
+    int res=m[0];
+    for (int i=0;i<N;i++){
+        if (res>m[i]){res=m[i];}
+    } 
+    return res;
+}
+
+int MaxN(int m[],int N)
+{
+    int res=m[0];
+    for (int i=0;i<N;i++){
+        if (res<m[i]){res=m[i];}
+    } 
+    return res;
+}

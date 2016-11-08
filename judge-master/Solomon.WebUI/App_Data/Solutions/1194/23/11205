@@ -1,0 +1,25 @@
+var c:string;
+n,i,a,j:smallint;
+begin
+readln(n);
+
+for i:=1 to n do begin
+  readln(c);
+  
+  for j:=1 to 2 do begin3
+    if c[j]='>' then inc(a);
+    if c[j]='<' then dec(a);
+  end;
+  
+  for j:=3 to 4 do begin 
+    if c[j]='<' then dec(a);
+    if c[j]='>' then inc(a);
+  end;
+end;
+
+if a<>0 then 
+if a>0 then write(1,a)
+else write(2,-1*a)
+else write(0);
+end.
+  

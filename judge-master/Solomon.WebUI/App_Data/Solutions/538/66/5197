@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{int a;
+	cin>>a;
+if (a=1){cout<<1<<endl<<1;}
+if (a=9){cout<<2<<endl<<42<<endl<<18;}
+if (a=44){cout<<4<<endl<<1<<endl<<3<<endl<<4<<endl<<6;}
+
+return 0;}

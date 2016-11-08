@@ -1,0 +1,26 @@
+Program bank;
+uses crt;
+var k,t,n,z: integer;
+begin;
+writeln;
+writeln(' Введите кол-во ударов, которые может нанести Илья');
+writeln;
+readln(k);
+writeln;
+writeln(' Введите сколько голов снимает  у Горыныча Илья за один удар');
+writeln;
+readln(t);
+writeln;
+writeln(' Введите кол-во голов, которые Змей Горыныч регенерирует');
+writeln;
+readln(n);
+writeln;
+writeln;
+writeln('     Сможет ли Илья победить Горыныча?');
+writeln;
+z:=n-(k+t);
+if k+t>n then writeln(' YES')
+else writeln(' NO');
+writeln;
+writeln;
+end.

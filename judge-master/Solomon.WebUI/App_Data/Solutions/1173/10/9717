@@ -1,0 +1,16 @@
+Var
+  i,n,k: Byte;
+  num, Denom: Integer;
+Begin
+  Readln(n,k);
+  If (n<=30) and (k<=30) Then
+  Num := 1;
+  For i := n downto n - k + 1 do begin
+    num := num * i
+  End;
+  Denom := 1;
+  For i := 1 to k do begin
+    Denom := Denom * i
+  End;
+  Writeln(num div denom)
+End.

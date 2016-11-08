@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int main(){
+	long long int a,b,n,k,c,d,t=0, i, j,f=0;
+	cin>>a>>b>>c>>d;
+	for(i = 1; i <= b; i++){
+		for(j = 1; j <= b; j++){
+			n = i*j;
+			k = i*2+j*2;
+			if( n >= a &&  n <= b){
+				if(k>=c && k <= d){
+					t++;
+				}
+			}
+		}
+	}
+	if(t%2!=0)
+		cout<<(t+1)/2;
+	else
+		cout<<t/2;
+	return 0;
+}

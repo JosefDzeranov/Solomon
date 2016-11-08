@@ -1,0 +1,39 @@
+type p=record
+nom,c:integer;
+end;
+var n,m,j,i,kol,k:integer;a:array [1..100] of p;l:array[1..100] of string;
+begin
+readln(n,m);
+for i:=1 to m do read(a[i].nom,a[i].c);
+for i:=1 to m do 
+if a[i].nom<>a[i].c then begin
+for j:=1 to n do
+if (j<>i) then
+if (a[j].nom=a[i].c) and (a[j].c=a[i].nom) then
+ begin 
+ inc(kol);
+ l[kol]:=inttostr(a[i].nom)+' '+inttostr(a[i].c)+' '+inttostr(a[j].nom) +' '+inttostr(a[j].c);
+k:=a[i].nom; 
+a[i].nom:=a[j].nom;
+a[j].nom:=k; 
+break;
+ end
+ else begin 
+if (a[j].nom=a[i].c) and (a[j].c<>a[i].nom) then
+ begin 
+ inc(kol);
+ l[kol]:=inttostr(a[i].nom)+' '+inttostr(a[i].c)+' '+inttostr(a[j].nom);
+ a[i].nom:=a[j].nom; 
+ break; 
+ end;
+ if (a[j].nom=0) then begin 
+ inc(kol);
+ l[kol]:=inttostr(a[i].nom)+' '+inttostr(a[i].c)+' '+inttostr(a[i].c);
+ a[i].nom:=j; 
+ break; 
+ end end;
+end;
+writeln(kol);
+for i:=1 to kol do writeln(l[i]);
+end.
+

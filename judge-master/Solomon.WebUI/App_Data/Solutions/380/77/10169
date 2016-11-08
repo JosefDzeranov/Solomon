@@ -1,0 +1,15 @@
+var st,st1:string; i,j,o,k:longint; 
+begin
+readln(st);
+o:=0;
+i:=length(st);
+while st[i]=' ' do
+i:=i-1;
+k:=i;
+if sqr(round(sqrt(length(st))))<(length(st)) then o:=1;
+o:= round(sqrt(length(st)))+O;
+for i:= 1 to o do
+for j:=0 to o-1 do
+if ((i+o*j)<=k) then st1:=st1+st[i+o*j];
+writeln(st1);
+end.

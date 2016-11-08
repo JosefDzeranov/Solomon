@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace bb
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[,] kol = new int[2, n];
+            for (int i = 0; i < n; i++)
+            {
+                string s = Console.ReadLine();
+                int j = 0;
+                while (s[j] < '0' || s[j] > '9')
+                    j++;
+                string nom = s[j].ToString();
+                j++;
+                while (s[j] >= '0' && s[j] <= '9')
+                {
+                    nom += s[j];
+                    j++;
+                }
+                int ch = Convert.ToInt32(nom);
+                j = 0;
+                while (j < n && kol[0, j] != 0 && kol[0, j] != ch)
+                    j++;
+                if (kol[0, j] == 0)
+                {
+                    kol[0, j] = ch;
+                    kol[1, j] = 1;
+                }
+                if (kol[0, j] == ch)
+                    kol[1, j]++;
+            }
+            int k=0;
+            for (int i = 0; i < n; i++)
+            {
+                if (kol[1, i] >= 1 && kol[1, i] <= 5) k++;
+            }
+            Console.WriteLine(k);
+            for (int i = 0; i < n; i++)
+            {
+                if (kol[1, i] >= 1 && kol[1, i] <= 5) Console.WriteLine(kol[0,i]);
+            }
+        }
+    }
+}

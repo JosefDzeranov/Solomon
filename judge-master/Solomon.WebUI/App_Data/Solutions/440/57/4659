@@ -1,0 +1,79 @@
+
+var
+
+a:array[1..101] of longint;
+b:array[1..101] of longint;
+c:array[1..101] of longint;
+i,n,k,pr,o,r:longint;
+
+procedure sort(l,r:longint);
+var
+  i,j,x1,y1,m: longint;
+begin
+  i:=l;
+  j:=r;
+  m:=round ((l+r)/2);
+  x1:=c[m];
+  repeat
+    while c[i]>x1 do inc(i);
+    while c[j]<x1 do dec(j);
+    if i<=j then 
+     begin
+      y1:=c[i];
+      c[i]:=c[j];
+      c[j]:=y1;
+      inc(i);
+      dec(j);
+     end;
+  until i>j;
+  if l<j then sort(l,j);
+  if i<r then sort(i,r);
+end;
+function num(n:longint):longint;
+ var  s: longint;
+begin
+  s:=0;
+  repeat
+    s:=s+n mod 10;
+    n:= n div 10;
+ until n=0;
+ num:=s;
+end;
+function root(n:longint):longint;
+begin
+   if n<10 then root:=n
+      else
+        begin
+        n:=num(n);
+        root:=root(n);
+        end;
+end;
+
+begin
+
+readln(n);
+for i:=1 to n do
+              begin
+              readln(a[i]);
+              b[i]:=root(a[i]); 
+              c[i]:=b[i];
+              end;
+              
+sort(1,n);
+
+k:=1;
+pr:=1;
+o:=c[1];
+for i:=2 to n do
+              begin
+              if c[i]=c[i-1] then begin inc(k); end
+              else if k>=pr then begin pr:=k;  if k=1 then o:=c[i] else o:=c[i-1]; k:=1; end;
+              end;
+              r:=0;
+              for i:=1 to n do  
+              begin
+              if root(a[i])<>o then begin if r>0 then write(' '); write(a[i]); inc(r);  end;
+              
+              end;
+
+end.

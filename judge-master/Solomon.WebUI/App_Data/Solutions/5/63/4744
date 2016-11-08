@@ -1,0 +1,43 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
+int n, m;
+vector<vector<int> > a, dp;
+
+int get(int i, int j)
+{
+     if (dp[i][j] != -1)
+          return dp[i][j];
+     int best = 1;
+     if (i != 0 && a[i - 1][j] == a[i][j] + 1)
+          best = max(best, get(i - 1, j) + 1);
+     if (i != n - 1 && a[i + 1][j] == a[i][j] + 1)
+          best = max(best, get(i + 1, j) + 1);
+     if (j != 0 && a[i][j - 1] == a[i][j] + 1)
+          best = max(best, get(i, j - 1) + 1);
+     if (j != m - 1 && a[i][j + 1] == a[i][j] + 1)
+          best = max(best, get(i, j + 1) + 1);
+     return dp[i][j] = best;
+}
+
+int main()
+{
+     ifstream in("sherlocked.in");
+     ofstream out("sherlocked.out");
+     in >> n >> m;
+     assert(n == 1 || (n == 3 && m == 3 /* sample */));
+     a = vector<vector<int> >(n, vector<int>(m));
+     dp = vector<vector<int> >(n, vector<int>(m, -1));
+     for (int i = 0; i < n; i++)
+          for (int j = 0; j < m; j++)
+               in >> a[i][j];
+     int ans = 1;
+     for (int i = 0; i < n; i++)
+          for (int j = 0; j < m; j++)
+               ans = max(ans, get(i, j));
+     out << ans << "\n";
+}

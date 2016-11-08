@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <conio.h>
+#include <iostream>
+
+
+using namespace std;
+
+int main()
+{
+	bool finds=false;
+	int find;
+	int k=0,n=0,i,j,count=0;
+	int size=0,center=0;
+	char str[100000];
+	char help=0,schet=0;
+	cin.getline(str,100000);
+		
+	for(i=0;i<100000;i++)
+		if(str[i]=='\0')
+		{size = i; i = 100000;}
+	for(i=0;i<size/2;i++)
+	{
+		if(str[i]!=str[size-i-1])
+		{
+			if(finds==false){
+				finds=true;find=i;}
+			else {cout<<"\nNo";return 0;}
+			if(size%2==1)
+			{
+				center = size/2;
+				if(str[center]==str[find])
+				{
+					    schet++;
+						help=str[center];
+						str[center]=str[size-find-1];
+						str[size-find-1]=help;
+						goto p;
+				}
+				else if(str[center]==str[size-find-1])
+				{
+					    schet++;
+						help=str[center];
+						str[center]=str[find];
+						str[find]=help;
+						goto p;
+				}
+			
+			}
+			if(schet!=1)
+			for(j=0;j<size/2;j++)
+				if(str[j]==str[find] && find!=j)
+				{
+					if(str[size-j-1]==str[size-find-1])
+					{
+						schet++;
+						help=str[j];
+						str[j]=str[size-find-1];
+						str[size-find-1]=help;
+					}
+
+				}
+				else
+				{
+					if(str[size-j-1]==str[find])
+				{
+					if(str[j]==str[size-find-1])
+					{
+						schet++;
+						help=str[size-j-1];
+						str[size-j-1]=str[size-find-1];
+						str[size-find-1]=help;
+					}
+
+				}
+				}
+
+		}
+		p: ;
+	}
+
+	if(schet==0)
+	cout << "No";
+	else
+	cout << "Yes";
+	return 0;
+}

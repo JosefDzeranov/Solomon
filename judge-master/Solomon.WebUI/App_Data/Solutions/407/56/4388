@@ -1,0 +1,40 @@
+program primer;
+uses crt;
+var m:array[1..2147483646] of longint;  a: array [1..2147483646] of longint;
+n1:longint;
+i,k,n,r,j,f:integer;
+
+begin
+clrscr;
+r:=1;
+readln(n1);
+for j:=1 to n1 do begin
+r:= r*j;end;
+
+k := 0;
+ if r=0 then
+ begin
+  k:=1;
+  m[k]:=0;
+ end else
+ while r<>0 do
+ begin
+  inc(k);
+  m[k] := r mod 2;
+  r := r div 2;
+ end;
+
+ 
+  f:=0;
+  i:=1;
+  while m[i]<>1 do begin
+  f:=f+1;
+  i:=i+1;
+  end;
+ 
+ 
+ 
+  writeln(f);
+  readln;
+
+end.

@@ -1,0 +1,27 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var s:string;i,j,n:integer;
+begin
+  readln(s);
+  for i:=1 to length(s) do
+  begin
+  if i+11>length(s) then
+  break;
+  if copy(s,i,9)='vkontakte' then
+  begin
+  for j:=i+9 to length(s) do
+  begin
+  if j+2>length(s) then break;
+  if copy(s,j,3)='api' then inc(n);
+  end;
+  end;
+  end;
+  writeln(n);
+  readln;
+end.
+ 

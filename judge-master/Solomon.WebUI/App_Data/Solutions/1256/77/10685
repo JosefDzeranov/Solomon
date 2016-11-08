@@ -1,0 +1,30 @@
+var
+s,ss:String;
+dl,i,n,j,k:Longint;
+a:array of array of Char;
+begin
+
+read(s);
+dl:=length(s);
+
+If dl mod 2 = 0 then n:= dl div 2 
+else begin
+inc(dl);
+n:=dl div 2;
+dec(dl);
+end;
+SetLength(a,n);
+for i := 0 to n-1 do SetLength(a[i],n);
+k:=1;
+for i:=0 to n-1 do begin
+for j:=0 to n-1 do begin
+If k<=dl then a[i,j]:=s[k] else a[i,j]:=' '; 
+If k<=dl then inc(k);  
+end;
+end;
+
+for i:=0 to n-1 do begin
+for j:=0 to n-1 do ss:=ss+a[j,i];
+end;
+writeln(ss);
+end.

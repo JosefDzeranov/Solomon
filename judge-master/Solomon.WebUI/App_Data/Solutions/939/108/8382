@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class zelie{
+ static Scanner inputer = new Scanner(System.in);
+ static long n,sT,tF;
+ static long s[] = new long[1000000];
+ 
+ public static void main(String args[]){
+  n = inputer.nextInt();
+  for(int cI=1;cI<=n;cI++){
+   s[cI] = inputer.nextInt();
+   if((cI % 2)==0) sT=sT-s[cI];
+   else sT=sT+s[cI];
+  }
+  if(sT<=0) tF=1-sT;
+  System.out.println(tF);  
+ }
+}
+ 

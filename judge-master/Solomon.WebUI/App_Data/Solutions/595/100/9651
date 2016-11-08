@@ -1,0 +1,4 @@
+__author__ = 'kotvb_000'
+D = int(input())
+N = int(input())
+print("1" + " " + str(N-D))

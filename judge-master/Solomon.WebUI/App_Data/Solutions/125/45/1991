@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int N, L, R1, R2;
+    cin>>N>>L>>R1>>R2;
+    if(N>=L)
+        {cout <<"YES" <<endl;
+         cout<<R1*3<<R2*3;}
+    else cout <<"NO";
+    return 0;
+}

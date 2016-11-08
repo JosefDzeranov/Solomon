@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,L,R1,R2,D,S;
+	float L1,L2;
+	cin>>N>>L>>R1>>R2;
+		
+	D=R1*2;
+	S=L/D;
+	if(L%D!=0)S++;
+	L1=2*3.14*R1*S*2;
+	L2=2*3.14*R2*S;
+	if(N>=L1+L2)cout<<"YES"<<endl<<S*2<<" "<<S;
+	else cout<<"NO";
+
+	cin>>N;
+	return 0;
+}

@@ -1,0 +1,19 @@
+VAR
+   n,k,m: LongInt;
+   a: Array [0..30] of Array [0..30] of Int64;
+   
+   Function C(n,k: LongINt): Int64;
+   Begin
+      if (n = k) then m := 1
+      else if (k = 0) then m := 1
+      else if (a[n][k] > 0) then m := a[n][k]
+      else m := c(n-1,k) + c(n-1,k-1);
+      
+      c := m;
+      a[n][k] := m;
+   End;
+   
+BEGIN
+   Read(n,k);
+   Write(c(n,k));
+END.

@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	int la, lb, i, j, d=26, dif=26, t;
+	char a[41], b[41];
+	scanf ("%s%s", &a, &b);
+	la=strlen(a);
+	lb=strlen(b);
+	for (i=lb-1; i<la; i++)
+	{
+		d=a[i]-b[lb-1];
+		if (d<0) d=d+26;
+		for (j=0; j<lb-1; j++)
+		{
+			t=a[i-lb+1+j]-b[j];
+			if (t<0) t=t+26;
+			if (t!=d)
+			{
+				d=26;
+				break;
+			}
+		}
+		if (d!=26)
+		{
+			dif=d;
+			break;
+		}
+	}
+	if (dif==26)
+		printf ("IMPOSSIBLE");
+	else
+	{
+		for (i=0; i<la; i++)
+		{
+			a[i]=a[i]-dif;
+			if (a[i]>'Z') a[i]=26-a[i];
+			if (a[i]<'A') a[i]=a[i]+26;
+		}
+		printf ("%s", a);
+	}
+}
+
+		

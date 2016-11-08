@@ -1,0 +1,137 @@
+Program zA;
+
+var 
+
+matrix: array[1..100,1..10] of integer;//матрица шаров и коробок
+c: array[1..10] of integer;//Вспомогательный массив
+i,k,j,l:integer;//счетчики
+N,M,a,b,R,D,s,v,q,e,h:integer;
+F:array [1..100] of string;
+F1,F2,F3,F4: string;
+label 1,2;
+Begin
+
+D:=0;
+
+//--Зануление--
+
+readln(N,M);//N - кол-во коробок (1..10), M - кол-во шаров (1..100)
+
+For i:=1 to M do begin
+  read(a,b);//a - цвет шара, b - в какой коробке лежит
+    inc(c[b]);
+    matrix[c[b],b]:=a;
+  
+End;
+
+//--Считывание--
+
+1:
+
+q:=0;
+
+  For i:=1 to N do
+    For k:=1 to M do 
+      if (matrix[k,i]<>i) and (matrix[k,i]<>0) then              
+          For j:=1 to N do
+            For l:=1 to M do
+              if (matrix[l,j]=i) and (matrix[l,j]<>j) and (matrix[l,j]<>0) then begin
+              
+                dec(R,2);
+                inc(D);
+                
+                //--Строковое представление
+                
+                str(i,F1);
+                str(matrix[k,i],F2);
+                str(j,F3);
+                str(matrix[l,j],F4);
+                
+                //--Swap in matrix
+                
+                s:=matrix[k,i];
+                matrix[k,i]:=matrix[l,j];
+                matrix[l,j]:=s;
+                
+                //--Swap in matrix                
+                
+                F[D]:= F1 + ' ' + F2 + ' ' + F3 + ' '+ F4;
+                 q:=1;
+                //--Строковое представление
+              end;
+              
+              if q=1 then goto 1
+              else
+//--Swap--
+
+
+  For i:=1 to N do
+    For k:=1 to M do 
+      if (matrix[k,i]<>i) and (matrix[k,i]<>0) then begin
+          
+          dec(R,1);
+          inc(D);
+          
+          //--Строковое представление
+          
+          str(i,F1);
+          str(matrix[k,i],F2);
+          
+          //--перекладывание--
+          
+          e:=0;
+          h:=0;
+          while e=0 do begin
+
+               inc(h);
+               if h<=100 then
+               if matrix[h,i]=0 then begin
+
+                  e:=1;
+                  matrix[h,i]:=i;
+                  matrix[k,i]:=0;
+
+
+               end;
+
+          end;
+          
+          {v:=matrix[k,i];
+          inc(c[v]);
+          matrix[c[v],i]:=i;
+          matrix[k,i]:=0;
+          dec(c[i]);}
+          
+          //--перекладывание--
+          
+          F[D]:= F1 + ' ' + F2 + ' ' + F2;
+          
+          //--Строковое представление
+          
+          break;
+          break;
+      end;
+
+//--перекладывание--
+
+for i:=1 to 10 do
+for k:=1 to 100 do
+if (matrix[k,i]<>i) and (matrix[k,i]<>0) then begin
+
+end;
+
+
+{writeln;
+for i:=1 to 100 do begin
+for k:=1 to 10 do
+write(matrix[i,k],' ');
+
+writeln
+end;
+Writeln(R);}
+Writeln(D);
+For i:=1 to D do
+writeln(F[D]);
+
+//--Выведение--
+End.

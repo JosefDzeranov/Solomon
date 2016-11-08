@@ -1,0 +1,47 @@
+<?php
+function GoogleAuth() {
+    $username='runickstone@gmail.com'; //Логин
+    $password='Ybrbnf11'; //Пароль
+
+    $postdata="continue=http%3A%2F%2Fwww.google.com%2Flocal%2Fadd%2FbusinessCenter%3Fhl%3Den-US%26gl%3DUS&service=lbc&hl=en-US&gl=US&Email=".$username."&Passwd=".$password."&PersistentCookie=yes&rmShown=1&signIn=Sign+in&asts="; 
+
+    $ch = curl_init('https://www.google.com/accounts/LoginAuth'); 
+    curl_setopt ($ch, CURLOPT_HEADER, 1); 
+    curl_setopt ($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3');
+    curl_setopt ($ch, CURLOPT_REFERER, 'https://www.google.com/accounts/ServiceLogin?continue=http%3A%2F%2Fwww.google.com%2Flocal%2Fadd%2FbusinessCenter%3Fhl%3Den-US%26gl%3DUS&service=lbc&hl=en-US&gl=US'); 
+    curl_setopt ($ch, CURLOPT_POST, 1); 
+    curl_setopt ($ch, CURLOPT_COOKIEJAR, 'cookiefile.txt'); 
+    curl_setopt ($ch, CURLOPT_POSTFIELDS, $postdata); 
+    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
+    curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0); 
+    curl_setopt ($ch, CURLOPT_HTTPHEADER, array('Expect:'));         
+    curl_exec ($ch); 
+    $result = curl_multi_getcontent ($ch); 
+                     
+    preg_match('/GALX=(.*)/', $result, $matches); 
+    $is_found = preg_match("/GALX=(.*?);Path/si", $matches[0], $info); 
+                     
+    curl_setopt ($ch, CURLOPT_URL,"https://www.google.com/accounts/ServiceLoginAuth?service=lbc"); 
+    curl_setopt($ch, CURLOPT_REFERER, "https://www.google.com/accounts/ServiceLogin?continue=http%3A%2F%2Fwww.google.com%2Flocal%2Fadd%2FbusinessCenter%3Fhl%3Den-US%26gl%3DUS&service=lbc&hl=en-US&gl=US"); 
+    curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, FALSE); 
+    curl_setopt ($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3");
+    curl_setopt ($ch, CURLOPT_TIMEOUT, 60); 
+    curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 0); 
+    curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
+    curl_setopt ($ch, CURLOPT_HEADER, 1); 
+    curl_setopt ($ch, CURLINFO_HEADER_OUT, 1); 
+    curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+    curl_setopt ($ch, CURLOPT_POST, 1); 
+    curl_setopt ($ch, CURLOPT_POSTFIELDS, $postdata."&GALX=".$info[1]);     
+    curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookiefile'); 
+    
+    $AskApache_result = curl_exec($ch); 
+             
+    curl_setopt($ch, CURLOPT_URL, "http://www.google.com/local/add/businessCenter?hl=en-US&gl=US"); 
+    curl_setopt($ch, CURLOPT_POST, 0); 
+    curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookiefile'); 
+    
+    $result = curl_exec($ch); 
+}
+?>

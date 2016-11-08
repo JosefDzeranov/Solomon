@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+	int u;
+	cin >> u;
+	int a = u / 3;
+	int b = u / 3;
+	int c = u / 3;
+	if (u % 3 == 0)
+	{
+		a--;
+		c++;
+	}
+	else if (u % 3 == 1)
+	{
+		c += 2;
+		a--;
+	}
+	else
+	{
+		c += 2;
+		b++;
+		a--;
+	}
+	cout << a << ' ' << b << ' ' << c;
+	return 0;
+}

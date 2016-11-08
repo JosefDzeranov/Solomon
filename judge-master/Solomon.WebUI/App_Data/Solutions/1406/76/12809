@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+  char s1;
+  int i,p,r;
+  
+  scanf("%d",&p);
+  
+  r=0;
+  while(scanf("%c",&s1)!=EOF)
+    if(s1>=48 && s1<=57) r+=s1-48;
+  
+  printf("%d\n",r);
+  return 0;  
+}

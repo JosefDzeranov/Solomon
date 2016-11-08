@@ -1,0 +1,8 @@
+var a,i:longint;
+begin
+readln(a);
+write(a,' 2 ');
+for i:=1 to a-2 do
+if i=a-2 then write('1') else write('1 ');
+writeln;
+end.

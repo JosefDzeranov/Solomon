@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	long long N, a, b, c;
+	long long ans = -1;
+	long long aa, ba, ca;
+	cin >> N >> a >> b >> c;
+	for (int i = 1; i < (N - 1); i++)
+		for (int j = 1; j < (N - i); j++)
+		{
+			int k = (N - i - j);
+			long long temp = i / a;
+			temp *= j / b;
+			temp *= k / c;
+			long long temp2 = i / b;
+			temp2 *= j / a;
+			temp2 *= k / c;
+			if (temp > ans)
+			{
+				ans = temp;
+				aa = i;
+				ba = j;
+				ca = k;
+			}
+			if (temp2 > ans)
+			{
+				ans = temp2;
+				aa = i;
+				ba = j;
+				ca = k;
+			}
+		}
+	cout << aa << ' ' << ba << ' ' << ca;
+	return 0;
+}

@@ -1,0 +1,13 @@
+program p1;
+var n, k, i : shortint;
+    k1, n1, d : longint;
+begin k1 := 1; n1 := 1; d := 1;
+readln(n,k);
+for i := 1 to n do 
+n1 := n1 * i;
+for i := 1 to k do 
+k1 := k1 * i;
+for i := 1 to (n-k) do 
+d := d * i;
+writeln(n1/(k1*d));
+end.

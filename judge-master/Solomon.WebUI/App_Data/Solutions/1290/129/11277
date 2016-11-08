@@ -1,0 +1,67 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	char **a;
+	int n, m, i, j, k = 0, sh = 0, l;
+	bool pr;
+	cin >> n >> m;
+	a = new char *[n];
+	for (i = 0; i < n; i++) a[i] = new char [m];
+	for (i = 0; i < n; i++)
+		for (j = 0; j < m; j++){
+			cin >> a[i][j];
+			if (a[i][j] != '.') k++;}
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < m; j++) {
+			if (a[i][j] == 'N') {
+				pr = false;
+				for (l = i - 1; l > -1; l--) {
+					if (a[l][j] != '.') {pr = true;break;}
+				}
+				if (!pr) {
+					a[i][j] = '.';
+					i = 0; j = -1;sh=0;
+				}
+				else sh++;
+			}
+			if (a[i][j] == 'S') {
+				pr = false;
+				for (l = i + 1; l < n; l++) {
+					if (a[l][j] != '.') {pr = true;break;}
+				}
+				if (!pr) {
+					a[i][j] = '.';
+					i = 0; j = -1;sh=0;
+				}
+				else sh++;
+			}
+			if (a[i][j] == 'W') {
+				pr = false;
+				for (l = j - 1; l > -1; l--) {
+					if (a[i][l] != '.') {pr = true;break;}
+				}
+				if (!pr) {
+					a[i][j] = '.';
+					i = 0; j = -1;sh=0;
+				}
+				else sh++;
+			}
+			if (a[i][j] == 'E') {
+				pr = false;
+				for (l = j + 1; l < m; l++) {
+					if (a[i][l] != '.') {pr = true;break;}
+				}
+				if (!pr) {
+					a[i][j] = '.';
+					i = 0; j = -1;sh=0;
+				}
+				else sh++;
+			}
+		}
+	}
+
+	cout << k - sh;
+	return 0;
+}

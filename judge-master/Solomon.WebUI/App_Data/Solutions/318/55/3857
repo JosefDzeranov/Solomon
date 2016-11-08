@@ -1,0 +1,38 @@
+#include <cstdio>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <string.h>
+#include <vector>
+#include <queue>
+#include <set>
+#include <map>
+#include <utility>
+#include <time.h>
+#include <algorithm>
+
+#define pb push_back
+#define mp make_pair
+#define F first
+#define S second
+#define INF 2000000000
+#define INFll 5000000000000000000ll
+#define stop exit(0)
+
+using namespace std;
+
+typedef long long ll;
+typedef pair <int, int> pii;
+
+int main(){
+    //freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+    int n, N;
+    cin>>N;
+    n=N*2;
+    int s1=n*n, s2=(n-1)*(n-1);
+    long long x=(1ll*s1*(s1+1)/2)/n;
+    long long y=(1ll*s2*(s2+1)/2)/(n-1);
+    cout<<2*y+x/N;
+    return 0;
+}

@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main() {
+
+	freopen("missme.in", "r", stdin);
+	freopen("missme.out", "w", stdout);
+
+	int cnt = 0;
+	char a, b, c, d;
+	string s;
+	cin >> s;
+
+	int k = 0; 
+	int j = s.size() - 1;
+	while (k < j) {
+
+		if (s[k] != s[j]) {
+			cnt++;
+			if (cnt == 1)
+			{
+				a = s[k];
+				b = s[j];
+			}
+			else
+				if (cnt == 2)
+				{
+					c = s[k];
+					d = s[j];
+				}
+				else
+				{
+					cout << "No" << endl;
+					return 0;
+				}
+		}
+		k++;
+		j--;
+	}
+
+	if ((cnt == 2 && a == d && b == c) || cnt == 0)
+		cout << "Yes" << endl;
+	else
+		cout << "No" << endl;
+
+
+
+
+	return 0;
+}

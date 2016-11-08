@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <memory.h>
+using namespace std;
+unsigned a[10][512],e[10][10];
+ 
+static bool bit(unsigned a,unsigned n){
+    return a>>n&1;
+}
+ 
+static unsigned getr(unsigned p,unsigned n,unsigned m,unsigned in){
+    unsigned i,j=0;
+    bool k=false;
+    for(i=0;i<in;i++){
+        if(!e[p][i]){
+            if(bit(m,i)){
+                if(!p||e[p-1][i]||!bit(n,i)){
+                    j+=1;
+                    if(p)k=!e[p-1][i];
+                }else{
+                    j+=k?1:0;
+                    k=false;
+                }
+            }else if(p)if(e[p-1][i]||bit(n,i))k=true;
+        }else if(p)k=!(e[p-1][i]||bit(n,i));
+    }
+    return j;
+}
+ 
+int main()
+{
+    unsigned i,j,k,l,m,n,v,in,im;
+    cin>>in>>im;
+    for(i=0;i<in;i++){
+        for(j=0;j<im;j++){
+            cin>>e[j][i];
+        }
+    }
+    n=(unsigned)(1)<<(in-1);
+    for(i=0;i<im;i++){
+        v=0;
+        for(j=0;j+1<in;j++){
+            if(e[i][j]==1||e[i][j+1]==1)v|=(unsigned)(1)<<j;
+        }
+        for(j=0;j<n;j++){
+            k=-1;
+            if((j&v)==v){
+                if(i){
+                    for(l=0;l<n;l++)if(a[i-1][l]!=-1){
+                        m=a[i-1][l]+getr(i,l+n,j+n,in);
+                        if(k>m)k=m;
+                    }
+                }else k=getr(0,0,j+n,in);
+            }
+            a[i][j]=k;
+        }
+    }
+    k=-1;
+    for(i=0;i<n;i++)if(k>a[im-1][i])k=a[im-1][i];
+    cout<<k;
+    return 0;
+}
+ 

@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+string decode( string text )
+{
+    int lines = text.length() / 2;
+    int cols;
+
+    string res = "";
+
+    if( text.length() % 2 != 0 )
+        lines++;
+
+    cols = lines;
+
+    char matrix[ lines ][ cols ];
+
+    int sym = 0;
+    for( int i = 0; i < lines; i++ )
+    {
+        for( int j = 0; j < cols; j++ )
+        {
+            matrix[i][j] = text[sym];
+
+            sym++;
+        }
+    }
+
+    for( int i = 0; i < lines; i++ )
+    {
+        for( int j = 0; j < cols; j++ )
+        {
+            if( matrix[j][i] )
+                res += matrix[j][i];
+        }
+    }
+
+
+    return res;
+}
+
+int main()
+{
+    string text;
+
+    getline( cin, text);
+
+    cout << decode( text ) << endl;
+
+    return 0;
+}
+

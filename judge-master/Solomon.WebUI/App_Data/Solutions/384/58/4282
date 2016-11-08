@@ -1,0 +1,7 @@
+program z1;
+var x,y:longint;
+begin
+readln(x);
+y:=x*(x-1)*(x-2);
+writeln(y);
+end.

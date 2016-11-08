@@ -1,0 +1,13 @@
+Function Combination(N,K:Longint):Longint;
+var numerator,denominator,i:longint;
+begin
+  numerator:=1; denominator:=1;
+  for i:=N downto (N-K+1) do numerator:=numerator*i;
+  for i:=1 to K do denominator:=denominator*i;
+  Combination:=numerator div denominator
+end;
+var N,K:longint;
+begin
+read(N,K);
+write(Combination(N,K));
+end.

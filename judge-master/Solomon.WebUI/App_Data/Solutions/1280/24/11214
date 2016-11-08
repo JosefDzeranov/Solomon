@@ -1,0 +1,23 @@
+var
+ N,b,c,d,f:integer;
+ a:array[1..100]of integer;
+ input,output:text;
+begin
+assign(input,'input.txt');reset(input);readln(input,N);
+for b:=1 to N do begin
+read(input,a[b]);
+end;
+b:=1;
+c:=2;
+close(input);
+for f:=1 to N do begin
+if (((a[b] mod 10)=(a[c] mod 10)) or (a[b] mod 10=(a[c] div 10)mod 10) or (a[b] mod 10=(a[c] div 100)mod 10))
+or ((((a[b] div 10)mod 10=a[c] mod 10) or ((a[b] div 10)mod 10=(a[c] div 10)mod 10) or ((a[b] div 10)mod 10=(a[c] div 100)mod 10))and (a[b] div 10>0))
+or ((((a[b] div 100)mod 10=a[c] mod 10) or ((a[b] div 100)mod 10=(a[c] div 10)mod 10) or ((a[b] div 100)mod 10=(a[c] div 100)mod 10))and (a[b] div 100>0))
+and (b<>c)  and (a[c]<=N)
+then begin d:=d+1;c:=c+1;b:=b+1;end
+else begin c:=c+1;b:=b+1;end;
+end;
+assign(output,'output.txt');rewrite(output);write(output,d);close(output);
+writeln(d);
+end.

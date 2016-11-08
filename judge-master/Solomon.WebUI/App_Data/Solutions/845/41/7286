@@ -1,0 +1,31 @@
+﻿using System;
+
+namespace ConsoleApplication8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a;
+            string s="";
+            a = Convert.ToInt32(Console.ReadLine());
+
+            while (a != 1)
+            {
+                if (a % 2 == 0)
+                {
+                    a /= 2;
+                    s = '*' + s;
+                }
+                else
+                {
+                    a -= 1;
+                    s = '+' + s;
+                }
+            }
+            Console.WriteLine(s);
+
+
+        }
+    }
+}

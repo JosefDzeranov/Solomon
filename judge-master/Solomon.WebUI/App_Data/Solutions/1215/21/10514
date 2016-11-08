@@ -1,0 +1,23 @@
+var n,m:byte;
+k,i,j,s:longint;
+a:array[1..200] of byte;
+v:array[1..400] of byte;
+b:boolean;
+
+begin
+read(n,m);s:=1;
+for i:=1 to 2*m do read(a[i]);
+i:=1;
+
+While i<=(m-1) do begin
+if a[2*i-1]<>a[2*i] then begin j:=i+1;b:=false;
+                         While (not b) and (j<=m) do if (a[2*i-1]=a[2*j]) and (a[2*j-1]=a[2*i]) then b:=true;
+                         if (not b) then  begin v[s]:=a[2*i];v[s+1]:=a[2*i-1];v[s+2]:=a[2*i-1];s:=s+4;k:=k+1; end
+                         else begin v[s]:=a[2*j];v[s+1]:=a[2*j-1]; v[s+2]:=a[2*i];v[s+3]:=a[2*i-1];s:=s+4;k:=k+1;i:=i+1;end;
+                         end;        
+i:=i+1;
+end;                         
+writeln(k);
+for i:=1 to k do writeln(v[4*i-3],' ',v[4*i-2],' ',v[4*i-1],' ',v[4*i]);
+end.
+                

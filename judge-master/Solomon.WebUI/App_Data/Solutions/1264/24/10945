@@ -1,0 +1,40 @@
+var
+    b: array[0..1 shl 10] of int64;
+    n, i, j, y: longint;
+    x, ans: int64;
+
+begin
+   { assign(input, 'relatives.in');
+    reset(input);
+    assign(output, 'relatives.out');
+    rewrite(output);}
+    read(n);
+    for i := 1 to n do
+    begin
+        read(x);
+        y := 0;
+        if x = 0 then
+        begin
+            b[1] := b[1] + 1;
+            continue;
+        end;
+        while x > 0 do
+        begin
+            y := y or (1 shl (x mod 10));
+            x := x div 10;
+        end;
+        b[y] := b[y] + 1;
+    end;
+    for i := 0 to 1023 do
+    begin
+        for j := i to 1023 do
+            if i and j <> 0 then
+            begin
+                if i <> j then ans := ans + b[i] * b[j]
+                else ans := ans + (b[i] * (b[i] - 1)) div 2;
+            end;
+    end;
+    Writeln(ans);
+    {close(input);
+    close(output);}
+end.

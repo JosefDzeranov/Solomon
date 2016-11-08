@@ -1,0 +1,16 @@
+program AsBrother;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  N : smallint;
+  D : integer;
+begin
+  readln (N, D);
+  D := D - N;
+  write (1, ' ', D);
+  readln;
+end.

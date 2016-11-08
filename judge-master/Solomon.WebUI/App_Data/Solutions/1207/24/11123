@@ -1,0 +1,7 @@
+var s,a,d:string;
+begin
+readln(s);
+readln(a);
+write(4)
+
+end. 

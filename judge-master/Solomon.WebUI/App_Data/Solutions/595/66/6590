@@ -1,0 +1,72 @@
+var 
+  // вводимые значения: количество строк и массив с строками
+  count:integer;
+  s1: array[1..1000] of string;
+  //sr1 - строчная переменная равная числу из строки, sx - доп. переменная
+  sx,sr1: string;
+  // получаем из строки число для записи в массив результатов sr1 -> x
+  x: longint;
+  // массив вида arr1[x][1] = номер школы, arr1[x][2] = количество повторений
+  arr1: array[1..1000, 1..2] of longint;
+  // конечный массив с результатом для вывода
+  arr2: array[1..1000] of longint;
+  //вспомогательные переменные
+  err,i,j,k,m: integer;
+  f: boolean;
+begin
+  j:=1;
+  //ввод данных
+  readln(count);
+  for i:=1 to count do
+    readln(s1[i]);
+    
+  //перебор введенных строк
+  for m:=1 to count do begin
+
+    //находим число: берем каждый символ строки и если это цифра, то приплюсовываем к нашей переменной sr1
+    sr1:= '';
+    for i:=1 to length(s1[m]) do begin
+      sx:=copy(s1[m], i, 1);
+      f:= (sx ='0') or (sx ='1') or (sx ='2') or (sx ='3') or (sx ='4') or (sx ='5') or (sx ='6') or (sx ='7') or (sx ='8') or (sx ='9');
+      if f then begin
+        sr1:=sr1 + sx; 
+      end;
+    end;
+    f:=true;
+    
+    // если число нашлось
+    if length(sr1) > 0 then begin
+      //преобразуем строку в число sr1 -> x
+      val(sr1,x,err);
+      // если такое число (номер школы) в массиве есть, то увеличиваем arr1[x][2] (количество совпадений)
+      // если такого числа в массиве нет, то записываем arr1[x][1]:= x, и выставляем arr1[x][2] = 1 (первое совпадение)
+      for k:=j downto 1 do begin
+        if arr1[k,1] = x then begin
+          inc(arr1[k,2]);
+          f:=false;
+        end else begin
+          if k = 1 then
+            if f then begin
+              arr1[j,1]:=x;
+              inc(arr1[j,2]);
+              inc(j);
+            end;
+        end;
+      end;
+    end;
+  end;//закончен перебор всех строк
+  
+  //перебираем количество совпадений, там где меньше 5 заносим в отдельный массив
+  k:=0;
+  for i:=1 to j-1 do begin
+    if arr1[i,2] <= 5 then begin
+      inc(k);
+      arr2[k]:= arr1[i,1];
+    end;
+  end;
+  //выводим количество школ,у которых участников от 1 до 5
+  writeln(k);
+  //выводим номера школ,у которых участников от 1 до 5
+  for i:=1 to k do 
+    writeln(arr2[i]);
+end.

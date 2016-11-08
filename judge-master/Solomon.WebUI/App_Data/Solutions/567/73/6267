@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	int d = 8 * n + 1;
+	double d2 = d;
+	int x = (-1 + int(sqrt(d2))) / 2;
+	cout << x;
+	return 0;
+}

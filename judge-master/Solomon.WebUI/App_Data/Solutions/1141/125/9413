@@ -1,0 +1,47 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,x2,x3,y1,y2,y3,a,b: integer;
+c: real;
+label t1;
+begin
+writeln('введите координаты левого нижнего угла');
+readln(x1,y1);
+writeln('введите коордиаты правого верхнего угла');
+readln(x2,y2);
+writeln('введите коорднаты местоположения Тимура');
+readln(x3,y3);
+if ((x3>x1) and (x3<x2)) and ((y3>y1) and (y3<y2)) then begin
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+if a<b then c:=a else c:=b;
+writeln(c); goto t1;
+end;
+if ((x3>x1) and (x3<x2)) and ((y3<y1) or (y3>y2)) then begin
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+writeln(a); goto t1;
+end;
+if ((x3<x1) or (x3>x2)) and ((y3>y1) and (y3<y2)) then begin
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+writeln(b); goto t1;
+end;
+if ((x3<x1) or (x3>x2)) and (y3<y1) or (y3>y2) then begin 
+if abs(x3-x1)<abs(x3-x2) then
+a:=abs(x3-x1) else a:=abs(x3-x2);
+if abs(y3-y1)<abs(y3-y2) then
+b:=abs(y3-y1) else b:=abs(y3-y2);
+c:=sqrt(a*a+b*b);
+writeln(c);
+end;
+t1: end.
+
+end.
+

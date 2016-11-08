@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace FibMouse
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> fibnumbers = new List<int>();
+            string[] s = Console.ReadLine().Split();
+            int n = int.Parse(Console.ReadLine());
+
+
+            fibnumbers.Add(int.Parse(s[0]));
+            fibnumbers.Add(int.Parse(s[1]));
+
+            while (CheckLen(fibnumbers).Length < n)
+            {
+                fibnumbers.Add(fibnumbers[fibnumbers.Count - 1] + fibnumbers[fibnumbers.Count - 2]);
+            }
+            Console.WriteLine(CheckLen(fibnumbers)[CheckLen(fibnumbers).Length - 1]);
+            
+        }
+
+        static string CheckLen(List<int> nums)
+        {
+            string result = null;
+            foreach (var item in nums)
+            {
+                result += item.ToString();
+            }
+            return result;
+        }
+    }
+}

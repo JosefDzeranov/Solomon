@@ -1,0 +1,78 @@
+#include <iostream>
+#include <stdio.h>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+int main()
+{
+    int balls_c, boxes_c, box, ball, actions_c;
+    bool swap;
+    vector< vector<int> > boxes;
+    vector<string> actions;
+
+    scanf( "%d%d", &boxes_c, &balls_c );
+
+    boxes.reserve( boxes_c + 1 );
+
+    actions_c = 0;
+
+    for( int i = 1; i <= balls_c; i++ )
+    {
+        swap = false;
+
+        scanf( "%d%d", &ball, &box ); // Номер шарика и коробка, в которой он находится
+
+        if( box == ball )
+            continue;
+
+        //cout << "В коробке " << ball << " сейчас шаров: " << boxes[ball].size() << endl;
+
+        for( unsigned j = 0; j < boxes[ball].size(); j++ ) // Перебираем все шарики в коробке с номером ШАРИКА
+        {
+            if( boxes[ball][j] == box ) // Если в этой коробке есть шарик с номером КОРОБКИ, в которой лежит шарик
+            {
+                std::ostringstream act;
+                act << boxes[ball][j] << " " << ball << " " << ball << " " << boxes[ball][j];
+
+                actions.push_back( act.str() );
+
+                boxes[ball].erase( boxes[ball].begin() + j );
+
+                swap = true;
+                actions_c++;
+            }
+        }
+
+        if( !swap ) // Если не произошла замено
+            boxes[box].push_back( ball ); // Добавляем в коробку шарик
+    }
+
+    for( int i = 1; i <= boxes_c; i++ )
+    {
+        //cout << "Коробка #" << i << ": " << endl;
+
+        for( unsigned j = 0; j < boxes[i].size(); j++ )
+        {
+            actions_c++;
+
+//            std::ostringstream act;
+//            act << i << " " << boxes[i][j] << " " << boxes[i][j];
+
+//            actions.push_back( act.str() );
+
+            //cout << "Шар #" << boxes[i][j] << endl;
+        }
+
+        //cout << endl;
+    }
+
+    cout << actions_c << endl;
+
+    for( unsigned i = 0; i < actions.size(); i++ )
+        cout << actions[i] << endl;
+
+    return 0;
+}
+

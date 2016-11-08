@@ -1,0 +1,9 @@
+var
+a:string;
+n,m,i:integer;
+begin
+readln(n,m);
+for i:=1 to m do
+readln(a);
+writeln('0');
+end.

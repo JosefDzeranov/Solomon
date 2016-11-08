@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+int main(){
+	float a,b,x,v,u,i=0;
+	cin>>a>>b>>x;
+	v=x;
+	u=1;
+	while(v>1000)
+	{
+		if(i<=a)v=x/((a+b)*u+i-a);
+		else {u++;i=-1;}
+		i++;
+	} 
+	cout.precision(9);
+	cout<<v;
+	return 0;
+}

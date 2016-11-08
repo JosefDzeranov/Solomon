@@ -1,0 +1,41 @@
+var
+   a: array [1..101, 1..101] of integer;
+   i, j, k, n, m, d, v, ch, iv, jv: integer;
+
+begin
+   readln(n, m, k);
+   {for i := 1 to n do
+      for j := 1 to m do
+         a[i, j] := 1;
+   
+   for i := 1 to k do
+   begin
+      readln(d, v);
+      a[d, v] := 0;
+   end;
+   
+   ch:=1;
+   for i:=1 to n do
+    for j:=1 to m do
+     begin
+     if a[i, j]=0 then
+      begin
+      iv:=i;
+      jv:=j;
+      while ((a[i-1, j-1]=0) or (a[i, j-1]=0) or (a[i+1, j+1]=0) or (a[i+1, j-1]=0) or (a[i-1, j+1]=0) or (a[i-1, j]=0) or (a[i+1, j]=0) or (a[i, j+1]=0)) do
+       
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     end;}
+   //  randomize;
+     writeln(2);
+   
+end.

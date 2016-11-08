@@ -1,0 +1,60 @@
+program rs;
+
+var
+    i, j, n, x, y, a, l, k: longint;
+    
+    h: array [1..500000] of boolean;
+    f: array [1..500000, 0..9] of boolean;
+
+begin
+    readln(n);
+    for i := 1 to n do
+    begin
+        read(a);
+        while a > 0 do
+        begin
+            f[i, a mod 10] := true;
+            a := (a div 10);
+        end;
+        
+    end;
+    
+    {for i := 1 to n do
+    begin
+        //write(i, ' ');
+        for j := 0 to 9 do
+        begin
+            write(f[i, j], '  ');
+            
+        end;
+        writeln;
+    end;}
+    x := 0;
+    for i := 1 to n do
+    begin
+        //write(i,' ');
+        for j := 0 to 9 do
+        begin
+            h[i]:=true;
+            //for k := 0 to n do
+            //begin
+                if f[i, j] = true then
+                begin
+                    for l := 1 to n do
+                        if (f[l, i] = true) and (h[l] = false) then 
+                        begin
+                            inc(x);
+                            h[l] := true;
+                        end;
+                end;
+                //else
+                    //break;
+            //end; 
+            //for l := 1 to n do
+            //h[l]:=false;
+        end;
+        for l := 1 to n do
+            h[l]:=false;
+    end;
+    writeln(x);
+end.

@@ -1,0 +1,8 @@
+var dl,sh,v,z,n,x1,x:longint;
+begin
+read(n,z,dl,sh,v);
+x1:=(dl div z)*(sh div z);v:=v-z;x:=x1;
+While v >= z*1/2 do begin  x:=x+x1;v:=v-z;end;
+if x<n then write(1) 
+else if x mod n=0 then write(x div n)else write(x div n +1);
+end.

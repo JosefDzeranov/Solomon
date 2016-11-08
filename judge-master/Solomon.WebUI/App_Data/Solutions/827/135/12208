@@ -1,0 +1,71 @@
+#include <iostream>
+#include <vector>
+#include<stdio.h>
+
+using namespace std;
+
+int main()
+{
+	unsigned long long a, k, b, m, x;
+
+	cin >> a >> k >> b >> m >> x;
+	unsigned long long d1 = 1, d2 = 1000000000000000001, d;
+	unsigned long long x1, x2 = a, x3 = b;
+	int k1 = 0, k2 = 0, k3 = 0;
+	bool p = true;
+	unsigned long long rez = 0;
+	while (x2 != 0){
+		k2++;
+		x2 /= 10;
+	}
+	while (x3 != 0){
+		k3++;
+		x3 /= 10;
+	}
+
+
+	while (p){
+		k1 = 0;
+		d = (d2 + d1) / 2;
+		x1 = d;
+		while (x1 != 0){
+			k1++;
+			x1 /= 10;
+		}
+		if (k1 + k2 < 9 && k1 + k3 < 9)
+		{
+			if (x < a*d - a*(d / k) + b*d - b*(d / m))
+				d2 = d;
+			else
+			if (x >= a*d - a*(d / k) + b*d - b*(d / m))
+				d1 = d;
+		}
+		else d2 = d;
+		if (d <= 100000) p = false;
+	}
+	if (rez==0)
+	for (unsigned long long int i = d1; i <= d2; i++)
+	{
+		k1 = 0;
+		x1 = i;
+		while (x1 != 0){
+			k1++;
+			x1 /= 10;
+		}
+		if (k1+k2<19 && k1 + k3<19){
+			if (a*i - a*(i / k) + b*i - b*(i / m) >= x){
+				rez = i;
+				break;
+			}
+		}
+		else
+		{
+			rez = i;
+			break;
+		}
+	}
+	
+		
+	cout << rez;
+	return 0;
+}

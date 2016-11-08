@@ -1,0 +1,4 @@
+x, y = [int(i) for i in input().split()]
+z, q = [int(i) for i in input().split()]
+#x, z = x % 12, z % 12
+print((z * 60 + q - x * 60 - y) // 60, (z * 60 + q - x * 60 - y) % 60)

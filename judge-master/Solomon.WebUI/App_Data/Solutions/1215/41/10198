@@ -1,0 +1,19 @@
+var a,i,j:integer;
+t:boolean;
+k:array[1..10000] of INTEGER;
+begin
+read(a);
+i:=1;
+while a<>2 do
+begin
+if (a mod 2)=0 then begin a:=a div 2; k[i]:=1;i:=i+1;end
+               else begin 
+               a:=a-1;
+               k[i]:=2;
+               i:=i+1;end;
+end;
+for j:=1 to i do if (k[j]=2) then t:=true;
+if t then begin write('*');
+for j:=i-1 downto 1 do if k[j]=1 then write('*') else write('+');
+end else write('NO');
+end.

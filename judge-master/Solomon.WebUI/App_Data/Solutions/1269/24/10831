@@ -1,0 +1,33 @@
+{$h+}
+const
+   cif = '0123456789';
+
+var
+   c: array[0..9] of array of boolean;
+   n, i, k, j, l: longint;
+   kol: uint64;
+   q: char;
+   s: string;
+
+begin
+   k := 1;
+   readln(n);
+   for i := 0 to 9 do
+      setlength(c[i], n + 1);
+   read(s);
+   l := length(s);
+   for i := 1 to l do
+   begin
+      j := pos(s[i], cif);
+      if j = 0 then inc(k)
+      else c[j - 1][k] := true;
+   end;
+   for i := 1 to n - 1 do
+      for j := 1 + i to n do
+      begin
+         k := 0;
+         while (k < 9) and not ((c[k][i]) and (c[k][j])) do inc(k);
+         if ((c[k][i]) and (c[k][j])) then inc(kol);
+      end;
+   write(kol);
+end.

@@ -1,0 +1,14 @@
+#include<stdio.h>
+
+  long long n,m;
+  
+int main()
+{   
+  //freopen("solomon.in","r",stdin);
+  //freopen("solomon.out","w",stdout);
+  
+  scanf("%lld%lld",&n,&m);
+  
+  printf("%lld\n",n+m);
+  return 0;  
+}

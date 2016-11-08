@@ -1,0 +1,18 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+      n, otv: integer;
+begin
+  readln(n);
+  if n mod 2 = 0 then
+    otv := n div 2 * n
+    else
+    otv := n * (n - 1);
+  writeln(otv);
+  readln;  
+end.

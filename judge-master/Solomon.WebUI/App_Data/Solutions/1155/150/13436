@@ -1,0 +1,24 @@
+﻿using System;
+
+using System.Text;
+
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int k = 0;  ulong sum = 0;
+            for(int i=s.Length-1;i>=0;i--)
+            {
+               
+                if (s[i] == '*') { sum =sum +Convert.ToUInt64(Math.Pow(2, k)); }
+                k++;
+                
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}

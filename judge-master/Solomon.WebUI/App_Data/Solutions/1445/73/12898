@@ -1,0 +1,16 @@
+#include "iostream"
+
+int main() {
+	int s, a, b, c, d;
+	std::cin >> s;
+	c = 0;
+	for (a = 0; a < s/2+1; ++a) {
+		for (b = 0; b < s/2+1; ++b) {
+			if ((1+a)*a/2 + (1+b)*b/2 == s) {
+				c = a+b;
+			}
+		}
+	}
+	std::cout << c;
+	return 0;
+}

@@ -1,0 +1,61 @@
+type
+  p = record
+    nom, c: integer;
+  end;
+ps=record
+n1,n2,c1,c2:integer;
+end;
+var
+  n, m, j, i, kol, k, kol2s, z, b: integer;
+  a: array [1..100] of p;ls: array[1..1000] of ps;t2, t: boolean;s:real;
+
+begin
+  read(n,m);
+  j := 0;
+  for i := 1 to m do begin read(z, b);
+  if  (z <> b) then begin inc(j);a[j].c := z;a[j].nom := b; end; end;
+  if (j = 1)  then begin writeln(1);write(a[1].nom, ' ', a[1].c, ' ', a[1].c);exit; end;
+  m := j;
+  kol2s:=0;
+  for i:=1 to m do 
+  for j:=1 to m-i do 
+  if a[j].nom>a[j+1].nom then begin
+  k:=a[j].nom;
+  a[j].nom:=a[j+1].nom;
+  a[j+1].nom:=k;
+  k:=a[j].c;
+  a[j].c:=a[j+1].c;
+  a[j+1].c:=k;
+  end;
+  
+  
+  for i := 1 to m do begin
+      t := false;
+      if a[i].nom<>a[i].c then begin 
+      for j := i+1 to m do
+          if (a[j].nom = a[i].c) and (a[j].c = a[i].nom) then
+          begin
+            t := true;
+            inc(kol2s);
+           ls[kol2s].n1:= a[i].nom;
+            ls[kol2s].c1 := a[i].c;
+            ls[kol2s].n2 := a[j].nom;
+            ls[kol2s].c2 := a[j].c;
+            a[i].nom := a[i].c;
+            a[j].nom := a[j].c; 
+            break;
+          end; 
+     { if not t then begin
+        inc(kol2);
+          lp[kol2].n1:= a[j].nom;
+            lp[kol2].c1 := a[j].c;
+            lp[kol2].n2 := a[i].nom;
+        a[i].nom := a[i].c; }
+      end; end;
+  writeln(m-kol2s*2+kol2s);
+  for i := 1 to kol2s do  writeln(ls[i].n1,' ',ls[i].c1,' ',ls[i].n2,' ',ls[i].c2);
+  if kol2s*2<>m then 
+  for i:=1 to m do
+  if  a[i].nom<>a[i].c then writeln(a[i].nom,' ',a[i].c,' ',a[i].c,' ');
+  
+end.

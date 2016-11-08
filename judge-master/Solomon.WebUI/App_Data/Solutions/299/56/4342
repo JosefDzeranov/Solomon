@@ -1,0 +1,27 @@
+program a2;
+var N, i:integer;
+    x:longint;
+begin
+x:=1; i:=0;
+readln(N);
+while N<>1 do
+     begin
+      x:=x*N;
+      N:=N-1;
+     end;
+
+repeat
+until(x>0);
+while x>0 do begin
+if x mod 2= 0 then
+i:=i+1
+else begin
+break;
+x:=x-1;
+end;
+x:=x div 2;
+end;
+
+write(i);
+readln();
+end.

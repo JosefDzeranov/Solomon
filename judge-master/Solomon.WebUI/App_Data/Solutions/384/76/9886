@@ -1,0 +1,21 @@
+{$mode delphi}
+var s,s1,s2:string;
+i,j,k,l,m,n,q,w,e,r:longint;      ans:int64;
+begin
+readln(n);
+s2:='0123456789';
+for i:=1 to n do
+begin
+readln(s);
+s1:='';
+for j:=1 to length(s) do
+begin
+if pos(s[j],s2)<>0 then s1:=s1+s[j] else
+if s1<>'' then begin val(s1,q,w); s1:=''; ans:=ans+q;  end;
+
+
+end;
+if s1<>'' then begin val(s1,q,w); s1:=''; ans:=ans+q;  end;
+end;
+writeln(ans);
+end.

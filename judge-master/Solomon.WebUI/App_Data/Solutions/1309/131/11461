@@ -1,0 +1,74 @@
+//#include "stdafx.h" 
+//#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int n, k, maxi, maxiCount = 0;
+	scanf("%d%d", &n, &k);
+	long int maxsum=0, tempsum=0, minsum;
+	//long int *a = (long int*)malloc(n), *arrMaxi = (long int*)malloc(n);
+	long int a[n], arrMaxi[n];
+	for(int i = 0; i<n; ++i)
+	{
+		scanf("%d", &a[i]);
+	}
+	
+	for(int i = 0; i<k; ++i)
+					tempsum+=a[i];
+				minsum = tempsum;
+			for(int i = 1; i<=n-k; ++i)
+			{
+				tempsum-=a[i-1];
+				tempsum+=a[i+k-1];
+				if (tempsum>minsum)
+					minsum = tempsum;
+			}
+	tempsum = 0;
+		
+	for(int maxi = 0; maxi<n-k; ++maxi)
+	{
+		maxsum = 0;
+		if(maxi>=k)
+		{
+				for(int i = 0; i<k; ++i)
+					tempsum+=a[i];
+				maxsum = tempsum;
+			for(int i = 1; i<=maxi-k; ++i)
+			{
+				tempsum-=a[i-1];
+				tempsum+=a[i+k-1];
+				if (tempsum>maxsum)
+					maxsum = tempsum;
+			}
+		}
+
+		tempsum=0;
+		if(maxi<=n-k-k+1)
+		{
+			for(int i = maxi+k; i<maxi+k+k; ++i)
+				tempsum+=a[i];
+			if (tempsum>maxsum)
+				{
+					maxsum = tempsum;
+				}
+			for(int i = maxi+k+1; i<=n-k; ++i)
+			{
+				tempsum-=a[i-1];
+				tempsum+=a[i+k-1];
+				if (tempsum>maxsum)
+				{
+					maxsum = tempsum;
+				}
+			}
+		}
+		if (maxsum<minsum)
+			minsum = maxsum;
+	}
+
+	printf("%ld", minsum);
+	//getch(); free(a); free(arrMaxi);
+	return 0;
+}
+

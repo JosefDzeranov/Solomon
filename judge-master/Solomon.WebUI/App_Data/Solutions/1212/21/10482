@@ -1,0 +1,54 @@
+program pr1;
+var
+N:array[1..10,1..100] of integer;
+st:array[1..100] of String;
+kor,i,j,l,l2:integer;
+num,k,call,M:integer;
+trade:boolean;
+s1,s2:string;
+begin
+readln(kor);
+readln(M);
+
+for i:=1 to M do begin
+readln(l,num);
+j:=1;
+     while N[num,j]<>0 do begin
+     j:=j+1;
+     end;
+N[num,j]:=l;
+end;
+
+k:=0;
+i:=kor;
+call:=1;
+while i>0 do begin
+
+     for j:=1 to kor do begin
+         l:=1;
+         num:=0;
+              while N[j,l]<>0 do begin
+                              if (N[j,l]<>j) and (N[j,l]<>-1) then begin
+                              num:=num+1;
+                              l2:=1;
+                              trade:=false;
+                                    while N[N[j,l],l2]<>0 do begin
+                                    if (N[N[j,l],l2] = j) then begin str(j,s1); str(N[j,l],s2); st[call]:=s1+' '+s2+' '+s2+' '+s1; call:=call+1; k:=k+1; N[N[j,l],l2]:=N[j,l]; N[j,l]:=j; trade:=true; break; end;
+                                    l2:=l2+1;
+                                                             end;
+                              if trade=false then begin l2:=1; while N[N[j,l],l2]<>0 do begin l2:=l2+1; end; l2:=l2+1; str(j,s1); str(N[j,l],s2); st[call]:=s1+' '+s2+' '+s2; call:=call+1; N[N[j,l],l2]:=N[j,l]; N[j,l]:=-1; k:=k+1;  end;
+                                                end;
+              l:=l+1;
+                                 end;
+     if num=0 then i:=i-1;
+
+                        end;
+end;
+writeln(k);
+if k<>0 then begin
+for i:=1 to call do
+writeln(st[i]);
+end;
+
+
+end.

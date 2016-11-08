@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,a,b;
+    cin>>n;
+    a=n/2;
+    b=n/2;
+    a=b;
+    if ((n%2==0)&&(n==2*a||n==2*b)) cout<<"YES";
+        else cout<<"NO";
+    return 0;
+}
+

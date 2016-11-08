@@ -1,0 +1,11 @@
+n, k = [int(i) for i in input().split()]
+n = [int(i) for i in input().split()]
+mx1 = -1
+mx2 = -1
+for i in range(len(n) - 1):
+    if n[i] + n[i + 1] >= mx1:
+        mx2 = mx1
+        mx1 = n[i] + n[i + 1]
+    elif n[i] + n[i + 1] > mx2:
+        mx2 = n[i] + n[i + 1]
+print(mx2)

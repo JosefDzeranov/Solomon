@@ -1,0 +1,16 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+    int m, n, k, x, y, sq = 0;
+
+    scanf("%d%d%d", &m, &n, &k);
+
+    cout << m * n - k << endl;
+
+    return 0;
+}
+

@@ -1,0 +1,8 @@
+CLS
+INPUT "a,b"; a, b
+INPUT "N"; N
+CLS
+a:
+PRINT a
+END
+

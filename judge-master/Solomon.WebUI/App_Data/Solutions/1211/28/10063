@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main()
+{
+    int x, y, z, max, aver, res;
+
+    scanf( "%d%d%d", &x, &y, &z );
+
+    max = aver = x;
+
+    if( max < y )
+        max = y;
+
+    if( max < z )
+        max = z;
+
+    if( aver < y && y < max )
+        aver = y;
+
+    if( aver < z && z < max )
+        aver = z;
+
+    res = aver + max;
+
+    cout << res << endl;
+
+    return 0;
+}
+

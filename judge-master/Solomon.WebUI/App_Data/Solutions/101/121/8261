@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int n = Convert.ToInt32(ss[0]);
+            int m = Convert.ToInt32(ss[1]);
+            n = n * n - m;
+            int i = 1;
+            bool f =false;
+            while (i * i <= n)
+            {
+                if (i * i == n) { f = true; break; }
+                i++;
+            
+            }
+            if (f) Console.WriteLine("Yes");
+            else Console.WriteLine("No");
+        }
+    }
+}

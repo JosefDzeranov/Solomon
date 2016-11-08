@@ -1,0 +1,8 @@
+var
+x,y,z:int64;
+begin
+read(x,y);
+z:=x+y;
+z:=z*x;
+writeln(z);
+end.

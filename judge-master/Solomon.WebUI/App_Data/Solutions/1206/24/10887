@@ -1,0 +1,27 @@
+var a: array [1..500000] of integer;
+i,j,k,r,q,N,sum,si,b:integer;
+s,t:string;
+Begin
+Readln(N);
+For i:=1 to N do 
+    Read(a[i]);
+  for i:=1 to 9 do  
+    for j:=1 to N do begin
+      Str(a[j],s); 
+        for k:=1 to length(s) do begin
+          val(s[k],r,b);
+          if r=i then begin
+            inc(si);
+            break;
+            end;
+      if si>=5 then
+      for q:=5 to si do begin
+      b:=b+4+q;
+      end;
+      sum:=sum+b;
+      si:=0;
+    end;
+    end;
+ write(sum);
+ end.
+            

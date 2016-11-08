@@ -1,0 +1,26 @@
+#include <iostream>
+
+
+using namespace std;
+
+int main()
+{
+    long long A,K,B,M,X,c=0;
+    cin>>A>>K>>B>>M>>X;
+    while (X>0)
+    {
+
+        if (c%K!=0)
+        {
+            X=X-A;
+        }
+
+        if (c%M!=0)
+        {
+            X=X-B;
+        }
+        c++;
+    }
+    cout<<c-1;
+    return 0;
+}

@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+
+int main()
+{
+	//srand(time(NULL));
+	string s;
+	cin >> s;
+	int fl = 0;
+	char a = '+', b = '+';
+	int ans = 0;
+	int x = 0, y = 0, z = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			if (fl % 2 == 0)
+				fl++;
+			if (fl == 1) x = x * 10 + int(s[i] - '0');
+			if (fl == 3) y = y * 10 + int(s[i] - '0');
+			if (fl == 5) z = z * 10 + int(s[i] - '0');
+		}
+		else
+		{
+			if (fl == 1)
+			{
+				a = s[i];
+				fl = 2;
+			}
+			else if (fl == 2)
+			{
+				ans = -1;
+				break;
+			}
+			else if (fl == 3)
+			{
+				b = s[i];
+				fl = 4;
+			}
+			else if (fl == 4)
+			{
+				ans = -1;
+				break;
+			}
+			else if (fl == 5)
+			{
+				ans = -1;
+				break;
+			}
+		}
+	}
+	if (!(a == '+' || a == '-' || a == '/' || a == '*') || !(b == '='))
+		ans = -1;
+	if (ans == -1)
+	{
+		cout << "ERROR";
+		return 0;
+	}
+	if (a == '+' && x + y == z)
+		cout << "YES";
+	else if (a == '-' && x - y == z)
+		cout << "YES";
+	else if (a == '*' && x * y == z)
+		cout << "YES";
+	else if (a == '/' && x / y == z && x % y == 0)
+		cout << "YES";
+	else cout << "NO";
+	return 0;
+}

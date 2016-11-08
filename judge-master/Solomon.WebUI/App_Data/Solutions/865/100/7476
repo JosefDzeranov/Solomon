@@ -1,0 +1,7 @@
+var D, N, druziyam, Timuru: integer;
+begin
+readln (D,N);
+Druziyam:=1;
+Timuru:=N-D;
+writeln (druziyam,' ', Timuru);
+end.

@@ -1,0 +1,23 @@
+program second;
+var
+ ci:byte;
+ input,eachOne,eOO:integer;
+ output:array[1..3] of integer;
+begin
+ readln(input);
+ eachOne:=input div 3; eOO:=input mod 3;
+ for ci:=1 to 3 do output[ci]:=eachOne; output[1]:=output[1]+eOO;
+ repeat
+  if output[1]-1>0 then
+   begin
+    dec(output[1]); inc(output[3]);
+   end
+ until (output[1]<>output[2]) and (output[2]<>output[3]) and (output[1]<>output[3]);
+ while (output[3]-1<>output[1]) and (output[2]+1<>output[3]-1) and (output[1]<>output[2]+1) and
+       (output[1]<output[2]+1) and (output[2]<output[3]-1) and 
+        ((output[3]-output[2])+(output[2]-output[1])>((output[3]-1)-(output[2]+1))+((output[2]+1)-output[1])) do
+        begin
+         dec(output[3]); inc(output[2]);
+        end;
+ write(output[1],' ',output[2],' ',output[3]);
+end.

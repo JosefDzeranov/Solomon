@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+string implode( vector<char> text )
+{
+    string res;
+
+    for( unsigned i = 0; i < text.size(); i++ )
+        res += text[ i ];
+
+    return res;
+}
+
+int main()
+{
+    string text;
+    vector<char> res;
+
+    cin >> text;
+
+    for( unsigned i = 0; i < text.size(); i++ )
+    {
+        if( text[ i ] != '#' )
+            res.push_back( text[ i ] );
+        else if( res.size() > 0 )
+            res.pop_back();
+    }
+
+    cout << implode( res ) << endl;
+
+    return 0;
+}
+

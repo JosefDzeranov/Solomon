@@ -1,0 +1,18 @@
+Var n, k, b, i, f1, f2: longint;
+a:  real;
+begin
+readln (n);
+b:=n-3;
+If (n>=3) and (n<=1000) then begin
+f1:= 1;
+for i:=2 to n do
+f1:= f1*i;
+end;
+begin
+f2:= 1;
+for i:=2 to b do
+f2:= f2*i;
+end;
+a:=f1/f2;
+writeln (a);
+end.

@@ -1,0 +1,14 @@
+var
+n:integer;
+s:longint;
+function line(n:integer):longint;
+var res:longint;
+begin
+  res:= (n*n*n+n)div 2 ;
+  line:=res;
+end;
+begin
+  readln(n);
+  s:=line(2*n-1)*2+4*n*n+1;
+  writeln(s);    
+end.

@@ -1,0 +1,7 @@
+ Program A;
+ var N:integer;
+ Begin
+ Readln(N);
+ Writeln(N*(N-1)*(N-2));
+ readln;
+ END.

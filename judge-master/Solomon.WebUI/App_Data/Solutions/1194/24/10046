@@ -1,0 +1,7 @@
+var i,a:integer;
+Begin
+for i:=1 to 6 do
+read(a);
+a:=4;
+writeln(a)
+End.

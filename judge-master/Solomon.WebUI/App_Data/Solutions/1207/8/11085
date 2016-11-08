@@ -1,0 +1,73 @@
+var
+  a, b, sum: array[1..11] of byte;
+  i, n, m, max, x, k: integer;
+  stA, stB, z: string;
+  chA, chB: char;
+  flag: boolean;
+
+begin
+  flag := false;
+
+  {__Считывание__}
+  read(z);
+  for i := 1 to length(z) do 
+  begin
+    if z[i] = ' ' then begin
+      flag := true;
+      continue;
+    end;
+    if flag <> true then
+      stA := stA + z[i]
+    else
+      stB := stB + z[i]
+  end;
+  
+  
+  if stA[1] = '-' then begin stA := copy(stA, 2, length(stA) - 1);chA := '-'; end;
+  if stB[1] = '-' then begin stB := copy(stB, 2, length(stB) - 1);chB := '-'; end;
+  n := length(stA);
+  m := length(stB);
+  
+  {__Разбиение__}
+  if n > m then
+    max := n
+  else
+    max := m;
+  
+  for i := 1 to n do 
+  begin
+    val(copy(stA, i, 1), x, k);
+    a[i + (max - n)] := x;
+  end;
+  
+  for i := 1 to m do 
+  begin
+    val(copy(stB, i, 1), x, k);
+    b[i + (max - m)] := x;
+  end;
+  
+        {__Суммирование__}
+  if chB = '-' then 
+    for i := max downto 1 do 
+    begin
+      if a[i] < b[i] then begin
+        dec(a[i - 1]);
+        inc(a[i], 10);
+      end;
+      sum[i] := a[i] - b[i];
+    end
+  else begin
+    for i := 1 to max do
+      sum[i] := a[i] + b[i];
+    for i := max downto 2 do 
+    begin
+      sum[i - 1] := sum[i - 1] + sum[i] div 10;
+      sum[i] := sum[i] mod 10;
+    end;
+  end;
+  
+  {__Вывод_результата__}
+  for i := 1 to max do
+    write(sum[i]);
+  
+end.

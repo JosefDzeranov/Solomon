@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+#define c(i,s,f) for(int i=s;i<=f;i++)
+#define SQR(x) ((x)*(x))
+typedef unsigned long long int ull;
+ull N,S=0ull;
+int main(){
+    cin>>N;
+    c(i,1,SQR(2*N-1)) S+=(ull)i;
+    S/=(2*N-1);
+    S*=2;
+    S+=SQR(2*N)+1;
+    cout<<S;
+}

@@ -1,0 +1,48 @@
+var s:array[1..10,1..101] of integer;
+v:array[1..1001]of integer;
+i,i1,j,c1,n1,n,m,k,k1,e:longint;
+
+begin
+read(n,m);k:=0;k1:=1;
+for i:=1 to m do begin
+                 read(c1,n1);
+                 s[n1,i]:=c1;
+                 end;e:=1;
+While e<>0 do begin                 
+for j:=1 to n do
+for i:=1 to 100 do if (s[j,i]<>j) and (s[j,i]<>0) then 
+                    begin inc(k);i1:=1;c1:=s[j,i];
+                    While (s[c1,i1]<>j) and (i1<=100) do i1:=i1+1;
+                    if s[c1,i1]=j then begin                                                            
+                                                              v[k1]:=j;inc(k1);
+                                                              v[k1]:=c1;inc(k1);
+                                                              v[k1]:=c1;inc(k1);
+                                                              v[k1]:=j;inc(k1);
+                                                              s[j,i]:=j;s[c1,i1]:=c1;
+                                                              end
+                                                           else begin
+                                                                i1:=1;
+                                                                While ((s[c1,i1]=c1)or (s[c1,i1]=0))  and (i1<=100) do i1:=i1+1;
+                                                              if s[c1,i1]<>c1 then begin                                                  
+                                                              v[k1]:=j;inc(k1);
+                                                              v[k1]:=c1;inc(k1);
+                                                              v[k1]:=c1;inc(k1);
+                                                              v[k1]:=s[c1,i1];inc(k1);
+                                                              s[j,i]:=s[c1,i1];s[c1,i1]:=c1;
+                                                              end                                                                                                                             
+                                                                else begin
+                                                                v[k1]:=j;inc(k1);
+                                                                v[k1]:=s[j,i];inc(k1);
+                                                                v[k1]:=s[j,i];k1:=k1+2;s[j,i]:=j;end;
+                                                                end;
+                    end;e:=0;
+  for j:=1 to n do
+for i:=1 to 100 do if (s[j,i]<>j) and (s[j,i]<>0) then  inc(e);                
+                    end;
+                       
+writeln(k);
+for i:=1 to k do begin
+                write(v[i*4-3],' ',v[i*4-2],' ',v[i*4-1]);
+               if v[i*4]<>0 then writeln(' ',v[i*4]) else writeln;
+                end;
+end.

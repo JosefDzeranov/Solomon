@@ -1,0 +1,22 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a1,a2,a3,a4,z,o:int64;
+    i:integer;
+begin
+  readln(a1,a2,a3,a4);
+  if a1<a2 then  a2:=a1;
+  if a1>a2 then  a1:=a2;
+  if a3<a4 then  a4:=a3;
+  if a3>a4 then  a3:=a4;
+  z:=a1+a3;
+  for I := 1 to z do
+   if (i*i)<=z then
+    o:=i;
+  writeln(o);
+  readln;
+end.

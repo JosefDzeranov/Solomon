@@ -1,0 +1,15 @@
+n, z = map(int, input().split())
+w, l, h = map(int, input().split())
+k = h//z
+if (((k+1)*z)%h <= z/2):
+    k +=1
+length = l//z
+width = w//z
+truckload = length*width*k
+if (truckload == 0):
+    no_trucks = -1
+else:
+    no_trucks = n//truckload
+    if (n%truckload >0):
+        no_trucks +=1
+print (no_trucks)

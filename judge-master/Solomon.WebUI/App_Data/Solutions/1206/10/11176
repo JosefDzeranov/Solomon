@@ -1,0 +1,11 @@
+var i,n,k,z, d: integer;
+begin
+  read(n, k);
+  z := 1;
+  for i := n downto n - k + 1 do
+    z := z * i;
+  d := 1;
+  for i := 1 to k do 
+    d := d * i;
+  write(z div d);
+end.

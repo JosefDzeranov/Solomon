@@ -1,0 +1,15 @@
+var
+n,a,i,b:integer;
+begin
+readln(n);
+for i:=1 to n do
+ begin
+ b:=i;
+  while (b mod 2)=0 do
+   begin
+    a:=a+1;
+    b:=b div 2;
+   end;
+  end;
+  writeln(a);
+  end.

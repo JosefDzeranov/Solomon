@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	int a = -1;
+	int *p = new int [m];
+	for (int i=0; i<m; i++)
+		cin >> p[i];
+	for (int i=0; i<m; i++)
+	{
+		if (p[i+1]-p[i]==1)
+		{
+			if (a==-1)
+			{
+				a=p[i];
+				cout << a << "-";
+			}
+		}
+		else
+		{
+			if (a==-1)
+				cout << p[i] << " ";
+			else
+			{
+				cout << p[i] << " ";
+				a=-1;
+			}
+		}
+	}
+cin.ignore();
+cin.get();
+return 0;
+}

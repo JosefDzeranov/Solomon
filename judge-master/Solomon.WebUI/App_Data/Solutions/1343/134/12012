@@ -1,0 +1,100 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+function min(a, b: Integer): Integer;
+begin
+  if a < b then
+    min := a
+  else
+    min := b;
+end;
+
+function max(a, b: Integer): Integer;
+begin
+  if a > b then
+    max := a
+  else
+    max := b;
+end;
+
+var
+  n: Integer;
+  s: array[1..40000, 1..2] of Integer;
+  l: array[1..2] of Integer;
+  
+procedure mns;
+var
+  i: Integer;
+begin
+  for i := 1 to n do
+  begin
+    s[i, 1] := 0;
+    s[i, 2] := 0;
+  end;
+end;
+
+var
+  i, k, a, b, x, j, da, db: Integer;
+  f: Boolean;
+
+begin
+  readln(n);
+  mns;
+  k := 0;
+  f := True;
+  for a := 1 to n do
+    for b := 1 to n do
+      if(a <> b) then
+      begin
+        mns;
+        f := True;
+        for x := 1 to n do
+          begin
+            da := min(min(x, a) + n - max(x, a), abs(a - x));
+            db := min(min(x, b) + n - max(x, b), abs(b - x));
+            if(a = x) then
+              if(b = x) then
+              begin
+                l[1] := 0;
+                l[2] := 0;
+              end
+              else
+              begin
+                l[1] := 0;
+                l[2] := db;
+              end
+            else
+              if(b = x) then
+              begin
+                l[1] := da;
+                l[2] := 0;
+              end
+              else
+              begin
+                l[1] := da;
+                l[2] := db;
+              end;
+            for j := 1 to n do
+              if (s[j][1] = l[1]) and (s[j][2] = l[2]) then
+              begin
+                f := False;
+                break;
+              end;
+            if not f then
+              break
+            else
+            begin
+              s[x][1] := l[1];
+              s[x][2] := l[2];
+            end;
+          end;
+          if f then
+            Inc(k);
+      end;
+  writeln(k);
+  readln;
+end.

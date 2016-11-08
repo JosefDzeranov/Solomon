@@ -1,0 +1,22 @@
+#include<string>
+#include<sstream>
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+int main()
+{
+	long m;
+	long n,a,b,c;
+	cin >> m >> n >> a >> b >> c;
+	
+	if (m==1)
+	{
+		cout << n-max(max(a,b),c);
+		return 0;
+	}
+		cout << min(min(a,b),c);
+
+	return 0;
+}

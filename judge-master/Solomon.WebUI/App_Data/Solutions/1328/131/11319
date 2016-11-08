@@ -1,0 +1,56 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+long long mas[100000];
+	long long cnt[100000] = {0};
+
+int main()
+{
+	int n;
+	cin >> n;
+	int k;
+	cin >> k;
+	
+	for (int i = 0; i < n; i++)
+		cin >> mas[i];
+	for (int i = 0; i < k; i++)
+		cnt[0] += mas[i];
+	for (int i = 1; i < n - k + 1; i++)
+		cnt[i] = cnt[i - 1] - mas[i - 1] + mas[i + k - 1];
+	int x = -1;
+	long long maxx = -1;
+	long long maxx2 = -1;
+	for (int i = 0; i < n - 1; i++)
+		if (cnt[i] > maxx || i == 0)
+		{
+			maxx = cnt[i];
+			x = i;
+			maxx2 = 0;
+			for (int j = max(0, i - k + 1); j <= min(n - 2, i + k - 1); j++)
+				maxx2 += cnt[j];
+		}
+		else if (cnt[i] == maxx)
+		{
+			long long maxx3 = 0;
+			for (int j = max(0, i - k + 1); j <= min(n - 2, i + k - 1); j++)
+				maxx3 += cnt[j];
+			if (maxx3 > maxx2)
+			{
+				maxx = cnt[i];
+				x = i;
+				maxx2 = maxx3;
+			}
+		}
+	for (int i = max(0, x - k + 1); i <= min(n - 2, x + k - 1); i++)
+		cnt[i] = 0;
+	maxx = -1;
+	for (int i = 0; i < n - 1; i++)
+		if (cnt[i] > maxx)
+		{
+			maxx = cnt[i];
+		}
+	cout << maxx;
+	return 0;
+}

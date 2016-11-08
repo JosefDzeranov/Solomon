@@ -1,0 +1,36 @@
+package com.acidka;
+
+public class A {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try{
+			int hadsaved = 0, commands = 0, patrons = 0, have = 0, comm = 0; String line;
+			java.util.Scanner s = new java.util.Scanner(System.in);
+			commands =  s.nextInt();
+			patrons = s.nextInt();
+			while(commands>=0){
+				line = s.nextLine();
+				if(line.equals("save"))
+					hadsaved = have;
+				else if(have>0 && line.equals("shoot"))
+					have --;
+				else if(line.equals("load"))
+					have = hadsaved;
+				else if(line.equals("ammo"))
+					have += patrons;
+				if(comm!=0)
+					System.out.println(have);
+				commands--;
+				comm += 1;
+			}
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

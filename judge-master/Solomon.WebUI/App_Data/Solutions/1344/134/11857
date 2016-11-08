@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	long int i, z;
+	unsigned long int k ;
+	unsigned int n;
+	cin >> n;
+	z = 1;
+	for (i = 1; i<=n; i++)
+	{
+		z = z * 2 ;
+	}
+	k = n * (z / 8);
+	cout << k;
+	return 0;
+}

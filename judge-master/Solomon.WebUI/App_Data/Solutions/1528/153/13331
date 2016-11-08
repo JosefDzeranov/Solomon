@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace ConsoleApplication10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.WriteLine("2");
+        }
+    }
+}

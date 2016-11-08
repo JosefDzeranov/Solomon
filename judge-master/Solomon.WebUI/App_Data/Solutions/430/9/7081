@@ -1,0 +1,23 @@
+program afdg;
+  var n,a,b,c,k:integer;
+  
+  function ph(a:integer):integer;
+    begin
+      if a<>0 then ph:=ph(a div 2)+1;
+    end;
+    
+  function m(a,b:integer):integer;
+    begin
+      if a>b then m:=b else m:=a;
+    end;
+  
+  begin
+  
+  
+    readln(k);
+    readln(n,a,b,c);
+    if k=2 then writeln(m(a,m(b,c)))
+      else writeln(ph(m(a,m(b,c))));
+  
+  
+  end.

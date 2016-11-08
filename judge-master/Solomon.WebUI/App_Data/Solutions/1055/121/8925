@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int n, m;
+    cin>>n>>m;
+    float u;
+    u=sqrt(n*n-m);
+    if (n==1 && m==1) cout<<"No";
+    else if (u*u==(n*n-m)) cout<<"Yes";
+    else cout<<"No";
+    return 0;
+}

@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <deque> 
+#include <map>
+#include <stdlib.h>
+#include <time.h> 
+using namespace std;
+
+int main()
+{
+	//srand(time(NULL));
+	//int n = rand() % 100;
+	string s;
+	cin >> s;
+	bool fl = 1;
+	if (s[0] == '0')
+		fl = 0;
+	int used[10] = { 0 };
+	for (int i = 0; i < s.size(); i++)
+	{
+		used[int(s[i] - '0')]++;
+		if (used[int(s[i] - '0')] > 1)
+			fl = 0;
+	}
+	if (fl == 1)
+		cout << "YES";
+	else
+	{
+		cout << "NO\n";
+		for (int i = 0; i < 10; i++)
+		if (used[i] > 1)
+			cout << i << ' ';
+	}
+	return 0;
+}

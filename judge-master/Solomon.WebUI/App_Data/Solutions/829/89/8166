@@ -1,0 +1,14 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x,y,t1,t2,c:integer;
+begin
+ readln(x,y,t1,t2);
+ c:=(y-1)*t1+t2*(x*y);
+ writeln(c);
+ readln;
+end.

@@ -1,0 +1,33 @@
+function kor(x:longint):integer;
+var s:longint;
+begin
+ S:=0;
+ while ((S div 10)<>0)xor(S=0) do
+  Begin
+   S:=0;
+   While X<>0 do
+    Begin
+     S:=S+(X mod 10);
+     X:=X div 10;
+    End;
+   X:=S;
+  End;
+ kor:=s;
+end;
+var
+ n,i,b:integer; mas:array [1..100] of longint; mas2:array [1..100] of longint;
+ a:array [1..9] of integer;
+Begin
+ read(n);
+ for i:=1 to n do
+  begin
+   read(mas[i]);
+   mas2[i]:=kor(mas[i]);
+   a[mas2[i]]:=a[mas2[i]]+1;
+  end;
+ b:=a[1];
+ for i:=2 to 9 do
+  if b<a[i] then b:=i;
+ for i:=1 to n do
+   if b<>mas2[i] then write(mas[i],' ');
+End.

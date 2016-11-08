@@ -1,0 +1,12 @@
+program mesi8;
+var n, l, r : integer;
+
+begin
+read(n, l, r);
+if ((pi*l) > n) then writeln('NO')
+  else 
+    begin
+    writeln('YES');
+    writeln(l/(2*r));
+    end;
+end.

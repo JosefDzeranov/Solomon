@@ -1,0 +1,35 @@
+program mesi4;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,q,w,e,r,t,y,max:integer;
+var a,b:array[1..100] of integer;
+var c,d:array[1..9] of integer;
+
+
+begin
+readln (n);
+for q:=1 to n do
+  begin
+  read(a[q]);
+  b[q]:=a[q] mod 9;
+  if b[q]=0 then b[q]:=9;
+  inc(c[b[q]]);
+  end;
+max:=c[1];
+for w:=2 to 8 do if c[w]>max then max:=c[w];
+r:=0;
+for e:=1 to 9 do if c[e]=max then
+  begin
+  inc(r);
+  d[r]:=e;
+  end;
+for t:=1 to n do if b[t]<>d[1] then write(a[t],' ');
+
+
+
+readln;readln;
+end.

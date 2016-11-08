@@ -1,0 +1,26 @@
+program asdf;
+var n,k,i:int64;c,a:int64;
+
+procedure proc(n,k,i:int64;var a:int64);
+var l:int64;
+begin
+  a:=1;
+  if i=1 then for l:=k+1 to n do a:=a*l
+  else for l:=1 to n-k do a:=a*l
+end;
+
+begin
+
+
+  readln(n,k);
+  i:=1;
+  proc(n,k,i,a);
+  c:=a;
+  a:=1;
+  i:=0;
+  proc(n,k,i,a);
+  c:=c div a;
+  writeln(c);
+
+
+end.

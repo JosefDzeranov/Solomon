@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+main()
+{
+	float a,b,c;
+	scanf("%f",&a);
+	a=a*2;
+	c=a-1;
+	b=c*(c*c+1)+(a*a+1);
+	printf("%.f",b);
+}

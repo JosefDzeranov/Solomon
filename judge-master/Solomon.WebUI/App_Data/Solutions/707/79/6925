@@ -1,0 +1,11 @@
+var
+sum,n:integer;
+begin
+readln(n);
+while n>3 do
+begin
+sum:=sum+(n*n+1);
+n:=n-2;
+end;
+writeln(sum+25);
+end.

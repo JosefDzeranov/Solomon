@@ -1,0 +1,11 @@
+a, k, b, m, x = map(int, input().split())
+if x <= 1000:
+    one = (k - 1) * m
+    two = (m - 1) * k
+    print((k * m * x) // (one * a + two * b))
+elif k != m:
+    print ((x + a + b - 1) // (a + b))
+else:
+    one = (k - 1) * m
+    two = (m - 1) * k
+    print((k * m * x) // (one * a + two * b))

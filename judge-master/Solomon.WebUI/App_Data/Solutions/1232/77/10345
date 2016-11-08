@@ -1,0 +1,23 @@
+program z1;
+var a:array[1..100,1..100] of char;
+b,c,s,i,l,max,j:longint;
+d:string;
+begin
+readln(d);
+l:=length(d);
+max:=1000;
+for i:=1 to l do
+if (i*i>=l) and (i<max) then max:=i;
+s:=1;
+for i:=1 to max do
+for j:=1 to max do
+begin
+a[i,j]:=d[s];
+s:=s+1;
+end;
+for j:=1 to max do
+for i:=1 to max do
+write(a[i,j]);
+writeln;
+end.
+

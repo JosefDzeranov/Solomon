@@ -1,0 +1,44 @@
+def Razlozhenie(x):
+    a = [];    
+    if x%2 == 0:
+        g = 2;
+        x /= 2;
+        a.append(2);
+    else:
+        g = 3;        
+    while(g <= x):
+        if(x%g == 0):
+            a.append(g);
+            x/=g;
+        else:
+            g+=1;
+    return a;
+    
+
+def KolvoK(a, A):
+    cnt = 0;
+    for i in A:
+        if(a == i): cnt += 1;
+    return cnt;
+
+def KolvoN(a, A):
+    cnt = 0;
+    for i in A:
+        cnt += KolvoK(a, i);
+    return cnt;
+
+s = str(input()).split();
+N = int(s[0]);
+K = int(s[1]);
+mk = Razlozhenie(K);
+mn = [];
+res = [];
+
+for A in range(2, N + 1):
+    mn.append(Razlozhenie(A));
+
+for i in mk:
+    res.append(float(KolvoN(i,mn)/KolvoK(i,mk)));
+
+print(int(min(res)));
+

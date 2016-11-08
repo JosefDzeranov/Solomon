@@ -1,0 +1,13 @@
+var x1,x2,y1,y2:integer;
+begin
+read(x1,y1,x2,y2);
+writeln(x1-1,' ',y1-1);
+writeln(x1,' ',y1);
+writeln(x1-1,' ',y1);
+writeln(x1,' ',y1-1);
+writeln(x2,' ',y2);
+writeln(x1,' ',y1+1);
+writeln(x2,' ',y1);
+end.
+
+              

@@ -1,0 +1,100 @@
+#include <iostream>
+#include <algorithm>
+#include <cstring>
+
+
+using namespace std;
+
+int main()
+{
+    string a;
+cin >> a;
+    int k;
+    bool bool1=true;
+k=sizeof(a);
+    int b[11];
+ for (int i=1;i<=10;i++)
+{
+   b[i]=0;
+}
+
+  for (int i=1;i<=k;i++)
+    {
+        if (a[i]='0')
+        {
+           b[1]++;
+        }
+        else
+        if (a[i]='1')
+        {
+           b[2]++;
+        }
+        else
+        if (a[i]='2')
+        {
+           b[3]++;
+        }
+        else
+        if (a[i]='3')
+        {
+            b[4]++;
+        }
+        else
+        if (a[i]='4')
+        {
+            b[5]++;
+        }
+        else
+        if (a[i]='5')
+        {
+            b[6]++;
+        }
+        else
+        if (a[i]='6')
+        {
+            b[7]++;
+        }
+        else
+        if (a[i]='6')
+        {
+            b[7]++;
+        }
+        else
+        if (a[i]='7')
+        {
+            b[8]++;
+        }
+        else
+        if (a[i]='8')
+        {
+            b[9]++;
+        }
+        else
+        if (a[i]='9')
+        {
+            b[10]++;
+        }
+
+    }
+   for (int i=1;i<=10;i++)
+    {
+        cout << b[i];
+    }
+    for (int i=1;i<=10;i++)
+    {
+        if (b[i]>1)
+        {
+            if (bool1)
+            {
+                cout << "NO"<<endl ;
+                bool1=false;
+            }
+            cout << i-1 << " ";
+        }
+    }
+    if (bool1)
+    {
+        cout << "YES";
+    }
+    return 0;
+}

@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+int len(char* a){
+	for(int i=0;i<50000;i++){
+		if(a[i]==0){return i;}
+	}
+return 0;}
+bool p2(char* a,char*b){
+	int d;
+	if((d=len(a))!=len(b)){return false;}
+	for(int i=0;i<d;i++){
+		if(a[i]!=b[i]){
+			return false;
+		}
+	}
+return true;}
+bool p3(char*a , char* f){
+	int df=len(f);
+	int da=len(a);
+	bool b=(f[0]=='*'),e=(f[df-1]=='*');
+	if(!b&&!e)return p2(a,f);
+	if(b&&!e){
+		for(int i=1;i<df-1;i++){
+			if(a[da-i]!=f[df-i])return false;
+		}
+	}
+	if(!b&&e){
+		for(int i=0;i<df-2;i++){
+			if(a[i]!=f[i])return false;
+		}
+	}
+	if(b&&e){
+		for(int i=0;i<da;i++){
+			bool gggg=true;
+			for(int j=2;j<df-2;j++){
+				if(a[i]!=f[j])gggg=false;
+			}
+			if(gggg)return true;
+		}
+	}
+return true;}
+int main(){
+	int n,p;
+	std::cin>>n>>p;
+	char** filt=(char**)malloc(sizeof(char*)*n);
+	for(int i=0;i<n;i++){
+		filt[i]=(char*)malloc(sizeof(char)*50);
+		std::cin>>filt[i];
+	}
+	int k;
+	std::cin>>k;
+	char** addr=(char**)malloc(sizeof(char*)*k);
+	for(int i=0;i<k;i++){
+		addr[i]=(char*)malloc(sizeof(char)*50);
+		std::cin>>addr[i];
+	}
+	for(int a=0;a<k;a++){
+		int fs=0;
+		for(int f=0;f<n;f++){
+			if(p==2||(p==0&&n==2)){
+				if(p2(addr[a],filt[f]))fs++;
+			}else{
+				if(p3(addr[a],filt[f]))fs++;
+			}
+		}
+		std::cout<<fs<<"\n";
+	}
+	free(filt);
+	free(addr);
+	std::cin>>n;
+}

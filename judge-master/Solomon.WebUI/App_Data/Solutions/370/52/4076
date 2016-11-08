@@ -1,0 +1,5 @@
+Var n:integer;
+begin
+ read(n);
+ write(n*(n-1)*(n-2));
+end.

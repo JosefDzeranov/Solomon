@@ -1,0 +1,51 @@
+#include<cstdio>
+#include<cmath>
+#include<vector>
+#include<set>
+#include<map>
+#include<string>
+#include<string.h>
+#include<queue>
+#include<iostream>
+
+using namespace std;
+
+string s;
+int p[30]={0},pl=1,i,A[30]={0},Al=1,num;
+
+void Zereg(){
+     int r=0;
+     for (int q=0;q<pl;q++){
+         num=p[q]*2+r;
+         p[q]=num%10;
+         r=num/10;
+     }
+     if (r!=0) {pl++;p[pl-1]=r;}
+}
+
+void Sum(){
+     int r=0;
+     Al=max(pl,Al);
+     for (int q=0;q<Al;q++){
+         num=p[q]+A[q]+r;
+         A[q]=num%10;
+         r=num/10;
+     }
+     if (r!=0) {A[Al]=r; Al++;}
+}
+
+main()
+{
+//      freopen("input.txt","r",stdin);
+//      freopen("output.txt","w",stdout);
+      
+      cin>>s;
+      p[0]=1;
+      for (i=s.size()-1;i>=0;i--){
+          if (s[i]=='*') Sum();
+          Zereg();
+      }
+      for (i=Al-1;i>=0;i--)
+          cout<<A[i];
+      cout<<endl;    
+}

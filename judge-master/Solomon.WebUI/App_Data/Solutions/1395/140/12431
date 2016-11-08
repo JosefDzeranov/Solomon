@@ -1,0 +1,8 @@
+﻿DIM N,K,I,S,L As Interger
+B,A(0;N) AS String
+K=val(Text1.text)
+S=0
+B=text1.text
+N=Len(B)
+for i=1 To N
+K=0

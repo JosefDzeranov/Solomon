@@ -1,0 +1,56 @@
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+ifstream cin("input.txt");
+ofstream cout("output.txt");
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	vector<int> v(1024);
+
+	for (int i = 0; i < n; i++)
+	{
+		int t;
+		cin >> t;
+
+		if (t == 0)
+		{
+			v[0]++; continue;
+		}
+		vector<int> temp(10);
+		while (t != 0)
+		{
+			temp[t % 10] = true;
+			t /= 10;
+		}
+
+		int res = 0;
+		for (int j = temp.size() - 1; j > -1; j--)
+		{
+			res = res * 2 + temp[j];
+		}
+
+		v[res]++;
+		cout << res << endl;
+	}
+
+	int res = 0;
+
+	for (int i = 0; i < 1024; i++)
+		for (int j = i; j < 1024; j++)
+			if ((i&j)*v[i]*v[j] != 0)
+				if (i != j)
+					res += v[i] * v[j];
+
+				else
+					res += v[i] * (v[i] - 1)/2;
+
+	cout << res;
+	return 0;
+}

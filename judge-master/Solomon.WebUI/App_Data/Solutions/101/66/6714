@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace hool
+{
+    class Program
+    {
+        static List<Int64> chool_number;
+        static int chisloO(string s)
+        {
+            s += " "; 
+            int i = 0;
+            string t="";
+            while (s[i] < '0' || s[i] > '9') i++;
+            while (s[i] >= '0' && s[i] <= '9') { t += s[i]; i++; }
+            return Convert.ToInt32(t);
+        
+        }
+        static int pozicia(int a)
+        {
+            for (int i = 0; i < chool_number.Count; i++)
+            {
+                if (a == chool_number[i]) return i;
+            }
+            chool_number.Add(a);
+            return chool_number.Count - 1;
+        }
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            chool_number = new List<Int64>();
+           Int64[] kolich = new Int64[n];
+            string s;
+            int a=0;
+            int c = 0;
+            for (int i = 0; i < n; i++)
+            {
+                s = Console.ReadLine();
+                a = chisloO(s);
+                c = pozicia(a);
+                kolich[c]++;
+            }
+            int k=0;
+            for (int i = 0; i < chool_number.Count; i++)
+            {
+                if (kolich[i] < 6) k++;
+            }
+            Console.WriteLine(k);
+            for (int i = 0; i < chool_number.Count; i++)
+            {
+                if (kolich[i] < 6) Console.WriteLine(chool_number[i]);
+            }
+        }
+    }
+}

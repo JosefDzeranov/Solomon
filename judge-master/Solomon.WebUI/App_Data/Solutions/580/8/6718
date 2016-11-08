@@ -1,0 +1,6 @@
+import sys;
+s = input();
+a = s.split(' ');
+n = float(a[0]);
+m = float(a[1]);
+print(n+m);

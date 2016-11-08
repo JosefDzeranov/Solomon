@@ -1,0 +1,45 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,a,k,j,i,r,r1:integer;
+h:array [1..1000] of integer;
+h1:array [1..1000] of integer;
+s:string;
+begin
+readln(n);
+readln(s);
+k:=1;
+a:= length(s) div n +1;
+for i:= 1 to n do
+ begin
+ h[i]:=0;
+ h1[i]:=i;
+ end;
+for i:= 1 to a do
+ for j := 1 to n do
+  begin
+  if s[k] = 'P' then
+   begin
+   h[j]:=h[j] + 1;
+   end;
+  k:=k+1;
+  end;
+for i := 1 to n-1 do
+ for j := 1 to n-i do
+  if h[j] < h[j+1] then
+   begin
+   r := h[j];
+   r1:=h1[j];
+   h[j] := h[j+1];
+   h1[j] := h1[j+1];
+   h[j+1] := r;
+   h1[j+1] := r1;
+   end;
+
+writeln(h1[1]);
+readln;
+end.

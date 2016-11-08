@@ -1,0 +1,78 @@
+program uncoding;
+label
+ goodEnd;
+type
+ codeT=array[1..40] of char;
+var
+ code,cExtra:string;
+ uncode:codeT;
+ ci,i,Ii:byte;
+procedure moveChars(moveTo:byte);
+ var
+  i,Ii:byte;
+ function formatToChar(toChar:byte):char;
+  begin
+    case toChar of
+     0: formatToChar:='A';6: formatToChar:='G';12: formatToChar:='M';18: formatToChar:='S'; 24: formatToChar:='Y';
+     1: formatToChar:='B';7: formatToChar:='H';13: formatToChar:='N';19: formatToChar:='T'; 25: formatToChar:='Z';
+     2: formatToChar:='C';8: formatToChar:='I';14: formatToChar:='O';20: formatToChar:='U';
+     3: formatToChar:='D';9: formatToChar:='J';15: formatToChar:='P';21: formatToChar:='V';
+     4: formatToChar:='E';10: formatToChar:='K';16: formatToChar:='Q';22: formatToChar:='W';
+     5: formatToChar:='F';11: formatToChar:='L';17: formatToChar:='R';23: formatToChar:='X';
+    end;
+  end;
+ function getNext:byte;
+  begin
+   case code[i] of
+    'A': getNext:=0+moveTo;'G': getNext:=6+moveTo;'M': getNext:=12+moveTo;'S': getNext:=18+moveTo;'Y': getNext:=24+moveTo;
+    'B': getNext:=1+moveTo;'H': getNext:=7+moveTo;'N': getNext:=13+moveTo;'T': getNext:=19+moveTo;'Z': getNext:=25+moveTo;
+    'C': getNext:=2+moveTo;'I': getNext:=8+moveTo;'O': getNext:=14+moveTo;'U': getNext:=20+moveTo;
+    'D': getNext:=3+moveTo;'J': getNext:=9+moveTo;'P': getNext:=15+moveTo;'V': getNext:=21+moveTo;
+    'E': getNext:=4+moveTo;'K': getNext:=10+moveTo;'Q': getNext:=16+moveTo;'W': getNext:=22+moveTo;
+    'F': getNext:=5+moveTo;'L': getNext:=11+moveTo;'R': getNext:=17+moveTo;'X': getNext:=23+moveTo;
+   end;
+  end;
+ begin
+  for i:=1 to length(code) do
+   uncode[i]:=formatToChar(getNext mod 26);
+ end;
+function checkRight:boolean;
+ label
+  theEnd;
+ var
+  i,Ii:byte;
+  wFound:boolean;
+ begin
+  if length(cExtra)>length(code) then checkRight:=false
+  else
+   for i:=1 to length(code) do
+    begin
+     if uncode[i]=cExtra[1] then
+      begin
+       for Ii:=1 to length(cExtra)-1 do
+        begin
+         if Ii+i>length(code) then break
+          else if uncode[i+Ii]<>cExtra[Ii+1] then break;
+         if (Ii=length(cExtra)-1) then begin checkRight:=true; goto theEnd; end;
+        end;
+      end;
+    end;
+  checkRight:=false;
+ theEnd:
+ end;
+begin
+ readln(code);
+ readln(cExtra);
+
+ for ci:=1 to 25 do
+  begin
+   moveChars(ci);
+   if checkRight then
+    begin
+     for i:=1 to length(code) do write(uncode[i]); goto goodEnd;
+    end;
+  end;
+  write('IMPOSSIBLE');
+  goodEnd:
+  readln;
+end.

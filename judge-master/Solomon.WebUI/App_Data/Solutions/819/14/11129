@@ -1,0 +1,34 @@
+n = int(input())
+A = []
+for i in range(n):
+    A.append(input()) # собираем все строки с ввода в список
+count = len (A[0]) # количество нажатий клавиш равно длине первого слова
+B = []
+B.append(A.pop(0))
+
+while len(A) > 0:
+    
+
+    lettercount_max = 0
+    a = A[0]
+    for i in range (len(A)):
+        
+        lettercount = 0
+        
+        for j in range (min(len(B[-1]), len(A[i]))):
+            
+            if A[i][j] == B[-1][j]:
+                lettercount +=1
+            else:
+                break
+              
+        if lettercount > lettercount_max:
+            lettercount_max = lettercount
+            a = A[i]
+    
+    B.append(a)
+    A.remove(a)
+    count = count + len(a) - lettercount_max
+print (count)
+for i in range (n):
+    print (B[i])

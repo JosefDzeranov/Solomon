@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+void main()
+{
+	int n,s;
+	cin>>n;
+	s=1;
+	for (int i=n; i>n-3; i--)
+		s*=i;
+	cout<<s;
+
+}

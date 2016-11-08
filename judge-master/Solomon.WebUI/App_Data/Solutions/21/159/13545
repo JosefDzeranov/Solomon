@@ -1,0 +1,29 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..5000] of integer;
+ n,d,b,c,i,x:integer;
+begin
+  x:=0;
+  readln(n);
+  for I := 1 to n do
+    begin
+      read(a[i]);
+      if a[i]=1 then
+      d:=a[i]
+      else
+      if a[i]>2 then
+      b:=a[i]
+      else
+      c:=a[i];
+      if (d=b) and (b=c) then
+      inc(x);
+      end;
+      writeln(x);
+      readln;
+
+end.

@@ -1,0 +1,38 @@
+program C;
+Uses crt;
+var b,n,t,x,y,a,u,i,o,z,m,v:integer;
+begin
+writeln('Введите 2 натуральных числа, меньше десяти');
+read(a,b);
+writeln('Введите номер цифры, которую надо найти');
+read(n);
+x:=a+b;
+t:=x+b;
+y:=t+x;
+if x>10 then u:=x mod 10
+else u:=x;
+if x>10 then i:=x div 10
+else i:=x;
+if t>10 then o:=t mod 10 
+else o:=t;
+if t>10 then z:=t div 10
+else z:=t;
+if y>10 then m:=y mod 10
+else m:=y;
+if y>10 then v:=y div 10
+else v:=y;
+if u=x then write(a,b,u)
+else write(a,b,u,i);
+if o=t then write(o)
+else write(z,o);
+if m=y then write(m)
+else write(v,m);
+if n=1 then writeln('Искомое число - ',a);
+if n=2 then writeln('Искомое число - ',b);
+if n=3 then writeln('Искомое число - ',u);
+if n=4 then writeln('Искомое число - ',i);
+if n=5 then writeln('Искомое число - ',z);
+if n=6 then writeln('Искомое число - ',o);
+if n=7 then writeln('Искомое число - ',v);
+if n=8 then writeln('Искомое число - ',m);
+end.

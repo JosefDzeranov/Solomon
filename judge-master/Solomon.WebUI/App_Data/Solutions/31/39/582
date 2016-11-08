@@ -1,0 +1,29 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var m,n,k,a,b,i:integer;
+  var str:array [1..1000] of integer;
+begin
+  readln(n,m);
+  for i := 1 to m do
+   read(str[i]);
+ a:=str[1];
+ b:=str[1];
+ for i := 2 to m+1 do
+  begin
+   if (b+1)=str[i] then
+   b:=str[i]
+   else
+    begin
+       if a<b then write(a,'-',b,' ')
+       else write(a,' ');
+     a:=str[i];
+     b:=str[i];
+    end;
+ end;
+ readln(n);
+ end.

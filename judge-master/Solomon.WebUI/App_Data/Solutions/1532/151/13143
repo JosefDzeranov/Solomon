@@ -1,0 +1,33 @@
+﻿using System;
+
+namespace ConsoleApplication13
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int oI1 = 1;
+            int oI2 = 2;
+            int oI3 = 3;
+
+            int rI = int.Parse(Console.ReadLine());
+            while (rI < 5 && rI > 1000)
+            {
+                rI = int.Parse(Console.ReadLine());
+            }
+
+            while (oI1 + oI2 + oI3 < rI)
+            {
+                oI3++;
+                if (oI1 + oI2 + oI3 != rI)
+                { oI2++; }
+                if (oI1 + oI2 + oI3 != rI)
+                { oI1++; }
+            }
+
+            Console.WriteLine(oI1.ToString() + " " + oI2.ToString() + " " + oI3.ToString());
+            Console.ReadLine();
+
+        }
+    }
+}

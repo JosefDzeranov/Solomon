@@ -1,0 +1,22 @@
+var
+  f, s, curf, curs, cur, n: integer;
+  si: string;
+
+begin
+  read(n);
+  for cur := 1 to n do
+  begin
+    curf := 0;
+    curs := 0;
+    readln(si);
+    if(si [1] = '>') or (si [1] = '<') then inc(curf);
+    if(si [2] = '>') or (si [2] = '<')  then inc(curf);
+    if(si [3] = '<') or (si [3] = '>')  then inc(curs);
+    if(si [4] = '<') or (si [4] = '>')  then inc(curs);
+    if(curs > curf) then s := s + curs - curf;
+    if(curs < curf) then f := f + curf - curs;
+  end;
+  if(s > f) then writeln('2 ', s - f);
+  if(s < f) then writeln('1 ', f - s);
+  if(s = f) then writeln(0);
+end.

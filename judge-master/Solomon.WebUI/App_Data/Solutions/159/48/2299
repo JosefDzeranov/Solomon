@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+ float l,x1,y1,x2,y2,n,a,b,pi;
+  cin>> l>>x1>>y1>>x2>>y2;
+ pi=3.14;
+ a=abs((x2-x1)*(y2-y1));
+ b=pi*l*l;
+
+      if (a>b)
+{
+
+
+    cout<<b;
+ }
+
+        if (a<b)
+ {
+
+        cout<<a;
+ }
+    return 0;
+}

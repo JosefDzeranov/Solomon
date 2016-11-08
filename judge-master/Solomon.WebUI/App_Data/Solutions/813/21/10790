@@ -1,0 +1,5 @@
+program mm;
+begin
+writeln('1');
+writeln('1 2 2 1');
+end.

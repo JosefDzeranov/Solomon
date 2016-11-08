@@ -1,0 +1,25 @@
+var i,m,n,t:integer;
+s:array [1..10000] of integer;
+Function OMG(j:integer):integer;
+begin
+if (s[j]=s[j+1]-1)and (j<>m) then OMG:=OMG(j+1);
+if (j=m)  then begin OMG:=s[j];t:=j;end;
+if (s[j]<>s[j+1]-1) then begin OMG:=s[j];t:=j;end;
+end;
+
+Procedure PEA (var i1:integer);
+begin
+if (s[i1])<>(s[i1+1]-1) then write(s[i1],' ');
+if (s[i1])=(s[i1+1]-1) then begin 
+                        write(s[i1],'-');
+                        write(OMG(i1),' ');
+                        i1:=t;
+                        end;                
+end;
+begin
+read(n,m);
+for i:=1 to m do read(s[i]);
+i:=1;
+
+While i<>m+1 do begin  PEA(i);i:=i+1;end;
+end.

@@ -1,0 +1,9 @@
+program  z1;
+var a,b,c,d,a1:longint;
+begin
+readln(a);
+a1:=2*a;
+b:=((a1-1)*((a1-1)*(a1-1)+1)) div 2;
+c:=2*b+a1*a1+1;
+writeln(c);
+end.

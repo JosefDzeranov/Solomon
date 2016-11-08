@@ -1,0 +1,40 @@
+#include <iostream>
+#include<string>
+#include<math.h>
+using namespace std;
+int i,j,n,k,a[1111][1111];
+string s;
+double x;
+int main()
+{
+getline(cin,s);
+x=sqrt(s.size());
+if(x==(int)(x))
+{
+    n = int(x);
+}
+else
+{
+    n=(int)(x)+1;
+    for(i=s.size();i<n*n;i++)
+        s+=" ";
+}
+for(i=1;i<=n;i++)
+{
+    for(j=1;j<=n;j++)
+    {
+        a[i][j]=s[k];
+        k++;
+    }
+}
+for(i=1;i<=n;i++)
+{
+    for(j=1;j<=n;j++)
+    {
+        cout<<(char)a[j][i];
+    }
+}
+
+
+}
+

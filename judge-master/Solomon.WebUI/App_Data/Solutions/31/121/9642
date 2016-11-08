@@ -1,0 +1,22 @@
+program Project38;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, m: Integer;
+     k: Real;
+
+begin
+  readln(n, m);
+  n:= N * n;
+  if m>n then
+  writeln('NO') else
+  if sqrt(m)=trunc(sqrt(m)) then
+  writeln('YES')
+  else  writeln('NO');
+
+
+end.

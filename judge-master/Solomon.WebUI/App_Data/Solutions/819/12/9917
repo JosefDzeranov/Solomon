@@ -1,0 +1,12 @@
+import math
+n, k = map(int, input().split())
+summa = 0
+f = math.factorial(n)
+while f % k == 0:
+    f = f//k
+    summa +=1
+
+
+print (summa)
+    
+

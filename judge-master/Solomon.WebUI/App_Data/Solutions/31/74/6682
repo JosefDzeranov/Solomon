@@ -1,0 +1,13 @@
+program Project31;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x1,y1,x2,y2,t,x,y:integer;
+begin
+  readln(x1,y1,x2,y2);
+ writeln(1000);
+ readln;
+end.

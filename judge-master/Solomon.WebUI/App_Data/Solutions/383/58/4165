@@ -1,0 +1,17 @@
+var a:array [1..100] of word;
+   i,k,n:byte;
+   m:word;
+  procedure perebor(j,s1,s2:word);
+    begin
+       if j-1=n then begin if abs(s1-s2)<m then m:=abs(s1-s2); exit; end;
+       perebor (j+1,s1+a[j],s2);
+       perebor (j+1,s1,s2+a[j]);
+  end;
+BEGIN
+  readln(n);
+  for i:=1 to n do
+    read(a[i]);
+  m:=64000;
+  perebor(1,0,0);
+  writeln(m);
+END.

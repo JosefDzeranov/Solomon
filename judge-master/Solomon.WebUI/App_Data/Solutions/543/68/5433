@@ -1,0 +1,36 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var x:integer;
+begin
+readln(x);
+write('YES',
+2,
+0, 0, -1,
+-1, 0, -1,
+'YES',
+2 ,
+0, 0 ,-1,
+-1, 0, -1,
+'YES',
+1 ,
+0 ,1, -1 ,
+'YES',
+2,
+0 ,0, 1,
+1, 0, 1,
+'YES' ,
+2 ,
+0 ,0, 1 ,
+1, 0, 1,
+'YES',
+1 ,
+0 ,1, 1,
+'YES',
+0 ,
+'NO');  { TODO -oUser -cConsole Main : Insert code here }
+end.

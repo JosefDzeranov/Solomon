@@ -1,0 +1,15 @@
+n = int(input())
+if 1 <= n <= 3:
+    print ('NO')
+else:
+    A = []
+    while n > 1:
+        if n%2 == 0:
+            A.append ('*')
+            n = n/2
+        else:
+            A.append ('+')
+            n -=1
+    A.reverse()
+    print (''.join(A))
+    

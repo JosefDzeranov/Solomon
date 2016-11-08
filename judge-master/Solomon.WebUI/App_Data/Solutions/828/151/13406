@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a,b,c;
+	int enter;
+	cin >> enter;
+	if (enter % 3 == 0)
+	{
+		a = enter / 3 - 1;
+		b = enter / 3;
+		c = enter / 3 + 1;
+	}
+	if (enter % 3 == 1)
+	{
+		a = enter / 3 - 1;
+		b = enter / 3;
+		c = enter / 3 + 2;
+	}
+	if (enter % 3 == 2)
+	{
+		a = enter / 3 - 1;
+		b = enter / 3 + 1;
+		c = enter / 3 + 2;
+	}
+	cout << a << " " << b << " " << c; 
+}

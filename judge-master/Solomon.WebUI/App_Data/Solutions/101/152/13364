@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+       
+        static void Main(string[] args)
+        {
+           
+
+            Console.WriteLine( 3+" "+18);
+        }
+    }
+}

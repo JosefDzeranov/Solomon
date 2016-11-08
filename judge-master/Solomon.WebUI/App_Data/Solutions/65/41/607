@@ -1,0 +1,18 @@
+var a:integer;
+b:string;
+begin
+readln(a);
+b:='';
+while a>1 do
+if a mod 2=0 then begin
+a:=a div 2;
+b:='*'+b;
+end
+else
+if a mod 2<>0 then begin
+a:=a-1;
+b:='+'+b;
+end;
+write(b);
+readln;
+end.

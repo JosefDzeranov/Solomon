@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+struct point
+{
+	int x, y;
+};
+int main()
+{
+	
+	int l;
+	cin >> l;
+	point a, b;
+	cin >> a.x >> a.y;
+	cin >> b.x >> b.y;
+	long double sa = abs(b.x - a.x);
+	long double sb = abs(b.y - a.y);
+	long double sa2 = sa / 2;
+	long double sb2 = sb / 2;
+	long double rrr = sqrt((sa2 * sa2)  + (sb2 * sb2));
+	long double pl = 3.1415926535897932384626 * (l * l);
+	long double sss = 0;
+
+	if (l <= (sa / 2) && l <= (sb / 2))
+	{
+		sss = 3.1415926535897932384626 * (l * l);
+	}
+	else if (l < rrr)
+	{
+		sss = 3.1415926535897932384626 * (l * l);
+		long double s11, s12;
+		s11 = acos(sb2 / l);
+		s12 = acos(sa2 / l);
+		long double s21, s22;
+		s21 = s11 * l * l;
+		s22 = s12 * l * l;
+		long double aaa, bbb;
+		aaa = sqrt(l * l - sb2 * sb2) * sb2;
+		bbb = sqrt(l * l - sa2 * sa2) * sa2;
+		s21 -= aaa;
+		s22 -= bbb;
+		if (s21 > 0) sss-=s21 * 2;
+		if (s22 > 0) sss-=s22 * 2;
+	}
+	else
+	{
+		sss = sa * sb;
+	}
+	if (sss < 0) sss = 0;
+	cout.precision(6);
+cout << sss;
+return 0;
+}

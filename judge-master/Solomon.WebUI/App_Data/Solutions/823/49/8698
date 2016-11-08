@@ -1,0 +1,30 @@
+program SnakeMountainich;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  s : string;
+  k, i : integer;
+  g, x1, x2 : byte;
+begin
+  readln (k);
+  s := 'NO';
+  g := 3;
+  for i := 1 to k do
+    begin
+      read (x1, x2);
+      if g - x1 <= 0 then
+        begin
+          s := 'YES';
+          break;
+        end
+      else
+        g := g - x1 + x2;
+    end;
+  readln;
+  write (s);
+  readln;
+end.

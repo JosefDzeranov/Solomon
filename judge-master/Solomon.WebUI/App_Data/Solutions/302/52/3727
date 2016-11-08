@@ -1,0 +1,13 @@
+Var
+x,n,k:longint;
+d,f:text;
+Begin
+Assign(d,'input.txt'); Reset(d);
+Assign(f,'output.txt'); Rewrite(f);
+Readln(d,n);
+k:=1;
+For x:=n-2 to n do k:=k*x;
+Writeln(f,k);
+Close(d);
+Close(f);
+End.

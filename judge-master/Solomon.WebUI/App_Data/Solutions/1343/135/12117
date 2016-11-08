@@ -1,0 +1,17 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  a, k, b, m, x: Integer;
+  res: Double;
+
+begin
+  readln(a, k, b, m, x);
+  res := x / (a * (k - 1) / k + b * (m - 1) / m);
+  writeln(res : 2 : 0);
+  readln;
+end.

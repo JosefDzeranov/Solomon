@@ -1,0 +1,17 @@
+var i,j,n,k1,k2,i1,i2,o:int64;
+l:array[1..500000]of longint;
+a,b:string;
+t:boolean;
+begin
+read(n);o:=0;
+for i:=1 to n do read(l[i]);
+
+for i:=1 to n-1 do
+for j:=i+1 to n do begin t:=false;
+str(l[i],a);str(l[j],b);
+k1:=length(a);k2:=length(b);
+for i1:=1 to k1 do for i2:=1 to k2 do if a[i1]=b[i2] then t:=true;
+if t then o:=o+1;
+end;
+write(o);
+end.

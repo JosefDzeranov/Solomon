@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace kdsgl
+{
+    class Program
+    {
+        static int[,] matr;
+        static int m, n;
+        static void mark(int x, int y)
+        {
+            if (x >= 0 && x < m && y >= 0 && y < n)
+            {
+                if(matr[x,y]!=1)
+                {
+
+                matr[x, y] = 1;
+                mark(x + 1, y);
+                mark(x - 1, y);
+                mark(x, y+1);
+                mark(x, y-1);
+                }
+            }
+        }
+        static void Main(string[] args)
+        {
+            string s1 = Console.ReadLine();
+            string[] ss = s1.Split(' ');
+            m = Convert.ToInt32(ss[0]);
+            n = Convert.ToInt32(ss[1]);
+            int k = Convert.ToInt32(ss[2]), g =0;
+            matr = new int[m,n];
+            for (int i = 0; i < k; i++)
+            {
+                s1 = Console.ReadLine();
+                ss = s1.Split(' ');
+                matr[Convert.ToInt32(ss[0])-1, Convert.ToInt32(ss[1])-1]=1;
+            }
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (matr[i, j] == 0)
+                    {
+                        g++;
+                        mark(i, j);
+                    }
+                }
+            }
+            Console.WriteLine(g);
+        }
+
+    }
+}

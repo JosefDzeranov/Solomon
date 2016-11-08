@@ -1,0 +1,16 @@
+program Projectpobratski;
+{$APPTYPE CONSOLE}
+uses
+  SysUtils;
+var N,D,k,l,s,t,m:integer;
+begin
+readln (N);
+readln(D);
+k:=D div 2;
+l:=D mod 2;
+s:=k div N;
+m:=k mod N;
+t:=k+l+m;
+writeln(s,' ',t);
+readln;
+end.

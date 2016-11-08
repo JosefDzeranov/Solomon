@@ -1,0 +1,29 @@
+type
+ofka=array[1..2500*200]of string;
+
+var
+i,j,x,y,n,otv:integer;
+mas:ofka;
+ch:char;
+begin
+readln(n);
+
+while true do begin
+inc(i);
+read(ch);
+if ch<>' ' then
+mas[i]:=mas[i]+ch
+else
+end;
+
+for i:=1 to n-1 do
+for j:=i+1 to n do
+for x:=1 to length(mas[i]) do
+for y:=1 to length(mas[j]) do
+if mas[i][x]=mas[j][y] then begin
+inc(otv);
+break;break;
+end;
+
+write(otv);
+end.

@@ -1,0 +1,23 @@
+program braslet2;
+uses SysUtils;
+var l_okr1,l_okr2,d1,d2,d,ll:real;
+    k,k1,R1,R2,N,L,diam:integer;
+begin
+readln(N,L);
+readln(R1,R2);
+l_okr1:=2*pi*R1;
+l_okr2:=2*pi*R2;
+diam:=2*R1;
+k:=L div diam;
+if l mod diam >0 then k:=k+1;
+k1:=k;
+d1:=l_okr1*k;
+d2:=l_okr2*k1;
+d:=d1*2+d2;
+if d<=N then
+begin
+writeln('YES');
+writeln(2*k,,' ',k1);
+end
+else writeln('NO');
+end.

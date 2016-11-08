@@ -1,0 +1,32 @@
+VAR
+  n,k,len,i,j,sum,pr: LongINt;
+  a: Array [1..100] of LongINt;
+BEGIN
+  Read(n);
+  For i := n to 10000*n do begin
+    k := i;
+    j := 2;
+    len := 0;
+    sum := 0;
+    While (k > 0)and(k >= j) do begin
+      While (k > 0)and(k mod j = 0) do begin
+        k := k div j; sum := sum + j;
+        Inc(len); a[len] := j; End;
+      Inc(j);
+    End;
+
+    If (i = sum + n - len) then Break
+    Else len := 0;
+  End;
+
+  pr := 1;
+  For i := 1 to len do pr := pr * a[i];
+
+  sum := n - len;
+  For i := 1 to len do sum := sum + a[i];
+
+  If (pr <> sum) then Write(-1)
+  Else begin
+    For i := 1 to (n - len) do Write('1 ');
+    For i := 1 to len do Write(a[i],' '); End;
+END.

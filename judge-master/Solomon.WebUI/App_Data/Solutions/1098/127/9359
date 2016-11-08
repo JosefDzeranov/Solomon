@@ -1,0 +1,57 @@
+#include <iostream>
+
+bool sear(char* str,int* arr,int leng,int depth,int pos,char last,int* res){
+	if(depth==(leng+1)){
+		std::cout<<pos;
+		*res=str[pos]-last;
+		return true;
+	}
+	for(int i=0;i<40;i++){
+		if((str[i+1]-str[i])==arr[depth]){
+			return sear(str,arr,leng,depth+1,i,last,res);
+		}
+	}
+	return false;
+}
+int main(){
+
+	char str1[41],str2[41];
+	std::cin>>str1;
+	std::cin>>str2;
+	char a='A',z='Z';
+
+	int leng2;
+	for(int i=0;i<41;i++){
+		if (str2[i]=='\0'){
+			leng2=i;
+			break;
+		}
+	}
+	int* arr=new int[leng2-1];
+	
+	for(int i=0;i<(leng2-1);i++){
+		arr[i]=str2[i+1]-str2[i];
+	}
+	int dis;
+	bool ret=sear(str1,arr,leng2-1,0,0,str2[leng2-1],&dis);
+
+	if (!ret){
+		std::cout<<"IMPOSSIBLE";
+		return 0;
+	}
+	for(int i=0;i<40;i++){
+		if(str1[i]!='\0'){
+			str1[i]+=dis;
+			if(str1[i]>z){
+				str1[i]-=24;
+			}
+			if(str1[i]<a){
+				str1[i]+=24;
+			}
+		}
+	}
+	std::cout<<str1;
+std::cout<<dis;
+	delete arr;
+	return 0;
+}

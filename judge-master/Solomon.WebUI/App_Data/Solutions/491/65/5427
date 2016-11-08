@@ -1,0 +1,26 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var a:array [1..4] of int64; c,d:int64;  i:integer;
+begin
+for I := 1 to 4 do
+read(a[i]);
+if a[1]>a[2] then a[1]:=a[2];
+if a[3]>a[4] then a[3]:=a[4];
+c:=a[1]+a[3];
+if c mod 2 =1 then c:=c-1;
+d:=c div 2;
+a[4]:=0;
+while c>d do
+begin
+a[4]:=a[4]+1;
+c:=c-a[4];
+end;
+writeln(a[4]);
+readln;
+
+end.

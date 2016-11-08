@@ -1,0 +1,35 @@
+var s:string;
+n,i,j,m,l,r,x,k:longint;
+p:array[0..10]of longint;
+begin
+    assign(input, 'input.txt'); reset(input);
+  assign(output, 'output.txt'); rewrite(output);
+  readln(s);
+  n:=length(s);
+  for i:=0 to n do
+   p[i]:=0;
+   k:=0;
+   while p[0]=0 do
+   begin
+   write(s[p[i]]);
+   writeln;
+   k:=k+1;
+   j:=n;
+   while p[j-1]=p[j]do j:=j-1;
+   m:=n;
+   while p[j-1]>p[m]do
+   m:=m-1;
+   x:=p[j-1];
+   p[j-1]:=p[m];
+   p[m]:=x;
+   l:=j;r:=n;
+   while l<r do
+   begin
+      x:=p[l];
+      p[l]:=p[r];
+      p[r]:=x;
+      l:=l+1;
+      r:=r-1;
+   end;
+   end;
+end.

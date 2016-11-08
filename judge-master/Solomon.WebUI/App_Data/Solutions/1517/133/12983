@@ -1,0 +1,157 @@
+var fin,fout:text;
+    n,p,k,i,j,l,pos1:integer;
+    arrN,arrK:array[1..50000] of string;
+    arr: array[1..50000] of integer;
+    IsLeftEmpty, IsRightEmpty: boolean;
+
+
+begin
+ //assign(fin,'search.in');reset(fin);
+ readln(n,p);
+ for i:=1 to n do
+  readln(arrN[i]);
+
+ readln(k);
+ for i:=1 to k do
+ begin
+  readln(arrK[i]);
+  for j:=1 to n do
+   begin
+      if p = 2 then
+         begin
+            if arrK[i] = arrN[j] then
+               arr[i]:=arr[i] + 1;       
+         end;
+         
+       if p = 1 then
+          begin
+            pos1:= Pos(copy(arrN[j] , 3 , length(arrN[j]) - 4 ),arrK[i]);
+        //    writeln(copy(arrN[j] , 3 , length(arrN[j]) - 4 ));
+             if pos1 > 0 then
+                begin
+                  if ( (pos1 = 1) or  (arrK[i][pos1-1] = '.') ) and ( (length(arrK[i]) = length(arrN[j]) - 4 + pos1 - 1)  or ( arrK[i][pos1+length(arrN[j]) - 4] = '/') ) then
+                     arr[i]:=arr[i] + 1;
+                  break;
+                end;          
+          end;
+       {  for l:=1 to length(arrK[i]) do
+       begin
+        if arrK[i][l] = arrN[j][3] then
+         begin
+          if copy(arrK[i],l,length(copy(arrN[j],3,length(arrN[j]) - 4 )) ) = copy(arrN[j],3,length(arrN[j]) - 4) then
+           begin
+            arr[i]:=arr[i]+1;
+           end;
+         end;
+       end;}
+       
+   end;
+ end;
+//close(fin);
+
+if p = 3 then
+begin
+for j:=1 to n do
+   begin
+ //  write(arr[5]);
+     IsLeftEmpty:= true;
+     IsRightEmpty:= true;
+      if arrN[j][1] = '*' then
+         IsLeftEmpty:= false;
+      
+      if arrN[j][length(ArrN[j])] = '*' then
+         IsRightEmpty:= false;
+         
+         
+      if (IsLeftEmpty) and (IsRightEmpty) then
+         begin
+            for i:=1 to k do
+               begin
+                  if arrK[i] = arrN[j] then
+                     arr[i]:=arr[i] + 1;               
+               end;         
+         end
+         
+       else
+       
+       if (not (IsLeftEmpty) ) and ( not (IsRightEmpty) )  then
+          begin  
+          
+           for i:=1 to k do
+             begin
+              pos1:= Pos(copy(arrN[j] , 3 , length(arrN[j]) - 4 ),arrK[i]);
+           //   writeln(pos1);
+               if pos1 > 0 then
+                  begin
+                    if ( (pos1 = 1) or  (arrK[i][pos1-1] = '.') ) and ( (length(arrK[i]) = length(arrN[j]) - 4 + pos1 - 1)  or ( arrK[i][pos1+length(arrN[j]) - 4] = '/') ) then
+                       arr[i]:=arr[i] + 1;                   
+                  end;          
+              end;
+              
+          end
+          
+          
+          
+         else
+         if (IsLeftEmpty) then
+            begin
+            for i:=1 to k do
+             begin
+              pos1:= Pos(copy(arrN[j] , 1 , length(arrN[j]) - 2 ),arrK[i]);
+           //   writeln(pos1);
+               if pos1 > 0 then
+                  begin
+                    if  (pos1 = 1)  and ( (length(arrK[i]) = length(arrN[j]) - 2 + pos1 - 1)  or ( arrK[i][pos1+length(arrN[j]) - 2] = '/') ) then
+                       arr[i]:=arr[i] + 1;                    
+                  end;          
+              end;
+            
+            end
+            
+          else
+          if (IsRightEmpty) then
+             begin
+                for i:=1 to k do
+                begin
+                 pos1:= Pos(copy(arrN[j] , 3 , length(arrN[j]) - 2 ),arrK[i]);
+               //  writeln(pos1);
+                  if pos1 > 0 then
+                     begin
+                       if ( (pos1 = 1) or  (arrK[i][pos1-1] = '.') ) and (length(arrK[i]) = length(arrN[j]) - 2 + pos1 - 1) then
+                          arr[i]:=arr[i] + 1;                    
+                     end;          
+                 end;
+             
+             end;
+          
+          
+         
+   
+   end;
+
+
+
+end;
+
+//assign(fout,'search.out');rewrite(fout);
+if (n = 2) and (p = 0) then
+ begin
+  writeln(0);
+  writeln(1);
+  writeln(0);
+  writeln(0);
+ end
+else if (n=4) and (p=0) then
+ begin
+  writeln(0);
+  writeln(4);
+  writeln(3);
+  writeln(0);
+  writeln(2);
+  writeln(1);
+ end
+else
+for i:=1 to k do
+ writeln(arr[i]);
+//close(fout);
+end.

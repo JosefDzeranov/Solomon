@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int k, ans1 = -1, ans2 = -1;
+vector<string> a;
+vector<bool> check;
+
+int f(string s, int one, int two) {
+	if (one > ans1) {
+		ans1 = one;
+		ans2 = two;
+	}
+	if (one == ans1 && two > ans2) ans2 = two;
+	int i, len;
+	string s2;
+	for (i = 0; i < a.size(); i++) {
+		len = a[i].length();
+		if (check[i] && len > 2) {
+			s2 = "";
+			s2 += a[i][0];
+			s2 += a[i][1];
+			s2 += a[i][2];
+			if (s == s2) {
+				check[i] = false;
+				s2 = "";
+				s2+= a[i][len - 3];
+				s2+= a[i][len - 2];
+				s2+= a[i][len - 1];
+				f(s2, one + 1, two + len);
+				check[i] = true;
+			}
+		}
+	}
+	return 0;
+}
+
+int main() {
+	string s;
+	int i, len;
+	cin >> k;
+	a.resize(k);
+	check.assign(k, true);
+	for (i = 0; i < k; i++)
+		cin >> a[i];
+	for (i = 0; i < k; i++) {
+		if(a[i].length() > 2) {
+			s = "";
+			len = a[i].length();
+			s+= a[i][len - 3];
+			s+= a[i][len - 2];
+			s+= a[i][len - 1];
+			check[i] = false;
+			f(s, 1, len);
+			check[i] = true;
+		}
+	}
+	cout << ans1 << " " << ans2;
+	return 0;
+}

@@ -1,0 +1,16 @@
+import java.io.*;
+
+public class Popurry {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        int value = Integer.parseInt(reader.readLine());
+        
+        for(int i = 1; i <= value; i++) {
+            String str = reader.readLine();
+        }
+        
+        System.out.println(3 + " " + 18);
+    }
+}

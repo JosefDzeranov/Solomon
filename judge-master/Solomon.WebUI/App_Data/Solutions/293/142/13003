@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+int n,m;
+
+void start(int **a,int x, int y)
+{
+	int lx=0;
+	for(int i=x;i<n;i++)
+	if(a[i][y]==0)
+	{
+		lx++;
+		a[i][y]=1;
+	}
+	while(y<m)
+	{
+		bool help=true;
+		for(int i=x;i<x+lx;i++)
+		if(a[i][y]==1){
+		help=false;break;}
+		if(help)
+		{
+			for(int i=x;i<x+lx;i++)
+			a[i][y]=1;
+			y++;
+			continue;
+		}
+		else break;
+	}
+}
+
+int main()
+{
+	cin >> n >> m;
+	int **a = new int*[n];
+	for(int i=0;i<m;i++)
+	{
+		a[i] = new int[m];
+		for(int j=0;j<n;j++)
+		cin >> a[i][j];
+	}
+	int ans=0;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			if(a[i][j]==0)
+			{
+				start(a,i,j);
+				ans++;
+			}
+		}
+	}
+	cout << ans;
+	//cin.get();cin.get();cin.get();cin.get();cin.get();
+}

@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static bool Sum(int[,] a)
+        {
+            bool f = true;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (a[i, j] == 0)
+                    {
+                        f = false;
+                        break;
+                    }
+                }
+                if (!f) break;
+            }
+            return f;
+
+        }
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(s[0]);
+            int m = Convert.ToInt32(s[1]);
+            int k = Convert.ToInt32(s[2]);
+            int[,] mas = new int[n, m];
+            List<int> down = new List<int>();
+            
+            for (int i = 0; i < k; i++)
+            {
+                s = Console.ReadLine().Split(' ');
+                int l = int.Parse(s[0]);
+                int r = int.Parse(s[1]);
+                mas[l-1, r-1] = 1;
+            }
+            int answer = 0;
+            while (true)
+            {
+                if (Sum(mas))
+                {
+                    Console.WriteLine(answer);
+                    break;
+                }
+                for (int i = 0; i < mas.GetLength(0); i++)
+                {
+                    for (int j = 0; j < mas.GetLength(1); j++)
+                    {
+                        if (mas[i, j] == 1)
+                        {
+
+                            if (i - 1 >= 0 && mas[i - 1, j] == 0)
+                            {
+                                mas[i - 1, j] = 1;
+                            }
+                            if (j - 1 >= 0 && mas[i, j - 1] == 0)
+                            {
+                                mas[i, j - 1] = 1;
+                            }
+                            if (j + 1 < m && mas[i, j + 1] == 0)
+                            {
+                                down.Add(i);
+                                down.Add(j+1);
+                            }
+                            if (i+1 < n && mas[i+1, j] == 0)
+                            {
+                                down.Add(i+1);
+                                down.Add(j);
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < down.Count; i+=2)
+                {
+                    mas[down[i], down[i + 1]] = 1;
+                }
+                answer++;
+            }
+
+        }
+    }
+}

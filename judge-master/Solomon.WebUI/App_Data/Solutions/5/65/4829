@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+
+using namespace std;
+
+long long min(long long a, long long b) {
+    if (a < b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+bool can(long long size, long long a, long long b, long long c, long long d) {
+        return size * size <= min(a, b) + min(c, d);
+}
+
+long long solve(long long a, long long b, long long c, long long d) {
+    for (int i = 1;; i++) {
+        if (!can(i, a, b, c, d)) {
+            return i-1;
+        }
+    }
+}
+
+int main() {
+    long long a, b, c, d;
+    cin >> a >> b >> c >> d;
+    cout << solve(a,b,c,d);
+    return 0;  
+}

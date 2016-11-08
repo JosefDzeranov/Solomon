@@ -1,0 +1,81 @@
+var
+  a, b, c,d: array [1..100]of integer;
+  n, i, s1, max, ind, j, z: int64;
+
+begin
+  read(n);
+  for i := 1 to n do 
+  begin
+    read(a[i]);
+    c[i] := a[i];
+    d[i]:=a[i];
+  end;
+  
+  for i := 1 to n do 
+  begin
+    s1 := 0;
+    while a[i] > 0 do
+    begin
+      s1 := s1 + a[i] mod 10; 
+      a[i] := a[i] div 10;  
+    end;
+    b[i] := s1;
+    s1 := 0;
+    while b[i] > 0 do
+    begin
+      s1 := s1 + b[i] mod 10; 
+      b[i] := b[i] div 10;
+    end;
+    b[i] := s1;
+  end;
+  
+  for i := 1 to 9 do 
+  begin
+    a[i] := 0;
+    for j := 1 to n do 
+      if b[j] = i then a[i] := a[i] + 1;
+  end;
+  
+  max := 0;
+  ind := 0;
+  
+  for i := 1 to 9 do
+    if a[i] > max then 
+    begin
+      max := a[i];
+      ind := i;
+    end;
+  
+  
+  
+  
+  z := n;
+  
+  for i := 1 to n do 
+  begin
+    s1 := 0;
+    while c[i] > 0 do
+    begin
+      s1 := s1 + c[i] mod 10; 
+      c[i] := c[i] div 10;  
+    end;
+    b[i] := s1;
+    s1 := 0;
+    while b[i] > 0 do
+    begin
+      s1 := s1 + b[i] mod 10; 
+      b[i] := b[i] div 10;
+    end;
+    
+    if s1 = ind then
+    begin
+      for j := i to z - 1 do 
+        d[j] := d[j + 1];
+      z := z - 1;  
+    end;    
+  end;
+
+  for i := 1 to z do 
+    write(d[i], ' ');
+  
+end.

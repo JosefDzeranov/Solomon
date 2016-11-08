@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+vector<string> v;
+int main()
+{
+	int xx;
+	cin >> xx;
+	int n;
+	cin >> n;
+	int fl = 0;
+	int x, y;
+	cin >> x;
+	string t = to_string((long long) x); 
+	v.push_back(t);
+	
+	for (int i = 1; i < n; i++)
+	{
+		cin >> y; 
+		if (y > xx)
+		{
+			if (fl > 0)
+			{
+				v.push_back("-");
+				v.push_back(to_string((long long)x));
+			}
+		}
+		if (y - x > 1 && fl == 0)
+		{
+			v.push_back(" ");
+			v.push_back(to_string((long long)y));
+		}
+		if (y - x > 1 && fl > 0)
+		{
+			v.push_back("-");
+			v.push_back(to_string((long long)x));
+			v.push_back(" ");
+			v.push_back(to_string((long long)y));
+			fl = 0;
+		}
+		if (y - x == 1) 
+			fl++;
+		x = y;
+	}
+	if (fl > 0)
+	{
+		v.push_back("-");
+		v.push_back(to_string((long long)y));
+	}
+	int l = v.size();
+	for (int i = 0; i < l; i++)
+		cout << v[i];
+	return 0;
+}

@@ -1,0 +1,15 @@
+var
+	n, k, i : LongInt;
+	r, r2 : Int64;
+begin
+	ReadLn(n, k);
+
+	r := 1; r2 := 1;
+	for i := k+1 to n do
+		r := r*i;
+
+	for i := 1 to n-k do
+		r2 := r2*i;
+
+	WriteLn(r div r2)
+end.

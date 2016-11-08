@@ -1,0 +1,25 @@
+var n,i,m,z,j,t:integer;
+a:array [1..50] of integer;
+begin
+readln(n);
+for i:=1 to n do
+read(a[i]);
+for i:=1 to n-1 do begin
+for j:=1 to n-1 do
+if a[j]<a[j+1] then begin
+z:=a[j+1];
+a[j+1]:=a[j];
+a[j]:=z;
+end;
+end;
+for i:=1 to n do
+write(a[i],' ');
+m:=a[1];
+t:=a[2];
+for i:=3 to n do
+if m<t then
+m:=m+a[i]
+else
+t:=t+a[i];
+writeln(abs(m-t));
+end.

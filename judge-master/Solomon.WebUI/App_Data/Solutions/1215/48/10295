@@ -1,0 +1,16 @@
+var l,x1,y1,x2,y2,a,b:longint;
+al,bl:real;
+function ArcCos(X: Real): Real;
+begin
+if x>pi/2 then arccos:=arctan(x) else arccos:=arctan(x-pi)+pi;
+end;
+BEGIN
+read(l,x1,y1,x2,y2);
+a:=abs(x1-x2);b:=abs(y1-y2);al:=Arccos(sqrt((4*a*a*l*l-a*a*a*a)/(4*l*l*l*l+a*a*a*a-a*a*4*l*l)));bl:=Arccos(sqrt((4*b*b*l*l-b*b*b*b)/(4*l*l*l*l+b*b*b*b-b*b*4*l*l)));
+if (a=0) or (b=0) or(l=0) then write(0) 
+else if (2*l> sqrt(a*a+b*b))then write(a*b)
+else if (2*l>a) and (2*l>b) then write(l*l*(pi-al-bl+sin(al)+sin(bl)) )
+else if 2*l>a then write(pi*l*l-l*l*(al-sin(al))) 
+else if 2*l>b then write(pi*l*l-l*l*(bl-sin(bl)))
+else write(l*l*pi);
+end.

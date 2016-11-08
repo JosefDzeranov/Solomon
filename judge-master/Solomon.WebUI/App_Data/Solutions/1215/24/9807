@@ -1,0 +1,22 @@
+var i,n,k,j,d:longint;
+c:integer;
+s:array[0..9] of longint;
+
+function LOL(p:longint):longint;
+begin
+if p<2 then LOL:=0 else 
+if p=2 then LOL:=1 else LOL:=LOL(p-1)+(p-1);
+end;
+
+begin
+read(n);
+for i:=1 to n do begin read(k); while k<>0 do 
+                                                  begin
+                                                  c:= k mod 10;
+                                                  s[c]:=s[c]+1;
+                                                  k:=k div 10;
+                                                  end;
+                  end;
+for i:=0 to 9 do d:=d+LOL(s[i]);
+write(d);
+end.                                                  

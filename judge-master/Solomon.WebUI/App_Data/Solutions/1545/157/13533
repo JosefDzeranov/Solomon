@@ -1,0 +1,13 @@
+program qq;
+  var i,n,res: integer;
+begin
+  readln(n);
+  res:=0;
+  for i:=1 to n do
+    res:=res+i;
+  if (res mod 2) = 0 then
+    write('Aslan')
+  else
+    write('Timur')
+end.
+  

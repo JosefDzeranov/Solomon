@@ -1,0 +1,30 @@
+program Project2;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var N,a,b,c,s,a1,b1,c1:integer;
+begin
+  readln(N,a,b,c);
+
+  a1:=a;
+  b1:=b;
+  c1:=c;
+  if ((n-a-b-c)< a) and ((n-a-b-c)< b) and ((n-a-b-c)< c)  then
+   a1:=a+n-a-b-c;
+     s:=a1+b1+c1;
+  while s<N do
+   begin
+     if (a1<=b1) and (a1<=c1) then
+        a1:=a1+a else
+      if (b1<a1) and (b1<c1) then
+        b1:=b1+b else
+      c1:=c1+c;
+     s:=a1+b1+c1;
+     writeln (a1,' ',b1,' ',c1);
+   end;
+ writeln (a1,' ',b1,' ',c1);
+readln;
+end.

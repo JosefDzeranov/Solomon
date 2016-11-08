@@ -1,0 +1,51 @@
+import math
+import sys
+
+
+
+ap = [int(x) for x in input().split()]
+
+bp = [int(x) for x in input().split()]
+b_1 = math.fabs(math.fabs(bp[0]) - math.fabs(ap[0])) ** 2 + math.fabs(math.fabs(bp[1]) - math.fabs(ap[1])) ** 2
+
+cp = [int(x) for x in input().split()]
+c_1 = math.fabs(math.fabs(cp[0]) - math.fabs(ap[0])) ** 2 + math.fabs(math.fabs(cp[1]) - math.fabs(ap[1])) ** 2
+c_2 = math.fabs(math.fabs(cp[0]) - math.fabs(bp[0])) ** 2 + math.fabs(math.fabs(cp[1]) - math.fabs(bp[1])) ** 2
+
+dp = [int(x) for x in input().split()]
+d_1 = math.fabs(math.fabs(dp[0]) - math.fabs(ap[0])) ** 2 + math.fabs(math.fabs(dp[1]) - math.fabs(ap[1])) ** 2
+d_2 = math.fabs(math.fabs(dp[0]) - math.fabs(bp[0])) ** 2 + math.fabs(math.fabs(dp[1]) - math.fabs(bp[1])) ** 2
+
+a_2 = math.fabs(math.fabs(ap[0]) - math.fabs(bp[0])) ** 2 + math.fabs(math.fabs(ap[1]) - math.fabs(bp[1])) ** 2
+
+
+p = 0
+
+len_p = []
+len_p.append(b_1)
+len_p.append(c_1)
+len_p.append(d_1)
+len_p.sort()
+
+if len_p[0] + len_p[1] == len_p[2]:
+    p += 1
+else:
+    print("NO")
+    sys.exit()
+
+len_p = []
+len_p.append(a_2)
+len_p.append(c_2)
+len_p.append(d_2)
+len_p.sort()
+
+
+if len_p[0] + len_p[1] == len_p[2]:
+    p += 1
+else:
+    print("NO")
+    sys.exit()
+
+if p == 2:
+    print("YES")
+

@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <iostream>
+
+
+using namespace std;
+
+int main()
+{
+	char *str = new char[100000];	
+	cin.getline(str,100000);
+	int size = strlen(str);
+	int count=0;
+	int find=-1,find2=-1;
+	int i;
+	
+	for(i=0;i<size/2;i++)
+	{
+		if(str[i]!=str[size-1-i])
+		if(count < 2){
+		count++;
+		if(find==-1)
+		find=i;
+		else find2=i;
+		}
+		else {
+			cout << "No"; return 0;
+		}
+	}
+	
+	if(count==0)
+	{
+		cout << "Yes"; return 0;
+	}
+	if(count==1)
+	{
+		if(size%2==1)
+		{
+			int center = size/2;
+			if(str[center]==str[find] || str[center]==str[size-1-find]){
+				cout << "Yes"; return 0;
+			}
+			
+		}
+		
+		
+		for(i=0;i<size/2;i++)
+		{
+			if(i!=find)
+			if(str[i]==str[find])
+			{
+				if(str[size-1-i]==str[size-1-find]){
+				cout << "Yes"; return 0;
+				}
+			}
+			else
+			{
+				if(str[size-1-i]==str[find])
+				{
+					if(str[i]==str[size-1-find]){
+					cout << "Yes"; return 0;
+					}
+				}
+			}
+		}
+	}
+	
+	if(count==2)
+	{
+		if(str[find]==str[find2])
+		{
+				if(str[size-1-find]==str[size-1-find2]){
+				cout << "Yes"; return 0;
+				}
+		}
+		else
+		{
+			if(str[find]==str[size-1-find2])
+			{
+				if(str[size-1-find]==str[find2]){
+				cout << "Yes"; return 0;
+				}
+			}
+			
+			
+		}
+		
+	}
+	cout << "No";
+	return 0;
+}

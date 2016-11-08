@@ -1,0 +1,22 @@
+program z1;
+var n,i,k:integer;
+    f:longint;
+    s:string;
+    t:boolean;
+begin
+readln(n);
+f:=1;
+for i:=1 to n do begin
+    f:=f*i;
+end;
+s:='';
+while f>0 do begin
+    s:=inttostr(f mod 2)+s;
+    f:=f div 2;
+end;
+t:=true;
+for i:=Length(s) downto 1 do begin
+    if (s[i]='0') and t then k:=k+1 else begin t:=false; end;
+end;
+writeln(k);
+end.

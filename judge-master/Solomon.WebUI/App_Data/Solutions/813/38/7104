@@ -1,0 +1,26 @@
+program mesi5;
+var a : array [1..1000000000] of boolean;n, i, m, k, i1 : integer;
+begin
+read(n,m);
+for i := 1 to m do begin read(k); a[k] := true; end;
+i := 1;
+while i < n do 
+  begin
+  if (a[i] = true) and (a[i + 1] <> true) then 
+  begin 
+  write(i,' '); 
+  i := i + 1; 
+  end
+    else if (a[i] = true) and (a[i + 1] = true) then
+      begin
+      write(i,'-');
+        for i1 := i to n do  if ((a[i1] = true) and (a[i1 + 1] = false)) then 
+          begin 
+          write(i1,' '); 
+          i := i1 + 1; 
+          break; 
+          end;
+      end
+        else if a[i] <> true then i := i + 1;
+  end;
+end.

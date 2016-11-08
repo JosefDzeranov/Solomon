@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector <int> mas;
+	long long cnt = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int x;
+		cin >> x;
+		cnt += x;
+		mas.push_back(x);
+	}
+	if (cnt % n != 0) 
+		cout << "IMPOSSIBLE";
+	else
+	{
+		long long ans = 0;
+		int k = cnt / n;
+		for (int i = 0; i < n; i++)
+			ans += max(0, mas[i] - k);
+		cout << ans;
+	}
+	return 0;
+}

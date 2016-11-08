@@ -1,0 +1,7 @@
+#include<iostream>
+
+using namespace std;
+typedef uint unsigned int;
+int main(){
+ 
+}

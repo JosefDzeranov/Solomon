@@ -1,0 +1,31 @@
+var
+  ar:array [1..100,1..2] of int64;
+  dig:array [1..9] of int64;
+  n,min:int64;
+  i:longint;
+function digit_sqrt(a1:int64):int64;
+var
+  a,rez:int64;
+begin
+  a:=a1;
+  repeat
+    rez:=0;
+    while a>0 do
+    begin
+      rez:=rez+a mod 10;
+      a:=a div 10;
+    end;
+    a:=rez;
+  until rez<=9;
+  digit_sqrt:=rez;
+end;
+begin
+  readln(n);
+  for i:=1 to n do read(ar[i,1]);
+  for i:=1 to n do ar[i,2]:=digit_sqrt(ar[i,1]);
+  for i:=1 to n do inc(dig[ar[i,2]]);
+  min:=1;
+  for i:=2 to 9 do
+    if dig[min]<dig[i] then min:=i;
+  for i:=1 to n do if ar[i,2]<>min then write(ar[i,1],' ');
+end.

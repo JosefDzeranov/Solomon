@@ -1,0 +1,75 @@
+function f2 (a : LongInt) : Boolean;
+var
+        i, sq : LongInt;
+begin
+        if a < 1 then begin f2 := false;
+                Exit;                   end;
+
+        if a = 2 then begin f2 := true; exit; end;
+        if not Odd(a) then begin f2 := false; exit end;
+        sq := Trunc(sqrt(a));
+        if (a mod sq = 0)and(sq > 1) then begin f2 := false;exit
+end;
+
+        for i := 2 to sq do if a mod i = 0 then begin f2 := false; exit end;
+
+        f2 := true
+end;
+
+function f1(a : LongInt) : LongInt;
+var
+        i : LongInt;
+
+begin
+       i := 1;
+       while true do  begin
+      if f2(a + i) then  begin
+        f1 := a+i; exit
+        end;
+//      else if f2 (a-i) then begin f1 := a-i; exit end;
+      inc(i)
+      end;
+end;
+
+
+
+function f(a : LongInt) : LongInt;
+var
+        b : LongInt;
+begin
+        b := 0;
+
+        while a > 0 do begin
+                Inc(b);
+                a := a div 10
+        end;
+
+        f := b
+end;
+
+var
+        n, i, m : LongInt;
+        a : array [1..1000] of LongInt;
+        c : array [1..10] of LongInt;
+
+begin
+        for i := 1 to 10 do
+                a[i] := 0;
+        ReadLn(n);
+        for i := 1 to n do Read(a[i]);
+
+        for i := 1 to n do
+              Inc(c[f(a[i])]);
+
+        m := 1;
+        for i := 1 to 10 do
+                if c[i] > c[m] then
+                        m := i;
+
+        for i := 1 to n do
+              if f(a[i]) = m then
+                Write(f1(a[i]), ' ')
+              else
+                Write(a[i], ' ')
+
+end.

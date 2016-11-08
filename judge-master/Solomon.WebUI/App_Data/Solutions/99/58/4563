@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,i,j,k[100],l1=0,l0=0,m=1,min=10000,x;
+	cin>>N;
+	for(i=0;i<N;i++)
+		cin>>k[i];
+
+		for(i=0;i<N;i++)
+			m*=2;
+
+	for(j=0;j<=m;j++)
+	{
+		x=j;
+		for(i=N-1;i>=0;i--)
+		{
+			if(x%2==0)l0+=k[i];
+			else l1+=k[i];
+			x=x/2;
+		}
+		if(min>abs(l0-l1))min=abs(l0-l1);
+		l0=0;l1=0;
+	}
+	cout<<min;
+	cin>>N;
+	return 0;
+}

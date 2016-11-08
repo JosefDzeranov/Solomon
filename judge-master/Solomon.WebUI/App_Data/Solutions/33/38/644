@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class P
+{
+public:
+	int x,y;
+};
+
+int v(P a, P b)
+{
+	return sqrt(pow(b.x-a.x,2)+pow(b.y-a.y,2));
+}
+
+int main()
+{
+	P a, b, c, d;
+	bool res;
+	cin >> a.x >> a.y;
+	cin >> b.x >> b.y;
+	cin >> c.x >> c.y;
+	cin >> d.x >> d.y;
+	if (v(a,b)==v(a,c))
+	{
+		if (v(b,d)==v(c,d)&&v(a,b)==v(a,c))
+			res=1;
+		else
+			res=0;
+	}
+	else if (v(a,b)==v(a,d))
+	{
+		if (v(b,c)==v(d,c)&&v(a,b)==v(a,d))
+			res=1;
+		else
+			res=0;
+	}
+	if (res==false)
+		cout << "NO";
+	else
+		cout << "YES";
+	cin.ignore();
+	cin.get();
+	return 0;
+}

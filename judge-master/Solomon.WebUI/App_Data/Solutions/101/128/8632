@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static int GCD(int a, int b)
+        {
+            while (b != 0)
+            {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+        static void Main(string[] args)
+        {
+
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s;
+            string[] ss;
+            int[] x = new int[n + 1];
+            int[] y = new int[n + 1];
+            for (int i = 0; i < n; i++)
+            {
+                s = Console.ReadLine();
+                ss = s.Split(' ');
+                x[i] = Convert.ToInt32(ss[0]);
+                y[i] = Convert.ToInt32(ss[1]);
+            }
+            x[n] = x[0];
+            y[n] = y[0];
+            double sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                sum += (x[i + 1] - x[i]) * (y[i] + y[i + 1]) / 2.0;
+            }
+            int k = n;
+            for (int i = 0; i < n; i++)
+            {
+                int X = Math.Abs(x[i + 1] - x[i]);
+                int Y = Math.Abs(y[i] - y[i + 1]);
+                k += GCD(X, Y)-1;
+            }
+
+
+            Console.WriteLine(sum+1-k/2);
+
+        }
+    }
+}

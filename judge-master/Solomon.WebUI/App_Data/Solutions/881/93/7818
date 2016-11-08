@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int x, y, z, q, a, b, c, d, e, r, o, m, l;
+   cin >> x >> y >> z >> q;
+   a = x * 60 + y;
+   b = z * 60 + q;
+   c = b + 1440;
+   l = c - a;
+   d = l / 60;
+   e = l % 60;
+   r = b - a;
+   o = r / 60;
+   m = r % 60;
+   if (a > b)
+   cout << d <<" " << e;
+   else cout << o <<" " << m;
+
+
+
+
+}

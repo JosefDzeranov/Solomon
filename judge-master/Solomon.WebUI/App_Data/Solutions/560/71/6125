@@ -1,0 +1,54 @@
+Program konfeti;
+var N, a, b, c, d: longint;
+Begin
+readln(N, a, b, c);
+if a+b+c = N then
+writeln (a, ' ', b, ' ', c)
+else
+if a<b then if a<c then
+if N-a-b-c < a then writeln(a, ' ', b, ' ', N-a-b) else
+if c<b then if c<a then
+if N-a-b-c < c then writeln(a, ' ', b, ' ', N-a-b) else
+if b<a then if b<c then
+if N-a-b-c < b then writeln(a, ' ', b, ' ', N-a-b) else
+if a+b+c <= 2*N
+then 
+d:=N-a-b-c;
+   if a<b then if a<c then
+   if b<c then if d/2*a>b then writeln(N-c-3*b, ' ', 3*b, ' ', c)
+   else
+   if a<b then if a<c then
+   if c<b then if d/2*a>c then writeln(N-3*c-b, ' ', b, ' ', 3*c)
+   else
+   if b<a then if b<c then
+   if a<c then if d/2*b>a then writeln(3*a, ' ', N-3*a-c, ' ', c)
+   else
+   if b<a then if b<c then
+   if c<a then if d/2*b>c then writeln(a, ' ', N-a-3*c, ' ', 3*c)
+   else
+   if c<a then if c<b then
+   if a<b then if d/2*c>a then writeln(3*a, ' ', b, ' ', N-3*a-b)
+   else
+   if c<a then if c<c then
+   if b<a then if d/2*c>b then writeln(a, ' ', 3*b, ' ', N-a-3*b)
+  ELSE
+if a<b then if a<c then
+if b<c then if d/a>b then writeln(N-c-2*b, ' ', 2*b, ' ', c)
+else
+if a<b then if a<c then
+if c<b then if d/a>c then writeln(N-2*c-b, ' ', b, ' ', 2*c)
+else
+if b<a then if b<c then
+if a<c then if d/b>a then writeln(2*a, ' ', N-2*a-c, ' ', c)
+else
+if b<a then if b<c then
+if c<a then if d/b>c then writeln(a, ' ', N-a-2*c, ' ', 2*c)
+else
+if c<a then if c<b then
+if a<b then if d/c>a then writeln(2*a, ' ', b, ' ', N-2*a-b)
+else
+if c<a then if c<c then
+if b<a then if d/c>b then writeln(a, ' ', 2*b, ' ', N-a-2*b)
+
+end.
+

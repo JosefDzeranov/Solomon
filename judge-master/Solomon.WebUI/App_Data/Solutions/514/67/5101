@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+using namespace std;
+struct tt
+{
+	int s, t, c, i, e, cnt;
+};
+tt mas[100000];
+vector <int> mas2[7000];
+int mas3[100000];
+bool cmp(tt a, tt b)
+{
+	if (a.cnt < b.cnt) return true;
+	return false;
+}
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> mas[i].s >> mas[i].t >> mas[i].c;
+		mas[i].i = i;
+		mas[i].e = mas[i].s + mas[i].t;
+		mas[i].cnt = 0;
+	}
+	for (int i = 0; i < n; i++)
+		for (int j = i + 1; j < n; j++)
+		{
+			if (mas[i].s >= mas[j].s && mas[i].s < mas[j].e) 
+			{
+				mas[i].cnt++;
+				mas[j].cnt++;
+				mas2[i].push_back(j);
+				mas2[j].push_back(i);
+			}
+			else if (mas[i].e > mas[j].s && mas[i].e <= mas[j].e)
+			{
+				mas[i].cnt++;
+				mas[j].cnt++;
+				mas2[i].push_back(j);
+				mas2[j].push_back(i);
+			}
+		}
+	sort(mas, mas + n, cmp);
+	int cnt = 0;
+	vector <int> ans;
+	for (int i = 0; i < n; i++)
+	{
+		if (mas3[mas[i].i] != -1)
+		{
+			mas3[mas[i].i] = 1;
+			for (int j = 0; j < mas2[mas[i].i].size(); j++)
+				mas3[mas2[mas[i].i][j]] = -1;
+			cnt++;
+			ans.push_back(mas[i].i + 1);
+		}
+	}
+	cout << cnt * mas[0].c << "\n" << ans.size() << "\n";
+	for (int i = 0; i < ans.size(); i++)
+		cout << ans[i] << ' ';
+	return 0;
+}

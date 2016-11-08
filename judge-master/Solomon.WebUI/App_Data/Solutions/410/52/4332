@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+unsigned long long fact(int);
+
+int main()
+{
+ int n;
+ unsigned long long factn, factx;
+ cin >> n;
+ int x = n - 3;
+ fact(n);
+ factn = fact(n);
+ factx = fact(x); 
+ cout << factn / factx;
+ system("PAUSE >> VOID");
+}
+
+unsigned long long fact(int n)
+{
+if (n==1)
+return 1;
+else
+return fact(n - 1) * n;   
+}

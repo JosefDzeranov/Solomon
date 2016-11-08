@@ -1,0 +1,21 @@
+s = input()
+s1 = input()
+s2 = input()
+i = 0
+g = s.split(' ')
+g1 = s1.split(' ')
+g2 = s2.split(' ')
+x1 = int(g[0])
+y1 = int(g[1])
+x2 = int(g1[0])
+y2 = int(g1[1])
+x5 = int(g2[0])
+y5 = int(g2[1])
+x3,y3 = x1,y2
+x4,y4 = x2,y1
+f1=abs(x1-x5)
+f2=abs(x4-x5)
+f3=abs(y1-y5)
+f4=abs(y4-y5)
+y = min(f1,f2,f3,f4)
+print(y)

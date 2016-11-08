@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int res, N, mas[100];
+void rec(int n, int sum1, int sum2)
+{
+    if(n==N)
+    {
+    	if(sum1>sum2)
+        if(sum1-sum2<res)
+            res=sum1-sum2;
+        if(sum2>=sum1)
+        if(sum2-sum1<res)
+            res=sum2-sum1;
+        return;
+    }
+    rec(n+1, sum1+mas[n], sum2);
+    rec(n+1, sum1, sum2+mas[n]);
+}
+int main()
+{
+	res=2000000;
+    int i;
+    scanf("%d", &N);
+    for(i=0; i<N; i++)
+        scanf("%d", &mas[i]);
+    rec(0,0,0);
+    printf("%d\n", res);
+ 
+return 0;
+}

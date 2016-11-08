@@ -1,0 +1,49 @@
+using System;
+namespace viking
+{
+	class Program
+	{
+		static void Main()
+		{
+			int N = int.Parse(Console.ReadLine());
+			string[] chisla = Console.ReadLine().Split();
+
+			int n = chisla.Length;
+			long k = 0;
+
+			if(N == 1 || chisla.Length == 1)
+				k = 0;
+				
+			else
+			{
+				if(n == 2)
+				{
+					if(Rodnja(chisla[0], chisla[1]))
+						Console.WriteLine(1);
+					else
+						Console.WriteLine(0);
+				}
+				else
+				{
+					for(int i = 0; i < n -1; i++)
+					{
+						for(int j = i+1; j < n; j++)
+						{
+							if(Rodnja(chisla[i], chisla[j]))k++;
+						}
+					}
+				}
+			}
+
+			Console.Write(k);
+			
+		}
+
+		static bool Rodnja(string a, string b)
+		{			
+			for(int i = 0; i < a.Length; i++)
+				if(b.Contains(a[i].ToString()))return true;
+			return false;
+		}
+	}
+}

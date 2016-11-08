@@ -1,0 +1,25 @@
+using System;
+namespace Viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] s = Console.ReadLine().Split();
+			int[] p = new int[3];
+			for(int i = 0; i<3; i++) {
+				p[i] = int.Parse(s[i]);
+			}
+
+
+			Array.Sort(p);
+			
+			Console.Write(p[1]+p[2]);
+			
+			
+		}
+
+		
+		
+	}
+}

@@ -1,0 +1,21 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream in("pobeda.in");
+	ofstream out("pobeda.out");
+	long long int a1, a2, a3, a4;
+	in >> a1;
+	in >> a2;
+	in >> a3;
+	in >> a4;
+	long long int num1, num2;
+	num1 = min(a1, a2);
+	num2 = min(a3, a4);
+	out << long long int(sqrt(double(num1 + num2)));
+	system("pause");
+	return 0;
+}

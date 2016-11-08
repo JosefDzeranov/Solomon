@@ -1,0 +1,48 @@
+program fieldTorchFire;
+var
+ fieldX,fieldY,torchAmount,
+ timeVarX,timeVarY:word;
+ firedTorches,starAct,curAct,ci,sec:longint;
+ fieldLoc:array[1..1000,1..1000] of 0..1;
+ fieldAct:array[1..1000000,1..2] of word; 
+begin
+ readln(fieldX,fieldY,torchAmount);
+ firedTorches:=torchAmount;
+ starAct:=1; curAct:=torchAmount;
+ for ci:=1 to torchAmount do
+  begin
+   readln(timeVarX,timeVarY);
+   fieldLoc[timeVarY,timeVarX]:=1;
+   fieldAct[ci,1]:=timeVarY; fieldAct[ci,2]:=timeVarX;
+  end;
+ while firedTorches<fieldX*fieldY do
+  begin
+   inc(sec);
+   for ci:=starAct to curAct do
+    begin
+     if (fieldAct[ci,1]>1) and (fieldLoc[fieldAct[ci,1]-1,fieldAct[ci,2]]=0) then
+      begin
+       fieldLoc[fieldAct[ci,1]-1,fieldAct[ci,2]]:=1; inc(firedTorches);
+       fieldAct[firedTorches,1]:=fieldAct[ci,1]-1; fieldAct[firedTorches,2]:=fieldAct[ci,2];
+      end;
+     if (fieldAct[ci,1]<fieldY) and (fieldLoc[fieldAct[ci,1]+1,fieldAct[ci,2]]=0) then
+      begin
+       fieldLoc[fieldAct[ci,1]+1,fieldAct[ci,2]]:=1; inc(firedTorches);
+       fieldAct[firedTorches,1]:=fieldAct[ci,1]+1; fieldAct[firedTorches,2]:=fieldAct[ci,2];
+      end;
+     if (fieldAct[ci,2]>1) and (fieldLoc[fieldAct[ci,1],fieldAct[ci,2]-1]=0) then
+      begin
+       fieldLoc[fieldAct[ci,1],fieldAct[ci,2]-1]:=1; inc(firedTorches);
+       fieldAct[firedTorches,1]:=fieldAct[ci,1]; fieldAct[firedTorches,2]:=fieldAct[ci,2]-1;
+      end;
+     if (fieldAct[ci,2]<fieldX) and (fieldLoc[fieldAct[ci,1],fieldAct[ci,2]+1]=0) then
+      begin
+       fieldLoc[fieldAct[ci,1],fieldAct[ci,2]+1]:=1; inc(firedTorches);
+       fieldAct[firedTorches,1]:=fieldAct[ci,1]; fieldAct[firedTorches,2]:=fieldAct[ci,2]+1;
+      end;
+    end;
+    starAct:=curAct+1;
+    curAct:=firedTorches;
+  end;
+ write(sec);
+end.

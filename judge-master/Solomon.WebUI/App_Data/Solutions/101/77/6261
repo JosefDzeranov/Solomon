@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+namespace shifr
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           // StreamReader f = new StreamReader("03.in");
+         //   StreamWriter fr = new StreamWriter("03.out");
+            string s =Console.ReadLine();
+            int k = 1;
+            while (k * k < s.Length)
+            { 
+                k++;
+            }
+           char[,] a = new char[k, k];
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   a[i,j] = ' ';
+               }
+           }
+           int q = 0;
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   if (q < s.Length) { a[i, j] = s[q]; q++; }
+               }
+           }
+           string t = "";
+           for (int i = 0; i < k; i++)
+           {
+               for (int j = 0; j < k; j++)
+               {
+                   t = t + a[j, i];
+               }
+           }
+          Console.WriteLine(t);
+         //  f.Close();
+          // fr.Close();
+        }
+    }
+}

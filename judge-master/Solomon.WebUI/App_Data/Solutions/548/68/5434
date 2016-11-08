@@ -1,0 +1,123 @@
+﻿Imports Microsoft.VisualBasic
+Imports System
+
+Module Module1
+    Dim n As Integer
+    Dim k As Integer
+    Dim u1() As Integer
+    Dim v1() As Integer
+    Dim u2() As Integer
+    Dim v2() As Integer
+    Dim x() As Integer
+    Dim y() As Integer
+    Dim ex As Boolean
+
+
+    Sub Main()
+        Dim d() As String = Split(Console.In.ReadLine, " ")
+        n = d(0)
+        k = d(1)
+        ReDim u1(n)
+        ReDim u2(n)
+        ReDim v1(n)
+        ReDim v2(n)
+        ReDim x(k)
+        ReDim y(k)
+        For i = 1 To n
+            Dim d1() = Split(Console.In.ReadLine, " ")
+            u1(i) = d1(0)
+            v1(i) = d1(1)
+            u2(i) = d1(2)
+            v2(i) = d1(3)
+        Next
+        For i = 1 To k
+            Dim d2() = Split(Console.In.ReadLine, " ")
+            x(i) = d2(0)
+            y(i) = d2(1)
+        Next
+        For i = 1 To k
+            ex = True
+            If x(i) = 0 Then
+                If y(i) > 0 Then
+                    Console.WriteLine("YES")
+                    Console.WriteLine("0")
+                Else
+                    Console.WriteLine("NO")
+                End If
+            Else
+                If y(i) = 0 Then
+                    Console.WriteLine("YES")
+                    Console.WriteLine("1")
+                    If x(i) > 0 Then
+                        Console.WriteLine("0 0 1")
+                    Else
+                        Console.WriteLine("0 0 -1")
+                    End If
+                Else
+                    If y(i) < 0 Then
+                        For l = 1 To n
+                            If (((v1(l) < 0 And v2(l) > 0) Or (v1(l) < 0 And v2(l) > 0)) And (((u1(l) > 0 And _
+                            u1(l) < x(i)) Or (u1(l) < 0 And u1(l) > x(i))) Or ((u2(l) > 0 And u2(l) < x(i)) Or (u2(l) < 0 And u2(l) > x(i))))) Or ((((v1(l) < 0 And v1(l) > y(i)) Or (v2(l) > y(i) And v2(l) < 0)) And _
+                            ((u1(l) < x(i) And u2(l) > x(i)) Or (u1(l) > x(i) And u2(l) < x(i))))) Then
+                                ex = False
+                            End If
+                        Next
+                        If ex = True Then
+                            Console.WriteLine("YES")
+                            Console.WriteLine("2")
+                            If x(i) > 0 Then
+                                Console.WriteLine("0 0 1")
+                                Console.WriteLine(x(i), "0 1")
+                            Else
+                                Console.WriteLine("0 0 -1")
+                                Console.WriteLine(x(i), "0 -1")
+                            End If
+                        Else
+                            Console.WriteLine("NO")
+                        End If
+                    Else
+                        For l = 1 To n
+                            If (((v1(l) < 0 And v2(l) > 0) Or (v1(l) < 0 And v2(l) > 0)) And (((u1(l) > 0 And _
+                            u1(l) < x(i)) Or (u1(l) < 0 And u1(l) > x(i)) Or ((u2(l) > 0 And u2(l) < x(i)) Or (u2(l) < 0 And u2(l) > x(i)))))) Or ((((v1(l) > 0 And v1(l) < y(i)) Or (v2(l) < y(i) And v2(l) > 0)) And _
+                            ((u1(l) < x(i) And u2(l) > x(i)) Or (u1(l) > x(i) And u2(l) < x(i))))) Then
+                                ex = False
+                            End If
+                        Next
+                        If ex = True Then
+                            Console.WriteLine("YES")
+                            Console.WriteLine("2")
+                            If x(i) > 0 Then
+                                Console.WriteLine("0 0 1")
+                                Console.WriteLine(x(i), "0 -1")
+                            Else
+                                Console.WriteLine("0 0 -1")
+                                Console.WriteLine(x(i), "0 1")
+                            End If
+                        Else
+                            ex = True
+                            For l = 1 To n
+                                If (((u1(l) > 0 And u2(l) < 0) Or (u1(l) > 0 And u2(l) < 0)) And ((v1(l) < y(i) And v1(l) > 0) Or (v2(l) < y(i) And v2(l) > 0)) Or _
+                                    (((v1(l) < y(i) And v2(l) > y(i)) Or ((v2(l) < y(i) And v1(l) > y(i))) And ((u1(l) > 0 And u1(l) < x(i)) Or (u2(l) > 0 And u2(l) < x(i)))))) Then
+                                    ex = False
+                                End If
+                            Next
+                            If ex = True Then
+                                Console.WriteLine("YES")
+                                Console.WriteLine("1")
+                                If x(i) > 0 Then
+                                    Console.WriteLine("0", y(i), " 1")
+                                Else
+                                    Console.WriteLine("0", y(i), " -1")
+                                End If
+                            Else
+
+                            End If
+                        End If
+                    End If
+            End If
+            End If
+        Next
+        Console.In.ReadLine()
+    End Sub
+
+End Module

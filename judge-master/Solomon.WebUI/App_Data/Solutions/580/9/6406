@@ -1,0 +1,36 @@
+﻿using System;
+
+namespace Kasting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int minmax = int.Parse(Console.ReadLine());
+            string[] chisla = (Console.ReadLine()).Split();
+            
+            int n = int.Parse(chisla[0]);
+            int a = int.Parse(chisla[1]);
+            int b = int.Parse(chisla[2]);
+            int c = int.Parse(chisla[3]);
+
+            int max, min;
+            max = (a < b) ? b : a;
+            max = (max > c) ? max : c;
+
+            min = (a > b) ? b : a;
+            min = (min < c) ? min : c;
+
+
+
+            if (minmax == 1)
+            {
+                Console.WriteLine(n-min);
+            }
+            else if (minmax == 2)
+            {
+                Console.WriteLine(min);
+            }
+        }
+    }
+}

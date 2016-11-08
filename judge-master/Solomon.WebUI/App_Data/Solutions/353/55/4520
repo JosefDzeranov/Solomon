@@ -1,0 +1,9 @@
+var
+n:2..1000;
+x: int64;
+begin
+readln(n);
+x:=(2*n-1)*((2*n-1)*(2*n-1)+1) + 4*n*n +1;
+writeln(x);
+readln;
+end.

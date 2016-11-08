@@ -1,0 +1,25 @@
+program Project6;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var l,x,y,n,r1,r2:integer;
+begin
+readln(N,l);
+readln(r1,r2);
+x:=L div (r1*2);
+if (r1*2*x)<l then
+ x:=x+1;
+y:=x;
+x:=y*2;
+if ((2*3.14*r1*x)+(2*3.14*r2*y))>N then
+writeln('NO')
+else
+ begin
+ writeln('YES');
+ writeln(x,' ',y);
+ end;
+readln;
+end.

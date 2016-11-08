@@ -1,0 +1,18 @@
+program olimp2;
+var N, a, k, x: integer;
+    p: longint;
+begin
+  p:=1;
+  readln(N);
+  x:=0;
+  for a:=1 to N do p:=p*a;
+  
+  while (p>0) and (x=0) do begin 
+  x:= p mod 2;
+  p:= p div 2;
+  if x=0 then inc(k);
+  end;
+  
+ 
+  writeln(k);
+  end.  

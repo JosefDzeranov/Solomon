@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+int main(){
+	int N,i,c=1,n,k=0;
+	cin>>N;
+
+	for(i=1;i<=N;i++)
+		c*=i;
+
+	while(n!=1)
+	{
+		n=c%2;
+		c=c/2;
+		if(n!=1)k++;
+	}
+
+	cout<<k;
+
+	cin>>N;
+	return 0;
+}

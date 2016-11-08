@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+inline unsigned long long CountOf2Comb(unsigned long long n)
+{
+	return n-1;
+}
+
+unsigned long long CountOf3Comb(unsigned long long n)
+{
+	unsigned long long result = 0;
+
+	for (unsigned i = 0; i < n-2; i++) {
+		result += CountOf2Comb(n-2-i);
+	}
+
+	return result;
+}
+
+struct Comb {
+	unsigned long long a, b, c;
+	unsigned long long max;
+
+	Comb(): max(0) {}
+
+	//Comb(): a(1), b(1), c(1) {}
+};
+
+
+unsigned long long N, a, b, c;
+Comb *combs;
+
+void GenNewComb(unsigned long long index)
+{
+	if (combs[index-1].c > c) {
+		combs[index].a = combs[index-1].a;
+		combs[index].c = combs[index-1].c-1;
+		combs[index].b = combs[index-1].b+1;
+	} else {
+		combs[index].a = combs[index-1].a+1;
+		combs[index].b = b;
+		if (combs[index].a + combs[index].b > N) {
+			combs[index].max = 0; return;
+		}
+		combs[index].c = N-combs[index].a-b;
+	}
+	combs[index].max = (combs[index].a/a)*(combs[index].b/b)*(combs[index].c/c);
+}
+
+int main()
+{
+
+	cin >> N >> a >> b >> c;
+
+	unsigned long long combCount = CountOf3Comb(N);
+
+	combs = new Comb[combCount]();
+
+	combs[0].a = a;
+	combs[0].b = b;
+	combs[0].c = N-a-b;
+	combs[0].max = (combs[0].a/a)*(combs[0].b/b)*(combs[0].c/c);
+
+	unsigned long long mi = 0;
+	for (unsigned i = 1; i < combCount; i++) {
+		if (N-combs[i-1].a <= 2) break;
+		if (combs[i-1].a+combs[i-1].b+combs[i-1].c > N)
+			break;
+		GenNewComb(i);
+		if (combs[i].a+combs[i].b+combs[i].c > N)
+			break;
+		if (combs[i].max > combs[mi].max)
+			mi = i;
+	}
+
+	cout << combs[mi].a << " " << combs[mi].b << " " << combs[mi].c << endl;
+	//system("pause");
+
+	return 0;
+}

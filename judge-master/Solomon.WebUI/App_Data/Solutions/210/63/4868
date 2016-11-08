@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <ctime>
+
+using namespace std;
+const short N = 1000;
+
+struct cell {
+    short x, y;
+    int v;
+    cell() {}
+    cell(int X, int Y, int V) {
+        x = X;
+        y = Y;
+        v = V;
+    }
+    bool operator < (cell t) const {
+        return v < t.v;
+    }
+} q[N * N];
+
+int c;
+int n, m;
+int a[N][N];
+int l[N][N];
+short i, j, x, y;
+short dx, dy;
+int t;
+int ans;
+
+int main() {
+    //freopen("input.txt", "r", stdin);
+    scanf("%d %d", &n, &m);
+    for (i = 0; i < n; ++i)
+        for (j = 0; j < m; ++j) {
+            scanf("%d", &a[i][j]);
+            q[c++] = cell(i, j, a[i][j]);
+        }
+    sort(q, q + c);
+    for (t = 0; t < c; ++t) {
+        x = q[t].x;
+        y = q[t].y;
+        for (dx = -1; dx < 2; ++dx)
+            for (dy = -1; dy < 2; ++dy)
+                if (!(dy && dx) && (dy || dx))
+                    if (dx + x >= 0 && dx + x < n && dy + y >= 0 && dy + y < m)
+                        if (a[x][y] == 1 + a[x + dx][y + dy])
+                            l[x][y] = max(l[x][y], l[x + dx][y + dy] + 1);
+    }
+    for (i = 0; i < n; ++i)
+        for (j = 0; j < m; ++j)
+            ans = max(ans, l[i][j]);
+    printf("%d", ans + 1);
+    return 0;
+}
+

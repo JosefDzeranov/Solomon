@@ -1,0 +1,48 @@
+
+var f,n,k,z,i,j:integer;
+nk:array[1..100] of integer;
+cv:array[1..100] of integer;
+r:array[1..100,1..4] of integer;
+
+ begin
+ z:=0;
+ read(k);
+  readln(n);
+  for i:=1 to n do
+   begin
+      read(nk[i]);
+      readln(cv[i]);
+      end;
+       
+       for i:=1 to n-1 do
+        for j:=i+1 to n do       
+          begin
+           if ((cv[i]=nk[j])and(cv[j]=nk[i])and(cv[i]<>nk[i])and(cv[j]<>nk[j])) then
+            begin
+             z:=z+1;
+             f:=f+1;
+             r[z,1]:=nk[i];
+             r[z,2]:=cv[i];
+             r[z,3]:=nk[j];
+             r[z,4]:=cv[j];
+             nk[i]:=cv[i];
+             nk[j]:=cv[j];
+            end;
+           end;
+            for i:=1 to n do
+             begin
+               if (cv[i]<>nk[i]) then
+                 begin
+                  z:=z+1;
+                
+                  r[z,1]:=nk[i];
+                  r[z,2]:=cv[i];
+                  r[z,3]:=cv[i];
+                 end;
+            end;
+            writeln(z);
+            for i:=1 to f do
+            write(r[i,1],' ',r[i,2],' ',r[i,3],' ',r[i,4]);
+            for i:=f+1 to z do
+            write(r[i,1],' ',r[i,2],' ',r[i,3]);
+end.

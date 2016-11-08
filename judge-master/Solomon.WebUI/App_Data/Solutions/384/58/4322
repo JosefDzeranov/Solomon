@@ -1,0 +1,23 @@
+program z1;
+var a,b,c,d,e,i,j,v:longint;
+        a1:array[1..100] of integer;
+begin
+readln(a);
+for b:=1 to a do
+read(a1[b]);
+for i:=1 to a-1 do
+for j:=i+1 to a do
+if a1[i]<a1[j] then
+                begin
+                v:=a1[i];
+                a1[i]:=a1[j];
+                a1[j]:=v;
+                end;
+
+c:=a1[1];
+e:=a1[a];
+for i:=a-1 downto 2 do
+if c>e then e:=e+a1[i] else c:=c+a1[i];
+if c>e then d:=c-e else d:=e-c;
+writeln(d);
+end.

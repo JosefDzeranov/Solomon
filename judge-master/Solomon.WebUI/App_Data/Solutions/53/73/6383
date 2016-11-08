@@ -1,0 +1,15 @@
+	
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var n,x,k:integer;
+begin
+ readln(n);
+ k:=n*2;
+ x:=trunc(sqrt(k));
+ writeln(x);
+end.

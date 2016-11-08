@@ -1,0 +1,8 @@
+var s,n,n1:longint;
+begin
+        readln(n);
+        n1:=(2*n-1)*(2*n-1);
+        s:=(n1*(n1+1))div 2 div (n*2-1)*2;
+        writeln(s+1+n*n*4);
+end.
+

@@ -1,0 +1,25 @@
+//#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	long long unsigned A, B, K, M;
+	long double X;
+
+	cin >> A >> K >>B>> M>> X;
+
+	long double count = 0;
+	long double day = 0;
+
+	do {
+		day++;
+		count += (floor(day / M) > 0.0001 ? A : 0);
+		count += (floor(day / M) > 0.0001 ? B : 0);
+	} while (count < X);
+
+	cout << day << endl;;
+
+	return 0;
+}

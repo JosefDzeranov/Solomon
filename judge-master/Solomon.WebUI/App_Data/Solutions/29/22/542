@@ -1,0 +1,11 @@
+Program rob;
+var N,z,N1,N2,k: real;
+    a,b,c:integer;
+begin
+read(N,z);
+read(a,b,c);
+N1:=(a/z)+(b/z)+(c/z);
+N2:= N1/3;
+k:=N/N2 ;
+write(k);
+end.

@@ -1,0 +1,7 @@
+var
+a,b,s:int64;
+begin
+read(a,b);
+s:=a+b;
+writeln(s);
+end.

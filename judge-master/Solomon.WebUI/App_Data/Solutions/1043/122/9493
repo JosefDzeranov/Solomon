@@ -1,0 +1,23 @@
+program Project3;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+   a,i:integer;
+  c:array(1..1000000)of integer;
+begin
+  readln (a)
+  for i:=1 to a do
+  read (c(a));
+  readln;
+  c(1):=c(a);
+  c(2):=c(a);
+  c(3):=c(a);
+  c(4):=c(a);
+  writeln(c);
+  readln(c);
+    
+end.

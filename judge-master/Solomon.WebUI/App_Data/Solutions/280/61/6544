@@ -1,0 +1,22 @@
+program ssi;
+var a,patr,c,i,kva,ps: integer;
+slovo: array [1..101] of string;
+patron: array [1..101] of integer;
+navi:array [1..101] of integer;
+begin
+patr:=0;
+ps:=0;
+read (a,kva);
+For i:=1 to (a+1) do begin
+readln (slovo[i]);
+end;
+For i:=1 to (a+1) do begin
+if slovo[i]='ammo' then inc(patr,kva); navi[i]:=patr;
+if slovo[i]='shoot' then dec(patr); navi[i]:=patr;
+if slovo[i]='save' then ps:=i; patron[i]:=patr; navi[i]:=patr;
+if (slovo[i]='load') and  (ps<>0) then patr:=patron[ps]; navi[i]:=patr;
+end;
+For i:=2 to (a+1) do
+Writeln (navi[i]);
+Readln(c);
+end.

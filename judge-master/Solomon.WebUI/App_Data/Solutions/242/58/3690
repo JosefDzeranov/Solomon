@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static int n;
+        static int[] x;
+        static int k;
+        static bool NextPerestanovka()
+        {
+            k = n - 1;
+            while (k >= 0 && x[k] == 1) { x[k] = 0; k--; }
+            if (k >= 0) { x[k]++; return true; }
+            else return false;
+        }
+
+        static void Main(string[] args)
+        {
+            
+            n = Convert.ToInt32(Console.ReadLine());
+            x = new int[n];
+            string s = Console.ReadLine();
+            string[] ss = s.Split(' ');
+            int[] mas = new int[n];
+            for (int i = 0; i < n; i++)
+                mas[i] = Convert.ToInt32(ss[i]);
+            bool t = true;
+            int k = 1000000000, sum=0;
+            while (t)
+            {
+                for (int i = 0; i < n; i++)
+                    if (x[i] == 0) sum += mas[i];
+                    else sum -= mas[i];
+                if (sum < k && sum >= 0) k = sum; sum = 0;
+                    t = NextPerestanovka();
+            }
+            Console.WriteLine(k);
+        }
+    }
+}

@@ -1,0 +1,20 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+int main()
+{
+    int l, x1, y1, x2, y2, a, b, min;
+    cin>>l>>x1>>y1>>x2>>y2;
+    a = abs(x1 - x2);
+    b = abs(y1 - y2);
+    if(l * l * 4 - (a*a + b*b) >= 0)    {cout<<a*b;return 0;}
+    if(a < b) min = a;
+    else    min = b;
+    if(min >= l)
+    {
+        cout<<3.1415 * float(l*l);
+    }
+    return 0;
+}

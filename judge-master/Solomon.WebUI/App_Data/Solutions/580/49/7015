@@ -1,0 +1,28 @@
+using System;
+class Program {
+
+	static void Main() {
+		bool win = false;
+		int golovi = 3;
+		int K = int.Parse(Console.ReadLine());
+
+		string[] s = Console.ReadLine().Split();
+		for(int i = 0; i < 2 * K; i++) {
+			if(i % 2 == 0)
+			golovi -= int.Parse(s[i]);
+			else
+				golovi += int.Parse(s[i]);
+			if(golovi <= 0) {
+				win = true;
+				break; }
+
+		}
+
+
+		if(win)Console.WriteLine("YES");
+			else
+			Console.WriteLine("NO");
+		
+		
+		}
+	}

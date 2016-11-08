@@ -1,0 +1,24 @@
+using System;
+
+namespace viking
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			int n = int.Parse(Console.ReadLine());
+			int k = int.Parse(Console.ReadLine());
+
+			int N = 1;
+			int P = 1;
+
+			for(int i = 1; i <= n-k; i++)
+				P *= i;			
+
+			for(int j = k+1; j <= n; j++)
+				N *= j;
+			
+			Console.Write(N/P);
+		}
+	}
+}

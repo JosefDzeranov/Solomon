@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool checkNum( string text )
+{
+    for( unsigned i = 0; i < text.length(); i++ )
+    {
+        if( !isdigit( text[ i ] ) )
+            return false;
+    }
+
+    return true;
+}
+
+int main()
+{
+    string text, word;
+    int b, lines;
+
+    b = 0;
+
+    cin >> lines;
+
+    for( int i = 0; i <= lines; i++ )
+    {
+        getline( cin, text );
+
+        word = "";
+
+        for( unsigned j = 0; j < text.length(); j++ )
+        {
+            if( text[j] != ' ' )
+            {
+                word += text[j];
+            }
+
+            if( text[j] == ' ' || j + 1 == text.length() )
+            {
+                if( checkNum( word ) )
+                    b = b + stoi( word );
+
+                word = "";
+            }
+        }
+    }
+
+
+    cout << b << endl;
+
+    return 0;
+}
+

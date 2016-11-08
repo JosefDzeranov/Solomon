@@ -1,0 +1,21 @@
+program Project17;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var q,b,c,N,z,w:integer  ;
+a:array[1..1000] of integer;
+begin
+readln(b,c);
+
+ for z := 1 to c do
+  begin;
+ read(a[z]);
+  end;
+ for q := 1 to c do
+     write(a[q],' ');
+    readln;
+    readln;
+end.

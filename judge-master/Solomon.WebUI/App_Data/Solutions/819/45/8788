@@ -1,0 +1,15 @@
+import math
+n, l = map(int, input().split())
+r1, r2 = map(int, input().split())
+
+if l//(2*r1) < l/(2*r1):
+    bigrings = 2*(l//(2*r1)+1)
+else:
+    bigrings = 2*(l//(2*r1))
+smallrings = bigrings//2
+wire = 2*math.pi*r1*bigrings + 2*math.pi*r2*smallrings
+if wire <= n:
+    print ('YES')
+    print (bigrings, smallrings)
+else:
+    print ('NO')

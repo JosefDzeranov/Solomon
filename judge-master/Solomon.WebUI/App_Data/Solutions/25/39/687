@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int m, n, i;
+    bool next;
+    next = false;
+    cin>>n>>m;
+    int a[m];
+    for(i=0;    i<m;    i++)    cin>>a[i];
+    for (i=0;   i<m;    i++)
+    {
+        if(!next && !(a[i]>n))
+        {
+            cout<<a[i];
+            if(i + 1 < m && a[i + 1] - 1 == a[i] && !(a[i + 1]>n))
+            {
+                cout<<'-';
+                next = true;
+            }
+            else
+            {
+                cout<<" ";
+            }
+        }
+        else
+        {
+            if(!(i + 1 < m && a[i + 1] - 1 == a[i]) && !(a[i + 1]>n))
+            {
+                cout<<a[i]<<" ";
+                next = false;
+            }
+
+        }
+    }
+    return 0;
+}

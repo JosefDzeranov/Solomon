@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Point {
+	int a, b, c;
+};
+
+bool comp(Point a, Point b) {
+	return (a.a < b.a) || (a.a == b.a && a.b < b.b);
+}
+
+int main() {
+	bool check;
+	vector<Point> ans;
+	Point num;
+	int n, one, two, three, i, j, cur;
+	cin >> n;
+	vector<Point> a(n);
+	for (i = 0; i < n; i++) {
+		cin >> one >> two >> three;
+		a[i].a = one;
+		a[i].b = three + one;
+		a[i].c = two;
+	}
+	sort(a.begin(), a.end(), comp);
+	
+	cur = a[0].a;
+	for (i = 0; i < n; i++) {
+		if (cur < a[i].a) {
+			num.a = cur;
+			num.b = a[i].a;
+			num.c = 0;
+			ans.push_back(num);
+			cur = num.b;
+		}
+		num.a = cur;
+		num.c = a[i].c;
+		j = i + 1;
+		check = true;
+		while (j < n && a[j].a < a[i].b) {
+			if (a[j].c >= a[i].c) {
+				num.b = a[j].a;
+				check = false;
+				break;
+			}
+			j++;
+		}
+		if (check) {
+			num.b = a[i].b;
+			cur = num.b;
+		}
+		else {
+			cur = num.b;
+		}
+		ans.push_back(num);
+	}
+	cout << ans.size() << endl;
+	for (i = 0; i < ans.size(); i++) {
+		cout << ans[i].a << " " << ans[i].c << " " << ans[i].b << endl;
+	}
+	return 0;
+}

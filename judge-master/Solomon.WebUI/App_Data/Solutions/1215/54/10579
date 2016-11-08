@@ -1,0 +1,8 @@
+var a:array [1..10000000000] of byte;
+i,j,l,buf:longint;
+begin
+read(i);
+write(i);
+
+        
+end.

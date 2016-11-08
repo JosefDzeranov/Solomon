@@ -1,0 +1,32 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n,i,k,f,s,j:integer;
+  a:array[1..100] of integer;
+
+
+begin
+readln(n);
+s:=0;
+f:=1;
+for k:=1 to n do
+F:=f*k;
+for i:=1 to n do
+s:=s+(n-1);
+if s=f  then  begin
+a[1]:=1;
+for j:=1 to n do
+a[j]:=j;
+for j:=1 to n do
+write(a[j],' ');
+readln;
+end;
+
+
+end.
+

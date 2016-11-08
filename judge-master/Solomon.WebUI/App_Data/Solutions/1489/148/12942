@@ -1,0 +1,102 @@
+#include "iostream"
+#include "string"
+
+using namespace std;
+
+int main () 
+{
+	int n, m, t, x, y, xs, ys;
+	string s;
+	cin >> n >> m;
+	int a[200][200];
+	for (int i = 1; i <= n; ++i) // По высоте
+	{
+		for (int j = 1; j <= m; ++j) // По ширине
+		{
+			cin >> s;
+			// LET'S HARDCORE IT
+			if (s == "north-east") t = 1;
+			if (s == "east") t = 2;
+			if (s == "south-east") t = 3;
+			if (s == "south") t = 4;
+			if (s == "south-west") t = 5;
+			if (s == "west") t = 6;
+			if (s == "north-west") t = 7;
+			if (s == "north") t = 8;
+			if (s == "whirlpool") t = 0;
+			a[i][j] = t;
+		}
+	}
+	cin >> x >> y;
+	xs = x; ys = y;
+	int c = 0;
+	bool pipetz = false;
+	bool out = false;
+	do {
+		if (a[x][y] == 1) {
+			if ((x==1)||(y==m)) {
+				out = true;
+				break;
+			}
+			y++; x--;
+		} else if (a[x][y] == 2) {
+			if (y==m) {
+				out = true;
+				break;
+			}
+			y++;
+		} else if (a[x][y] == 3) {
+			if ((x==n)||(y==m)) {
+				out = true;
+				break;
+			}
+			y++; x++;
+		} else if (a[x][y] == 4) {
+			if (x==n) {
+				out = true;
+				break;
+			}
+			x++;
+		} else if (a[x][y] == 5) {
+			if ((y==1)||(x==n)) {
+				out = true;
+				break;
+			}
+			y--; x++;
+		} else if (a[x][y] == 6) {
+			if (y==1) {
+				out = true;
+				break;
+			}
+			y--;
+		} else if (a[x][y] == 7) {
+			if ((x==1)||(y==1)) {
+				out = true;
+				break;
+			}
+			y--; x--;
+		} else if (a[x][y] == 8) {
+			if (x==1) {
+				out = true;
+				break;
+			}
+			x--;
+		}
+		if ((x == xs) && (y == ys)) {
+			break;
+		}
+		c++;
+		if (a[x][y] == 0) {
+			pipetz = true;
+			break;
+		}
+	} while (((xs == x) && (ys == y)) == false);
+	if (pipetz == true) {
+		cout << "Whirlpool in " << c << " move(s)! ";
+	} else if (out == true) {
+		cout << "Boat has been carried out in " << c+1 << " move(s).";
+	} else {
+		cout << "The Bermuda Triangle";
+	}
+	return 0;
+}

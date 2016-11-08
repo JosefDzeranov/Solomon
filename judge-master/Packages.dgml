@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Solomon.Tester" Label="Solomon.Tester" Category="Проект" />
+    <Node Id="NLog 2.0.1.2" Label="NLog 2.0.1.2" Category="Пакет" />
+    <Node Id="NLog.Config 2.0.1.2" Label="NLog.Config 2.0.1.2" Category="Пакет" />
+    <Node Id="Solomon.UnitTests" Label="Solomon.UnitTests" Category="Проект" />
+    <Node Id="Moq 4.0.10827" Label="Moq 4.0.10827" Category="Пакет" />
+    <Node Id="Ninject 3.0.1.10" Label="Ninject 3.0.1.10" Category="Пакет" />
+    <Node Id="Solomon.Domain" Label="Solomon.Domain" Category="Проект" />
+    <Node Id="EntityFramework 5.0.0" Label="EntityFramework 5.0.0" Category="Пакет" />
+    <Node Id="Moq 4.0.10827" Label="Moq 4.0.10827" Category="Пакет" />
+    <Node Id="Ninject 3.0.1.10" Label="Ninject 3.0.1.10" Category="Пакет" />
+    <Node Id="Solomon.WebUI" Label="Solomon.WebUI" Category="Проект" />
+    <Node Id="DotNetOpenAuth.AspNet 4.0.3.12153" Label="DotNetOpenAuth.AspNet 4.0.3.12153" Category="Пакет" />
+    <Node Id="DotNetOpenAuth.Core 4.0.3.12153" Label="DotNetOpenAuth.Core 4.0.3.12153" Category="Пакет" />
+    <Node Id="DotNetOpenAuth.OAuth.Consumer 4.0.3.12153" Label="DotNetOpenAuth.OAuth.Consumer 4.0.3.12153" Category="Пакет" />
+    <Node Id="DotNetOpenAuth.OAuth.Core 4.0.3.12153" Label="DotNetOpenAuth.OAuth.Core 4.0.3.12153" Category="Пакет" />
+    <Node Id="DotNetOpenAuth.OpenId.Core 4.0.3.12153" Label="DotNetOpenAuth.OpenId.Core 4.0.3.12153" Category="Пакет" />
+    <Node Id="DotNetOpenAuth.OpenId.RelyingParty 4.0.3.12153" Label="DotNetOpenAuth.OpenId.RelyingParty 4.0.3.12153" Category="Пакет" />
+    <Node Id="EntityFramework 5.0.0" Label="EntityFramework 5.0.0" Category="Пакет" />
+    <Node Id="EPPlus 4.0.2" Label="EPPlus 4.0.2" Category="Пакет" />
+    <Node Id="jQuery 2.0.3" Label="jQuery 2.0.3" Category="Пакет" />
+    <Node Id="jQuery.UI.Combined 1.10.3" Label="jQuery.UI.Combined 1.10.3" Category="Пакет" />
+    <Node Id="jQuery.Validation 1.11.1" Label="jQuery.Validation 1.11.1" Category="Пакет" />
+    <Node Id="knockoutjs 2.1.0" Label="knockoutjs 2.1.0" Category="Пакет" />
+    <Node Id="log4net 2.0.0" Label="log4net 2.0.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.Mvc 4.0.20710.0" Label="Microsoft.AspNet.Mvc 4.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.Razor 2.0.20710.0" Label="Microsoft.AspNet.Razor 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.Web.Optimization 1.0.0" Label="Microsoft.AspNet.Web.Optimization 1.0.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebApi 4.0.20710.0" Label="Microsoft.AspNet.WebApi 4.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Label="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Label="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebPages 2.0.20710.0" Label="Microsoft.AspNet.WebPages 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebPages.Data 2.0.20710.0" Label="Microsoft.AspNet.WebPages.Data 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebPages.OAuth 2.0.20710.0" Label="Microsoft.AspNet.WebPages.OAuth 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.AspNet.WebPages.WebData 2.0.20710.0" Label="Microsoft.AspNet.WebPages.WebData 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.jQuery.Unobtrusive.Ajax 2.0.30506.0" Label="Microsoft.jQuery.Unobtrusive.Ajax 2.0.30506.0" Category="Пакет" />
+    <Node Id="Microsoft.jQuery.Unobtrusive.Validation 2.0.30506.0" Label="Microsoft.jQuery.Unobtrusive.Validation 2.0.30506.0" Category="Пакет" />
+    <Node Id="Microsoft.Net.Http 2.0.20710.0" Label="Microsoft.Net.Http 2.0.20710.0" Category="Пакет" />
+    <Node Id="Microsoft.Web.Infrastructure 1.0.0.0" Label="Microsoft.Web.Infrastructure 1.0.0.0" Category="Пакет" />
+    <Node Id="Modernizr 2.5.3" Label="Modernizr 2.5.3" Category="Пакет" />
+    <Node Id="Moq 4.0.10827" Label="Moq 4.0.10827" Category="Пакет" />
+    <Node Id="MvcMailer 4.5" Label="MvcMailer 4.5" Category="Пакет" />
+    <Node Id="Newtonsoft.Json 4.5.6" Label="Newtonsoft.Json 4.5.6" Category="Пакет" />
+    <Node Id="Ninject 3.2.2.0" Label="Ninject 3.2.2.0" Category="Пакет" />
+    <Node Id="T4Scaffolding.Core 1.0.0" Label="T4Scaffolding.Core 1.0.0" Category="Пакет" />
+    <Node Id="toastr 2.0.1" Label="toastr 2.0.1" Category="Пакет" />
+    <Node Id="WebGrease 1.1.0" Label="WebGrease 1.1.0" Category="Пакет" />
+  </Nodes>
+  <Links>
+    <Link Source="NLog.Config 2.0.1.2" Target="NLog 2.0.1.2" Category="Зависимость пакета" />
+    <Link Source="Solomon.Tester" Target="NLog.Config 2.0.1.2" Category="Установленный пакет" />
+    <Link Source="Solomon.UnitTests" Target="Moq 4.0.10827" Category="Установленный пакет" />
+    <Link Source="Solomon.UnitTests" Target="Ninject 3.0.1.10" Category="Установленный пакет" />
+    <Link Source="Solomon.Domain" Target="EntityFramework 5.0.0" Category="Установленный пакет" />
+    <Link Source="Solomon.Domain" Target="Moq 4.0.10827" Category="Установленный пакет" />
+    <Link Source="Solomon.Domain" Target="Ninject 3.0.1.10" Category="Установленный пакет" />
+    <Link Source="DotNetOpenAuth.AspNet 4.0.3.12153" Target="DotNetOpenAuth.OpenId.RelyingParty 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="DotNetOpenAuth.AspNet 4.0.3.12153" Target="DotNetOpenAuth.OAuth.Consumer 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="DotNetOpenAuth.OAuth.Consumer 4.0.3.12153" Target="DotNetOpenAuth.OAuth.Core 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="DotNetOpenAuth.OAuth.Core 4.0.3.12153" Target="DotNetOpenAuth.Core 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="DotNetOpenAuth.OpenId.Core 4.0.3.12153" Target="DotNetOpenAuth.Core 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="DotNetOpenAuth.OpenId.RelyingParty 4.0.3.12153" Target="DotNetOpenAuth.OpenId.Core 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="jQuery.UI.Combined 1.10.3" Target="jQuery 2.0.3" Category="Зависимость пакета" />
+    <Link Source="jQuery.Validation 1.11.1" Target="jQuery 2.0.3" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.WebPages 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.Mvc 4.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.Web.Optimization 1.0.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.Web.Optimization 1.0.0" Target="WebGrease 1.1.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi 4.0.20710.0" Target="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Microsoft.Net.Http 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Target="Newtonsoft.Json 4.5.6" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Client 4.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 4.0.20710.0" Target="Microsoft.AspNet.WebApi.Core 4.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.Web.Infrastructure 1.0.0.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebPages 2.0.20710.0" Target="Microsoft.AspNet.Razor 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebPages.OAuth 2.0.20710.0" Target="Microsoft.AspNet.WebPages.WebData 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebPages.OAuth 2.0.20710.0" Target="DotNetOpenAuth.AspNet 4.0.3.12153" Category="Зависимость пакета" />
+    <Link Source="Microsoft.AspNet.WebPages.WebData 2.0.20710.0" Target="Microsoft.AspNet.WebPages.Data 2.0.20710.0" Category="Зависимость пакета" />
+    <Link Source="Microsoft.jQuery.Unobtrusive.Ajax 2.0.30506.0" Target="jQuery 2.0.3" Category="Зависимость пакета" />
+    <Link Source="Microsoft.jQuery.Unobtrusive.Validation 2.0.30506.0" Target="jQuery.Validation 1.11.1" Category="Зависимость пакета" />
+    <Link Source="MvcMailer 4.5" Target="T4Scaffolding.Core 1.0.0" Category="Зависимость пакета" />
+    <Link Source="toastr 2.0.1" Target="jQuery 2.0.3" Category="Зависимость пакета" />
+    <Link Source="Solomon.WebUI" Target="EntityFramework 5.0.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="EPPlus 4.0.2" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="jQuery.UI.Combined 1.10.3" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="knockoutjs 2.1.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="log4net 2.0.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.AspNet.Mvc 4.0.20710.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.AspNet.Web.Optimization 1.0.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.AspNet.WebApi 4.0.20710.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.AspNet.WebPages.OAuth 2.0.20710.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.jQuery.Unobtrusive.Ajax 2.0.30506.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Microsoft.jQuery.Unobtrusive.Validation 2.0.30506.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Modernizr 2.5.3" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Moq 4.0.10827" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="MvcMailer 4.5" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="Ninject 3.2.2.0" Category="Установленный пакет" />
+    <Link Source="Solomon.WebUI" Target="toastr 2.0.1" Category="Установленный пакет" />
+  </Links>
+  <Categories>
+    <Category Id="Проект" />
+    <Category Id="Пакет" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Проект" ValueLabel="True">
+      <Condition Expression="HasCategory('Проект')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Зависимость пакета" ValueLabel="True">
+      <Condition Expression="HasCategory('Зависимость пакета')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>

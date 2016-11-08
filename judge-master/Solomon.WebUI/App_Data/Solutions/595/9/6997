@@ -1,0 +1,25 @@
+var
+  n,x,i,min,res: integer;
+  abc: array[1..3] of integer;
+begin
+  readln(x);
+  read(n,abc[1],abc[2],abc[3]);
+  if x=2 then begin
+    min:=abc[1];
+    for i:=2 to 3 do begin
+      if min > abc[i] then 
+        min:=abc[i];
+    end;
+  end;
+  if x=1 then begin
+    i:=n;
+    i:=i-abc[1]-abc[2]-abc[3];
+    if i>=0 then res:=0 else begin
+      while abs(i) > n do begin
+        i:= i+n;
+      end;
+      res:=i;
+    end;
+    writeln(abs(res));
+  end;
+end.

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Text;
+
+namespace TaskB
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int U = int.Parse(Console.ReadLine());
+
+            int U3 = U / 3;
+            int U2 = U / 3;
+            int U1 = U / 3;
+            if (U % 3 == 0)
+            {
+                U3 = U3 + 1;
+                U1 = U1 - 1;
+            }
+
+            if (U % 3 == 1)
+            {
+                U3 = U3 + 2;
+                U1 = U1 - 1;
+            }
+
+            if (U % 3 == 2)
+            {
+                U3 = U3 + 2;
+                U2 = U2 + 1;
+                U1 = U1 - 1;
+            }
+            Console.WriteLine(U1 + " " + U2 + " " + U3);
+                
+        }
+    }
+}

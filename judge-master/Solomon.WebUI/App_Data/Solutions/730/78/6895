@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+//int A[1000];
+
+int main()
+{
+
+    int a, b, c, i;
+    cin >> a >> b;
+    c = a + b;
+    cout << c * a;
+
+    return 0;
+}

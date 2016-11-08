@@ -1,0 +1,36 @@
+program getSteps;
+var
+ dC:array[1..32000] of char; dCA:integer;
+ gN,dN:longint;
+ mS:integer;
+ cI,cIi:longint;
+procedure c_s (cN:longint);
+ begin
+  dCA:=0;
+  while cN>0 do
+   begin
+    dCA:=succ(dCA);
+    if cN mod 2=0 then dC[dCA]:='+'
+     else dC[dCA]:='*';
+    cN:=cN div 2;
+   end;
+ end;
+begin
+ readln(gN);
+
+ for cI:=1 to maxlongint do
+  begin
+   c_s(cI);
+   dN:=1;
+   for cIi:=dCA downto 1 do
+    begin
+     if dC[cIi]='+' then dN:=succ(dN)
+      else dN:=dN*2;
+    end;
+   mS:=dCa;
+   if dN=gN then break;
+  end;
+
+  for cI:=dCA downto 1 do write(dC[cI]);
+  readln;
+end.

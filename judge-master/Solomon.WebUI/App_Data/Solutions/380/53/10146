@@ -1,0 +1,42 @@
+program nc;
+var list:array[1..100,1..100] of boolean;
+n,m,i,j,t,x,y:integer;
+
+procedure explore(i, g: byte);
+begin 
+list[i,g]:=false; 
+if(i+1<n)and(list[i+1,g])then
+explore(i+1,g); 
+if (g+1<m) and (list[i,g+1])  then
+explore(i,g+1);
+end;
+
+procedure dfs( var i,g,counter:integer);
+begin 
+counter:=0;
+For i:=1 to n do 
+begin 
+for g:=1 to m do 
+if list[i,g] then 
+begin 
+counter:=counter+1;
+explore(i,g)
+end 
+end 
+end;
+
+begin
+readln(N,M,T);
+for i:=1 to n do
+for j:=1 to m do
+list[i,j]:=true;
+for i:=1 to t do
+begin
+readln(x,y);
+list[y,x]:=false;
+end;
+i:=1;
+j:=1;
+dfs(i,j,t);
+writeln(t);
+end.

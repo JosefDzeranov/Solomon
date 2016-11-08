@@ -1,0 +1,17 @@
+#include<iostream>
+#include<cstdlib>
+ using namespace std;
+
+ int main()
+ {
+
+  int  nFirst=0;
+   int  nSecond=0;
+       int  nRes=0;
+            cin >>nFirst>>nSecond;
+            nRes=nFirst+nSecond;
+              cout<<nRes;
+
+
+     return 0;
+ }

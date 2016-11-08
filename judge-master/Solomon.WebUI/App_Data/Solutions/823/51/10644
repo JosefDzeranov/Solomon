@@ -1,0 +1,26 @@
+program MagneticToy;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+var
+  n, i, x : integer;
+begin
+  readln (n);
+  x := 8;
+  i := 2;
+  if n < 8 then
+    write (0)
+  else
+  begin
+    while n >= x do
+      begin
+        i := i + 1;
+        x := 12 * (i - 2) + 8;
+      end;
+    write (i - 1);
+  end;
+  readln;
+end.

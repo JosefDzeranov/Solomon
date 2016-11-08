@@ -1,0 +1,94 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int mas[1005][1005];
+
+int main()
+{
+	int n, m, k;
+	cin >> n >> m >> k;
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < m; j++)
+		mas[i][j] = 0;
+	vector < pair <int, int> > v2;
+	for (int i = 0; i < k; i++)
+	{
+		int a, b;
+		cin >> a >> b;
+		mas[a - 1][b - 1] = 2;
+		pair < int, int > t;
+		t.first = a - 1;
+		t.second = b - 1;
+		v2.push_back(t);
+	}
+	int used = k;
+	int sec = 0;
+	while (used < m * n)
+	{
+		vector < pair <int, int> > v;
+		sec++;
+		int y = v2.size();
+		for (int i = 0; i < y; i++)
+		{
+			int a = v2[v2.size() - 1].first;
+			int b = v2[v2.size() - 1].second;
+			if (mas[a][b] == 2)
+			{
+				mas[a][b] = 3;
+				if (a + 1 < n && mas[a + 1][b] == 0)
+				{
+					mas[a + 1][b] = 1;
+					pair <int, int> t;
+					t.first = a + 1;
+					t.second = b;
+					v.push_back(t);
+					used++;
+				}
+				if (b + 1 < m && mas[a][b + 1] == 0)
+				{
+					mas[a][b + 1] = 1;
+					pair <int, int> t;
+					t.first = a;
+					t.second = b + 1;
+					v.push_back(t);
+					used++;
+				}
+				if (a - 1 >= 0 && mas[a - 1][b] == 0)
+				{
+					mas[a - 1][b] = 1;
+					pair <int, int> t;
+					t.first = a - 1;
+					t.second = b;
+					v.push_back(t);
+					used++;
+				}
+				if (b - 1 >= 0 && mas[a][b - 1] == 0)
+				{
+					mas[a][b - 1] = 1;
+					pair <int, int> t;
+					t.first = a;
+					t.second = b - 1;
+					v.push_back(t);
+					used++;
+				}
+				v2.pop_back();
+			}
+			if (used == m * n)
+				break;
+		}
+		int x = v.size();
+		for (int i = 0; i < x; i++)
+		{
+			mas[v[v.size() - 1].first][v[v.size() - 1].second] = 2;
+			v2.push_back(v[v.size() - 1]);
+			v.pop_back();
+		}
+	}
+
+	cout << sec;
+	return 0;
+}

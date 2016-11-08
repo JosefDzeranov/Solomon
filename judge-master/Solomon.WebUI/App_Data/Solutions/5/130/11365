@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace zA
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+            int a = int.Parse(s[0]);
+            int b = int.Parse(s[1]);
+            int c = int.Parse(s[2])/2;
+            int d = int.Parse(s[3])/2;
+            int kol=0;
+            for (int i = 1; i <= Math.Sqrt(b); i++)
+            { 
+                int jmin = Math.Max(c-i, a/i);
+                int jmax = Math.Min(d-i,b/i);
+                kol += jmax - jmin;
+
+            }
+
+            Console.WriteLine(kol);
+
+        }
+    }
+}
