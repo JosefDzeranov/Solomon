@@ -34,7 +34,7 @@ namespace Solomon.WebUI
 
         private void InitializeSimpleMembership()
         {
-            Database.SetInitializer<EFDbContext>(null);
+            Database.SetInitializer<EFDbContext>(new CreateDatabaseIfNotExists<EFDbContext>());
 
             try
             {

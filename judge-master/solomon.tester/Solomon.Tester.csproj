@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ProcessPrivileges">
-      <HintPath>.\ProcessPrivileges.dll</HintPath>
+      <HintPath>..\vendor\ProcessPrivileges.dll</HintPath>
     </Reference>
     <Reference Include="Shuttle.Core.Data, Version=3.2.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\shuttle-core-data.3.2.9\lib\net45-full\Shuttle.Core.Data.dll</HintPath>
