@@ -127,14 +127,13 @@ namespace Solomon.WebUI.Controllers
                     string confirmationToken = 
                         WebSecurity.CreateUserAndAccount(
                             Model.UserName, Model.Password, new { Email = Model.Email }, true);
-
                     Roles.AddUserToRole(Model.UserName, "User");
-
-                    userMailer.RegisterConfirmation(Model.Email, Model.UserName, confirmationToken).Send();
+                   
+                    //userMailer.RegisterConfirmation(Model.Email, Model.UserName, confirmationToken).Send();
 
                     logger.Info("Send register confirm email to \"" + Model.UserName + "\"");
 
-                    return RedirectToAction("RegisterStepTwo", "Account");
+                    return RedirectToAction("RegisterConfirmation", "Account",new {id = confirmationToken});
                 }
                 catch (MembershipCreateUserException ex)
                 {
