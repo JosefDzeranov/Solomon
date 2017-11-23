@@ -40,8 +40,8 @@ namespace Solomon.Domain.Concrete
             mb.Entity<Tournament>().HasMany(p => p.Users).WithMany(t => t.Tournaments).Map(m => m.ToTable("UserProfileTournament"));
             mb.Entity<UserProfileTeam>().HasMany(p => p.Tournaments).WithMany(t => t.Teams).Map(m => m.ToTable("UserProfileTeamTournament"));
 
-            
-          
+
+
 
             //modelBuilder.Entity<UserProfile>().HasMany<Team>(t => t.Teams).WithMany(u => u.Members).Map(
             //    x =>
@@ -57,18 +57,86 @@ namespace Solomon.Domain.Concrete
     {
         protected override void Seed(EFDbContext context)
         {
-            //IList<ProgrammingLanguage> defaultLanguages = new List<ProgrammingLanguage>();
 
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.C, Title = "GNU C" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.CPP, Title = "GNU C++" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.CS, Title = "C# .NET" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.VB, Title = "VB .NET" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.Java, Title = "Java" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.Pascal, Title = "Free Pascal" });
-            //defaultLanguages.Add(new ProgrammingLanguage() { ProgrammingLanguageID = TypesExtensions.ProgrammingLanguages.Python, Title = "Python" });
+            IList<ProgrammingLanguage> defaultLanguages = new List<ProgrammingLanguage>();
 
-            //foreach (ProgrammingLanguage std in defaultLanguages)
-            //    context.ProgrammingLanguages.Add(std);
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.C,
+                Title = "GNU C"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.CPP,
+                Title = "GNU C++"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.CS,
+                Title = "C# .NET"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.VB,
+                Title = "VB .NET"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.Java,
+                Title = "Java"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.Pascal,
+                Title = "Free Pascal"
+            });
+            defaultLanguages.Add(new ProgrammingLanguage
+            {
+                ProgrammingLanguageID = ProgrammingLanguages.Python,
+                Title = "Python"
+            });
+
+            foreach (var std in defaultLanguages)
+                context.ProgrammingLanguages.Add(std);
+
+            context.UserCategories.Add(new UserCategory { UserCategoryID = UserCategories.None, Name = "Не выбрано" });
+            context.UserCategories.Add(new UserCategory { UserCategoryID = UserCategories.School, Name = "Школьник" });
+            context.UserCategories.Add(new UserCategory { UserCategoryID = UserCategories.Student, Name = "Студент" });
+            context.UserCategories.Add(new UserCategory
+            {
+                UserCategoryID = UserCategories.Teacher,
+                Name = "Преподаватель"
+            });
+            context.UserCategories.Add(new UserCategory { UserCategoryID = UserCategories.Other, Name = "Другое" });
+
+
+
+            context.TournamentTypes.Add(
+                new TournamentType { TournamentTypeID = TournamentTypes.Open, Name = "Открытый" });
+            context.TournamentTypes.Add(
+                new TournamentType { TournamentTypeID = TournamentTypes.Close, Name = "Закрытый" });
+
+            context.TournamentFormats.Add(new TournamentFormat { TournamentFormatID = TournamentFormats.ACM, Name = "ACM (Проверка до первого неверного ответа, штрафное время за посылки)" });
+            context.TournamentFormats.Add(new TournamentFormat { TournamentFormatID = TournamentFormats.IOI, Name = "IOI (Проверка на всех тестах, без штрафных очков)" });
+
+            context.ProblemTypes.Add(new ProblemType() { ProblemTypeID = ProblemTypes.Interactive, Name = "Интерактивная" });
+            context.ProblemTypes.Add(new ProblemType() { ProblemTypeID = ProblemTypes.Open, Name = "Открытая задача (только ответ на задачу)" });
+            context.ProblemTypes.Add(new ProblemType() { ProblemTypeID = ProblemTypes.Standart, Name = "Стандартная задача (стандартные потоки ввода/вывода)" });
+
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.CE, Name = "CE" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.CHKP, Name = "CHKP" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.Compiling, Name = "Compiling" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.Disqualified, Name = "Disqualified" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.Executing, Name = "Executing" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.FL, Name = "FL" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.MLE, Name = "MLE" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.OK, Name = "OK" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.PE, Name = "PE" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.PS, Name = "PS" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.Waiting, Name = "Waiting" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.TLE, Name = "TLE" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.RTE, Name = "RTE" });
+            context.TestResults.Add(new TestResult { TestResultID = TestResults.WA, Name = "WA" });
             
             //All standards will
             base.Seed(context);

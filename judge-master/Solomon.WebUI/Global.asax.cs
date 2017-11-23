@@ -17,6 +17,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
+using Solomon.Domain.Entities;
 using WebMatrix.WebData;
 
 namespace Solomon.WebUI
@@ -34,7 +35,7 @@ namespace Solomon.WebUI
 
         private void InitializeSimpleMembership()
         {
-            Database.SetInitializer<EFDbContext>(new CreateDatabaseIfNotExists<EFDbContext>());
+            Database.SetInitializer<EFDbContext>(new EFDbContextInitializer());
 
             try
             {
@@ -60,7 +61,7 @@ namespace Solomon.WebUI
 
                 if (!Roles.RoleExists("User"))
                     Roles.CreateRole("User");
-
+                
                 if (Membership.GetUser("Admin", false) == null)
                 {
                     WebSecurity.CreateUserAndAccount("Admin", "alborov");
