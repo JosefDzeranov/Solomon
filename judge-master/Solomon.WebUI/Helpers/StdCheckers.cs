@@ -29,7 +29,12 @@ namespace Solomon.WebUI.Helpers
 
         public static List<Checker> Checkers
         {
-            get { return checkers; }
+            get
+            {
+                if (checkers.Count == 0)
+                    UpdateCheckersList();
+                return checkers;
+            }
         }
 
         public static void UpdateCheckersList()
@@ -43,11 +48,11 @@ namespace Solomon.WebUI.Helpers
                     while (!sr.EndOfStream)
                     {
                         temp = new Checker()
-                            {
-                                CheckerID = id.ToString(),
-                                FileName = sr.ReadLine(),
-                                Description = sr.ReadLine()
-                            };
+                        {
+                            CheckerID = id.ToString(),
+                            FileName = sr.ReadLine(),
+                            Description = sr.ReadLine()
+                        };
                         temp.Available = File.Exists(LocalPath.AbsoluteCheckersDirectory + temp.FileName);
 
                         checkers.Add(temp);
