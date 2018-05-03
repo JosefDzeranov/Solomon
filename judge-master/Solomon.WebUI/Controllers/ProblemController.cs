@@ -230,7 +230,7 @@ namespace Solomon.WebUI.Controllers
             {
                 ProblemID = problem.ProblemID,
                 PT = problem.Type,
-                
+
                 Name = name,
                 TimeLimit = timeLimit,
                 MemoryLimit = memoryLimit,
@@ -266,17 +266,17 @@ namespace Solomon.WebUI.Controllers
 
             UserProfile user = repository.Users.FirstOrDefault(u => u.UserId == WebSecurity.CurrentUserId);
 
-            if ((tournament.Type == TournamentTypes.Close && 
+            if ((tournament.Type == TournamentTypes.Close &&
                 !Roles.IsUserInRole("Administrator") &&
                 !tournament.Users.Contains(u => u.UserId == WebSecurity.GetUserId(User.Identity.Name))) ||
                 (user != null && user.Generated == 1 && !user.Tournaments.Contains(tournament)))
             {
-                logger.Warn("User " + WebSecurity.GetUserId(User.Identity.Name) + 
+                logger.Warn("User " + WebSecurity.GetUserId(User.Identity.Name) +
                     " (" + User.Identity.Name + ") try get access to close tournament with id = " + TournamentID);
                 throw new HttpException(401, "Unauthorized Explained to close tournament " + TournamentID);
             }
 
-            logger.Debug("User " + WebSecurity.GetUserId(User.Identity.Name) + 
+            logger.Debug("User " + WebSecurity.GetUserId(User.Identity.Name) +
                 " \"" + User.Identity.Name + "\" visited Tournament " + TournamentID + " Problem " + ProblemID);
 
             // Select problems bound with tournament.
@@ -285,12 +285,12 @@ namespace Solomon.WebUI.Controllers
                 .Where(p =>
                     p.Tournaments.FirstOrDefault(t => t.TournamentID == TournamentID) != null
                 );
-            
+
             Problem problem;
             if (ProblemID == -1)
             {
                 problem = problems.FirstOrDefault();
-                if (problem != null )
+                if (problem != null)
                     ProblemID = problem.ProblemID;
             }
             else
@@ -501,7 +501,7 @@ namespace Solomon.WebUI.Controllers
                     .OrderByDescending(s => s.SendTime)
                     .ToPaginatedList<Solution>(Page, PageSize);
             }
-            
+
             var response = new JsonResponseSolutionsData();
 
             if (problem == null)
@@ -558,7 +558,7 @@ namespace Solomon.WebUI.Controllers
                 throw new HttpException(404, "Solution with id = " + SolutionID + " not found");
             }
 
-            if (solution.UserID != userID && 
+            if (solution.UserID != userID &&
                 !Roles.IsUserInRole("Judge") &&
                 !Roles.IsUserInRole("Administrator"))
             {
@@ -575,7 +575,7 @@ namespace Solomon.WebUI.Controllers
                 .ToList();
 
             var response = new JsonResponseSolutionResults();
-            
+
             // Get text view.
             using (var sw = new StringWriter())
             {
@@ -657,7 +657,7 @@ namespace Solomon.WebUI.Controllers
                 try
                 {
                     logger.Info("User " + WebSecurity.GetUserId(User.Identity.Name) +
-                        " \"" + User.Identity.Name + "\" change status " + solution.Result + " -> " + Result + 
+                        " \"" + User.Identity.Name + "\" change status " + solution.Result + " -> " + Result +
                         " for solution " + SolutionID);
 
                     solution.Result = Result;
@@ -702,12 +702,12 @@ namespace Solomon.WebUI.Controllers
             Problem problem = repository.Problems.FirstOrDefault(p => p.ProblemID == ProblemID);
 
             AddSolutionViewModel viewModel = new AddSolutionViewModel()
-                {
-                    PT = problem.Type,
-                    ProblemID = ProblemID,
-                    TournamentID = TournamentID,
-                    ProgrammingLanguageID = problem.Type == ProblemTypes.Open ? (int)ProgrammingLanguages.Open : 0
-                };
+            {
+                PT = problem.Type,
+                ProblemID = ProblemID,
+                TournamentID = TournamentID,
+                ProgrammingLanguageID = problem.Type == ProblemTypes.Open ? (int)ProgrammingLanguages.Open : 0
+            };
 
             return PartialView(viewModel);
         }
@@ -728,11 +728,12 @@ namespace Solomon.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Model.SolutionFile.ContentLength > 262144)
+                if (Model.SolutionFile.ContentLength > 2 * 1024 * 1024)
                 {
-                    TempData["ErrorMessage"] = "Максимальный размер файла - 256 кб";
+                    TempData["ErrorMessage"] = "Максимальный размер файла - 2 мб";
                     return RedirectToAction("Problem",
-                        new {
+                        new
+                        {
                             tournamentID = Model.TournamentID,
                             problemID = Model.ProblemID
                         });
@@ -741,7 +742,7 @@ namespace Solomon.WebUI.Controllers
                 Tournament tournament = repository.Tournaments.FirstOrDefault(t => t.TournamentID == Model.TournamentID);
                 Problem problem = repository.Problems.FirstOrDefault(p => p.ProblemID == Model.ProblemID);
 
-                if (tournament != null && problem != null && 
+                if (tournament != null && problem != null &&
                     (Roles.IsUserInRole("Judge") || Roles.IsUserInRole("Administrator") ||
                     (tournament.EndDate >= DateTime.Now && tournament.StartDate <= DateTime.Now)))
                 {
@@ -749,16 +750,16 @@ namespace Solomon.WebUI.Controllers
                     {
                         int userID = WebSecurity.GetUserId(User.Identity.Name);
                         Solution solution = new Solution
-                            {
-                                UserID = userID,
-                                TournamentID = Model.TournamentID,
-                                ProblemID = Model.ProblemID,
-                                FileName = Path.GetFileName(Model.SolutionFile.FileName),
-                                DataType = Model.SolutionFile.ContentType,
-                                ProgrammingLanguage = (ProgrammingLanguages)Model.ProgrammingLanguageID,
-                                SendTime = DateTime.Now,
-                                Result = TestResults.Waiting
-                            };
+                        {
+                            UserID = userID,
+                            TournamentID = Model.TournamentID,
+                            ProblemID = Model.ProblemID,
+                            FileName = Path.GetFileName(Model.SolutionFile.FileName),
+                            DataType = Model.SolutionFile.ContentType,
+                            ProgrammingLanguage = (ProgrammingLanguages)Model.ProgrammingLanguageID,
+                            SendTime = DateTime.Now,
+                            Result = TestResults.Waiting
+                        };
 
                         repository.SaveSolution(solution);
 
@@ -793,7 +794,7 @@ namespace Solomon.WebUI.Controllers
                                 tournament.Format, problem.Type, relativePath, solution.FileName);
                         }
 
-                        logger.Info("User " + WebSecurity.GetUserId(User.Identity.Name) + 
+                        logger.Info("User " + WebSecurity.GetUserId(User.Identity.Name) +
                             " \"" + User.Identity.Name + "\" add solution: PL = " + solution.ProgrammingLanguage +
                             ", TournamentID = " + Model.TournamentID +
                             ", ProblemID = " + Model.ProblemID + ", SolutionID = " + solution.SolutionID);
@@ -1093,9 +1094,9 @@ namespace Solomon.WebUI.Controllers
             }
 
             response.TotalCount = comments.Count();
-            
+
             List<ProblemCommentsCount> problemComments = new List<ProblemCommentsCount>();
-            
+
             comments
                 .Where(c => TournamentID != -1 ? c.TournamentID == TournamentID : c.Tournament == null)
                 .GroupBy(c => c.Problem)

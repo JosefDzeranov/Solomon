@@ -16,8 +16,8 @@
 
     function setLanguage(fieldObj)
     {
-        if (fieldObj.files[0].size > 262144) {
-            toastr.error("Максимальный размер файла - 256 кб");
+        if (fieldObj.files[0].size > 2*1024*1024) {
+            toastr.error("Максимальный размер файла - 2 мб");
             fieldObj.value = "";
             return false;
         }
